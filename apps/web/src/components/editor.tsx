@@ -344,10 +344,11 @@ function EditorHeader() {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<span className="text-xs text-muted-foreground select-none">
-						{__BALLERINA_VERSION__}
-					</span>
+					<span>Roadmap</span>
 				</a>
+				<span className="text-xs text-muted-foreground select-none">
+					{__BALLERINA_VERSION__}
+				</span>
 				<SettingsDialog />
 			</div>
 		</header>
