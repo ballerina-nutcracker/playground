@@ -23,6 +23,7 @@ import { CodeEditor } from "@/components/code-editor";
 import { VersionCard } from "@/components/version-card";
 import { SettingsDialog } from "@/components/settings-dialog";
 import { ANSI } from "@/components/ansi";
+import { ServicePanel } from "@/components/service-panel";
 
 import { basename, ext } from "@/lib/fs/core/path-utils";
 import { getBallerinaProjectTarget } from "@/lib/fs/project-target";
@@ -208,9 +209,8 @@ function OutputPane() {
 	return (
 		<div
 			className={cn(
-				"flex flex-col min-h-0 min-w-0",
-				"lg:w-1/2 lg:flex-none",
-				outputOpen ? "flex-1 lg:flex" : "shrink-0 lg:flex",
+				"flex flex-col min-h-0 min-w-0 lg:flex-1",
+				outputOpen ? "flex-1" : "shrink-0",
 			)}
 		>
 			<div className="flex h-10 shrink-0 items-center justify-between border-b border-t lg:border-t-0">
@@ -262,10 +262,14 @@ function OutputPane() {
 
 function EditorPane({
 	onRun,
+	onStop,
 	isRunning,
+	serviceRunning,
 }: {
 	onRun: () => Promise<void>;
+	onStop: () => void;
 	isRunning: boolean;
+	serviceRunning: boolean;
 }) {
 	const activeFile = useActiveFile();
 
@@ -293,26 +297,38 @@ function EditorPane({
 				<span className="px-4 h-full text-xs border-r flex items-center truncate max-w-[60%]">
 					{activeFile ? basename(activeFile.path) : "No file selected"}
 				</span>
-				<Button
-					className="h-full rounded-none"
-					variant="ghost"
-					data-testid="run-button"
-					onClick={() => void onRun()}
-					disabled={
-						isRunning ||
-						!activeFile ||
-						getLanguage(activeFile.path) !== "ballerina"
-					}
-				>
-					{isRunning ? (
-						<span>[...]</span>
-					) : (
-						<>
-							<HugeiconsIcon icon={PlayIcon} strokeWidth={1.5} />
-							<span>Run</span>
-						</>
-					)}
-				</Button>
+				{serviceRunning && !isRunning ? (
+					<Button
+						className="h-full rounded-none"
+						variant="ghost"
+						data-testid="stop-button"
+						onClick={onStop}
+					>
+						<span className="size-2.5 bg-destructive" aria-hidden />
+						<span>Stop</span>
+					</Button>
+				) : (
+					<Button
+						className="h-full rounded-none"
+						variant="ghost"
+						data-testid="run-button"
+						onClick={() => void onRun()}
+						disabled={
+							isRunning ||
+							!activeFile ||
+							getLanguage(activeFile.path) !== "ballerina"
+						}
+					>
+						{isRunning ? (
+							<span>[...]</span>
+						) : (
+							<>
+								<HugeiconsIcon icon={PlayIcon} strokeWidth={1.5} />
+								<span>Run</span>
+							</>
+						)}
+					</Button>
+				)}
 			</div>
 			{activeFile && (
 				<CodeEditor
@@ -359,33 +375,43 @@ function EditorHeader() {
 function EditorContent() {
 	const fs = useFS();
 
-	const { isReady, progress, run } = useBallerina();
+	const { isReady, progress, run, dispatchHttp, stopService } = useBallerina();
 
 	const activeFile = useActiveFile();
 
 	const { saveFile } = useFileTreeActions();
 	const [isRunning, setIsRunning] = React.useState(false);
+	const [serviceAddrs, setServiceAddrs] = React.useState<string[] | null>(null);
 
 	const openOutputWith = useEditorStore((s) => s.openOutputWith);
 	const appendOutput = useEditorStore((s) => s.appendOutput);
 	const toggleEditorMode = useEditorStore((s) => s.toggleEditorMode);
+	const outputOpen = useEditorStore((s) => s.outputOpen);
 
 	const handleRun = React.useCallback(async () => {
 		if (isRunning) return;
 		if (!activeFile || getLanguage(activeFile.path) !== "ballerina") return;
 
 		setIsRunning(true);
+		setServiceAddrs(null);
 		try {
 			// FIXME: We should automatically save files on change.
 			await saveFile();
 
 			const target = await getBallerinaProjectTarget(fs, activeFile.path);
 			openOutputWith("");
-			await run(target, ({ text }) => appendOutput(text));
+			const result = await run(target, ({ text }) => appendOutput(text));
+			if (result.service) setServiceAddrs(result.addrs ?? []);
 		} finally {
 			setIsRunning(false);
 		}
 	}, [activeFile, fs, saveFile, run, openOutputWith, appendOutput, isRunning]);
+
+	const handleStopService = React.useCallback(async () => {
+		await stopService();
+		setServiceAddrs(null);
+		appendOutput("\nService stopped.\n");
+	}, [stopService, appendOutput]);
 
 	useHotkeys("mod+enter", () => void handleRun(), {
 		preventDefault: true,
@@ -403,8 +429,23 @@ function EditorContent() {
 			<SidebarInset className="flex flex-col h-dvh overflow-hidden">
 				<EditorHeader />
 				<main className="flex flex-col lg:flex-row flex-1 min-h-0">
-					<EditorPane onRun={handleRun} isRunning={isRunning} />
-					<OutputPane />
+					<EditorPane
+						onRun={handleRun}
+						onStop={() => void handleStopService()}
+						isRunning={isRunning}
+						serviceRunning={!!serviceAddrs}
+					/>
+					<div
+						className={cn(
+							"flex flex-col min-h-0 min-w-0 lg:w-1/2 lg:flex-none",
+							outputOpen || serviceAddrs ? "flex-1" : "shrink-0",
+						)}
+					>
+						<OutputPane />
+						{serviceAddrs && (
+							<ServicePanel addrs={serviceAddrs} dispatchHttp={dispatchHttp} />
+						)}
+					</div>
 				</main>
 			</SidebarInset>
 		</>
