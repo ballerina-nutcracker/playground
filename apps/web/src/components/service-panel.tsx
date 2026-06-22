@@ -134,13 +134,20 @@ function KeyValueEditor({
 	);
 }
 
-export function ServicePanel({
-	addrs,
-	dispatchHttp,
-}: {
-	addrs: string[];
-	dispatchHttp: (req: HttpRequestSpec) => Promise<HttpResponse>;
-}) {
+export interface ServicePanelHandle {
+	send: () => void;
+	clear: () => void;
+}
+
+export const ServicePanel = React.forwardRef<
+	ServicePanelHandle,
+	{
+		addrs: string[];
+		dispatchHttp: (req: HttpRequestSpec) => Promise<HttpResponse>;
+		active: boolean;
+		onStateChange: (state: { isSending: boolean; canSend: boolean }) => void;
+	}
+>(function ServicePanel({ addrs, dispatchHttp, active, onStateChange }, ref) {
 	const [addr, setAddr] = React.useState(addrs[0] ?? "");
 	const [method, setMethod] =
 		React.useState<(typeof HTTP_METHODS)[number]>("GET");
@@ -193,6 +200,30 @@ export function ServicePanel({
 		isSending,
 	]);
 
+	const handleClear = React.useCallback(() => {
+		setMethod("GET");
+		setPath("/");
+		setQueryRows([newRow()]);
+		setHeaderRows([newRow()]);
+		setBody("");
+		setTab("query");
+		setResponse(null);
+		setError(null);
+		setRespTab("body");
+	}, []);
+
+	const canSend = addr !== "" && !isSending;
+
+	React.useImperativeHandle(
+		ref,
+		() => ({ send: () => void handleSend(), clear: handleClear }),
+		[handleSend, handleClear],
+	);
+
+	React.useEffect(() => {
+		onStateChange({ isSending, canSend });
+	}, [isSending, canSend, onStateChange]);
+
 	const queryCount = countFilled(queryRows);
 	const headerCount = countFilled(headerRows);
 	const respHeaderCount = response ? Object.keys(response.headers).length : 0;
@@ -206,13 +237,7 @@ export function ServicePanel({
 	];
 
 	return (
-		<div className="flex flex-1 flex-col min-h-0 border-t">
-			<div className="flex h-10 shrink-0 items-center border-b">
-				<span className="px-4 h-full text-xs text-muted-foreground flex items-center">
-					Try it
-				</span>
-			</div>
-
+		<div className={cn("flex-1 flex-col min-h-0", active ? "flex" : "hidden")}>
 			{/* Request */}
 			<div className="flex flex-col gap-3 border-b p-3 shrink-0">
 				<div className="flex flex-wrap items-end gap-2">
@@ -255,14 +280,6 @@ export function ServicePanel({
 							placeholder="/greeting"
 						/>
 					</div>
-					<Button
-						size="sm"
-						className="h-8"
-						onClick={() => void handleSend()}
-						disabled={isSending || !addr}
-					>
-						{isSending ? "Sending..." : "Send"}
-					</Button>
 				</div>
 
 				{/* Request section tabs */}
@@ -377,4 +394,4 @@ export function ServicePanel({
 			</div>
 		</div>
 	);
-}
+});

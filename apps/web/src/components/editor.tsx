@@ -7,6 +7,7 @@ import {
 	CleanIcon,
 	GithubFreeIcons,
 	PlayIcon,
+	SentIcon,
 } from "@hugeicons/core-free-icons";
 import { useHotkeys } from "react-hotkeys-hook";
 
@@ -25,6 +26,8 @@ import { SettingsDialog } from "@/components/settings-dialog";
 import { ANSI } from "@/components/ansi";
 import { ServicePanel } from "@/components/service-panel";
 
+import type { ServicePanelHandle } from "@/components/service-panel";
+
 import { basename, ext } from "@/lib/fs/core/path-utils";
 import { getBallerinaProjectTarget } from "@/lib/fs/project-target";
 import { cn } from "@/lib/utils";
@@ -36,6 +39,10 @@ import { useBallerina } from "@/hooks/use-ballerina";
 import { useFS } from "@/providers/fs-provider";
 
 import type { EditorLanguage } from "@/components/code-editor";
+import type {
+	HttpRequestSpec,
+	HttpResponse,
+} from "@/workers/ballerina-worker-api";
 
 function getLanguage(path: string): EditorLanguage {
 	const ex = ext(path);
@@ -161,19 +168,16 @@ function formatJsonOutput(output: string): string {
 	}
 }
 
-function OutputPane() {
+function OutputPane({ active }: { active: boolean }) {
 	const output = useEditorStore((s) => s.output);
 	const formattedOutput = React.useMemo(
 		() => formatJsonOutput(output),
 		[output],
 	);
-	const outputOpen = useEditorStore((s) => s.outputOpen);
-	const toggleOutputOpen = useEditorStore((s) => s.toggleOutputOpen);
-	const clearOutput = useEditorStore((s) => s.clearOutput);
 	const scrollRef = React.useRef<HTMLDivElement>(null);
 	const shouldAutoScrollRef = React.useRef(true);
 	const previousOutputLengthRef = React.useRef(output.length);
-	const previousOutputOpenRef = React.useRef(outputOpen);
+	const previousActiveRef = React.useRef(active);
 
 	const updateAutoScrollState = React.useCallback(() => {
 		const element = scrollRef.current;
@@ -186,40 +190,141 @@ function OutputPane() {
 
 	React.useLayoutEffect(() => {
 		const element = scrollRef.current;
-		if (!element) return;
+		if (!element || !active) {
+			previousActiveRef.current = active;
+			return;
+		}
 
 		const outputWasReset = output.length < previousOutputLengthRef.current;
-		const outputWasOpened = outputOpen && !previousOutputOpenRef.current;
+		const becameActive = active && !previousActiveRef.current;
 
 		previousOutputLengthRef.current = output.length;
-		previousOutputOpenRef.current = outputOpen;
+		previousActiveRef.current = active;
 
-		if (outputWasReset || outputWasOpened) {
+		if (outputWasReset || becameActive) {
 			shouldAutoScrollRef.current = true;
 		}
 
-		if (shouldAutoScrollRef.current || outputOpen) {
+		if (shouldAutoScrollRef.current) {
 			element.scrollTo({
 				top: element.scrollHeight,
 				behavior: outputWasReset ? "auto" : "smooth",
 			});
 		}
-	}, [output, outputOpen]);
+	}, [output, active]);
+
+	return (
+		<div
+			ref={scrollRef}
+			data-testid="output-pane"
+			onScroll={updateAutoScrollState}
+			className={cn(
+				"min-h-0 overflow-y-auto p-4",
+				active ? "flex-1" : "hidden",
+			)}
+		>
+			<pre className="text-[13px] font-sans whitespace-pre-wrap wrap-break-word">
+				<ANSI value={formattedOutput} />
+			</pre>
+		</div>
+	);
+}
+
+function RightPanel({
+	serviceAddrs,
+	dispatchHttp,
+}: {
+	serviceAddrs: string[] | null;
+	dispatchHttp: (req: HttpRequestSpec) => Promise<HttpResponse>;
+}) {
+	const outputOpen = useEditorStore((s) => s.outputOpen);
+	const toggleOutputOpen = useEditorStore((s) => s.toggleOutputOpen);
+	const clearOutput = useEditorStore((s) => s.clearOutput);
+
+	const hasService = serviceAddrs !== null;
+	const [tab, setTab] = React.useState<"tryit" | "output">("output");
+	const serviceRef = React.useRef<ServicePanelHandle>(null);
+	const [svc, setSvc] = React.useState({ isSending: false, canSend: false });
+
+	// Focus the Try It tab when a service starts; fall back to Output when it stops.
+	const previousHasServiceRef = React.useRef(hasService);
+	React.useEffect(() => {
+		if (hasService && !previousHasServiceRef.current) setTab("tryit");
+		else if (!hasService && previousHasServiceRef.current) setTab("output");
+		previousHasServiceRef.current = hasService;
+	}, [hasService]);
+
+	const onTryit = tab === "tryit" && hasService;
 
 	return (
 		<div
 			className={cn(
-				"flex flex-col min-h-0 min-w-0 lg:flex-1",
-				outputOpen ? "flex-1" : "shrink-0",
+				"flex flex-col min-h-0 min-w-0 lg:w-1/2 lg:flex-none lg:flex-1",
+				outputOpen || hasService ? "flex-1" : "shrink-0",
 			)}
 		>
 			<div className="flex h-10 shrink-0 items-center justify-between border-b border-t lg:border-t-0">
 				<div className="flex items-center h-full">
-					<span className="px-4 h-full text-xs text-muted-foreground flex items-center">
+					<button
+						type="button"
+						onClick={() => setTab("output")}
+						className={cn(
+							"px-4 h-full text-xs flex items-center border-r transition-colors",
+							!onTryit
+								? "text-foreground font-medium"
+								: "text-muted-foreground hover:text-foreground",
+						)}
+					>
 						Output
-					</span>
+					</button>
+					{hasService && (
+						<button
+							type="button"
+							onClick={() => setTab("tryit")}
+							className={cn(
+								"px-4 h-full text-xs flex items-center border-r transition-colors",
+								onTryit
+									? "text-foreground font-medium"
+									: "text-muted-foreground hover:text-foreground",
+							)}
+						>
+							Try It
+						</button>
+					)}
 				</div>
 				<div className="flex items-center h-full">
+					{onTryit ? (
+						<>
+							<Button
+								className="h-full border-l rounded-none"
+								variant="ghost"
+								disabled={!svc.canSend}
+								onClick={() => serviceRef.current?.send()}
+							>
+								<HugeiconsIcon icon={SentIcon} strokeWidth={1.5} />
+								<span className="hidden sm:inline">
+									{svc.isSending ? "Sending..." : "Send"}
+								</span>
+							</Button>
+							<Button
+								className="h-full border-l rounded-none"
+								variant="ghost"
+								onClick={() => serviceRef.current?.clear()}
+							>
+								<HugeiconsIcon icon={CleanIcon} strokeWidth={1.5} />
+								<span className="hidden sm:inline">Clear</span>
+							</Button>
+						</>
+					) : (
+						<Button
+							className="h-full border-l rounded-none"
+							variant="ghost"
+							onClick={clearOutput}
+						>
+							<HugeiconsIcon icon={CleanIcon} strokeWidth={1.5} />
+							<span className="hidden sm:inline">Clear</span>
+						</Button>
+					)}
 					<Button
 						className="h-full border-l lg:hidden"
 						variant="ghost"
@@ -230,31 +335,27 @@ function OutputPane() {
 							strokeWidth={1.5}
 						/>
 						<span className="text-xs">
-							{outputOpen ? "Minimize" : "Show Output"}
+							{outputOpen ? "Minimize" : "Expand"}
 						</span>
-					</Button>
-					<Button
-						className="h-full border-l"
-						variant="ghost"
-						onClick={clearOutput}
-					>
-						<HugeiconsIcon icon={CleanIcon} strokeWidth={1.5} />
-						<span className="hidden sm:inline">Clear</span>
 					</Button>
 				</div>
 			</div>
 			<div
-				ref={scrollRef}
-				data-testid="output-pane"
-				onScroll={updateAutoScrollState}
 				className={cn(
-					"min-h-0 overflow-y-auto p-4",
-					outputOpen ? "flex-1" : "hidden lg:block lg:flex-1",
+					"min-h-0 flex flex-col",
+					outputOpen || hasService ? "flex-1" : "hidden lg:flex lg:flex-1",
 				)}
 			>
-				<pre className="text-[13px] font-sans whitespace-pre-wrap wrap-break-word">
-					<ANSI value={formattedOutput} />
-				</pre>
+				{hasService && (
+					<ServicePanel
+						ref={serviceRef}
+						addrs={serviceAddrs}
+						dispatchHttp={dispatchHttp}
+						active={onTryit}
+						onStateChange={setSvc}
+					/>
+				)}
+				<OutputPane active={!onTryit} />
 			</div>
 		</div>
 	);
@@ -386,7 +487,6 @@ function EditorContent() {
 	const openOutputWith = useEditorStore((s) => s.openOutputWith);
 	const appendOutput = useEditorStore((s) => s.appendOutput);
 	const toggleEditorMode = useEditorStore((s) => s.toggleEditorMode);
-	const outputOpen = useEditorStore((s) => s.outputOpen);
 
 	const handleRun = React.useCallback(async () => {
 		if (isRunning) return;
@@ -435,17 +535,7 @@ function EditorContent() {
 						isRunning={isRunning}
 						serviceRunning={!!serviceAddrs}
 					/>
-					<div
-						className={cn(
-							"flex flex-col min-h-0 min-w-0 lg:w-1/2 lg:flex-none",
-							outputOpen || serviceAddrs ? "flex-1" : "shrink-0",
-						)}
-					>
-						<OutputPane />
-						{serviceAddrs && (
-							<ServicePanel addrs={serviceAddrs} dispatchHttp={dispatchHttp} />
-						)}
-					</div>
+					<RightPanel serviceAddrs={serviceAddrs} dispatchHttp={dispatchHttp} />
 				</main>
 			</SidebarInset>
 		</>
