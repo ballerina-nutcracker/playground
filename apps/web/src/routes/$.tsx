@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { BallerinaProvider } from "@/providers/ballerina-provider";
 import { FSProvider } from "@/providers/fs-provider";
 
 import { FileRouteSync } from "@/components/file-route-sync";
@@ -17,9 +18,11 @@ export const Route = createFileRoute("/$")({
 function SplatComponent() {
 	return (
 		<FSProvider>
-			<FileRouteSync>
-				<Editor />
-			</FileRouteSync>
+			<BallerinaProvider>
+				<FileRouteSync>
+					<Editor />
+				</FileRouteSync>
+			</BallerinaProvider>
 		</FSProvider>
 	);
 }

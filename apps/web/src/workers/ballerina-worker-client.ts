@@ -13,8 +13,10 @@ export class BallerinaWorkerClient {
 	private api: Comlink.Remote<BallerinaWorkerAPI> | null = null;
 
 	private initPromise: Promise<void> | null = null;
+	private onProgress: ((progress: number) => void) | null = null;
 
 	async init(onProgress: (progress: number) => void): Promise<void> {
+		this.onProgress = onProgress;
 		if (this.initPromise) return this.initPromise;
 
 		this.worker = new Worker(
@@ -29,7 +31,10 @@ export class BallerinaWorkerClient {
 		).toString();
 
 		this.initPromise = this.api
-			.init(wasmUrl, Comlink.proxy(onProgress))
+			.init(
+				wasmUrl,
+				Comlink.proxy((progress) => this.onProgress?.(progress)),
+			)
 			.catch((err) => {
 				this.dispose();
 				throw err;
@@ -43,20 +48,13 @@ export class BallerinaWorkerClient {
 		path: string,
 		onEvent: RunEventCallback,
 	): Promise<void> {
-		if (!this.api) {
-			onEvent({
-				type: "output",
-				stream: "stderr",
-				text: "Ballerina runtime is not ready",
-			});
-			return;
-		}
+		if (!this.api) throw new Error("Ballerina runtime is not ready");
 		return this.api.run(Comlink.proxy(snapshot), path, Comlink.proxy(onEvent));
 	}
 
-	async sendStopSignal(): Promise<boolean> {
-		if (!this.api) return Promise.resolve(false);
-		return this.api.sendStopSignal();
+	async sendStopSignal(): Promise<void> {
+		if (!this.api) throw new Error("Ballerina runtime is not ready");
+		await this.api.sendStopSignal();
 	}
 
 	async dispatchHttpRequest(
@@ -70,7 +68,7 @@ export class BallerinaWorkerClient {
 		snapshot: SnapshotFS,
 		path: string,
 	): Promise<Array<Record<string, unknown>>> {
-		if (!this.api) return Promise.resolve([]);
+		if (!this.api) throw new Error("Ballerina runtime is not ready");
 		return this.api.getDiagnostics(Comlink.proxy(snapshot), path);
 	}
 
@@ -79,6 +77,7 @@ export class BallerinaWorkerClient {
 		this.worker = null;
 		this.api = null;
 		this.initPromise = null;
+		this.onProgress = null;
 	}
 }
 

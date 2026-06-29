@@ -23,6 +23,8 @@ import { Separator } from "@/components/ui/separator";
 
 import { cn } from "@/lib/utils";
 
+import { useBallerina } from "@/providers/ballerina-provider";
+
 import type {
 	HttpDispatchRequest,
 	HttpDispatchResponse,
@@ -66,9 +68,6 @@ export type TryItPanelHandle = {
 
 type Props = {
 	listenerAddresses: string[];
-	dispatchHttpRequest: (
-		request: HttpDispatchRequest,
-	) => Promise<HttpDispatchResponse>;
 };
 
 function isKeyValueEntryEmpty(
@@ -333,7 +332,8 @@ function ResponseSection({ response }: { response: ResponseState }) {
 }
 
 export const TryItPanel = React.forwardRef<TryItPanelHandle, Props>(
-	function TryItPanel({ listenerAddresses, dispatchHttpRequest }, ref) {
+	function TryItPanel({ listenerAddresses }, ref) {
+		const { dispatchHttpRequest } = useBallerina();
 		const listenerPorts = React.useMemo(
 			() => listenerAddresses.map(toListenerPort),
 			[listenerAddresses],
