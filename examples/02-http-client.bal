@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/io;
 
-final http:Client apiClient = check new ("https://httpbin.org/", {
+final http:Client apiClient = new ("https://httpbin.org/", {
     timeout: 10
 });
 
