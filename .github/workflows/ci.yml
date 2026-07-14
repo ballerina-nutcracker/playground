@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - main
+      - live
 
 jobs:
   build-and-test:
