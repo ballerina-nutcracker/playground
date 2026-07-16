@@ -3,7 +3,8 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - live
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
