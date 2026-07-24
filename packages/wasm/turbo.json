@@ -7,7 +7,7 @@
 				"**/*.go",
 				"go.mod",
 				"go.sum",
-				"../../.git/modules/packages/wasm/ballerina-lang-go/HEAD"
+				"../../.git/modules/packages/wasm/ballerina/HEAD"
 			],
 			"outputs": ["dist/**"]
 		}

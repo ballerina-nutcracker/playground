@@ -446,7 +446,7 @@ function EditorHeader() {
 				<VersionCard />
 				<a
 					className="flex items-center gap-2 text-xs text-muted-foreground hover:text-secondary-foreground"
-					href="https://github.com/ballerina-platform/playground"
+					href="https://github.com/ballerina-nutcracker/playground"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
