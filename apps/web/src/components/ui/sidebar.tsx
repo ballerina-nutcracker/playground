@@ -38,6 +38,7 @@ const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
 type SidebarContextProps = {
+	side: "left" | "right";
 	state: "expanded" | "collapsed";
 	open: boolean;
 	setOpen: (open: boolean) => void;
@@ -67,6 +68,7 @@ function useSidebar() {
 }
 
 function SidebarProvider({
+	side = "left",
 	defaultOpen = true,
 	open: openProp,
 	onOpenChange: setOpenProp,
@@ -78,6 +80,7 @@ function SidebarProvider({
 	maxWidth = SIDEBAR_WIDTH_MAX,
 	...props
 }: React.ComponentProps<"div"> & {
+	side?: "left" | "right";
 	defaultOpen?: boolean;
 	open?: boolean;
 	onOpenChange?: (open: boolean) => void;
@@ -143,6 +146,7 @@ function SidebarProvider({
 
 	const contextValue = React.useMemo<SidebarContextProps>(
 		() => ({
+			side,
 			state,
 			open,
 			setOpen,
@@ -160,6 +164,7 @@ function SidebarProvider({
 			sidebarWrapperRef,
 		}),
 		[
+			side,
 			state,
 			open,
 			setOpen,
@@ -330,6 +335,7 @@ function SidebarTrigger({
 
 function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
 	const {
+		side,
 		width,
 		defaultWidth,
 		minWidth,
@@ -339,6 +345,7 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
 		sidebarWrapperRef,
 	} = useSidebar();
 	const { railRef, handleDoubleClick, handlePointerDown } = useSidebarResize({
+		side,
 		width,
 		defaultWidth,
 		minWidth,

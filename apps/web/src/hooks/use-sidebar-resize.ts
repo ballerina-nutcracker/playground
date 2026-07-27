@@ -1,6 +1,7 @@
 import * as React from "react";
 
 type SidebarResizeOptions = {
+	side?: "left" | "right";
 	width: string;
 	defaultWidth: string;
 	minWidth: string;
@@ -25,6 +26,7 @@ function toPixels(width: string): number | null {
 }
 
 export function useSidebarResize({
+	side,
 	width,
 	defaultWidth,
 	minWidth,
@@ -82,7 +84,8 @@ export function useSidebarResize({
 				minWidthPx,
 				Math.min(
 					maxWidthPx,
-					startWidthRef.current + event.clientX - startXRef.current,
+					startWidthRef.current +
+						(side === "right" ? -1 : 1) * (event.clientX - startXRef.current),
 				),
 			);
 			const nextWidth = `${Math.round(widthPx)}px`;
@@ -108,7 +111,7 @@ export function useSidebarResize({
 			document.removeEventListener("pointercancel", handlePointerCancel);
 			finishResize(false);
 		};
-	}, [finishResize, maxWidth, minWidth]);
+	}, [finishResize, maxWidth, minWidth, side]);
 
 	const handleDoubleClick = React.useCallback(
 		(event: React.MouseEvent<HTMLButtonElement>) => {
