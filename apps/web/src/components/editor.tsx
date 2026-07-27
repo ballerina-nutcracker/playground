@@ -6,14 +6,22 @@ import {
 	ChevronUp,
 	CleanIcon,
 	GithubFreeIcons,
+	LayoutAlignRightIcon,
+	LayoutRightIcon,
 	PlayIcon,
 	StopIcon,
 } from "@hugeicons/core-free-icons";
 import { useHotkeys } from "react-hotkeys-hook";
+import { usePanelRef } from "react-resizable-panels";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+	ResizableHandle,
+	ResizablePanel,
+	ResizablePanelGroup,
+} from "@/components/ui/resizable";
 import {
 	SidebarInset,
 	SidebarProvider,
@@ -31,6 +39,7 @@ import { basename, ext } from "@/lib/fs/core/path-utils";
 import { getBallerinaProjectTarget } from "@/lib/fs/project-target";
 import { cn } from "@/lib/utils";
 
+import { useIsDesktop } from "@/hooks/use-is-desktop";
 import { useEditorStore } from "@/stores/editor-store";
 import { useActiveFile, useFileTreeActions } from "@/stores/file-tree-store";
 
@@ -185,6 +194,31 @@ function formatJsonOutput(output: string): string {
 	}
 }
 
+const EDITOR_LAYOUT_STORAGE_KEY = "playground.editor.layout";
+const DEFAULT_EDITOR_LAYOUT = { editor: 50, output: 50 };
+
+function readEditorLayout() {
+	if (typeof localStorage === "undefined") return DEFAULT_EDITOR_LAYOUT;
+
+	try {
+		const layout: unknown = JSON.parse(
+			localStorage.getItem(EDITOR_LAYOUT_STORAGE_KEY) ?? "",
+		);
+		if (
+			layout &&
+			typeof layout === "object" &&
+			typeof (layout as Record<string, unknown>).editor === "number" &&
+			typeof (layout as Record<string, unknown>).output === "number"
+		) {
+			return layout as typeof DEFAULT_EDITOR_LAYOUT;
+		}
+	} catch {
+		// Ignore an invalid saved layout and use the default split.
+	}
+
+	return DEFAULT_EDITOR_LAYOUT;
+}
+
 function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 	const output = useEditorStore((s) => s.output);
 	const formattedOutput = React.useMemo(
@@ -262,7 +296,6 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 		<div
 			className={cn(
 				"flex flex-col min-h-0 min-w-0",
-				"lg:w-1/2 lg:flex-none",
 				outputOpen ? "flex-1 lg:flex" : "shrink-0 lg:flex",
 			)}
 		>
@@ -351,10 +384,14 @@ function EditorPane({
 	onRun,
 	isRunning,
 	onStop,
+	onToggleOutput,
+	outputCollapsed = false,
 }: {
 	onRun: () => Promise<void>;
 	isRunning: boolean;
 	onStop: () => Promise<void>;
+	onToggleOutput?: () => void;
+	outputCollapsed?: boolean;
 }) {
 	const activeFile = useActiveFile();
 
@@ -374,7 +411,7 @@ function EditorPane({
 		<div
 			className={cn(
 				"flex flex-col lg:border-b-0 lg:border-r min-h-0",
-				"lg:w-1/2 lg:flex-none lg:h-full",
+				"lg:h-full",
 				outputOpen ? "h-1/2" : "flex-1",
 			)}
 		>
@@ -382,28 +419,45 @@ function EditorPane({
 				<span className="px-4 h-full text-xs border-r flex items-center truncate max-w-[60%]">
 					{activeFile ? basename(activeFile.path) : "No file selected"}
 				</span>
-				<Button
-					className="h-full"
-					variant="ghost"
-					data-testid="run-button"
-					onClick={isRunning ? () => void onStop() : () => void onRun()}
-					disabled={
-						!isRunning &&
-						(!activeFile || getLanguage(activeFile.path) !== "ballerina")
-					}
-				>
-					{!isRunning ? (
-						<>
-							<HugeiconsIcon icon={PlayIcon} strokeWidth={1.5} />
-							<span className="min-w-7.5">Run</span>
-						</>
-					) : (
-						<>
-							<HugeiconsIcon icon={StopIcon} strokeWidth={1.5} />
-							<span className="min-w-7.5">Stop</span>
-						</>
+				<div className="flex h-full">
+					<Button
+						className="h-full"
+						variant="ghost"
+						data-testid="run-button"
+						onClick={isRunning ? () => void onStop() : () => void onRun()}
+						disabled={
+							!isRunning &&
+							(!activeFile || getLanguage(activeFile.path) !== "ballerina")
+						}
+					>
+						{!isRunning ? (
+							<>
+								<HugeiconsIcon icon={PlayIcon} strokeWidth={1.5} />
+								<span className="min-w-7.5">Run</span>
+							</>
+						) : (
+							<>
+								<HugeiconsIcon icon={StopIcon} strokeWidth={1.5} />
+								<span className="min-w-7.5">Stop</span>
+							</>
+						)}
+					</Button>
+					{onToggleOutput && (
+						<Button
+							className="h-full w-10 border-l"
+							variant="ghost"
+							onClick={onToggleOutput}
+							aria-label={
+								outputCollapsed ? "Show output pane" : "Hide output pane"
+							}
+						>
+							<HugeiconsIcon
+								icon={outputCollapsed ? LayoutRightIcon : LayoutAlignRightIcon}
+								strokeWidth={1.5}
+							/>
+						</Button>
 					)}
-				</Button>
+				</div>
 			</div>
 			{activeFile && (
 				<CodeEditor
@@ -420,6 +474,79 @@ function EditorPane({
 				/>
 			)}
 		</div>
+	);
+}
+
+function EditorWorkspace({
+	onRun,
+	isRunning,
+	onStop,
+	listenerAddresses,
+}: {
+	onRun: () => Promise<void>;
+	isRunning: boolean;
+	onStop: () => Promise<void>;
+	listenerAddresses: string[];
+}) {
+	const isDesktop = useIsDesktop();
+	const outputPanelRef = usePanelRef();
+	const [defaultLayout] = React.useState(readEditorLayout);
+	const [outputCollapsed, setOutputCollapsed] = React.useState(false);
+	const toggleOutputPanel = React.useCallback(() => {
+		if (outputPanelRef.current?.isCollapsed()) outputPanelRef.current.expand();
+		else outputPanelRef.current?.collapse();
+	}, [outputPanelRef]);
+	const editorPane = (
+		<EditorPane
+			onRun={onRun}
+			isRunning={isRunning}
+			onStop={onStop}
+			onToggleOutput={isDesktop ? toggleOutputPanel : undefined}
+			outputCollapsed={outputCollapsed}
+		/>
+	);
+	const rightPane = <RightPane listenerAddresses={listenerAddresses} />;
+
+	if (!isDesktop) {
+		return (
+			<div className="flex flex-1 flex-col min-h-0">
+				{editorPane}
+				{rightPane}
+			</div>
+		);
+	}
+
+	return (
+		<ResizablePanelGroup
+			orientation="horizontal"
+			defaultLayout={defaultLayout}
+			onLayoutChanged={(layout, { isUserInteraction }) => {
+				if (!isUserInteraction) return;
+				localStorage.setItem(EDITOR_LAYOUT_STORAGE_KEY, JSON.stringify(layout));
+			}}
+		>
+			<ResizablePanel
+				id="editor"
+				defaultSize="50%"
+				minSize="30%"
+				className="min-w-0"
+			>
+				{editorPane}
+			</ResizablePanel>
+			<ResizableHandle />
+			<ResizablePanel
+				id="output"
+				panelRef={outputPanelRef}
+				defaultSize="50%"
+				collapsible
+				collapsedSize="0%"
+				minSize="20%"
+				className="min-w-0"
+				onResize={(size) => setOutputCollapsed(size.asPercentage === 0)}
+			>
+				{rightPane}
+			</ResizablePanel>
+		</ResizablePanelGroup>
 	);
 }
 
@@ -523,13 +650,13 @@ function EditorContent() {
 			<AppSidebar />
 			<SidebarInset className="flex flex-col h-dvh overflow-hidden">
 				<EditorHeader />
-				<main className="flex flex-col lg:flex-row flex-1 min-h-0">
-					<EditorPane
+				<main className="flex flex-1 min-h-0">
+					<EditorWorkspace
 						onRun={handleRun}
 						isRunning={isRunning}
 						onStop={handleStop}
+						listenerAddresses={listenerAddresses}
 					/>
-					<RightPane listenerAddresses={listenerAddresses} />
 				</main>
 			</SidebarInset>
 		</>
