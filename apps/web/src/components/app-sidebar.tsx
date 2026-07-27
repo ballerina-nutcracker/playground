@@ -33,6 +33,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 	SidebarMenuSub,
+	SidebarRail,
 	SidebarSeparator,
 	useSidebar,
 } from "@/components/ui/sidebar";
@@ -118,7 +119,7 @@ function FileTreeFileNode({
 					onClick={() => void handleClick()}
 				>
 					<HugeiconsIcon icon={File01Icon} strokeWidth={1.5} />
-					{node.name}
+					<span className="truncate">{node.name}</span>
 				</SidebarMenuButton>
 				<DropdownMenu>
 					<DropdownMenuTrigger
@@ -493,6 +494,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 				</SidebarGroup>
 			</SidebarContent>
 			<FileTreeDialog />
+			<SidebarRail />
 		</Sidebar>
 	);
 }
