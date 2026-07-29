@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { dirname, join, relative } from "node:path";
 
 import type { Page } from "@playwright/test";
 
@@ -15,13 +15,18 @@ async function openPlayground(page: Page, path = "/") {
 	});
 }
 
-async function runAndExpectOutput(page: Page, expectedOutput: string) {
+async function runAndGetOutput(page: Page) {
 	const runButton = page.getByTestId("run-button");
 	await expect(runButton).toBeEnabled({ timeout: 10_000 });
 
 	await runButton.click();
 	await expect(runButton).toHaveText("Run", { timeout: 10_000 });
 
+	return (await page.getByTestId("output-pane").innerText()).trimEnd();
+}
+
+async function runAndExpectOutput(page: Page, expectedOutput: string) {
+	await runAndGetOutput(page);
 	await expect(page.getByTestId("output-pane")).toHaveText(expectedOutput, {
 		timeout: 10_000,
 	});
@@ -49,6 +54,34 @@ async function replaceEditorContent(page: Page, content: string) {
 	await page.keyboard.insertText(content);
 }
 
+async function expandExampleDirectories(page: Page) {
+	const examplesSidebar = page.getByTestId("examples-sidebar");
+	const collapsedDirectories = examplesSidebar.locator(
+		'[data-example-directory][data-expanded="false"]',
+	);
+
+	while ((await collapsedDirectories.count()) > 0) {
+		await collapsedDirectories.first().click();
+	}
+
+	return examplesSidebar;
+}
+
+function getExampleOutputPath(manifestPath: string) {
+	const examplePath = relative("/tmp/examples", dirname(manifestPath));
+	return join(
+		process.cwd(),
+		"e2e",
+		"fixtures",
+		"examples",
+		`${examplePath}.txt`,
+	);
+}
+
+async function loadExampleOutput(manifestPath: string) {
+	return (await readFile(getExampleOutputPath(manifestPath), "utf8")).trimEnd();
+}
+
 test("creates a package and runs hello world", async ({ page }) => {
 	test.setTimeout(120_000);
 
@@ -64,6 +97,47 @@ test("creates a package and runs hello world", async ({ page }) => {
 	await replaceEditorContent(page, helloWorldCode);
 
 	await runAndExpectOutput(page, "Hello, World!");
+});
+
+test("runs every example", async ({ page }) => {
+	test.setTimeout(120_000);
+
+	await openPlayground(page);
+
+	const examplesSidebar = page.getByTestId("examples-sidebar");
+	await expect(examplesSidebar.locator("[data-example-path]")).not.toHaveCount(
+		0,
+	);
+	await expandExampleDirectories(page);
+
+	const manifestFiles = examplesSidebar.locator(
+		'[data-example-path$="/Ballerina.toml"]',
+	);
+	await expect(manifestFiles).not.toHaveCount(0);
+	const manifests = await manifestFiles.evaluateAll((elements) =>
+		elements
+			.map((element) => element.getAttribute("data-example-path"))
+			.filter((path): path is string => path !== null),
+	);
+
+	for (const manifestPath of manifests) {
+		const mainPath = join(dirname(manifestPath), "main.bal");
+		const mainFile = examplesSidebar.locator(
+			`[data-example-path=${JSON.stringify(mainPath)}]`,
+		);
+
+		await expect(mainFile).toBeVisible();
+		await mainFile.click();
+
+		if (process.env.UPDATE_EXAMPLE_OUTPUTS === "1") {
+			const output = await runAndGetOutput(page);
+			const outputPath = getExampleOutputPath(manifestPath);
+			await mkdir(dirname(outputPath), { recursive: true });
+			await writeFile(outputPath, `${output}\n`);
+		} else {
+			await runAndExpectOutput(page, await loadExampleOutput(manifestPath));
+		}
+	}
 });
 
 test("runs a listener and stops", async ({ page }) => {
