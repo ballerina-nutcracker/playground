@@ -102,19 +102,16 @@ const api: BallerinaWorkerAPI = {
 		path: string,
 		onEvent: RunEventCallback,
 	): Promise<void> => {
-		if (typeof self.run !== "function") {
-			onEvent({
-				type: "output",
-				stream: "stderr",
-				text: "Ballerina runtime is not initialized",
-			});
-			return;
-		}
+		if (typeof self.run !== "function")
+			throw new Error("Ballerina runtime is not initialized");
 		return self.run(snapshot, path, onEvent);
 	},
 	sendStopSignal: async () => {
-		if (typeof self.sendStopSignal !== "function") return false;
-		return self.sendStopSignal();
+		if (typeof self.sendStopSignal !== "function")
+			throw new Error("Ballerina runtime is not initialized");
+		const stopped = await self.sendStopSignal();
+		if (!stopped)
+			throw new Error("No running Ballerina program accepted the stop signal");
 	},
 	dispatchHttpRequest: async (request) => {
 		if (typeof self.dispatchHttpRequest !== "function")
@@ -125,7 +122,8 @@ const api: BallerinaWorkerAPI = {
 		snapshot: SnapshotFS,
 		path: string,
 	): Promise<Array<Record<string, unknown>>> => {
-		if (typeof self.getDiagnostics !== "function") return Promise.resolve([]);
+		if (typeof self.getDiagnostics !== "function")
+			throw new Error("Ballerina runtime is not initialized");
 		return Promise.resolve(self.getDiagnostics(snapshot, path) ?? []);
 	},
 };

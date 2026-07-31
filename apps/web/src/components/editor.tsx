@@ -10,6 +10,7 @@ import {
 	StopIcon,
 } from "@hugeicons/core-free-icons";
 import { useHotkeys } from "react-hotkeys-hook";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -33,15 +34,11 @@ import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/stores/editor-store";
 import { useActiveFile, useFileTreeActions } from "@/stores/file-tree-store";
 
-import { useBallerina } from "@/hooks/use-ballerina";
+import { useBallerina } from "@/providers/ballerina-provider";
 import { useFS } from "@/providers/fs-provider";
 
 import type { TryItPanelHandle } from "@/components/try-it-panel";
 import type { EditorLanguage } from "@/components/code-editor";
-import type {
-	HttpDispatchRequest,
-	HttpDispatchResponse,
-} from "@/workers/ballerina-worker-api";
 
 function getLanguage(path: string): EditorLanguage {
 	const ex = ext(path);
@@ -188,15 +185,7 @@ function formatJsonOutput(output: string): string {
 	}
 }
 
-function RightPane({
-	listenerAddresses,
-	dispatchHttpRequest,
-}: {
-	listenerAddresses: string[];
-	dispatchHttpRequest: (
-		request: HttpDispatchRequest,
-	) => Promise<HttpDispatchResponse>;
-}) {
+function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 	const output = useEditorStore((s) => s.output);
 	const formattedOutput = React.useMemo(
 		() => formatJsonOutput(output),
@@ -350,7 +339,6 @@ function RightPane({
 						<TryItPanel
 							ref={tryItPanelRef}
 							listenerAddresses={listenerAddresses}
-							dispatchHttpRequest={dispatchHttpRequest}
 						/>
 					</TabsContent>
 				)}
@@ -462,8 +450,7 @@ function EditorHeader() {
 function EditorContent() {
 	const fs = useFS();
 
-	const { isReady, progress, run, sendStopSignal, dispatchHttpRequest } =
-		useBallerina();
+	const { isReady, progress, error, run, sendStopSignal } = useBallerina();
 
 	const activeFile = useActiveFile();
 
@@ -495,6 +482,13 @@ function EditorContent() {
 				if (event.type === "listeners" && isRunActive)
 					setListenerAddresses(event.hosts);
 			});
+		} catch (cause) {
+			const message =
+				cause instanceof Error
+					? cause.message
+					: "Failed to run Ballerina program";
+			appendOutput(`\n${message}\n`);
+			toast.error(message);
 		} finally {
 			isRunActive = false;
 			setIsRunning(false);
@@ -503,7 +497,15 @@ function EditorContent() {
 	}, [activeFile, fs, saveFile, run, openOutputWith, appendOutput, isRunning]);
 
 	const handleStop = React.useCallback(async () => {
-		await sendStopSignal();
+		try {
+			await sendStopSignal();
+		} catch (cause) {
+			toast.error(
+				cause instanceof Error
+					? cause.message
+					: "Failed to stop Ballerina program",
+			);
+		}
 	}, [sendStopSignal]);
 
 	useHotkeys("mod+enter", () => void handleRun(), {
@@ -514,7 +516,7 @@ function EditorContent() {
 		preventDefault: true,
 	});
 
-	if (!isReady) return <WasmLoadingScreen progress={progress} />;
+	if (!isReady) return <WasmLoadingScreen progress={progress} error={error} />;
 
 	return (
 		<>
@@ -527,17 +529,20 @@ function EditorContent() {
 						isRunning={isRunning}
 						onStop={handleStop}
 					/>
-					<RightPane
-						listenerAddresses={listenerAddresses}
-						dispatchHttpRequest={dispatchHttpRequest}
-					/>
+					<RightPane listenerAddresses={listenerAddresses} />
 				</main>
 			</SidebarInset>
 		</>
 	);
 }
 
-function WasmLoadingScreen({ progress }: { progress: number }) {
+function WasmLoadingScreen({
+	progress,
+	error,
+}: {
+	progress: number;
+	error: Error | null;
+}) {
 	const pct = Math.max(0, Math.min(100, progress));
 	return (
 		<div
@@ -552,6 +557,11 @@ function WasmLoadingScreen({ progress }: { progress: number }) {
 					</span>
 				</div>
 				<Progress className="w-full" value={progress} />
+				{error ? (
+					<p className="max-w-md text-center text-sm text-destructive">
+						{error.message}
+					</p>
+				) : null}
 			</div>
 		</div>
 	);

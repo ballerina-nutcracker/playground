@@ -39,7 +39,7 @@ export interface BallerinaWorkerAPI {
 		path: string,
 		onEvent: RunEventCallback,
 	): Promise<void>;
-	sendStopSignal(): Promise<boolean>;
+	sendStopSignal(): Promise<void>;
 	dispatchHttpRequest(
 		request: HttpDispatchRequest,
 	): Promise<HttpDispatchResponse>;
