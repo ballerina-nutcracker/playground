@@ -2,9 +2,9 @@ module playground
 
 go 1.26
 
-replace ballerina-lang-go => ./ballerina
+replace ballerina => ./ballerina
 
-require ballerina-lang-go v0.0.0-00010101000000-000000000000
+require ballerina v0.0.0-00010101000000-000000000000
 
 require (
 	github.com/cockroachdb/apd/v3 v3.2.3 // indirect
