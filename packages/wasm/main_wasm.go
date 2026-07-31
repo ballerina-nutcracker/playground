@@ -203,7 +203,18 @@ func httpRequestFromJS(reqObj js.Value) (*http.Request, error) {
 	query = strings.TrimPrefix(query, "?")
 	body := getString(reqObj, "body", "")
 
-	reqURL := &url.URL{Scheme: "http", Host: host, Path: path, RawQuery: query}
+	parsedPath, err := url.ParseRequestURI(path)
+	if err != nil {
+		return nil, fmt.Errorf("invalid request path: %w", err)
+	}
+	// TODO: Support HTTPS listener dispatch.
+	reqURL := &url.URL{
+		Scheme:   "http",
+		Host:     host,
+		Path:     parsedPath.Path,
+		RawPath:  parsedPath.RawPath,
+		RawQuery: query,
+	}
 	req, err := http.NewRequest(method, reqURL.String(), strings.NewReader(body))
 	if err != nil {
 		return nil, err
