@@ -12,7 +12,7 @@ import {
 	StopIcon,
 } from "@hugeicons/core-free-icons";
 import { useHotkeys } from "react-hotkeys-hook";
-import { usePanelRef } from "react-resizable-panels";
+import { useDefaultLayout, usePanelRef } from "react-resizable-panels";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -192,31 +192,6 @@ function formatJsonOutput(output: string): string {
 
 		return formatted;
 	}
-}
-
-const EDITOR_LAYOUT_STORAGE_KEY = "playground.editor.layout";
-const DEFAULT_EDITOR_LAYOUT = { editor: 50, output: 50 };
-
-function readEditorLayout() {
-	if (typeof localStorage === "undefined") return DEFAULT_EDITOR_LAYOUT;
-
-	try {
-		const layout: unknown = JSON.parse(
-			localStorage.getItem(EDITOR_LAYOUT_STORAGE_KEY) ?? "",
-		);
-		if (
-			layout &&
-			typeof layout === "object" &&
-			typeof (layout as Record<string, unknown>).editor === "number" &&
-			typeof (layout as Record<string, unknown>).output === "number"
-		) {
-			return layout as typeof DEFAULT_EDITOR_LAYOUT;
-		}
-	} catch {
-		// Ignore an invalid saved layout and use the default split.
-	}
-
-	return DEFAULT_EDITOR_LAYOUT;
 }
 
 function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
@@ -490,7 +465,11 @@ function EditorWorkspace({
 }) {
 	const isDesktop = useIsDesktop();
 	const outputPanelRef = usePanelRef();
-	const [defaultLayout] = React.useState(readEditorLayout);
+	const { defaultLayout, onLayoutChanged } = useDefaultLayout({
+		id: "editor-workspace",
+		storage: localStorage,
+		onlySaveAfterUserInteractions: true,
+	});
 	const [outputCollapsed, setOutputCollapsed] = React.useState(false);
 	const toggleOutputPanel = React.useCallback(() => {
 		if (outputPanelRef.current?.isCollapsed()) outputPanelRef.current.expand();
@@ -520,10 +499,7 @@ function EditorWorkspace({
 		<ResizablePanelGroup
 			orientation="horizontal"
 			defaultLayout={defaultLayout}
-			onLayoutChanged={(layout, { isUserInteraction }) => {
-				if (!isUserInteraction) return;
-				localStorage.setItem(EDITOR_LAYOUT_STORAGE_KEY, JSON.stringify(layout));
-			}}
+			onLayoutChanged={onLayoutChanged}
 		>
 			<ResizablePanel
 				id="editor"
