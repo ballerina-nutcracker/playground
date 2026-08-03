@@ -25,7 +25,7 @@ service / on new http:Listener(9090) {
 
         http:Response response = new;
         response.statusCode = 201;
-        response.setJsonPayload(albums);
+        response.setJsonPayload(album);
 
         log:printInfo("Album added successfully", title = album.title, artist = album.artist);
         return response;
