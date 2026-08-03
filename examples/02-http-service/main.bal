@@ -27,7 +27,7 @@ service / on new http:Listener(9090) {
         response.statusCode = 201;
         response.setJsonPayload(albums);
 
-        log:printInfo(string `[INFO] Album added successfully: ${album.title} by ${album.artist}`);
+        log:printInfo("Album added successfully", title = album.title, artist = album.artist);
         return response;
     }
 
@@ -40,7 +40,7 @@ service / on new http:Listener(9090) {
         if selectedAlbums.length() == 0 {
             res.statusCode = 404;
             res.setTextPayload(string `album not found with title - ${title}`);
-            log:printError(string `[ERROR] Album not found with title - ${title}`);
+            log:printError("Album not found with title", title = title);
         } else {
             res.setJsonPayload(selectedAlbums[0]);
         }
