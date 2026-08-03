@@ -26,15 +26,14 @@ export class PlaygroundPage {
 		});
 	}
 
-	async runAndGetOutput() {
+	async run() {
 		await expect(this.runButton).toBeEnabled({ timeout: 10_000 });
 		await this.runButton.click();
 		await expect(this.runButton).toHaveText("Run", { timeout: 10_000 });
-		return (await this.outputPane.innerText()).trimEnd();
 	}
 
 	async runAndExpectOutput(expectedOutput: string) {
-		await this.runAndGetOutput();
+		await this.run();
 		await expect(this.outputPane).toHaveText(expectedOutput, {
 			timeout: 10_000,
 		});
@@ -89,7 +88,9 @@ export class PlaygroundPage {
 			'[data-example-directory][data-expanded="false"]',
 		);
 		while ((await collapsedDirectories.count()) > 0) {
-			await collapsedDirectories.first().click();
+			const directory = collapsedDirectories.first();
+			await directory.click();
+			await expect(directory).toHaveAttribute("data-expanded", "true");
 		}
 
 		const manifestFiles = examplesSidebar.locator(
