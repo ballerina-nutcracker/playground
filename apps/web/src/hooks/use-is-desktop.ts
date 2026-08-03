@@ -5,7 +5,8 @@ const DESKTOP_BREAKPOINT = 1024;
 export function useIsDesktop() {
 	const [isDesktop, setIsDesktop] = React.useState(
 		() =>
-			typeof window !== "undefined" && window.innerWidth >= DESKTOP_BREAKPOINT,
+			typeof window !== "undefined" &&
+			window.matchMedia(`(min-width: ${DESKTOP_BREAKPOINT}px)`).matches,
 	);
 
 	React.useEffect(() => {

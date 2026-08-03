@@ -11,11 +11,16 @@ type SidebarResizeOptions = {
 	resizeRootRef: React.RefObject<HTMLElement | null>;
 };
 
-function toPixels(width: string): number | null {
-	const value = Number.parseFloat(width);
+const WIDTH_PATTERN = /^(\d*\.?\d+)\s*(px|rem)$/i;
+
+export function toPixels(width: string): number | null {
+	const match = WIDTH_PATTERN.exec(width.trim());
+	if (!match) return null;
+
+	const value = Number.parseFloat(match[1]);
 	if (!Number.isFinite(value) || value <= 0) return null;
 
-	if (width.trim().endsWith("rem")) {
+	if (match[2].toLowerCase() === "rem") {
 		const rootFontSize = Number.parseFloat(
 			getComputedStyle(document.documentElement).fontSize,
 		);
@@ -23,6 +28,23 @@ function toPixels(width: string): number | null {
 	}
 
 	return value;
+}
+
+export function isWidthWithinBounds(
+	width: string,
+	minWidth: string,
+	maxWidth: string,
+) {
+	const widthPx = toPixels(width);
+	const minWidthPx = toPixels(minWidth);
+	const maxWidthPx = toPixels(maxWidth);
+	return (
+		widthPx !== null &&
+		minWidthPx !== null &&
+		maxWidthPx !== null &&
+		widthPx >= minWidthPx &&
+		widthPx <= maxWidthPx
+	);
 }
 
 export function useSidebarResize({
@@ -41,6 +63,8 @@ export function useSidebarResize({
 	const startWidthRef = React.useRef(0);
 	const startWidthValueRef = React.useRef(width);
 	const pendingWidthRef = React.useRef<string | null>(null);
+	const minWidthPxRef = React.useRef<number | null>(null);
+	const maxWidthPxRef = React.useRef<number | null>(null);
 	const previousUserSelectRef = React.useRef("");
 	const optionsRef = React.useRef({
 		onResizeEnd,
@@ -69,6 +93,8 @@ export function useSidebarResize({
 		document.body.style.userSelect = previousUserSelectRef.current;
 		activePointerIdRef.current = null;
 		pendingWidthRef.current = null;
+		minWidthPxRef.current = null;
+		maxWidthPxRef.current = null;
 		setIsResizing(false);
 	}, []);
 
@@ -76,9 +102,9 @@ export function useSidebarResize({
 		const handlePointerMove = (event: PointerEvent) => {
 			if (event.pointerId !== activePointerIdRef.current) return;
 
-			const minWidthPx = toPixels(minWidth);
-			const maxWidthPx = toPixels(maxWidth);
-			if (!minWidthPx || !maxWidthPx) return;
+			const minWidthPx = minWidthPxRef.current;
+			const maxWidthPx = maxWidthPxRef.current;
+			if (minWidthPx === null || maxWidthPx === null) return;
 
 			const widthPx = Math.max(
 				minWidthPx,
@@ -111,7 +137,7 @@ export function useSidebarResize({
 			document.removeEventListener("pointercancel", handlePointerCancel);
 			finishResize(false);
 		};
-	}, [finishResize, maxWidth, minWidth, side]);
+	}, [finishResize, side]);
 
 	const handleDoubleClick = React.useCallback(
 		(event: React.MouseEvent<HTMLButtonElement>) => {
@@ -133,8 +159,13 @@ export function useSidebarResize({
 			if (event.button !== 0) return;
 
 			const currentWidth = toPixels(width);
-			if (!currentWidth) return;
+			const minWidthPx = toPixels(minWidth);
+			const maxWidthPx = toPixels(maxWidth);
+			if (currentWidth === null || minWidthPx === null || maxWidthPx === null)
+				return;
 
+			minWidthPxRef.current = minWidthPx;
+			maxWidthPxRef.current = maxWidthPx;
 			activePointerIdRef.current = event.pointerId;
 			startXRef.current = event.clientX;
 			startWidthRef.current = currentWidth;
@@ -145,7 +176,7 @@ export function useSidebarResize({
 			optionsRef.current.setIsResizing(true);
 			event.preventDefault();
 		},
-		[width],
+		[width, minWidth, maxWidth],
 	);
 
 	return { railRef, handleDoubleClick, handlePointerDown };

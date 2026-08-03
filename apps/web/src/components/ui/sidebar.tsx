@@ -6,7 +6,10 @@ import { useRender } from "@base-ui/react/use-render";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useSidebarResize } from "@/hooks/use-sidebar-resize";
+import {
+	isWidthWithinBounds,
+	useSidebarResize,
+} from "@/hooks/use-sidebar-resize";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -92,9 +95,19 @@ function SidebarProvider({
 	const sidebarWrapperRef = React.useRef<HTMLDivElement>(null);
 	const [width, setWidth] = React.useState(() => {
 		if (typeof window === "undefined") return defaultWidth;
-		return (
-			window.localStorage.getItem(SIDEBAR_WIDTH_STORAGE_KEY) ?? defaultWidth
-		);
+
+		try {
+			const storedWidth = window.localStorage.getItem(
+				SIDEBAR_WIDTH_STORAGE_KEY,
+			);
+			if (storedWidth && isWidthWithinBounds(storedWidth, minWidth, maxWidth)) {
+				return storedWidth;
+			}
+		} catch {
+			// Fall back to the default width when localStorage is unavailable.
+		}
+
+		return defaultWidth;
 	});
 	const [isResizing, setIsResizing] = React.useState(false);
 	const [openMobile, setOpenMobile] = React.useState(false);
@@ -353,8 +366,14 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
 		setIsResizing,
 		resizeRootRef: sidebarWrapperRef,
 		onResizeEnd: (nextWidth) => {
+			if (!isWidthWithinBounds(nextWidth, minWidth, maxWidth)) return;
+
 			setWidth(nextWidth);
-			window.localStorage.setItem(SIDEBAR_WIDTH_STORAGE_KEY, nextWidth);
+			try {
+				window.localStorage.setItem(SIDEBAR_WIDTH_STORAGE_KEY, nextWidth);
+			} catch {
+				// Persisting the width is optional.
+			}
 		},
 	});
 
