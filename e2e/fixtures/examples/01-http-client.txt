@@ -1,0 +1,3 @@
+[200] Synced 2 subscriber(s)
+  Alice <alice@example.com>
+  Carol <carol@example.com>

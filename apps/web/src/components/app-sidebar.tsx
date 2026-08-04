@@ -115,6 +115,7 @@ function FileTreeFileNode({
 				)}
 			>
 				<SidebarMenuButton
+					data-example-path={isExampleFile ? path : undefined}
 					isActive={activeFilePath === path}
 					onClick={() => void handleClick()}
 				>
@@ -254,7 +255,13 @@ function FileTreeDirNode({
 						isSharedDir && "opacity-75 text-muted-foreground",
 					)}
 				>
-					<SidebarMenuButton className="w-full" onClick={handleToggle}>
+					<SidebarMenuButton
+						className="w-full"
+						data-example-directory={isExampleDir || undefined}
+						data-example-path={isExampleDir ? path : undefined}
+						data-expanded={isExampleDir ? expanded : undefined}
+						onClick={handleToggle}
+					>
 						<HugeiconsIcon icon={ChevronDown} strokeWidth={1.5} />
 						<HugeiconsIcon icon={FolderIcon} strokeWidth={1.5} />
 						<span className="truncate">{node.name}</span>
@@ -416,7 +423,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	return (
 		<Sidebar {...props}>
 			<SidebarContent>
-				<SidebarGroup>
+				<SidebarGroup data-testid="examples-sidebar">
 					<SidebarGroupLabel className="uppercase">Examples</SidebarGroupLabel>
 					<SidebarGroupContent className="mt-2">
 						<SidebarMenu>

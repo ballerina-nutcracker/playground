@@ -1,4 +1,4 @@
 [package]
 org = "playground"
-name = "response_aggregator"
+name = "http_client"
 version = "0.1.0"

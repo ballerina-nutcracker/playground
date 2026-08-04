@@ -17,7 +17,7 @@
 package main
 
 import (
-	"ballerina-lang-go/common/bfs"
+	"ballerina/common/bfs"
 	"bytes"
 	"io"
 	"io/fs"

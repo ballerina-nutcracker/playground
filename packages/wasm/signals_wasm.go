@@ -1,6 +1,6 @@
 package main
 
-import "ballerina-lang-go/platform/pal"
+import "ballerina/platform/pal"
 
 type signalSource struct {
 	ch chan pal.Signal
