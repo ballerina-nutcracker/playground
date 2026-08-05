@@ -1,1 +1,1 @@
-time=<timestamp> level=INFO module="" message="[INFO] Album added successfully: Kind of Blue by Miles Davis"
+time=<timestamp> level=INFO module="" message="Album added successfully" title="Kind of Blue" artist="Miles Davis"
