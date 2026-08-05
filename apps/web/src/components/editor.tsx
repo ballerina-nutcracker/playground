@@ -318,8 +318,8 @@ function EditorPane({
 					{activeFile ? basename(activeFile.path) : "No file selected"}
 				</span>
 				<Button
-					className="h-full"
-					variant="ghost"
+					className="h-full px-4"
+					variant={isRunning ? "ghost" : "brand"}
 					data-testid="run-button"
 					onClick={isRunning ? () => void onStop() : () => void onRun()}
 					disabled={
