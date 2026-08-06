@@ -73,6 +73,7 @@ export function FileRouteSync({ children }: React.PropsWithChildren) {
 				navigate({
 					to: "/$",
 					params: { _splat: DEFAULT_SPLAT },
+					search: true,
 					replace: true,
 				});
 			}
@@ -100,7 +101,12 @@ export function FileRouteSync({ children }: React.PropsWithChildren) {
 
 		if (expectedSplat !== currentSplat) {
 			if (!activeFilePath) clearedByDeletionRef.current = true;
-			navigate({ to: "/$", params: { _splat: expectedSplat }, replace: true });
+			navigate({
+				to: "/$",
+				params: { _splat: expectedSplat },
+				search: true,
+				replace: true,
+			});
 		}
 	}, [ready, isProcessingShare, activeFilePath, currentSplat, navigate]);
 
