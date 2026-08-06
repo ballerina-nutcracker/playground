@@ -89,8 +89,17 @@ export class PlaygroundPage {
 		);
 		while ((await collapsedDirectories.count()) > 0) {
 			const directory = collapsedDirectories.first();
+			const directoryPath = await directory.getAttribute("data-example-path");
+			if (!directoryPath) {
+				throw new Error("Example directory is missing its path");
+			}
+
 			await directory.click();
-			await expect(directory).toHaveAttribute("data-expanded", "true");
+			await expect(
+				examplesSidebar.locator(
+					`[data-example-directory][data-example-path=${JSON.stringify(directoryPath)}]`,
+				),
+			).toHaveAttribute("data-expanded", "true");
 		}
 
 		const manifestFiles = examplesSidebar.locator(
