@@ -385,7 +385,7 @@ function EditorPane({
 	return (
 		<div
 			className={cn(
-				"flex flex-col lg:border-b-0 lg:border-r min-h-0",
+				"flex min-w-0 flex-col lg:border-b-0 lg:border-r min-h-0",
 				"lg:h-full",
 				outputOpen ? "h-1/2" : "flex-1",
 			)}
@@ -488,7 +488,7 @@ function EditorWorkspace({
 
 	if (!isDesktop) {
 		return (
-			<div className="flex flex-1 flex-col min-h-0">
+			<div className="flex min-w-0 flex-1 flex-col min-h-0">
 				{editorPane}
 				{rightPane}
 			</div>
