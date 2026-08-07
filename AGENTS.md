@@ -1,6 +1,6 @@
 # AGENTS.md
 
-[Ballerina Playground](https://play.ballerina.io/) is a web-based tool for trying out Ballerina. This repository implements it: the web frontend loads `ballerina.wasm` and provides the editor and runner UI, built from the [`ballerina-lang-go`](https://github.com/ballerina-platform/ballerina-lang-go) sources (see the submodule under `packages/wasm/`).
+[Ballerina Playground](https://play.ballerina.io/) is a web-based tool for trying out Ballerina. This repository implements it: the web frontend loads `ballerina.wasm` and provides the editor and runner UI, built from the [Ballerina](https://github.com/ballerina-nutcracker/ballerina) sources (see the submodule under `packages/wasm/`).
 
 ## Repository structure
 
@@ -11,7 +11,7 @@ Workspaces are declared in the root `package.json` as `apps/*` and `packages/*`.
 | `apps/web`      | `@playground/web`  | Frontend: Vite + React; consumes the WASM artifact. |
 | `packages/wasm` | `@playground/wasm` | Builds `ballerina.wasm` with Go.                    |
 
-Nested `package.json` files under paths like `packages/wasm/ballerina-lang-go/.../testdata/` belong to upstream fixtures, not to this Bun workspace.
+Nested `package.json` files under paths like `packages/wasm/ballerina/.../testdata/` belong to upstream fixtures, not to this Bun workspace.
 
 ## Commands
 

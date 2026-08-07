@@ -32,6 +32,7 @@ function VersionRow({ label, value, href }: VersionRowProps) {
 }
 
 function getGitHubUrl(
+	owner: string,
 	repo: string,
 	version: string,
 	sentinel: string,
@@ -39,7 +40,7 @@ function getGitHubUrl(
 	if (version === sentinel) return undefined;
 	const isTag = /^v\d+\.\d+\.\d+/.test(version);
 	const suffix = isTag ? `releases/tag/${version}` : `commit/${version}`;
-	return `https://github.com/ballerina-platform/${repo}/${suffix}`;
+	return `https://github.com/${owner}/${repo}/${suffix}`;
 }
 
 export function VersionCard() {
@@ -47,12 +48,22 @@ export function VersionCard() {
 		{
 			label: "Ballerina Interpreter",
 			value: __BALLERINA_VERSION__,
-			href: getGitHubUrl("ballerina-lang-go", __BALLERINA_VERSION__, "unknown"),
+			href: getGitHubUrl(
+				"ballerina-nutcracker",
+				"ballerina",
+				__BALLERINA_VERSION__,
+				"unknown",
+			),
 		},
 		{
 			label: "Playground",
 			value: __COMMIT_SHA__ !== "dev" ? __COMMIT_SHA__.slice(0, 7) : "dev",
-			href: getGitHubUrl("playground", __COMMIT_SHA__, "dev"),
+			href: getGitHubUrl(
+				"ballerina-nutcracker",
+				"playground",
+				__COMMIT_SHA__,
+				"dev",
+			),
 		},
 	];
 

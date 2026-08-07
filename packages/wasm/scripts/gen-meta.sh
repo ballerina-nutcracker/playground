@@ -21,7 +21,7 @@
 
 set -e
 
-cd "$(dirname "$0")/../ballerina-lang-go"
+cd "$(dirname "$0")/../ballerina"
 
 resolve_tag() {
   git describe --tags --exact-match 2>/dev/null || true

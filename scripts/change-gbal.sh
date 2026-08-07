@@ -16,13 +16,13 @@
 # specific language governing permissions and limitations
 # under the License.
 
-# Updates the `packages/wasm/ballerina-lang-go` submodule source.
+# Updates the `packages/wasm/ballerina` submodule source.
 # - Switch mode: points the submodule to a given remote + branch.
 # - Reset mode: restores the submodule to the repository-pinned commit.
 
 set -e
 
-SUBMODULE_DIR="packages/wasm/ballerina-lang-go"
+SUBMODULE_DIR="packages/wasm/ballerina"
 
 usage() {
     echo "Usage:"

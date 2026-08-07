@@ -3,7 +3,7 @@ import { beforeAll, expect, test } from "bun:test";
 import { createFs } from "./test-fs";
 import "../src/wasm_exec";
 
-import type { RunOutput } from "../src/workers/ballerina-worker-api";
+import type { RunEvent } from "../src/workers/ballerina-worker-api";
 
 interface TestCase {
 	name: string;
@@ -23,11 +23,11 @@ async function runBallerina(
 ): Promise<{ stdout: string; stderr: string }> {
 	const fs = createFs(files);
 	const output = { stdout: "", stderr: "" };
-	const onOutput = ({ stream, text }: RunOutput) => {
-		output[stream] += text;
+	const onEvent = (event: RunEvent) => {
+		if (event.type === "output") output[event.stream] += event.text;
 	};
 
-	await globalThis.run(fs, entryPoint, onOutput);
+	await globalThis.run(fs, entryPoint, onEvent);
 	return output;
 }
 

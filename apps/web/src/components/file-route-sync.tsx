@@ -10,7 +10,7 @@ import {
 
 import { useShare } from "@/hooks/use-share";
 
-const DEFAULT_FILE = "/tmp/examples/02-http-client.bal";
+const DEFAULT_FILE = "/tmp/examples/01-http-client/main.bal";
 const DEFAULT_SPLAT = DEFAULT_FILE.replace(/^\/+/, "");
 
 function normalizeSplat(splat: string | undefined): string | null {

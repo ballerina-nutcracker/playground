@@ -15,6 +15,7 @@
 		"preview": "turbo run preview",
 		"test": "turbo run test",
 		"test:e2e": "playwright test --config e2e/playwright.config.ts",
+		"test:e2e:update-examples": "UPDATE_EXAMPLE_OUTPUTS=1 playwright test --config e2e/playwright.config.ts --grep 'runs every example'",
 		"test:e2e:ui": "playwright test --config e2e/playwright.config.ts --ui",
 		"format": "biome format . --write",
 		"lint": "biome check .",

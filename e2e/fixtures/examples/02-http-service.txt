@@ -1,0 +1,1 @@
+time=<timestamp> level=INFO module="" message="Album added successfully" title="Kind of Blue" artist="Miles Davis"

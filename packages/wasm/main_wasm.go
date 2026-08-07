@@ -17,20 +17,27 @@
 package main
 
 import (
-	_ "ballerina-lang-go/lib/rt"
-	"ballerina-lang-go/platform/pal"
-	"ballerina-lang-go/projects"
-	"ballerina-lang-go/runtime"
-	"ballerina-lang-go/tools/diagnostics"
+	_ "ballerina/lib/rt"
+	"ballerina/platform/pal"
+	"ballerina/projects"
+	"ballerina/runtime"
+	"ballerina/tools/diagnostics"
 	"fmt"
+	"io"
 	"io/fs"
+	"net/http"
+	"net/http/httptest"
+	"net/url"
 	"path"
+	"strings"
 	"syscall/js"
 )
 
 func main() {
 	js.Global().Set("run", js.FuncOf(run))
+
 	js.Global().Set("sendStopSignal", js.FuncOf(sendStopSignal))
+	js.Global().Set("dispatchHttpRequest", js.FuncOf(dispatchHttpRequest))
 
 	js.Global().Set("getDiagnostics", js.FuncOf(getDiagnostics))
 
@@ -55,24 +62,23 @@ func getWorkingDir(fsys fs.FS, p string) string {
 func run(_ js.Value, args []js.Value) any {
 	return newPromise(func(resolve js.Value, _ js.Value) {
 		go func() {
-			onOutput := js.Null()
+			onEvent := js.Null()
 			if len(args) >= 3 {
-				onOutput = args[2]
+				onEvent = args[2]
 			}
 
-			stderr := outputWriter{onOutput: onOutput, stream: "stderr"}
-			stdout := outputWriter{onOutput: onOutput, stream: "stdout"}
+			stderr := outputWriter{onEvent: onEvent, stream: "stderr"}
+			stdout := outputWriter{onEvent: onEvent, stream: "stdout"}
 			done := func() { resolve.Invoke(js.Undefined()) }
 
 			signalSource, signals := newSignalSource()
-			defer signalSource.cleanup()
-
-			if !activateSignalSource(signalSource) {
+			if !activeRun.begin(signalSource) {
+				signalSource.cleanup()
 				fmt.Fprintf(stderr, "another Ballerina run is already active\n")
 				done()
 				return
 			}
-			defer deactivateSignalSource(signalSource)
+			defer activeRun.end(signalSource)
 
 			defer func() {
 				if r := recover(); r != nil {
@@ -82,7 +88,7 @@ func run(_ js.Value, args []js.Value) any {
 			}()
 
 			if len(args) < 2 {
-				fmt.Fprintf(stderr, "expected at least 2 arguments: (fsProxy, path[, onOutput])\n")
+				fmt.Fprintf(stderr, "expected at least 2 arguments: (fsProxy, path[, onEvent])\n")
 				return
 			}
 
@@ -118,20 +124,161 @@ func run(_ js.Value, args []js.Value) any {
 			workingDir := getWorkingDir(fsys, runPath)
 			pal := wasmPal(fsys, workingDir, stderr, stdout, signals)
 			rt := runtime.NewRuntime(pal, project.Environment().TypeEnv())
+			activeRun.setRuntime(signalSource, rt)
 			for _, birPkg := range birPkgs {
 				if err := rt.Init(*birPkg); err != nil {
 					fmt.Fprintf(stderr, "%v\n", err)
 					return
 				}
 			}
-			rt.Listen()
+			activeRun.ensureStarted()
+			emitEvent(onEvent, map[string]any{
+				"type":  "listeners",
+				"hosts": activeRun.hosts(),
+			})
 			_ = <-rt.ExitStatus
 		}()
 	})
 }
 
 func sendStopSignal(_ js.Value, _ []js.Value) any {
-	return sendSignal(pal.GracefulStop)
+	return activeRun.sendSignal(pal.GracefulStop)
+}
+
+func dispatchHttpRequest(_ js.Value, args []js.Value) any {
+	return newPromise(func(resolve js.Value, reject js.Value) {
+		defer func() {
+			if r := recover(); r != nil {
+				reject.Invoke(js.ValueOf(fmt.Sprintf("%v", r)))
+			}
+		}()
+
+		if len(args) < 1 || args[0].Type() != js.TypeObject || args[0].IsNull() {
+			reject.Invoke(js.ValueOf("dispatchHttpRequest: expected an object argument"))
+			return
+		}
+
+		reqObj := args[0]
+		req, err := httpRequestFromJS(reqObj)
+		if err != nil {
+			reject.Invoke(js.ValueOf(err.Error()))
+			return
+		}
+
+		handler, ok := findLocalHandler(req.URL)
+		if !ok {
+			reject.Invoke(js.ValueOf(fmt.Sprintf("no service listening on %s", req.Host)))
+			return
+		}
+
+		recorder := httptest.NewRecorder()
+		handler.ServeHTTP(recorder, req)
+		resp := recorder.Result()
+		defer resp.Body.Close()
+
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			reject.Invoke(js.ValueOf(err.Error()))
+			return
+		}
+
+		resolve.Invoke(js.ValueOf(map[string]any{
+			"statusCode": resp.StatusCode,
+			"headers":    headersToJS(resp.Header),
+			"body":       string(body),
+		}))
+	})
+}
+
+func httpRequestFromJS(reqObj js.Value) (*http.Request, error) {
+	method := strings.ToUpper(getString(reqObj, "method", http.MethodGet))
+	host := getString(reqObj, "host", "0.0.0.0")
+	path := getString(reqObj, "path", "/")
+	if path == "" {
+		path = "/"
+	} else if !strings.HasPrefix(path, "/") {
+		path = "/" + path
+	}
+	query := getString(reqObj, "query", "")
+	query = strings.TrimPrefix(query, "?")
+	body := getString(reqObj, "body", "")
+
+	parsedPath, err := url.ParseRequestURI(path)
+	if err != nil {
+		return nil, fmt.Errorf("invalid request path: %w", err)
+	}
+	// TODO: Support HTTPS listener dispatch.
+	reqURL := &url.URL{
+		Scheme:   "http",
+		Host:     host,
+		Path:     parsedPath.Path,
+		RawPath:  parsedPath.RawPath,
+		RawQuery: query,
+	}
+	req, err := http.NewRequest(method, reqURL.String(), strings.NewReader(body))
+	if err != nil {
+		return nil, err
+	}
+	req.RequestURI = req.URL.RequestURI()
+	req.Host = host
+	req.Header = parseHeaders(getObject(reqObj, "headers"))
+	req.ContentLength = int64(len(body))
+	return req, nil
+}
+
+func getString(obj js.Value, key string, fallback string) string {
+	value := obj.Get(key)
+	if value.Type() == js.TypeString {
+		return value.String()
+	}
+	return fallback
+}
+
+func getObject(obj js.Value, key string) js.Value {
+	value := obj.Get(key)
+	if value.Type() == js.TypeObject && !value.IsNull() {
+		return value
+	}
+	return js.Null()
+}
+
+func parseHeaders(headersObj js.Value) http.Header {
+	headers := http.Header{}
+	if headersObj.Type() != js.TypeObject || headersObj.IsNull() {
+		return headers
+	}
+
+	keys := js.Global().Get("Object").Call("keys", headersObj)
+	for i := 0; i < keys.Length(); i++ {
+		key := keys.Index(i).String()
+		value := headersObj.Get(key)
+		switch value.Type() {
+		case js.TypeString:
+			headers.Add(key, value.String())
+		case js.TypeObject:
+			if js.Global().Get("Array").Call("isArray", value).Bool() {
+				for j := 0; j < value.Length(); j++ {
+					item := value.Index(j)
+					if item.Type() == js.TypeString {
+						headers.Add(key, item.String())
+					}
+				}
+			}
+		}
+	}
+	return headers
+}
+
+func headersToJS(headers http.Header) map[string]any {
+	mapped := make(map[string]any, len(headers))
+	for key, values := range headers {
+		items := make([]any, len(values))
+		for i, value := range values {
+			items[i] = value
+		}
+		mapped[key] = items
+	}
+	return mapped
 }
 
 func getDiagnostics(_ js.Value, args []js.Value) any {
@@ -173,23 +320,24 @@ func getDiagnostics(_ js.Value, args []js.Value) any {
 }
 
 type outputWriter struct {
-	onOutput js.Value
-	stream   string
+	onEvent js.Value
+	stream  string
 }
 
 func (w outputWriter) Write(p []byte) (int, error) {
-	emitOutput(w.onOutput, w.stream, string(p))
+	emitEvent(w.onEvent, map[string]any{
+		"type":   "output",
+		"stream": w.stream,
+		"text":   string(p),
+	})
 	return len(p), nil
 }
 
-func emitOutput(onOutput js.Value, stream, text string) {
-	if onOutput.Type() != js.TypeFunction {
+func emitEvent(onEvent js.Value, event map[string]any) {
+	if onEvent.Type() != js.TypeFunction {
 		return
 	}
-	onOutput.Invoke(map[string]any{
-		"stream": stream,
-		"text":   text,
-	})
+	onEvent.Invoke(event)
 }
 
 func mapDiagnostics(diags []diagnostics.Diagnostic, de *diagnostics.DiagnosticEnv) []any {

@@ -6,13 +6,22 @@ import {
 	ChevronUp,
 	CleanIcon,
 	GithubFreeIcons,
+	LayoutAlignRightIcon,
+	LayoutRightIcon,
 	PlayIcon,
 	StopIcon,
 } from "@hugeicons/core-free-icons";
 import { useHotkeys } from "react-hotkeys-hook";
-
+import { useDefaultLayout, usePanelRef } from "react-resizable-panels";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+	ResizableHandle,
+	ResizablePanel,
+	ResizablePanelGroup,
+} from "@/components/ui/resizable";
 import {
 	SidebarInset,
 	SidebarProvider,
@@ -21,6 +30,7 @@ import {
 
 import { AppSidebar } from "@/components/app-sidebar";
 import { CodeEditor } from "@/components/code-editor";
+import { TryItPanel } from "@/components/try-it-panel";
 import { VersionCard } from "@/components/version-card";
 import { SettingsDialog } from "@/components/settings-dialog";
 import { ANSI } from "@/components/ansi";
@@ -29,12 +39,14 @@ import { basename, ext } from "@/lib/fs/core/path-utils";
 import { getBallerinaProjectTarget } from "@/lib/fs/project-target";
 import { cn } from "@/lib/utils";
 
+import { useIsDesktop } from "@/hooks/use-is-desktop";
 import { useEditorStore } from "@/stores/editor-store";
 import { useActiveFile, useFileTreeActions } from "@/stores/file-tree-store";
 
-import { useBallerina } from "@/hooks/use-ballerina";
+import { useBallerina } from "@/providers/ballerina-provider";
 import { useFS } from "@/providers/fs-provider";
 
+import type { TryItPanelHandle } from "@/components/try-it-panel";
 import type { EditorLanguage } from "@/components/code-editor";
 
 function getLanguage(path: string): EditorLanguage {
@@ -182,7 +194,7 @@ function formatJsonOutput(output: string): string {
 	}
 }
 
-function OutputPane() {
+function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 	const output = useEditorStore((s) => s.output);
 	const formattedOutput = React.useMemo(
 		() => formatJsonOutput(output),
@@ -191,10 +203,38 @@ function OutputPane() {
 	const outputOpen = useEditorStore((s) => s.outputOpen);
 	const toggleOutputOpen = useEditorStore((s) => s.toggleOutputOpen);
 	const clearOutput = useEditorStore((s) => s.clearOutput);
+
 	const scrollRef = React.useRef<HTMLDivElement>(null);
+	const tryItPanelRef = React.useRef<TryItPanelHandle>(null);
 	const shouldAutoScrollRef = React.useRef(true);
 	const previousOutputLengthRef = React.useRef(output.length);
 	const previousOutputOpenRef = React.useRef(outputOpen);
+
+	const showTryIt = listenerAddresses.length > 0;
+	const previousShowTryItRef = React.useRef(showTryIt);
+
+	const [activeTab, setActiveTab] = React.useState("output");
+
+	React.useEffect(() => {
+		const didOpenTryIt = showTryIt && !previousShowTryItRef.current;
+		previousShowTryItRef.current = showTryIt;
+
+		if (didOpenTryIt) {
+			setActiveTab("try-it");
+			return;
+		}
+
+		if (!showTryIt) setActiveTab("output");
+	}, [showTryIt]);
+
+	const handleClear = React.useCallback(() => {
+		if (activeTab === "try-it") {
+			tryItPanelRef.current?.clear();
+			return;
+		}
+
+		clearOutput();
+	}, [activeTab, clearOutput]);
 
 	const updateAutoScrollState = React.useCallback(() => {
 		const element = scrollRef.current;
@@ -231,53 +271,86 @@ function OutputPane() {
 		<div
 			className={cn(
 				"flex flex-col min-h-0 min-w-0",
-				"lg:w-1/2 lg:flex-none",
 				outputOpen ? "flex-1 lg:flex" : "shrink-0 lg:flex",
 			)}
 		>
-			<div className="flex h-10 shrink-0 items-center justify-between border-b border-t lg:border-t-0">
-				<div className="flex items-center h-full">
-					<span className="px-4 h-full text-xs text-muted-foreground flex items-center">
-						Output
-					</span>
-				</div>
-				<div className="flex items-center h-full">
-					<Button
-						className="h-full border-l lg:hidden"
-						variant="ghost"
-						onClick={toggleOutputOpen}
-					>
-						<HugeiconsIcon
-							icon={outputOpen ? ChevronDown : ChevronUp}
-							strokeWidth={1.5}
-						/>
-						<span className="text-xs">
-							{outputOpen ? "Minimize" : "Show Output"}
-						</span>
-					</Button>
-					<Button
-						className="h-full border-l"
-						variant="ghost"
-						onClick={clearOutput}
-					>
-						<HugeiconsIcon icon={CleanIcon} strokeWidth={1.5} />
-						<span className="hidden sm:inline">Clear</span>
-					</Button>
-				</div>
-			</div>
-			<div
-				ref={scrollRef}
-				data-testid="output-pane"
-				onScroll={updateAutoScrollState}
-				className={cn(
-					"min-h-0 overflow-y-auto p-4",
-					outputOpen ? "flex-1" : "hidden lg:block lg:flex-1",
-				)}
+			<Tabs
+				value={activeTab}
+				onValueChange={(value) => setActiveTab(String(value))}
+				className="min-h-0 flex-1 gap-0"
 			>
-				<pre className="text-[13px] font-sans whitespace-pre-wrap wrap-break-word">
-					<ANSI value={formattedOutput} />
-				</pre>
-			</div>
+				<div className="flex h-10 shrink-0 items-center justify-between border-b border-t lg:border-t-0">
+					<TabsList className="h-full! p-0">
+						<TabsTrigger
+							value="output"
+							className="h-full px-4 bg-background border-0 border-r border-border"
+						>
+							Output
+						</TabsTrigger>
+						{showTryIt && (
+							<TabsTrigger
+								value="try-it"
+								className="h-full px-4 bg-background border-0 border-r border-border"
+							>
+								Try It
+							</TabsTrigger>
+						)}
+					</TabsList>
+					<div className="flex items-center h-full">
+						<Button
+							className="h-full border-l lg:hidden"
+							variant="ghost"
+							onClick={toggleOutputOpen}
+						>
+							<HugeiconsIcon
+								icon={outputOpen ? ChevronDown : ChevronUp}
+								strokeWidth={1.5}
+							/>
+							<span className="text-xs">
+								{outputOpen ? "Minimize" : "Show Pane"}
+							</span>
+						</Button>
+						<Button
+							className="h-full border-l"
+							variant="ghost"
+							onClick={handleClear}
+						>
+							<HugeiconsIcon icon={CleanIcon} strokeWidth={1.5} />
+							<span className="hidden sm:inline">Clear</span>
+						</Button>
+					</div>
+				</div>
+				<TabsContent
+					value="output"
+					keepMounted
+					ref={scrollRef}
+					data-testid="output-pane"
+					onScroll={updateAutoScrollState}
+					className={cn(
+						"min-h-0 overflow-y-auto p-4",
+						outputOpen ? "flex-1" : "hidden lg:block lg:flex-1",
+					)}
+				>
+					<pre className="text-[13px] font-sans whitespace-pre-wrap wrap-break-word">
+						<ANSI value={formattedOutput} />
+					</pre>
+				</TabsContent>
+				{showTryIt && (
+					<TabsContent
+						value="try-it"
+						keepMounted
+						className={cn(
+							"min-h-0 overflow-y-auto p-4",
+							outputOpen ? "flex-1" : "hidden lg:block lg:flex-1",
+						)}
+					>
+						<TryItPanel
+							ref={tryItPanelRef}
+							listenerAddresses={listenerAddresses}
+						/>
+					</TabsContent>
+				)}
+			</Tabs>
 		</div>
 	);
 }
@@ -286,10 +359,14 @@ function EditorPane({
 	onRun,
 	isRunning,
 	onStop,
+	onToggleOutput,
+	outputCollapsed = false,
 }: {
 	onRun: () => Promise<void>;
 	isRunning: boolean;
 	onStop: () => Promise<void>;
+	onToggleOutput?: () => void;
+	outputCollapsed?: boolean;
 }) {
 	const activeFile = useActiveFile();
 
@@ -309,7 +386,7 @@ function EditorPane({
 		<div
 			className={cn(
 				"flex flex-col lg:border-b-0 lg:border-r min-h-0",
-				"lg:w-1/2 lg:flex-none lg:h-full",
+				"lg:h-full",
 				outputOpen ? "h-1/2" : "flex-1",
 			)}
 		>
@@ -317,28 +394,45 @@ function EditorPane({
 				<span className="px-4 h-full text-xs border-r flex items-center truncate max-w-[60%]">
 					{activeFile ? basename(activeFile.path) : "No file selected"}
 				</span>
-				<Button
-					className="h-full"
-					variant="ghost"
-					data-testid="run-button"
-					onClick={isRunning ? () => void onStop() : () => void onRun()}
-					disabled={
-						!isRunning &&
-						(!activeFile || getLanguage(activeFile.path) !== "ballerina")
-					}
-				>
-					{!isRunning ? (
-						<>
-							<HugeiconsIcon icon={PlayIcon} strokeWidth={1.5} />
-							<span className="min-w-7.5">Run</span>
-						</>
-					) : (
-						<>
-							<HugeiconsIcon icon={StopIcon} strokeWidth={1.5} />
-							<span className="min-w-7.5">Stop</span>
-						</>
+				<div className="flex h-full">
+					<Button
+						className="h-full"
+						variant="ghost"
+						data-testid="run-button"
+						onClick={isRunning ? () => void onStop() : () => void onRun()}
+						disabled={
+							!isRunning &&
+							(!activeFile || getLanguage(activeFile.path) !== "ballerina")
+						}
+					>
+						{!isRunning ? (
+							<>
+								<HugeiconsIcon icon={PlayIcon} strokeWidth={1.5} />
+								<span className="min-w-7.5">Run</span>
+							</>
+						) : (
+							<>
+								<HugeiconsIcon icon={StopIcon} strokeWidth={1.5} />
+								<span className="min-w-7.5">Stop</span>
+							</>
+						)}
+					</Button>
+					{onToggleOutput && (
+						<Button
+							className="h-full w-10 border-l"
+							variant="ghost"
+							onClick={onToggleOutput}
+							aria-label={
+								outputCollapsed ? "Show output pane" : "Hide output pane"
+							}
+						>
+							<HugeiconsIcon
+								icon={outputCollapsed ? LayoutRightIcon : LayoutAlignRightIcon}
+								strokeWidth={1.5}
+							/>
+						</Button>
 					)}
-				</Button>
+				</div>
 			</div>
 			{activeFile && (
 				<CodeEditor
@@ -358,6 +452,80 @@ function EditorPane({
 	);
 }
 
+function EditorWorkspace({
+	onRun,
+	isRunning,
+	onStop,
+	listenerAddresses,
+}: {
+	onRun: () => Promise<void>;
+	isRunning: boolean;
+	onStop: () => Promise<void>;
+	listenerAddresses: string[];
+}) {
+	const isDesktop = useIsDesktop();
+	const outputPanelRef = usePanelRef();
+	const { defaultLayout, onLayoutChanged } = useDefaultLayout({
+		id: "editor-workspace",
+		storage: localStorage,
+		onlySaveAfterUserInteractions: true,
+	});
+	const [outputCollapsed, setOutputCollapsed] = React.useState(false);
+	const toggleOutputPanel = React.useCallback(() => {
+		if (outputPanelRef.current?.isCollapsed()) outputPanelRef.current.expand();
+		else outputPanelRef.current?.collapse();
+	}, [outputPanelRef]);
+	const editorPane = (
+		<EditorPane
+			onRun={onRun}
+			isRunning={isRunning}
+			onStop={onStop}
+			onToggleOutput={isDesktop ? toggleOutputPanel : undefined}
+			outputCollapsed={outputCollapsed}
+		/>
+	);
+	const rightPane = <RightPane listenerAddresses={listenerAddresses} />;
+
+	if (!isDesktop) {
+		return (
+			<div className="flex flex-1 flex-col min-h-0">
+				{editorPane}
+				{rightPane}
+			</div>
+		);
+	}
+
+	return (
+		<ResizablePanelGroup
+			orientation="horizontal"
+			defaultLayout={defaultLayout}
+			onLayoutChanged={onLayoutChanged}
+		>
+			<ResizablePanel
+				id="editor"
+				defaultSize="50%"
+				minSize="30%"
+				className="min-w-0"
+			>
+				{editorPane}
+			</ResizablePanel>
+			<ResizableHandle />
+			<ResizablePanel
+				id="output"
+				panelRef={outputPanelRef}
+				defaultSize="50%"
+				collapsible
+				collapsedSize="0%"
+				minSize="20%"
+				className="min-w-0"
+				onResize={(size) => setOutputCollapsed(size.asPercentage === 0)}
+			>
+				{rightPane}
+			</ResizablePanel>
+		</ResizablePanelGroup>
+	);
+}
+
 function EditorHeader() {
 	return (
 		<header className="flex h-16 shrink-0 items-center justify-between border-b px-4">
@@ -369,7 +537,7 @@ function EditorHeader() {
 				<VersionCard />
 				<a
 					className="flex items-center gap-2 text-xs text-muted-foreground hover:text-secondary-foreground"
-					href="https://github.com/ballerina-platform/playground"
+					href="https://github.com/ballerina-nutcracker/playground"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
@@ -385,12 +553,15 @@ function EditorHeader() {
 function EditorContent() {
 	const fs = useFS();
 
-	const { isReady, progress, run, sendStopSignal } = useBallerina();
+	const { isReady, progress, error, run, sendStopSignal } = useBallerina();
 
 	const activeFile = useActiveFile();
 
 	const { saveFile } = useFileTreeActions();
 	const [isRunning, setIsRunning] = React.useState(false);
+	const [listenerAddresses, setListenerAddresses] = React.useState<string[]>(
+		[],
+	);
 
 	const openOutputWith = useEditorStore((s) => s.openOutputWith);
 	const appendOutput = useEditorStore((s) => s.appendOutput);
@@ -400,21 +571,44 @@ function EditorContent() {
 		if (isRunning) return;
 		if (!activeFile || getLanguage(activeFile.path) !== "ballerina") return;
 
+		let isRunActive = true;
 		setIsRunning(true);
+		setListenerAddresses([]);
 		try {
 			// FIXME: We should automatically save files on change.
 			await saveFile();
 
 			const target = await getBallerinaProjectTarget(fs, activeFile.path);
 			openOutputWith("");
-			await run(target, ({ text }) => appendOutput(text));
+			await run(target, (event) => {
+				if (event.type === "output") appendOutput(event.text);
+				if (event.type === "listeners" && isRunActive)
+					setListenerAddresses(event.hosts);
+			});
+		} catch (cause) {
+			const message =
+				cause instanceof Error
+					? cause.message
+					: "Failed to run Ballerina program";
+			appendOutput(`\n${message}\n`);
+			toast.error(message);
 		} finally {
+			isRunActive = false;
 			setIsRunning(false);
+			setListenerAddresses([]);
 		}
 	}, [activeFile, fs, saveFile, run, openOutputWith, appendOutput, isRunning]);
 
 	const handleStop = React.useCallback(async () => {
-		await sendStopSignal();
+		try {
+			await sendStopSignal();
+		} catch (cause) {
+			toast.error(
+				cause instanceof Error
+					? cause.message
+					: "Failed to stop Ballerina program",
+			);
+		}
 	}, [sendStopSignal]);
 
 	useHotkeys("mod+enter", () => void handleRun(), {
@@ -425,27 +619,33 @@ function EditorContent() {
 		preventDefault: true,
 	});
 
-	if (!isReady) return <WasmLoadingScreen progress={progress} />;
+	if (!isReady) return <WasmLoadingScreen progress={progress} error={error} />;
 
 	return (
 		<>
 			<AppSidebar />
 			<SidebarInset className="flex flex-col h-dvh overflow-hidden">
 				<EditorHeader />
-				<main className="flex flex-col lg:flex-row flex-1 min-h-0">
-					<EditorPane
+				<main className="flex flex-1 min-h-0">
+					<EditorWorkspace
 						onRun={handleRun}
 						isRunning={isRunning}
 						onStop={handleStop}
+						listenerAddresses={listenerAddresses}
 					/>
-					<OutputPane />
 				</main>
 			</SidebarInset>
 		</>
 	);
 }
 
-function WasmLoadingScreen({ progress }: { progress: number }) {
+function WasmLoadingScreen({
+	progress,
+	error,
+}: {
+	progress: number;
+	error: Error | null;
+}) {
 	const pct = Math.max(0, Math.min(100, progress));
 	return (
 		<div
@@ -460,6 +660,11 @@ function WasmLoadingScreen({ progress }: { progress: number }) {
 					</span>
 				</div>
 				<Progress className="w-full" value={progress} />
+				{error ? (
+					<p className="max-w-md text-center text-sm text-destructive">
+						{error.message}
+					</p>
+				) : null}
 			</div>
 		</div>
 	);
