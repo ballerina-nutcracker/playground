@@ -216,7 +216,7 @@ function buildHeaderRecord(
 	const headers: Record<string, string | string[]> = {};
 	for (const entry of entries) {
 		const key = entry.key.trim();
-		const value = entry.value.trim();
+		const value = entry.value;
 		if (!key) continue;
 
 		const existing = headers[key];
@@ -236,7 +236,7 @@ function buildQueryString(url: URL, entries: KeyValueEntry[]) {
 	const params = new URLSearchParams(url.search);
 	for (const entry of entries) {
 		const key = entry.key.trim();
-		const value = entry.value.trim();
+		const value = entry.value;
 		if (!key) continue;
 		params.append(key, value);
 	}
