@@ -670,9 +670,13 @@ function WasmLoadingScreen({
 	);
 }
 
-export function Editor() {
+export function Editor({
+	defaultSidebarOpen = true,
+}: {
+	defaultSidebarOpen?: boolean;
+}) {
 	return (
-		<SidebarProvider>
+		<SidebarProvider defaultOpen={defaultSidebarOpen}>
 			<EditorContent />
 		</SidebarProvider>
 	);
