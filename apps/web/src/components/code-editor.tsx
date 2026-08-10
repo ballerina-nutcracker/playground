@@ -138,11 +138,6 @@ const theme = EditorView.theme({
 	".cm-scroller": {
 		fontFamily: "var(--font-sans), ui-monospace, monospace",
 		overflow: "auto",
-		scrollbarWidth: "none",
-		msOverflowStyle: "none",
-	},
-	".cm-scroller::-webkit-scrollbar": {
-		display: "none",
 	},
 	".cm-content": {
 		paddingTop: "1rem",
