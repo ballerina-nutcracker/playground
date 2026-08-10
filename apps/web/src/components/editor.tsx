@@ -270,14 +270,14 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 	return (
 		<div
 			className={cn(
-				"flex flex-col min-h-0 min-w-0",
+				"flex flex-col min-h-0 min-w-0 overflow-hidden lg:h-full",
 				outputOpen ? "flex-1 lg:flex" : "shrink-0 lg:flex",
 			)}
 		>
 			<Tabs
 				value={activeTab}
 				onValueChange={(value) => setActiveTab(String(value))}
-				className="min-h-0 flex-1 gap-0"
+				className="min-h-0 flex-1 gap-0 overflow-hidden"
 			>
 				<div className="flex h-10 shrink-0 items-center justify-between border-b border-t lg:border-t-0">
 					<TabsList className="h-full! p-0">
@@ -517,7 +517,7 @@ function EditorWorkspace({
 				collapsible
 				collapsedSize="0%"
 				minSize="20%"
-				className="min-w-0"
+				className="min-w-0 min-h-0 overflow-hidden"
 				onResize={(size) => setOutputCollapsed(size.asPercentage === 0)}
 			>
 				{rightPane}
