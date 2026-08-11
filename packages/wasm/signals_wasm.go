@@ -8,25 +8,21 @@ import (
 type signalSource struct {
 	mu sync.Mutex
 
-	ch             chan pal.Signal
-	stopSignalSent bool
-	closed         bool
+	ch            chan pal.Signal
+	stopRequested bool
+	closed        bool
 }
 
 func (s *signalSource) send(sig pal.Signal) bool {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	if s.closed || s.stopSignalSent {
+	if s.closed || s.stopRequested {
 		return false
 	}
 
-	select {
-	case s.ch <- sig:
-		s.stopSignalSent = true
-		return true
-	default:
-		return false
-	}
+	s.ch <- sig
+	s.stopRequested = true
+	return true
 }
 
 func (s *signalSource) cleanup() {
