@@ -129,6 +129,11 @@ func wasmPal(fsys *bridgeFS, cwd string, stderr, stdout io.Writer, signals pal.S
 				if err := createParentDirs(fsys, resolvedPath); err != nil {
 					return nil, err
 				}
+				if !appendMode {
+					if err := fsys.WriteFile(resolvedPath, nil, 0o644); err != nil {
+						return nil, err
+					}
+				}
 				return &bufferedWriteCloser{
 					fsys:       fsys,
 					path:       resolvedPath,

@@ -80,6 +80,8 @@ const testCases: TestCase[] = [
 		files: async () =>
 			new Map([
 				["/tmp/main.bal", await load("./fixtures/file-stream-read-write.bal")],
+				["/tmp/nested/lines.txt", "stale\n"],
+				["/tmp/nested/blocks.bin", "ZZ"],
 				["/tmp/input-lines.txt", "Alpha\nBeta\n"],
 				["/tmp/append-lines.txt", "Gamma\n"],
 				["/tmp/input-blocks.bin", "AB"],
