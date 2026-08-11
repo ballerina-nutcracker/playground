@@ -1,39 +1,31 @@
 import ballerina/http;
 import ballerina/io;
 
-type Customer record {|
-    int id;
+type Package record {
+    string organization;
     string name;
-    string email;
-    boolean subscribed;
-|};
+    string version;
+    int pullCount;
+};
 
-type Subscriber record {|
-    string name;
-    string email;
-|};
+type SearchResult record {
+    Package[] packages;
+};
 
 public function main() returns error? {
-    final http:Client apiClient = check new ("https://httpbun.com", {
-        timeout: 10
-    });
+    string query = "aws";
+    http:Client registry = check new ("https://api.central.ballerina.io/2.0/registry");
+    http:Response res = check registry->get(string `/packages?q=${query}`);
+    SearchResult result = check (check res.getJsonPayload()).fromJsonWithType();
 
-    Customer[] customers = [
-        {id: 1, name: "Alice", email: "alice@example.com", subscribed: true},
-        {id: 2, name: "Bob", email: "bob@example.com", subscribed: false},
-        {id: 3, name: "Carol", email: "carol@example.com", subscribed: true}
-    ];
+    string[] popular = from Package pkg in result.packages
+        where pkg.pullCount > 100
+        order by pkg.pullCount descending
+        limit 5
+        select string `${pkg.organization}/${pkg.name}:${pkg.version} (${pkg.pullCount} pulls)`;
 
-    Subscriber[] subscribers = from var customer in customers
-        where customer.subscribed
-        select {
-            name: customer.name,
-            email: customer.email
-        };
-
-    http:Response response = check apiClient->post("/anything/subscribers", subscribers);
-    io:println(string `[${response.statusCode}] Synced ${subscribers.length()} subscriber(s)`);
-    foreach Subscriber subscriber in subscribers {
-        io:println(string `  ${subscriber.name} <${subscriber.email}>`);
+    io:println(string `Top 5 popular packages for query '${query}':`);
+    foreach string pkg in popular {
+        io:println(pkg);
     }
 }
