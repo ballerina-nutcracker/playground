@@ -74,7 +74,7 @@ func run(_ js.Value, args []js.Value) any {
 			signalSource, signals := newSignalSource()
 			if !activeRun.begin(signalSource) {
 				signalSource.cleanup()
-				fmt.Fprintf(stderr, "another Ballerina run is already active\n")
+				fmt.Fprintf(stderr, "A Ballerina program is already running.\n")
 				done()
 				return
 			}

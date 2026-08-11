@@ -111,7 +111,9 @@ const api: BallerinaWorkerAPI = {
 			throw new Error("Ballerina runtime is not initialized");
 		const stopped = await self.sendStopSignal();
 		if (!stopped)
-			throw new Error("No running Ballerina program accepted the stop signal");
+			throw new Error(
+				"The Ballerina program is already stopping or has stopped.",
+			);
 	},
 	dispatchHttpRequest: async (request) => {
 		if (typeof self.dispatchHttpRequest !== "function")
