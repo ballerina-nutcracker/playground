@@ -76,6 +76,19 @@ const testCases: TestCase[] = [
 			"true\ntrue\ntrue\ntrue\n<book><title>Clean Code</title></book>\ntrue\n",
 	},
 	{
+		name: "file stream read/write",
+		files: async () =>
+			new Map([
+				["/tmp/main.bal", await load("./fixtures/file-stream-read-write.bal")],
+				["/tmp/input-lines.txt", "Alpha\nBeta\n"],
+				["/tmp/append-lines.txt", "Gamma\n"],
+				["/tmp/input-blocks.bin", "AB"],
+				["/tmp/append-blocks.bin", "CD"],
+			]),
+		entryPoint: "/tmp/main.bal",
+		expectedStdout: "true\ntrue\n",
+	},
+	{
 		name: "os env",
 		files: async () =>
 			new Map([["/tmp/main.bal", await load("./fixtures/os-env.bal")]]),
