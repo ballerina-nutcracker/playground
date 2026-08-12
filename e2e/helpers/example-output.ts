@@ -62,6 +62,7 @@ export async function assertOrUpdateExampleOutput(
 ) {
 	if (process.env.UPDATE_EXAMPLE_OUTPUTS === "1") {
 		const output = (await outputPane.innerText()).trimEnd();
+		const outputPath = getExampleOutputPath(manifestPath);
 
 		// A fixture whose placeholders still cover the output is already correct,
 		// so keep it rather than baking today's values back in.
@@ -75,7 +76,15 @@ export async function assertOrUpdateExampleOutput(
 			return;
 		}
 
-		const outputPath = getExampleOutputPath(manifestPath);
+		// <package>/<number> stand for values (rankings, pull counts) we cannot
+		// canonicalize back out of raw output, so overwriting here would silently
+		// re-bake today's literal values and break again on the very next run.
+		if (existingOutput !== null && /<number>|<package>/.test(existingOutput)) {
+			throw new Error(
+				`${manifestPath} fixture uses <package>/<number> placeholders and no longer matches the live output. Hand-edit ${outputPath} instead of regenerating it.`,
+			);
+		}
+
 		await mkdir(dirname(outputPath), { recursive: true });
 		await writeFile(outputPath, `${canonicalizeExampleOutput(output)}\n`);
 		return;

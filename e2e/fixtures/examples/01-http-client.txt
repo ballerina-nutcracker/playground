@@ -1,4 +1,4 @@
-Top 5 popular packages for query 'aws':
+Top <number> popular packages for query 'aws':
 <package> (<number> pulls)
 <package> (<number> pulls)
 <package> (<number> pulls)

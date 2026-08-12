@@ -15,7 +15,7 @@ type SearchResult record {
 public function main() returns error? {
     string query = "aws";
     http:Client registry = check new ("https://api.central.ballerina.io/2.0/registry");
-    http:Response res = check registry->get(string `/packages?q=${query}`);
+    http:Response res = check registry->get(string `/packages?q=${query}&limit=50`);
     SearchResult result = check (check res.getJsonPayload()).fromJsonWithType();
 
     string[] popular = from Package pkg in result.packages
@@ -24,7 +24,7 @@ public function main() returns error? {
         limit 5
         select string `${pkg.organization}/${pkg.name}:${pkg.version} (${pkg.pullCount} pulls)`;
 
-    io:println(string `Top 5 popular packages for query '${query}':`);
+    io:println(string `Top ${popular.length()} popular packages for query '${query}':`);
     foreach string pkg in popular {
         io:println(pkg);
     }
