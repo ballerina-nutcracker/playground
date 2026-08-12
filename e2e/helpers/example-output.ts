@@ -31,6 +31,12 @@ function escapeRegExp(value: string) {
 	return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
+// Timestamps differ on every run, so a freshly written fixture must store the
+// <timestamp> placeholder rather than today's literal value.
+function canonicalizeExampleOutput(output: string) {
+	return output.replace(/^time=\S+/gm, "time=<timestamp>");
+}
+
 function toExampleOutputPattern(expectedOutput: string) {
 	const placeholder = /<number>|<package>|<timestamp>/g;
 	let pattern = "";
@@ -71,7 +77,7 @@ export async function assertOrUpdateExampleOutput(
 
 		const outputPath = getExampleOutputPath(manifestPath);
 		await mkdir(dirname(outputPath), { recursive: true });
-		await writeFile(outputPath, `${output}\n`);
+		await writeFile(outputPath, `${canonicalizeExampleOutput(output)}\n`);
 		return;
 	}
 
