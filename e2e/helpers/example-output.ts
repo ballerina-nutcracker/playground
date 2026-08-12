@@ -16,17 +16,15 @@ function getExampleOutputPath(manifestPath: string) {
 	);
 }
 
-function normalizeExampleOutput(output: string) {
-	return output.trimEnd().replace(/^time=\S+/gm, "time=<timestamp>");
-}
-
-// Examples that talk to live services print values we cannot pin down: which
-// packages rank highest, their versions and their download counts all change
-// upstream. Those fixtures use these placeholders instead of literal values,
-// and everything around them still has to match exactly.
+// Examples that talk to live services, or print timestamps, produce values we
+// cannot pin down: which packages rank highest, their versions and their
+// download counts all change upstream, and log timestamps change every run.
+// Those fixtures use these placeholders instead of literal values, and
+// everything around them still has to match exactly.
 const outputPlaceholders: Record<string, string> = {
 	"<number>": "\\d+",
 	"<package>": "[\\w.]+\\/[\\w.]+:\\d+\\.\\d+\\.\\d+[\\w.+-]*",
+	"<timestamp>": "\\S+",
 };
 
 function escapeRegExp(value: string) {
@@ -34,7 +32,7 @@ function escapeRegExp(value: string) {
 }
 
 function toExampleOutputPattern(expectedOutput: string) {
-	const placeholder = /<number>|<package>/g;
+	const placeholder = /<number>|<package>|<timestamp>/g;
 	let pattern = "";
 	let lastIndex = 0;
 
@@ -57,7 +55,7 @@ export async function assertOrUpdateExampleOutput(
 	manifestPath: string,
 ) {
 	if (process.env.UPDATE_EXAMPLE_OUTPUTS === "1") {
-		const output = normalizeExampleOutput(await outputPane.innerText());
+		const output = (await outputPane.innerText()).trimEnd();
 
 		// A fixture whose placeholders still cover the output is already correct,
 		// so keep it rather than baking today's values back in.
@@ -79,7 +77,7 @@ export async function assertOrUpdateExampleOutput(
 
 	const expectedOutput = await loadExampleOutput(manifestPath);
 	await expect
-		.poll(async () => normalizeExampleOutput(await outputPane.innerText()), {
+		.poll(async () => (await outputPane.innerText()).trimEnd(), {
 			timeout: 10_000,
 		})
 		.toMatch(toExampleOutputPattern(expectedOutput));
