@@ -16,8 +16,40 @@ function getExampleOutputPath(manifestPath: string) {
 	);
 }
 
-function normalizeExampleOutput(output: string) {
-	return output.trimEnd().replace(/^time=\S+/gm, "time=<timestamp>");
+// Examples that talk to live services, or print timestamps, produce values we
+// cannot pin down: which packages rank highest, their versions and their
+// download counts all change upstream, and log timestamps change every run.
+// Those fixtures use these placeholders instead of literal values, and
+// everything around them still has to match exactly.
+const outputPlaceholders: Record<string, string> = {
+	"<number>": "\\d+",
+	"<package>": "[\\w.]+\\/[\\w.]+:\\d+\\.\\d+\\.\\d+[\\w.+-]*",
+	"<timestamp>": "\\S+",
+};
+
+function escapeRegExp(value: string) {
+	return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// Timestamps differ on every run, so a freshly written fixture must store the
+// <timestamp> placeholder rather than today's literal value.
+function canonicalizeExampleOutput(output: string) {
+	return output.replace(/^time=\S+/gm, "time=<timestamp>");
+}
+
+function toExampleOutputPattern(expectedOutput: string) {
+	const placeholder = /<number>|<package>|<timestamp>/g;
+	let pattern = "";
+	let lastIndex = 0;
+
+	for (const match of expectedOutput.matchAll(placeholder)) {
+		pattern += escapeRegExp(expectedOutput.slice(lastIndex, match.index));
+		pattern += outputPlaceholders[match[0]];
+		lastIndex = match.index + match[0].length;
+	}
+	pattern += escapeRegExp(expectedOutput.slice(lastIndex));
+
+	return new RegExp(`^${pattern}$`);
 }
 
 async function loadExampleOutput(manifestPath: string) {
@@ -29,17 +61,39 @@ export async function assertOrUpdateExampleOutput(
 	manifestPath: string,
 ) {
 	if (process.env.UPDATE_EXAMPLE_OUTPUTS === "1") {
-		const output = normalizeExampleOutput(await outputPane.innerText());
+		const output = (await outputPane.innerText()).trimEnd();
 		const outputPath = getExampleOutputPath(manifestPath);
+
+		// A fixture whose placeholders still cover the output is already correct,
+		// so keep it rather than baking today's values back in.
+		const existingOutput = await loadExampleOutput(manifestPath).catch(
+			() => null,
+		);
+		if (
+			existingOutput !== null &&
+			toExampleOutputPattern(existingOutput).test(output)
+		) {
+			return;
+		}
+
+		// <package>/<number> stand for values (rankings, pull counts) we cannot
+		// canonicalize back out of raw output, so overwriting here would silently
+		// re-bake today's literal values and break again on the very next run.
+		if (existingOutput !== null && /<number>|<package>/.test(existingOutput)) {
+			throw new Error(
+				`${manifestPath} fixture uses <package>/<number> placeholders and no longer matches the live output. Hand-edit ${outputPath} instead of regenerating it.`,
+			);
+		}
+
 		await mkdir(dirname(outputPath), { recursive: true });
-		await writeFile(outputPath, `${output}\n`);
+		await writeFile(outputPath, `${canonicalizeExampleOutput(output)}\n`);
 		return;
 	}
 
 	const expectedOutput = await loadExampleOutput(manifestPath);
 	await expect
-		.poll(async () => normalizeExampleOutput(await outputPane.innerText()), {
+		.poll(async () => (await outputPane.innerText()).trimEnd(), {
 			timeout: 10_000,
 		})
-		.toBe(expectedOutput);
+		.toMatch(toExampleOutputPattern(expectedOutput));
 }
