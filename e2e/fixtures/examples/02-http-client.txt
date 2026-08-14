@@ -1,3 +1,4 @@
+Fetching popular packages for query 'aws' from Ballerina Central...
 Top <number> popular packages for query 'aws':
 <package> (<number> pulls)
 <package> (<number> pulls)
