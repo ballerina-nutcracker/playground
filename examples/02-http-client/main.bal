@@ -15,6 +15,8 @@ type SearchResult record {
 public function main() returns error? {
     string query = "aws";
     http:Client registry = check new ("https://api.central.ballerina.io/2.0/registry");
+
+    io:println(string `Fetching popular packages for query '${query}' from Ballerina Central...`);
     http:Response res = check registry->get(string `/packages?q=${query}&limit=50`);
     SearchResult result = check (check res.getJsonPayload()).fromJsonWithType();
 
