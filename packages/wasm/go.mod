@@ -2,9 +2,14 @@ module playground
 
 go 1.26
 
-replace ballerina => ./ballerina
-
-require ballerina v0.0.0-00010101000000-000000000000
+require (
+	github.com/ballerina-nutcracker/ballerina/common v0.7.0
+	github.com/ballerina-nutcracker/ballerina/lib v0.7.0
+	github.com/ballerina-nutcracker/ballerina/platform v0.7.0
+	github.com/ballerina-nutcracker/ballerina/projects v0.7.0
+	github.com/ballerina-nutcracker/ballerina/runtime v0.7.0
+	github.com/ballerina-nutcracker/ballerina/tools v0.7.0
+)
 
 require (
 	github.com/cockroachdb/apd/v3 v3.2.3 // indirect

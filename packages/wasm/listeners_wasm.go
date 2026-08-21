@@ -1,8 +1,8 @@
 package main
 
 import (
-	"ballerina/platform/pal"
 	"context"
+	"github.com/ballerina-nutcracker/ballerina/platform/pal"
 	"net/http"
 )
 

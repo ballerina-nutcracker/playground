@@ -1,8 +1,8 @@
 package main
 
 import (
-	"ballerina/platform/pal"
 	"errors"
+	"github.com/ballerina-nutcracker/ballerina/platform/pal"
 	"io"
 	"io/fs"
 	"maps"
@@ -18,6 +18,42 @@ func resolvePath(cwd string, p string) string {
 		return p
 	}
 	return path.Join(cwd, p)
+}
+
+type bufferedWriteCloser struct {
+	fsys       *bridgeFS
+	path       string
+	appendMode bool
+	buffer     []byte
+	closed     bool
+}
+
+func (w *bufferedWriteCloser) Write(data []byte) (int, error) {
+	if w.closed {
+		return 0, errors.New("write to closed file")
+	}
+	w.buffer = append(w.buffer, data...)
+	return len(data), nil
+}
+
+func (w *bufferedWriteCloser) Close() error {
+	if w.closed {
+		return nil
+	}
+	w.closed = true
+
+	w.fsys.mu.Lock()
+	defer w.fsys.mu.Unlock()
+
+	data := w.buffer
+	if w.appendMode {
+		existing, err := fs.ReadFile(w.fsys, w.path)
+		if err != nil && !errors.Is(err, fs.ErrNotExist) {
+			return err
+		}
+		data = append(existing, data...)
+	}
+	return w.fsys.WriteFile(w.path, data, 0o644)
 }
 
 type environment struct {
@@ -82,6 +118,28 @@ func wasmPal(fsys *bridgeFS, cwd string, stderr, stdout io.Writer, signals pal.S
 			Stderr: stderr.Write,
 		},
 		FS: pal.FS{
+			OpenReadable: func(p string) (io.ReadCloser, error) {
+				return fsys.Open(resolvePath(cwd, p))
+			},
+			OpenWritable: func(p string, appendMode bool) (io.WriteCloser, error) {
+				fsys.mu.Lock()
+				defer fsys.mu.Unlock()
+
+				resolvedPath := resolvePath(cwd, p)
+				if err := createParentDirs(fsys, resolvedPath); err != nil {
+					return nil, err
+				}
+				if !appendMode {
+					if err := fsys.WriteFile(resolvedPath, nil, 0o644); err != nil {
+						return nil, err
+					}
+				}
+				return &bufferedWriteCloser{
+					fsys:       fsys,
+					path:       resolvedPath,
+					appendMode: appendMode,
+				}, nil
+			},
 			ReadFile: func(p string) ([]byte, error) {
 				return fs.ReadFile(fsys, resolvePath(cwd, p))
 			},

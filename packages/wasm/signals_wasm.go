@@ -1,6 +1,6 @@
 package main
 
-import "ballerina/platform/pal"
+import "github.com/ballerina-nutcracker/ballerina/platform/pal"
 
 type signalSource struct {
 	ch chan pal.Signal
