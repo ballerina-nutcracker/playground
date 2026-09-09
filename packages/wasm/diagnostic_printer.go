@@ -18,12 +18,11 @@ package main
 
 import (
 	"fmt"
+	"io"
+	"strings"
+
 	"github.com/ballerina-nutcracker/ballerina/projects"
 	"github.com/ballerina-nutcracker/ballerina/tools/diagnostics"
-	"io"
-	"io/fs"
-	"path"
-	"strings"
 )
 
 type outputStyle struct {
@@ -71,13 +70,13 @@ func buildDiagnosticLocation(filePath string, startLine, startCol, endLine, endC
 	}
 }
 
-func printDiagnostics(fsys fs.FS, path string, w io.Writer, diagResult projects.DiagnosticResult, de *diagnostics.DiagnosticEnv) {
+func printDiagnostics(w io.Writer, diagResult projects.DiagnosticResult, de *diagnostics.DiagnosticEnv) {
 	for _, d := range diagResult.Diagnostics() {
-		printDiagnostic(fsys, path, w, d, de)
+		printDiagnostic(w, d, de)
 	}
 }
 
-func printDiagnostic(fsys fs.FS, path string, w io.Writer, d diagnostics.Diagnostic, de *diagnostics.DiagnosticEnv) {
+func printDiagnostic(w io.Writer, d diagnostics.Diagnostic, de *diagnostics.DiagnosticEnv) {
 	s := outputStyleFor()
 	printDiagnosticHeader(w, s, d)
 
@@ -98,7 +97,7 @@ func printDiagnostic(fsys fs.FS, path string, w io.Writer, d diagnostics.Diagnos
 		de.EndLine(location), de.EndColumn(location),
 	)
 	printDiagnosticLocation(w, s, loc)
-	printSourceSnippet(w, s, loc, fsys, s.severityColor(d.DiagnosticInfo().Severity()), path)
+	printSourceSnippetContent(w, s, loc, de.TextDocument(location).String(), s.severityColor(d.DiagnosticInfo().Severity()))
 	fmt.Fprintln(w)
 }
 
@@ -108,14 +107,16 @@ func printDiagnosticHeader(w io.Writer, s outputStyle, d diagnostics.Diagnostic)
 	if c := info.Code(); c != "" {
 		codeStr = fmt.Sprintf("[%s]", c)
 	}
-	fmt.Fprintf(w, "%s%s%s%s%s: %s%s%s\n",
+	fmt.Fprintf(
+		w, "%s%s%s%s%s: %s%s%s\n",
 		s.bold, s.severityColor(info.Severity()), strings.ToLower(info.Severity().String()), codeStr, s.reset,
 		s.bold, d.Message(), s.reset,
 	)
 }
 
 func printDiagnosticLocation(w io.Writer, s outputStyle, loc diagnosticLocation) {
-	fmt.Fprintf(w, "%*s%s-->%s %s:%d:%d\n",
+	fmt.Fprintf(
+		w, "%*s%s-->%s %s:%d:%d\n",
 		loc.numWidth, "", s.cyan, s.reset, loc.filePath, loc.startLine+1, loc.startCol+1,
 	)
 	if loc.filePath != "" {
@@ -123,27 +124,8 @@ func printDiagnosticLocation(w io.Writer, s outputStyle, loc diagnosticLocation)
 	}
 }
 
-func snippetSourcePath(fsys fs.FS, projectOrFilePath, diagFile string) string {
-	if diagFile == "" || strings.HasPrefix(diagFile, "/") {
-		return diagFile
-	}
-	if projectOrFilePath == "" {
-		return diagFile
-	}
-	info, err := fs.Stat(fsys, projectOrFilePath)
-	if err == nil && !info.IsDir() {
-		return projectOrFilePath
-	}
-	return path.Join(projectOrFilePath, diagFile)
-}
-
-func printSourceSnippet(w io.Writer, s outputStyle, loc diagnosticLocation, fsys fs.FS, severityColor string, path string) {
-	content, err := fs.ReadFile(fsys, snippetSourcePath(fsys, path, loc.filePath))
-	if err != nil {
-		fmt.Fprintf(w, "%*s %s|%s %sCould not read source file: %v%s\n", loc.numWidth, "", s.cyan, s.reset, severityColor, err, s.reset)
-		return
-	}
-	lines := strings.Split(string(content), "\n")
+func printSourceSnippetContent(w io.Writer, s outputStyle, loc diagnosticLocation, content, severityColor string) {
+	lines := strings.Split(content, "\n")
 	if loc.startLine >= len(lines) {
 		return
 	}
@@ -173,9 +155,9 @@ func printSourceSnippet(w io.Writer, s outputStyle, loc diagnosticLocation, fsys
 		var highlightLen int
 		startCol, _, highlightLen = computeTrimmedCaretSpan(lineContent, startCol, endCol)
 
-		fmt.Fprintf(w, "%s%*s | %s%s\n", s.cyan, loc.numWidth, lineNumStr, s.reset, lineContent)
+		_, _ = fmt.Fprintf(w, "%s%*s | %s%s\n", s.cyan, loc.numWidth, lineNumStr, s.reset, lineContent)
 		pointer := buildPointer(lineContent, startCol, highlightLen)
-		fmt.Fprintf(w, "%*s %s| %s%s%s\n", loc.numWidth, "", s.cyan, severityColor, pointer, s.reset)
+		_, _ = fmt.Fprintf(w, "%*s %s| %s%s%s\n", loc.numWidth, "", s.cyan, severityColor, pointer, s.reset)
 	}
 }
 
