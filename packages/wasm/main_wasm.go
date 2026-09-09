@@ -18,11 +18,6 @@ package main
 
 import (
 	"fmt"
-	_ "github.com/ballerina-nutcracker/ballerina/lib/rt"
-	"github.com/ballerina-nutcracker/ballerina/platform/pal"
-	"github.com/ballerina-nutcracker/ballerina/projects"
-	"github.com/ballerina-nutcracker/ballerina/runtime"
-	"github.com/ballerina-nutcracker/ballerina/tools/diagnostics"
 	"io"
 	"io/fs"
 	"net/http"
@@ -31,6 +26,12 @@ import (
 	"path"
 	"strings"
 	"syscall/js"
+
+	_ "github.com/ballerina-nutcracker/ballerina/lib/rt"
+	"github.com/ballerina-nutcracker/ballerina/platform/pal"
+	"github.com/ballerina-nutcracker/ballerina/projects"
+	"github.com/ballerina-nutcracker/ballerina/runtime"
+	"github.com/ballerina-nutcracker/ballerina/tools/diagnostics"
 )
 
 func main() {
@@ -103,13 +104,13 @@ func run(_ js.Value, args []js.Value) any {
 			}
 
 			if diags := result.Diagnostics(); diags.HasErrors() {
-				printDiagnostics(fsys, runPath, stderr, diags, diagnostics.NewDiagnosticEnv())
+				printDiagnostics(stderr, diags, diagnostics.NewDiagnosticEnv())
 				return
 			}
 
 			compilation := result.Project().CurrentPackage().Compilation()
 			if diags := compilation.DiagnosticResult(); diags.HasErrors() {
-				printDiagnostics(fsys, runPath, stderr, diags, compilation.DiagnosticEnv())
+				printDiagnostics(stderr, diags, compilation.DiagnosticEnv())
 				return
 			}
 
