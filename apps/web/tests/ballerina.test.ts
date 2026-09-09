@@ -97,6 +97,18 @@ const testCases: TestCase[] = [
 		entryPoint: "/tmp/main.bal",
 		expectedStdout: "true\ntrue\ntrue\ntrue\ntrue\n",
 	},
+	{
+		name: "type mismatch diagnostic",
+		files: async () =>
+			new Map([["/tmp/main.bal", await load("./fixtures/type-mismatch.bal")]]),
+		entryPoint: "/tmp/main.bal",
+		expectedStderr:
+			"\x1b[1m\x1b[31merror[SEMANTIC_ERROR]\x1b[0m: \x1b[1mincompatible type: expected int, got false\x1b[0m\n" +
+			" \x1b[36m-->\x1b[0m /tmp/main.bal:4:13\n" +
+			"  \x1b[36m|\x1b[0m\n" +
+			"\x1b[36m4 | \x1b[0m    int x = false;\n" +
+			"  \x1b[36m| \x1b[31m            ^^^^^\x1b[0m\n\n",
+	},
 ];
 
 for (const tc of testCases) {
