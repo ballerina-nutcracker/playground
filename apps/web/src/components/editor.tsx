@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
+	AiMagicIcon,
 	ChevronDown,
 	ChevronUp,
 	CleanIcon,
@@ -15,6 +16,12 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { useDefaultLayout, usePanelRef } from "react-resizable-panels";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
 	ResizableHandle,
@@ -35,18 +42,34 @@ import { SettingsDialog } from "@/components/settings-dialog";
 import { ANSI } from "@/components/ansi";
 
 import { basename, ext } from "@/lib/fs/core/path-utils";
-import { getBallerinaProjectTarget } from "@/lib/fs/project-target";
+import { startBalBotCheck } from "@/lib/bal-bot-availability";
+import {
+	getBallerinaProjectTarget,
+	readBallerinaProjectFiles,
+} from "@/lib/fs/project-target";
 import { cn } from "@/lib/utils";
 
 import { useIsDesktop } from "@/hooks/use-is-desktop";
 import { useEditorStore } from "@/stores/editor-store";
-import { useActiveFile, useFileTreeActions } from "@/stores/file-tree-store";
+import {
+	useActiveFile,
+	useFileTreeActions,
+	useLocalTree,
+	useTempTree,
+} from "@/stores/file-tree-store";
 
 import { useBallerina } from "@/providers/ballerina-provider";
 import { useFS } from "@/providers/fs-provider";
 
 import type { TryItPanelHandle } from "@/components/try-it-panel";
 import type { EditorLanguage } from "@/components/code-editor";
+
+// Dynamic import only from here: bal-bot, pi and the compiler load on first use.
+const BalBotView = React.lazy(() =>
+	import("@/components/bal-bot/bal-bot-view").then((m) => ({
+		default: m.BalBotView,
+	})),
+);
 
 function getLanguage(path: string): EditorLanguage {
 	const ex = ext(path);
@@ -398,12 +421,16 @@ function EditorPane({
 	onStop,
 	onToggleOutput,
 	outputCollapsed = false,
+	onOpenBalBot,
+	balBotDisabledReason,
 }: {
 	onRun: () => Promise<void>;
 	isRunning: boolean;
 	onStop: () => Promise<void>;
 	onToggleOutput?: () => void;
 	outputCollapsed?: boolean;
+	onOpenBalBot: () => void;
+	balBotDisabledReason: string | null;
 }) {
 	const activeFile = useActiveFile();
 	const { isReady, progress, error } = useBallerina();
@@ -433,6 +460,27 @@ function EditorPane({
 					{activeFile ? basename(activeFile.path) : "No file selected"}
 				</span>
 				<div className="flex h-full">
+					<TooltipProvider>
+						<Tooltip>
+							<TooltipTrigger
+								render={<span className="flex h-full border-r" />}
+							>
+								<Button
+									className="h-full w-10"
+									variant="ghost"
+									data-testid="bal-bot-button"
+									aria-label="Open in bal-bot"
+									onClick={onOpenBalBot}
+									disabled={balBotDisabledReason !== null}
+								>
+									<HugeiconsIcon icon={AiMagicIcon} strokeWidth={1.5} />
+								</Button>
+							</TooltipTrigger>
+							<TooltipContent>
+								{balBotDisabledReason ?? "Open this project in bal-bot"}
+							</TooltipContent>
+						</Tooltip>
+					</TooltipProvider>
 					<Button
 						className="h-full"
 						variant="ghost"
@@ -504,11 +552,15 @@ function EditorWorkspace({
 	isRunning,
 	onStop,
 	listenerAddresses,
+	onOpenBalBot,
+	balBotDisabledReason,
 }: {
 	onRun: () => Promise<void>;
 	isRunning: boolean;
 	onStop: () => Promise<void>;
 	listenerAddresses: string[];
+	onOpenBalBot: () => void;
+	balBotDisabledReason: string | null;
 }) {
 	const isDesktop = useIsDesktop();
 	const outputPanelRef = usePanelRef();
@@ -529,6 +581,8 @@ function EditorWorkspace({
 			onStop={onStop}
 			onToggleOutput={isDesktop ? toggleOutputPanel : undefined}
 			outputCollapsed={outputCollapsed}
+			onOpenBalBot={onOpenBalBot}
+			balBotDisabledReason={balBotDisabledReason}
 		/>
 	);
 	const rightPane = <RightPane listenerAddresses={listenerAddresses} />;
@@ -614,7 +668,64 @@ function EditorContent() {
 	const appendOutput = useEditorStore((s) => s.appendOutput);
 	const toggleEditorMode = useEditorStore((s) => s.toggleEditorMode);
 
+	// Snapshot of the project shown in the bal-bot view; null while closed.
+	const [balBotFiles, setBalBotFiles] = React.useState<Record<
+		string,
+		string
+	> | null>(null);
+	const balBotOpen = balBotFiles !== null;
+	const balBotOpening = React.useRef(false);
+
+	// undefined while the latest check is pending. The trees are replaced on
+	// every file-system sync, so creating or deleting Ballerina.toml re-runs it.
+	const tempTree = useTempTree();
+	const localTree = useLocalTree();
+	const activePath = activeFile?.path ?? null;
+	const [projectReason, setProjectReason] = React.useState<
+		string | null | undefined
+	>(undefined);
+	// biome-ignore lint/correctness/useExhaustiveDependencies: the trees only re-trigger the check
+	React.useEffect(() => {
+		setProjectReason(undefined);
+		return startBalBotCheck(fs, activePath, setProjectReason);
+	}, [fs, activePath, tempTree, localTree]);
+	const balBotDisabledReason = isRunning
+		? "Stop the running program first"
+		: projectReason === undefined
+			? "Checking project…"
+			: projectReason;
+
+	// Any change of the active file closes the view.
+	const previousPath = React.useRef(activePath);
+	React.useEffect(() => {
+		if (previousPath.current === activePath) return;
+		previousPath.current = activePath;
+		setBalBotFiles(null);
+	}, [activePath]);
+
+	const closeBalBot = React.useCallback(() => setBalBotFiles(null), []);
+
+	const handleOpenBalBot = React.useCallback(async () => {
+		if (!activeFile || balBotOpening.current) return;
+		balBotOpening.current = true;
+		try {
+			// FIXME: We should automatically save files on change.
+			await saveFile();
+			const target = await getBallerinaProjectTarget(fs, activeFile.path);
+			if (target === activeFile.path)
+				throw new Error("Not part of a Ballerina project (no Ballerina.toml)");
+			setBalBotFiles(await readBallerinaProjectFiles(fs, target));
+		} catch (cause) {
+			toast.error(
+				cause instanceof Error ? cause.message : "Failed to open bal-bot",
+			);
+		} finally {
+			balBotOpening.current = false;
+		}
+	}, [activeFile, fs, saveFile]);
+
 	const handleRun = React.useCallback(async () => {
+		if (balBotOpen) return;
 		if (isRunning || !isReady) return;
 		if (!activeFile || getLanguage(activeFile.path) !== "ballerina") return;
 
@@ -653,6 +764,7 @@ function EditorContent() {
 		appendOutput,
 		isRunning,
 		isReady,
+		balBotOpen,
 	]);
 
 	const handleStop = React.useCallback(async () => {
@@ -669,24 +781,48 @@ function EditorContent() {
 
 	useHotkeys("mod+enter", () => void handleRun(), {
 		preventDefault: true,
+		enabled: !balBotOpen,
 	});
 
 	useHotkeys("mod+alt+v", () => toggleEditorMode(), {
 		preventDefault: true,
+		enabled: !balBotOpen,
 	});
 
 	return (
 		<>
-			<AppSidebar />
+			<AppSidebar onFileSelect={closeBalBot} />
 			<SidebarInset className="flex flex-col h-dvh overflow-hidden">
 				<EditorHeader />
 				<main className="flex flex-1 min-h-0">
-					<EditorWorkspace
-						onRun={handleRun}
-						isRunning={isRunning}
-						onStop={handleStop}
-						listenerAddresses={listenerAddresses}
-					/>
+					<div className="relative flex-1 min-h-0 min-w-0">
+						{/* Hidden, never display:none, so the panel layout and the editor scroll survive. */}
+						<div
+							className={cn("absolute inset-0 flex", balBotOpen && "invisible")}
+						>
+							<EditorWorkspace
+								onRun={handleRun}
+								isRunning={isRunning}
+								onStop={handleStop}
+								listenerAddresses={listenerAddresses}
+								onOpenBalBot={() => void handleOpenBalBot()}
+								balBotDisabledReason={balBotDisabledReason}
+							/>
+						</div>
+						{balBotFiles && (
+							<div className="absolute inset-0 z-10 bg-background">
+								<React.Suspense
+									fallback={
+										<div className="flex h-full items-center justify-center text-xs text-muted-foreground">
+											Loading bal-bot…
+										</div>
+									}
+								>
+									<BalBotView files={balBotFiles} onBack={closeBalBot} />
+								</React.Suspense>
+							</div>
+						)}
+					</div>
 				</main>
 			</SidebarInset>
 		</>
