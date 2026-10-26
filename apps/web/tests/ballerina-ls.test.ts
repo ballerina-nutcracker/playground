@@ -1,5 +1,7 @@
 import { beforeEach, expect, mock, test } from "bun:test";
 
+import { createFs } from "./test-fs";
+
 let releaseReady: () => void = () => {};
 let failReady: (reason: unknown) => void = () => {};
 let ready: Promise<void>;
@@ -19,12 +21,11 @@ mock.module("@/stores/file-tree-store", () => ({
 		getState: () => ({
 			ready: true,
 			saveFile: async () => {},
-			fs: () => ({}),
+			// No Ballerina.toml, so the real project-target lookup returns the uri.
+			// Don't mock project-target: the mock would leak into its own suites.
+			fs: () => createFs(new Map()),
 		}),
 	},
-}));
-mock.module("@/lib/fs/project-target", () => ({
-	getBallerinaProjectTarget: async (_fs: unknown, uri: string) => uri,
 }));
 mock.module("@/lib/fs/snapshot", () => ({
 	SnapshotFS: { from: async () => ({}) },
