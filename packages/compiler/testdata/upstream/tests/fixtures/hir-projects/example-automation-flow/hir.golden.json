@@ -1,0 +1,2174 @@
+{
+  "scopes": [
+    {
+      "id": "examples/automation_flow/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 7,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    int count = 3;\n    while count \u003e 0 {\n        count -= 1;\n    }\n    _ = finish(count);\n}",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "examples/automation_flow",
+      "serviceType": null,
+      "functionId": "examples/automation_flow/function/main"
+    }
+  ],
+  "sources": {
+    "examples/automation_flow/function/finish": {
+      "id": "examples/automation_flow/function/finish",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 1
+          },
+          "end": {
+            "line": 9,
+            "column": 57
+          }
+        }
+      },
+      "text": "function finish(int count) returns int { return count; }"
+    },
+    "examples/automation_flow/function/finish/parameter/0": {
+      "id": "examples/automation_flow/function/finish/parameter/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 17
+          },
+          "end": {
+            "line": 9,
+            "column": 26
+          }
+        }
+      },
+      "text": "int count"
+    },
+    "examples/automation_flow/function/finish/returnType": {
+      "id": "examples/automation_flow/function/finish/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 36
+          },
+          "end": {
+            "line": 9,
+            "column": 39
+          }
+        }
+      },
+      "text": "int"
+    },
+    "examples/automation_flow/function/finish/statement/0": {
+      "id": "examples/automation_flow/function/finish/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 42
+          },
+          "end": {
+            "line": 9,
+            "column": 55
+          }
+        }
+      },
+      "text": "return count;"
+    },
+    "examples/automation_flow/function/main": {
+      "id": "examples/automation_flow/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 7,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    int count = 3;\n    while count \u003e 0 {\n        count -= 1;\n    }\n    _ = finish(count);\n}"
+    },
+    "examples/automation_flow/function/main/statement/0": {
+      "id": "examples/automation_flow/function/main/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 5
+          },
+          "end": {
+            "line": 2,
+            "column": 19
+          }
+        }
+      },
+      "text": "int count = 3;"
+    },
+    "examples/automation_flow/function/main/statement/1": {
+      "id": "examples/automation_flow/function/main/statement/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 5
+          },
+          "end": {
+            "line": 5,
+            "column": 6
+          }
+        }
+      },
+      "text": "while count \u003e 0 {\n        count -= 1;\n    }"
+    },
+    "examples/automation_flow/function/main/statement/1/condition": {
+      "id": "examples/automation_flow/function/main/statement/1/condition",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 11
+          },
+          "end": {
+            "line": 3,
+            "column": 20
+          }
+        }
+      },
+      "text": "count \u003e 0"
+    },
+    "examples/automation_flow/function/main/statement/1/loop/statement/0": {
+      "id": "examples/automation_flow/function/main/statement/1/loop/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 9
+          },
+          "end": {
+            "line": 4,
+            "column": 20
+          }
+        }
+      },
+      "text": "count -= 1;"
+    },
+    "examples/automation_flow/function/main/statement/2": {
+      "id": "examples/automation_flow/function/main/statement/2",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 6,
+            "column": 5
+          },
+          "end": {
+            "line": 6,
+            "column": 23
+          }
+        }
+      },
+      "text": "_ = finish(count);"
+    },
+    "examples/automation_flow/function/main/statement/2/call/0": {
+      "id": "examples/automation_flow/function/main/statement/2/call/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 6,
+            "column": 9
+          },
+          "end": {
+            "line": 6,
+            "column": 22
+          }
+        }
+      },
+      "text": "finish(count)"
+    },
+    "receiver/main.bal/134/143/type": {
+      "id": "receiver/main.bal/134/143/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 17
+          },
+          "end": {
+            "line": 9,
+            "column": 20
+          }
+        }
+      },
+      "text": "int"
+    },
+    "receiver/main.bal/29/43/type": {
+      "id": "receiver/main.bal/29/43/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 5
+          },
+          "end": {
+            "line": 2,
+            "column": 8
+          }
+        }
+      },
+      "text": "int"
+    }
+  },
+  "functions": {
+    "examples/automation_flow/function/finish": {
+      "id": "examples/automation_flow/function/finish",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 1
+          },
+          "end": {
+            "line": 9,
+            "column": 57
+          }
+        }
+      },
+      "text": "function finish(int count) returns int { return count; }",
+      "moduleId": "examples/automation_flow",
+      "entry": {
+        "signatureVariables": [
+          {
+            "variableId": "variable/main.bal/138",
+            "start": 20,
+            "end": 25
+          }
+        ],
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "finish",
+        "signature": "function finish(int count) returns int",
+        "parameters": [
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/138",
+                "start": 4,
+                "end": 9
+              }
+            ],
+            "label": "Input",
+            "text": "int count"
+          }
+        ],
+        "returnType": "int"
+      },
+      "nodes": [
+        {
+          "id": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0",
+          "occurrenceKey": "/examples/automation_flow/function/finish/statement/0",
+          "sourceId": "examples/automation_flow/function/finish/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/138",
+                "start": 7,
+                "end": 12
+              }
+            ],
+            "style": "return",
+            "label": "return count;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/automation_flow/function/finish/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/automation_flow/function/finish",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/automation_flow/function/finish/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/automation_flow/function/finish/statement/0:entry",
+          "id": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0:entry",
+          "nodeId": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/automation_flow/function/finish/statement/0:normal-exit",
+          "id": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0:normal-exit",
+          "nodeId": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/automation_flow/function/finish/statement/0:return",
+          "id": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0:return",
+          "nodeId": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/automation_flow/function/finish/root:entry",
+          "nodeId": "examples/automation_flow/function/finish/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/automation_flow/function/finish/root:normal-exit",
+          "nodeId": "examples/automation_flow/function/finish/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [],
+      "groups": [
+        {
+          "id": "examples/automation_flow/function/finish/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/automation_flow/function/finish/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/automation_flow/function/finish/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/automation_flow/function/finish/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/automation_flow/function/finish/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/automation_flow/function/finish/root/binding/entry/0",
+            "toPort": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/automation_flow/function/finish/root/binding/normal",
+            "toPort": "examples/automation_flow/function/finish/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/finish/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/finish/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/finish/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "binding",
+              "bindingId": "examples/automation_flow/function/finish/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/automation_flow/function/finish/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/finish/examples/automation_flow/function/finish/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": []
+        }
+      }
+    },
+    "examples/automation_flow/function/main": {
+      "id": "examples/automation_flow/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 7,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    int count = 3;\n    while count \u003e 0 {\n        count -= 1;\n    }\n    _ = finish(count);\n}",
+      "moduleId": "examples/automation_flow",
+      "entry": {
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "nodes": [
+        {
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0",
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/0",
+          "sourceId": "examples/automation_flow/function/main/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/33",
+                "start": 4,
+                "end": 9
+              }
+            ],
+            "style": "step",
+            "label": "int count = 3;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1",
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/1",
+          "sourceId": "examples/automation_flow/function/main/statement/1/condition",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/33",
+                "start": 0,
+                "end": 5
+              }
+            ],
+            "style": "loop",
+            "label": "count \u003e 0",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/group"
+          }
+        },
+        {
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0",
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0",
+          "sourceId": "examples/automation_flow/function/main/statement/1/loop/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/33",
+                "start": 0,
+                "end": 5
+              }
+            ],
+            "style": "step",
+            "label": "count -= 1;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2",
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/2",
+          "sourceId": "examples/automation_flow/function/main/statement/2",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/33",
+                "start": 11,
+                "end": 16
+              }
+            ],
+            "style": "step",
+            "label": "_ = finish(count);",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/group"
+          }
+        },
+        {
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+          "sourceId": "examples/automation_flow/function/main/statement/2/call/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/33",
+                "start": 7,
+                "end": 12
+              }
+            ],
+            "style": "function",
+            "label": "finish(count)",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "call",
+              "occurrenceKey": "/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "recursive": {
+                "variables": [
+                  {
+                    "variableId": "variable/main.bal/33",
+                    "start": 7,
+                    "end": 12
+                  }
+                ],
+                "label": "finish(count)",
+                "sections": [],
+                "limitation": "Recursive calls remain collapsed.",
+                "title": "Recursive calls remain collapsed.",
+                "ariaLabel": "Recursive call finish(count)",
+                "glyph": "↻"
+              }
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "examples/automation_flow/function/finish",
+              "occurrenceKey": "/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [
+                      {
+                        "portId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:entry",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "normal",
+                    "members": [
+                      {
+                        "portId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:normal-exit",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "returns",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "panics",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": [
+                {
+                  "kind": "entry",
+                  "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0/enter",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:entry",
+                  "targetInterfaceId": "entry",
+                  "edge": {
+                    "kind": "sequence",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0/exit/normal",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:normal-exit",
+                  "targetInterfaceId": "normal",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0/exit/returns",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:normal-exit",
+                  "targetInterfaceId": "returns",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "examples/automation_flow/function/main/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/automation_flow/function/main",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/automation_flow/function/main/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/0:entry",
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0:entry",
+          "nodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/0:normal-exit",
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0:normal-exit",
+          "nodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/1:entry",
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:entry",
+          "nodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0:entry",
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0:entry",
+          "nodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0:normal-exit",
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0:normal-exit",
+          "nodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/1:normal-exit",
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:normal-exit",
+          "nodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/1:true",
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:true",
+          "nodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1",
+          "role": "true",
+          "anchor": {
+            "kind": "header-left"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/1:false",
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:false",
+          "nodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1",
+          "role": "false",
+          "anchor": {
+            "kind": "header-right"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/2:entry",
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2:entry",
+          "nodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/2:normal-exit",
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2:normal-exit",
+          "nodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "header-bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:entry",
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:entry",
+          "nodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:normal-exit",
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:normal-exit",
+          "nodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/automation_flow/function/main/root:entry",
+          "nodeId": "examples/automation_flow/function/main/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/automation_flow/function/main/root:normal-exit",
+          "nodeId": "examples/automation_flow/function/main/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "kind": "true",
+          "label": null,
+          "routing": "branch-left",
+          "id": "edge/0",
+          "fromPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:true",
+          "toPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "false",
+          "label": null,
+          "routing": "branch-right",
+          "id": "edge/1",
+          "fromPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:false",
+          "toPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:normal-exit",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "back",
+          "label": null,
+          "routing": "back",
+          "id": "edge/2",
+          "fromPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0:normal-exit",
+          "toPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/3",
+          "fromPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0:normal-exit",
+          "toPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/4",
+          "fromPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2:normal-exit",
+          "toPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/5",
+          "fromPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:entry",
+          "toPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:normal-exit",
+          "when": {
+            "kind": "not",
+            "operand": {
+              "kind": "nonempty",
+              "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+              "interfaceId": "entry"
+            }
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/6",
+          "fromPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:normal-exit",
+          "toPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "while",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        },
+        {
+          "id": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        },
+        {
+          "id": "examples/automation_flow/function/main/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0",
+              "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1",
+              "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/automation_flow/function/main/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/automation_flow/function/main/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/automation_flow/function/main/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/automation_flow/function/main/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/automation_flow/function/main/root/binding/entry/0",
+            "toPort": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [
+            {
+              "portId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:normal-exit",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "not",
+                        "operand": {
+                          "kind": "nonempty",
+                          "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+                          "interfaceId": "entry"
+                        }
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+                        "interfaceId": "normal"
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+                        "interfaceId": "returns"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/automation_flow/function/main/root/binding/normal",
+            "toPort": "examples/automation_flow/function/main/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [
+            {
+              "portId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:normal-exit",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "not",
+                        "operand": {
+                          "kind": "nonempty",
+                          "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+                          "interfaceId": "entry"
+                        }
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+                        "interfaceId": "normal"
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+                        "interfaceId": "returns"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:true",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:false",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/3",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/4",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/5",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/6",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/automation_flow/function/main/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/automation_flow/function/main/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1/loop/examples/automation_flow/function/main/statement/1/loop/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:true",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/1:false",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/3",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/4",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/5",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/automation_flow/function/main/examples/automation_flow/function/main/statement/2/expand/examples/automation_flow/function/main/statement/2/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/6",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

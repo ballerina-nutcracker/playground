@@ -1,0 +1,66 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module browser/http_service / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id browser http_service 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (type-definition (position 2:1 2:63) Person
+    (record-type (position 2:13 2:62)
+      (field first_name
+        (value-type (position 2:23 2:29) string))
+      (field last_name
+        (value-type (position 2:42 2:48) string))))
+  (variable (position 3:1 3:63) testClient (type
+    (user-defined-type (position 3:7 3:18) http Client)) (expr
+    (checked-expr (position 3:32 3:62)
+      (new (position 3:38 3:62) (
+        (literal (position 3:43 3:61) https://test.com) <default> (position 3:38 3:62))))))
+  (service (position 4:1 4:211)
+    (absolute-resource-path /)
+    (on
+    (new (position 4:14 4:37)
+      (user-defined-type (position 4:18 4:31) http Listener) (
+      (literal (position 4:32 4:36) 8080) <default> (position 4:14 4:37))))
+    (resource-function (position 4:40 4:209) get name:hello
+      (union-type (position 4:78 4:90)
+        (value-type (position 4:78 4:84) string)
+        (error-type (position 4:85 4:90)))
+      (block-function-body (position 4:91 4:209)
+        (var-def (position 4:93 4:143)
+          (variable (position 4:93 4:143) person (type
+            (user-defined-type (position 4:93 4:99) Person)) (expr
+            (checked-expr (position 4:109 4:142)
+              (remote-method-call (position 4:115 4:142) get expr:
+                (simple-var-ref (position 4:115 4:125) testClient) (
+                (literal (position 4:131 4:141) /foo/bar) <default> (position 4:115 4:142)
+                (typedesc-expr (position 4:115 4:142))))))))
+        (return (position 4:144 4:207)
+          (string-template-literal (position 4:151 4:206)
+            (template-string "hello ")
+            (field-based-access (position 4:167 4:184) first_name
+              (simple-var-ref (position 4:167 4:173) person))
+            (template-string " ")
+            (field-based-access (position 4:188 4:204) last_name
+              (simple-var-ref (position 4:188 4:194) person))
+            (template-string "")))))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### new main.bal [123,147)
+arguments: 1
+argument[0]:
+(literal (position 3:43 3:61) https://test.com)
+
+### new main.bal [162,185)
+arguments: 1
+argument[0]:
+(literal (position 4:32 4:36) 8080)
+
+### call main.bal [263,290)
+receiver:
+(simple-var-ref (position 4:115 4:125) testClient)
+arguments: 1
+argument[0]:
+(literal (position 4:131 4:141) /foo/bar)

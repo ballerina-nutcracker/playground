@@ -1,0 +1,1683 @@
+{
+  "catalogRef": "8e68a39eab428650444a40bdb0dd863d6c4a63a7fcdc3c9d17ee329ab1b39186",
+  "legacyProgram": {
+    "scopes": [],
+    "functions": {
+      "main": {
+        "id": "main",
+        "text": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "moduleId": "test",
+        "body": [
+          {
+            "id": "while",
+            "text": "while",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 6
+                }
+              }
+            },
+            "kind": "while",
+            "condition": {
+              "id": "condition",
+              "text": "condition",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 10
+                  }
+                }
+              },
+              "calls": []
+            },
+            "body": [
+              {
+                "id": "foreach",
+                "text": "foreach",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 8
+                    }
+                  }
+                },
+                "kind": "foreach",
+                "header": {
+                  "id": "iteration",
+                  "text": "iteration",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 10
+                      }
+                    }
+                  },
+                  "calls": []
+                },
+                "body": [
+                  {
+                    "id": "continue",
+                    "text": "continue",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 1,
+                          "column": 1
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 9
+                        }
+                      }
+                    },
+                    "kind": "continue"
+                  },
+                  {
+                    "id": "break",
+                    "text": "break",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 1,
+                          "column": 1
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 6
+                        }
+                      }
+                    },
+                    "kind": "break"
+                  }
+                ]
+              },
+              {
+                "id": "increment",
+                "text": "increment",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 10
+                    }
+                  }
+                },
+                "kind": "simple",
+                "operation": "assign",
+                "presentation": "step",
+                "calls": []
+              }
+            ]
+          },
+          {
+            "id": "after",
+            "text": "after",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 6
+                }
+              }
+            },
+            "kind": "simple",
+            "operation": "assign",
+            "presentation": "step",
+            "calls": []
+          }
+        ]
+      }
+    }
+  },
+  "hir": {
+    "scopes": [],
+    "sources": {
+      "after": {
+        "id": "after",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 6
+            }
+          }
+        },
+        "text": "after"
+      },
+      "break": {
+        "id": "break",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 6
+            }
+          }
+        },
+        "text": "break"
+      },
+      "condition": {
+        "id": "condition",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 10
+            }
+          }
+        },
+        "text": "condition"
+      },
+      "continue": {
+        "id": "continue",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 9
+            }
+          }
+        },
+        "text": "continue"
+      },
+      "increment": {
+        "id": "increment",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 10
+            }
+          }
+        },
+        "text": "increment"
+      },
+      "iteration": {
+        "id": "iteration",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 10
+            }
+          }
+        },
+        "text": "iteration"
+      },
+      "main": {
+        "id": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "main"
+      }
+    },
+    "functions": {
+      "main": {
+        "id": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "main",
+        "moduleId": "test",
+        "entry": {
+          "kind": "function",
+          "owner": null,
+          "operation": null,
+          "name": "",
+          "signature": "",
+          "parameters": [],
+          "returnType": ""
+        },
+        "nodes": [
+          {
+            "id": "main/while",
+            "occurrenceKey": "/while",
+            "sourceId": "condition",
+            "presentation": {
+              "kind": "plain",
+              "style": "loop",
+              "label": "condition",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/while/group"
+            }
+          },
+          {
+            "id": "main/while/loop/foreach",
+            "occurrenceKey": "/while/loop/foreach",
+            "sourceId": "iteration",
+            "presentation": {
+              "kind": "plain",
+              "style": "loop",
+              "label": "foreach iteration",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/while/loop/foreach/group"
+            }
+          },
+          {
+            "id": "main/while/loop/foreach/loop/continue",
+            "occurrenceKey": "/while/loop/foreach/loop/continue",
+            "sourceId": "continue",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "continue",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/while/loop/foreach/loop/break",
+            "occurrenceKey": "/while/loop/foreach/loop/break",
+            "sourceId": "break",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "break",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/while/loop/increment",
+            "occurrenceKey": "/while/loop/increment",
+            "sourceId": "increment",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "increment",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/after",
+            "occurrenceKey": "/after",
+            "sourceId": "after",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "after",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/root",
+            "occurrenceKey": "/root",
+            "sourceId": "main",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/root/group"
+            }
+          }
+        ],
+        "ports": [
+          {
+            "occurrenceKey": "/while:entry",
+            "id": "main/while:entry",
+            "nodeId": "main/while",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/while/loop/foreach:entry",
+            "id": "main/while/loop/foreach:entry",
+            "nodeId": "main/while/loop/foreach",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/while/loop/foreach/loop/continue:entry",
+            "id": "main/while/loop/foreach/loop/continue:entry",
+            "nodeId": "main/while/loop/foreach/loop/continue",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/while/loop/foreach/loop/continue:continue",
+            "id": "main/while/loop/foreach/loop/continue:continue",
+            "nodeId": "main/while/loop/foreach/loop/continue",
+            "role": "continue",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/while/loop/foreach/loop/break:entry",
+            "id": "main/while/loop/foreach/loop/break:entry",
+            "nodeId": "main/while/loop/foreach/loop/break",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/while/loop/foreach/loop/break:break",
+            "id": "main/while/loop/foreach/loop/break:break",
+            "nodeId": "main/while/loop/foreach/loop/break",
+            "role": "break",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/while/loop/foreach:normal-exit",
+            "id": "main/while/loop/foreach:normal-exit",
+            "nodeId": "main/while/loop/foreach",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/while/loop/foreach:next-iteration",
+            "id": "main/while/loop/foreach:next-iteration",
+            "nodeId": "main/while/loop/foreach",
+            "role": "next-iteration",
+            "anchor": {
+              "kind": "iteration-marker"
+            }
+          },
+          {
+            "occurrenceKey": "/while/loop/foreach:true",
+            "id": "main/while/loop/foreach:true",
+            "nodeId": "main/while/loop/foreach",
+            "role": "true",
+            "anchor": {
+              "kind": "header-bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/while/loop/increment:entry",
+            "id": "main/while/loop/increment:entry",
+            "nodeId": "main/while/loop/increment",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/while/loop/increment:normal-exit",
+            "id": "main/while/loop/increment:normal-exit",
+            "nodeId": "main/while/loop/increment",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/while:normal-exit",
+            "id": "main/while:normal-exit",
+            "nodeId": "main/while",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/while:true",
+            "id": "main/while:true",
+            "nodeId": "main/while",
+            "role": "true",
+            "anchor": {
+              "kind": "header-left"
+            }
+          },
+          {
+            "occurrenceKey": "/while:false",
+            "id": "main/while:false",
+            "nodeId": "main/while",
+            "role": "false",
+            "anchor": {
+              "kind": "header-right"
+            }
+          },
+          {
+            "occurrenceKey": "/after:entry",
+            "id": "main/after:entry",
+            "nodeId": "main/after",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/after:normal-exit",
+            "id": "main/after:normal-exit",
+            "nodeId": "main/after",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:entry",
+            "id": "main/root:entry",
+            "nodeId": "main/root",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:normal-exit",
+            "id": "main/root:normal-exit",
+            "nodeId": "main/root",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/0",
+            "fromPort": "main/while/loop/foreach:true",
+            "toPort": "main/while/loop/foreach/loop/continue:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "continue",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/1",
+            "fromPort": "main/while/loop/foreach/loop/continue:continue",
+            "toPort": "main/while/loop/foreach:next-iteration",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "break",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/2",
+            "fromPort": "main/while/loop/foreach/loop/break:break",
+            "toPort": "main/while/loop/foreach:normal-exit",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/3",
+            "fromPort": "main/while/loop/foreach:normal-exit",
+            "toPort": "main/while/loop/increment:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "true",
+            "label": null,
+            "routing": "branch-left",
+            "id": "edge/4",
+            "fromPort": "main/while:true",
+            "toPort": "main/while/loop/foreach:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "false",
+            "label": null,
+            "routing": "branch-right",
+            "id": "edge/5",
+            "fromPort": "main/while:false",
+            "toPort": "main/while:normal-exit",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "back",
+            "label": null,
+            "routing": "back",
+            "id": "edge/6",
+            "fromPort": "main/while/loop/increment:normal-exit",
+            "toPort": "main/while:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/7",
+            "fromPort": "main/while:normal-exit",
+            "toPort": "main/after:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "main/while/loop/foreach/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/while/loop/foreach/loop/continue",
+                "main/while/loop/foreach/loop/break"
+              ]
+            },
+            "style": {
+              "profile": "foreach",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          },
+          {
+            "id": "main/while/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/while/loop/foreach",
+                "main/while/loop/increment"
+              ]
+            },
+            "style": {
+              "profile": "while",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          },
+          {
+            "id": "main/root/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/while",
+                "main/after"
+              ]
+            },
+            "style": {
+              "profile": "root",
+              "root": {
+                "node": true,
+                "header": false,
+                "container": true
+              },
+              "inline": {
+                "node": false,
+                "header": false,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "main/graph",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/root"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          }
+        ],
+        "rootGroup": "main/graph",
+        "interfaces": [
+          {
+            "id": "root/entry/0",
+            "members": [
+              {
+                "portId": "main/root:entry",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "main/root/binding/entry/0",
+              "toPort": "main/while:entry",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "root/normal",
+            "members": [
+              {
+                "portId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "main/root/binding/normal",
+              "toPort": "main/root:normal-exit",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "entry",
+            "members": [
+              {
+                "portId": "main/while:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "normal",
+            "members": [
+              {
+                "portId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "returns",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "panics",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          }
+        ],
+        "emission": {
+          "root": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "main/root",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach/loop/continue",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach/loop/break",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/increment",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "main/while:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach/loop/continue:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach/loop/continue:continue",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach/loop/break:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach/loop/break:break",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach:next-iteration",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/increment:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/increment:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while:false",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/root:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/root:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/3",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/4",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/5",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/6",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/7",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/root/binding/entry/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/root/binding/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "inline": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "main/while",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach/loop/continue",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach/loop/break",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/increment",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "main/while:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach/loop/continue:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach/loop/continue:continue",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach/loop/break:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach/loop/break:break",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach:next-iteration",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/foreach:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/increment:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while/loop/increment:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/while:false",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/3",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/4",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/5",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/6",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/7",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "graphOnly": true,
+  "provenance": "Archived synthetic graph input; no AST exists or is fabricated. Entry metadata is omitted by graphOnly exactly when the original fixture omitted it."
+}

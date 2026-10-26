@@ -1,0 +1,96 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/service/main.bal///1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 7,
+            "column": 2
+          }
+        }
+      },
+      "text": "service / on new http:Listener(8080) {\n    resource function get hello() returns string {\n        return \"Hello, World!\";\n    }\n}",
+      "kind": "service",
+      "title": "/",
+      "moduleId": "browser/http_service",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 6,
+                "column": 6
+              }
+            }
+          },
+          "text": "resource function get hello() returns string {\n        return \"Hello, World!\";\n    }",
+          "kind": "resource",
+          "title": "get /hello",
+          "functionId": "browser/http_service/service/main.bal///1/resource/get/hello"
+        }
+      ],
+      "definitions": []
+    }
+  ],
+  "functions": {
+    "browser/http_service/service/main.bal///1/resource/get/hello": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 5
+          },
+          "end": {
+            "line": 6,
+            "column": 6
+          }
+        }
+      },
+      "text": "resource function get hello() returns string {\n        return \"Hello, World!\";\n    }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "resource",
+        "name": "get /hello",
+        "signature": "resource function get hello() returns string",
+        "parameters": [],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 5,
+                "column": 9
+              },
+              "end": {
+                "line": 5,
+                "column": 32
+              }
+            }
+          },
+          "text": "return \"Hello, World!\";",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

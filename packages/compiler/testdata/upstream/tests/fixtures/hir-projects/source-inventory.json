@@ -1,0 +1,1149 @@
+{
+  "version": 1,
+  "policy": "Independent current-test source inventory. Native recipes select Go AST string literals (zero-based, lexical traversal) and reconstruct exact request bytes. Original test SHA-256 pins all table cases, mutations, and exclusions. Browser static inventory pins original file hashes and test scenarios; no test source is executed. Invalid locally resolved requests have diagnostics only; full-check-only errors can still have resolved ASTs.",
+  "native": [
+    {
+      "file": "packages/compiler/analysis_test.go",
+      "sha256": "3a41422badc01ebb2d72816f84bd0fd1d07c69ddc74a4dfef7e09d90cb95afa6",
+      "scenarios": [
+        {
+          "name": "TestAnalysisIsNotFullChecking",
+          "requests": [
+            {
+              "label": "original",
+              "literals": {
+                "main.bal": [
+                  0
+                ]
+              },
+              "project": "project-2371c674cc7b"
+            }
+          ]
+        },
+        {
+          "name": "TestAnalyzeExamples",
+          "requests": [
+            {
+              "label": "analysis-recovery",
+              "example": "analysis-recovery",
+              "literals": {},
+              "project": "example-analysis-recovery"
+            },
+            {
+              "label": "automation-flow",
+              "example": "automation-flow",
+              "literals": {},
+              "project": "example-automation-flow"
+            },
+            {
+              "label": "chat-references",
+              "example": "chat-references",
+              "literals": {},
+              "project": "example-chat-references"
+            },
+            {
+              "label": "client-calls",
+              "example": "client-calls",
+              "literals": {},
+              "project": "example-client-calls"
+            },
+            {
+              "label": "control-flow",
+              "example": "control-flow",
+              "literals": {},
+              "project": "example-control-flow"
+            },
+            {
+              "label": "definitions-and-calls",
+              "example": "definitions-and-calls",
+              "literals": {},
+              "project": "example-definitions-and-calls"
+            },
+            {
+              "label": "design-critique",
+              "example": "design-critique",
+              "literals": {},
+              "project": "example-design-critique"
+            },
+            {
+              "label": "function-expansion",
+              "example": "function-expansion",
+              "literals": {},
+              "project": "example-function-expansion"
+            },
+            {
+              "label": "panel-state",
+              "example": "panel-state",
+              "literals": {},
+              "project": "example-panel-state"
+            },
+            {
+              "label": "service-discovery",
+              "example": "service-discovery",
+              "literals": {},
+              "project": "example-service-discovery"
+            },
+            {
+              "label": "source-ranges",
+              "example": "source-ranges",
+              "literals": {},
+              "project": "example-source-ranges"
+            },
+            {
+              "label": "unsupported-constructs",
+              "example": "unsupported-constructs",
+              "literals": {},
+              "project": "example-unsupported-constructs"
+            }
+          ]
+        },
+        {
+          "name": "TestAnalyzeInvalidInput",
+          "requests": [
+            {
+              "label": "source case 2",
+              "literals": {
+                "main.bal": [
+                  2
+                ]
+              },
+              "project": "native-8236f1db1950"
+            },
+            {
+              "label": "source case 3",
+              "literals": {
+                "main.bal": [
+                  3
+                ]
+              },
+              "project": "native-45dd8dc7e3be"
+            }
+          ],
+          "exclusion": "Additional nil/empty/missing-manifest and unsupported tests/test.bal vectors are input-validation infrastructure, not supported projects."
+        },
+        {
+          "name": "TestArithmeticCallExpansion",
+          "requests": [
+            {
+              "label": "original",
+              "literals": {
+                "main.bal": [
+                  0
+                ]
+              },
+              "project": "project-99ccabce5034"
+            }
+          ]
+        },
+        {
+          "name": "TestArithmeticExpansionRespectsEvaluationContext",
+          "requests": [
+            {
+              "label": "expression 0",
+              "literals": {
+                "main.bal": [
+                  25,
+                  0,
+                  26
+                ]
+              },
+              "project": "project-518de81998e1"
+            },
+            {
+              "label": "expression 4",
+              "literals": {
+                "main.bal": [
+                  25,
+                  4,
+                  26
+                ]
+              },
+              "project": "project-203fd4c9744b"
+            },
+            {
+              "label": "expression 9",
+              "literals": {
+                "main.bal": [
+                  25,
+                  9,
+                  26
+                ]
+              },
+              "project": "project-12688e149e5f"
+            },
+            {
+              "label": "expression 13",
+              "literals": {
+                "main.bal": [
+                  25,
+                  13,
+                  26
+                ]
+              },
+              "project": "project-90bf62cce2e1"
+            },
+            {
+              "label": "expression 18",
+              "literals": {
+                "main.bal": [
+                  25,
+                  18,
+                  26
+                ]
+              },
+              "project": "project-1bd8ec8f8a3e"
+            },
+            {
+              "label": "expression 21",
+              "literals": {
+                "main.bal": [
+                  25,
+                  21,
+                  26
+                ]
+              },
+              "project": "project-e3f1a3f22f11"
+            }
+          ]
+        },
+        {
+          "name": "TestRangesAndSupportedBlocks",
+          "requests": [
+            {
+              "label": "source-ranges",
+              "example": "source-ranges",
+              "literals": {},
+              "project": "example-source-ranges"
+            },
+            {
+              "label": "design-critique",
+              "example": "design-critique",
+              "literals": {},
+              "project": "example-design-critique"
+            }
+          ]
+        },
+        {
+          "name": "TestResolvedDiscoveryAndTargets",
+          "requests": [
+            {
+              "label": "original",
+              "example": "definitions-and-calls",
+              "literals": {},
+              "project": "example-definitions-and-calls"
+            },
+            {
+              "label": "after unrelated file",
+              "example": "definitions-and-calls",
+              "literals": {
+                "unrelated.bal": [
+                  20
+                ]
+              },
+              "project": "project-580ae4621e7c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/compiler/compiler_test.go",
+      "sha256": "91776a046a42db909960bfd75fc1f60682729f63f7d794a856aed2c3c052d5af",
+      "scenarios": [
+        {
+          "name": "TestDependencySourceIdentity",
+          "requests": [],
+          "exclusion": "embedded dependency diagnostic lookup, not a workspace compilation."
+        },
+        {
+          "name": "TestManifestAndDependencyDiagnostics",
+          "requests": [
+            {
+              "label": "missing readme",
+              "literals": {
+                "main.bal": [
+                  2
+                ],
+                "Ballerina.toml": [
+                  0
+                ]
+              },
+              "project": "native-ece1b45a11de",
+              "manifestPrefix": [
+                "Ballerina.toml"
+              ]
+            },
+            {
+              "label": "invalid version",
+              "literals": {
+                "main.bal": [
+                  2
+                ],
+                "Ballerina.toml": [
+                  1
+                ]
+              },
+              "project": "native-6b3ff81ed66c"
+            },
+            {
+              "label": "missing dependency; resources ignored",
+              "literals": {
+                "main.bal": [
+                  7
+                ],
+                "resources/data.bal": [
+                  9
+                ],
+                "modules/sample/resources/data.bal": [
+                  11
+                ]
+              },
+              "project": "native-e63e61117510"
+            }
+          ]
+        },
+        {
+          "name": "TestModulesAndFreshState",
+          "requests": [
+            {
+              "label": "original",
+              "literals": {
+                "main.bal": [
+                  0
+                ],
+                "second.bal": [
+                  2
+                ],
+                "modules/one/main.bal": [
+                  4
+                ],
+                "modules/two/main.bal": [
+                  6
+                ]
+              },
+              "project": "native-9893b0841473"
+            },
+            {
+              "label": "after named-module removal",
+              "literals": {
+                "main.bal": [
+                  0
+                ],
+                "second.bal": [
+                  2
+                ]
+              },
+              "project": "native-c9742b0a0492"
+            },
+            {
+              "label": "after root edit",
+              "literals": {
+                "main.bal": [
+                  15
+                ],
+                "second.bal": [
+                  2
+                ]
+              },
+              "project": "native-9ccdacdb5391"
+            }
+          ]
+        },
+        {
+          "name": "TestNormalize",
+          "requests": [],
+          "exclusion": "synthetic diagnostic normalization and arbitrary Unicode document; no compilation request."
+        },
+        {
+          "name": "TestPaths",
+          "requests": [],
+          "exclusion": "sourceFS path-validation vectors only; no compilation request."
+        },
+        {
+          "name": "TestPosition",
+          "requests": [],
+          "exclusion": "byte-offset conversion only; arbitrary Unicode text is not a Ballerina project."
+        },
+        {
+          "name": "TestProjectInput",
+          "requests": [],
+          "exclusion": "All vectors test request validation: nil/empty, absent/malformed/workspace manifest, nested source/manifest, and 4 unsupported test-source paths x 2 invalid bodies. These are intentionally non-supported projects, not frontend AST inputs."
+        },
+        {
+          "name": "TestProjects",
+          "requests": [
+            {
+              "label": "starter",
+              "literals": {
+                "main.bal": [
+                  1
+                ]
+              },
+              "project": "native-0a926a65b037"
+            },
+            {
+              "label": "syntax",
+              "literals": {
+                "main.bal": [
+                  3
+                ]
+              },
+              "project": "native-8236f1db1950"
+            },
+            {
+              "label": "type",
+              "literals": {
+                "main.bal": [
+                  5
+                ]
+              },
+              "project": "native-ae9c691e4786"
+            },
+            {
+              "label": "control flow",
+              "literals": {
+                "main.bal": [
+                  7
+                ]
+              },
+              "project": "native-daf34fcd03a6"
+            },
+            {
+              "label": "unresolved import",
+              "literals": {
+                "main.bal": [
+                  9
+                ]
+              },
+              "project": "native-a00999d07764"
+            }
+          ]
+        },
+        {
+          "name": "TestReadOnlySourceFS",
+          "requests": [],
+          "exclusion": "read-only FS snapshot/path escape checks; original/changed are arbitrary file text."
+        },
+        {
+          "name": "TestResourcesAreNotSource",
+          "requests": [
+            {
+              "label": "resources excluded; named module retained",
+              "literals": {
+                "main.bal": [
+                  0
+                ],
+                "resources/data.bal": [
+                  2
+                ],
+                "modules/sample/main.bal": [
+                  4
+                ],
+                "modules/sample/resources/data.bal": [
+                  6
+                ]
+              },
+              "project": "native-28a7ae9b2e2e"
+            }
+          ]
+        },
+        {
+          "name": "TestUnicodeSourceRange",
+          "requests": [
+            {
+              "label": "Unicode and original CRLF",
+              "literals": {
+                "main.bal": [
+                  0
+                ]
+              },
+              "project": "native-e2714ec47ba5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/compiler/entry_test.go",
+      "sha256": "592b65bbd602e13ec930a9c81eb19dfc7caa7fb3051c95b2d8fe69b7bfe929a4",
+      "scenarios": [
+        {
+          "name": "TestFunctionEntrySourceMetadata",
+          "requests": [
+            {
+              "label": "original",
+              "literals": {
+                "main.bal": [
+                  0
+                ]
+              },
+              "project": "project-d51b3de05d16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/compiler/evaluation_test.go",
+      "sha256": "9cd0b32f8e6496650843b48b0a4e31fcf6b6af7eb4dd0af91a48a28605f0dd28",
+      "scenarios": [
+        {
+          "name": "TestClientAssignmentRetainsComputedTarget",
+          "requests": [
+            {
+              "label": "original",
+              "literals": {
+                "main.bal": [
+                  0
+                ]
+              },
+              "project": "project-0c8276a7d1ac"
+            }
+          ]
+        },
+        {
+          "name": "TestClientCallAndTemplate",
+          "requests": [
+            {
+              "label": "original",
+              "literals": {
+                "main.bal": [
+                  0
+                ]
+              },
+              "project": "project-88601a47fb2c"
+            }
+          ]
+        },
+        {
+          "name": "TestGenericClientContexts",
+          "requests": [
+            {
+              "label": "original",
+              "literals": {
+                "main.bal": [
+                  0
+                ]
+              },
+              "project": "project-db367e31a43a"
+            }
+          ]
+        },
+        {
+          "name": "TestNestedErrorOperators",
+          "requests": [
+            {
+              "label": "original",
+              "literals": {
+                "main.bal": [
+                  0,
+                  1,
+                  2
+                ]
+              },
+              "project": "project-f9cb5b364d6d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/compiler/frontend_test.go",
+      "sha256": "fce9e8ca17820e0a8c3007563c0436ef1745924e16c57c1ecbfb495de82b6ebc",
+      "scenarios": [
+        {
+          "name": "TestResolvedFrontendExamples",
+          "requests": [
+            {
+              "label": "analysis-recovery",
+              "example": "analysis-recovery",
+              "literals": {},
+              "project": "example-analysis-recovery"
+            },
+            {
+              "label": "automation-flow",
+              "example": "automation-flow",
+              "literals": {},
+              "project": "example-automation-flow"
+            },
+            {
+              "label": "chat-references",
+              "example": "chat-references",
+              "literals": {},
+              "project": "example-chat-references"
+            },
+            {
+              "label": "client-calls",
+              "example": "client-calls",
+              "literals": {},
+              "project": "example-client-calls"
+            },
+            {
+              "label": "control-flow",
+              "example": "control-flow",
+              "literals": {},
+              "project": "example-control-flow"
+            },
+            {
+              "label": "definitions-and-calls",
+              "example": "definitions-and-calls",
+              "literals": {},
+              "project": "example-definitions-and-calls"
+            },
+            {
+              "label": "design-critique",
+              "example": "design-critique",
+              "literals": {},
+              "project": "example-design-critique"
+            },
+            {
+              "label": "function-expansion",
+              "example": "function-expansion",
+              "literals": {},
+              "project": "example-function-expansion"
+            },
+            {
+              "label": "panel-state",
+              "example": "panel-state",
+              "literals": {},
+              "project": "example-panel-state"
+            },
+            {
+              "label": "service-discovery",
+              "example": "service-discovery",
+              "literals": {},
+              "project": "example-service-discovery"
+            },
+            {
+              "label": "source-ranges",
+              "example": "source-ranges",
+              "literals": {},
+              "project": "example-source-ranges"
+            },
+            {
+              "label": "unsupported-constructs",
+              "example": "unsupported-constructs",
+              "literals": {},
+              "project": "example-unsupported-constructs"
+            }
+          ]
+        },
+        {
+          "name": "TestResolvedFrontendNamedModules",
+          "requests": [
+            {
+              "label": "root and math",
+              "literals": {
+                "main.bal": [
+                  0
+                ],
+                "modules/math/calculate.bal": [
+                  2
+                ]
+              },
+              "project": "project-e9f6360f5555"
+            }
+          ]
+        },
+        {
+          "name": "TestResolvedFrontendStopsBeforeDesugaring",
+          "requests": [
+            {
+              "label": "original",
+              "literals": {
+                "main.bal": [
+                  0
+                ]
+              },
+              "project": "project-f82046b1a5af"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "browser": [
+    {
+      "file": "packages/workspace/src/files.ts",
+      "sha256": "f6c642be195dac6e85c44efccbbe4da64d38fbde17ff507f5c24fd59fe9448d2",
+      "scenarios": [
+        {
+          "name": "initialFiles",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/compiler/tests/browser/auth.spec.mjs",
+      "sha256": "3de9d5075551223330bdafb3f0cb94ee4cd44bca3496b112d997a585d4b8638e",
+      "scenarios": [
+        {
+          "name": "all four API keys are independent, forgotten explicitly and on refresh, and never sent to a backend",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5"
+          ]
+        },
+        {
+          "name": "all four providers issue browser requests directly and redact rejected credentials",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5"
+          ]
+        },
+        {
+          "name": "dismissing or switching provider discards an unsaved key",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/compiler/tests/browser/compiler.spec.mjs",
+      "sha256": "77cb7ba371de2f477f0d6182e9a9fad963882beb8742e9e736aa0a16a4ccec27",
+      "scenarios": [
+        {
+          "name": "real Go WASM checks starter and invalid source while browser stays responsive",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "native-ae9c691e4786"
+          ]
+        },
+        {
+          "name": "pre-abort and active cancellation leave independent checks working",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5"
+          ]
+        },
+        {
+          "name": "cancellation during bridge compilation terminates its worker",
+          "exclusions": [
+            "Generated 15,000-declaration source is a worker-cancellation stress input: deliberately aborted, no completed frontend result or AST expectation. Generation expression and size are pinned by original file hash."
+          ],
+          "projects": [
+            "project-de9d58e670c5"
+          ]
+        },
+        {
+          "name": "`recovers on a fresh request after ${failure}`",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/compiler/tests/browser/flow.spec.mjs",
+      "sha256": "2eea5ee04dd4fbb7094cdbd68a6ea28b2b0b921185f356bc965a5e5026c8325a",
+      "scenarios": [
+        {
+          "name": "Hello World library call renders as one source step",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-automation-flow",
+            "project-bedef3479a8e"
+          ]
+        },
+        {
+          "name": "agent replies render Markdown while user text and unsafe markup stay inert",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-definitions-and-calls"
+          ]
+        },
+        {
+          "name": "chat renders action-only tool summaries through streaming, outcomes and scope restoration",
+          "exclusions": [
+            "private.bal/secret source strings are simulated tool-message content, not workspace source edits."
+          ],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-definitions-and-calls"
+          ]
+        },
+        {
+          "name": "compact entry follows resource, remote and method selection with source-backed signatures",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-service-discovery",
+            "project-3f93ca42e40c"
+          ]
+        },
+        {
+          "name": "ordinary function entry handles defaults and empty bodies without an invented execution step",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-automation-flow",
+            "project-86921277b890",
+            "project-ba3133adbedd"
+          ]
+        },
+        {
+          "name": "sidebar endpoint names, marker alignment and resource operations",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-service-discovery"
+          ]
+        },
+        {
+          "name": "native and real browser WASM models match for all supported fixtures",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-analysis-recovery",
+            "example-automation-flow",
+            "example-chat-references",
+            "example-client-calls",
+            "example-control-flow",
+            "example-definitions-and-calls",
+            "example-design-critique",
+            "example-function-expansion",
+            "example-panel-state",
+            "example-service-discovery",
+            "example-source-ranges",
+            "example-unsupported-constructs"
+          ]
+        },
+        {
+          "name": "discovery, definitions, endpoint source selection and explicit chips-only send",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-definitions-and-calls"
+          ]
+        },
+        {
+          "name": "20/60/20, scope drafts, expansion and floating chat survive panel changes",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-panel-state"
+          ]
+        },
+        {
+          "name": "invalid edits retain stale flow, disable references and repair",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-analysis-recovery",
+            "browser-3ee1da791bb2"
+          ]
+        },
+        {
+          "name": "Automation and limited regions show exact source without async dependency edges",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-unsupported-constructs"
+          ]
+        },
+        {
+          "name": "expanded call bodies reference definitions, call headers reference sites, and recursion stays finite",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-function-expansion"
+          ]
+        },
+        {
+          "name": "obsolete browser completions and infrastructure failures retain current flow",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-analysis-recovery",
+            "project-20efed10a875",
+            "project-12c458a39d7a",
+            "project-64249f728a27"
+          ]
+        },
+        {
+          "name": "a saved source update immediately before prompting blocks stale references",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-chat-references",
+            "project-9cd729d43af2"
+          ]
+        },
+        {
+          "name": "unsaved editor text does not invalidate analysis; removing selected scopes falls back to Automation",
+          "exclusions": [
+            "Textbox draft \"not saved\" is not written to the workspace or compiled."
+          ],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-chat-references",
+            "project-3669d5697eba"
+          ]
+        },
+        {
+          "name": "measured source labels fit their headers after nested expansion",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-design-critique"
+          ]
+        },
+        {
+          "name": "flow fits panel width with margins through resize, panel mode and call expansion",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-design-critique"
+          ]
+        },
+        {
+          "name": "prompt references highlight matching nodes and clear on removal, scope change and send",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-chat-references"
+          ]
+        },
+        {
+          "name": "foreach is explicit and call disclosure stays in its top-left corner",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-design-critique"
+          ]
+        },
+        {
+          "name": "provider controls forget only the chosen API key",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-design-critique"
+          ]
+        },
+        {
+          "name": "inspection expansion is available only for flow diagrams",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-design-critique"
+          ]
+        },
+        {
+          "name": "anchor activity follows concurrent chats and completion clears only on click",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-definitions-and-calls"
+          ]
+        },
+        {
+          "name": "automation anchor shows running and completed activity",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-automation-flow"
+          ]
+        },
+        {
+          "name": "Fibonacci arithmetic calls expand independently and recursive calls stay collapsed",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-automation-flow",
+            "project-594b3be7e8da"
+          ]
+        },
+        {
+          "name": "client call cards render generic source context, explicit errors and string templates",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5",
+            "example-client-calls"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/compiler/tests/browser/static-host.spec.mjs",
+      "sha256": "47481d47b0d875f97510415af240d8eccd36022ee5f1e196a5f353e86fb93c03",
+      "scenarios": [
+        {
+          "name": "built app runs under a Pages subpath without backend requests",
+          "exclusions": [],
+          "projects": [
+            "project-de9d58e670c5"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/compiler/tests/browser/storage.spec.mjs",
+      "sha256": "fa3802269b222c6de60726efb3fc96dcc824b9243b2e0549adcab3b3c2df369f",
+      "scenarios": [
+        {
+          "name": "source edits stay in memory and reset on reload without server workspace access",
+          "exclusions": [
+            "old.bal localStorage text is intentionally never restored/compiled; browser-storage infrastructure only."
+          ],
+          "projects": [
+            "project-de9d58e670c5",
+            "browser-21a431ee2eba"
+          ]
+        },
+        {
+          "name": "browser storage is never accessed, even when unavailable",
+          "exclusions": [
+            "old.bal localStorage text is intentionally never restored/compiled; browser-storage infrastructure only."
+          ],
+          "projects": [
+            "project-de9d58e670c5",
+            "browser-21a431ee2eba"
+          ]
+        },
+        {
+          "name": "previously stored source is not restored or overwritten",
+          "exclusions": [
+            "old.bal localStorage text is intentionally never restored/compiled; browser-storage infrastructure only."
+          ],
+          "projects": [
+            "project-de9d58e670c5",
+            "browser-21a431ee2eba"
+          ]
+        }
+      ]
+    }
+  ],
+  "infrastructure": [
+    {
+      "file": "packages/compiler/tests/client.test.mjs",
+      "sha256": "d1b363a043e252f1ecd7b63141b7e51fe3ae7ee8369afe882cdb9d54f6281eff",
+      "exclusion": "WorkerStub/protocol validation only: empty maps, main.bal empty text, and main.bal x never reach the real compiler. Synthetic model/range/client-context transport tests have no project AST."
+    },
+    {
+      "file": "packages/compiler/tests/native/main.go",
+      "sha256": "c8009d1f673ec80ea7a5c23105770fc4a449f69ea33e889ab1481f61cc067d84",
+      "exclusion": "JSON stdin/native model parity driver. No embedded Ballerina source: all input projects come from independently inventoried browser examples."
+    },
+    {
+      "file": "apps/editor/tests/connection.test.mjs",
+      "sha256": "be5cc5e2c545eab29504dd973bc07da0f144c6308fd1846cf64ef15920d92e83",
+      "scenarios": [
+        "Gemini and OpenRouter expose only curated latest models in selection order",
+        "browser PI login and logout update in-memory provider accounts without a backend",
+        "all four provider credentials are independent, trimmed, replaceable, and memory-only",
+        "empty keys and unknown providers are rejected without altering existing credentials",
+        "new module instances do not restore credentials from storage or host environment",
+        "provider errors never expose raw response bodies or credentials in stream events",
+        "browser PI executes streamed file tools and sends results directly to the provider",
+        "direct provider streaming forwards text and settles premature EOF as an error",
+        "stopping a browser agent aborts the direct provider request and settles the turn",
+        "agent repairs source after diagnostics and rechecks the retained workspace"
+      ],
+      "exclusion": "Node UI/layout/reference tests construct synthetic models/source records or test rendering and message protocols; they never submit a Ballerina project to the real compiler. Any source-like labels are graph-only, not AST inputs."
+    },
+    {
+      "file": "apps/editor/tests/flow.test.mjs",
+      "sha256": "c5ebf603351eae6bcb30a687cbd4570d8a1a93288fd522dd7fcfc1a835155409",
+      "scenarios": [
+        "library calls render once as source steps and retain sequence connections",
+        "abrupt exits, empty branches and unsupported regions have no invented continuation",
+        "loops preserve nested break/continue ownership and foreach has no routine back edge",
+        "call occurrences expand independently; callee returns stay inside their call and recursion stays finite",
+        "routing avoids unrelated source boxes through nested branch and loop lanes",
+        "branch arrows leave opposite sides with orthogonal routes and top-level returns terminate",
+        "direct and mutual recursion retain call sites and continuations even with stale expansion paths",
+        "generic client cards preserve constructor and named arguments with explicit check returns",
+        "trap captures panic paths while check returns escape the operand scope",
+        "long initialization expands without truncating call arguments or losing source selection"
+      ],
+      "exclusion": "Node UI/layout/reference tests construct synthetic models/source records or test rendering and message protocols; they never submit a Ballerina project to the real compiler. Any source-like labels are graph-only, not AST inputs."
+    },
+    {
+      "file": "apps/editor/tests/references.test.mjs",
+      "sha256": "97d8797c65785020279836b0e42bd5152ffde44b519c2885ecaaacb62de957c3",
+      "scenarios": [
+        "references preserve prose, deduplicate source identity, format occupied rows and serialize exact Unicode text",
+        "saved revisions invalidate chips; only identical identity/range/text refresh, and serialization rejects stale revisions",
+        "plain prose remains sendable for repairs while old source is stale"
+      ],
+      "exclusion": "Node UI/layout/reference tests construct synthetic models/source records or test rendering and message protocols; they never submit a Ballerina project to the real compiler. Any source-like labels are graph-only, not AST inputs."
+    },
+    {
+      "file": "apps/editor/tests/tool-summaries.test.mjs",
+      "sha256": "a607d257530f804e555416353340ba951f2e2bc7074e9e0d9f035e588c7640b6",
+      "scenarios": [
+        "all workspace tools use action-only templates and diagnostics never imply a clean check",
+        "pairs multiple calls by ID, keeps prose in order, hides all raw data, and preserves agent history",
+        "partial arguments stay hidden and pending operations stop without reviving on later turns",
+        "failure reasons are concise templates with no filename or source disclosure",
+        "aborted results are stopped, successful results stay completed even when the turn stops",
+        "restored conversations and orphan results remain compact; system messages and thinking stay hidden"
+      ],
+      "exclusion": "Node UI/layout/reference tests construct synthetic models/source records or test rendering and message protocols; they never submit a Ballerina project to the real compiler. Any source-like labels are graph-only, not AST inputs."
+    },
+    {
+      "file": "packages/browser-workspace/tests/agent.test.mjs",
+      "sha256": "7416793e98a25ad7f2072b20c12952e97e7360af141a809a059668cd10f9fe5e",
+      "scenarios": [
+        "PI tools edit the same persisted workspace that the UI observes",
+        "PI uses only workspace tools without browser credentials"
+      ],
+      "exclusion": "Node workspace/agent/diagnostic tests use the fixtures.mjs synthetic analyze stub or mocked compiler promises. Source edits exercise storage, revision races, tool/path validation and transport, not real compilation. Arbitrary invalid text and rejected storage writes are infrastructure-only; no fabricated project AST."
+    },
+    {
+      "file": "packages/browser-workspace/tests/analysis.test.mjs",
+      "sha256": "ed7ec03cf4af535017d9e47550410619f5eefaa019a8940183f55f7d559c2ddf",
+      "scenarios": [
+        "revision publication ignores obsolete completions, retains agents and aborts removed anchors on storage failure",
+        "initial invalid and failed analysis settle discovery without invented anchors; aborted flow rejects",
+        "a declaration removed by a valid model gets a new agent if recreated with the same signature",
+        "storage failure aborts retained service, endpoint and Automation agents"
+      ],
+      "exclusion": "Node workspace/agent/diagnostic tests use the fixtures.mjs synthetic analyze stub or mocked compiler promises. Source edits exercise storage, revision races, tool/path validation and transport, not real compilation. Arbitrary invalid text and rejected storage writes are infrastructure-only; no fabricated project AST."
+    },
+    {
+      "file": "packages/browser-workspace/tests/diagnostics.test.mjs",
+      "sha256": "c8162b8f6f8f855b623ccebd4355ff3788a294185fc69c278af2e96f15b81402",
+      "scenarios": [
+        "diagnostics use saved snapshot, forward abort, and publish no changes",
+        "edits, deletions, and editing back all make a captured check stale",
+        "storage-only configuration, cancellation and infrastructure failures reject",
+        "file-tool repair sequence checks changed saved source",
+        "diagnostics use browser files and become stale after a local update"
+      ],
+      "exclusion": "Node workspace/agent/diagnostic tests use the fixtures.mjs synthetic analyze stub or mocked compiler promises. Source edits exercise storage, revision races, tool/path validation and transport, not real compilation. Arbitrary invalid text and rejected storage writes are infrastructure-only; no fabricated project AST."
+    },
+    {
+      "file": "packages/browser-workspace/tests/fixtures.mjs",
+      "sha256": "a3fcf11d0de1b1ad444e7737ef637d1b91e72168774aa5ea4f39821df2806b32",
+      "scenarios": [],
+      "exclusion": "Node workspace/agent/diagnostic tests use the fixtures.mjs synthetic analyze stub or mocked compiler promises. Source edits exercise storage, revision races, tool/path validation and transport, not real compilation. Arbitrary invalid text and rejected storage writes are infrastructure-only; no fabricated project AST."
+    },
+    {
+      "file": "packages/browser-workspace/tests/workspace.test.mjs",
+      "sha256": "bfd078d0873b55af45100898cfea5b62a4cbc2ce948ccb4f8e49c2e12479c1eb",
+      "scenarios": [
+        "persists initial hello world files, edits and deletions across reloads",
+        "ambiguous or stale edits fail without altering source; replacement is literal",
+        "rejects paths outside the workspace and file/directory conflicts",
+        "storage failure does not mutate files or publish a successful change",
+        "invalid saved data is reported and left untouched",
+        "initial storage access failures leave the workspace read-only",
+        "invalid saved file maps are left untouched and valid empty workspaces stay empty",
+        "file subscribers observe already-persisted snapshots; storage subscriptions can unsubscribe",
+        "subscribers see changes and can unsubscribe",
+        "service discovery retains the anchor and its agent over shared workspace files"
+      ],
+      "exclusion": "Node workspace/agent/diagnostic tests use the fixtures.mjs synthetic analyze stub or mocked compiler promises. Source edits exercise storage, revision races, tool/path validation and transport, not real compilation. Arbitrary invalid text and rejected storage writes are infrastructure-only; no fabricated project AST."
+    }
+  ]
+}

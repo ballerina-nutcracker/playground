@@ -1,0 +1,102 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/unsupported_constructs / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples unsupported_constructs 0.1.0)
+  (function (position 1:1 14:2) main () (
+    (union-type (position 1:32 1:38)
+      (error-type (position 1:32 1:37))
+      (value-type (position 1:37 1:38) null)))
+    (block-function-body (position 1:39 14:2)
+      (var-def (position 2:5 2:18)
+        (variable (position 2:5 2:18) mode (type
+          (value-type (position 2:5 2:8) int)) (expr
+          (literal (position 2:16 2:17) 1))))
+      (var-def (position 3:5 3:53)
+        (variable (position 3:5 3:53) request (type
+          (record-type (position 3:5 3:28)
+            (field value
+              (value-type (position 3:15 3:18) int)))) (expr
+          (mapping-constructor-expr (position 3:39 3:52)
+            (key-value (position 3:40 3:51)
+              (literal (position 3:40 3:45) value)
+              (simple-var-ref (position 3:47 3:51) mode))))))
+      (match (position 4:5 7:6)
+        (simple-var-ref (position 4:11 4:15) mode)
+        (match-clause (position 5:9 5:27)
+          (const-pattern (position 5:9 5:10)
+            (literal (position 5:9 5:10) 1))
+          (block-stmt (position 5:14 5:27)
+            (assignment (position 5:16 5:25)
+              (simple-var-ref (position 5:16 5:20) mode)
+              (literal (position 5:23 5:24) 2))))
+        (match-clause (position 6:9 6:27)
+          (wildcard-match-pattern (position 6:9 6:10))
+          (block-stmt (position 6:14 6:27)
+            (assignment (position 6:16 6:25)
+              (simple-var-ref (position 6:16 6:20) mode)
+              (literal (position 6:23 6:24) 3)))))
+      (var-def (position 8:5 8:51)
+        (variable (position 8:5 8:51) selected (type
+          (value-type (position 8:5 8:12) boolean)) (expr
+          (binary-expr (position 8:24 8:50) &&
+            (binary-expr (position 8:24 8:32) >
+              (simple-var-ref (position 8:24 8:28) mode)
+              (literal (position 8:31 8:32) 0))
+            (invocation (position 8:36 8:50) positive (
+              (simple-var-ref (position 8:45 8:49) mode)))))))
+      (var-def (position 9:5 9:47)
+        (variable (position 9:5 9:47) pending (type
+          (constrained-type (position 9:5 9:16)
+            (builtin-ref-type (position 9:5 9:16) future)
+            (value-type (position 9:12 9:15) int))) (expr
+          (start-action (position 9:27 9:46)
+            (invocation (position 9:33 9:46) compute (
+              (simple-var-ref (position 9:41 9:45) mode)))))))
+      (var-def (position 10:5 10:37)
+        (variable (position 10:5 10:37) result (type
+          (value-type (position 10:5 10:8) int)) (expr
+          (checked-expr (position 10:18 10:36)
+            (single-wait-action (position 10:24 10:36)
+              (simple-var-ref (position 10:29 10:36) pending))))))
+      (assignment (position 11:5 11:17)
+        (wildcard-binding-pattern (position 11:5 11:6))
+        (simple-var-ref (position 11:9 11:16) request))
+      (assignment (position 12:5 12:18)
+        (wildcard-binding-pattern (position 12:5 12:6))
+        (simple-var-ref (position 12:9 12:17) selected))
+      (assignment (position 13:5 13:16)
+        (wildcard-binding-pattern (position 13:5 13:6))
+        (simple-var-ref (position 13:9 13:15) result))))
+  (function (position 16:1 16:67) positive (
+    (variable (position 16:19 16:28) value (type
+      (value-type (position 16:19 16:22) int)))) (
+    (value-type (position 16:38 16:45) boolean))
+    (block-function-body (position 16:46 16:67)
+      (return (position 16:48 16:65)
+        (binary-expr (position 16:55 16:64) >
+          (simple-var-ref (position 16:55 16:60) value)
+          (literal (position 16:63 16:64) 0)))))
+  (function (position 17:1 17:62) compute (
+    (variable (position 17:18 17:27) value (type
+      (value-type (position 17:18 17:21) int)))) (
+    (value-type (position 17:37 17:40) int))
+    (block-function-body (position 17:41 17:62)
+      (return (position 17:43 17:60)
+        (binary-expr (position 17:50 17:59) *
+          (simple-var-ref (position 17:50 17:55) value)
+          (literal (position 17:58 17:59) 2))))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### call main.bal [223,237)
+arguments: 1
+argument[0]:
+(simple-var-ref (position 8:45 8:49) mode)
+
+### call main.bal [271,284)
+arguments: 1
+argument[0]:
+(simple-var-ref (position 9:41 9:45) mode)

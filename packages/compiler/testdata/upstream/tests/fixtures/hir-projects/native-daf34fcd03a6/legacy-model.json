@@ -1,0 +1,31 @@
+{
+  "scopes": [],
+  "functions": {
+    "browser/http_service/function/value": {
+      "id": "browser/http_service/function/value",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 33
+          }
+        }
+      },
+      "text": "function value() returns int { }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "value",
+        "signature": "function value() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "body": []
+    }
+  }
+}

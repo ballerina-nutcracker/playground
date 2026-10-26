@@ -1,0 +1,180 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module corpus/provenance / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id corpus provenance 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (class-definition (position 3:1 8:2) Queue
+    (function (position 4:5 4:79) init (
+      (variable (position 4:26 4:37) host (type
+        (value-type (position 4:26 4:32) string)))
+      (variable (position 4:39 4:54) port (type
+        (value-type (position 4:39 4:42) int)) (expr
+        (literal (position 4:50 4:54) 9092)))) (
+      (value-type (position <built-in>) null))
+      (block-function-body (position 4:56 4:79)
+        (assignment (position 4:58 4:67)
+          (wildcard-binding-pattern (position 4:58 4:59))
+          (simple-var-ref (position 4:62 4:66) host))
+        (assignment (position 4:68 4:77)
+          (wildcard-binding-pattern (position 4:68 4:69))
+          (simple-var-ref (position 4:72 4:76) port))))
+    (function (position 6:5 6:58) label (
+      (variable (position 6:20 6:32) value (type
+        (value-type (position 6:20 6:26) string)))) (
+      (value-type (position 6:42 6:48) string))
+      (expr-function-body (position 6:49 6:58)
+        (simple-var-ref (position 6:52 6:57) value)))
+    (function (position 5:5 5:87) $remote$read (
+      (variable (position 5:26 5:47) topic (type
+        (value-type (position 5:26 5:32) string)) (expr
+        (literal (position 5:41 5:47) jobs)))) (
+      (union-type (position 5:57 5:69)
+        (value-type (position 5:57 5:63) string)
+        (error-type (position 5:64 5:69))))
+      (block-function-body (position 5:70 5:87)
+        (return (position 5:72 5:85)
+          (simple-var-ref (position 5:79 5:84) topic))))
+    (resource-function (position 7:5 7:68) get name:items
+      (param id
+        (value-type (position 7:34 7:40) string))
+      (value-type (position 7:55 7:61) string)
+      (expr-function-body (position 7:62 7:68)
+        (simple-var-ref (position 7:65 7:67) id))))
+  (function (position 9:1 9:35) index () (
+    (value-type (position 9:26 9:29) int))
+    (expr-function-body (position 9:30 9:35)
+      (literal (position 9:33 9:34) 0)))
+  (function (position 10:1 10:57) identity (
+    (variable (position 10:19 10:31) value (type
+      (value-type (position 10:19 10:25) string)))) (
+    (value-type (position 10:41 10:47) string))
+    (expr-function-body (position 10:48 10:57)
+      (simple-var-ref (position 10:51 10:56) value)))
+  (function (position 11:1 13:2) fill (
+    (variable (position 11:15 11:26) queue (type
+      (user-defined-type (position 11:15 11:20) Queue)))
+    (variable (position 11:28 11:43) values (type
+      (array-type (position 11:28 11:36)
+        (value-type (position 11:28 11:34) string) dimensions: 1 ([]))))) (
+    (union-type (position 11:53 11:59)
+      (error-type (position 11:53 11:58))
+      (value-type (position 11:58 11:59) null)))
+    (block-function-body (position 11:60 13:2)
+      (assignment (position 12:5 12:69)
+        (index-based-access (position 12:5 12:20)
+          (simple-var-ref (position 12:5 12:11) values)
+          (invocation (position 12:12 12:19) index ()))
+        (checked-expr (position 12:23 12:68)
+          (remote-method-call (position 12:29 12:68) read expr:
+            (simple-var-ref (position 12:29 12:34) queue) (
+            (invocation (position 12:49 12:67) identity (
+              (literal (position 12:58 12:66) orders)))))))))
+  (function (position 14:1 16:2) fetch (
+    (variable (position 14:16 14:28) caller (type
+      (user-defined-type (position 14:16 14:21) Queue)))) (
+    (union-type (position 14:38 14:50)
+      (value-type (position 14:38 14:44) string)
+      (error-type (position 14:45 14:50))))
+    (block-function-body (position 14:51 16:2)
+      (return (position 15:5 15:63)
+        (checked-expr (position 15:12 15:62)
+          (client-resource-access (position 15:18 15:62) get expr:
+            (simple-var-ref (position 15:18 15:24) caller) name:items computed:
+            (invocation (position 15:34 15:55) identity (
+              (literal (position 15:43 15:54) café🚀))))))))
+  (function (position 17:1 21:2) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 17:24 21:2)
+      (var-def (position 18:5 18:60)
+        (variable (position 18:5 18:60) queue (type
+          (user-defined-type (position 18:5 18:10) Queue)) (expr
+          (new (position 18:19 18:59) (
+            (invocation (position 18:24 18:42) identity (
+              (literal (position 18:33 18:41) broker)))
+            (invocation (position 18:51 18:58) index ()))))))
+      (var-def (position 19:5 19:58)
+        (variable (position 19:5 19:58) text (type
+          (value-type (position 19:5 19:11) string)) (expr
+          (invocation (position 19:19 19:57) label expr:
+            (simple-var-ref (position 19:19 19:24) queue) (
+            (literal (position 19:39 19:56) සිංහල))))))
+      (assignment (position 20:5 20:14)
+        (wildcard-binding-pattern (position 20:5 20:6))
+        (simple-var-ref (position 20:9 20:13) text))))
+  (service (position 22:1 24:2)
+    (absolute-resource-path api)
+    (on
+    (new (position 22:17 22:40)
+      (user-defined-type (position 22:21 22:34) http Listener) (
+      (literal (position 22:35 22:39) 8080) <default> (position 22:17 22:40))))
+    (resource-function (position 23:5 23:68) get name:items
+      (param id
+        (value-type (position 23:34 23:40) string))
+      (value-type (position 23:55 23:61) string)
+      (expr-function-body (position 23:62 23:68)
+        (simple-var-ref (position 23:65 23:67) id)))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### call main.bal [503,510)
+arguments: 0
+
+### call main.bal [520,559)
+receiver:
+(simple-var-ref (position 12:29 12:34) queue)
+arguments: 1
+argument[0]:
+(named-arg (position 12:41 12:67) topic
+  (invocation (position 12:49 12:67) identity (
+    (literal (position 12:58 12:66) orders))))
+
+### call main.bal [540,558)
+arguments: 1
+argument[0]:
+(literal (position 12:58 12:66) orders)
+
+### call main.bal [632,676)
+receiver:
+(simple-var-ref (position 15:18 15:24) caller)
+resource-path[0]:
+(invocation (position 15:34 15:55) identity (
+  (literal (position 15:43 15:54) café🚀)))
+arguments: 0
+
+### call main.bal [648,669)
+arguments: 1
+argument[0]:
+(literal (position 15:43 15:54) café🚀)
+
+### new main.bal [723,763)
+arguments: 2
+argument[0]:
+(invocation (position 18:24 18:42) identity (
+  (literal (position 18:33 18:41) broker)))
+argument[1]:
+(named-arg (position 18:44 18:58) port
+  (invocation (position 18:51 18:58) index ()))
+
+### call main.bal [728,746)
+arguments: 1
+argument[0]:
+(literal (position 18:33 18:41) broker)
+
+### call main.bal [755,762)
+arguments: 0
+
+### call main.bal [783,821)
+receiver:
+(simple-var-ref (position 19:19 19:24) queue)
+arguments: 1
+argument[0]:
+(named-arg (position 19:31 19:56) value
+  (literal (position 19:39 19:56) සිංහල))
+
+### new main.bal [855,878)
+arguments: 1
+argument[0]:
+(literal (position 22:35 22:39) 8080)

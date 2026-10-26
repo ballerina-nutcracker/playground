@@ -1,0 +1,4 @@
+[package]
+org = "examples"
+name = "design_critique"
+version = "0.1.0"

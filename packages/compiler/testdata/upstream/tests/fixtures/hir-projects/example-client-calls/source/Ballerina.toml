@@ -1,0 +1,4 @@
+[package]
+org = "examples"
+name = "client_calls"
+version = "0.1.0"

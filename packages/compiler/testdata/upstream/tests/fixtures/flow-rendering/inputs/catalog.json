@@ -1,0 +1,5021 @@
+{
+  "bce47182b8bfa076635d1fb0a6f695b8b0bbe55fe8d2be5a2c9675a4eed38602": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"analysis_recovery\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}\n\nfunction double(int amount) returns int { return amount * 2; }\n"
+    }
+  },
+  "df75cfd85efb26c50277458cb1be9eb48b5d5f2493b4ed18616bad312b7c98fc": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"automation_flow\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() {\n    int count = 3;\n    while count > 0 {\n        count -= 1;\n    }\n    _ = finish(count);\n}\n\nfunction finish(int count) returns int { return count; }\n"
+    }
+  },
+  "6cc8aba26b2578db57e11f862a83df3bfca5f17fb846956c7f9ab2ff4f08fff8": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"chat_references\"\nversion = \"0.1.0\"\n",
+      "main.bal": "import ballerina/http;\n\nservice /notes on new http:Listener(8080) {\n    resource function get first() returns string { return shared(\"first\"); }\n    resource function get second() returns string { return shared(\"second\"); }\n}\n\nfunction shared(string value) returns string { return value; }\n"
+    }
+  },
+  "d7b4433c585e3417e0f8238a9bb02b8beb5278274b659af8e295228968d73147": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"client_calls\"\nversion = \"0.1.0\"\n",
+      "main.bal": "import ballerina/http;\n\ntype Person record {|\n    string first_name;\n    string last_name;\n|};\n\nfinal http:Client testClient = check new (\"https://test.com\");\n\nservice / on new http:Listener(8080) {\n    resource function get hello() returns string|error {\n        Person person = check testClient->get(\"/foo/bar\");\n        return string `hello ${person.first_name} ${person.last_name}`;\n    }\n}\n\nclient class Queue {\n    public function init(string host, int port = 9092) {\n        _ = host;\n        _ = port;\n    }\n    remote function send(string message, string topic = \"jobs\") returns string|error {\n        return topic + \": \" + message;\n    }\n}\n\nfunction sendMessage() returns string|error {\n    Queue producer = new (\"broker\", port = 9093);\n    string result = check producer->send(\"hello\", topic = \"orders\");\n    return result;\n}\n\nfunction capturePanic() returns string|error {\n    string|error result = trap checkpanic sendMessage();\n    return result;\n}\n"
+    }
+  },
+  "c83d6c0d3068629f1a62d4ee46ba7225c755172cb959b68996917e78b1b1472a": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"control_flow\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() { _ = process([1, 2, 3, 4]); }\n\nfunction process(int[] values) returns int {\n    int total = 0;\n    int index = 0;\n    while index < 3 {\n        index += 1;\n        if index == 2 { continue; }\n        foreach int value in values {\n            if value == 1 { continue; }\n            if value > 3 { break; }\n            total += value;\n        }\n        if total > 20 { break; }\n    }\n    if total < 0 {\n        return 0;\n    } else if total == 0 {\n        total = 1;\n    } else {\n        total += 2;\n    }\n    if total > 10 {} else { total += 1; }\n    return total;\n}\n"
+    }
+  },
+  "53c77adeee9564d7bbfde6d489fb448f0110fa3b650e8b62fb069695b3b11842": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"definitions_and_calls\"\nversion = \"0.1.0\"\n",
+      "helpers.bal": "function calculate(int value) returns int { return value + 1; }\n",
+      "main.bal": "import ballerina/http;\nimport examples/definitions_and_calls.math;\n\nfinal int minimumAmount = 5;\nfinal string upstream = \"http://localhost:9090\";\nLocalClient upstreamClient = new ();\n\nclient class LocalClient {\n    remote function send() returns string { return \"sent\"; }\n}\ntype Order record {| int amount; |};\ntype UnusedRecord record {| string description; |};\n\nservice /orders on new http:Listener(8080) {\n    resource function get total() returns int {\n        int local = calculate(minimumAmount);\n        return math:calculate(local);\n    }\n}\n\nfunction unusedHelper() returns string {\n    string status = upstreamClient->send();\n    return upstream + \": \" + status;\n}\n",
+      "modules/math/calculate.bal": "public function calculate(int value) returns int { return value * 2; }\n"
+    }
+  },
+  "132445b2d54fb343d6e3e1bcb218a2d0f28bcdc835d2574a21c10dc21f58086e": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"design_critique\"\nversion = \"0.1.0\"\n",
+      "main.bal": "import ballerina/http;\n\nfinal int minimum = 1;\ntype Order record {| int amount; |};\n\nservice /orders on new http:Listener(8080) {\n    resource function post orders() returns int {\n        int[] items = [1, 2, 3];\n        int total = 0;\n        foreach int item in items {\n            if item < minimum { continue; }\n            total += calculate(item);\n        }\n        if total > 10 { total += 2; } else { total += 1; }\n        return total;\n    }\n    resource function get status() returns string { return \"ready\"; }\n}\n\nfunction calculate(int value) returns int {\n    if value < 0 { return 0; }\n    return value * 2;\n}\n"
+    }
+  },
+  "d8758335cc5442d663f1ea7062a5e5a1a12995875ca2319e7bcdefd11a2dce73": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"function_expansion\"\nversion = \"0.1.0\"\n",
+      "helpers.bal": "function shared(int value) returns int { return adjust(value); }\nfunction adjust(int value) returns int { return value + 1; }\nfunction countdown(int value) returns int {\n    if value <= 0 { return 0; }\n    return countdown(value - 1);\n}\nfunction evenStep(int value) returns int {\n    if value <= 0 { return 0; }\n    return oddStep(value - 1);\n}\nfunction oddStep(int value) returns int {\n    if value <= 0 { return 1; }\n    return evenStep(value - 1);\n}\n",
+      "main.bal": "public function main() {\n    int first = shared(2);\n    int second = shared(3);\n    int recursive = countdown(first);\n    int mutual = evenStep(second);\n    _ = recursive;\n    _ = mutual;\n}\n"
+    }
+  },
+  "c81304f55f2038c6f16475245619a1f5c04bda0b109f7f559a52c35e55d3cd73": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"panel_state\"\nversion = \"0.1.0\"\n",
+      "main.bal": "import ballerina/http;\n\nservice /reports on new http:Listener(8080) {\n    resource function get daily() returns int { return buildReport(5); }\n    resource function get weekly() returns int { return buildReport(35); }\n}\n\nfunction buildReport(int extraordinarilyLongButMeaningfulInputName) returns int {\n    int calculatedReportTotal = extraordinarilyLongButMeaningfulInputName + 1;\n    if calculatedReportTotal > 10 { return calculatedReportTotal; }\n    return 10;\n}\n"
+    }
+  },
+  "e3ff3af7604df78ec1159d6414172342436b2811b199295b65451ed5880bee97": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"service_discovery\"\nversion = \"0.1.0\"\n",
+      "datagrams.bal": "import ballerina/udp;\n\nservice on new udp:Listener(9090) {\n    remote function onBytes(byte[] data, udp:Caller caller) returns byte[] {\n        _ = caller;\n        return data;\n    }\n}\n",
+      "inventory.bal": "import ballerina/http;\n\nservice /inventory on new http:Listener(8081) {\n    resource function get items() returns string { return sharedLabel(); }\n}\n\nfunction unusedHelper() returns int { return 42; }\n",
+      "orders.bal": "import ballerina/http;\n\nservice /orders on new http:Listener(8080) {\n    resource function get orders() returns string { return formatOrder(); }\n    remote function refresh() returns string { return \"refreshed\"; }\n    function formatOrder() returns string { return sharedLabel(); }\n}\n\nfunction sharedLabel() returns string { return \"order\"; }\n"
+    }
+  },
+  "c60f8cbbe889e17999b436e5631a995adde608c7546d6741717d3b02de744901": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"source_ranges\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() {\n    // café, සිංහල, and an astral character: 🚀\n    string greeting = \"Hello 🚀 café\";\n    string result = decorate(\n        greeting,\n        \"සිංහල\"\n    );\n    int windows = windowsValue();\n    _ = result;\n    _ = windows;\n}\n\nfunction decorate(string left, string right) returns string {\n    return left + \" / \" + right;\n}\n",
+      "windows.bal": "function windowsValue() returns int {\r\n    int value = 2;\r\n    return value;\r\n}\r\n"
+    }
+  },
+  "b0de50fb7d7e36d468f1526eef3a87aeb2418b22421291ac372565e71b31d4ad": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"unsupported_constructs\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() returns error? {\n    int mode = 1;\n    record {| int value; |} request = {value: mode};\n    match mode {\n        1 => { mode = 2; }\n        _ => { mode = 3; }\n    }\n    boolean selected = mode > 0 && positive(mode);\n    future<int> pending = start compute(mode);\n    int result = check wait pending;\n    _ = request;\n    _ = selected;\n    _ = result;\n}\n\nfunction positive(int value) returns boolean { return value > 0; }\nfunction compute(int value) returns int { return value * 2; }\n"
+    }
+  },
+  "2371c674cc7bf52a141b2e842bfb21686c6739f9cd65eb566d2baac2460c6f7b": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() { int x = \"bad\"; _ = x; }"
+    }
+  },
+  "99ccabce50344b4bf71e1119eb0116b8b7fa64501ab4d58c5e0e7464b0a19e71": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "import ballerina/http;\nimport ballerina/io;\nservice / on new http:Listener(8080) {\n resource function get hello() returns string { return \"Hello, World!\"; }\n resource function get [int x]/[int y]/sum() returns int {\n  io:println(\"x: \", x, \", y: \", y);\n  return fib(x) + fib(y);\n }\n}\nfunction fib(int n) returns int {\n if n <= 1 { return n; }\n return fib(n - 1) + fib(n - 2);\n}"
+    }
+  },
+  "203fd4c9744bb057456a215b577efb0a339a60a8b612e16622cc1b730abef7ad": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() { var result = (value(1) - value(2)) / value(3) % value(4); _ = result; } function value(int n) returns int { return n; }"
+    }
+  },
+  "90bf62cce2e13a7bb32a3a3e9a3c7e0f811eadb2222e2ca4e1734d64eca0d276": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() { var result = (value(1) + value(2) > 0) && (value(3) + value(4) > 0); _ = result; } function value(int n) returns int { return n; }"
+    }
+  },
+  "1bd8ec8f8a3ef901571c338355c4d4f3bd2db9d9b7a86fda4230b15947e6ca0b": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() { var result = (value(1) > 0) || (value(2) > 0); _ = result; } function value(int n) returns int { return n; }"
+    }
+  },
+  "e3f1a3f22f1149813588f9f4971aa02536685f995224e433dec18817a4c7b394": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() { var result = true ? value(1) + value(2) : value(3); _ = result; } function value(int n) returns int { return n; }"
+    }
+  },
+  "518de81998e147d93777b8ce49625e23fa83205962ca32b1c4d5e4f652f2bd42": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() { var result = value(1) + value(2) * value(3); _ = result; } function value(int n) returns int { return n; }"
+    }
+  },
+  "12688e149e5f8bcf721ba38317cb927144102b5fb9c9247f4206705982d19c77": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() { var result = value(value(1) + value(2)); _ = result; } function value(int n) returns int { return n; }"
+    }
+  },
+  "0c8276a7d1ac23385493bd8a056ee4eee1f20e96de29f30e52babefb408b6dfa": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "client class Queue {\n remote function read() returns string|error { return \"value\"; }\n }\n function index() returns int { return 0; }\n function fill(Queue queue, string[] values) returns error? {\n values[index()] = check queue->read();\n }\n public function main() {}"
+    }
+  },
+  "88601a47fb2c2660f59ffe5802cde082f3391f442fc5cf628ea1fe09bd9adff4": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "import ballerina/http;\ntype Person record {| string first_name; string last_name; |};\nfinal http:Client testClient = check new (\"https://test.com\");\nservice / on new http:Listener(8080) { resource function get hello() returns string|error { Person person = check testClient->get(\"/foo/bar\"); return string `hello ${person.first_name} ${person.last_name}`; } }"
+    }
+  },
+  "d51b3de05d1652b5c8056742735048c3902696a8e05becbd93d72c68b53da3f4": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "import ballerina/http;\nservice /orders on new http:Listener(8080) {\n    resource function get [int id](boolean includeItems = false) returns string { _ = id; _ = includeItems; return \"order\"; }\n    remote function refresh(string note = \"\") returns boolean { _ = note; return true; }\n}\nclass PricingEngine {\n    function quote(decimal subtotal) returns decimal { return subtotal; }\n}\nfunction calculateTax(decimal amount, decimal rate = 0.15) returns decimal { return amount * rate; }\nfunction identity(int value) returns int => value;\npublic function main() {}\n"
+    }
+  },
+  "db367e31a43a8a16d5091fa4b524bf13af4df0d3fbe83c3cf77353bcaea0d5f1": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "client class Queue {\n   public function init(string host, int port = 12) { _ = host; _ = port; }\n   remote function send(string message, string topic = \"jobs\") returns string|error { return topic + message; }\n }\n final Queue globalQueue = new (\"host\", port = 99);\n function makeQueue() returns Queue { return new (\"factory\"); }\n function run(Queue inputQueue) returns error? {\n   string first = check globalQueue->send(\"one\", topic = \"orders\");\n   Queue local = makeQueue();\n   string second = check local->send(\"two\");\n   local = new (\"replacement\");\n   string third = check local->send(\"three\");\n   string fourth = check inputQueue->send(\"four\");\n _ = first; _ = second; _ = third; _ = fourth;\n   { Queue globalQueue = new (\"shadow\"); string fifth = check globalQueue->send(\"five\"); _ = fifth; }\n }\n public function main() {}"
+    }
+  },
+  "f9cb5b364d6d5b1f1639d9aa8d26bf3726665eb8ac3c4c952ead20323e10688c": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "function risky() returns int|error { return 1; }\n public function main() returns error? {\n   int|error captured = trap checkpanic risky();\n   int checked = check (trap risky());\n   string message = string `value ${check risky()}`;\n _ = captured; _ = checked; _ = message;\n }"
+    }
+  },
+  "580ae4621e7c724ae9ed43cfd95a35e4f62c27e105b0632a74856b33a7235ff6": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"definitions_and_calls\"\nversion = \"0.1.0\"\n",
+      "helpers.bal": "function calculate(int value) returns int { return value + 1; }\n",
+      "main.bal": "import ballerina/http;\nimport examples/definitions_and_calls.math;\n\nfinal int minimumAmount = 5;\nfinal string upstream = \"http://localhost:9090\";\nLocalClient upstreamClient = new ();\n\nclient class LocalClient {\n    remote function send() returns string { return \"sent\"; }\n}\ntype Order record {| int amount; |};\ntype UnusedRecord record {| string description; |};\n\nservice /orders on new http:Listener(8080) {\n    resource function get total() returns int {\n        int local = calculate(minimumAmount);\n        return math:calculate(local);\n    }\n}\n\nfunction unusedHelper() returns string {\n    string status = upstreamClient->send();\n    return upstream + \": \" + status;\n}\n",
+      "modules/math/calculate.bal": "public function calculate(int value) returns int { return value * 2; }\n",
+      "unrelated.bal": "// harmless new file\n"
+    }
+  },
+  "e9f6360f55554632565f11c5bcb7384b630f580ddee65c78e9c7ddf7a0d4b4ec": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "import browser/http_service.math; public function main() { int value = math:calculate(); int result = value + 1; _ = result; }",
+      "modules/math/calculate.bal": "public function calculate() returns int { return 2; }"
+    }
+  },
+  "f82046b1a5af182d9059e241e778a90940e6b0c92d4745f1d4c105a427953f7c": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "function step(int i) returns int { return i; } public function main() { int i = 0; while i < 3 { i = step(i + 1); } foreach int n in [1, 2] { i += n; } }"
+    }
+  },
+  "bedef3479a8e868dc5ba270ac0cfeeca48a0a159bf0a7edf34bd7e2dac1e9af7": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"automation_flow\"\nversion = \"0.1.0\"\n",
+      "main.bal": "import ballerina/io;\n\npublic function main() {\n    io:println(\"Hello, World!\");\n}"
+    }
+  },
+  "3f93ca42e40c8db0a648bedbbc78335d319247c459b2c5d53e36d2b0d706fcbb": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"service_discovery\"\nversion = \"0.1.0\"\n",
+      "datagrams.bal": "import ballerina/udp;\n\nservice on new udp:Listener(9090) {\n    remote function onBytes(byte[] data, udp:Caller caller) returns byte[] {\n        _ = caller;\n        return data;\n    }\n}\n",
+      "inventory.bal": "import ballerina/http;\n\nservice /inventory on new http:Listener(8081) {\n    resource function get items() returns string { return sharedLabel(); }\n}\n\nfunction unusedHelper() returns int { return 42; }\n",
+      "orders.bal": "import ballerina/http;\nservice /orders on new http:Listener(8080) {\n resource function get [int id](boolean includeItems = false) returns string { _ = id; _ = includeItems; return \"order\"; }\n remote function refresh(string note = \"\") returns boolean { _ = note; return true; }\n function formatOrder() returns string { return \"order\"; }\n}\nfunction sharedLabel() returns string { return \"order\"; }"
+    }
+  },
+  "86921277b890be6b1b4ff7519c07dfa52ac6da94c3f671bbe73b2bccac8a296d": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"automation_flow\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main(string greeting = \"Hello\") { _ = greeting; }"
+    }
+  },
+  "ba3133adbedd3e25b262e1df48987a2ff3536e31906f5748ba667f37d0e33843": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"automation_flow\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() {}"
+    }
+  },
+  "20efed10a8750b51f1f16bb7bf55a7226072d9bf50d41c57ccfc03899787a3e6": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"analysis_recovery\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}\n\nfunction double(int amount) returns int { return amount * 2; }\n\n// A"
+    }
+  },
+  "12c458a39d7a06e6b6b764a2153222c69fd74996bdadad3d4e0e0978ba98c3ae": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"analysis_recovery\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}\n\nfunction double(int amount) returns int { return amount * 2; }\n\n// B"
+    }
+  },
+  "64249f728a27081cc838004852eddcde98a5a28daeff86aae831fdc9d789be62": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"analysis_recovery\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}\n\nfunction double(int amount) returns int { return amount * 2; }\n\n// B\n// failure"
+    }
+  },
+  "9cd729d43af2970bb3248e799582fcdb98f34e2e02f4a585bd522271174f16f6": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"chat_references\"\nversion = \"0.1.0\"\n",
+      "main.bal": "import ballerina/http;\n\nservice /notes on new http:Listener(8080) {\n    resource function get first() returns string { return shared(\"first\"); }\n    resource function get second() returns string { return shared(\"second\"); }\n}\n\nfunction shared(string value) returns string { return value; }\n\n// racing disk update"
+    }
+  },
+  "3669d5697ebac79d5bd6c74a5d661f66c6c6fc2df64a37c32bb55ba2d10f3aaa": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"chat_references\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() {}"
+    }
+  },
+  "594b3be7e8daab07f6f94fbd121b8c2b0209b9d4caffeb5abd772061af57e911": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"automation_flow\"\nversion = \"0.1.0\"\n",
+      "main.bal": "import ballerina/http;\nimport ballerina/io;\nservice / on new http:Listener(8080) {\n resource function get hello() returns string { return \"Hello, World!\"; }\n resource function get [int x]/[int y]/sum() returns int {\n  io:println(\"x: \", x, \", y: \", y);\n  return fib(x) + fib(y);\n }\n}\nfunction fib(int n) returns int {\n if n <= 1 { return n; }\n return fib(n - 1) + fib(n - 2);\n}"
+    }
+  },
+  "de9d58e670c5a9900c008941dc0b73252b939278dca9bce1f6550dc1eb30e083": {
+    "kind": "project",
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "import ballerina/http;\n\nservice / on new http:Listener(8080) {\n    resource function get hello() returns string {\n        return \"Hello, World!\";\n    }\n}\n"
+    }
+  },
+  "7b81aa7471d1b15a2bd385207fbb8f7ff75a21f27866e386e81115eaba86d78e": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {}
+    },
+    "graphOnly": true,
+    "state": {
+      "kind": "invalid",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "SYNTAX_ERROR",
+          "message": "missing close paren token",
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 23
+            },
+            "end": {
+              "line": 1,
+              "column": 23
+            }
+          }
+        },
+        {
+          "severity": "error",
+          "code": "SYNTAX_ERROR",
+          "message": "missing identifier",
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 23
+            },
+            "end": {
+              "line": 1,
+              "column": 23
+            }
+          }
+        },
+        {
+          "severity": "error",
+          "code": "SYNTAX_ERROR",
+          "message": "missing type desc",
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 23
+            },
+            "end": {
+              "line": 1,
+              "column": 23
+            }
+          }
+        }
+      ],
+      "revision": 1
+    },
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main( {"
+    },
+    "width": 1500,
+    "height": 950
+  },
+  "abd99afee6457cd3b5fa8497f55e9f2d9a158de710a36ac1294daa0fb1fbf108": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {}
+    },
+    "graphOnly": true,
+    "state": {
+      "kind": "invalid",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "SEMANTIC_ERROR",
+          "message": "expect numeric, string, or xml types for +",
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 34
+            },
+            "end": {
+              "line": 1,
+              "column": 42
+            }
+          }
+        }
+      ],
+      "revision": 1
+    },
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() { int x = true + 2; _ = x; }"
+    },
+    "width": 1500,
+    "height": 950
+  },
+  "b590704ffaf826af465a3def93e1556ed76c556911771a8fc9e26d3e249e11f6": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {}
+    },
+    "graphOnly": true,
+    "state": {
+      "kind": "invalid",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "PROJECT_INPUT",
+          "message": "Compilation of Ballerina test sources is unsupported.",
+          "file": "tests/test.bal"
+        }
+      ],
+      "revision": 1
+    },
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"browser\"\nname = \"http_service\"\nversion = \"0.1.0\"\n",
+      "tests/test.bal": ""
+    },
+    "width": 1500,
+    "height": 950
+  },
+  "5b3a0a37650e349ef4fa404b1d327fc4c54bc07fc691a00ce0e845efec1d2666": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {}
+    },
+    "graphOnly": true,
+    "state": {
+      "kind": "invalid",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "PROJECT_INPUT",
+          "message": "Missing Ballerina.toml for the root package.",
+          "file": "Ballerina.toml"
+        }
+      ],
+      "revision": 1
+    },
+    "files": {
+      "main.bal": ""
+    },
+    "width": 1500,
+    "height": 950
+  },
+  "c4d5cc82d86a33197f5732eb9bcd4e8cdd31be1fa47b58c6f996690410ee1264": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {}
+    },
+    "graphOnly": true,
+    "state": {
+      "kind": "invalid",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "SEMANTIC_ERROR",
+          "message": "expect numeric, string, or xml types for +",
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 2,
+              "column": 18
+            },
+            "end": {
+              "line": 2,
+              "column": 26
+            }
+          }
+        }
+      ],
+      "revision": 1
+    },
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"analysis_recovery\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() {\n    int amount = true + 2;\n    int result = double(amount);\n    _ = result;\n}\n\nfunction double(int amount) returns int { return amount * 2; }\n"
+    },
+    "width": 1500,
+    "height": 950
+  },
+  "0e5858488fb017a74eb46db43a99dd1af2b21995086413222546062af426ab8a": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "main": {
+          "id": "main",
+          "text": "main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "print",
+              "text": "io:println(\"Hello, World!\");",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 29
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "expression",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "print/call",
+                  "text": "io:println(\"Hello, World!\")",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 28
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "external",
+                    "label": "println"
+                  },
+                  "expansion": "unavailable",
+                  "reason": "The target is outside the workspace."
+                }
+              ]
+            },
+            {
+              "id": "after",
+              "text": "after",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [],
+    "width": 1500,
+    "height": 950
+  },
+  "87a51d4b6ed5773895358a005de710705bb19652fd1ba5f1eaade1d02457359d": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "main": {
+          "id": "main",
+          "text": "main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "if",
+              "text": "if",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 3
+                  }
+                }
+              },
+              "kind": "if",
+              "condition": {
+                "id": "condition",
+                "text": "condition",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 10
+                    }
+                  }
+                },
+                "calls": []
+              },
+              "thenBody": [
+                {
+                  "id": "return",
+                  "text": "return",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 7
+                      }
+                    }
+                  },
+                  "kind": "return",
+                  "calls": []
+                }
+              ],
+              "elseBody": []
+            },
+            {
+              "id": "next",
+              "text": "next",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            },
+            {
+              "id": "limited",
+              "text": "limited",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 8
+                  }
+                }
+              },
+              "kind": "unsupported",
+              "reason": "unknown effect"
+            },
+            {
+              "id": "unreachable",
+              "text": "unreachable",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 12
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [],
+    "width": 1500,
+    "height": 950
+  },
+  "8e68a39eab428650444a40bdb0dd863d6c4a63a7fcdc3c9d17ee329ab1b39186": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "main": {
+          "id": "main",
+          "text": "main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "while",
+              "text": "while",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "while",
+              "condition": {
+                "id": "condition",
+                "text": "condition",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 10
+                    }
+                  }
+                },
+                "calls": []
+              },
+              "body": [
+                {
+                  "id": "foreach",
+                  "text": "foreach",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 8
+                      }
+                    }
+                  },
+                  "kind": "foreach",
+                  "header": {
+                    "id": "iteration",
+                    "text": "iteration",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 1,
+                          "column": 1
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 10
+                        }
+                      }
+                    },
+                    "calls": []
+                  },
+                  "body": [
+                    {
+                      "id": "continue",
+                      "text": "continue",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 1,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 9
+                          }
+                        }
+                      },
+                      "kind": "continue"
+                    },
+                    {
+                      "id": "break",
+                      "text": "break",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 1,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 6
+                          }
+                        }
+                      },
+                      "kind": "break"
+                    }
+                  ]
+                },
+                {
+                  "id": "increment",
+                  "text": "increment",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 10
+                      }
+                    }
+                  },
+                  "kind": "simple",
+                  "operation": "assign",
+                  "presentation": "step",
+                  "calls": []
+                }
+              ]
+            },
+            {
+              "id": "after",
+              "text": "after",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [],
+    "width": 1500,
+    "height": 950
+  },
+  "c33e80a7f599e53a27a0acf1e72c09f309f348937a849dfd49ab69860f414940": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "main": {
+          "id": "main",
+          "text": "main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "first",
+              "text": "first",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "first/call",
+                  "text": "first/call",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 11
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "helper"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "second",
+              "text": "second",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 7
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "second/call",
+                  "text": "second/call",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 12
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "helper"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "after",
+              "text": "after",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        },
+        "helper": {
+          "id": "helper",
+          "text": "helper",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 7
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "recursive",
+              "text": "recursive",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 10
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "recursive/call",
+                  "text": "recursive/call",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 15
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "helper"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "ret",
+              "text": "ret",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 4
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [],
+    "width": 1500,
+    "height": 950
+  },
+  "58fe3bab896c1943d5fb4fa4fd46055ea0b49c0c07f9beea4b7b8eeef6a5eb77": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "main": {
+          "id": "main",
+          "text": "main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "first",
+              "text": "first",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "first/call",
+                  "text": "first/call",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 11
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "helper"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "second",
+              "text": "second",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 7
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "second/call",
+                  "text": "second/call",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 12
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "helper"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "after",
+              "text": "after",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        },
+        "helper": {
+          "id": "helper",
+          "text": "helper",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 7
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "recursive",
+              "text": "recursive",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 10
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "recursive/call",
+                  "text": "recursive/call",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 15
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "helper"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "ret",
+              "text": "ret",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 4
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [
+      "main/first/expand/first/call",
+      "main/second/expand/second/call"
+    ],
+    "width": 1500,
+    "height": 950
+  },
+  "4da8284a5c87a7a9e19edcf771f18a486030cc6a4d9f25edc481d95c9b01d7e6": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "main": {
+          "id": "main",
+          "text": "main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "outer",
+              "text": "outer",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "if",
+              "condition": {
+                "id": "outer/condition",
+                "text": "outer/condition",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 16
+                    }
+                  }
+                },
+                "calls": []
+              },
+              "thenBody": [
+                {
+                  "id": "loop",
+                  "text": "loop",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 5
+                      }
+                    }
+                  },
+                  "kind": "while",
+                  "condition": {
+                    "id": "loop/condition",
+                    "text": "loop/condition",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 1,
+                          "column": 1
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 15
+                        }
+                      }
+                    },
+                    "calls": []
+                  },
+                  "body": [
+                    {
+                      "id": "nested",
+                      "text": "nested",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 1,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 7
+                          }
+                        }
+                      },
+                      "kind": "if",
+                      "condition": {
+                        "id": "nested/condition",
+                        "text": "nested/condition",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 1,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 17
+                            }
+                          }
+                        },
+                        "calls": []
+                      },
+                      "thenBody": [
+                        {
+                          "id": "left",
+                          "text": "left",
+                          "source": {
+                            "file": "main.bal",
+                            "range": {
+                              "start": {
+                                "line": 1,
+                                "column": 1
+                              },
+                              "end": {
+                                "line": 1,
+                                "column": 5
+                              }
+                            }
+                          },
+                          "kind": "simple",
+                          "operation": "assign",
+                          "presentation": "step",
+                          "calls": []
+                        }
+                      ],
+                      "elseBody": [
+                        {
+                          "id": "right",
+                          "text": "right",
+                          "source": {
+                            "file": "main.bal",
+                            "range": {
+                              "start": {
+                                "line": 1,
+                                "column": 1
+                              },
+                              "end": {
+                                "line": 1,
+                                "column": 6
+                              }
+                            }
+                          },
+                          "kind": "simple",
+                          "operation": "assign",
+                          "presentation": "step",
+                          "calls": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "body-end",
+                      "text": "body-end",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 1,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 9
+                          }
+                        }
+                      },
+                      "kind": "simple",
+                      "operation": "assign",
+                      "presentation": "step",
+                      "calls": []
+                    }
+                  ]
+                }
+              ],
+              "elseBody": [
+                {
+                  "id": "other-lane",
+                  "text": "other-lane",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 11
+                      }
+                    }
+                  },
+                  "kind": "simple",
+                  "operation": "assign",
+                  "presentation": "step",
+                  "calls": []
+                }
+              ]
+            },
+            {
+              "id": "after",
+              "text": "after",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [],
+    "width": 1500,
+    "height": 950
+  },
+  "a9456a3038a49870973582bd28785faed3095cbd972e299fc92428190d786ac7": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "main": {
+          "id": "main",
+          "text": "main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "if",
+              "text": "if",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 3
+                  }
+                }
+              },
+              "kind": "if",
+              "condition": {
+                "id": "condition",
+                "text": "condition",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 10
+                    }
+                  }
+                },
+                "calls": []
+              },
+              "thenBody": [
+                {
+                  "id": "yes",
+                  "text": "yes",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 4
+                      }
+                    }
+                  },
+                  "kind": "simple",
+                  "operation": "assign",
+                  "presentation": "step",
+                  "calls": []
+                }
+              ],
+              "elseBody": [
+                {
+                  "id": "no",
+                  "text": "no",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 3
+                      }
+                    }
+                  },
+                  "kind": "simple",
+                  "operation": "assign",
+                  "presentation": "step",
+                  "calls": []
+                }
+              ]
+            },
+            {
+              "id": "return",
+              "text": "return total;",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 14
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [],
+    "width": 1500,
+    "height": 950
+  },
+  "1ca693d77b46682fab04a757e53c1a7747156795b7a8d3d3b4f6e012d9ec8917": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "fib": {
+          "id": "fib",
+          "text": "fib",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 4
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "sum",
+              "text": "sum",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 4
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": [
+                {
+                  "id": "sum/call/0",
+                  "text": "fib(0)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 7
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "fib"
+                  },
+                  "expansion": "supported"
+                },
+                {
+                  "id": "sum/call/1",
+                  "text": "fib(1)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 7
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "fib"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        },
+        "even": {
+          "id": "even",
+          "text": "even",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "even-return",
+              "text": "even-return",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 12
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": [
+                {
+                  "id": "even-return/call/0",
+                  "text": "odd(0)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 7
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "odd"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        },
+        "odd": {
+          "id": "odd",
+          "text": "odd",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 4
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "odd-return",
+              "text": "odd-return",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 11
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": [
+                {
+                  "id": "odd-return/call/0",
+                  "text": "even(0)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 8
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "even"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [],
+    "width": 1500,
+    "height": 950
+  },
+  "39eec19ae10da4669818dfdb236b659207c1dd5ed103dce08a9b4f03aec7203a": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "fib": {
+          "id": "fib",
+          "text": "fib",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 4
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "sum",
+              "text": "sum",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 4
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": [
+                {
+                  "id": "sum/call/0",
+                  "text": "fib(0)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 7
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "fib"
+                  },
+                  "expansion": "supported"
+                },
+                {
+                  "id": "sum/call/1",
+                  "text": "fib(1)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 7
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "fib"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        },
+        "even": {
+          "id": "even",
+          "text": "even",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "even-return",
+              "text": "even-return",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 12
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": [
+                {
+                  "id": "even-return/call/0",
+                  "text": "odd(0)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 7
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "odd"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        },
+        "odd": {
+          "id": "odd",
+          "text": "odd",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 4
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "odd-return",
+              "text": "odd-return",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 11
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": [
+                {
+                  "id": "odd-return/call/0",
+                  "text": "even(0)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 8
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "even"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [
+      "fib/sum/expand/sum/call/0",
+      "fib/sum/expand/sum/call/1"
+    ],
+    "width": 1500,
+    "height": 950
+  },
+  "abaf75de0d224fa5a232503471a01fb2e399a7cd81ef21258f9af33cc109d429": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "fib": {
+          "id": "fib",
+          "text": "fib",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 4
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "sum",
+              "text": "sum",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 4
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": [
+                {
+                  "id": "sum/call/0",
+                  "text": "fib(0)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 7
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "fib"
+                  },
+                  "expansion": "supported"
+                },
+                {
+                  "id": "sum/call/1",
+                  "text": "fib(1)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 7
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "fib"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        },
+        "even": {
+          "id": "even",
+          "text": "even",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "even-return",
+              "text": "even-return",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 12
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": [
+                {
+                  "id": "even-return/call/0",
+                  "text": "odd(0)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 7
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "odd"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        },
+        "odd": {
+          "id": "odd",
+          "text": "odd",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 4
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "odd-return",
+              "text": "odd-return",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 11
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": [
+                {
+                  "id": "odd-return/call/0",
+                  "text": "even(0)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 8
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "even"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [
+      "even/even-return/expand/even-return/call/0"
+    ],
+    "width": 1500,
+    "height": 950
+  },
+  "5358fb99b8f633756dd342883ef8bd69036490b52db8c8776e7e69b7f6dbb69a": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "fib": {
+          "id": "fib",
+          "text": "fib",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 4
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "sum",
+              "text": "sum",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 4
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": [
+                {
+                  "id": "sum/call/0",
+                  "text": "fib(0)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 7
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "fib"
+                  },
+                  "expansion": "supported"
+                },
+                {
+                  "id": "sum/call/1",
+                  "text": "fib(1)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 7
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "fib"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        },
+        "even": {
+          "id": "even",
+          "text": "even",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "even-return",
+              "text": "even-return",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 12
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": [
+                {
+                  "id": "even-return/call/0",
+                  "text": "odd(0)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 7
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "odd"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        },
+        "odd": {
+          "id": "odd",
+          "text": "odd",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 4
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "odd-return",
+              "text": "odd-return",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 11
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": [
+                {
+                  "id": "odd-return/call/0",
+                  "text": "even(0)",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 8
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "even"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [
+      "even/even-return/expand/even-return/call/0",
+      "even/even-return/expand/even-return/call/0/odd-return/expand/odd-return/call/0"
+    ],
+    "width": 1500,
+    "height": 950
+  },
+  "1932f6b5e78902589d171cd470209981fc6186b0efe5e082cc3bfd2e0b42ec2c": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "main": {
+          "id": "main",
+          "text": "main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "binding",
+              "text": "binding",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 8
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": [],
+              "evaluation": {
+                "id": "check",
+                "text": "check",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 6
+                    }
+                  }
+                },
+                "kind": "check",
+                "children": [
+                  {
+                    "id": "invoke",
+                    "text": "invoke",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 1,
+                          "column": 1
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 7
+                        }
+                      }
+                    },
+                    "kind": "call",
+                    "children": [],
+                    "call": {
+                      "id": "call",
+                      "text": "producer->send(\"hello\", topic = \"orders\")",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 1,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 42
+                          }
+                        }
+                      },
+                      "client": {
+                        "context": {
+                          "receiver": {
+                            "id": "receiver",
+                            "text": "producer",
+                            "source": {
+                              "file": "main.bal",
+                              "range": {
+                                "start": {
+                                  "line": 1,
+                                  "column": 1
+                                },
+                                "end": {
+                                  "line": 1,
+                                  "column": 9
+                                }
+                              }
+                            }
+                          },
+                          "type": "Queue",
+                          "origin": "constructor",
+                          "initializer": {
+                            "id": "init",
+                            "text": "new (\"broker\", port = 9093)",
+                            "source": {
+                              "file": "main.bal",
+                              "range": {
+                                "start": {
+                                  "line": 1,
+                                  "column": 1
+                                },
+                                "end": {
+                                  "line": 1,
+                                  "column": 28
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "method": "send",
+                        "arguments": [
+                          {
+                            "id": "arg0",
+                            "text": "\"hello\"",
+                            "source": {
+                              "file": "main.bal",
+                              "range": {
+                                "start": {
+                                  "line": 1,
+                                  "column": 1
+                                },
+                                "end": {
+                                  "line": 1,
+                                  "column": 8
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "id": "arg1",
+                            "text": "topic = \"orders\"",
+                            "source": {
+                              "file": "main.bal",
+                              "range": {
+                                "start": {
+                                  "line": 1,
+                                  "column": 1
+                                },
+                                "end": {
+                                  "line": 1,
+                                  "column": 17
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "target": {
+                        "kind": "external",
+                        "label": "send"
+                      },
+                      "expansion": "unavailable",
+                      "reason": "External"
+                    }
+                  }
+                ]
+              },
+              "binding": "Person person"
+            },
+            {
+              "id": "after",
+              "text": "after",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [],
+    "width": 1500,
+    "height": 950
+  },
+  "68d03633009360152ca4654446cc9d04ee5cc7440fc99088991776dc1a216622": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "main": {
+          "id": "main",
+          "text": "main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "result",
+              "text": "result",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 7
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": [],
+              "evaluation": {
+                "id": "trap",
+                "text": "trap",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 5
+                    }
+                  }
+                },
+                "kind": "trap",
+                "children": [
+                  {
+                    "id": "combined",
+                    "text": "combined",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 1,
+                          "column": 1
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 9
+                        }
+                      }
+                    },
+                    "kind": "source",
+                    "children": [
+                      {
+                        "id": "panic",
+                        "text": "panic",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 1,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "kind": "checkpanic",
+                        "children": [
+                          {
+                            "id": "source",
+                            "text": "source",
+                            "source": {
+                              "file": "main.bal",
+                              "range": {
+                                "start": {
+                                  "line": 1,
+                                  "column": 1
+                                },
+                                "end": {
+                                  "line": 1,
+                                  "column": 7
+                                }
+                              }
+                            },
+                            "kind": "source",
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "checked",
+                        "text": "checked",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 1,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 8
+                            }
+                          }
+                        },
+                        "kind": "check",
+                        "children": [
+                          {
+                            "id": "source2",
+                            "text": "source2",
+                            "source": {
+                              "file": "main.bal",
+                              "range": {
+                                "start": {
+                                  "line": 1,
+                                  "column": 1
+                                },
+                                "end": {
+                                  "line": 1,
+                                  "column": 8
+                                }
+                              }
+                            },
+                            "kind": "source",
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "binding": "Person person"
+            },
+            {
+              "id": "after",
+              "text": "after",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [],
+    "width": 1500,
+    "height": 950
+  },
+  "86935bf50e7a0f5cf0e6752b60079904271e94ff82f1a012053457a0afd63839": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "main": {
+          "id": "main",
+          "text": "main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "result",
+              "text": "result",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 7
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": [],
+              "evaluation": {
+                "id": "invoke",
+                "text": "invoke",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 7
+                    }
+                  }
+                },
+                "kind": "call",
+                "children": [],
+                "call": {
+                  "id": "call",
+                  "text": "producer->send(\"hello\")",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 24
+                      }
+                    }
+                  },
+                  "client": {
+                    "context": {
+                      "receiver": {
+                        "id": "receiver",
+                        "text": "producer",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 1,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 9
+                            }
+                          }
+                        }
+                      },
+                      "origin": "initializer",
+                      "initializer": {
+                        "id": "init",
+                        "text": "new ({host: \"broker\", configuration: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"})",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 1,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 202
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "method": "send",
+                    "arguments": [
+                      {
+                        "id": "arg",
+                        "text": "\"hello\"",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 1,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 8
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "target": {
+                    "kind": "external",
+                    "label": "send"
+                  },
+                  "expansion": "unavailable",
+                  "reason": "External"
+                }
+              },
+              "binding": "Person person"
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [],
+    "width": 1500,
+    "height": 950
+  },
+  "f3d2c6595ee7a101286db48845342de8695cbe618c1b821b21646a58fe196030": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "main": {
+          "id": "main",
+          "text": "main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "result",
+              "text": "result",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 7
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": [],
+              "evaluation": {
+                "id": "invoke",
+                "text": "invoke",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 7
+                    }
+                  }
+                },
+                "kind": "call",
+                "children": [],
+                "call": {
+                  "id": "call",
+                  "text": "producer->send(\"hello\")",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 24
+                      }
+                    }
+                  },
+                  "client": {
+                    "context": {
+                      "receiver": {
+                        "id": "receiver",
+                        "text": "producer",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 1,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 9
+                            }
+                          }
+                        }
+                      },
+                      "origin": "initializer",
+                      "initializer": {
+                        "id": "init",
+                        "text": "new ({host: \"broker\", configuration: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"})",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 1,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 202
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "method": "send",
+                    "arguments": [
+                      {
+                        "id": "arg",
+                        "text": "\"hello\"",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 1,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 8
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "target": {
+                    "kind": "external",
+                    "label": "send"
+                  },
+                  "expansion": "unavailable",
+                  "reason": "External"
+                }
+              },
+              "binding": "Person person"
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [
+      "main/result/evaluation/context"
+    ],
+    "width": 1500,
+    "height": 950
+  },
+  "41542145c44fa341120291e1cc36924298d97ef714a5fa2e045bf41342338c92": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [
+        {
+          "id": "examples/analysis_recovery/function/main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 2
+              }
+            }
+          },
+          "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+          "kind": "automation",
+          "title": "Automation",
+          "moduleId": "examples/analysis_recovery",
+          "serviceType": null,
+          "functionId": "examples/analysis_recovery/function/main"
+        }
+      ],
+      "functions": {
+        "examples/analysis_recovery/function/double": {
+          "id": "examples/analysis_recovery/function/double",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 7,
+                "column": 1
+              },
+              "end": {
+                "line": 7,
+                "column": 63
+              }
+            }
+          },
+          "text": "function double(int amount) returns int { return amount * 2; }",
+          "moduleId": "examples/analysis_recovery",
+          "entry": {
+            "kind": "function",
+            "name": "double",
+            "signature": "function double(int amount) returns int",
+            "parameters": [
+              {
+                "kind": "input",
+                "text": "int amount"
+              }
+            ],
+            "returnType": "int"
+          },
+          "body": [
+            {
+              "id": "examples/analysis_recovery/function/double/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 7,
+                    "column": 43
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 61
+                  }
+                }
+              },
+              "text": "return amount * 2;",
+              "kind": "return",
+              "calls": []
+            }
+          ]
+        },
+        "examples/analysis_recovery/function/main": {
+          "id": "examples/analysis_recovery/function/main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 2
+              }
+            }
+          },
+          "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+          "moduleId": "examples/analysis_recovery",
+          "entry": {
+            "kind": "function",
+            "name": "main",
+            "signature": "public function main()",
+            "parameters": [],
+            "returnType": "()"
+          },
+          "body": [
+            {
+              "id": "examples/analysis_recovery/function/main/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 2,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 20
+                  }
+                }
+              },
+              "text": "int amount = 2;",
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": []
+            },
+            {
+              "id": "examples/analysis_recovery/function/main/statement/1",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 3,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 33
+                  }
+                }
+              },
+              "text": "int result = double(amount);",
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "examples/analysis_recovery/function/main/statement/1/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 3,
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 32
+                      }
+                    }
+                  },
+                  "text": "double(amount)",
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "examples/analysis_recovery/function/double"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "examples/analysis_recovery/function/main/statement/2",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 4,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 16
+                  }
+                }
+              },
+              "text": "_ = result;",
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": false,
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"analysis_recovery\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}\n\nfunction double(int amount) returns int { return amount * 2; }\n"
+    },
+    "state": {
+      "kind": "pending",
+      "revision": 2
+    },
+    "width": 1500,
+    "height": 950
+  },
+  "c83d4e5b1612df0681d7cd1d6a120214a9b90eb27a99d1b2e536ca57f108d991": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [
+        {
+          "id": "examples/analysis_recovery/function/main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 2
+              }
+            }
+          },
+          "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+          "kind": "automation",
+          "title": "Automation",
+          "moduleId": "examples/analysis_recovery",
+          "serviceType": null,
+          "functionId": "examples/analysis_recovery/function/main"
+        }
+      ],
+      "functions": {
+        "examples/analysis_recovery/function/double": {
+          "id": "examples/analysis_recovery/function/double",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 7,
+                "column": 1
+              },
+              "end": {
+                "line": 7,
+                "column": 63
+              }
+            }
+          },
+          "text": "function double(int amount) returns int { return amount * 2; }",
+          "moduleId": "examples/analysis_recovery",
+          "entry": {
+            "kind": "function",
+            "name": "double",
+            "signature": "function double(int amount) returns int",
+            "parameters": [
+              {
+                "kind": "input",
+                "text": "int amount"
+              }
+            ],
+            "returnType": "int"
+          },
+          "body": [
+            {
+              "id": "examples/analysis_recovery/function/double/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 7,
+                    "column": 43
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 61
+                  }
+                }
+              },
+              "text": "return amount * 2;",
+              "kind": "return",
+              "calls": []
+            }
+          ]
+        },
+        "examples/analysis_recovery/function/main": {
+          "id": "examples/analysis_recovery/function/main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 2
+              }
+            }
+          },
+          "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+          "moduleId": "examples/analysis_recovery",
+          "entry": {
+            "kind": "function",
+            "name": "main",
+            "signature": "public function main()",
+            "parameters": [],
+            "returnType": "()"
+          },
+          "body": [
+            {
+              "id": "examples/analysis_recovery/function/main/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 2,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 20
+                  }
+                }
+              },
+              "text": "int amount = 2;",
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": []
+            },
+            {
+              "id": "examples/analysis_recovery/function/main/statement/1",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 3,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 33
+                  }
+                }
+              },
+              "text": "int result = double(amount);",
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "examples/analysis_recovery/function/main/statement/1/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 3,
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 32
+                      }
+                    }
+                  },
+                  "text": "double(amount)",
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "examples/analysis_recovery/function/double"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "examples/analysis_recovery/function/main/statement/2",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 4,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 16
+                  }
+                }
+              },
+              "text": "_ = result;",
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": false,
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"analysis_recovery\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}\n\nfunction double(int amount) returns int { return amount * 2; }\n"
+    },
+    "state": {
+      "kind": "pending",
+      "revision": 2,
+      "previous": {
+        "scopes": [
+          {
+            "id": "examples/analysis_recovery/function/main",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 5,
+                  "column": 2
+                }
+              }
+            },
+            "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+            "kind": "automation",
+            "title": "Automation",
+            "moduleId": "examples/analysis_recovery",
+            "serviceType": null,
+            "functionId": "examples/analysis_recovery/function/main"
+          }
+        ],
+        "functions": {
+          "examples/analysis_recovery/function/double": {
+            "id": "examples/analysis_recovery/function/double",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 7,
+                  "column": 1
+                },
+                "end": {
+                  "line": 7,
+                  "column": 63
+                }
+              }
+            },
+            "text": "function double(int amount) returns int { return amount * 2; }",
+            "moduleId": "examples/analysis_recovery",
+            "entry": {
+              "kind": "function",
+              "name": "double",
+              "signature": "function double(int amount) returns int",
+              "parameters": [
+                {
+                  "kind": "input",
+                  "text": "int amount"
+                }
+              ],
+              "returnType": "int"
+            },
+            "body": [
+              {
+                "id": "examples/analysis_recovery/function/double/statement/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 7,
+                      "column": 43
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 61
+                    }
+                  }
+                },
+                "text": "return amount * 2;",
+                "kind": "return",
+                "calls": []
+              }
+            ]
+          },
+          "examples/analysis_recovery/function/main": {
+            "id": "examples/analysis_recovery/function/main",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 5,
+                  "column": 2
+                }
+              }
+            },
+            "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+            "moduleId": "examples/analysis_recovery",
+            "entry": {
+              "kind": "function",
+              "name": "main",
+              "signature": "public function main()",
+              "parameters": [],
+              "returnType": "()"
+            },
+            "body": [
+              {
+                "id": "examples/analysis_recovery/function/main/statement/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 2,
+                      "column": 5
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 20
+                    }
+                  }
+                },
+                "text": "int amount = 2;",
+                "kind": "simple",
+                "operation": "declare",
+                "presentation": "step",
+                "calls": []
+              },
+              {
+                "id": "examples/analysis_recovery/function/main/statement/1",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 3,
+                      "column": 5
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 33
+                    }
+                  }
+                },
+                "text": "int result = double(amount);",
+                "kind": "simple",
+                "operation": "declare",
+                "presentation": "step",
+                "calls": [
+                  {
+                    "id": "examples/analysis_recovery/function/main/statement/1/call/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 3,
+                          "column": 18
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 32
+                        }
+                      }
+                    },
+                    "text": "double(amount)",
+                    "target": {
+                      "kind": "workspace",
+                      "functionId": "examples/analysis_recovery/function/double"
+                    },
+                    "expansion": "supported"
+                  }
+                ]
+              },
+              {
+                "id": "examples/analysis_recovery/function/main/statement/2",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 4,
+                      "column": 5
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 16
+                    }
+                  }
+                },
+                "text": "_ = result;",
+                "kind": "simple",
+                "operation": "assign",
+                "presentation": "step",
+                "calls": []
+              }
+            ]
+          }
+        }
+      }
+    },
+    "width": 1500,
+    "height": 950
+  },
+  "6203af02c1c59890b03a8686153b24cc1845c7875b0fd19cb81effd65ac8ba02": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [
+        {
+          "id": "examples/analysis_recovery/function/main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 2
+              }
+            }
+          },
+          "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+          "kind": "automation",
+          "title": "Automation",
+          "moduleId": "examples/analysis_recovery",
+          "serviceType": null,
+          "functionId": "examples/analysis_recovery/function/main"
+        }
+      ],
+      "functions": {
+        "examples/analysis_recovery/function/double": {
+          "id": "examples/analysis_recovery/function/double",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 7,
+                "column": 1
+              },
+              "end": {
+                "line": 7,
+                "column": 63
+              }
+            }
+          },
+          "text": "function double(int amount) returns int { return amount * 2; }",
+          "moduleId": "examples/analysis_recovery",
+          "entry": {
+            "kind": "function",
+            "name": "double",
+            "signature": "function double(int amount) returns int",
+            "parameters": [
+              {
+                "kind": "input",
+                "text": "int amount"
+              }
+            ],
+            "returnType": "int"
+          },
+          "body": [
+            {
+              "id": "examples/analysis_recovery/function/double/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 7,
+                    "column": 43
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 61
+                  }
+                }
+              },
+              "text": "return amount * 2;",
+              "kind": "return",
+              "calls": []
+            }
+          ]
+        },
+        "examples/analysis_recovery/function/main": {
+          "id": "examples/analysis_recovery/function/main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 2
+              }
+            }
+          },
+          "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+          "moduleId": "examples/analysis_recovery",
+          "entry": {
+            "kind": "function",
+            "name": "main",
+            "signature": "public function main()",
+            "parameters": [],
+            "returnType": "()"
+          },
+          "body": [
+            {
+              "id": "examples/analysis_recovery/function/main/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 2,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 20
+                  }
+                }
+              },
+              "text": "int amount = 2;",
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": []
+            },
+            {
+              "id": "examples/analysis_recovery/function/main/statement/1",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 3,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 33
+                  }
+                }
+              },
+              "text": "int result = double(amount);",
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "examples/analysis_recovery/function/main/statement/1/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 3,
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 32
+                      }
+                    }
+                  },
+                  "text": "double(amount)",
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "examples/analysis_recovery/function/double"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "examples/analysis_recovery/function/main/statement/2",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 4,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 16
+                  }
+                }
+              },
+              "text": "_ = result;",
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": false,
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"analysis_recovery\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}\n\nfunction double(int amount) returns int { return amount * 2; }\n"
+    },
+    "state": {
+      "kind": "failed",
+      "revision": 2,
+      "message": "runtime unavailable"
+    },
+    "width": 1500,
+    "height": 950
+  },
+  "eeb1fbca56d6c6e86e91febd914f16198ce07903de5ef9dfff930daafc34bedc": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [
+        {
+          "id": "examples/analysis_recovery/function/main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 2
+              }
+            }
+          },
+          "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+          "kind": "automation",
+          "title": "Automation",
+          "moduleId": "examples/analysis_recovery",
+          "serviceType": null,
+          "functionId": "examples/analysis_recovery/function/main"
+        }
+      ],
+      "functions": {
+        "examples/analysis_recovery/function/double": {
+          "id": "examples/analysis_recovery/function/double",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 7,
+                "column": 1
+              },
+              "end": {
+                "line": 7,
+                "column": 63
+              }
+            }
+          },
+          "text": "function double(int amount) returns int { return amount * 2; }",
+          "moduleId": "examples/analysis_recovery",
+          "entry": {
+            "kind": "function",
+            "name": "double",
+            "signature": "function double(int amount) returns int",
+            "parameters": [
+              {
+                "kind": "input",
+                "text": "int amount"
+              }
+            ],
+            "returnType": "int"
+          },
+          "body": [
+            {
+              "id": "examples/analysis_recovery/function/double/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 7,
+                    "column": 43
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 61
+                  }
+                }
+              },
+              "text": "return amount * 2;",
+              "kind": "return",
+              "calls": []
+            }
+          ]
+        },
+        "examples/analysis_recovery/function/main": {
+          "id": "examples/analysis_recovery/function/main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 2
+              }
+            }
+          },
+          "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+          "moduleId": "examples/analysis_recovery",
+          "entry": {
+            "kind": "function",
+            "name": "main",
+            "signature": "public function main()",
+            "parameters": [],
+            "returnType": "()"
+          },
+          "body": [
+            {
+              "id": "examples/analysis_recovery/function/main/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 2,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 20
+                  }
+                }
+              },
+              "text": "int amount = 2;",
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": []
+            },
+            {
+              "id": "examples/analysis_recovery/function/main/statement/1",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 3,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 33
+                  }
+                }
+              },
+              "text": "int result = double(amount);",
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "examples/analysis_recovery/function/main/statement/1/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 3,
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 32
+                      }
+                    }
+                  },
+                  "text": "double(amount)",
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "examples/analysis_recovery/function/double"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "examples/analysis_recovery/function/main/statement/2",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 4,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 16
+                  }
+                }
+              },
+              "text": "_ = result;",
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": false,
+    "files": {
+      "Ballerina.toml": "[package]\norg = \"examples\"\nname = \"analysis_recovery\"\nversion = \"0.1.0\"\n",
+      "main.bal": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}\n\nfunction double(int amount) returns int { return amount * 2; }\n"
+    },
+    "state": {
+      "kind": "failed",
+      "revision": 2,
+      "message": "runtime unavailable",
+      "previous": {
+        "scopes": [
+          {
+            "id": "examples/analysis_recovery/function/main",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 5,
+                  "column": 2
+                }
+              }
+            },
+            "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+            "kind": "automation",
+            "title": "Automation",
+            "moduleId": "examples/analysis_recovery",
+            "serviceType": null,
+            "functionId": "examples/analysis_recovery/function/main"
+          }
+        ],
+        "functions": {
+          "examples/analysis_recovery/function/double": {
+            "id": "examples/analysis_recovery/function/double",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 7,
+                  "column": 1
+                },
+                "end": {
+                  "line": 7,
+                  "column": 63
+                }
+              }
+            },
+            "text": "function double(int amount) returns int { return amount * 2; }",
+            "moduleId": "examples/analysis_recovery",
+            "entry": {
+              "kind": "function",
+              "name": "double",
+              "signature": "function double(int amount) returns int",
+              "parameters": [
+                {
+                  "kind": "input",
+                  "text": "int amount"
+                }
+              ],
+              "returnType": "int"
+            },
+            "body": [
+              {
+                "id": "examples/analysis_recovery/function/double/statement/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 7,
+                      "column": 43
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 61
+                    }
+                  }
+                },
+                "text": "return amount * 2;",
+                "kind": "return",
+                "calls": []
+              }
+            ]
+          },
+          "examples/analysis_recovery/function/main": {
+            "id": "examples/analysis_recovery/function/main",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 5,
+                  "column": 2
+                }
+              }
+            },
+            "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+            "moduleId": "examples/analysis_recovery",
+            "entry": {
+              "kind": "function",
+              "name": "main",
+              "signature": "public function main()",
+              "parameters": [],
+              "returnType": "()"
+            },
+            "body": [
+              {
+                "id": "examples/analysis_recovery/function/main/statement/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 2,
+                      "column": 5
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 20
+                    }
+                  }
+                },
+                "text": "int amount = 2;",
+                "kind": "simple",
+                "operation": "declare",
+                "presentation": "step",
+                "calls": []
+              },
+              {
+                "id": "examples/analysis_recovery/function/main/statement/1",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 3,
+                      "column": 5
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 33
+                    }
+                  }
+                },
+                "text": "int result = double(amount);",
+                "kind": "simple",
+                "operation": "declare",
+                "presentation": "step",
+                "calls": [
+                  {
+                    "id": "examples/analysis_recovery/function/main/statement/1/call/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 3,
+                          "column": 18
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 32
+                        }
+                      }
+                    },
+                    "text": "double(amount)",
+                    "target": {
+                      "kind": "workspace",
+                      "functionId": "examples/analysis_recovery/function/double"
+                    },
+                    "expansion": "supported"
+                  }
+                ]
+              },
+              {
+                "id": "examples/analysis_recovery/function/main/statement/2",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 4,
+                      "column": 5
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 16
+                    }
+                  }
+                },
+                "text": "_ = result;",
+                "kind": "simple",
+                "operation": "assign",
+                "presentation": "step",
+                "calls": []
+              }
+            ]
+          }
+        }
+      }
+    },
+    "width": 1500,
+    "height": 950
+  },
+  "27e9ce81cd7b84ce3e23a23505682e0016451125ac1bc40d561a8ee032d69ec3": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "main": {
+          "id": "main",
+          "text": "main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "first",
+              "text": "first",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "first/call",
+                  "text": "first/call",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 11
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "helper"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "second",
+              "text": "second",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 7
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "second/call",
+                  "text": "second/call",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 12
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "helper"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "after",
+              "text": "after",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        },
+        "helper": {
+          "id": "helper",
+          "text": "helper",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 7
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "recursive",
+              "text": "recursive",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 10
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "recursive/call",
+                  "text": "recursive/call",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 15
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "helper"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "ret",
+              "text": "ret",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 4
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [
+      "main/first/expand/first/call"
+    ],
+    "width": 1500,
+    "height": 950
+  },
+  "4d61ff828b893e8d1a41b59fb76701e262e794424f5bb9a1c3effa005daf6e61": {
+    "kind": "synthetic",
+    "program": {
+      "scopes": [],
+      "functions": {
+        "main": {
+          "id": "main",
+          "text": "main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 5
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "first",
+              "text": "first",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "first/call",
+                  "text": "first/call",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 11
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "helper"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "second",
+              "text": "second",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 7
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "second/call",
+                  "text": "second/call",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 12
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "helper"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "after",
+              "text": "after",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        },
+        "helper": {
+          "id": "helper",
+          "text": "helper",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 7
+              }
+            }
+          },
+          "moduleId": "test",
+          "body": [
+            {
+              "id": "recursive",
+              "text": "recursive",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 10
+                  }
+                }
+              },
+              "kind": "simple",
+              "operation": "declare",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "recursive/call",
+                  "text": "recursive/call",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 15
+                      }
+                    }
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "helper"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            },
+            {
+              "id": "ret",
+              "text": "ret",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 4
+                  }
+                }
+              },
+              "kind": "return",
+              "calls": []
+            }
+          ]
+        }
+      }
+    },
+    "graphOnly": true,
+    "expanded": [
+      "main/second/expand/second/call"
+    ],
+    "width": 1500,
+    "height": 950
+  }
+}

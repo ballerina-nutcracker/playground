@@ -1,0 +1,2307 @@
+{
+  "catalogRef": "4da8284a5c87a7a9e19edcf771f18a486030cc6a4d9f25edc481d95c9b01d7e6",
+  "legacyProgram": {
+    "scopes": [],
+    "functions": {
+      "main": {
+        "id": "main",
+        "text": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "moduleId": "test",
+        "body": [
+          {
+            "id": "outer",
+            "text": "outer",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 6
+                }
+              }
+            },
+            "kind": "if",
+            "condition": {
+              "id": "outer/condition",
+              "text": "outer/condition",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 16
+                  }
+                }
+              },
+              "calls": []
+            },
+            "thenBody": [
+              {
+                "id": "loop",
+                "text": "loop",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 5
+                    }
+                  }
+                },
+                "kind": "while",
+                "condition": {
+                  "id": "loop/condition",
+                  "text": "loop/condition",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 15
+                      }
+                    }
+                  },
+                  "calls": []
+                },
+                "body": [
+                  {
+                    "id": "nested",
+                    "text": "nested",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 1,
+                          "column": 1
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 7
+                        }
+                      }
+                    },
+                    "kind": "if",
+                    "condition": {
+                      "id": "nested/condition",
+                      "text": "nested/condition",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 1,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 17
+                          }
+                        }
+                      },
+                      "calls": []
+                    },
+                    "thenBody": [
+                      {
+                        "id": "left",
+                        "text": "left",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 1,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 5
+                            }
+                          }
+                        },
+                        "kind": "simple",
+                        "operation": "assign",
+                        "presentation": "step",
+                        "calls": []
+                      }
+                    ],
+                    "elseBody": [
+                      {
+                        "id": "right",
+                        "text": "right",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 1,
+                              "column": 1
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 6
+                            }
+                          }
+                        },
+                        "kind": "simple",
+                        "operation": "assign",
+                        "presentation": "step",
+                        "calls": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "body-end",
+                    "text": "body-end",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 1,
+                          "column": 1
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 9
+                        }
+                      }
+                    },
+                    "kind": "simple",
+                    "operation": "assign",
+                    "presentation": "step",
+                    "calls": []
+                  }
+                ]
+              }
+            ],
+            "elseBody": [
+              {
+                "id": "other-lane",
+                "text": "other-lane",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 11
+                    }
+                  }
+                },
+                "kind": "simple",
+                "operation": "assign",
+                "presentation": "step",
+                "calls": []
+              }
+            ]
+          },
+          {
+            "id": "after",
+            "text": "after",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 6
+                }
+              }
+            },
+            "kind": "simple",
+            "operation": "assign",
+            "presentation": "step",
+            "calls": []
+          }
+        ]
+      }
+    }
+  },
+  "hir": {
+    "scopes": [],
+    "sources": {
+      "after": {
+        "id": "after",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 6
+            }
+          }
+        },
+        "text": "after"
+      },
+      "body-end": {
+        "id": "body-end",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 9
+            }
+          }
+        },
+        "text": "body-end"
+      },
+      "left": {
+        "id": "left",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "left"
+      },
+      "loop/condition": {
+        "id": "loop/condition",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 15
+            }
+          }
+        },
+        "text": "loop/condition"
+      },
+      "main": {
+        "id": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "main"
+      },
+      "nested/condition": {
+        "id": "nested/condition",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 17
+            }
+          }
+        },
+        "text": "nested/condition"
+      },
+      "other-lane": {
+        "id": "other-lane",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 11
+            }
+          }
+        },
+        "text": "other-lane"
+      },
+      "outer/condition": {
+        "id": "outer/condition",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 16
+            }
+          }
+        },
+        "text": "outer/condition"
+      },
+      "right": {
+        "id": "right",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 6
+            }
+          }
+        },
+        "text": "right"
+      }
+    },
+    "functions": {
+      "main": {
+        "id": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "main",
+        "moduleId": "test",
+        "entry": {
+          "kind": "function",
+          "owner": null,
+          "operation": null,
+          "name": "",
+          "signature": "",
+          "parameters": [],
+          "returnType": ""
+        },
+        "nodes": [
+          {
+            "id": "main/outer",
+            "occurrenceKey": "/outer",
+            "sourceId": "outer/condition",
+            "presentation": {
+              "kind": "plain",
+              "style": "condition",
+              "label": "outer/condition",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/outer/group"
+            }
+          },
+          {
+            "id": "main/outer/then/loop",
+            "occurrenceKey": "/outer/then/loop",
+            "sourceId": "loop/condition",
+            "presentation": {
+              "kind": "plain",
+              "style": "loop",
+              "label": "loop/condition",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/outer/then/loop/group"
+            }
+          },
+          {
+            "id": "main/outer/then/loop/loop/nested",
+            "occurrenceKey": "/outer/then/loop/loop/nested",
+            "sourceId": "nested/condition",
+            "presentation": {
+              "kind": "plain",
+              "style": "condition",
+              "label": "nested/condition",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/outer/then/loop/loop/nested/group"
+            }
+          },
+          {
+            "id": "main/outer/then/loop/loop/nested/then/left",
+            "occurrenceKey": "/outer/then/loop/loop/nested/then/left",
+            "sourceId": "left",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "left",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/outer/then/loop/loop/nested/else/right",
+            "occurrenceKey": "/outer/then/loop/loop/nested/else/right",
+            "sourceId": "right",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "right",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/outer/then/loop/loop/body-end",
+            "occurrenceKey": "/outer/then/loop/loop/body-end",
+            "sourceId": "body-end",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "body-end",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/outer/else/other-lane",
+            "occurrenceKey": "/outer/else/other-lane",
+            "sourceId": "other-lane",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "other-lane",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/after",
+            "occurrenceKey": "/after",
+            "sourceId": "after",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "after",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/root",
+            "occurrenceKey": "/root",
+            "sourceId": "main",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/root/group"
+            }
+          }
+        ],
+        "ports": [
+          {
+            "occurrenceKey": "/outer:entry",
+            "id": "main/outer:entry",
+            "nodeId": "main/outer",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop:entry",
+            "id": "main/outer/then/loop:entry",
+            "nodeId": "main/outer/then/loop",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop/loop/nested:entry",
+            "id": "main/outer/then/loop/loop/nested:entry",
+            "nodeId": "main/outer/then/loop/loop/nested",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop/loop/nested/then/left:entry",
+            "id": "main/outer/then/loop/loop/nested/then/left:entry",
+            "nodeId": "main/outer/then/loop/loop/nested/then/left",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop/loop/nested/then/left:normal-exit",
+            "id": "main/outer/then/loop/loop/nested/then/left:normal-exit",
+            "nodeId": "main/outer/then/loop/loop/nested/then/left",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop/loop/nested/else/right:entry",
+            "id": "main/outer/then/loop/loop/nested/else/right:entry",
+            "nodeId": "main/outer/then/loop/loop/nested/else/right",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop/loop/nested/else/right:normal-exit",
+            "id": "main/outer/then/loop/loop/nested/else/right:normal-exit",
+            "nodeId": "main/outer/then/loop/loop/nested/else/right",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop/loop/nested:normal-exit",
+            "id": "main/outer/then/loop/loop/nested:normal-exit",
+            "nodeId": "main/outer/then/loop/loop/nested",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "group-bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop/loop/nested:true",
+            "id": "main/outer/then/loop/loop/nested:true",
+            "nodeId": "main/outer/then/loop/loop/nested",
+            "role": "true",
+            "anchor": {
+              "kind": "header-left"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop/loop/nested:false",
+            "id": "main/outer/then/loop/loop/nested:false",
+            "nodeId": "main/outer/then/loop/loop/nested",
+            "role": "false",
+            "anchor": {
+              "kind": "header-right"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop/loop/body-end:entry",
+            "id": "main/outer/then/loop/loop/body-end:entry",
+            "nodeId": "main/outer/then/loop/loop/body-end",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop/loop/body-end:normal-exit",
+            "id": "main/outer/then/loop/loop/body-end:normal-exit",
+            "nodeId": "main/outer/then/loop/loop/body-end",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop:normal-exit",
+            "id": "main/outer/then/loop:normal-exit",
+            "nodeId": "main/outer/then/loop",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop:true",
+            "id": "main/outer/then/loop:true",
+            "nodeId": "main/outer/then/loop",
+            "role": "true",
+            "anchor": {
+              "kind": "header-left"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/then/loop:false",
+            "id": "main/outer/then/loop:false",
+            "nodeId": "main/outer/then/loop",
+            "role": "false",
+            "anchor": {
+              "kind": "header-right"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/else/other-lane:entry",
+            "id": "main/outer/else/other-lane:entry",
+            "nodeId": "main/outer/else/other-lane",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer/else/other-lane:normal-exit",
+            "id": "main/outer/else/other-lane:normal-exit",
+            "nodeId": "main/outer/else/other-lane",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer:normal-exit",
+            "id": "main/outer:normal-exit",
+            "nodeId": "main/outer",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "group-bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/outer:true",
+            "id": "main/outer:true",
+            "nodeId": "main/outer",
+            "role": "true",
+            "anchor": {
+              "kind": "header-left"
+            }
+          },
+          {
+            "occurrenceKey": "/outer:false",
+            "id": "main/outer:false",
+            "nodeId": "main/outer",
+            "role": "false",
+            "anchor": {
+              "kind": "header-right"
+            }
+          },
+          {
+            "occurrenceKey": "/after:entry",
+            "id": "main/after:entry",
+            "nodeId": "main/after",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/after:normal-exit",
+            "id": "main/after:normal-exit",
+            "nodeId": "main/after",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:entry",
+            "id": "main/root:entry",
+            "nodeId": "main/root",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:normal-exit",
+            "id": "main/root:normal-exit",
+            "nodeId": "main/root",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "kind": "true",
+            "label": null,
+            "routing": "branch-left",
+            "id": "edge/0",
+            "fromPort": "main/outer/then/loop/loop/nested:true",
+            "toPort": "main/outer/then/loop/loop/nested/then/left:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "false",
+            "label": null,
+            "routing": "branch-right",
+            "id": "edge/1",
+            "fromPort": "main/outer/then/loop/loop/nested:false",
+            "toPort": "main/outer/then/loop/loop/nested/else/right:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/2",
+            "fromPort": "main/outer/then/loop/loop/nested/then/left:normal-exit",
+            "toPort": "main/outer/then/loop/loop/nested:normal-exit",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/3",
+            "fromPort": "main/outer/then/loop/loop/nested/else/right:normal-exit",
+            "toPort": "main/outer/then/loop/loop/nested:normal-exit",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/4",
+            "fromPort": "main/outer/then/loop/loop/nested:normal-exit",
+            "toPort": "main/outer/then/loop/loop/body-end:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "true",
+            "label": null,
+            "routing": "branch-left",
+            "id": "edge/5",
+            "fromPort": "main/outer/then/loop:true",
+            "toPort": "main/outer/then/loop/loop/nested:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "false",
+            "label": null,
+            "routing": "branch-right",
+            "id": "edge/6",
+            "fromPort": "main/outer/then/loop:false",
+            "toPort": "main/outer/then/loop:normal-exit",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "back",
+            "label": null,
+            "routing": "back",
+            "id": "edge/7",
+            "fromPort": "main/outer/then/loop/loop/body-end:normal-exit",
+            "toPort": "main/outer/then/loop:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "true",
+            "label": null,
+            "routing": "branch-left",
+            "id": "edge/8",
+            "fromPort": "main/outer:true",
+            "toPort": "main/outer/then/loop:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "false",
+            "label": null,
+            "routing": "branch-right",
+            "id": "edge/9",
+            "fromPort": "main/outer:false",
+            "toPort": "main/outer/else/other-lane:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/10",
+            "fromPort": "main/outer/then/loop:normal-exit",
+            "toPort": "main/outer:normal-exit",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/11",
+            "fromPort": "main/outer/else/other-lane:normal-exit",
+            "toPort": "main/outer:normal-exit",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/12",
+            "fromPort": "main/outer:normal-exit",
+            "toPort": "main/after:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "main/outer/then/loop/loop/nested/group",
+            "arrangement": {
+              "kind": "columns",
+              "left": [
+                "main/outer/then/loop/loop/nested/then/left"
+              ],
+              "right": [
+                "main/outer/then/loop/loop/nested/else/right"
+              ]
+            },
+            "style": {
+              "profile": "if",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": false
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "main/outer/then/loop/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/outer/then/loop/loop/nested",
+                "main/outer/then/loop/loop/body-end"
+              ]
+            },
+            "style": {
+              "profile": "while",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          },
+          {
+            "id": "main/outer/group",
+            "arrangement": {
+              "kind": "columns",
+              "left": [
+                "main/outer/then/loop"
+              ],
+              "right": [
+                "main/outer/else/other-lane"
+              ]
+            },
+            "style": {
+              "profile": "if",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": false
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "main/root/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/outer",
+                "main/after"
+              ]
+            },
+            "style": {
+              "profile": "root",
+              "root": {
+                "node": true,
+                "header": false,
+                "container": true
+              },
+              "inline": {
+                "node": false,
+                "header": false,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "main/graph",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/root"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          }
+        ],
+        "rootGroup": "main/graph",
+        "interfaces": [
+          {
+            "id": "root/entry/0",
+            "members": [
+              {
+                "portId": "main/root:entry",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "main/root/binding/entry/0",
+              "toPort": "main/outer:entry",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "root/normal",
+            "members": [
+              {
+                "portId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "main/root/binding/normal",
+              "toPort": "main/root:normal-exit",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "entry",
+            "members": [
+              {
+                "portId": "main/outer:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "normal",
+            "members": [
+              {
+                "portId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "returns",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "panics",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          }
+        ],
+        "emission": {
+          "root": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "main/root",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested/then/left",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested/else/right",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/body-end",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/else/other-lane",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "main/outer:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested/then/left:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested/then/left:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested/else/right:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested/else/right:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested:false",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/body-end:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/body-end:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop:false",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/else/other-lane:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/else/other-lane:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer:false",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/root:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/root:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/3",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/4",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/5",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/6",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/7",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/8",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/9",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/10",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/11",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/12",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/root/binding/entry/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/root/binding/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "inline": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "main/outer",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested/then/left",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested/else/right",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/body-end",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/else/other-lane",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "main/outer:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested/then/left:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested/then/left:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested/else/right:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested/else/right:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/nested:false",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/body-end:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop/loop/body-end:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/then/loop:false",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/else/other-lane:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer/else/other-lane:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/outer:false",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/3",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/4",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/5",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/6",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/7",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/8",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/9",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/10",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/11",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/12",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "graphOnly": true,
+  "provenance": "Archived synthetic graph input; no AST exists or is fabricated. Entry metadata is omitted by graphOnly exactly when the original fixture omitted it."
+}

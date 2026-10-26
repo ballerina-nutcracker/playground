@@ -1,0 +1,1 @@
+public function main() { int x = true + 2; _ = x; }

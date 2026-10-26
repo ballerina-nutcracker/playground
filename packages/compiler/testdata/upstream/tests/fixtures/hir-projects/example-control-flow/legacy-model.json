@@ -1,0 +1,739 @@
+{
+  "scopes": [
+    {
+      "id": "examples/control_flow/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 54
+          }
+        }
+      },
+      "text": "public function main() { _ = process([1, 2, 3, 4]); }",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "examples/control_flow",
+      "serviceType": null,
+      "functionId": "examples/control_flow/function/main"
+    }
+  ],
+  "functions": {
+    "examples/control_flow/function/main": {
+      "id": "examples/control_flow/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 54
+          }
+        }
+      },
+      "text": "public function main() { _ = process([1, 2, 3, 4]); }",
+      "moduleId": "examples/control_flow",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "examples/control_flow/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 26
+              },
+              "end": {
+                "line": 1,
+                "column": 52
+              }
+            }
+          },
+          "text": "_ = process([1, 2, 3, 4]);",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/control_flow/function/main/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 30
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 51
+                  }
+                }
+              },
+              "text": "process([1, 2, 3, 4])",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/control_flow/function/process"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    },
+    "examples/control_flow/function/process": {
+      "id": "examples/control_flow/function/process",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 25,
+            "column": 2
+          }
+        }
+      },
+      "text": "function process(int[] values) returns int {\n    int total = 0;\n    int index = 0;\n    while index \u003c 3 {\n        index += 1;\n        if index == 2 { continue; }\n        foreach int value in values {\n            if value == 1 { continue; }\n            if value \u003e 3 { break; }\n            total += value;\n        }\n        if total \u003e 20 { break; }\n    }\n    if total \u003c 0 {\n        return 0;\n    } else if total == 0 {\n        total = 1;\n    } else {\n        total += 2;\n    }\n    if total \u003e 10 {} else { total += 1; }\n    return total;\n}",
+      "moduleId": "examples/control_flow",
+      "entry": {
+        "kind": "function",
+        "name": "process",
+        "signature": "function process(int[] values) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int[] values"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/control_flow/function/process/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 4,
+                "column": 19
+              }
+            }
+          },
+          "text": "int total = 0;",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/control_flow/function/process/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 5,
+                "column": 5
+              },
+              "end": {
+                "line": 5,
+                "column": 19
+              }
+            }
+          },
+          "text": "int index = 0;",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/control_flow/function/process/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 6,
+                "column": 5
+              },
+              "end": {
+                "line": 15,
+                "column": 6
+              }
+            }
+          },
+          "text": "while index \u003c 3 {\n        index += 1;\n        if index == 2 { continue; }\n        foreach int value in values {\n            if value == 1 { continue; }\n            if value \u003e 3 { break; }\n            total += value;\n        }\n        if total \u003e 20 { break; }\n    }",
+          "kind": "while",
+          "condition": {
+            "id": "examples/control_flow/function/process/statement/2/condition",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 6,
+                  "column": 11
+                },
+                "end": {
+                  "line": 6,
+                  "column": 20
+                }
+              }
+            },
+            "text": "index \u003c 3",
+            "calls": []
+          },
+          "body": [
+            {
+              "id": "examples/control_flow/function/process/statement/2/loop/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 7,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 20
+                  }
+                }
+              },
+              "text": "index += 1;",
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            },
+            {
+              "id": "examples/control_flow/function/process/statement/2/loop/statement/1",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 8,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 36
+                  }
+                }
+              },
+              "text": "if index == 2 { continue; }",
+              "kind": "if",
+              "condition": {
+                "id": "examples/control_flow/function/process/statement/2/loop/statement/1/condition",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 8,
+                      "column": 12
+                    },
+                    "end": {
+                      "line": 8,
+                      "column": 22
+                    }
+                  }
+                },
+                "text": "index == 2",
+                "calls": []
+              },
+              "thenBody": [
+                {
+                  "id": "examples/control_flow/function/process/statement/2/loop/statement/1/then/statement/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 8,
+                        "column": 25
+                      },
+                      "end": {
+                        "line": 8,
+                        "column": 34
+                      }
+                    }
+                  },
+                  "text": "continue;",
+                  "kind": "continue"
+                }
+              ],
+              "elseBody": []
+            },
+            {
+              "id": "examples/control_flow/function/process/statement/2/loop/statement/2/block/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 9,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 10
+                  }
+                }
+              },
+              "text": "foreach int value in values {\n            if value == 1 { continue; }\n            if value \u003e 3 { break; }\n            total += value;\n        }",
+              "kind": "foreach",
+              "header": {
+                "id": "examples/control_flow/function/process/statement/2/loop/statement/2/block/statement/0/header",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 9,
+                      "column": 17
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 36
+                    }
+                  }
+                },
+                "text": "int value in values",
+                "calls": []
+              },
+              "body": [
+                {
+                  "id": "examples/control_flow/function/process/statement/2/loop/statement/2/block/statement/0/loop/statement/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 10,
+                        "column": 13
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 40
+                      }
+                    }
+                  },
+                  "text": "if value == 1 { continue; }",
+                  "kind": "if",
+                  "condition": {
+                    "id": "examples/control_flow/function/process/statement/2/loop/statement/2/block/statement/0/loop/statement/0/condition",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 10,
+                          "column": 16
+                        },
+                        "end": {
+                          "line": 10,
+                          "column": 26
+                        }
+                      }
+                    },
+                    "text": "value == 1",
+                    "calls": []
+                  },
+                  "thenBody": [
+                    {
+                      "id": "examples/control_flow/function/process/statement/2/loop/statement/2/block/statement/0/loop/statement/0/then/statement/0",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 10,
+                            "column": 29
+                          },
+                          "end": {
+                            "line": 10,
+                            "column": 38
+                          }
+                        }
+                      },
+                      "text": "continue;",
+                      "kind": "continue"
+                    }
+                  ],
+                  "elseBody": []
+                },
+                {
+                  "id": "examples/control_flow/function/process/statement/2/loop/statement/2/block/statement/0/loop/statement/1/block/statement/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 11,
+                        "column": 13
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 36
+                      }
+                    }
+                  },
+                  "text": "if value \u003e 3 { break; }",
+                  "kind": "if",
+                  "condition": {
+                    "id": "examples/control_flow/function/process/statement/2/loop/statement/2/block/statement/0/loop/statement/1/block/statement/0/condition",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 11,
+                          "column": 16
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 25
+                        }
+                      }
+                    },
+                    "text": "value \u003e 3",
+                    "calls": []
+                  },
+                  "thenBody": [
+                    {
+                      "id": "examples/control_flow/function/process/statement/2/loop/statement/2/block/statement/0/loop/statement/1/block/statement/0/then/statement/0",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 11,
+                            "column": 28
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 34
+                          }
+                        }
+                      },
+                      "text": "break;",
+                      "kind": "break"
+                    }
+                  ],
+                  "elseBody": []
+                },
+                {
+                  "id": "examples/control_flow/function/process/statement/2/loop/statement/2/block/statement/0/loop/statement/1/block/statement/1/block/statement/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 12,
+                        "column": 13
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 28
+                      }
+                    }
+                  },
+                  "text": "total += value;",
+                  "kind": "simple",
+                  "operation": "assign",
+                  "presentation": "step",
+                  "calls": []
+                }
+              ]
+            },
+            {
+              "id": "examples/control_flow/function/process/statement/2/loop/statement/2/block/statement/1",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 14,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 14,
+                    "column": 33
+                  }
+                }
+              },
+              "text": "if total \u003e 20 { break; }",
+              "kind": "if",
+              "condition": {
+                "id": "examples/control_flow/function/process/statement/2/loop/statement/2/block/statement/1/condition",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 14,
+                      "column": 12
+                    },
+                    "end": {
+                      "line": 14,
+                      "column": 22
+                    }
+                  }
+                },
+                "text": "total \u003e 20",
+                "calls": []
+              },
+              "thenBody": [
+                {
+                  "id": "examples/control_flow/function/process/statement/2/loop/statement/2/block/statement/1/then/statement/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 14,
+                        "column": 25
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 31
+                      }
+                    }
+                  },
+                  "text": "break;",
+                  "kind": "break"
+                }
+              ],
+              "elseBody": []
+            }
+          ]
+        },
+        {
+          "id": "examples/control_flow/function/process/statement/3",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 16,
+                "column": 5
+              },
+              "end": {
+                "line": 22,
+                "column": 6
+              }
+            }
+          },
+          "text": "if total \u003c 0 {\n        return 0;\n    } else if total == 0 {\n        total = 1;\n    } else {\n        total += 2;\n    }",
+          "kind": "if",
+          "condition": {
+            "id": "examples/control_flow/function/process/statement/3/condition",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 16,
+                  "column": 8
+                },
+                "end": {
+                  "line": 16,
+                  "column": 17
+                }
+              }
+            },
+            "text": "total \u003c 0",
+            "calls": []
+          },
+          "thenBody": [
+            {
+              "id": "examples/control_flow/function/process/statement/3/then/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 17,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 17,
+                    "column": 18
+                  }
+                }
+              },
+              "text": "return 0;",
+              "kind": "return",
+              "calls": []
+            }
+          ],
+          "elseBody": [
+            {
+              "id": "examples/control_flow/function/process/statement/3/else/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 18,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 6
+                  }
+                }
+              },
+              "text": "if total == 0 {\n        total = 1;\n    } else {\n        total += 2;\n    }",
+              "kind": "if",
+              "condition": {
+                "id": "examples/control_flow/function/process/statement/3/else/statement/0/condition",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 18,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 25
+                    }
+                  }
+                },
+                "text": "total == 0",
+                "calls": []
+              },
+              "thenBody": [
+                {
+                  "id": "examples/control_flow/function/process/statement/3/else/statement/0/then/statement/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 19,
+                        "column": 9
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 19
+                      }
+                    }
+                  },
+                  "text": "total = 1;",
+                  "kind": "simple",
+                  "operation": "assign",
+                  "presentation": "step",
+                  "calls": []
+                }
+              ],
+              "elseBody": [
+                {
+                  "id": "examples/control_flow/function/process/statement/3/else/statement/0/else/statement/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 21,
+                        "column": 9
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 20
+                      }
+                    }
+                  },
+                  "text": "total += 2;",
+                  "kind": "simple",
+                  "operation": "assign",
+                  "presentation": "step",
+                  "calls": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "examples/control_flow/function/process/statement/4",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 23,
+                "column": 5
+              },
+              "end": {
+                "line": 23,
+                "column": 42
+              }
+            }
+          },
+          "text": "if total \u003e 10 {} else { total += 1; }",
+          "kind": "if",
+          "condition": {
+            "id": "examples/control_flow/function/process/statement/4/condition",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 23,
+                  "column": 8
+                },
+                "end": {
+                  "line": 23,
+                  "column": 18
+                }
+              }
+            },
+            "text": "total \u003e 10",
+            "calls": []
+          },
+          "thenBody": [],
+          "elseBody": [
+            {
+              "id": "examples/control_flow/function/process/statement/4/else/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 23,
+                    "column": 29
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": 40
+                  }
+                }
+              },
+              "text": "total += 1;",
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        },
+        {
+          "id": "examples/control_flow/function/process/statement/5",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 24,
+                "column": 5
+              },
+              "end": {
+                "line": 24,
+                "column": 18
+              }
+            }
+          },
+          "text": "return total;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

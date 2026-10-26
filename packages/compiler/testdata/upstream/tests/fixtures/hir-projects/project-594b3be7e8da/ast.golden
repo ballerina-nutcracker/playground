@@ -1,0 +1,104 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/automation_flow / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples automation_flow 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (import-package (position 2:1 2:21) ballerina io (as io))
+  (service (position 3:1 9:2)
+    (absolute-resource-path /)
+    (on
+    (new (position 3:14 3:37)
+      (user-defined-type (position 3:18 3:31) http Listener) (
+      (literal (position 3:32 3:36) 8080) <default> (position 3:14 3:37))))
+    (resource-function (position 4:2 4:74) get name:hello
+      (value-type (position 4:40 4:46) string)
+      (block-function-body (position 4:47 4:74)
+        (return (position 4:49 4:72)
+          (literal (position 4:56 4:71) Hello, World!))))
+    (resource-function (position 5:2 8:3) get
+      (param x
+        (value-type (position 5:25 5:28) int))
+      (param y
+        (value-type (position 5:33 5:36) int)) name:sum
+      (value-type (position 5:54 5:57) int)
+      (block-function-body (position 5:58 8:3)
+        (expression-stmt (position 6:3 6:36)
+          (invocation (position 6:3 6:35) io println (
+            (literal (position 6:14 6:19) x: )
+            (simple-var-ref (position 6:21 6:22) x)
+            (literal (position 6:24 6:31) , y: )
+            (simple-var-ref (position 6:33 6:34) y))))
+        (return (position 7:3 7:26)
+          (binary-expr (position 7:10 7:25) +
+            (invocation (position 7:10 7:16) fib (
+              (simple-var-ref (position 7:14 7:15) x)))
+            (invocation (position 7:19 7:25) fib (
+              (simple-var-ref (position 7:23 7:24) y))))))))
+  (function (position 10:1 13:2) fib (
+    (variable (position 10:14 10:19) n (type
+      (value-type (position 10:14 10:17) int)))) (
+    (value-type (position 10:29 10:32) int))
+    (block-function-body (position 10:33 13:2)
+      (if (position 11:2 11:25)
+        (binary-expr (position 11:5 11:11) <=
+          (simple-var-ref (position 11:5 11:6) n)
+          (literal (position 11:10 11:11) 1))
+        (block-stmt (position 11:12 11:25)
+          (return (position 11:14 11:23)
+            (simple-var-ref (position 11:21 11:22) n))) ())
+      (block-stmt (position 12:2 13:2)
+        (return (position 12:2 12:33)
+          (binary-expr (position 12:9 12:32) +
+            (invocation (position 12:9 12:19) fib (
+              (binary-expr (position 12:13 12:18) -
+                (simple-var-ref (position 12:13 12:14) n)
+                (literal (position 12:17 12:18) 1))))
+            (invocation (position 12:22 12:32) fib (
+              (binary-expr (position 12:26 12:31) -
+                (simple-var-ref (position 12:26 12:27) n)
+                (literal (position 12:30 12:31) 2))))))))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### new main.bal [57,80)
+arguments: 1
+argument[0]:
+(literal (position 3:32 3:36) 8080)
+
+### call main.bal [218,250)
+arguments: 4
+argument[0]:
+(literal (position 6:14 6:19) x: )
+argument[1]:
+(simple-var-ref (position 6:21 6:22) x)
+argument[2]:
+(literal (position 6:24 6:31) , y: )
+argument[3]:
+(simple-var-ref (position 6:33 6:34) y)
+
+### call main.bal [261,267)
+arguments: 1
+argument[0]:
+(simple-var-ref (position 7:14 7:15) x)
+
+### call main.bal [270,276)
+arguments: 1
+argument[0]:
+(simple-var-ref (position 7:23 7:24) y)
+
+### call main.bal [350,360)
+arguments: 1
+argument[0]:
+(binary-expr (position 12:13 12:18) -
+  (simple-var-ref (position 12:13 12:14) n)
+  (literal (position 12:17 12:18) 1))
+
+### call main.bal [363,373)
+arguments: 1
+argument[0]:
+(binary-expr (position 12:26 12:31) -
+  (simple-var-ref (position 12:26 12:27) n)
+  (literal (position 12:30 12:31) 2))

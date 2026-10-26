@@ -1,0 +1,445 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 2
+          },
+          "end": {
+            "line": 8,
+            "column": 27
+          }
+        }
+      },
+      "text": "public function main() {}",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "browser/http_service",
+      "serviceType": null,
+      "functionId": "browser/http_service/function/main"
+    }
+  ],
+  "functions": {
+    "browser/http_service/class/Queue/method/$remote$read": {
+      "id": "browser/http_service/class/Queue/method/$remote$read",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 2
+          },
+          "end": {
+            "line": 2,
+            "column": 65
+          }
+        }
+      },
+      "text": "remote function read() returns string|error { return \"value\"; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "remote",
+        "name": "Queue.read",
+        "signature": "remote function read() returns string|error",
+        "parameters": [],
+        "returnType": "string|error"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/class/Queue/method/$remote$read/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 2,
+                "column": 48
+              },
+              "end": {
+                "line": 2,
+                "column": 63
+              }
+            }
+          },
+          "text": "return \"value\";",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "browser/http_service/function/fill": {
+      "id": "browser/http_service/function/fill",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 2
+          },
+          "end": {
+            "line": 7,
+            "column": 3
+          }
+        }
+      },
+      "text": "function fill(Queue queue, string[] values) returns error? {\n values[index()] = check queue-\u003eread();\n }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "fill",
+        "signature": "function fill(Queue queue, string[] values) returns error?",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "Queue queue"
+          },
+          {
+            "kind": "input",
+            "text": "string[] values"
+          }
+        ],
+        "returnType": "error?"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/fill/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 6,
+                "column": 2
+              },
+              "end": {
+                "line": 6,
+                "column": 40
+              }
+            }
+          },
+          "text": "values[index()] = check queue-\u003eread();",
+          "evaluation": {
+            "id": "browser/http_service/function/fill/statement/0/evaluation",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 6,
+                  "column": 2
+                },
+                "end": {
+                  "line": 6,
+                  "column": 40
+                }
+              }
+            },
+            "text": "values[index()] = check queue-\u003eread();",
+            "kind": "source",
+            "children": [
+              {
+                "id": "browser/http_service/function/fill/statement/0/target",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 6,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 6,
+                      "column": 17
+                    }
+                  }
+                },
+                "text": "values[index()]",
+                "kind": "source",
+                "children": [
+                  {
+                    "id": "browser/http_service/function/fill/statement/0/target/part/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 6,
+                          "column": 9
+                        },
+                        "end": {
+                          "line": 6,
+                          "column": 16
+                        }
+                      }
+                    },
+                    "text": "index()",
+                    "kind": "call",
+                    "children": [],
+                    "call": {
+                      "id": "browser/http_service/function/fill/statement/0/lhs/call/0",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 6,
+                            "column": 9
+                          },
+                          "end": {
+                            "line": 6,
+                            "column": 16
+                          }
+                        }
+                      },
+                      "text": "index()",
+                      "target": {
+                        "kind": "workspace",
+                        "functionId": "browser/http_service/function/index"
+                      },
+                      "expansion": "unavailable",
+                      "reason": "Expansion in this expression evaluation is not modeled."
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "browser/http_service/function/fill/statement/0/value",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 6,
+                      "column": 20
+                    },
+                    "end": {
+                      "line": 6,
+                      "column": 39
+                    }
+                  }
+                },
+                "text": "check queue-\u003eread()",
+                "kind": "check",
+                "children": [
+                  {
+                    "id": "browser/http_service/function/fill/statement/0/value/part/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 6,
+                          "column": 26
+                        },
+                        "end": {
+                          "line": 6,
+                          "column": 39
+                        }
+                      }
+                    },
+                    "text": "queue-\u003eread()",
+                    "kind": "call",
+                    "children": [],
+                    "call": {
+                      "id": "browser/http_service/function/fill/statement/0/call/0",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 6,
+                            "column": 26
+                          },
+                          "end": {
+                            "line": 6,
+                            "column": 39
+                          }
+                        }
+                      },
+                      "text": "queue-\u003eread()",
+                      "client": {
+                        "context": {
+                          "receiver": {
+                            "id": "browser/http_service/function/fill/statement/0/call/0/receiver",
+                            "source": {
+                              "file": "main.bal",
+                              "range": {
+                                "start": {
+                                  "line": 6,
+                                  "column": 26
+                                },
+                                "end": {
+                                  "line": 6,
+                                  "column": 31
+                                }
+                              }
+                            },
+                            "text": "queue"
+                          },
+                          "type": "Queue",
+                          "origin": "parameter"
+                        },
+                        "method": "read",
+                        "arguments": []
+                      },
+                      "target": {
+                        "kind": "workspace",
+                        "functionId": "browser/http_service/class/Queue/method/$remote$read"
+                      },
+                      "expansion": "unavailable",
+                      "reason": "Expansion in this expression evaluation is not modeled."
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "binding": "values[index()]",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/function/fill/statement/0/lhs/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 6,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 6,
+                    "column": 16
+                  }
+                }
+              },
+              "text": "index()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/function/index"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            },
+            {
+              "id": "browser/http_service/function/fill/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 6,
+                    "column": 26
+                  },
+                  "end": {
+                    "line": 6,
+                    "column": 39
+                  }
+                }
+              },
+              "text": "queue-\u003eread()",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "browser/http_service/function/fill/statement/0/call/0/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 6,
+                          "column": 26
+                        },
+                        "end": {
+                          "line": 6,
+                          "column": 31
+                        }
+                      }
+                    },
+                    "text": "queue"
+                  },
+                  "type": "Queue",
+                  "origin": "parameter"
+                },
+                "method": "read",
+                "arguments": []
+              },
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/class/Queue/method/$remote$read"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            }
+          ]
+        }
+      ]
+    },
+    "browser/http_service/function/index": {
+      "id": "browser/http_service/function/index",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 2
+          },
+          "end": {
+            "line": 4,
+            "column": 44
+          }
+        }
+      },
+      "text": "function index() returns int { return 0; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "index",
+        "signature": "function index() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/index/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 33
+              },
+              "end": {
+                "line": 4,
+                "column": 42
+              }
+            }
+          },
+          "text": "return 0;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "browser/http_service/function/main": {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 2
+          },
+          "end": {
+            "line": 8,
+            "column": 27
+          }
+        }
+      },
+      "text": "public function main() {}",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": []
+    }
+  }
+}

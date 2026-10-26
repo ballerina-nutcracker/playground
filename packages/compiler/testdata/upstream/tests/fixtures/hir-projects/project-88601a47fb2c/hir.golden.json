@@ -1,0 +1,1712 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/service/main.bal///1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 1
+          },
+          "end": {
+            "line": 4,
+            "column": 211
+          }
+        }
+      },
+      "text": "service / on new http:Listener(8080) { resource function get hello() returns string|error { Person person = check testClient-\u003eget(\"/foo/bar\"); return string `hello ${person.first_name} ${person.last_name}`; } }",
+      "kind": "service",
+      "title": "/",
+      "moduleId": "browser/http_service",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 40
+              },
+              "end": {
+                "line": 4,
+                "column": 209
+              }
+            }
+          },
+          "text": "resource function get hello() returns string|error { Person person = check testClient-\u003eget(\"/foo/bar\"); return string `hello ${person.first_name} ${person.last_name}`; }",
+          "kind": "resource",
+          "title": "get /hello",
+          "functionId": "browser/http_service/service/main.bal///1/resource/get/hello"
+        }
+      ],
+      "definitions": [
+        {
+          "id": "browser/http_service/type/Person",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 2,
+                "column": 1
+              },
+              "end": {
+                "line": 2,
+                "column": 63
+              }
+            }
+          },
+          "text": "type Person record {| string first_name; string last_name; |};",
+          "kind": "type",
+          "label": "Person"
+        },
+        {
+          "id": "browser/http_service/connector/testClient",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 3,
+                "column": 63
+              }
+            }
+          },
+          "text": "final http:Client testClient = check new (\"https://test.com\");",
+          "kind": "connector",
+          "label": "testClient"
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "browser/http_service/connector/testClient": {
+      "id": "browser/http_service/connector/testClient",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 3,
+            "column": 63
+          }
+        }
+      },
+      "text": "final http:Client testClient = check new (\"https://test.com\");"
+    },
+    "browser/http_service/service/main.bal///1": {
+      "id": "browser/http_service/service/main.bal///1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 1
+          },
+          "end": {
+            "line": 4,
+            "column": 211
+          }
+        }
+      },
+      "text": "service / on new http:Listener(8080) { resource function get hello() returns string|error { Person person = check testClient-\u003eget(\"/foo/bar\"); return string `hello ${person.first_name} ${person.last_name}`; } }"
+    },
+    "browser/http_service/service/main.bal///1/resource/get/hello": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 40
+          },
+          "end": {
+            "line": 4,
+            "column": 209
+          }
+        }
+      },
+      "text": "resource function get hello() returns string|error { Person person = check testClient-\u003eget(\"/foo/bar\"); return string `hello ${person.first_name} ${person.last_name}`; }"
+    },
+    "browser/http_service/service/main.bal///1/resource/get/hello/returnType": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 78
+          },
+          "end": {
+            "line": 4,
+            "column": 90
+          }
+        }
+      },
+      "text": "string|error"
+    },
+    "browser/http_service/service/main.bal///1/resource/get/hello/statement/0": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 93
+          },
+          "end": {
+            "line": 4,
+            "column": 143
+          }
+        }
+      },
+      "text": "Person person = check testClient-\u003eget(\"/foo/bar\");"
+    },
+    "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/call/0": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/call/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 115
+          },
+          "end": {
+            "line": 4,
+            "column": 142
+          }
+        }
+      },
+      "text": "testClient-\u003eget(\"/foo/bar\")"
+    },
+    "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/call/0/argument/0": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/call/0/argument/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 131
+          },
+          "end": {
+            "line": 4,
+            "column": 141
+          }
+        }
+      },
+      "text": "\"/foo/bar\""
+    },
+    "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/call/0/receiver": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/call/0/receiver",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 115
+          },
+          "end": {
+            "line": 4,
+            "column": 125
+          }
+        }
+      },
+      "text": "testClient"
+    },
+    "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/value": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/value",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 109
+          },
+          "end": {
+            "line": 4,
+            "column": 142
+          }
+        }
+      },
+      "text": "check testClient-\u003eget(\"/foo/bar\")"
+    },
+    "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/value/part/0": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/value/part/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 115
+          },
+          "end": {
+            "line": 4,
+            "column": 142
+          }
+        }
+      },
+      "text": "testClient-\u003eget(\"/foo/bar\")"
+    },
+    "browser/http_service/service/main.bal///1/resource/get/hello/statement/1": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 144
+          },
+          "end": {
+            "line": 4,
+            "column": 207
+          }
+        }
+      },
+      "text": "return string `hello ${person.first_name} ${person.last_name}`;"
+    },
+    "browser/http_service/service/main.bal///1/resource/get/hello/statement/1/value": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/1/value",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 151
+          },
+          "end": {
+            "line": 4,
+            "column": 206
+          }
+        }
+      },
+      "text": "string `hello ${person.first_name} ${person.last_name}`"
+    },
+    "browser/http_service/service/main.bal///1/resource/get/hello/statement/1/value/insertion/0": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/1/value/insertion/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 167
+          },
+          "end": {
+            "line": 4,
+            "column": 184
+          }
+        }
+      },
+      "text": "person.first_name"
+    },
+    "browser/http_service/service/main.bal///1/resource/get/hello/statement/1/value/insertion/1": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/1/value/insertion/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 188
+          },
+          "end": {
+            "line": 4,
+            "column": 204
+          }
+        }
+      },
+      "text": "person.last_name"
+    },
+    "browser/http_service/type/Person": {
+      "id": "browser/http_service/type/Person",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 1
+          },
+          "end": {
+            "line": 2,
+            "column": 63
+          }
+        }
+      },
+      "text": "type Person record {| string first_name; string last_name; |};"
+    },
+    "receiver/0/initializer": {
+      "id": "receiver/0/initializer",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 32
+          },
+          "end": {
+            "line": 3,
+            "column": 62
+          }
+        }
+      },
+      "text": "check new (\"https://test.com\")"
+    },
+    "receiver/1/initializer": {
+      "id": "receiver/1/initializer",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 109
+          },
+          "end": {
+            "line": 4,
+            "column": 142
+          }
+        }
+      },
+      "text": "check testClient-\u003eget(\"/foo/bar\")"
+    },
+    "receiver/main.bal/241/291/type": {
+      "id": "receiver/main.bal/241/291/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 93
+          },
+          "end": {
+            "line": 4,
+            "column": 99
+          }
+        }
+      },
+      "text": "Person"
+    },
+    "receiver/main.bal/86/148/type": {
+      "id": "receiver/main.bal/86/148/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 7
+          },
+          "end": {
+            "line": 3,
+            "column": 18
+          }
+        }
+      },
+      "text": "http:Client"
+    },
+    "resource-path/main.bal/188/0": {
+      "id": "resource-path/main.bal/188/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 62
+          },
+          "end": {
+            "line": 4,
+            "column": 67
+          }
+        }
+      },
+      "text": "hello"
+    }
+  },
+  "functions": {
+    "browser/http_service/service/main.bal///1/resource/get/hello": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 40
+          },
+          "end": {
+            "line": 4,
+            "column": 209
+          }
+        }
+      },
+      "text": "resource function get hello() returns string|error { Person person = check testClient-\u003eget(\"/foo/bar\"); return string `hello ${person.first_name} ${person.last_name}`; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "resource",
+        "owner": "Service / · ballerina/http:Listener",
+        "operation": "get",
+        "name": "/hello",
+        "signature": "resource function get hello() returns string|error",
+        "parameters": [],
+        "returnType": "string|error"
+      },
+      "nodes": [
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0",
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0",
+          "sourceId": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/248",
+                "start": 16,
+                "end": 22
+              }
+            ],
+            "style": "step",
+            "label": "Result → Person person",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0",
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0",
+          "sourceId": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/call/0",
+          "presentation": {
+            "kind": "client",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/104",
+                "start": 0,
+                "end": 10
+              }
+            ],
+            "style": "client",
+            "label": "testClient · http:Client\ncheck new (\"https://test.com\")\n→ get(\"/foo/bar\")",
+            "sections": [
+              {
+                "variables": [
+                  {
+                    "variableId": "variable/main.bal/104",
+                    "start": 0,
+                    "end": 10
+                  }
+                ],
+                "kind": "receiver",
+                "text": "testClient · http:Client"
+              },
+              {
+                "kind": "context",
+                "text": "check new (\"https://test.com\")"
+              },
+              {
+                "kind": "method",
+                "text": "→ get(\"/foo/bar\")"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error",
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error",
+          "sourceId": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/value",
+          "presentation": {
+            "kind": "plain",
+            "style": "return",
+            "label": "Return error",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation",
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation",
+          "sourceId": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/value",
+          "presentation": {
+            "kind": "plain",
+            "style": "condition",
+            "label": "check",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/group"
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1",
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/1",
+          "sourceId": "browser/http_service/service/main.bal///1/resource/get/hello/statement/1",
+          "presentation": {
+            "kind": "plain",
+            "style": "return",
+            "label": "Return value",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation",
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation",
+          "sourceId": "browser/http_service/service/main.bal///1/resource/get/hello/statement/1/value",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/248",
+                "start": 16,
+                "end": 22
+              },
+              {
+                "variableId": "variable/main.bal/248",
+                "start": 37,
+                "end": 43
+              }
+            ],
+            "style": "template",
+            "label": "string `hello ${person.first_name} ${person.last_name}`",
+            "sections": [
+              {
+                "kind": "template-type",
+                "text": "string"
+              },
+              {
+                "kind": "template-expression",
+                "text": "`hello ${person.first_name} ${person.last_name}`"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/root",
+          "occurrenceKey": "/root",
+          "sourceId": "browser/http_service/service/main.bal///1/resource/get/hello",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "browser/http_service/service/main.bal///1/resource/get/hello/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0:entry",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0:entry",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:entry",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:entry",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:normal-exit",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:normal-exit",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:panic",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:panic",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0",
+          "role": "panic",
+          "anchor": {
+            "kind": "header-right"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:normal-exit",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:normal-exit",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "group-bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:true",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:true",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation",
+          "role": "true",
+          "anchor": {
+            "kind": "header-left"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:false",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:false",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation",
+          "role": "false",
+          "anchor": {
+            "kind": "header-right"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error:entry",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error:entry",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:entry",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:entry",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error:return",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error:return",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/0:normal-exit",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0:normal-exit",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/1:entry",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1:entry",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:entry",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:entry",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:normal-exit",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:normal-exit",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:panic",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:panic",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation",
+          "role": "panic",
+          "anchor": {
+            "kind": "header-right"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal///1/resource/get/hello/statement/1:return",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1:return",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/root:entry",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/root:normal-exit",
+          "nodeId": "browser/http_service/service/main.bal///1/resource/get/hello/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "kind": "true",
+          "label": "value",
+          "routing": "branch-left",
+          "id": "edge/0",
+          "fromPort": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:true",
+          "toPort": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:normal-exit",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "kind": "error",
+          "label": "error",
+          "routing": "branch-right",
+          "id": "edge/1",
+          "fromPort": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:false",
+          "toPort": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error:entry",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/2",
+          "fromPort": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:normal-exit",
+          "toPort": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/3",
+          "fromPort": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:normal-exit",
+          "toPort": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/4",
+          "fromPort": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:normal-exit",
+          "toPort": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/5",
+          "fromPort": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0:normal-exit",
+          "toPort": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/group",
+          "arrangement": {
+            "kind": "columns",
+            "left": [],
+            "right": [
+              "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error"
+            ]
+          },
+          "style": {
+            "profile": "if",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": false
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0",
+              "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation",
+              "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0",
+              "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation",
+              "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/service/main.bal///1/resource/get/hello/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "browser/http_service/service/main.bal///1/resource/get/hello/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "browser/http_service/service/main.bal///1/resource/get/hello/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/service/main.bal///1/resource/get/hello/root/binding/entry/0",
+            "toPort": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/service/main.bal///1/resource/get/hello/root/binding/normal",
+            "toPort": "browser/http_service/service/main.bal///1/resource/get/hello/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error:return",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "portId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [
+            {
+              "portId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:panic",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "portId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:panic",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:panic",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:true",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:false",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error:return",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:panic",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/3",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/4",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/5",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/service/main.bal///1/resource/get/hello/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/service/main.bal///1/resource/get/hello/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/part/0:panic",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:true",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:false",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0/evaluation/error:return",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1/evaluation:panic",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal///1/resource/get/hello/browser/http_service/service/main.bal///1/resource/get/hello/statement/1:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/3",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/4",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/5",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
