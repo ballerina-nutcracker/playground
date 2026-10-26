@@ -6,7 +6,7 @@
 		"dev": "bun run gen:examples && bun run gen:skills && vite",
 		"build": "bun run gen:examples && bun run gen:skills && tsc -b && vite build",
 		"preview": "vite preview",
-		"test": "bun test",
+		"test": "bun run gen:skills && bun test",
 		"gen:examples": "go run ../../scripts/example_gen/main.go ../../examples src/assets/examples.json",
 		"copy:wasm": "cp ../../packages/wasm/dist/ballerina.wasm public/ballerina.wasm && cp ../../packages/wasm/dist/ballerina-meta.json public/ballerina-meta.json",
 		"clean": "git clean -xdf .turbo dist node_modules",
