@@ -29,12 +29,19 @@ SOFTWARE.
 Patches
 -------
 
-- No logic patches: all copied .ts/.tsx files are byte-identical to upstream
-  (they compile unchanged under the strict tsconfig.app.json).
+- editor.tsx, accounts.tsx, file-tree.tsx: restyled with the playground's
+  Tailwind tokens and `@/components/ui` Button/Input/Textarea. Only JSX
+  markup and classNames changed (plus the three imports); state, effects and
+  handlers are unchanged. All other copied .ts/.tsx files are byte-identical
+  to upstream and compile unchanged under the strict tsconfig.app.json.
 - function-cards.css: every selector prefixed with `.bal-bot-root`.
-- bal-bot.css: generated from upstream style.css by prefixing every selector
-  with `.bal-bot-root`; the global `:root`, `*`, `body` rules and the Google
-  Fonts @import are dropped; a small `.bal-bot-root` sizing rule is added.
+- bal-bot.css: extracted from upstream style.css: only flow, floating-chat,
+  workspace-layout, anchor-activity and chat-markdown rules are kept, every
+  selector is prefixed with `.bal-bot-root`, chat-markdown colours use the
+  playground tokens, and a scoped button base for the flow panel replaces
+  upstream's global `button` rule. Chrome rules were replaced by Tailwind
+  classes; the global `:root`, `*`, `body` rules and the Google Fonts @import
+  are dropped.
 - Not copied: main.tsx (replaced by bal-bot-view.tsx), style.css (see above),
   vite-env.d.ts.
 - tests/bal-bot: copied from upstream apps/editor/tests (variable-text from the

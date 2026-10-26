@@ -2,6 +2,8 @@ import { BrowserWorkspace } from "@bal-bot/browser-workspace";
 import { createCompiler } from "@bal-bot/compiler";
 import { useEffect, useState } from "react";
 
+import { Button } from "@/components/ui/button";
+
 import "./bal-bot.css";
 import { Editor } from "./editor";
 import { streamBrowser } from "./providers";
@@ -40,11 +42,17 @@ export function BalBotView({
 	}, [files]);
 
 	return (
-		<div className="bal-bot-root flex h-full min-h-0 flex-col">
+		<div className="bal-bot-root flex h-full min-h-0 flex-col bg-background text-foreground">
 			<div className="flex-none border-b px-3 py-2">
-				<button type="button" onClick={onBack} data-testid="bal-bot-back">
+				<Button
+					type="button"
+					variant="outline"
+					size="sm"
+					onClick={onBack}
+					data-testid="bal-bot-back"
+				>
 					← Back
-				</button>
+				</Button>
 			</div>
 			<div className="min-h-0 flex-1">
 				{workspace && <Editor workspace={workspace} />}

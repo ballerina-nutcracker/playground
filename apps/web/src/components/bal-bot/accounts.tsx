@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { loginProvider, logoutProvider, providerOptions, type ProviderAccount } from './providers';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 interface Props {
   accounts: ProviderAccount[];
@@ -10,8 +12,8 @@ interface Props {
   loginRequest: number;
 }
 function ProviderIcon({ id }: { id: string }) {
-  return <span className="provider-icon" aria-hidden="true">{id === 'openai' || id === 'anthropic'
-    ? <img src={`${import.meta.env.BASE_URL}${id}.svg`} alt="" width="20" height="20" />
+  return <span className="provider-icon inline-flex size-5 flex-none items-center justify-center" aria-hidden="true">{id === 'openai' || id === 'anthropic'
+    ? <img src={`${import.meta.env.BASE_URL}${id}.svg`} alt="" width="20" height="20" className="size-5 object-contain" />
     : <span>{id === 'google' ? '✦' : '⇄'}</span>}</span>;
 }
 export function Accounts({ accounts, provider, busy, chooseProvider, refresh, loginRequest }: Props) {
@@ -52,27 +54,27 @@ export function Accounts({ accounts, provider, busy, chooseProvider, refresh, lo
     catch { setError('Could not forget the API key. Please retry.'); }
     finally { setWorking(false); }
   }
-  return <div className="provider-controls" ref={picker}>
-    <div className="provider-picker">
-      <button className="provider-trigger" aria-label={`Provider: ${selected.name}`} aria-expanded={pickerOpen} aria-controls="provider-options" disabled={busy || working} onClick={() => { setPickerOpen(!pickerOpen); setShowLogin(false); setKey(''); }}>
+  return <div className="provider-controls flex min-w-0 items-center gap-2" ref={picker}>
+    <div className="provider-picker relative">
+      <Button variant="outline" size="sm" className="provider-trigger" aria-label={`Provider: ${selected.name}`} aria-expanded={pickerOpen} aria-controls="provider-options" disabled={busy || working} onClick={() => { setPickerOpen(!pickerOpen); setShowLogin(false); setKey(''); }}>
         <ProviderIcon id={provider} /><span>{selected.name}</span><span aria-hidden="true">⌄</span>
-      </button>
-      {pickerOpen && <div id="provider-options" className="provider-options" role="group" aria-label="Select provider">
-        {providerOptions.map(option => <button key={option.id} className="provider-option" aria-pressed={provider === option.id} onClick={() => {
+      </Button>
+      {pickerOpen && <div id="provider-options" className="provider-options absolute right-0 top-full z-20 mt-1 flex w-72 flex-col border bg-popover p-1 text-popover-foreground shadow-md" role="group" aria-label="Select provider">
+        {providerOptions.map(option => <Button key={option.id} variant="ghost" className="provider-option h-auto w-full justify-start gap-2 py-2 text-left" aria-pressed={provider === option.id} onClick={() => {
           chooseProvider(option.id); setPickerOpen(false); setError(''); setKey(''); setShowLogin(true);
-        }}><ProviderIcon id={option.id} /><span>{option.name}<small>{option.description}</small></span>{accounts.find(account => account.id === option.id)?.connected && <span aria-label="API key configured">✓</span>}</button>)}
+        }}><ProviderIcon id={option.id} /><span className="min-w-0 flex-1 text-left">{option.name}<small className="block text-[10px] font-normal text-muted-foreground">{option.description}</small></span>{accounts.find(account => account.id === option.id)?.connected && <span aria-label="API key configured">✓</span>}</Button>)}
       </div>}
     </div>
-    {showLogin && <section className="settings accounts provider-popover" aria-label="Provider API key">
-      <div className="login-heading">{selected.name} API key</div>
-      <p>Use an API key, not a subscription sign-in. Keys stay in this tab’s memory and are forgotten on refresh or close.</p>
-      {current?.connected && <p role="status">API key configured. It will be checked when you send a message.</p>}
-      <form className="api-key-form" onSubmit={event => { event.preventDefault(); void saveKey(); }}>
-        <label>API key<input type="password" aria-label="API key" autoComplete="off" spellCheck={false} value={key} disabled={busy || working} onChange={event => setKey(event.target.value)} /></label>
-        <button disabled={busy || working || !key.trim()}>{current?.connected ? 'Replace API key' : 'Use API key'}</button>
+    {showLogin && <section className="settings accounts provider-popover absolute right-3 top-12 z-20 flex w-[min(460px,calc(100vw-2rem))] flex-col gap-3 border bg-popover p-4 text-popover-foreground shadow-md" aria-label="Provider API key">
+      <div className="login-heading text-sm font-semibold">{selected.name} API key</div>
+      <p className="text-[11px] text-muted-foreground">Use an API key, not a subscription sign-in. Keys stay in this tab’s memory and are forgotten on refresh or close.</p>
+      {current?.connected && <p className="text-[11px] text-muted-foreground" role="status">API key configured. It will be checked when you send a message.</p>}
+      <form className="api-key-form flex flex-col gap-3" onSubmit={event => { event.preventDefault(); void saveKey(); }}>
+        <label className="flex flex-col gap-1.5 text-[11px]">API key<Input className="h-8" type="password" aria-label="API key" autoComplete="off" spellCheck={false} value={key} disabled={busy || working} onChange={event => setKey(event.target.value)} /></label>
+        <Button type="submit" className="self-end" disabled={busy || working || !key.trim()}>{current?.connected ? 'Replace API key' : 'Use API key'}</Button>
       </form>
-      {error && <p className="message-error" role="alert">{error}</p>}
-      {current?.connected && <div className="login-actions"><button disabled={busy || working} onClick={() => void forgetKey()}>Forget API key</button></div>}
+      {error && <p className="message-error text-xs text-destructive" role="alert">{error}</p>}
+      {current?.connected && <div className="login-actions"><Button variant="outline" size="sm" disabled={busy || working} onClick={() => void forgetKey()}>Forget API key</Button></div>}
     </section>}
   </div>;
 }
