@@ -1,0 +1,360 @@
+.bal-bot-root {
+	font-size: 14px;
+	height: 100%;
+	min-height: 0;
+}
+.bal-bot-root .app {
+	height: 100%;
+}
+.bal-bot-root button,
+.bal-bot-root input,
+.bal-bot-root textarea,
+.bal-bot-root select { font:inherit }
+.bal-bot-root button { cursor:pointer;border:1px solid #dce2db;background:white;color:inherit;border-radius:7px;padding:7px 11px }
+.bal-bot-root button:hover { background:#edf2eb }
+.bal-bot-root button:disabled { opacity:.4;cursor:default }
+.bal-bot-root button:focus-visible,
+.bal-bot-root input:focus-visible,
+.bal-bot-root textarea:focus-visible,
+.bal-bot-root select:focus-visible { outline:2px solid #628952;outline-offset:2px }
+.bal-bot-root .app { height:100dvh;display:flex;flex-direction:column }
+.bal-bot-root header { height:68px;flex:none;border-bottom:1px solid #e2e7df;display:flex;align-items:center;justify-content:space-between;padding:0 26px;background:white }
+.bal-bot-root .brand { display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;letter-spacing:-.7px }
+.bal-bot-root .settings-button { border:none;background:transparent;font-size:12px;display:flex;gap:18px;align-items:center }
+.bal-bot-root .workspace { display:flex;min-height:0;flex:1 }
+.bal-bot-root aside { width:260px;flex:none;background:#f3f5f0;border-right:1px solid #e1e6dd;display:flex;flex-direction:column;padding:25px 14px;overflow:auto }
+.bal-bot-root .section-title { font-size:10px;font-weight:700;color:#8c978b;letter-spacing:1.7px;display:flex;justify-content:space-between;align-items:center;margin:0 10px 20px }
+.bal-bot-root .dot { display:inline-block;width:6px;height:6px;border-radius:50%;background:#789d64 }
+.bal-bot-root .project { font-weight:600;font-size:13px;margin:0 10px 12px }
+.bal-bot-root .service { width:100%;display:flex;align-items:center;gap:9px;border:0;text-align:left;font-size:12px;padding:12px }
+.bal-bot-root .selected { background:#e4ebdf!important;color:#294e3a!important }
+.bal-bot-root .badge { font-size:8px;margin-left:auto;letter-spacing:1px;color:#78916f }
+.bal-bot-root .service-icon { color:#668553 }
+.bal-bot-root .file-heading { margin-top:35px;margin-bottom:10px }
+.bal-bot-root .file-heading button { border:none;padding:0 4px;background:none;font-size:20px;font-weight:400 }
+.bal-bot-root .file-tree button { display:flex;align-items:center;gap:9px;border:0;background:none;width:100%;text-align:left;font-size:12px;border-radius:5px;padding-top:10px;padding-bottom:10px;overflow-wrap:anywhere }
+.bal-bot-root .file-icon { font:11px 'JetBrains Mono',monospace;color:#859a76;flex:none }
+.bal-bot-root .aside-bottom { margin-top:auto;padding:30px 10px 0;font-size:11px;color:#778572 }
+.bal-bot-root .aside-bottom .dot { margin-right:6px }
+.bal-bot-root .aside-bottom p { font-size:10px;line-height:1.8;color:#9aa395 }
+.bal-bot-root .new-file { display:flex;gap:4px;margin-bottom:8px }
+.bal-bot-root .new-file input { min-width:0;width:100%;border:1px solid #ccd6c7;border-radius:4px;padding:5px }
+.bal-bot-root .new-file button { font-size:11px }
+.bal-bot-root main { min-width:0;flex:1;display:flex;flex-direction:column;background:#fcfdfb }
+.bal-bot-root .main-bar { height:60px;flex:none;padding:0 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e9ede5;font-size:12px }
+.bal-bot-root .muted { color:#9ba596 }
+.bal-bot-root .conversation { flex:1;min-height:0;overflow:auto;padding:35px max(30px,calc((100% - 780px)/2)) }
+.bal-bot-root .welcome { padding-top:clamp(20px,8vh,110px);max-width:540px }
+.bal-bot-root .welcome-icon { display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #dce6d5;border-radius:13px;background:#f0f5e9;color:#61834b;font-size:25px;margin-bottom:30px }
+.bal-bot-root .eyebrow { font-size:9px;letter-spacing:2px;color:#8a9a7b }
+.bal-bot-root h1 { font-size:36px;font-weight:500;letter-spacing:-1.3px;margin:13px 0 16px }
+.bal-bot-root .welcome p { color:#8a9583;line-height:1.9;font-size:13px }
+.bal-bot-root .suggestion { margin-top:24px;padding:14px 18px;font-size:12px;color:#6b7e5f;border-color:#e0e7da;background:#f7f9f3;display:flex;gap:40px }
+.bal-bot-root .composer-area { padding:15px max(30px,calc((100% - 780px)/2)) 18px }
+.bal-bot-root .composer { border:1px solid #d7e0ce;border-radius:13px;padding:17px;background:white;box-shadow:0 4px 20px #294e3a05 }
+.bal-bot-root .composer textarea { display:block;width:100%;height:65px;resize:none;border:0;outline:none;background:none;font-size:13px;line-height:1.5 }
+.bal-bot-root .composer textarea::placeholder { color:#a1aa9b }
+.bal-bot-root .composer-bottom { display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#6c805e }
+.bal-bot-root .send { background:#31543c;color:white;font-size:20px;border:0;padding:3px 12px }
+.bal-bot-root .send:hover { background:#486f41 }
+.bal-bot-root .composer-hint { font-size:9px;text-align:center;color:#a1aa99;margin:12px 0 0 }
+.bal-bot-root .message { margin:0 0 26px;font-size:13px;line-height:1.7 }
+.bal-bot-root .message-label { font-size:10px;font-weight:700;color:#6a805a;margin-bottom:7px }
+.bal-bot-root .message pre { font:inherit;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 }
+.bal-bot-root .message.user { background:#eef3e8;border:1px solid #e0e8d8;border-radius:10px;padding:16px 20px;margin-left:10% }
+.bal-bot-root .message.toolResult { background:#f1f3ee;padding:12px 16px;border-radius:7px;max-height:250px;overflow:auto }
+.bal-bot-root .message.toolResult pre { font:11px/1.7 'JetBrains Mono',monospace }
+.bal-bot-root .activity { font-size:11px;color:#7b8e6b;margin-bottom:12px }
+.bal-bot-root .activity .dot { margin-right:8px }
+.bal-bot-root .settings { padding:18px 32px;background:#f2f6ed;border-bottom:1px solid #dce5d3;display:flex;gap:15px;flex-wrap:wrap;align-items:end }
+.bal-bot-root .settings label { display:flex;flex-direction:column;font-size:11px;gap:7px }
+.bal-bot-root .settings input,
+.bal-bot-root .settings select { padding:9px;border:1px solid #cfd9c7;border-radius:5px;background:white;max-width:300px }
+.bal-bot-root .settings p { font-size:10px;color:#7d8f6e;flex-basis:100%;margin:0 }
+.bal-bot-root .error,
+.bal-bot-root .delete-confirm { padding:12px 25px;background:#fff0e8;color:#995239;font-size:12px;display:flex;align-items:center;gap:10px;overflow-wrap:anywhere }
+.bal-bot-root .error button { margin-left:auto }
+.bal-bot-root .message-error { color:#a64e38 }
+.bal-bot-root .file-view { display:flex;flex-direction:column;flex:1;min-height:0 }
+.bal-bot-root .file-toolbar { display:flex;justify-content:space-between;align-items:center;padding:16px 30px;font-size:12px;border-bottom:1px solid #e8ece3;gap:15px }
+.bal-bot-root .file-toolbar small { margin-left:15px;color:#9ba68f }
+.bal-bot-root .file-toolbar button { font-size:11px;margin-left:8px }
+.bal-bot-root .primary { background:#31543c;color:white }
+.bal-bot-root .source { display:flex;overflow:auto;flex:1;padding:24px 0;align-items:flex-start }
+.bal-bot-root .source pre,
+.bal-bot-root .line-numbers,
+.bal-bot-root .code-editor { font:12px/1.9 'JetBrains Mono',monospace }
+.bal-bot-root .source pre { margin:0;padding-right:30px;tab-size:4 }
+.bal-bot-root .line-numbers { padding:0 22px 0 25px;color:#bac3b1;text-align:right;user-select:none }
+.bal-bot-root .code-editor { width:100%;flex:1;resize:none;padding:24px 30px;border:0;background:#fcfdfb;color:#25312c;tab-size:4 }
+@media(max-width:700px) {
+.bal-bot-root aside { width:190px;padding:20px 8px }
+.bal-bot-root header { padding:0 16px }
+.bal-bot-root .main-bar { padding:0 15px }
+.bal-bot-root .conversation { padding:24px 18px }
+.bal-bot-root .composer-area { padding:12px 18px }
+.bal-bot-root .welcome h1 { font-size:27px }
+.bal-bot-root .suggestion { gap:10px }
+.bal-bot-root .settings { padding:15px }
+.bal-bot-root .file-toolbar { padding:10px;flex-wrap:wrap }
+}
+@media(max-width:480px) {
+.bal-bot-root aside { width:140px }
+.bal-bot-root .service { padding:9px 5px }
+.bal-bot-root .badge { display:none }
+.bal-bot-root .section-title { margin-left:4px }
+.bal-bot-root .project { margin-left:4px;font-size:11px }
+.bal-bot-root .file-tree button { font-size:10px }
+.bal-bot-root .main-bar { font-size:10px }
+.bal-bot-root .welcome p { font-size:12px }
+.bal-bot-root .suggestion { font-size:10px }
+.bal-bot-root .settings-button { font-size:10px }
+.bal-bot-root .source pre,
+.bal-bot-root .code-editor { font-size:11px }
+}
+.bal-bot-root .file-tree { overflow-x:auto;flex-shrink:0 }
+.bal-bot-root .file-tree ul { list-style:none;margin:0;padding:0 }
+.bal-bot-root .file-tree ul ul { margin-left:16px;padding-left:6px;border-left:1px solid #dce3d5 }
+.bal-bot-root .file-tree li { margin:0;padding:0 }
+.bal-bot-root .file-tree button { gap:7px;min-width:100%;width:max-content;white-space:nowrap;overflow-wrap:normal }
+.bal-bot-root .file-tree .file-row { padding-left:22px }
+.bal-bot-root .file-tree .folder-row { padding-left:5px;color:#64745a }
+.bal-bot-root .disclosure { width:10px;flex:none;font-size:15px;line-height:14px }
+.bal-bot-root .folder-icon { width:14px;height:14px;flex:none;fill:#e2e9da;stroke:#82976f;stroke-width:1.1;stroke-linejoin:round }
+.bal-bot-root .file-name { padding-right:8px }
+.bal-bot-root .project { display:flex;align-items:center;gap:8px;min-height:20px;line-height:20px }
+.bal-bot-root .project-chevron { display:block;width:14px;height:14px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round }
+.bal-bot-root .login-flow { flex-basis:100%;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding-top:10px;border-top:1px solid #dce5d3 }
+.bal-bot-root .login-flow form { display:flex;gap:10px;align-items:end;width:100% }
+.bal-bot-root .login-flow label { flex:1 }
+.bal-bot-root .login-flow input { width:100%;max-width:600px }
+.bal-bot-root .login-link { color:#31543c;font-size:13px;font-weight:600 }
+.bal-bot-root .login-flow p { margin:8px 0;line-height:1.6 }
+.bal-bot-root .connection-status { font-size:11px;color:#6a805a;padding-bottom:8px }
+.bal-bot-root .accounts { max-height:50vh;overflow:auto }
+.bal-bot-root .accounts .message-error { color:#a64e38 }
+.bal-bot-root .ballerina-logo { display:block;width:36px;height:36px;object-fit:contain;flex:none }
+.bal-bot-root .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0 }
+.bal-bot-root header { position:relative;z-index:10 }
+.bal-bot-root .provider-controls { display:flex;align-items:center;gap:8px;min-width:0 }
+.bal-bot-root .provider-popover { position:absolute;right:24px;top:58px;width:min(460px,calc(100vw - 32px));max-height:calc(100dvh - 85px);border:1px solid #d7e0ce;border-radius:12px;box-shadow:0 12px 35px #25312c20;padding:20px;background:#fcfdfb;z-index:20;align-items:start }
+.bal-bot-root .login-heading { font-size:15px;font-weight:600;width:100% }
+.bal-bot-root .login-actions { display:flex;gap:8px }
+.bal-bot-root .provider-popover .login-flow { border-top:0;padding-top:0 }
+.bal-bot-root .provider-popover .login-flow form { flex-wrap:wrap }
+.bal-bot-root .provider-popover .login-flow input { min-width:0 }
+.bal-bot-root .provider-popover .login-flow label { flex-basis:100% }
+.bal-bot-root .provider-popover .login-flow input,
+.bal-bot-root .provider-popover .login-flow select { max-width:100% }
+.bal-bot-root .provider-popover .login-link { display:inline-block;padding:9px 12px;border-radius:7px;background:#31543c;color:white;text-decoration:none;font-size:12px }
+.bal-bot-root .provider-popover p { line-height:1.6 }
+@media(max-width:700px) {
+.bal-bot-root .provider-popover { right:16px }
+}
+@media(max-width:480px) {
+.bal-bot-root .provider-controls { gap:4px }
+.bal-bot-root .brand { gap:6px;font-size:17px }
+.bal-bot-root .ballerina-logo { width:28px;height:28px }
+}
+.bal-bot-root .composer-model { min-width:0;max-width:calc(100% - 65px) }
+.bal-bot-root .composer-model select { display:block;width:100%;max-width:270px;border:0;border-radius:5px;padding:5px 20px 5px 0;background:transparent;color:#6c805e;font-size:11px;cursor:pointer;text-overflow:ellipsis }
+.bal-bot-root .composer-model select:hover { background:#f2f6ed }
+.bal-bot-root .composer-model select:disabled { cursor:default;opacity:.55 }
+.bal-bot-root aside[hidden] { display:none }
+.bal-bot-root .main-location { display:flex;align-items:center;gap:14px;min-width:0 }
+.bal-bot-root .breadcrumb { overflow:hidden;text-overflow:ellipsis;white-space:nowrap }
+.bal-bot-root .sidebar-toggle { display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex:none;padding:6px;background:transparent;border-color:transparent;color:#778572 }
+.bal-bot-root .sidebar-toggle svg { width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round }
+.bal-bot-root .back-to-chat { flex:none;margin-left:12px;font-size:11px;background:#eef2e9;border:0;color:#3a5431 }
+@media(max-width:480px) {
+.bal-bot-root .main-bar { padding:0 10px }
+.bal-bot-root .back-to-chat { padding:7px;font-size:10px }
+}
+.bal-bot-root .sidebar-heading { display:flex;align-items:center;justify-content:space-between;min-height:32px;margin:0 4px 12px 10px }
+.bal-bot-root .sidebar-heading .section-title { margin:0 }
+.bal-bot-root .sidebar-content { display:flex;flex-direction:column;flex:1;min-height:0 }
+.bal-bot-root .sidebar-content[hidden] { display:none }
+.bal-bot-root aside { padding-top:14px }
+.bal-bot-root aside.collapsed { width:54px;padding:14px 10px }
+.bal-bot-root .collapsed .sidebar-heading { margin:0;justify-content:center }
+.bal-bot-root .sidebar-toggle:hover { background:#e4ebdf }
+.bal-bot-root .provider-picker { position:relative }
+.bal-bot-root .provider-trigger { display:flex;align-items:center;gap:9px;padding:8px 10px;background:#f7f9f4;font-size:12px }
+.bal-bot-root .provider-trigger img { display:block;flex:none }
+.bal-bot-root .provider-chevron { width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round }
+.bal-bot-root .provider-options { position:absolute;right:0;top:calc(100% + 8px);width:210px;padding:5px;background:#fff;border:1px solid #dce2db;border-radius:10px;box-shadow:0 8px 24px #25312c18 }
+.bal-bot-root .provider-option { display:flex;align-items:center;gap:12px;width:100%;padding:10px;border:0;background:transparent;text-align:left;font-size:12px }
+.bal-bot-root .provider-option img { display:block;flex:none }
+.bal-bot-root .provider-option small { display:block;color:#8c978b;font-size:10px;margin-top:3px }
+.bal-bot-root .provider-option[aria-pressed="true"] { background:#eef2e9 }
+.bal-bot-root .provider-check { margin-left:auto;color:#628952 }
+@media(max-width:480px) {
+.bal-bot-root .provider-trigger { gap:6px;padding:7px;font-size:11px }
+.bal-bot-root .provider-trigger img { width:18px;height:18px }
+}
+.bal-bot-root .aside-bottom p { overflow-wrap:anywhere }
+.bal-bot-root .flow-workspace { position: relative; display: grid; grid-template-columns: 20% 60% 20%; min-height: 0; overflow: hidden; }
+.bal-bot-root .flow-workspace > aside,
+.bal-bot-root .flow-workspace > main { width: auto; min-width: 0; }
+.bal-bot-root .flow-workspace > main { display: flex; flex-direction: column; overflow: hidden; }
+.bal-bot-root .flow-workspace .sidebar-content { overflow: auto; }
+.bal-bot-root .flow-workspace .service,
+.bal-bot-root .flow-workspace .endpoint { width: 100%; text-align: left; white-space: normal; overflow-wrap: anywhere; }
+.bal-bot-root .flow-workspace .service small { display: block; font-size: 10px; opacity: .65; }
+.bal-bot-root .flow-workspace .endpoint { display: grid; grid-template-columns: 46px minmax(0, 1fr); align-items: baseline; gap: 8px; border: 0; padding: 9px 12px 9px 28px; background: transparent; color: inherit; }
+.bal-bot-root .flow-workspace .endpoint small { color: #796287; font-size: 10px; }
+.bal-bot-root .endpoint-label { min-width: 0; }
+.bal-bot-root .endpoint-operation { display: inline-block; margin-right: 6px; padding: 2px 5px; border-radius: 4px; background: #e0eee6; color: #285d43; font-size: 10px; font-weight: 700; line-height: 1.4; text-transform: uppercase; vertical-align: baseline; }
+.bal-bot-root .flow-workspace .selected { background: #f0ebf7; }
+.bal-bot-root .inspection { border-left: 1px solid #e2e5eb; min-width: 0; overflow: hidden; background: #fafbfd; display: flex; flex-direction: column; }
+.bal-bot-root .inspection-toolbar { display: flex; justify-content: flex-end; padding: 10px 12px; flex: none; }
+.bal-bot-root .inspection-toggle { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 1px solid #ddd; border-radius: 6px; padding: 8px; background: white; color: #586885; }
+.bal-bot-root .inspection-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.bal-bot-root .flow-view { min-height: 0; flex: 1; display: flex; flex-direction: column; overflow: auto; }
+.bal-bot-root .diagram-scroll { flex: 1; overflow-y: auto; overflow-x: hidden; min-height: 0; }
+.bal-bot-root .diagram { display: block; width: calc(100% - 40px); height: auto; margin: 0 auto 20px; flex: none; }
+.bal-bot-root .flow-node { fill: #fff; stroke: #d0d7e2; stroke-width: 1.2; }
+.bal-bot-root .flow-node.condition { fill: #f5f1fd; stroke: #b4a2d4; }
+.bal-bot-root .flow-node.function,
+.bal-bot-root .container.function { fill: #edf5fd; stroke: #adc7e3; }
+.bal-bot-root .flow-node.loop,
+.bal-bot-root .container.loop { fill: #f3edfa; stroke: #baa8d4; }
+.bal-bot-root .flow-node.return { fill: #e4f4e9; stroke: #74a887; }
+.bal-bot-root .node-header.has-disclosure .node-select { width: calc(100% - 64px); }
+.bal-bot-root .flow-node.mapping { fill: #fff7e7; stroke: #d8ba78; }
+.bal-bot-root .flow-node.unsupported { fill: #fff0e9; stroke: #d2a488; }
+.bal-bot-root .container { fill: #f9fafc; stroke: #d4dce7; }
+.bal-bot-root .node-header { position: relative; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; }
+.bal-bot-root .node-select { border: 0; background: transparent; color: #263047; white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/19px monospace; text-align: center; padding: 4px 0; width: 100%; max-width: 340px; cursor: pointer; }
+.bal-bot-root .node-select:disabled { cursor: default; opacity: .6; }
+.bal-bot-root .node-disclosure { display: block; padding: 0; border: 1px solid #a8bed7; border-radius: 5px; background: #fff; color: #47638d; width: 26px; height: 26px; }
+.bal-bot-root .node-limitation { font: 11px/14px sans-serif; padding: 0 5px; color: #85633b; }
+.bal-bot-root .edge-label { font: 11px sans-serif; fill: #69758b; }
+.bal-bot-root .flow-notice { white-space: pre-wrap; padding: 14px; background: #fff5de; font-size: 12px; line-height: 1.5; }
+.bal-bot-root .flow-diagnostics { padding: 12px 16px 12px 28px; font-size: 12px; margin: 0; background: #fff1ec; overflow-wrap: anywhere; }
+.bal-bot-root .definitions { padding: 18px 12px; }
+.bal-bot-root .definitions h2 { font-size: 11px; color: #798296; text-transform: uppercase; letter-spacing: .08em; margin: 10px 0; }
+.bal-bot-root .definition { display: flex; justify-content: space-between; border-bottom: 1px solid #edf0f5; }
+.bal-bot-root .definition button { border: 0; background: transparent; padding: 10px 4px; text-align: left; overflow-wrap: anywhere; color: #33435a; }
+.bal-bot-root .back-definitions { align-self: flex-start; background: transparent; border: 0; padding: 12px; color: #586885; }
+.bal-bot-root .reference-chips { display: flex; gap: 5px; flex-wrap: wrap; padding: 4px; }
+.bal-bot-root .reference-chip { display: inline-flex; align-items: center; gap: 5px; font: 11px monospace; border: 1px solid #c7d8ec; border-radius: 6px; background: #edf5fd; padding: 4px 6px; overflow-wrap: anywhere; }
+.bal-bot-root .reference-chip.stale { border-color: #d9aa68; background: #fff2da; }
+.bal-bot-root .reference-chip button { border: 0; background: transparent; padding: 0 2px; }
+.bal-bot-root .inspection-expanded .back-definitions { align-self: flex-end; }
+.bal-bot-root .inspection-expanded > aside { display: none; }
+.bal-bot-root .inspection-expanded { display: block; }
+.bal-bot-root .inspection-expanded > .inspection { position: absolute; inset: 0; border: 0; }
+.bal-bot-root .inspection-expanded > main.floating-chat { position: absolute; z-index: 5; width: min(420px, 100%); height: min(480px, 100%); border: 1px solid #d4dce9; border-radius: 12px; box-shadow: 0 10px 35px #182d4933; background: #fff; }
+.bal-bot-root .floating-chat .main-bar { cursor: move; touch-action: none; flex: none; user-select: none; }
+.bal-bot-root .floating-chat .conversation { padding: 14px; }
+.bal-bot-root .floating-chat .composer-area { padding: 10px; }
+.bal-bot-root .flow-workspace .conversation { min-height: 0; flex: 1; overflow: auto; }
+.bal-bot-root .flow-workspace .composer-area { flex: none; }
+.bal-bot-root .flow-workspace .composer textarea { min-height: 56px; }
+.bal-bot-root .flow-workspace .service { display: block; }
+.bal-bot-root .provider-popover .api-key-form { display: flex; flex-direction: column; gap: 14px; width: 100%; min-width: 0; }
+.bal-bot-root .api-key-form label { width: 100%; }
+.bal-bot-root .provider-popover .api-key-form input { width: 100%; max-width: none; min-width: 0; height: 38px; }
+.bal-bot-root .api-key-form button { align-self: flex-end; min-height: 36px; }
+.bal-bot-root .provider-icon { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; flex: 0 0 20px; line-height: 1; }
+.bal-bot-root .provider-icon img { width: 20px; height: 20px; object-fit: contain; }
+.bal-bot-root .provider-option > .provider-icon + span { min-width: 0; flex: 1; }
+.bal-bot-root .provider-option-row { display: flex; align-items: stretch; }
+.bal-bot-root .provider-option-row .provider-option { flex: 1; min-width: 0; }
+.bal-bot-root .provider-account-menu { flex: none; border: 0; background: transparent; padding: 8px 10px; font-size: 22px; }
+.bal-bot-root .provider-menu-back { border: 0; background: transparent; font-size: 11px; padding: 8px 10px; }
+.bal-bot-root .provider-menu-heading { padding: 10px; font-weight: 600; font-size: 12px; color: #778572; }
+.bal-bot-root .flow-node.referenced { stroke: #3578d4; stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+.bal-bot-root .flow-node.variable-related { fill: #fff2bf; }
+.bal-bot-root .flow-entry.variable-related { box-shadow: inset 0 0 0 3px #eed47b; }
+.bal-bot-root .variable-active { text-shadow: .45px 0 currentColor, -.45px 0 currentColor; }
+.bal-bot-root .tool-summary { margin:0 0 12px;font-size:11px;line-height:1.7;color:#7b8e6b;overflow-wrap:anywhere }
+.bal-bot-root .tool-summary.tool-failed { color:#a64e38 }
+.bal-bot-root .message-body { min-width:0;overflow-wrap:anywhere }
+.bal-bot-root .message-body>:first-child { margin-top:0 }
+.bal-bot-root .message-body>:last-child { margin-bottom:0 }
+.bal-bot-root .message-body p,
+.bal-bot-root .message-body ul,
+.bal-bot-root .message-body ol,
+.bal-bot-root .message-body blockquote { margin:0 0 12px }
+.bal-bot-root .message-body h1,
+.bal-bot-root .message-body h2,
+.bal-bot-root .message-body h3,
+.bal-bot-root .message-body h4,
+.bal-bot-root .message-body h5,
+.bal-bot-root .message-body h6 { font-weight:600;letter-spacing:normal;line-height:1.4;margin:18px 0 8px }
+.bal-bot-root .message-body h1 { font-size:22px }
+.bal-bot-root .message-body h2 { font-size:19px }
+.bal-bot-root .message-body h3 { font-size:16px }
+.bal-bot-root .message-body h4,
+.bal-bot-root .message-body h5,
+.bal-bot-root .message-body h6 { font-size:14px }
+.bal-bot-root .message-body ul,
+.bal-bot-root .message-body ol { padding-left:24px }
+.bal-bot-root .message-body li+li { margin-top:4px }
+.bal-bot-root .message-body a { color:#315f43;text-decoration:underline;text-underline-offset:2px }
+.bal-bot-root .message-body code { font:12px/1.6 'JetBrains Mono',monospace;background:#eef2e9;border-radius:4px;padding:2px 4px }
+.bal-bot-root .message-body pre { overflow-x:auto;white-space:pre;overflow-wrap:normal;padding:12px;margin:0 0 12px;background:#f1f4ee;border:1px solid #dfe6d8;border-radius:7px }
+.bal-bot-root .message-body pre code { background:none;padding:0;border-radius:0 }
+.bal-bot-root .message.user .message-body pre { white-space:pre-wrap;overflow-wrap:anywhere;padding:0;border:0;background:none;margin:0 }
+.bal-bot-root .message-body blockquote { border-left:3px solid #c5d5ba;padding-left:12px;color:#697861 }
+.bal-bot-root .message-body table { display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;margin:0 0 12px }
+.bal-bot-root .message-body th,
+.bal-bot-root .message-body td { border:1px solid #dce2db;padding:6px 10px;text-align:left }
+.bal-bot-root .message-body th { background:#f1f4ee }
+.bal-bot-root .message-body img { max-width:100%;height:auto }
+.bal-bot-root .message-body hr { border:0;border-top:1px solid #dce2db;margin:16px 0 }
+.bal-bot-root .flow-workspace .service,
+.bal-bot-root .flow-workspace .endpoint { position:relative;padding-right:34px }
+.bal-bot-root .anchor-activity { position:absolute;right:12px;top:50%;width:12px;height:12px;margin-top:-6px;pointer-events:none }
+.bal-bot-root .anchor-running { border:2px solid #cad6c3;border-top-color:#50723d;border-radius:50%;animation:anchor-spin .8s linear infinite }
+.bal-bot-root .anchor-completed { width:8px;height:8px;margin-top:-4px;right:14px;border-radius:50%;background:#50723d }
+@keyframes anchor-spin {to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce) {
+.bal-bot-root .anchor-running { animation:none }
+}
+.bal-bot-root .flow-entry-context { width:calc(100% - 40px);max-width:440px;margin:20px auto 0;flex:none }
+.bal-bot-root .flow-entry-owner { font-size:12px;line-height:1.6;color:#69796f;margin-bottom:14px;overflow-wrap:anywhere }
+.bal-bot-root .flow-entry { background:#fff;border:1px solid #dce4dc;border-radius:10px;overflow:hidden }
+.bal-bot-root .flow-entry-heading { padding:14px 16px }
+.bal-bot-root .flow-entry-kind { font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#69796f }
+.bal-bot-root .flow-entry h2 { display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:18px;font-weight:500;line-height:1.5;margin:5px 0 0;overflow-wrap:anywhere }
+.bal-bot-root .flow-entry-operation { font-size:11px;font-weight:600;text-transform:uppercase;color:#286151;background:#e4ede0;padding:3px 6px;border-radius:4px }
+.bal-bot-root .flow-entry details { border-top:1px solid #dce4dc;padding:10px 16px }
+.bal-bot-root .flow-entry summary { font-size:12px;color:#286151;cursor:pointer;line-height:1.6 }
+.bal-bot-root .flow-entry summary:focus-visible { outline:2px solid #628952;outline-offset:3px }
+.bal-bot-root .flow-entry details[open] summary { margin-bottom:12px }
+.bal-bot-root .flow-entry-signature,
+.bal-bot-root .flow-entry dd { font:12px/1.7 'JetBrains Mono',monospace;white-space:pre-wrap;overflow-wrap:anywhere }
+.bal-bot-root .flow-entry dl { display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;margin:16px 0 4px }
+.bal-bot-root .flow-entry dt { font-size:12px;color:#69796f }
+.bal-bot-root .flow-entry dd { margin:0 }
+.bal-bot-root .flow-entry-connector { width:1px;height:16px;margin:auto;background:#7c8899 }
+.bal-bot-root .flow-empty { font-size:12px;color:#69796f;text-align:center;padding:16px 20px }
+@media(pointer:coarse) {
+.bal-bot-root .flow-entry summary { min-height:34px;padding:6px 0 }
+}
+.bal-bot-root .flow-node.function.recursive { stroke-dasharray: 5 3; }
+.bal-bot-root [data-recursive] .node-disclosure:disabled { opacity: 1; color: #85633b; border-color: #b99d75; }
+.bal-bot-root .flow-node.client { fill: #effaf8; stroke: #68b5a8; }
+.bal-bot-root .flow-node.trap,
+.bal-bot-root .container.trap { fill: #f5f0fc; stroke: #b6a1d2; }
+.bal-bot-root .flow-node.panic { fill: #fff0ef; stroke: #d68b86; }
+.bal-bot-root .flow-node.template { fill: #edf5fd; stroke: #adc7e3; }
+.bal-bot-root .client-receiver,
+.bal-bot-root .client-context,
+.bal-bot-root .client-method { display: block; }
+.bal-bot-root .client-receiver { color: #336b65; font-weight: 600; }
+.bal-bot-root .client-context { color: #667582; }
+.bal-bot-root .client-method { color: #164e49; font-weight: 600; }
+.bal-bot-root .node-header.client-header .node-select { width: 100%; }
+.bal-bot-root .flow-node.error-constructor { fill: #fff8f1; stroke: #d6ad85; }
+.bal-bot-root .error-header .node-select { text-align: left; }
+.bal-bot-root .error-message { color: #60391f; font-weight: 600; }
+.bal-bot-root .error-message:not(:first-child),
+.bal-bot-root .error-cause { color: #745b48; font-weight: 400; }
+.bal-bot-root .error-detail { color: #78716b; }
+.bal-bot-root .template-header .node-select { display: grid; grid-template-columns: 56px 272px; gap: 12px; width: 340px; max-width: 340px; text-align: left; align-items: center; }
+.bal-bot-root .template-type { display: flex; align-self: stretch; align-items: center; justify-content: center; color: #47638d; border-right: 1px solid #adc7e3; }
+.bal-bot-root .template-expression { min-width: 0; text-align: center; }
