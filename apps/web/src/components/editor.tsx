@@ -15,7 +15,6 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { useDefaultLayout, usePanelRef } from "react-resizable-panels";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
 	ResizableHandle,
@@ -59,6 +58,44 @@ function getLanguage(path: string): EditorLanguage {
 		default:
 			return "text";
 	}
+}
+
+function LoadingCircle({ progress }: { progress: number }) {
+	const value = Math.max(0, Math.min(100, progress));
+	const radius = 7;
+	const circumference = 2 * Math.PI * radius;
+	return (
+		<svg
+			role="progressbar"
+			aria-label="Loading Ballerina runtime"
+			aria-valuemin={0}
+			aria-valuemax={100}
+			aria-valuenow={value}
+			data-testid="run-loading"
+			viewBox="0 0 20 20"
+			className="size-4 -rotate-90"
+		>
+			<circle
+				cx="10"
+				cy="10"
+				r={radius}
+				fill="none"
+				stroke="currentColor"
+				strokeOpacity={0.25}
+				strokeWidth={2}
+			/>
+			<circle
+				cx="10"
+				cy="10"
+				r={radius}
+				fill="none"
+				stroke="currentColor"
+				strokeWidth={2}
+				strokeDasharray={circumference}
+				strokeDashoffset={circumference * (1 - value / 100)}
+			/>
+		</svg>
+	);
 }
 
 function findJsonFragmentEnd(text: string, start: number): number | null {
@@ -369,6 +406,7 @@ function EditorPane({
 	outputCollapsed?: boolean;
 }) {
 	const activeFile = useActiveFile();
+	const { isReady, progress, error } = useBallerina();
 
 	const { updateFileContent } = useFileTreeActions();
 
@@ -402,10 +440,19 @@ function EditorPane({
 						onClick={isRunning ? () => void onStop() : () => void onRun()}
 						disabled={
 							!isRunning &&
-							(!activeFile || getLanguage(activeFile.path) !== "ballerina")
+							(!isReady ||
+								!activeFile ||
+								getLanguage(activeFile.path) !== "ballerina")
 						}
 					>
-						{!isRunning ? (
+						{!isRunning && error ? (
+							<span className="min-w-7.5 text-destructive">Failed to load</span>
+						) : !isRunning && !isReady ? (
+							<>
+								<LoadingCircle progress={progress} />
+								<span className="min-w-7.5">Run</span>
+							</>
+						) : !isRunning ? (
 							<>
 								<HugeiconsIcon icon={PlayIcon} strokeWidth={1.5} />
 								<span className="min-w-7.5">Run</span>
@@ -553,7 +600,7 @@ function EditorHeader() {
 function EditorContent() {
 	const fs = useFS();
 
-	const { isReady, progress, error, run, sendStopSignal } = useBallerina();
+	const { isReady, run, sendStopSignal } = useBallerina();
 
 	const activeFile = useActiveFile();
 
@@ -568,7 +615,7 @@ function EditorContent() {
 	const toggleEditorMode = useEditorStore((s) => s.toggleEditorMode);
 
 	const handleRun = React.useCallback(async () => {
-		if (isRunning) return;
+		if (isRunning || !isReady) return;
 		if (!activeFile || getLanguage(activeFile.path) !== "ballerina") return;
 
 		let isRunActive = true;
@@ -597,7 +644,16 @@ function EditorContent() {
 			setIsRunning(false);
 			setListenerAddresses([]);
 		}
-	}, [activeFile, fs, saveFile, run, openOutputWith, appendOutput, isRunning]);
+	}, [
+		activeFile,
+		fs,
+		saveFile,
+		run,
+		openOutputWith,
+		appendOutput,
+		isRunning,
+		isReady,
+	]);
 
 	const handleStop = React.useCallback(async () => {
 		try {
@@ -619,8 +675,6 @@ function EditorContent() {
 		preventDefault: true,
 	});
 
-	if (!isReady) return <WasmLoadingScreen progress={progress} error={error} />;
-
 	return (
 		<>
 			<AppSidebar />
@@ -636,37 +690,6 @@ function EditorContent() {
 				</main>
 			</SidebarInset>
 		</>
-	);
-}
-
-function WasmLoadingScreen({
-	progress,
-	error,
-}: {
-	progress: number;
-	error: Error | null;
-}) {
-	const pct = Math.max(0, Math.min(100, progress));
-	return (
-		<div
-			className="w-full flex items-center justify-center min-h-dvh"
-			data-testid="wasm-loading"
-		>
-			<div className="flex flex-col items-center gap-4">
-				<div className="text-sm text-muted-foreground">
-					Loading WASM binaries...&nbsp;
-					<span className="inline-block text-right w-10 tabular-nums">
-						{pct}%
-					</span>
-				</div>
-				<Progress className="w-full" value={progress} />
-				{error ? (
-					<p className="max-w-md text-center text-sm text-destructive">
-						{error.message}
-					</p>
-				) : null}
-			</div>
-		</div>
 	);
 }
 
