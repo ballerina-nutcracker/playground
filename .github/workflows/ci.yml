@@ -21,6 +21,8 @@ jobs:
           cache-dependency-path: |
             packages/wasm/go.mod
             packages/wasm/go.sum
+            packages/compiler/go.mod
+            packages/compiler/go.sum
 
       - name: Set up Node
         uses: actions/setup-node@v7

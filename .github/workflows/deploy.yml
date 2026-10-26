@@ -32,6 +32,8 @@ jobs:
           cache-dependency-path: |
             packages/wasm/go.mod
             packages/wasm/go.sum
+            packages/compiler/go.mod
+            packages/compiler/go.sum
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2

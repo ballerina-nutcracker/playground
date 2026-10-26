@@ -10,7 +10,8 @@
 		"gen:examples": "go run ../../scripts/example_gen/main.go ../../examples src/assets/examples.json",
 		"copy:wasm": "cp ../../packages/wasm/dist/ballerina.wasm public/ballerina.wasm && cp ../../packages/wasm/dist/ballerina-meta.json public/ballerina-meta.json",
 		"clean": "git clean -xdf .turbo dist node_modules",
-		"gen:skills": "bun ../../scripts/build_skills.mjs"
+		"gen:skills": "bun ../../scripts/build_skills.mjs",
+		"copy:compiler-wasm": "mkdir -p public/compiler && (cd ../../packages/compiler && GOOS=js GOARCH=wasm GOWORK=off go build -mod=readonly -o ../../apps/web/public/compiler/ballerina-compiler.wasm ./cmd/wasm) && cp \"$(go env GOROOT)/lib/wasm/wasm_exec.js\" public/compiler/wasm_exec.js"
 	},
 	"dependencies": {
 		"@bal-bot/browser-workspace": "workspace:*",
