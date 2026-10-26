@@ -33,3 +33,9 @@ Patches
 -------
 
 - package.json: added a `test` script.
+- src/workspace.ts: added `BrowserWorkspaceOptions.files` (initial files used
+  instead of `initialFiles`) and `BrowserWorkspace.dispose()` (aborts analysis
+  and agents, clears listeners, blocks new analysis; idempotent).
+- tests/files-dispose.test.mjs: new tests for the two additions above.
+
+Other files added by this repository: NOTICE, biome.json.
