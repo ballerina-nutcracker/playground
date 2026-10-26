@@ -1,0 +1,415 @@
+{
+  "scopes": [],
+  "sources": {
+    "main": {
+      "id": "main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "text": "😀"
+    },
+    "source-a": {
+      "id": "source-a",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "text": "😀"
+    },
+    "source-b": {
+      "id": "source-b",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "text": "😀"
+    }
+  },
+  "functions": {
+    "main": {
+      "id": "main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "text": "😀",
+      "moduleId": "m",
+      "entry": {
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "main",
+        "signature": "function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "nodes": [
+        {
+          "id": "a",
+          "occurrenceKey": "a",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "main",
+              "occurrenceKey": "a",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [
+                      {
+                        "portId": "out",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": [
+                {
+                  "kind": "export",
+                  "id": "bind",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "targetInterfaceId": "entry",
+                  "callerInterfaceId": "entry"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "b",
+          "occurrenceKey": "b",
+          "sourceId": "source-b",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "b",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "b"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "out",
+          "nodeId": "a",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          },
+          "occurrenceKey": "port/out"
+        },
+        {
+          "id": "in",
+          "nodeId": "b",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          },
+          "occurrenceKey": "port/in"
+        }
+      ],
+      "edges": [
+        {
+          "id": "e",
+          "fromPort": "out",
+          "toPort": "in",
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "root",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "a",
+              "b"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "root",
+      "interfaces": [
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "in",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [
+            {
+              "bindingId": "bind",
+              "beforeMember": 0
+            }
+          ],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "a",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "b",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "a",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "out",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "in",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "a",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "e",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "a",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "a",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "b",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "a",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "out",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "in",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "a",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "e",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "a",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

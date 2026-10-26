@@ -1,0 +1,4 @@
+[package]
+org = "examples"
+name = "panel_state"
+version = "0.1.0"

@@ -1,0 +1,483 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/service/main.bal//orders/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 1
+          },
+          "end": {
+            "line": 5,
+            "column": 2
+          }
+        }
+      },
+      "text": "service /orders on new http:Listener(8080) {\n    resource function get [int id](boolean includeItems = false) returns string { _ = id; _ = includeItems; return \"order\"; }\n    remote function refresh(string note = \"\") returns boolean { _ = note; return true; }\n}",
+      "kind": "service",
+      "title": "/orders",
+      "moduleId": "browser/http_service",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 4,
+                "column": 89
+              }
+            }
+          },
+          "text": "remote function refresh(string note = \"\") returns boolean { _ = note; return true; }",
+          "kind": "remote",
+          "title": "refresh",
+          "functionId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh"
+        },
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 5
+              },
+              "end": {
+                "line": 3,
+                "column": 126
+              }
+            }
+          },
+          "text": "resource function get [int id](boolean includeItems = false) returns string { _ = id; _ = includeItems; return \"order\"; }",
+          "kind": "resource",
+          "title": "get /orders/[int id]",
+          "functionId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]"
+        }
+      ],
+      "definitions": [
+        {
+          "id": "browser/http_service/function/calculateTax",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 9,
+                "column": 1
+              },
+              "end": {
+                "line": 9,
+                "column": 101
+              }
+            }
+          },
+          "text": "function calculateTax(decimal amount, decimal rate = 0.15) returns decimal { return amount * rate; }",
+          "kind": "function",
+          "label": "calculateTax",
+          "functionId": "browser/http_service/function/calculateTax"
+        },
+        {
+          "id": "browser/http_service/function/identity",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 10,
+                "column": 1
+              },
+              "end": {
+                "line": 10,
+                "column": 51
+              }
+            }
+          },
+          "text": "function identity(int value) returns int =\u003e value;",
+          "kind": "function",
+          "label": "identity",
+          "functionId": "browser/http_service/function/identity"
+        },
+        {
+          "id": "browser/http_service/function/main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 11,
+                "column": 1
+              },
+              "end": {
+                "line": 11,
+                "column": 26
+              }
+            }
+          },
+          "text": "public function main() {}",
+          "kind": "function",
+          "label": "main",
+          "functionId": "browser/http_service/function/main"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "browser/http_service/class/PricingEngine/method/quote": {
+      "id": "browser/http_service/class/PricingEngine/method/quote",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 7,
+            "column": 5
+          },
+          "end": {
+            "line": 7,
+            "column": 74
+          }
+        }
+      },
+      "text": "function quote(decimal subtotal) returns decimal { return subtotal; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "method",
+        "name": "PricingEngine.quote",
+        "signature": "function quote(decimal subtotal) returns decimal",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "decimal subtotal"
+          }
+        ],
+        "returnType": "decimal"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/class/PricingEngine/method/quote/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 7,
+                "column": 56
+              },
+              "end": {
+                "line": 7,
+                "column": 72
+              }
+            }
+          },
+          "text": "return subtotal;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "browser/http_service/function/calculateTax": {
+      "id": "browser/http_service/function/calculateTax",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 1
+          },
+          "end": {
+            "line": 9,
+            "column": 101
+          }
+        }
+      },
+      "text": "function calculateTax(decimal amount, decimal rate = 0.15) returns decimal { return amount * rate; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "calculateTax",
+        "signature": "function calculateTax(decimal amount, decimal rate = 0.15) returns decimal",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "decimal amount"
+          },
+          {
+            "kind": "input",
+            "text": "decimal rate = 0.15"
+          }
+        ],
+        "returnType": "decimal"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/calculateTax/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 9,
+                "column": 78
+              },
+              "end": {
+                "line": 9,
+                "column": 99
+              }
+            }
+          },
+          "text": "return amount * rate;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "browser/http_service/function/identity": {
+      "id": "browser/http_service/function/identity",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 1
+          },
+          "end": {
+            "line": 10,
+            "column": 51
+          }
+        }
+      },
+      "text": "function identity(int value) returns int =\u003e value;",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "identity",
+        "signature": "function identity(int value) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/identity/expression",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 10,
+                "column": 45
+              },
+              "end": {
+                "line": 10,
+                "column": 50
+              }
+            }
+          },
+          "text": "value",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "browser/http_service/function/main": {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 11,
+            "column": 1
+          },
+          "end": {
+            "line": 11,
+            "column": 26
+          }
+        }
+      },
+      "text": "public function main() {}",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": []
+    },
+    "browser/http_service/service/main.bal//orders/1/method/$remote$refresh": {
+      "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 5
+          },
+          "end": {
+            "line": 4,
+            "column": 89
+          }
+        }
+      },
+      "text": "remote function refresh(string note = \"\") returns boolean { _ = note; return true; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "remote",
+        "name": "refresh",
+        "signature": "remote function refresh(string note = \"\") returns boolean",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "string note = \"\""
+          }
+        ],
+        "returnType": "boolean"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 65
+              },
+              "end": {
+                "line": 4,
+                "column": 74
+              }
+            }
+          },
+          "text": "_ = note;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 75
+              },
+              "end": {
+                "line": 4,
+                "column": 87
+              }
+            }
+          },
+          "text": "return true;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "browser/http_service/service/main.bal//orders/1/resource/get/[int id]": {
+      "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 5
+          },
+          "end": {
+            "line": 3,
+            "column": 126
+          }
+        }
+      },
+      "text": "resource function get [int id](boolean includeItems = false) returns string { _ = id; _ = includeItems; return \"order\"; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "resource",
+        "name": "get /[int id]",
+        "signature": "resource function get [int id](boolean includeItems = false) returns string",
+        "parameters": [
+          {
+            "kind": "path",
+            "text": "[int id]"
+          },
+          {
+            "kind": "input",
+            "text": "boolean includeItems = false"
+          }
+        ],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 83
+              },
+              "end": {
+                "line": 3,
+                "column": 90
+              }
+            }
+          },
+          "text": "_ = id;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 91
+              },
+              "end": {
+                "line": 3,
+                "column": 108
+              }
+            }
+          },
+          "text": "_ = includeItems;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 109
+              },
+              "end": {
+                "line": 3,
+                "column": 124
+              }
+            }
+          },
+          "text": "return \"order\";",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

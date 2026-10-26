@@ -1,0 +1,3737 @@
+{
+  "catalogRef": "39eec19ae10da4669818dfdb236b659207c1dd5ed103dce08a9b4f03aec7203a",
+  "legacyProgram": {
+    "scopes": [],
+    "functions": {
+      "fib": {
+        "id": "fib",
+        "text": "fib",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 4
+            }
+          }
+        },
+        "moduleId": "test",
+        "body": [
+          {
+            "id": "sum",
+            "text": "sum",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 4
+                }
+              }
+            },
+            "kind": "return",
+            "calls": [
+              {
+                "id": "sum/call/0",
+                "text": "fib(0)",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 7
+                    }
+                  }
+                },
+                "target": {
+                  "kind": "workspace",
+                  "functionId": "fib"
+                },
+                "expansion": "supported"
+              },
+              {
+                "id": "sum/call/1",
+                "text": "fib(1)",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 7
+                    }
+                  }
+                },
+                "target": {
+                  "kind": "workspace",
+                  "functionId": "fib"
+                },
+                "expansion": "supported"
+              }
+            ]
+          }
+        ]
+      },
+      "even": {
+        "id": "even",
+        "text": "even",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "moduleId": "test",
+        "body": [
+          {
+            "id": "even-return",
+            "text": "even-return",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 12
+                }
+              }
+            },
+            "kind": "return",
+            "calls": [
+              {
+                "id": "even-return/call/0",
+                "text": "odd(0)",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 7
+                    }
+                  }
+                },
+                "target": {
+                  "kind": "workspace",
+                  "functionId": "odd"
+                },
+                "expansion": "supported"
+              }
+            ]
+          }
+        ]
+      },
+      "odd": {
+        "id": "odd",
+        "text": "odd",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 4
+            }
+          }
+        },
+        "moduleId": "test",
+        "body": [
+          {
+            "id": "odd-return",
+            "text": "odd-return",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 11
+                }
+              }
+            },
+            "kind": "return",
+            "calls": [
+              {
+                "id": "odd-return/call/0",
+                "text": "even(0)",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 8
+                    }
+                  }
+                },
+                "target": {
+                  "kind": "workspace",
+                  "functionId": "even"
+                },
+                "expansion": "supported"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "hir": {
+    "scopes": [],
+    "sources": {
+      "even": {
+        "id": "even",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "even"
+      },
+      "even-return": {
+        "id": "even-return",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 12
+            }
+          }
+        },
+        "text": "even-return"
+      },
+      "even-return/call/0": {
+        "id": "even-return/call/0",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
+        },
+        "text": "odd(0)"
+      },
+      "fib": {
+        "id": "fib",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 4
+            }
+          }
+        },
+        "text": "fib"
+      },
+      "odd": {
+        "id": "odd",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 4
+            }
+          }
+        },
+        "text": "odd"
+      },
+      "odd-return": {
+        "id": "odd-return",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 11
+            }
+          }
+        },
+        "text": "odd-return"
+      },
+      "odd-return/call/0": {
+        "id": "odd-return/call/0",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 8
+            }
+          }
+        },
+        "text": "even(0)"
+      },
+      "sum": {
+        "id": "sum",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 4
+            }
+          }
+        },
+        "text": "sum"
+      },
+      "sum/call/0": {
+        "id": "sum/call/0",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
+        },
+        "text": "fib(0)"
+      },
+      "sum/call/1": {
+        "id": "sum/call/1",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
+        },
+        "text": "fib(1)"
+      }
+    },
+    "functions": {
+      "even": {
+        "id": "even",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "even",
+        "moduleId": "test",
+        "entry": {
+          "kind": "function",
+          "owner": null,
+          "operation": null,
+          "name": "",
+          "signature": "",
+          "parameters": [],
+          "returnType": ""
+        },
+        "nodes": [
+          {
+            "id": "even/even-return",
+            "occurrenceKey": "/even-return",
+            "sourceId": "even-return",
+            "presentation": {
+              "kind": "plain",
+              "style": "return",
+              "label": "even-return",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "even/even-return/group"
+            }
+          },
+          {
+            "id": "even/even-return/expand/even-return/call/0",
+            "occurrenceKey": "/even-return/expand/even-return/call/0",
+            "sourceId": "even-return/call/0",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "odd(0)",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "call",
+                "occurrenceKey": "/even-return/expand/even-return/call/0",
+                "availability": {
+                  "kind": "available"
+                },
+                "recursive": {
+                  "label": "odd(0)",
+                  "sections": [],
+                  "limitation": "Recursive calls remain collapsed.",
+                  "title": "Recursive calls remain collapsed.",
+                  "ariaLabel": "Recursive call odd(0)",
+                  "glyph": "↻"
+                }
+              }
+            },
+            "body": {
+              "kind": "reference",
+              "reference": {
+                "graphId": "odd",
+                "occurrenceKey": "/even-return/expand/even-return/call/0",
+                "availability": {
+                  "kind": "available"
+                },
+                "container": {
+                  "profile": "call",
+                  "root": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  },
+                  "inline": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  }
+                },
+                "collapsed": {
+                  "interfaces": [
+                    {
+                      "id": "entry",
+                      "members": [
+                        {
+                          "portId": "even/even-return/expand/even-return/call/0:entry",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "normal",
+                      "members": [
+                        {
+                          "portId": "even/even-return/expand/even-return/call/0:normal-exit",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "returns",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "panics",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    }
+                  ],
+                  "edges": []
+                },
+                "inline": [
+                  {
+                    "kind": "entry",
+                    "id": "even/even-return/expand/even-return/call/0/enter",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "even/even-return/expand/even-return/call/0:entry",
+                    "targetInterfaceId": "entry",
+                    "edge": {
+                      "kind": "sequence",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "even/even-return/expand/even-return/call/0/exit/normal",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "even/even-return/expand/even-return/call/0:normal-exit",
+                    "targetInterfaceId": "normal",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "even/even-return/expand/even-return/call/0/exit/returns",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "even/even-return/expand/even-return/call/0:normal-exit",
+                    "targetInterfaceId": "returns",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "even/root",
+            "occurrenceKey": "/root",
+            "sourceId": "even",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "even/root/group"
+            }
+          }
+        ],
+        "ports": [
+          {
+            "occurrenceKey": "/even-return:entry",
+            "id": "even/even-return:entry",
+            "nodeId": "even/even-return",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/even-return:normal-exit",
+            "id": "even/even-return:normal-exit",
+            "nodeId": "even/even-return",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "header-bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/even-return/expand/even-return/call/0:entry",
+            "id": "even/even-return/expand/even-return/call/0:entry",
+            "nodeId": "even/even-return/expand/even-return/call/0",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/even-return/expand/even-return/call/0:normal-exit",
+            "id": "even/even-return/expand/even-return/call/0:normal-exit",
+            "nodeId": "even/even-return/expand/even-return/call/0",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/even-return:return",
+            "id": "even/even-return:return",
+            "nodeId": "even/even-return",
+            "role": "return",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:entry",
+            "id": "even/root:entry",
+            "nodeId": "even/root",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:normal-exit",
+            "id": "even/root:normal-exit",
+            "nodeId": "even/root",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/0",
+            "fromPort": "even/even-return:normal-exit",
+            "toPort": "even/even-return/expand/even-return/call/0:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/1",
+            "fromPort": "even/even-return/expand/even-return/call/0:entry",
+            "toPort": "even/even-return/expand/even-return/call/0:normal-exit",
+            "when": {
+              "kind": "not",
+              "operand": {
+                "kind": "nonempty",
+                "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                "interfaceId": "entry"
+              }
+            }
+          },
+          {
+            "kind": "return",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/2",
+            "fromPort": "even/even-return/expand/even-return/call/0:normal-exit",
+            "toPort": "even/even-return:return",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "any",
+                      "operands": [
+                        {
+                          "kind": "not",
+                          "operand": {
+                            "kind": "nonempty",
+                            "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                            "interfaceId": "entry"
+                          }
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                          "interfaceId": "normal"
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                          "interfaceId": "returns"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "even/even-return/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "even/even-return/expand/even-return/call/0"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          },
+          {
+            "id": "even/root/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "even/even-return"
+              ]
+            },
+            "style": {
+              "profile": "root",
+              "root": {
+                "node": true,
+                "header": false,
+                "container": true
+              },
+              "inline": {
+                "node": false,
+                "header": false,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "even/graph",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "even/root"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          }
+        ],
+        "rootGroup": "even/graph",
+        "interfaces": [
+          {
+            "id": "root/entry/0",
+            "members": [
+              {
+                "portId": "even/root:entry",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "even/root/binding/entry/0",
+              "toPort": "even/even-return:entry",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "root/normal",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "even/root/binding/normal",
+              "toPort": "even/root:normal-exit",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "entry",
+            "members": [
+              {
+                "portId": "even/even-return:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "normal",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "returns",
+            "members": [
+              {
+                "portId": "even/even-return:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "panics",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          }
+        ],
+        "emission": {
+          "root": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "even/root",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "even/even-return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "even/even-return/expand/even-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "even/even-return:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "even/even-return:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "even/even-return/expand/even-return/call/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "even/even-return/expand/even-return/call/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "even/even-return:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "even/root:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "even/root:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "even/even-return/expand/even-return/call/0/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "even/even-return/expand/even-return/call/0/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "even/even-return/expand/even-return/call/0/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "even/root/binding/entry/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "even/root/binding/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "inline": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "even/even-return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "even/even-return/expand/even-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "even/even-return:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "even/even-return:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "even/even-return/expand/even-return/call/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "even/even-return/expand/even-return/call/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "even/even-return:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "even/even-return/expand/even-return/call/0/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "even/even-return/expand/even-return/call/0/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "even/even-return/expand/even-return/call/0/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "even/even-return/expand/even-return/call/0",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "fib": {
+        "id": "fib",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 4
+            }
+          }
+        },
+        "text": "fib",
+        "moduleId": "test",
+        "entry": {
+          "kind": "function",
+          "owner": null,
+          "operation": null,
+          "name": "",
+          "signature": "",
+          "parameters": [],
+          "returnType": ""
+        },
+        "nodes": [
+          {
+            "id": "fib/sum",
+            "occurrenceKey": "/sum",
+            "sourceId": "sum",
+            "presentation": {
+              "kind": "plain",
+              "style": "return",
+              "label": "sum",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "fib/sum/group"
+            }
+          },
+          {
+            "id": "fib/sum/expand/sum/call/0",
+            "occurrenceKey": "/sum/expand/sum/call/0",
+            "sourceId": "sum/call/0",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "fib(0)",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "call",
+                "occurrenceKey": "/sum/expand/sum/call/0",
+                "availability": {
+                  "kind": "available"
+                },
+                "recursive": {
+                  "label": "fib(0)",
+                  "sections": [],
+                  "limitation": "Recursive calls remain collapsed.",
+                  "title": "Recursive calls remain collapsed.",
+                  "ariaLabel": "Recursive call fib(0)",
+                  "glyph": "↻"
+                }
+              }
+            },
+            "body": {
+              "kind": "reference",
+              "reference": {
+                "graphId": "fib",
+                "occurrenceKey": "/sum/expand/sum/call/0",
+                "availability": {
+                  "kind": "available"
+                },
+                "container": {
+                  "profile": "call",
+                  "root": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  },
+                  "inline": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  }
+                },
+                "collapsed": {
+                  "interfaces": [
+                    {
+                      "id": "entry",
+                      "members": [
+                        {
+                          "portId": "fib/sum/expand/sum/call/0:entry",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "normal",
+                      "members": [
+                        {
+                          "portId": "fib/sum/expand/sum/call/0:normal-exit",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "returns",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "panics",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    }
+                  ],
+                  "edges": []
+                },
+                "inline": [
+                  {
+                    "kind": "entry",
+                    "id": "fib/sum/expand/sum/call/0/enter",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "fib/sum/expand/sum/call/0:entry",
+                    "targetInterfaceId": "entry",
+                    "edge": {
+                      "kind": "sequence",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "fib/sum/expand/sum/call/0/exit/normal",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "fib/sum/expand/sum/call/0:normal-exit",
+                    "targetInterfaceId": "normal",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "fib/sum/expand/sum/call/0/exit/returns",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "fib/sum/expand/sum/call/0:normal-exit",
+                    "targetInterfaceId": "returns",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "fib/sum/expand/sum/call/1",
+            "occurrenceKey": "/sum/expand/sum/call/1",
+            "sourceId": "sum/call/1",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "fib(1)",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "call",
+                "occurrenceKey": "/sum/expand/sum/call/1",
+                "availability": {
+                  "kind": "available"
+                },
+                "recursive": {
+                  "label": "fib(1)",
+                  "sections": [],
+                  "limitation": "Recursive calls remain collapsed.",
+                  "title": "Recursive calls remain collapsed.",
+                  "ariaLabel": "Recursive call fib(1)",
+                  "glyph": "↻"
+                }
+              }
+            },
+            "body": {
+              "kind": "reference",
+              "reference": {
+                "graphId": "fib",
+                "occurrenceKey": "/sum/expand/sum/call/1",
+                "availability": {
+                  "kind": "available"
+                },
+                "container": {
+                  "profile": "call",
+                  "root": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  },
+                  "inline": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  }
+                },
+                "collapsed": {
+                  "interfaces": [
+                    {
+                      "id": "entry",
+                      "members": [
+                        {
+                          "portId": "fib/sum/expand/sum/call/1:entry",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "normal",
+                      "members": [
+                        {
+                          "portId": "fib/sum/expand/sum/call/1:normal-exit",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "returns",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "panics",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    }
+                  ],
+                  "edges": []
+                },
+                "inline": [
+                  {
+                    "kind": "entry",
+                    "id": "fib/sum/expand/sum/call/1/enter",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "fib/sum/expand/sum/call/1:entry",
+                    "targetInterfaceId": "entry",
+                    "edge": {
+                      "kind": "sequence",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "fib/sum/expand/sum/call/1/exit/normal",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "fib/sum/expand/sum/call/1:normal-exit",
+                    "targetInterfaceId": "normal",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "fib/sum/expand/sum/call/1/exit/returns",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "fib/sum/expand/sum/call/1:normal-exit",
+                    "targetInterfaceId": "returns",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "fib/root",
+            "occurrenceKey": "/root",
+            "sourceId": "fib",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "fib/root/group"
+            }
+          }
+        ],
+        "ports": [
+          {
+            "occurrenceKey": "/sum:entry",
+            "id": "fib/sum:entry",
+            "nodeId": "fib/sum",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/sum:normal-exit",
+            "id": "fib/sum:normal-exit",
+            "nodeId": "fib/sum",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "header-bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/sum/expand/sum/call/0:entry",
+            "id": "fib/sum/expand/sum/call/0:entry",
+            "nodeId": "fib/sum/expand/sum/call/0",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/sum/expand/sum/call/0:normal-exit",
+            "id": "fib/sum/expand/sum/call/0:normal-exit",
+            "nodeId": "fib/sum/expand/sum/call/0",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/sum/expand/sum/call/1:entry",
+            "id": "fib/sum/expand/sum/call/1:entry",
+            "nodeId": "fib/sum/expand/sum/call/1",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/sum/expand/sum/call/1:normal-exit",
+            "id": "fib/sum/expand/sum/call/1:normal-exit",
+            "nodeId": "fib/sum/expand/sum/call/1",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/sum:return",
+            "id": "fib/sum:return",
+            "nodeId": "fib/sum",
+            "role": "return",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:entry",
+            "id": "fib/root:entry",
+            "nodeId": "fib/root",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:normal-exit",
+            "id": "fib/root:normal-exit",
+            "nodeId": "fib/root",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/0",
+            "fromPort": "fib/sum:normal-exit",
+            "toPort": "fib/sum/expand/sum/call/0:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/1",
+            "fromPort": "fib/sum/expand/sum/call/0:entry",
+            "toPort": "fib/sum/expand/sum/call/0:normal-exit",
+            "when": {
+              "kind": "not",
+              "operand": {
+                "kind": "nonempty",
+                "referenceNodeId": "fib/sum/expand/sum/call/0",
+                "interfaceId": "entry"
+              }
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/2",
+            "fromPort": "fib/sum/expand/sum/call/0:normal-exit",
+            "toPort": "fib/sum/expand/sum/call/1:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "any",
+                      "operands": [
+                        {
+                          "kind": "not",
+                          "operand": {
+                            "kind": "nonempty",
+                            "referenceNodeId": "fib/sum/expand/sum/call/0",
+                            "interfaceId": "entry"
+                          }
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "fib/sum/expand/sum/call/0",
+                          "interfaceId": "normal"
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "fib/sum/expand/sum/call/0",
+                          "interfaceId": "returns"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/3",
+            "fromPort": "fib/sum/expand/sum/call/1:entry",
+            "toPort": "fib/sum/expand/sum/call/1:normal-exit",
+            "when": {
+              "kind": "not",
+              "operand": {
+                "kind": "nonempty",
+                "referenceNodeId": "fib/sum/expand/sum/call/1",
+                "interfaceId": "entry"
+              }
+            }
+          },
+          {
+            "kind": "return",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/4",
+            "fromPort": "fib/sum/expand/sum/call/1:normal-exit",
+            "toPort": "fib/sum:return",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "any",
+                      "operands": [
+                        {
+                          "kind": "not",
+                          "operand": {
+                            "kind": "nonempty",
+                            "referenceNodeId": "fib/sum/expand/sum/call/1",
+                            "interfaceId": "entry"
+                          }
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "fib/sum/expand/sum/call/1",
+                          "interfaceId": "normal"
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "fib/sum/expand/sum/call/1",
+                          "interfaceId": "returns"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "fib/sum/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "fib/sum/expand/sum/call/0",
+                "fib/sum/expand/sum/call/1"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          },
+          {
+            "id": "fib/root/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "fib/sum"
+              ]
+            },
+            "style": {
+              "profile": "root",
+              "root": {
+                "node": true,
+                "header": false,
+                "container": true
+              },
+              "inline": {
+                "node": false,
+                "header": false,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "fib/graph",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "fib/root"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          }
+        ],
+        "rootGroup": "fib/graph",
+        "interfaces": [
+          {
+            "id": "root/entry/0",
+            "members": [
+              {
+                "portId": "fib/root:entry",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "fib/root/binding/entry/0",
+              "toPort": "fib/sum:entry",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "root/normal",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "fib/root/binding/normal",
+              "toPort": "fib/root:normal-exit",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "entry",
+            "members": [
+              {
+                "portId": "fib/sum:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "normal",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "returns",
+            "members": [
+              {
+                "portId": "fib/sum:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "panics",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          }
+        ],
+        "emission": {
+          "root": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "fib/root",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum/expand/sum/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "fib/sum/expand/sum/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum/expand/sum/call/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "fib/sum/expand/sum/call/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "fib/sum:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum/expand/sum/call/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum/expand/sum/call/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "fib/sum/expand/sum/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum/expand/sum/call/1:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum/expand/sum/call/1:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "fib/sum/expand/sum/call/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/root:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/root:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "fib/sum/expand/sum/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/sum/expand/sum/call/0/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/sum/expand/sum/call/0/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/sum/expand/sum/call/0/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "fib/sum/expand/sum/call/0",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "fib/sum/expand/sum/call/0",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "fib/sum/expand/sum/call/0",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "fib/sum/expand/sum/call/0",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "fib/sum/expand/sum/call/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/sum/expand/sum/call/1/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/sum/expand/sum/call/1/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/sum/expand/sum/call/1/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/3",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "fib/sum/expand/sum/call/1",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/4",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "fib/sum/expand/sum/call/1",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "fib/sum/expand/sum/call/1",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "fib/sum/expand/sum/call/1",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/root/binding/entry/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/root/binding/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "inline": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "fib/sum",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum/expand/sum/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "fib/sum/expand/sum/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum/expand/sum/call/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "fib/sum/expand/sum/call/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "fib/sum:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum/expand/sum/call/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum/expand/sum/call/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "fib/sum/expand/sum/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum/expand/sum/call/1:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum/expand/sum/call/1:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "fib/sum/expand/sum/call/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "fib/sum:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "fib/sum/expand/sum/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/sum/expand/sum/call/0/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/sum/expand/sum/call/0/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/sum/expand/sum/call/0/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "fib/sum/expand/sum/call/0",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "fib/sum/expand/sum/call/0",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "fib/sum/expand/sum/call/0",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "fib/sum/expand/sum/call/0",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "fib/sum/expand/sum/call/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/sum/expand/sum/call/1/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/sum/expand/sum/call/1/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "fib/sum/expand/sum/call/1/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/3",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "fib/sum/expand/sum/call/1",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/4",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "fib/sum/expand/sum/call/1",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "fib/sum/expand/sum/call/1",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "fib/sum/expand/sum/call/1",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "odd": {
+        "id": "odd",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 4
+            }
+          }
+        },
+        "text": "odd",
+        "moduleId": "test",
+        "entry": {
+          "kind": "function",
+          "owner": null,
+          "operation": null,
+          "name": "",
+          "signature": "",
+          "parameters": [],
+          "returnType": ""
+        },
+        "nodes": [
+          {
+            "id": "odd/odd-return",
+            "occurrenceKey": "/odd-return",
+            "sourceId": "odd-return",
+            "presentation": {
+              "kind": "plain",
+              "style": "return",
+              "label": "odd-return",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "odd/odd-return/group"
+            }
+          },
+          {
+            "id": "odd/odd-return/expand/odd-return/call/0",
+            "occurrenceKey": "/odd-return/expand/odd-return/call/0",
+            "sourceId": "odd-return/call/0",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "even(0)",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "call",
+                "occurrenceKey": "/odd-return/expand/odd-return/call/0",
+                "availability": {
+                  "kind": "available"
+                },
+                "recursive": {
+                  "label": "even(0)",
+                  "sections": [],
+                  "limitation": "Recursive calls remain collapsed.",
+                  "title": "Recursive calls remain collapsed.",
+                  "ariaLabel": "Recursive call even(0)",
+                  "glyph": "↻"
+                }
+              }
+            },
+            "body": {
+              "kind": "reference",
+              "reference": {
+                "graphId": "even",
+                "occurrenceKey": "/odd-return/expand/odd-return/call/0",
+                "availability": {
+                  "kind": "available"
+                },
+                "container": {
+                  "profile": "call",
+                  "root": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  },
+                  "inline": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  }
+                },
+                "collapsed": {
+                  "interfaces": [
+                    {
+                      "id": "entry",
+                      "members": [
+                        {
+                          "portId": "odd/odd-return/expand/odd-return/call/0:entry",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "normal",
+                      "members": [
+                        {
+                          "portId": "odd/odd-return/expand/odd-return/call/0:normal-exit",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "returns",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "panics",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    }
+                  ],
+                  "edges": []
+                },
+                "inline": [
+                  {
+                    "kind": "entry",
+                    "id": "odd/odd-return/expand/odd-return/call/0/enter",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "odd/odd-return/expand/odd-return/call/0:entry",
+                    "targetInterfaceId": "entry",
+                    "edge": {
+                      "kind": "sequence",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "odd/odd-return/expand/odd-return/call/0/exit/normal",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "odd/odd-return/expand/odd-return/call/0:normal-exit",
+                    "targetInterfaceId": "normal",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "odd/odd-return/expand/odd-return/call/0/exit/returns",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "odd/odd-return/expand/odd-return/call/0:normal-exit",
+                    "targetInterfaceId": "returns",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "odd/root",
+            "occurrenceKey": "/root",
+            "sourceId": "odd",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "odd/root/group"
+            }
+          }
+        ],
+        "ports": [
+          {
+            "occurrenceKey": "/odd-return:entry",
+            "id": "odd/odd-return:entry",
+            "nodeId": "odd/odd-return",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/odd-return:normal-exit",
+            "id": "odd/odd-return:normal-exit",
+            "nodeId": "odd/odd-return",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "header-bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/odd-return/expand/odd-return/call/0:entry",
+            "id": "odd/odd-return/expand/odd-return/call/0:entry",
+            "nodeId": "odd/odd-return/expand/odd-return/call/0",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/odd-return/expand/odd-return/call/0:normal-exit",
+            "id": "odd/odd-return/expand/odd-return/call/0:normal-exit",
+            "nodeId": "odd/odd-return/expand/odd-return/call/0",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/odd-return:return",
+            "id": "odd/odd-return:return",
+            "nodeId": "odd/odd-return",
+            "role": "return",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:entry",
+            "id": "odd/root:entry",
+            "nodeId": "odd/root",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:normal-exit",
+            "id": "odd/root:normal-exit",
+            "nodeId": "odd/root",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/0",
+            "fromPort": "odd/odd-return:normal-exit",
+            "toPort": "odd/odd-return/expand/odd-return/call/0:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/1",
+            "fromPort": "odd/odd-return/expand/odd-return/call/0:entry",
+            "toPort": "odd/odd-return/expand/odd-return/call/0:normal-exit",
+            "when": {
+              "kind": "not",
+              "operand": {
+                "kind": "nonempty",
+                "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                "interfaceId": "entry"
+              }
+            }
+          },
+          {
+            "kind": "return",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/2",
+            "fromPort": "odd/odd-return/expand/odd-return/call/0:normal-exit",
+            "toPort": "odd/odd-return:return",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "any",
+                      "operands": [
+                        {
+                          "kind": "not",
+                          "operand": {
+                            "kind": "nonempty",
+                            "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                            "interfaceId": "entry"
+                          }
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                          "interfaceId": "normal"
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                          "interfaceId": "returns"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "odd/odd-return/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "odd/odd-return/expand/odd-return/call/0"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          },
+          {
+            "id": "odd/root/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "odd/odd-return"
+              ]
+            },
+            "style": {
+              "profile": "root",
+              "root": {
+                "node": true,
+                "header": false,
+                "container": true
+              },
+              "inline": {
+                "node": false,
+                "header": false,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "odd/graph",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "odd/root"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          }
+        ],
+        "rootGroup": "odd/graph",
+        "interfaces": [
+          {
+            "id": "root/entry/0",
+            "members": [
+              {
+                "portId": "odd/root:entry",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "odd/root/binding/entry/0",
+              "toPort": "odd/odd-return:entry",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "root/normal",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "odd/root/binding/normal",
+              "toPort": "odd/root:normal-exit",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "entry",
+            "members": [
+              {
+                "portId": "odd/odd-return:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "normal",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "returns",
+            "members": [
+              {
+                "portId": "odd/odd-return:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "panics",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          }
+        ],
+        "emission": {
+          "root": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "odd/root",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return/expand/odd-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return/expand/odd-return/call/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return/expand/odd-return/call/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "odd/root:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "odd/root:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "odd/odd-return/expand/odd-return/call/0/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "odd/odd-return/expand/odd-return/call/0/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "odd/odd-return/expand/odd-return/call/0/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "odd/root/binding/entry/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "odd/root/binding/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "inline": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return/expand/odd-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return/expand/odd-return/call/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return/expand/odd-return/call/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "odd/odd-return:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "odd/odd-return/expand/odd-return/call/0/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "odd/odd-return/expand/odd-return/call/0/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "odd/odd-return/expand/odd-return/call/0/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "odd/odd-return/expand/odd-return/call/0",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "graphOnly": true,
+  "provenance": "Archived synthetic graph input; no AST exists or is fabricated. Entry metadata is omitted by graphOnly exactly when the original fixture omitted it."
+}

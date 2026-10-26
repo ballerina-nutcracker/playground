@@ -1,0 +1,4 @@
+[package]
+org = "examples"
+name = "analysis_recovery"
+version = "0.1.0"

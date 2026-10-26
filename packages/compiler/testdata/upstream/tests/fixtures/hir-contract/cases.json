@@ -1,0 +1,1447 @@
+{
+  "version": 1,
+  "files": {
+    "main.bal": "\ud83d\ude00"
+  },
+  "cases": [
+    {"name": "client-long-expanded-recursive-missing", "file": "client-long-expanded-recursive-missing.json", "accept": false},
+    {"name": "client-long-expanded-recursive-null", "file": "client-long-expanded-recursive-null.json", "accept": false},
+    {"name": "client-long-expanded-recursive-extra", "file": "client-long-expanded-recursive-extra.json", "accept": false},
+    {"name": "client-long-expanded-recursive-without-call", "file": "client-long-expanded-recursive-without-call.json", "accept": false},
+    {
+      "name": "conditional-return-port",
+      "file": "conditional-return-port.json",
+      "accept": true
+    },
+    {
+      "name": "conditional-port-active-edge",
+      "file": "conditional-port-active-edge.json",
+      "accept": false
+    },
+    {
+      "name": "conditional-port-active-binding-caller",
+      "file": "conditional-port-active-binding-caller.json",
+      "accept": false
+    },
+    {
+      "name": "conditional-port-active-binding-target",
+      "file": "conditional-port-active-binding-target.json",
+      "accept": false
+    },
+    {
+      "name": "conditional-port-missing-emission",
+      "file": "conditional-port-missing-emission.json",
+      "accept": false
+    },
+    {
+      "name": "conditional-port-active-duplicate",
+      "file": "conditional-port-active-duplicate.json",
+      "accept": false
+    },
+    {
+      "name": "conditional-port-false-only-emission",
+      "file": "conditional-port-false-only-emission.json",
+      "accept": false
+    },
+    {
+      "name": "reordered-unavailable-availability",
+      "file": "reordered-unavailable-availability.json",
+      "accept": true
+    },
+    {
+      "name": "minimal",
+      "file": "minimal.json",
+      "accept": true
+    },
+    {
+      "name": "entry-empty-name",
+      "file": "entry-empty-name.json",
+      "accept": false
+    },
+    {
+      "name": "entry-empty-signature",
+      "file": "entry-empty-signature.json",
+      "accept": false
+    },
+    {
+      "name": "entry-empty-returnType",
+      "file": "entry-empty-returnType.json",
+      "accept": false
+    },
+    {
+      "name": "entry-empty-parameter-path",
+      "file": "entry-empty-parameter-path.json",
+      "accept": false
+    },
+    {
+      "name": "entry-empty-parameter-input",
+      "file": "entry-empty-parameter-input.json",
+      "accept": false
+    },
+    {
+      "name": "entry-empty-nullable-strings",
+      "file": "entry-empty-nullable-strings.json",
+      "accept": true
+    },
+    {
+      "name": "empty-program",
+      "file": "empty-program.json",
+      "accept": true
+    },
+    {
+      "name": "null-collection-00",
+      "file": "null-collection-00.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-01",
+      "file": "null-collection-01.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-38",
+      "file": "null-collection-38.json",
+      "accept": false
+    },
+    {
+      "name": "missing-nullable-54",
+      "file": "missing-nullable-54.json",
+      "accept": false
+    },
+    {
+      "name": "missing-nullable-55",
+      "file": "missing-nullable-55.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-58",
+      "file": "null-collection-58.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-60",
+      "file": "null-collection-60.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-68",
+      "file": "null-collection-68.json",
+      "accept": false
+    },
+    {
+      "name": "missing-nullable-71",
+      "file": "missing-nullable-71.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-83",
+      "file": "null-collection-83.json",
+      "accept": false
+    },
+    {
+      "name": "missing-nullable-86",
+      "file": "missing-nullable-86.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-91",
+      "file": "null-collection-91.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-102",
+      "file": "null-collection-102.json",
+      "accept": false
+    },
+    {
+      "name": "missing-nullable-107",
+      "file": "missing-nullable-107.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-112",
+      "file": "null-collection-112.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-116",
+      "file": "null-collection-116.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-128",
+      "file": "null-collection-128.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-130",
+      "file": "null-collection-130.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-135",
+      "file": "null-collection-135.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-140",
+      "file": "null-collection-140.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-151",
+      "file": "null-collection-151.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-162",
+      "file": "null-collection-162.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-169",
+      "file": "null-collection-169.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-180",
+      "file": "null-collection-180.json",
+      "accept": false
+    },
+    {
+      "name": "null-collection-191",
+      "file": "null-collection-191.json",
+      "accept": false
+    },
+    {
+      "name": "null-program",
+      "file": "null-program.json",
+      "accept": false
+    },
+    {
+      "name": "duplicate-node",
+      "file": "duplicate-node.json",
+      "accept": false
+    },
+    {
+      "name": "duplicate-port",
+      "file": "duplicate-port.json",
+      "accept": false
+    },
+    {
+      "name": "duplicate-edge",
+      "file": "duplicate-edge.json",
+      "accept": false
+    },
+    {
+      "name": "duplicate-group",
+      "file": "duplicate-group.json",
+      "accept": false
+    },
+    {
+      "name": "duplicate-interface",
+      "file": "duplicate-interface.json",
+      "accept": false
+    },
+    {
+      "name": "dangling-edge",
+      "file": "dangling-edge.json",
+      "accept": false
+    },
+    {
+      "name": "dangling-port-owner",
+      "file": "dangling-port-owner.json",
+      "accept": false
+    },
+    {
+      "name": "dangling-member",
+      "file": "dangling-member.json",
+      "accept": false
+    },
+    {
+      "name": "dangling-interface-port",
+      "file": "dangling-interface-port.json",
+      "accept": false
+    },
+    {
+      "name": "missing-source",
+      "file": "missing-source.json",
+      "accept": false
+    },
+    {
+      "name": "source-key-mismatch",
+      "file": "source-key-mismatch.json",
+      "accept": false
+    },
+    {
+      "name": "graph-key-mismatch",
+      "file": "graph-key-mismatch.json",
+      "accept": false
+    },
+    {
+      "name": "source-location-mismatch",
+      "file": "source-location-mismatch.json",
+      "accept": false
+    },
+    {
+      "name": "source-invalid-position",
+      "file": "source-invalid-position.json",
+      "accept": false
+    },
+    {
+      "name": "missing-root-group",
+      "file": "missing-root-group.json",
+      "accept": false
+    },
+    {
+      "name": "unowned-node",
+      "file": "unowned-node.json",
+      "accept": false
+    },
+    {
+      "name": "multiply-owned-node",
+      "file": "multiply-owned-node.json",
+      "accept": false
+    },
+    {
+      "name": "group-owner-self-cycle",
+      "file": "group-owner-self-cycle.json",
+      "accept": false
+    },
+    {
+      "name": "unknown-body-tag",
+      "file": "unknown-body-tag.json",
+      "accept": false
+    },
+    {
+      "name": "contradictory-leaf-tag",
+      "file": "contradictory-leaf-tag.json",
+      "accept": false
+    },
+    {
+      "name": "null-body",
+      "file": "null-body.json",
+      "accept": false
+    },
+    {
+      "name": "unknown-style",
+      "file": "unknown-style.json",
+      "accept": false
+    },
+    {
+      "name": "unknown-anchor",
+      "file": "unknown-anchor.json",
+      "accept": false
+    },
+    {
+      "name": "unknown-edge-kind",
+      "file": "unknown-edge-kind.json",
+      "accept": false
+    },
+    {
+      "name": "invalid-presence",
+      "file": "invalid-presence.json",
+      "accept": false
+    },
+    {
+      "name": "contradictory-presence",
+      "file": "contradictory-presence.json",
+      "accept": false
+    },
+    {
+      "name": "nonempty-nonreference",
+      "file": "nonempty-nonreference.json",
+      "accept": false
+    },
+    {
+      "name": "root-nodes-missing",
+      "file": "root-nodes-missing.json",
+      "accept": false
+    },
+    {
+      "name": "root-nodes-duplicate",
+      "file": "root-nodes-duplicate.json",
+      "accept": false
+    },
+    {
+      "name": "root-nodes-dangling",
+      "file": "root-nodes-dangling.json",
+      "accept": false
+    },
+    {
+      "name": "root-ports-missing",
+      "file": "root-ports-missing.json",
+      "accept": false
+    },
+    {
+      "name": "root-ports-duplicate",
+      "file": "root-ports-duplicate.json",
+      "accept": false
+    },
+    {
+      "name": "root-ports-dangling",
+      "file": "root-ports-dangling.json",
+      "accept": false
+    },
+    {
+      "name": "root-edges-missing",
+      "file": "root-edges-missing.json",
+      "accept": false
+    },
+    {
+      "name": "root-edges-duplicate",
+      "file": "root-edges-duplicate.json",
+      "accept": false
+    },
+    {
+      "name": "root-edges-dangling",
+      "file": "root-edges-dangling.json",
+      "accept": false
+    },
+    {
+      "name": "root-nodes-binding-slot",
+      "file": "root-nodes-binding-slot.json",
+      "accept": false
+    },
+    {
+      "name": "root-ports-binding-slot",
+      "file": "root-ports-binding-slot.json",
+      "accept": false
+    },
+    {
+      "name": "root-nodes-order",
+      "file": "root-nodes-order.json",
+      "accept": false
+    },
+    {
+      "name": "inline-nodes-missing",
+      "file": "inline-nodes-missing.json",
+      "accept": false
+    },
+    {
+      "name": "inline-nodes-duplicate",
+      "file": "inline-nodes-duplicate.json",
+      "accept": false
+    },
+    {
+      "name": "inline-nodes-dangling",
+      "file": "inline-nodes-dangling.json",
+      "accept": false
+    },
+    {
+      "name": "inline-ports-missing",
+      "file": "inline-ports-missing.json",
+      "accept": false
+    },
+    {
+      "name": "inline-ports-duplicate",
+      "file": "inline-ports-duplicate.json",
+      "accept": false
+    },
+    {
+      "name": "inline-ports-dangling",
+      "file": "inline-ports-dangling.json",
+      "accept": false
+    },
+    {
+      "name": "inline-edges-missing",
+      "file": "inline-edges-missing.json",
+      "accept": false
+    },
+    {
+      "name": "inline-edges-duplicate",
+      "file": "inline-edges-duplicate.json",
+      "accept": false
+    },
+    {
+      "name": "inline-edges-dangling",
+      "file": "inline-edges-dangling.json",
+      "accept": false
+    },
+    {
+      "name": "inline-nodes-binding-slot",
+      "file": "inline-nodes-binding-slot.json",
+      "accept": false
+    },
+    {
+      "name": "inline-ports-binding-slot",
+      "file": "inline-ports-binding-slot.json",
+      "accept": false
+    },
+    {
+      "name": "inline-nodes-order",
+      "file": "inline-nodes-order.json",
+      "accept": false
+    },
+    {
+      "name": "empty-all-presence",
+      "file": "empty-all-presence.json",
+      "accept": true
+    },
+    {
+      "name": "direct-function-reference",
+      "file": "direct-function-reference.json",
+      "accept": true
+    },
+    {
+      "name": "mutual-function-reference",
+      "file": "mutual-function-reference.json",
+      "accept": true
+    },
+    {
+      "name": "dangling-graph-reference",
+      "file": "dangling-graph-reference.json",
+      "accept": false
+    },
+    {
+      "name": "collapsed-interface-null",
+      "file": "collapsed-interface-null.json",
+      "accept": false
+    },
+    {
+      "name": "collapsed-presence-cycle",
+      "file": "collapsed-presence-cycle.json",
+      "accept": false
+    },
+    {
+      "name": "entry-binding",
+      "file": "entry-binding.json",
+      "accept": true
+    },
+    {
+      "name": "exit-binding",
+      "file": "exit-binding.json",
+      "accept": true
+    },
+    {
+      "name": "binding-dangling-caller",
+      "file": "binding-dangling-caller.json",
+      "accept": false
+    },
+    {
+      "name": "binding-dangling-target",
+      "file": "binding-dangling-target.json",
+      "accept": false
+    },
+    {
+      "name": "binding-duplicate",
+      "file": "binding-duplicate.json",
+      "accept": false
+    },
+    {
+      "name": "binding-direction-contradiction",
+      "file": "binding-direction-contradiction.json",
+      "accept": false
+    },
+    {
+      "name": "export-binding",
+      "file": "export-binding.json",
+      "accept": true
+    },
+    {
+      "name": "export-unlisted",
+      "file": "export-unlisted.json",
+      "accept": false
+    },
+    {
+      "name": "export-wrong-owner",
+      "file": "export-wrong-owner.json",
+      "accept": false
+    },
+    {
+      "name": "export-duplicate",
+      "file": "export-duplicate.json",
+      "accept": false
+    },
+    {
+      "name": "export-index--1",
+      "file": "export-index--1.json",
+      "accept": false
+    },
+    {
+      "name": "export-index-2",
+      "file": "export-index-2.json",
+      "accept": false
+    },
+    {
+      "name": "export-index-0.5",
+      "file": "export-index-0.5.json",
+      "accept": false
+    },
+    {
+      "name": "source-invalid-end-line",
+      "file": "source-invalid-end-line.json",
+      "accept": false
+    },
+    {
+      "name": "source-reversed-range",
+      "file": "source-reversed-range.json",
+      "accept": false
+    },
+    {
+      "name": "missing-graph-source",
+      "file": "missing-graph-source.json",
+      "accept": false
+    },
+    {
+      "name": "automation-scope",
+      "file": "automation-scope.json",
+      "accept": true
+    },
+    {
+      "name": "scope-source-missing",
+      "file": "scope-source-missing.json",
+      "accept": false
+    },
+    {
+      "name": "scope-function-dangling",
+      "file": "scope-function-dangling.json",
+      "accept": false
+    },
+    {
+      "name": "scope-source-mismatch",
+      "file": "scope-source-mismatch.json",
+      "accept": false
+    },
+    {
+      "name": "empty-any-presence",
+      "file": "empty-any-presence.json",
+      "accept": true
+    },
+    {
+      "name": "root-connect",
+      "file": "root-connect.json",
+      "accept": true
+    },
+    {
+      "name": "root-connect-missing-emission",
+      "file": "root-connect-missing-emission.json",
+      "accept": false
+    },
+    {
+      "name": "root-connect-duplicate-emission",
+      "file": "root-connect-duplicate-emission.json",
+      "accept": false
+    },
+    {
+      "name": "root-connect-dangling-port",
+      "file": "root-connect-dangling-port.json",
+      "accept": false
+    },
+    {
+      "name": "null-reference-collapsed-interfaces",
+      "file": "null-reference-collapsed-interfaces.json",
+      "accept": false
+    },
+    {
+      "name": "null-reference-collapsed-interfaces-0-members",
+      "file": "null-reference-collapsed-interfaces-0-members.json",
+      "accept": false
+    },
+    {
+      "name": "null-reference-collapsed-interfaces-0-exports",
+      "file": "null-reference-collapsed-interfaces-0-exports.json",
+      "accept": false
+    },
+    {
+      "name": "null-reference-collapsed-edges",
+      "file": "null-reference-collapsed-edges.json",
+      "accept": false
+    },
+    {
+      "name": "null-reference-inline",
+      "file": "null-reference-inline.json",
+      "accept": false
+    },
+    {
+      "name": "nested-group",
+      "file": "nested-group.json",
+      "accept": true
+    },
+    {
+      "name": "dangling-owned-group",
+      "file": "dangling-owned-group.json",
+      "accept": false
+    },
+    {
+      "name": "group-mutual-owner-cycle",
+      "file": "group-mutual-owner-cycle.json",
+      "accept": false
+    },
+    {
+      "name": "inline-hidden-group-owner",
+      "file": "inline-hidden-group-owner.json",
+      "accept": true
+    },
+    {
+      "name": "inline-hidden-group-missing-visible-child",
+      "file": "inline-hidden-group-missing-visible-child.json",
+      "accept": false
+    },
+    {
+      "name": "collapsed-local-edge",
+      "file": "collapsed-local-edge.json",
+      "accept": true
+    },
+    {
+      "name": "collapsed-edge-dangling",
+      "file": "collapsed-edge-dangling.json",
+      "accept": false
+    },
+    {
+      "name": "collapsed-edge-duplicate-id",
+      "file": "collapsed-edge-duplicate-id.json",
+      "accept": false
+    },
+    {
+      "name": "null-graph",
+      "file": "null-graph.json",
+      "accept": false
+    },
+    {
+      "name": "null-source-record-entry",
+      "file": "null-source-record-entry.json",
+      "accept": false
+    },
+    {
+      "name": "null-node",
+      "file": "null-node.json",
+      "accept": false
+    },
+    {
+      "name": "null-presentation",
+      "file": "null-presentation.json",
+      "accept": false
+    },
+    {
+      "name": "null-port",
+      "file": "null-port.json",
+      "accept": false
+    },
+    {
+      "name": "null-edge",
+      "file": "null-edge.json",
+      "accept": false
+    },
+    {
+      "name": "null-group",
+      "file": "null-group.json",
+      "accept": false
+    },
+    {
+      "name": "null-interface",
+      "file": "null-interface.json",
+      "accept": false
+    },
+    {
+      "name": "null-emission",
+      "file": "null-emission.json",
+      "accept": false
+    },
+    {
+      "name": "null-emission-slot",
+      "file": "null-emission-slot.json",
+      "accept": false
+    },
+    {
+      "name": "null-presence",
+      "file": "null-presence.json",
+      "accept": false
+    },
+    {
+      "name": "null-source-reference",
+      "file": "null-source-reference.json",
+      "accept": false
+    },
+    {
+      "name": "null-entry",
+      "file": "null-entry.json",
+      "accept": false
+    },
+    {
+      "name": "columns-empty-left",
+      "file": "columns-empty-left.json",
+      "accept": true
+    },
+    {
+      "name": "columns-empty-right",
+      "file": "columns-empty-right.json",
+      "accept": true
+    },
+    {
+      "name": "contradictory-sequence",
+      "file": "contradictory-sequence.json",
+      "accept": false
+    },
+    {
+      "name": "contradictory-terminal",
+      "file": "contradictory-terminal.json",
+      "accept": false
+    },
+    {
+      "name": "contradictory-anchor",
+      "file": "contradictory-anchor.json",
+      "accept": false
+    },
+    {
+      "name": "contradictory-hidden",
+      "file": "contradictory-hidden.json",
+      "accept": false
+    },
+    {
+      "name": "contradictory-local-emission",
+      "file": "contradictory-local-emission.json",
+      "accept": false
+    },
+    {
+      "name": "inactive-duplicate-slot",
+      "file": "inactive-duplicate-slot.json",
+      "accept": true
+    },
+    {
+      "name": "false-only-required-slot",
+      "file": "false-only-required-slot.json",
+      "accept": false
+    },
+    {
+      "name": "export-at-end",
+      "file": "export-at-end.json",
+      "accept": true
+    },
+    {
+      "name": "expandable-function-reference",
+      "file": "expandable-function-reference.json",
+      "accept": true
+    },
+    {
+      "name": "unavailable-missing-target",
+      "file": "unavailable-missing-target.json",
+      "accept": false
+    },
+    {
+      "name": "unavailable-dangling-target",
+      "file": "unavailable-dangling-target.json",
+      "accept": false
+    },
+    {
+      "name": "unavailable-existing-target",
+      "file": "unavailable-existing-target.json",
+      "accept": true
+    },
+    {
+      "name": "reference-occurrence-disagreement",
+      "file": "reference-occurrence-disagreement.json",
+      "accept": false
+    },
+    {
+      "name": "call-disclosure-reference-agreement",
+      "file": "call-disclosure-reference-agreement.json",
+      "accept": true
+    },
+    {
+      "name": "call-disclosure-occurrence-disagreement",
+      "file": "call-disclosure-occurrence-disagreement.json",
+      "accept": false
+    },
+    {
+      "name": "call-disclosure-availability-disagreement",
+      "file": "call-disclosure-availability-disagreement.json",
+      "accept": false
+    },
+    {
+      "name": "call-disclosure-without-reference",
+      "file": "call-disclosure-without-reference.json",
+      "accept": false
+    },
+    {
+      "name": "expandable-collapsed-edge-emission",
+      "file": "expandable-collapsed-edge-emission.json",
+      "accept": true
+    },
+    {
+      "name": "expandable-collapsed-edge-missing-root",
+      "file": "expandable-collapsed-edge-missing-root.json",
+      "accept": false
+    },
+    {
+      "name": "expandable-collapsed-edge-missing-inline",
+      "file": "expandable-collapsed-edge-missing-inline.json",
+      "accept": false
+    },
+    {
+      "name": "reference-container-mode-hidden",
+      "file": "reference-container-mode-hidden.json",
+      "accept": false
+    },
+    {
+      "name": "reference-container-conditional-visibility",
+      "file": "reference-container-conditional-visibility.json",
+      "accept": true
+    },
+    {
+      "name": "scalar-missing-id",
+      "file": "scalar-missing-id.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-id",
+      "file": "scalar-null-id.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-moduleId",
+      "file": "scalar-missing-moduleId.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-moduleId",
+      "file": "scalar-null-moduleId.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-rootGroup",
+      "file": "scalar-missing-rootGroup.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-rootGroup",
+      "file": "scalar-null-rootGroup.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-entry-name",
+      "file": "scalar-missing-entry-name.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-entry-name",
+      "file": "scalar-null-entry-name.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-entry-signature",
+      "file": "scalar-missing-entry-signature.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-entry-signature",
+      "file": "scalar-null-entry-signature.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-entry-returnType",
+      "file": "scalar-missing-entry-returnType.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-entry-returnType",
+      "file": "scalar-null-entry-returnType.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-nodes-0-id",
+      "file": "scalar-missing-nodes-0-id.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-nodes-0-id",
+      "file": "scalar-null-nodes-0-id.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-nodes-0-occurrenceKey",
+      "file": "scalar-missing-nodes-0-occurrenceKey.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-nodes-0-occurrenceKey",
+      "file": "scalar-null-nodes-0-occurrenceKey.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-nodes-0-sourceId",
+      "file": "scalar-missing-nodes-0-sourceId.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-nodes-0-sourceId",
+      "file": "scalar-null-nodes-0-sourceId.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-nodes-0-presentation-label",
+      "file": "scalar-missing-nodes-0-presentation-label.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-nodes-0-presentation-label",
+      "file": "scalar-null-nodes-0-presentation-label.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-nodes-0-presentation-sections-0-text",
+      "file": "scalar-missing-nodes-0-presentation-sections-0-text.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-nodes-0-presentation-sections-0-text",
+      "file": "scalar-null-nodes-0-presentation-sections-0-text.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-ports-0-nodeId",
+      "file": "scalar-missing-ports-0-nodeId.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-ports-0-nodeId",
+      "file": "scalar-null-ports-0-nodeId.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-ports-0-role",
+      "file": "scalar-missing-ports-0-role.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-ports-0-role",
+      "file": "scalar-null-ports-0-role.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-ports-0-anchor-kind",
+      "file": "scalar-missing-ports-0-anchor-kind.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-ports-0-anchor-kind",
+      "file": "scalar-null-ports-0-anchor-kind.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-edges-0-fromPort",
+      "file": "scalar-missing-edges-0-fromPort.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-edges-0-fromPort",
+      "file": "scalar-null-edges-0-fromPort.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-edges-0-routing",
+      "file": "scalar-missing-edges-0-routing.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-edges-0-routing",
+      "file": "scalar-null-edges-0-routing.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-edges-0-when-value",
+      "file": "scalar-missing-edges-0-when-value.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-edges-0-when-value",
+      "file": "scalar-null-edges-0-when-value.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-groups-0-style-root-node",
+      "file": "scalar-missing-groups-0-style-root-node.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-groups-0-style-root-node",
+      "file": "scalar-null-groups-0-style-root-node.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-groups-0-style-root-header",
+      "file": "scalar-missing-groups-0-style-root-header.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-groups-0-style-root-header",
+      "file": "scalar-null-groups-0-style-root-header.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-groups-0-style-inline-container",
+      "file": "scalar-missing-groups-0-style-inline-container.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-groups-0-style-inline-container",
+      "file": "scalar-null-groups-0-style-inline-container.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-source-range-start-line",
+      "file": "scalar-missing-source-range-start-line.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-source-range-start-line",
+      "file": "scalar-null-source-range-start-line.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-missing-source-range-start-column",
+      "file": "scalar-missing-source-range-start-column.json",
+      "accept": false
+    },
+    {
+      "name": "scalar-null-source-range-start-column",
+      "file": "scalar-null-source-range-start-column.json",
+      "accept": false
+    },
+    {
+      "name": "anchor-extra-side",
+      "file": "anchor-extra-side.json",
+      "accept": false
+    },
+    {
+      "name": "anchor-extra-offset",
+      "file": "anchor-extra-offset.json",
+      "accept": false
+    },
+    {
+      "name": "anchor-extra-groupId",
+      "file": "anchor-extra-groupId.json",
+      "accept": false
+    },
+    {
+      "name": "symbolic-24-independent-references",
+      "file": "symbolic-24-independent-references.json",
+      "accept": true
+    },
+    {
+      "name": "symbolic-24-missing-all-expanded-edge",
+      "file": "symbolic-24-missing-all-expanded-edge.json",
+      "accept": false
+    },
+    {
+      "name": "child-nodes-before-reference-root",
+      "file": "child-nodes-before-reference-root.json",
+      "accept": false
+    },
+    {
+      "name": "child-nodes-after-sibling-root",
+      "file": "child-nodes-after-sibling-root.json",
+      "accept": false
+    },
+    {
+      "name": "child-nodes-before-reference-inline",
+      "file": "child-nodes-before-reference-inline.json",
+      "accept": false
+    },
+    {
+      "name": "child-nodes-after-sibling-inline",
+      "file": "child-nodes-after-sibling-inline.json",
+      "accept": false
+    },
+    {
+      "name": "child-nodes-hidden-header-after-sibling-root",
+      "file": "child-nodes-hidden-header-after-sibling-root.json",
+      "accept": false
+    },
+    {
+      "name": "child-nodes-hidden-header-after-sibling-inline",
+      "file": "child-nodes-hidden-header-after-sibling-inline.json",
+      "accept": false
+    },
+    {
+      "name": "child-nodes-nested-owner",
+      "file": "child-nodes-nested-owner.json",
+      "accept": true
+    },
+    {
+      "name": "child-nodes-outside-owner-children-root",
+      "file": "child-nodes-outside-owner-children-root.json",
+      "accept": false
+    },
+    {
+      "name": "child-nodes-outside-owner-children-inline",
+      "file": "child-nodes-outside-owner-children-inline.json",
+      "accept": false
+    },
+    {
+      "name": "child-nodes-sibling-references",
+      "file": "child-nodes-sibling-references.json",
+      "accept": true
+    },
+    {
+      "name": "child-nodes-reversed-sibling-slices-root",
+      "file": "child-nodes-reversed-sibling-slices-root.json",
+      "accept": false
+    },
+    {
+      "name": "child-nodes-reversed-sibling-slices-inline",
+      "file": "child-nodes-reversed-sibling-slices-inline.json",
+      "accept": false
+    },
+    {
+      "name": "child-nodes-empty-slice-after-sibling",
+      "file": "child-nodes-empty-slice-after-sibling.json",
+      "accept": true
+    },
+    {
+      "name": "child-nodes-hidden-target-with-visible-descendants",
+      "file": "child-nodes-hidden-target-with-visible-descendants.json",
+      "accept": true
+    },
+    {
+      "name": "child-nodes-hidden-target-descendants-after-sibling-root",
+      "file": "child-nodes-hidden-target-descendants-after-sibling-root.json",
+      "accept": false
+    },
+    {
+      "name": "child-nodes-hidden-target-descendants-after-sibling-inline",
+      "file": "child-nodes-hidden-target-descendants-after-sibling-inline.json",
+      "accept": false
+    },
+    {
+      "name": "binding-hidden-child-entry",
+      "file": "binding-hidden-child-entry.json",
+      "accept": false
+    },
+    {
+      "name": "binding-hidden-child-exit",
+      "file": "binding-hidden-child-exit.json",
+      "accept": false
+    },
+    {
+      "name": "binding-hidden-unused-interface",
+      "file": "binding-hidden-unused-interface.json",
+      "accept": true
+    },
+    {
+      "name": "binding-hidden-root-connect",
+      "file": "binding-hidden-root-connect.json",
+      "accept": false
+    },
+    {
+      "name": "binding-hidden-exported-child",
+      "file": "binding-hidden-exported-child.json",
+      "accept": false
+    },
+    {
+      "name": "binding-hidden-child-conditioned",
+      "file": "binding-hidden-child-conditioned.json",
+      "accept": true
+    },
+    {
+      "name": "binding-hidden-child-unconditioned",
+      "file": "binding-hidden-child-unconditioned.json",
+      "accept": false
+    },
+    {
+      "name": "binding-mode-hidden-child",
+      "file": "binding-mode-hidden-child.json",
+      "accept": false
+    },
+    {
+      "name": "binding-mode-hidden-unused-interface",
+      "file": "binding-mode-hidden-unused-interface.json",
+      "accept": true
+    },
+    {
+      "name": "binding-exported-child-emitted",
+      "file": "binding-exported-child-emitted.json",
+      "accept": true
+    },
+    {
+      "name": "scope-empty-moduleId",
+      "file": "scope-empty-moduleId.json",
+      "accept": false
+    },
+    {
+      "name": "service-scope-null-type",
+      "file": "service-scope-null-type.json",
+      "accept": true
+    },
+    {
+      "name": "service-scope-empty-type",
+      "file": "service-scope-empty-type.json",
+      "accept": true
+    },
+    {
+      "name": "service-scope-named-type",
+      "file": "service-scope-named-type.json",
+      "accept": true
+    },
+    {
+      "name": "service-empty-title",
+      "file": "service-empty-title.json",
+      "accept": false
+    },
+    {
+      "name": "service-empty-moduleId",
+      "file": "service-empty-moduleId.json",
+      "accept": false
+    },
+    {
+      "name": "endpoint-empty-title",
+      "file": "endpoint-empty-title.json",
+      "accept": false
+    },
+    {
+      "name": "definition-empty-label",
+      "file": "definition-empty-label.json",
+      "accept": false
+    },
+    {
+      "name": "source-unsafe-start-line",
+      "file": "source-unsafe-start-line.json",
+      "accept": false
+    },
+    {
+      "name": "source-unsafe-start-column",
+      "file": "source-unsafe-start-column.json",
+      "accept": false
+    },
+    {
+      "name": "source-unsafe-end-line",
+      "file": "source-unsafe-end-line.json",
+      "accept": false
+    },
+    {
+      "name": "source-unsafe-end-column",
+      "file": "source-unsafe-end-column.json",
+      "accept": false
+    },
+    {
+      "name": "source-safe-integer-boundary",
+      "file": "source-safe-integer-boundary.json",
+      "accept": true
+    },
+    {
+      "name": "client-short-call",
+      "file": "client-short-call.json",
+      "accept": true
+    },
+    {
+      "name": "client-short-unavailable",
+      "file": "client-short-unavailable.json",
+      "accept": true
+    },
+    {
+      "name": "client-short-missing-call",
+      "file": "client-short-missing-call.json",
+      "accept": false
+    },
+    {
+      "name": "client-short-occurrence",
+      "file": "client-short-occurrence.json",
+      "accept": false
+    },
+    {
+      "name": "client-short-availability",
+      "file": "client-short-availability.json",
+      "accept": false
+    },
+    {
+      "name": "client-short-without-reference",
+      "file": "client-short-without-reference.json",
+      "accept": false
+    },
+    {
+      "name": "client-short-recursive-missing",
+      "file": "client-short-recursive-missing.json",
+      "accept": false
+    },
+    {
+      "name": "client-short-recursive-extra",
+      "file": "client-short-recursive-extra.json",
+      "accept": false
+    },
+    {
+      "name": "client-short-recursive-null",
+      "file": "client-short-recursive-null.json",
+      "accept": false
+    },
+    {
+      "name": "client-long-call",
+      "file": "client-long-call.json",
+      "accept": true
+    },
+    {
+      "name": "client-long-unavailable",
+      "file": "client-long-unavailable.json",
+      "accept": true
+    },
+    {
+      "name": "client-long-missing-call",
+      "file": "client-long-missing-call.json",
+      "accept": false
+    },
+    {
+      "name": "client-long-occurrence",
+      "file": "client-long-occurrence.json",
+      "accept": false
+    },
+    {
+      "name": "client-long-availability",
+      "file": "client-long-availability.json",
+      "accept": false
+    },
+    {
+      "name": "client-long-without-reference",
+      "file": "client-long-without-reference.json",
+      "accept": false
+    },
+    {
+      "name": "client-long-recursive-missing",
+      "file": "client-long-recursive-missing.json",
+      "accept": false
+    },
+    {
+      "name": "client-long-recursive-extra",
+      "file": "client-long-recursive-extra.json",
+      "accept": false
+    },
+    {
+      "name": "client-long-recursive-null",
+      "file": "client-long-recursive-null.json",
+      "accept": false
+    },
+    {
+      "name": "client-long-missing-key",
+      "file": "client-long-missing-key.json",
+      "accept": false
+    },
+    {
+      "name": "client-long-wrong-kind",
+      "file": "client-long-wrong-kind.json",
+      "accept": false
+    },
+    {
+      "name": "client-long-extra-field",
+      "file": "client-long-extra-field.json",
+      "accept": false
+    },
+    {
+      "name": "client-long-duplicate-key",
+      "file": "client-long-duplicate-key.json",
+      "accept": false
+    },
+    {
+      "name": "client-long-same-kind-availability",
+      "file": "client-long-same-kind-availability.json",
+      "accept": false
+    },
+    {
+      "name": "client-external-context-null",
+      "file": "client-external-context-null.json",
+      "accept": true
+    },
+    {
+      "name": "client-external-context-missing-key",
+      "file": "client-external-context-missing-key.json",
+      "accept": false
+    }
+  ]
+}

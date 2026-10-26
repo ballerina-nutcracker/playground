@@ -1,0 +1,2948 @@
+{
+  "scopes": [
+    {
+      "id": "examples/unsupported_constructs/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 14,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() returns error? {\n    int mode = 1;\n    record {| int value; |} request = {value: mode};\n    match mode {\n        1 =\u003e { mode = 2; }\n        _ =\u003e { mode = 3; }\n    }\n    boolean selected = mode \u003e 0 \u0026\u0026 positive(mode);\n    future\u003cint\u003e pending = start compute(mode);\n    int result = check wait pending;\n    _ = request;\n    _ = selected;\n    _ = result;\n}",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "examples/unsupported_constructs",
+      "serviceType": null,
+      "functionId": "examples/unsupported_constructs/function/main"
+    }
+  ],
+  "sources": {
+    "examples/unsupported_constructs/function/compute": {
+      "id": "examples/unsupported_constructs/function/compute",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 17,
+            "column": 1
+          },
+          "end": {
+            "line": 17,
+            "column": 62
+          }
+        }
+      },
+      "text": "function compute(int value) returns int { return value * 2; }"
+    },
+    "examples/unsupported_constructs/function/compute/parameter/0": {
+      "id": "examples/unsupported_constructs/function/compute/parameter/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 17,
+            "column": 18
+          },
+          "end": {
+            "line": 17,
+            "column": 27
+          }
+        }
+      },
+      "text": "int value"
+    },
+    "examples/unsupported_constructs/function/compute/returnType": {
+      "id": "examples/unsupported_constructs/function/compute/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 17,
+            "column": 37
+          },
+          "end": {
+            "line": 17,
+            "column": 40
+          }
+        }
+      },
+      "text": "int"
+    },
+    "examples/unsupported_constructs/function/compute/statement/0": {
+      "id": "examples/unsupported_constructs/function/compute/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 17,
+            "column": 43
+          },
+          "end": {
+            "line": 17,
+            "column": 60
+          }
+        }
+      },
+      "text": "return value * 2;"
+    },
+    "examples/unsupported_constructs/function/main": {
+      "id": "examples/unsupported_constructs/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 14,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() returns error? {\n    int mode = 1;\n    record {| int value; |} request = {value: mode};\n    match mode {\n        1 =\u003e { mode = 2; }\n        _ =\u003e { mode = 3; }\n    }\n    boolean selected = mode \u003e 0 \u0026\u0026 positive(mode);\n    future\u003cint\u003e pending = start compute(mode);\n    int result = check wait pending;\n    _ = request;\n    _ = selected;\n    _ = result;\n}"
+    },
+    "examples/unsupported_constructs/function/main/returnType": {
+      "id": "examples/unsupported_constructs/function/main/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 32
+          },
+          "end": {
+            "line": 1,
+            "column": 38
+          }
+        }
+      },
+      "text": "error?"
+    },
+    "examples/unsupported_constructs/function/main/statement/0": {
+      "id": "examples/unsupported_constructs/function/main/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 5
+          },
+          "end": {
+            "line": 2,
+            "column": 18
+          }
+        }
+      },
+      "text": "int mode = 1;"
+    },
+    "examples/unsupported_constructs/function/main/statement/1": {
+      "id": "examples/unsupported_constructs/function/main/statement/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 5
+          },
+          "end": {
+            "line": 3,
+            "column": 53
+          }
+        }
+      },
+      "text": "record {| int value; |} request = {value: mode};"
+    },
+    "examples/unsupported_constructs/function/main/statement/2": {
+      "id": "examples/unsupported_constructs/function/main/statement/2",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 5
+          },
+          "end": {
+            "line": 7,
+            "column": 6
+          }
+        }
+      },
+      "text": "match mode {\n        1 =\u003e { mode = 2; }\n        _ =\u003e { mode = 3; }\n    }"
+    },
+    "examples/unsupported_constructs/function/main/statement/3": {
+      "id": "examples/unsupported_constructs/function/main/statement/3",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 5
+          },
+          "end": {
+            "line": 8,
+            "column": 51
+          }
+        }
+      },
+      "text": "boolean selected = mode \u003e 0 \u0026\u0026 positive(mode);"
+    },
+    "examples/unsupported_constructs/function/main/statement/3/call/0": {
+      "id": "examples/unsupported_constructs/function/main/statement/3/call/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 36
+          },
+          "end": {
+            "line": 8,
+            "column": 50
+          }
+        }
+      },
+      "text": "positive(mode)"
+    },
+    "examples/unsupported_constructs/function/main/statement/4": {
+      "id": "examples/unsupported_constructs/function/main/statement/4",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 5
+          },
+          "end": {
+            "line": 9,
+            "column": 47
+          }
+        }
+      },
+      "text": "future\u003cint\u003e pending = start compute(mode);"
+    },
+    "examples/unsupported_constructs/function/main/statement/5": {
+      "id": "examples/unsupported_constructs/function/main/statement/5",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 5
+          },
+          "end": {
+            "line": 10,
+            "column": 37
+          }
+        }
+      },
+      "text": "int result = check wait pending;"
+    },
+    "examples/unsupported_constructs/function/main/statement/6": {
+      "id": "examples/unsupported_constructs/function/main/statement/6",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 11,
+            "column": 5
+          },
+          "end": {
+            "line": 11,
+            "column": 17
+          }
+        }
+      },
+      "text": "_ = request;"
+    },
+    "examples/unsupported_constructs/function/main/statement/7": {
+      "id": "examples/unsupported_constructs/function/main/statement/7",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 12,
+            "column": 5
+          },
+          "end": {
+            "line": 12,
+            "column": 18
+          }
+        }
+      },
+      "text": "_ = selected;"
+    },
+    "examples/unsupported_constructs/function/main/statement/8": {
+      "id": "examples/unsupported_constructs/function/main/statement/8",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 13,
+            "column": 5
+          },
+          "end": {
+            "line": 13,
+            "column": 16
+          }
+        }
+      },
+      "text": "_ = result;"
+    },
+    "examples/unsupported_constructs/function/positive": {
+      "id": "examples/unsupported_constructs/function/positive",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 16,
+            "column": 1
+          },
+          "end": {
+            "line": 16,
+            "column": 67
+          }
+        }
+      },
+      "text": "function positive(int value) returns boolean { return value \u003e 0; }"
+    },
+    "examples/unsupported_constructs/function/positive/parameter/0": {
+      "id": "examples/unsupported_constructs/function/positive/parameter/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 16,
+            "column": 19
+          },
+          "end": {
+            "line": 16,
+            "column": 28
+          }
+        }
+      },
+      "text": "int value"
+    },
+    "examples/unsupported_constructs/function/positive/returnType": {
+      "id": "examples/unsupported_constructs/function/positive/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 16,
+            "column": 38
+          },
+          "end": {
+            "line": 16,
+            "column": 45
+          }
+        }
+      },
+      "text": "boolean"
+    },
+    "examples/unsupported_constructs/function/positive/statement/0": {
+      "id": "examples/unsupported_constructs/function/positive/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 16,
+            "column": 48
+          },
+          "end": {
+            "line": 16,
+            "column": 65
+          }
+        }
+      },
+      "text": "return value \u003e 0;"
+    },
+    "receiver/1/initializer": {
+      "id": "receiver/1/initializer",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 39
+          },
+          "end": {
+            "line": 3,
+            "column": 52
+          }
+        }
+      },
+      "text": "{value: mode}"
+    },
+    "receiver/2/initializer": {
+      "id": "receiver/2/initializer",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 24
+          },
+          "end": {
+            "line": 8,
+            "column": 50
+          }
+        }
+      },
+      "text": "mode \u003e 0 \u0026\u0026 positive(mode)"
+    },
+    "receiver/3/initializer": {
+      "id": "receiver/3/initializer",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 27
+          },
+          "end": {
+            "line": 9,
+            "column": 46
+          }
+        }
+      },
+      "text": "start compute(mode)"
+    },
+    "receiver/4/initializer": {
+      "id": "receiver/4/initializer",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 18
+          },
+          "end": {
+            "line": 10,
+            "column": 36
+          }
+        }
+      },
+      "text": "check wait pending"
+    },
+    "receiver/main.bal/192/238/type": {
+      "id": "receiver/main.bal/192/238/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 5
+          },
+          "end": {
+            "line": 8,
+            "column": 12
+          }
+        }
+      },
+      "text": "boolean"
+    },
+    "receiver/main.bal/243/285/type": {
+      "id": "receiver/main.bal/243/285/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 5
+          },
+          "end": {
+            "line": 9,
+            "column": 16
+          }
+        }
+      },
+      "text": "future\u003cint\u003e"
+    },
+    "receiver/main.bal/290/322/type": {
+      "id": "receiver/main.bal/290/322/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 5
+          },
+          "end": {
+            "line": 10,
+            "column": 8
+          }
+        }
+      },
+      "text": "int"
+    },
+    "receiver/main.bal/395/404/type": {
+      "id": "receiver/main.bal/395/404/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 16,
+            "column": 19
+          },
+          "end": {
+            "line": 16,
+            "column": 22
+          }
+        }
+      },
+      "text": "int"
+    },
+    "receiver/main.bal/44/57/type": {
+      "id": "receiver/main.bal/44/57/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 5
+          },
+          "end": {
+            "line": 2,
+            "column": 8
+          }
+        }
+      },
+      "text": "int"
+    },
+    "receiver/main.bal/461/470/type": {
+      "id": "receiver/main.bal/461/470/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 17,
+            "column": 18
+          },
+          "end": {
+            "line": 17,
+            "column": 21
+          }
+        }
+      },
+      "text": "int"
+    },
+    "receiver/main.bal/62/110/type": {
+      "id": "receiver/main.bal/62/110/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 5
+          },
+          "end": {
+            "line": 3,
+            "column": 28
+          }
+        }
+      },
+      "text": "record {| int value; |}"
+    }
+  },
+  "functions": {
+    "examples/unsupported_constructs/function/compute": {
+      "id": "examples/unsupported_constructs/function/compute",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 17,
+            "column": 1
+          },
+          "end": {
+            "line": 17,
+            "column": 62
+          }
+        }
+      },
+      "text": "function compute(int value) returns int { return value * 2; }",
+      "moduleId": "examples/unsupported_constructs",
+      "entry": {
+        "signatureVariables": [
+          {
+            "variableId": "variable/main.bal/465",
+            "start": 21,
+            "end": 26
+          }
+        ],
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "compute",
+        "signature": "function compute(int value) returns int",
+        "parameters": [
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/465",
+                "start": 4,
+                "end": 9
+              }
+            ],
+            "label": "Input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "int"
+      },
+      "nodes": [
+        {
+          "id": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0",
+          "occurrenceKey": "/examples/unsupported_constructs/function/compute/statement/0",
+          "sourceId": "examples/unsupported_constructs/function/compute/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/465",
+                "start": 7,
+                "end": 12
+              }
+            ],
+            "style": "return",
+            "label": "return value * 2;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/compute/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/unsupported_constructs/function/compute",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/unsupported_constructs/function/compute/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/compute/statement/0:entry",
+          "id": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0:entry",
+          "nodeId": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/compute/statement/0:normal-exit",
+          "id": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0:normal-exit",
+          "nodeId": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/compute/statement/0:return",
+          "id": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0:return",
+          "nodeId": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/unsupported_constructs/function/compute/root:entry",
+          "nodeId": "examples/unsupported_constructs/function/compute/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/unsupported_constructs/function/compute/root:normal-exit",
+          "nodeId": "examples/unsupported_constructs/function/compute/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [],
+      "groups": [
+        {
+          "id": "examples/unsupported_constructs/function/compute/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/compute/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/unsupported_constructs/function/compute/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/unsupported_constructs/function/compute/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/unsupported_constructs/function/compute/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/unsupported_constructs/function/compute/root/binding/entry/0",
+            "toPort": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/unsupported_constructs/function/compute/root/binding/normal",
+            "toPort": "examples/unsupported_constructs/function/compute/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/compute/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/compute/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/compute/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "binding",
+              "bindingId": "examples/unsupported_constructs/function/compute/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/unsupported_constructs/function/compute/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/compute/examples/unsupported_constructs/function/compute/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": []
+        }
+      }
+    },
+    "examples/unsupported_constructs/function/main": {
+      "id": "examples/unsupported_constructs/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 14,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() returns error? {\n    int mode = 1;\n    record {| int value; |} request = {value: mode};\n    match mode {\n        1 =\u003e { mode = 2; }\n        _ =\u003e { mode = 3; }\n    }\n    boolean selected = mode \u003e 0 \u0026\u0026 positive(mode);\n    future\u003cint\u003e pending = start compute(mode);\n    int result = check wait pending;\n    _ = request;\n    _ = selected;\n    _ = result;\n}",
+      "moduleId": "examples/unsupported_constructs",
+      "entry": {
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "main",
+        "signature": "public function main() returns error?",
+        "parameters": [],
+        "returnType": "error?"
+      },
+      "nodes": [
+        {
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0",
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/0",
+          "sourceId": "examples/unsupported_constructs/function/main/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/48",
+                "start": 4,
+                "end": 8
+              }
+            ],
+            "style": "step",
+            "label": "int mode = 1;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1",
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/1",
+          "sourceId": "examples/unsupported_constructs/function/main/statement/1",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/86",
+                "start": 24,
+                "end": 31
+              },
+              {
+                "variableId": "variable/main.bal/48",
+                "start": 42,
+                "end": 46
+              }
+            ],
+            "style": "mapping",
+            "label": "record {| int value; |} request = {value: mode};",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/2",
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/2",
+          "sourceId": "examples/unsupported_constructs/function/main/statement/2",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/48",
+                "start": 6,
+                "end": 10
+              },
+              {
+                "variableId": "variable/main.bal/48",
+                "start": 28,
+                "end": 32
+              },
+              {
+                "variableId": "variable/main.bal/48",
+                "start": 55,
+                "end": 59
+              }
+            ],
+            "style": "unsupported",
+            "label": "match mode {\n        1 =\u003e { mode = 2; }\n        _ =\u003e { mode = 3; }\n    }",
+            "sections": [],
+            "limitation": "Visualization of *ast.BLangMatchStatement is not modeled; later source may still execute.",
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3",
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/3",
+          "sourceId": "examples/unsupported_constructs/function/main/statement/3",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/200",
+                "start": 8,
+                "end": 16
+              },
+              {
+                "variableId": "variable/main.bal/48",
+                "start": 19,
+                "end": 23
+              },
+              {
+                "variableId": "variable/main.bal/48",
+                "start": 40,
+                "end": 44
+              }
+            ],
+            "style": "step",
+            "label": "boolean selected = mode \u003e 0 \u0026\u0026 positive(mode);",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3/group"
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3/expand/examples/unsupported_constructs/function/main/statement/3/call/0",
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/3/expand/examples/unsupported_constructs/function/main/statement/3/call/0",
+          "sourceId": "examples/unsupported_constructs/function/main/statement/3/call/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/48",
+                "start": 9,
+                "end": 13
+              }
+            ],
+            "style": "function",
+            "label": "positive(mode)",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "call",
+              "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/3/expand/examples/unsupported_constructs/function/main/statement/3/call/0",
+              "availability": {
+                "kind": "unavailable",
+                "reason": "Expansion in this expression evaluation is not modeled."
+              },
+              "recursive": {
+                "variables": [
+                  {
+                    "variableId": "variable/main.bal/48",
+                    "start": 9,
+                    "end": 13
+                  }
+                ],
+                "label": "positive(mode)",
+                "sections": [],
+                "limitation": "Expansion in this expression evaluation is not modeled.",
+                "title": "Expansion in this expression evaluation is not modeled.",
+                "ariaLabel": "Recursive call positive(mode)",
+                "glyph": "↻"
+              }
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "examples/unsupported_constructs/function/positive",
+              "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/3/expand/examples/unsupported_constructs/function/main/statement/3/call/0",
+              "availability": {
+                "kind": "unavailable",
+                "reason": "Expansion in this expression evaluation is not modeled."
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "normal",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "returns",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "panics",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/4",
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/4",
+          "sourceId": "examples/unsupported_constructs/function/main/statement/4",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/255",
+                "start": 12,
+                "end": 19
+              },
+              {
+                "variableId": "variable/main.bal/48",
+                "start": 36,
+                "end": 40
+              }
+            ],
+            "style": "unsupported",
+            "label": "future\u003cint\u003e pending = start compute(mode);",
+            "sections": [],
+            "limitation": "Control effects of *ast.BLangStartAction are not modeled; later source may still execute.",
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/5",
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/5",
+          "sourceId": "examples/unsupported_constructs/function/main/statement/5",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/294",
+                "start": 4,
+                "end": 10
+              },
+              {
+                "variableId": "variable/main.bal/255",
+                "start": 24,
+                "end": 31
+              }
+            ],
+            "style": "unsupported",
+            "label": "int result = check wait pending;",
+            "sections": [],
+            "limitation": "Control effects of *ast.BLangSingleWaitAction are not modeled; later source may still execute.",
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/6",
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/6",
+          "sourceId": "examples/unsupported_constructs/function/main/statement/6",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/86",
+                "start": 4,
+                "end": 11
+              }
+            ],
+            "style": "step",
+            "label": "_ = request;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7",
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/7",
+          "sourceId": "examples/unsupported_constructs/function/main/statement/7",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/200",
+                "start": 4,
+                "end": 12
+              }
+            ],
+            "style": "step",
+            "label": "_ = selected;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8",
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/8",
+          "sourceId": "examples/unsupported_constructs/function/main/statement/8",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/294",
+                "start": 4,
+                "end": 10
+              }
+            ],
+            "style": "step",
+            "label": "_ = result;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/unsupported_constructs/function/main",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/unsupported_constructs/function/main/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/0:entry",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0:entry",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/0:normal-exit",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0:normal-exit",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/1:entry",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1:entry",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/1:normal-exit",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1:normal-exit",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/2:entry",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/2:entry",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/2",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/3:entry",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3:entry",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/3:normal-exit",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3:normal-exit",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "header-bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/4:entry",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/4:entry",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/4",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/5:entry",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/5:entry",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/5",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/6:entry",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/6:entry",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/6",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/6:normal-exit",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/6:normal-exit",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/6",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/7:entry",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7:entry",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/7:normal-exit",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7:normal-exit",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/8:entry",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8:entry",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/main/statement/8:normal-exit",
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8:normal-exit",
+          "nodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/unsupported_constructs/function/main/root:entry",
+          "nodeId": "examples/unsupported_constructs/function/main/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/unsupported_constructs/function/main/root:normal-exit",
+          "nodeId": "examples/unsupported_constructs/function/main/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/0",
+          "fromPort": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0:normal-exit",
+          "toPort": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/1",
+          "fromPort": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1:normal-exit",
+          "toPort": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/2:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/2",
+          "fromPort": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3:normal-exit",
+          "toPort": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/4:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/3",
+          "fromPort": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/6:normal-exit",
+          "toPort": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/4",
+          "fromPort": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7:normal-exit",
+          "toPort": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3/expand/examples/unsupported_constructs/function/main/statement/3/call/0"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0",
+              "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1",
+              "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/2",
+              "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3",
+              "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/4",
+              "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/5",
+              "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/6",
+              "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7",
+              "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/unsupported_constructs/function/main/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/unsupported_constructs/function/main/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/unsupported_constructs/function/main/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/unsupported_constructs/function/main/root/binding/entry/0",
+            "toPort": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [
+            {
+              "portId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/unsupported_constructs/function/main/root/binding/normal",
+            "toPort": "examples/unsupported_constructs/function/main/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [
+            {
+              "portId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3/expand/examples/unsupported_constructs/function/main/statement/3/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3/expand/examples/unsupported_constructs/function/main/statement/3/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/4",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/5",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/6",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/2:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3/expand/examples/unsupported_constructs/function/main/statement/3/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/4:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/5:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/6:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/6:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3/expand/examples/unsupported_constructs/function/main/statement/3/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/3",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/4",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/unsupported_constructs/function/main/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/unsupported_constructs/function/main/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3/expand/examples/unsupported_constructs/function/main/statement/3/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3/expand/examples/unsupported_constructs/function/main/statement/3/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/4",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/5",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/6",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/2:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3/expand/examples/unsupported_constructs/function/main/statement/3/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/4:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/5:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/6:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/6:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/7:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/8:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/unsupported_constructs/function/main/examples/unsupported_constructs/function/main/statement/3/expand/examples/unsupported_constructs/function/main/statement/3/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/3",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/4",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "examples/unsupported_constructs/function/positive": {
+      "id": "examples/unsupported_constructs/function/positive",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 16,
+            "column": 1
+          },
+          "end": {
+            "line": 16,
+            "column": 67
+          }
+        }
+      },
+      "text": "function positive(int value) returns boolean { return value \u003e 0; }",
+      "moduleId": "examples/unsupported_constructs",
+      "entry": {
+        "signatureVariables": [
+          {
+            "variableId": "variable/main.bal/399",
+            "start": 22,
+            "end": 27
+          }
+        ],
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "positive",
+        "signature": "function positive(int value) returns boolean",
+        "parameters": [
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/399",
+                "start": 4,
+                "end": 9
+              }
+            ],
+            "label": "Input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "boolean"
+      },
+      "nodes": [
+        {
+          "id": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0",
+          "occurrenceKey": "/examples/unsupported_constructs/function/positive/statement/0",
+          "sourceId": "examples/unsupported_constructs/function/positive/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/399",
+                "start": 7,
+                "end": 12
+              }
+            ],
+            "style": "return",
+            "label": "return value \u003e 0;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/positive/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/unsupported_constructs/function/positive",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/unsupported_constructs/function/positive/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/positive/statement/0:entry",
+          "id": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0:entry",
+          "nodeId": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/positive/statement/0:normal-exit",
+          "id": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0:normal-exit",
+          "nodeId": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/unsupported_constructs/function/positive/statement/0:return",
+          "id": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0:return",
+          "nodeId": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/unsupported_constructs/function/positive/root:entry",
+          "nodeId": "examples/unsupported_constructs/function/positive/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/unsupported_constructs/function/positive/root:normal-exit",
+          "nodeId": "examples/unsupported_constructs/function/positive/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [],
+      "groups": [
+        {
+          "id": "examples/unsupported_constructs/function/positive/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/unsupported_constructs/function/positive/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/unsupported_constructs/function/positive/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/unsupported_constructs/function/positive/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/unsupported_constructs/function/positive/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/unsupported_constructs/function/positive/root/binding/entry/0",
+            "toPort": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/unsupported_constructs/function/positive/root/binding/normal",
+            "toPort": "examples/unsupported_constructs/function/positive/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/positive/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/positive/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/positive/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "binding",
+              "bindingId": "examples/unsupported_constructs/function/positive/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/unsupported_constructs/function/positive/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/unsupported_constructs/function/positive/examples/unsupported_constructs/function/positive/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": []
+        }
+      }
+    }
+  }
+}

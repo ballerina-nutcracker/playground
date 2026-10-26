@@ -1,0 +1,3771 @@
+{
+  "scopes": [],
+  "sources": {
+    "main": {
+      "id": "main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "text": "😀"
+    },
+    "source-a": {
+      "id": "source-a",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "text": "😀"
+    },
+    "source-b": {
+      "id": "source-b",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "text": "😀"
+    },
+    "target": {
+      "id": "target",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "text": "😀"
+    }
+  },
+  "functions": {
+    "main": {
+      "id": "main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "text": "😀",
+      "moduleId": "m",
+      "entry": {
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "main",
+        "signature": "function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "nodes": [
+        {
+          "id": "ref-0",
+          "occurrenceKey": "ref-0",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-0",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-1",
+          "occurrenceKey": "ref-1",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-1",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-2",
+          "occurrenceKey": "ref-2",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-2",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-3",
+          "occurrenceKey": "ref-3",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-3",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-4",
+          "occurrenceKey": "ref-4",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-4",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-5",
+          "occurrenceKey": "ref-5",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-5",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-6",
+          "occurrenceKey": "ref-6",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-6",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-7",
+          "occurrenceKey": "ref-7",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-7",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-8",
+          "occurrenceKey": "ref-8",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-8",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-9",
+          "occurrenceKey": "ref-9",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-9",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-10",
+          "occurrenceKey": "ref-10",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-10",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-11",
+          "occurrenceKey": "ref-11",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-11",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-12",
+          "occurrenceKey": "ref-12",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-12",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-13",
+          "occurrenceKey": "ref-13",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-13",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-14",
+          "occurrenceKey": "ref-14",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-14",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-15",
+          "occurrenceKey": "ref-15",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-15",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-16",
+          "occurrenceKey": "ref-16",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-16",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-17",
+          "occurrenceKey": "ref-17",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-17",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-18",
+          "occurrenceKey": "ref-18",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-18",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-19",
+          "occurrenceKey": "ref-19",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-19",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-20",
+          "occurrenceKey": "ref-20",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-20",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-21",
+          "occurrenceKey": "ref-21",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-21",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-22",
+          "occurrenceKey": "ref-22",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-22",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "ref-23",
+          "occurrenceKey": "ref-23",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "target",
+              "occurrenceKey": "ref-23",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "from",
+          "nodeId": "ref-0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          },
+          "occurrenceKey": "port/from"
+        },
+        {
+          "id": "to",
+          "nodeId": "ref-23",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          },
+          "occurrenceKey": "port/to"
+        }
+      ],
+      "edges": [
+        {
+          "id": "all-expanded",
+          "fromPort": "from",
+          "toPort": "to",
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-0",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-1",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-2",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-3",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-4",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-5",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-6",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-7",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-8",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-9",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-10",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-11",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-12",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-13",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-14",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-15",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-16",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-17",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-18",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-19",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-20",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-21",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-22",
+                "interfaceId": "entry"
+              },
+              {
+                "kind": "nonempty",
+                "referenceNodeId": "ref-23",
+                "interfaceId": "entry"
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "root",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "ref-0",
+              "ref-1",
+              "ref-2",
+              "ref-3",
+              "ref-4",
+              "ref-5",
+              "ref-6",
+              "ref-7",
+              "ref-8",
+              "ref-9",
+              "ref-10",
+              "ref-11",
+              "ref-12",
+              "ref-13",
+              "ref-14",
+              "ref-15",
+              "ref-16",
+              "ref-17",
+              "ref-18",
+              "ref-19",
+              "ref-20",
+              "ref-21",
+              "ref-22",
+              "ref-23"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "root",
+      "interfaces": [],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "ref-0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-3",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-3",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-4",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-4",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-5",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-5",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-6",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-6",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-7",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-7",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-8",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-8",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-9",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-9",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-10",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-10",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-11",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-11",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-12",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-12",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-13",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-13",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-14",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-14",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-15",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-15",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-16",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-16",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-17",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-17",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-18",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-18",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-19",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-19",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-20",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-20",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-21",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-21",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-22",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-22",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-23",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-23",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-3",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-4",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-5",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-6",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-7",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-8",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-9",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-10",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-11",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-12",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-13",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-14",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-15",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-16",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-17",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-18",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-19",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-20",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-21",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-22",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-23",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "from",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "to",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-3",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-4",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-5",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-6",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-7",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-8",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-9",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-10",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-11",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-12",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-13",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-14",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-15",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-16",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-17",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-18",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-19",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-20",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-21",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-22",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-23",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "all-expanded",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-0",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-1",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-2",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-3",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-4",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-5",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-6",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-7",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-8",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-9",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-10",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-11",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-12",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-13",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-14",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-15",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-16",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-17",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-18",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-19",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-20",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-21",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-22",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-23",
+                    "interfaceId": "entry"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "ref-0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-3",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-3",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-4",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-4",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-5",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-5",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-6",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-6",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-7",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-7",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-8",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-8",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-9",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-9",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-10",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-10",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-11",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-11",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-12",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-12",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-13",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-13",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-14",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-14",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-15",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-15",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-16",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-16",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-17",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-17",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-18",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-18",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-19",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-19",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-20",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-20",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-21",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-21",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-22",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-22",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "ref-23",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-23",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-3",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-4",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-5",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-6",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-7",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-8",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-9",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-10",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-11",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-12",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-13",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-14",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-15",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-16",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-17",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-18",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-19",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-20",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-21",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-22",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-23",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "from",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "to",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-3",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-4",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-5",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-6",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-7",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-8",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-9",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-10",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-11",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-12",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-13",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-14",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-15",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-16",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-17",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-18",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-19",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-20",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-21",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-22",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "ref-23",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "all-expanded",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-0",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-1",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-2",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-3",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-4",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-5",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-6",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-7",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-8",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-9",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-10",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-11",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-12",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-13",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-14",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-15",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-16",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-17",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-18",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-19",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-20",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-21",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-22",
+                    "interfaceId": "entry"
+                  },
+                  {
+                    "kind": "nonempty",
+                    "referenceNodeId": "ref-23",
+                    "interfaceId": "entry"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "target": {
+      "id": "target",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "text": "😀",
+      "moduleId": "m",
+      "entry": {
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "main",
+        "signature": "function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "nodes": [
+        {
+          "id": "a",
+          "occurrenceKey": "a",
+          "sourceId": "source-a",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "a",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "a"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "b",
+          "occurrenceKey": "b",
+          "sourceId": "source-b",
+          "presentation": {
+            "kind": "plain",
+            "style": "step",
+            "label": "b",
+            "sections": [
+              {
+                "kind": "text",
+                "text": "b"
+              }
+            ],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "id": "out",
+          "nodeId": "a",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          },
+          "occurrenceKey": "port/out"
+        },
+        {
+          "id": "in",
+          "nodeId": "b",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          },
+          "occurrenceKey": "port/in"
+        }
+      ],
+      "edges": [
+        {
+          "id": "e",
+          "fromPort": "out",
+          "toPort": "in",
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "root",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "a",
+              "b"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "root",
+      "interfaces": [
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "in",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "a",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "b",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "out",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "in",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "e",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "a",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "b",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "out",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "in",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "e",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

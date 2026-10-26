@@ -1,0 +1,15 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module browser/http_service / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id browser http_service 0.1.0)
+  (variable (position 1:1 1:30) label (type
+    (value-type (position 1:8 1:14) string)) (expr
+    (literal (position 1:23 1:29) 😀)))
+  (variable (position 1:31 1:56) value (type
+    (value-type (position 1:38 1:41) int)) (expr
+    (literal (position 1:50 1:55) bad))))
+
+## Original source argument provenance (source order; zero-based byte offsets)

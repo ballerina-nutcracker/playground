@@ -1,0 +1,13 @@
+{
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"name": "@bal-bot/workspace",
+	"exports": {
+		".": "./src/index.ts",
+		"./files": "./src/files.ts"
+	},
+	"dependencies": {
+		"@earendil-works/pi-agent-core": "^1.4.0"
+	}
+}

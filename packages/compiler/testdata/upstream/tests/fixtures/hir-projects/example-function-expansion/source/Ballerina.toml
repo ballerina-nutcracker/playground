@@ -1,0 +1,4 @@
+[package]
+org = "examples"
+name = "function_expansion"
+version = "0.1.0"

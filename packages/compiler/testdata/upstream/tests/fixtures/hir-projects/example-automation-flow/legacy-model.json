@@ -1,0 +1,230 @@
+{
+  "scopes": [
+    {
+      "id": "examples/automation_flow/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 7,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    int count = 3;\n    while count \u003e 0 {\n        count -= 1;\n    }\n    _ = finish(count);\n}",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "examples/automation_flow",
+      "serviceType": null,
+      "functionId": "examples/automation_flow/function/main"
+    }
+  ],
+  "functions": {
+    "examples/automation_flow/function/finish": {
+      "id": "examples/automation_flow/function/finish",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 1
+          },
+          "end": {
+            "line": 9,
+            "column": 57
+          }
+        }
+      },
+      "text": "function finish(int count) returns int { return count; }",
+      "moduleId": "examples/automation_flow",
+      "entry": {
+        "kind": "function",
+        "name": "finish",
+        "signature": "function finish(int count) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int count"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/automation_flow/function/finish/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 9,
+                "column": 42
+              },
+              "end": {
+                "line": 9,
+                "column": 55
+              }
+            }
+          },
+          "text": "return count;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/automation_flow/function/main": {
+      "id": "examples/automation_flow/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 7,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    int count = 3;\n    while count \u003e 0 {\n        count -= 1;\n    }\n    _ = finish(count);\n}",
+      "moduleId": "examples/automation_flow",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "examples/automation_flow/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 2,
+                "column": 5
+              },
+              "end": {
+                "line": 2,
+                "column": 19
+              }
+            }
+          },
+          "text": "int count = 3;",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/automation_flow/function/main/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 5
+              },
+              "end": {
+                "line": 5,
+                "column": 6
+              }
+            }
+          },
+          "text": "while count \u003e 0 {\n        count -= 1;\n    }",
+          "kind": "while",
+          "condition": {
+            "id": "examples/automation_flow/function/main/statement/1/condition",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 3,
+                  "column": 11
+                },
+                "end": {
+                  "line": 3,
+                  "column": 20
+                }
+              }
+            },
+            "text": "count \u003e 0",
+            "calls": []
+          },
+          "body": [
+            {
+              "id": "examples/automation_flow/function/main/statement/1/loop/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 4,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 20
+                  }
+                }
+              },
+              "text": "count -= 1;",
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        },
+        {
+          "id": "examples/automation_flow/function/main/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 6,
+                "column": 5
+              },
+              "end": {
+                "line": 6,
+                "column": 23
+              }
+            }
+          },
+          "text": "_ = finish(count);",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/automation_flow/function/main/statement/2/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 6,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 6,
+                    "column": 22
+                  }
+                }
+              },
+              "text": "finish(count)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/automation_flow/function/finish"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

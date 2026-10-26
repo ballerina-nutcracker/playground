@@ -1,0 +1,23 @@
+{
+  "scopes": [],
+  "sources": {
+    "receiver/modules/sample/main.bal/0/15/type": {
+      "id": "receiver/modules/sample/main.bal/0/15/type",
+      "source": {
+        "file": "modules/sample/main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 8
+          },
+          "end": {
+            "line": 1,
+            "column": 11
+          }
+        }
+      },
+      "text": "int"
+    }
+  },
+  "functions": {}
+}

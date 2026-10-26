@@ -1,0 +1,268 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 48
+          },
+          "end": {
+            "line": 1,
+            "column": 154
+          }
+        }
+      },
+      "text": "public function main() { int i = 0; while i \u003c 3 { i = step(i + 1); } foreach int n in [1, 2] { i += n; } }",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "browser/http_service",
+      "serviceType": null,
+      "functionId": "browser/http_service/function/main"
+    }
+  ],
+  "functions": {
+    "browser/http_service/function/main": {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 48
+          },
+          "end": {
+            "line": 1,
+            "column": 154
+          }
+        }
+      },
+      "text": "public function main() { int i = 0; while i \u003c 3 { i = step(i + 1); } foreach int n in [1, 2] { i += n; } }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 73
+              },
+              "end": {
+                "line": 1,
+                "column": 83
+              }
+            }
+          },
+          "text": "int i = 0;",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "browser/http_service/function/main/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 84
+              },
+              "end": {
+                "line": 1,
+                "column": 116
+              }
+            }
+          },
+          "text": "while i \u003c 3 { i = step(i + 1); }",
+          "kind": "while",
+          "condition": {
+            "id": "browser/http_service/function/main/statement/1/condition",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 90
+                },
+                "end": {
+                  "line": 1,
+                  "column": 95
+                }
+              }
+            },
+            "text": "i \u003c 3",
+            "calls": []
+          },
+          "body": [
+            {
+              "id": "browser/http_service/function/main/statement/1/loop/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 98
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 114
+                  }
+                }
+              },
+              "text": "i = step(i + 1);",
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "browser/http_service/function/main/statement/1/loop/statement/0/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 102
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 113
+                      }
+                    }
+                  },
+                  "text": "step(i + 1)",
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "browser/http_service/function/step"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/function/main/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 117
+              },
+              "end": {
+                "line": 1,
+                "column": 152
+              }
+            }
+          },
+          "text": "foreach int n in [1, 2] { i += n; }",
+          "kind": "foreach",
+          "header": {
+            "id": "browser/http_service/function/main/statement/2/header",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 125
+                },
+                "end": {
+                  "line": 1,
+                  "column": 140
+                }
+              }
+            },
+            "text": "int n in [1, 2]",
+            "calls": []
+          },
+          "body": [
+            {
+              "id": "browser/http_service/function/main/statement/2/loop/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 143
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 150
+                  }
+                }
+              },
+              "text": "i += n;",
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        }
+      ]
+    },
+    "browser/http_service/function/step": {
+      "id": "browser/http_service/function/step",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 47
+          }
+        }
+      },
+      "text": "function step(int i) returns int { return i; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "step",
+        "signature": "function step(int i) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int i"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/step/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 36
+              },
+              "end": {
+                "line": 1,
+                "column": 45
+              }
+            }
+          },
+          "text": "return i;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

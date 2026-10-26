@@ -1,0 +1,21 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/automation_flow / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples automation_flow 0.1.0)
+  (import-package (position 1:1 1:21) ballerina io (as io))
+  (function (position 3:1 5:2) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 3:24 5:2)
+      (expression-stmt (position 4:5 4:33)
+        (invocation (position 4:5 4:32) io println (
+          (literal (position 4:16 4:31) Hello, World!)))))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### call main.bal [51,78)
+arguments: 1
+argument[0]:
+(literal (position 4:16 4:31) Hello, World!)

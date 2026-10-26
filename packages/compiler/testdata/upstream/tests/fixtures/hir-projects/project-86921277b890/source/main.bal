@@ -1,0 +1,1 @@
+public function main(string greeting = "Hello") { _ = greeting; }

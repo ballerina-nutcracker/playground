@@ -1,0 +1,1496 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 86
+          }
+        }
+      },
+      "text": "public function main() { var result = (value(1) \u003e 0) || (value(2) \u003e 0); _ = result; }",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "browser/http_service",
+      "serviceType": null,
+      "functionId": "browser/http_service/function/main"
+    }
+  ],
+  "sources": {
+    "browser/http_service/function/main": {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 86
+          }
+        }
+      },
+      "text": "public function main() { var result = (value(1) \u003e 0) || (value(2) \u003e 0); _ = result; }"
+    },
+    "browser/http_service/function/main/statement/0": {
+      "id": "browser/http_service/function/main/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 26
+          },
+          "end": {
+            "line": 1,
+            "column": 72
+          }
+        }
+      },
+      "text": "var result = (value(1) \u003e 0) || (value(2) \u003e 0);"
+    },
+    "browser/http_service/function/main/statement/0/call/0": {
+      "id": "browser/http_service/function/main/statement/0/call/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 40
+          },
+          "end": {
+            "line": 1,
+            "column": 48
+          }
+        }
+      },
+      "text": "value(1)"
+    },
+    "browser/http_service/function/main/statement/0/call/1": {
+      "id": "browser/http_service/function/main/statement/0/call/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 58
+          },
+          "end": {
+            "line": 1,
+            "column": 66
+          }
+        }
+      },
+      "text": "value(2)"
+    },
+    "browser/http_service/function/main/statement/1": {
+      "id": "browser/http_service/function/main/statement/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 73
+          },
+          "end": {
+            "line": 1,
+            "column": 84
+          }
+        }
+      },
+      "text": "_ = result;"
+    },
+    "browser/http_service/function/value": {
+      "id": "browser/http_service/function/value",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 87
+          },
+          "end": {
+            "line": 1,
+            "column": 134
+          }
+        }
+      },
+      "text": "function value(int n) returns int { return n; }"
+    },
+    "browser/http_service/function/value/parameter/0": {
+      "id": "browser/http_service/function/value/parameter/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 102
+          },
+          "end": {
+            "line": 1,
+            "column": 107
+          }
+        }
+      },
+      "text": "int n"
+    },
+    "browser/http_service/function/value/returnType": {
+      "id": "browser/http_service/function/value/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 117
+          },
+          "end": {
+            "line": 1,
+            "column": 120
+          }
+        }
+      },
+      "text": "int"
+    },
+    "browser/http_service/function/value/statement/0": {
+      "id": "browser/http_service/function/value/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 123
+          },
+          "end": {
+            "line": 1,
+            "column": 132
+          }
+        }
+      },
+      "text": "return n;"
+    },
+    "receiver/0/initializer": {
+      "id": "receiver/0/initializer",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 39
+          },
+          "end": {
+            "line": 1,
+            "column": 71
+          }
+        }
+      },
+      "text": "(value(1) \u003e 0) || (value(2) \u003e 0)"
+    },
+    "receiver/main.bal/101/106/type": {
+      "id": "receiver/main.bal/101/106/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 102
+          },
+          "end": {
+            "line": 1,
+            "column": 105
+          }
+        }
+      },
+      "text": "int"
+    }
+  },
+  "functions": {
+    "browser/http_service/function/main": {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 86
+          }
+        }
+      },
+      "text": "public function main() { var result = (value(1) \u003e 0) || (value(2) \u003e 0); _ = result; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "nodes": [
+        {
+          "id": "browser/http_service/function/main/browser/http_service/function/main/statement/0",
+          "occurrenceKey": "/browser/http_service/function/main/statement/0",
+          "sourceId": "browser/http_service/function/main/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/29",
+                "start": 4,
+                "end": 10
+              }
+            ],
+            "style": "step",
+            "label": "var result = (value(1) \u003e 0) || (value(2) \u003e 0);",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/group"
+          }
+        },
+        {
+          "id": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/0",
+          "occurrenceKey": "/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/0",
+          "sourceId": "browser/http_service/function/main/statement/0/call/0",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "value(1)",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "call",
+              "occurrenceKey": "/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/0",
+              "availability": {
+                "kind": "unavailable",
+                "reason": "Expansion in this expression evaluation is not modeled."
+              },
+              "recursive": {
+                "label": "value(1)",
+                "sections": [],
+                "limitation": "Expansion in this expression evaluation is not modeled.",
+                "title": "Expansion in this expression evaluation is not modeled.",
+                "ariaLabel": "Recursive call value(1)",
+                "glyph": "↻"
+              }
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "browser/http_service/function/value",
+              "occurrenceKey": "/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/0",
+              "availability": {
+                "kind": "unavailable",
+                "reason": "Expansion in this expression evaluation is not modeled."
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "normal",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "returns",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "panics",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/1",
+          "occurrenceKey": "/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/1",
+          "sourceId": "browser/http_service/function/main/statement/0/call/1",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "value(2)",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "call",
+              "occurrenceKey": "/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/1",
+              "availability": {
+                "kind": "unavailable",
+                "reason": "Expansion in this expression evaluation is not modeled."
+              },
+              "recursive": {
+                "label": "value(2)",
+                "sections": [],
+                "limitation": "Expansion in this expression evaluation is not modeled.",
+                "title": "Expansion in this expression evaluation is not modeled.",
+                "ariaLabel": "Recursive call value(2)",
+                "glyph": "↻"
+              }
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "browser/http_service/function/value",
+              "occurrenceKey": "/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/1",
+              "availability": {
+                "kind": "unavailable",
+                "reason": "Expansion in this expression evaluation is not modeled."
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "normal",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "returns",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "panics",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": []
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/function/main/browser/http_service/function/main/statement/1",
+          "occurrenceKey": "/browser/http_service/function/main/statement/1",
+          "sourceId": "browser/http_service/function/main/statement/1",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/29",
+                "start": 4,
+                "end": 10
+              }
+            ],
+            "style": "step",
+            "label": "_ = result;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/function/main/root",
+          "occurrenceKey": "/root",
+          "sourceId": "browser/http_service/function/main",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "browser/http_service/function/main/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/browser/http_service/function/main/statement/0:entry",
+          "id": "browser/http_service/function/main/browser/http_service/function/main/statement/0:entry",
+          "nodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/function/main/statement/0:normal-exit",
+          "id": "browser/http_service/function/main/browser/http_service/function/main/statement/0:normal-exit",
+          "nodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "header-bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/function/main/statement/1:entry",
+          "id": "browser/http_service/function/main/browser/http_service/function/main/statement/1:entry",
+          "nodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/1",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/function/main/statement/1:normal-exit",
+          "id": "browser/http_service/function/main/browser/http_service/function/main/statement/1:normal-exit",
+          "nodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/1",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "browser/http_service/function/main/root:entry",
+          "nodeId": "browser/http_service/function/main/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "browser/http_service/function/main/root:normal-exit",
+          "nodeId": "browser/http_service/function/main/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/0",
+          "fromPort": "browser/http_service/function/main/browser/http_service/function/main/statement/0:normal-exit",
+          "toPort": "browser/http_service/function/main/browser/http_service/function/main/statement/1:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "browser/http_service/function/main/browser/http_service/function/main/statement/0/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/0",
+              "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/1"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/function/main/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/function/main/browser/http_service/function/main/statement/0",
+              "browser/http_service/function/main/browser/http_service/function/main/statement/1"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/function/main/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/function/main/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "browser/http_service/function/main/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "browser/http_service/function/main/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/function/main/root/binding/entry/0",
+            "toPort": "browser/http_service/function/main/browser/http_service/function/main/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [
+            {
+              "portId": "browser/http_service/function/main/browser/http_service/function/main/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/function/main/root/binding/normal",
+            "toPort": "browser/http_service/function/main/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "browser/http_service/function/main/browser/http_service/function/main/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [
+            {
+              "portId": "browser/http_service/function/main/browser/http_service/function/main/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "child",
+              "referenceNodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/function/main/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/function/main/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/browser/http_service/function/main/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "child",
+              "referenceNodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "browser/http_service/function/main/browser/http_service/function/main/statement/0/expand/browser/http_service/function/main/statement/0/call/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "browser/http_service/function/value": {
+      "id": "browser/http_service/function/value",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 87
+          },
+          "end": {
+            "line": 1,
+            "column": 134
+          }
+        }
+      },
+      "text": "function value(int n) returns int { return n; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "signatureVariables": [
+          {
+            "variableId": "variable/main.bal/105",
+            "start": 19,
+            "end": 20
+          }
+        ],
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "value",
+        "signature": "function value(int n) returns int",
+        "parameters": [
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/105",
+                "start": 4,
+                "end": 5
+              }
+            ],
+            "label": "Input",
+            "text": "int n"
+          }
+        ],
+        "returnType": "int"
+      },
+      "nodes": [
+        {
+          "id": "browser/http_service/function/value/browser/http_service/function/value/statement/0",
+          "occurrenceKey": "/browser/http_service/function/value/statement/0",
+          "sourceId": "browser/http_service/function/value/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/105",
+                "start": 7,
+                "end": 8
+              }
+            ],
+            "style": "return",
+            "label": "return n;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/function/value/root",
+          "occurrenceKey": "/root",
+          "sourceId": "browser/http_service/function/value",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "browser/http_service/function/value/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/browser/http_service/function/value/statement/0:entry",
+          "id": "browser/http_service/function/value/browser/http_service/function/value/statement/0:entry",
+          "nodeId": "browser/http_service/function/value/browser/http_service/function/value/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/function/value/statement/0:normal-exit",
+          "id": "browser/http_service/function/value/browser/http_service/function/value/statement/0:normal-exit",
+          "nodeId": "browser/http_service/function/value/browser/http_service/function/value/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/function/value/statement/0:return",
+          "id": "browser/http_service/function/value/browser/http_service/function/value/statement/0:return",
+          "nodeId": "browser/http_service/function/value/browser/http_service/function/value/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "browser/http_service/function/value/root:entry",
+          "nodeId": "browser/http_service/function/value/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "browser/http_service/function/value/root:normal-exit",
+          "nodeId": "browser/http_service/function/value/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [],
+      "groups": [
+        {
+          "id": "browser/http_service/function/value/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/function/value/browser/http_service/function/value/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/function/value/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/function/value/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "browser/http_service/function/value/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "browser/http_service/function/value/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/function/value/root/binding/entry/0",
+            "toPort": "browser/http_service/function/value/browser/http_service/function/value/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/function/value/root/binding/normal",
+            "toPort": "browser/http_service/function/value/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "browser/http_service/function/value/browser/http_service/function/value/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "browser/http_service/function/value/browser/http_service/function/value/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/browser/http_service/function/value/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/browser/http_service/function/value/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/browser/http_service/function/value/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/browser/http_service/function/value/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/function/value/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/function/value/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/browser/http_service/function/value/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/browser/http_service/function/value/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/browser/http_service/function/value/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/browser/http_service/function/value/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": []
+        }
+      }
+    }
+  }
+}
