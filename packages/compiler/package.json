@@ -8,6 +8,6 @@
 		"@bal-bot/workspace": "*"
 	},
 	"scripts": {
-		"test": "GOWORK=off go test ./..."
+		"test": "GOWORK=off go test ./... && bun test tests/"
 	}
 }
