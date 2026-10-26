@@ -6,6 +6,10 @@
 .bal-bot-root .app {
 	height: 100%;
 }
+/* The flow keeps upstream's light surfaces in both themes, so pin its text colour. */
+.bal-bot-root :where(.inspection, .function-workspace-scroll, .function-card) {
+	color: #25312c;
+}
 /* Flow and function-card buttons relied on bal-bot's global button styling. */
 .bal-bot-root :where(.inspection, .function-workspace) button {
 	font: inherit;
