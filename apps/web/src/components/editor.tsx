@@ -714,7 +714,10 @@ function EditorContent() {
 			const target = await getBallerinaProjectTarget(fs, activeFile.path);
 			if (target === activeFile.path)
 				throw new Error("Not part of a Ballerina project (no Ballerina.toml)");
-			setBalBotFiles(await readBallerinaProjectFiles(fs, target));
+			const files = await readBallerinaProjectFiles(fs, target);
+			// The active file may have changed while reading; that must not open the view.
+			if (previousPath.current !== activeFile.path) return;
+			setBalBotFiles(files);
 		} catch (cause) {
 			toast.error(
 				cause instanceof Error ? cause.message : "Failed to open bal-bot",
