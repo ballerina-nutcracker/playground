@@ -35,6 +35,23 @@ function selectorLists(css: string): string[] {
 	return lists;
 }
 
+// Splits a selector list on commas outside parentheses, e.g. :where(a, b).
+function splitSelectors(list: string): string[] {
+	const out: string[] = [];
+	let depth = 0;
+	let current = "";
+	for (const ch of list) {
+		if (ch === "(") depth++;
+		if (ch === ")") depth--;
+		if (ch === "," && depth === 0) {
+			out.push(current.trim());
+			current = "";
+		} else current += ch;
+	}
+	out.push(current.trim());
+	return out;
+}
+
 const sheets = readdirSync(dir).filter((f) => f.endsWith(".css"));
 
 test("bal-bot has stylesheets", () => {
@@ -47,7 +64,7 @@ for (const sheet of sheets) {
 		const css = stripComments(readFileSync(join(dir, sheet), "utf8"));
 		expect(css).not.toContain("@import");
 		for (const list of selectorLists(css)) {
-			for (const selector of list.split(",").map((s) => s.trim())) {
+			for (const selector of splitSelectors(list)) {
 				expect(selector.startsWith(ROOT)).toBe(true);
 				expect(selector).not.toMatch(
 					/^\.bal-bot-root\s+(\*|:root|body|html)\b/,
