@@ -33,3 +33,20 @@ Patches
 -------
 
 - package.json: added a `test` script.
+- *_test.go (frontend, hir, hir_corpus, hir_synthetic, hir_text,
+  hir_variables_validation): repo-root paths (`../..`) repointed to
+  `testdata/upstream/`.
+- hir_corpus_test.go: the provenance existence check only stats this package's
+  `.go` files (other provenance entries name upstream-only files);
+  `TestHIRSourceInventory` is skipped (upstream bookkeeping needing node,
+  Playwright and upstream browser specs).
+- testdata/upstream/{examples,tests/fixtures}: copied verbatim from the same
+  commit.
+- tests/{client,function-views,hir,variable-protocol}.test.mjs,
+  tests/testDataBuilder.mjs: copied from upstream (variable-protocol from the
+  repo-root tests/); fixture and protocol import paths repointed to
+  `testdata/upstream/tests/fixtures` and `../src/protocol.ts`. Not copied:
+  tests/browser (Playwright), tests/native (Go main harness).
+- package.json: `test` runs the Go tests and the node:test suites via bun.
+
+Other files added by this repository: NOTICE, biome.json.
