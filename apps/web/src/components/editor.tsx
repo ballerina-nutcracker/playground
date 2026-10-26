@@ -728,7 +728,7 @@ function EditorContent() {
 	}, [activeFile, fs, saveFile]);
 
 	const handleRun = React.useCallback(async () => {
-		if (balBotOpen) return;
+		if (balBotOpen || balBotOpening.current) return;
 		if (isRunning || !isReady) return;
 		if (!activeFile || getLanguage(activeFile.path) !== "ballerina") return;
 
