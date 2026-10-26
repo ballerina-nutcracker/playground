@@ -5,7 +5,7 @@ import type { StreamFn } from '@earendil-works/pi-agent-core';
 import { createWorkspaceAgent } from './agent.ts';
 export type { Files } from '@bal-bot/workspace';
 
-export interface BrowserWorkspaceOptions { streamFn: StreamFn; compiler?: Compiler; projectName?: string; }
+export interface BrowserWorkspaceOptions { streamFn: StreamFn; compiler?: Compiler; projectName?: string; files?: Files; }
 export interface Storage {
   getItem(key: string): string | null;
   setItem(key: string, value: string): void;
@@ -33,13 +33,14 @@ export class BrowserWorkspace implements Workspace {
   private storage: Storage;
   private readonly compiler?: Compiler;
   private readonly options?: BrowserWorkspaceOptions;
+  private disposed = false;
 
   constructor(storage: Storage, options?: BrowserWorkspaceOptions) {
     this.options = options;
     this.storage = storage;
     this.compiler = options?.compiler;
     this.projectName = options?.projectName;
-    this.files = { ...initialFiles };
+    this.files = { ...(options?.files ?? initialFiles) };
     try {
       const saved = storage.getItem(STORAGE_KEY);
       if (saved !== null) {
@@ -65,8 +66,9 @@ export class BrowserWorkspace implements Workspace {
   }
   analysisSnapshot = (): AnalysisState => this.analysis;
   subscribeAnalysis = (listener: () => void): (() => void) => { this.analysisListeners.add(listener); return () => { this.analysisListeners.delete(listener); }; };
-  private publishAnalysis(state: AnalysisState): void { this.analysis = state; for (const listener of this.analysisListeners) listener(); }
+  private publishAnalysis(state: AnalysisState): void { if (this.disposed) return; this.analysis = state; for (const listener of this.analysisListeners) listener(); }
   private scheduleAnalysis(): void {
+    if (this.disposed) return;
     this.analysisController?.abort();
     const controller = new AbortController(); this.analysisController = controller;
     const revision = ++this.revision, files = this.files;
@@ -120,6 +122,7 @@ export class BrowserWorkspace implements Workspace {
 
   async getDiagnostics(signal?: AbortSignal): Promise<DiagnosticsResult> {
     signal?.throwIfAborted();
+    if (this.disposed) throw new Error('The workspace has been disposed.');
     if (!this.compiler) throw new Error('A compiler is required to request workspace diagnostics.');
     const files = this.snapshot();
     const result = await this.compiler.check(files, signal);
@@ -171,6 +174,16 @@ export class BrowserWorkspace implements Workspace {
     this.files = next;
     if (changed) this.scheduleAnalysis();
     for (const listener of this.listeners) listener();
+  }
+  /** Stops analysis and every retained agent and drops all listeners. Idempotent. */
+  dispose(): void {
+    if (this.disposed) return;
+    this.disposed = true;
+    this.analysisController?.abort();
+    for (const anchor of this.retainedAnchors) anchor.abort();
+    this.listeners.clear();
+    this.storageListeners.clear();
+    this.analysisListeners.clear();
   }
   private failStorage(message: string, error: unknown): void {
     this.storageState = { writable: false, error: `${message} ${error instanceof Error ? error.message : String(error)}` };
