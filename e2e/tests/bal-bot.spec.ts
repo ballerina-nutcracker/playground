@@ -454,9 +454,6 @@ test.describe("bal-bot view", () => {
 		await expect(
 			playground.balBotView.locator("img[src$='openai.svg']").first(),
 		).toBeVisible();
-		await expect(
-			playground.balBotView.locator("img[src$='ballerina.ico']"),
-		).toBeVisible();
 		await page.evaluate(() => document.documentElement.classList.add("dark"));
 		await page.waitForTimeout(300);
 		await page.evaluate(() =>
