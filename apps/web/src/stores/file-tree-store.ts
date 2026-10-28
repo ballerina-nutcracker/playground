@@ -3,11 +3,16 @@ import { useShallow } from "zustand/react/shallow";
 import { immer } from "zustand/middleware/immer";
 
 import { LOCAL_ROOT } from "@/lib/fs/fs-roots";
-import { ancestorDirPathsForFile, isUnder } from "@/lib/fs/core/path-utils";
+import {
+	ancestorDirPathsForFile,
+	dirname,
+	isUnder,
+} from "@/lib/fs/core/path-utils";
 
 import type { LayeredFS } from "@/lib/fs/layered-fs";
 import type { FileNode } from "@/lib/fs/core/file-node.types";
 import type { SnapshotFSMutation } from "@/lib/fs/snapshot";
+import type { ProjectFileChange } from "@/lib/fs/project-target";
 
 const DEFAULT_MAIN_BAL = `import ballerina/io;
 
@@ -85,6 +90,8 @@ type FileTreeActions = {
 	_syncTrees(): Promise<void>;
 
 	applyMutation(mutation: SnapshotFSMutation): Promise<void>;
+
+	applyProjectChanges(changes: ProjectFileChange[]): Promise<void>;
 
 	loadSharedFiles(
 		root: FileNode,
@@ -366,6 +373,31 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 				await get()._syncTrees();
 			},
 
+			async applyProjectChanges(changes) {
+				const fs = _fs();
+				try {
+					for (const change of changes) {
+						if (change.kind === "write") {
+							if (
+								!(await fs.mkdirAll(dirname(change.path))) ||
+								!(await fs.writeFile(change.path, change.content))
+							)
+								throw new Error(`${change.path}: could not write file`);
+						} else if (!(await fs.remove(change.path))) {
+							throw new Error(`${change.path}: could not delete file`);
+						}
+						set((s) => {
+							if (s.activeFile?.path !== change.path) return;
+							if (change.kind === "delete") s.activeFile = null;
+							else if (!s.activeFile.dirty)
+								s.activeFile.content = change.content;
+						});
+					}
+				} finally {
+					await get()._syncTrees();
+				}
+			},
+
 			async loadSharedFiles(
 				root: FileNode,
 				openRelativePath?: string | null,
@@ -421,5 +453,6 @@ export const useFileTreeActions = () =>
 			expandDir: s.expandDir,
 			collapseDir: s.collapseDir,
 			loadSharedFiles: s.loadSharedFiles,
+			applyProjectChanges: s.applyProjectChanges,
 		})),
 	);

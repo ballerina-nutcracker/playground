@@ -51,7 +51,7 @@ test("StrictMode leaves one live workspace and unmount disposes it", async () =>
 	await act(async () => {
 		root.render(
 			<StrictMode>
-				<BalBotView files={files} onBack={() => {}} />
+				<BalBotView files={files} onChange={async () => {}} onBack={() => {}} />
 			</StrictMode>,
 		);
 	});
@@ -74,7 +74,13 @@ test("Back button calls onBack", async () => {
 	const root = createRoot(container);
 	let backs = 0;
 	await act(async () => {
-		root.render(<BalBotView files={{}} onBack={() => backs++} />);
+		root.render(
+			<BalBotView
+				files={{}}
+				onChange={async () => {}}
+				onBack={() => backs++}
+			/>,
+		);
 	});
 	await act(async () => {
 		(
@@ -82,5 +88,46 @@ test("Back button calls onBack", async () => {
 		).click();
 	});
 	expect(backs).toBe(1);
+	await act(async () => root.unmount());
+});
+
+test("workspace edits reach onChange in order, with the snapshot before each", async () => {
+	const container = document.createElement("div");
+	document.body.appendChild(container);
+	const root = createRoot(container);
+	const files = { "main.bal": "a" };
+	const calls: [Record<string, string>, Record<string, string>][] = [];
+	let release: () => void = () => {};
+	const blocked = new Promise<void>((resolve) => {
+		release = resolve;
+	});
+	const onChange = async (
+		prev: Record<string, string>,
+		next: Record<string, string>,
+	) => {
+		calls.push([prev, next]);
+		// Holding the first change must hold back the next one.
+		if (calls.length === 1) await blocked;
+	};
+	await act(async () => {
+		root.render(
+			<BalBotView files={files} onChange={onChange} onBack={() => {}} />,
+		);
+	});
+	const workspace = live()[0] as InstanceType<typeof BrowserWorkspace>;
+
+	await act(async () => {
+		workspace.write("main.bal", "b");
+		workspace.remove("main.bal");
+	});
+	// The constructor's initial save, unchanged from the files given.
+	expect(calls).toEqual([[files, files]]);
+
+	await act(async () => release());
+	expect(calls).toEqual([
+		[files, files],
+		[files, { "main.bal": "b" }],
+		[{ "main.bal": "b" }, {}],
+	]);
 	await act(async () => root.unmount());
 });

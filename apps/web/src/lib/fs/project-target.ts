@@ -96,3 +96,29 @@ export async function readBallerinaProjectFiles(
 	validateSnapshot(files);
 	return files;
 }
+
+export type ProjectFileChange =
+	| { kind: "write"; path: string; content: string }
+	| { kind: "delete"; path: string };
+
+/**
+ * Lists the writes and deletes that turn the project-relative snapshot `prev`
+ * into `next`, as absolute paths under `projectDir`. Deletes come first so a
+ * file replaced by a directory of the same name can be written.
+ */
+export function diffProjectFiles(
+	projectDir: string,
+	prev: Record<string, string>,
+	next: Record<string, string>,
+): ProjectFileChange[] {
+	const changes: ProjectFileChange[] = [];
+	for (const path of Object.keys(prev)) {
+		if (!Object.hasOwn(next, path))
+			changes.push({ kind: "delete", path: join(projectDir, path) });
+	}
+	for (const [path, content] of Object.entries(next)) {
+		if (prev[path] !== content)
+			changes.push({ kind: "write", path: join(projectDir, path), content });
+	}
+	return changes;
+}

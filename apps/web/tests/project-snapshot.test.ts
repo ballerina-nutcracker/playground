@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 
 import { createFs } from "./test-fs";
 
-const { readBallerinaProjectFiles } = await import(
+const { diffProjectFiles, readBallerinaProjectFiles } = await import(
 	"../src/lib/fs/project-target.ts?snapshot"
 );
 
@@ -99,6 +99,34 @@ describe("readBallerinaProjectFiles", () => {
 				: open(path);
 		await expect(readBallerinaProjectFiles(fs, "/p")).rejects.toThrow(
 			"a.bal/b.bal",
+		);
+	});
+});
+
+describe("diffProjectFiles", () => {
+	test("lists deletes, then changed and added files, under the project", () => {
+		expect(
+			diffProjectFiles(
+				"/p",
+				{ "main.bal": "a", "old.bal": "x", "same.bal": "s" },
+				{ "main.bal": "b", "same.bal": "s", "modules/m/m.bal": "m" },
+			),
+		).toEqual([
+			{ kind: "delete", path: "/p/old.bal" },
+			{ kind: "write", path: "/p/main.bal", content: "b" },
+			{ kind: "write", path: "/p/modules/m/m.bal", content: "m" },
+		]);
+	});
+
+	test("writes a file whose content became empty", () => {
+		expect(diffProjectFiles("/p", { "a.bal": "x" }, { "a.bal": "" })).toEqual([
+			{ kind: "write", path: "/p/a.bal", content: "" },
+		]);
+	});
+
+	test("is empty when nothing changed", () => {
+		expect(diffProjectFiles("/p", { "a.bal": "x" }, { "a.bal": "x" })).toEqual(
+			[],
 		);
 	});
 });

@@ -301,7 +301,7 @@ test.describe("bal-bot view", () => {
 		).toContainText("dirty-marker");
 	});
 
-	test("agent edits never reach the playground files or storage", async ({
+	test("agent edits reach the editor and API keys are never stored", async ({
 		page,
 	}) => {
 		const calls = await mockAnthropic(page, {
@@ -312,9 +312,6 @@ test.describe("bal-bot view", () => {
 		await playground.open();
 		await playground.openBalBot();
 		const view = playground.balBotView;
-		const before = await page.evaluate(() =>
-			JSON.stringify({ ...localStorage }),
-		);
 
 		await view.getByRole("button", { name: /^Provider:/ }).click();
 		await view.getByRole("button", { name: /^Anthropic/ }).click();
@@ -338,16 +335,21 @@ test.describe("bal-bot view", () => {
 			{ timeout: 15_000 },
 		);
 
-		expect(await page.evaluate(() => JSON.stringify({ ...localStorage }))).toBe(
-			before,
-		);
 		expect(
 			await page.evaluate(() =>
 				JSON.stringify({ ...localStorage, ...sessionStorage }),
 			),
 		).not.toContain("sk-ant-test-key");
 		await playground.closeBalBot();
-		await expect(page.getByTestId("code-editor")).not.toContainText(
+		await expect(page.getByTestId("code-editor")).toContainText("agent-edit");
+
+		// The edit is in the playground files, so reopening starts from it.
+		await playground.openBalBot();
+		await view
+			.getByRole("navigation", { name: "Workspace files" })
+			.getByText("main.bal")
+			.click();
+		await expect(view.getByLabel("Contents of main.bal")).toContainText(
 			"agent-edit",
 		);
 	});

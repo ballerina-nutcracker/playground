@@ -194,6 +194,8 @@ export function CodeEditor({
 
 	const onChangeRef = React.useRef(onChange);
 	onChangeRef.current = onChange;
+	// Set while `value` is copied into the editor, so that copy is not reported as an edit.
+	const applyingValue = React.useRef(false);
 
 	const hotkeysRef = React.useRef(hotkeys);
 	hotkeysRef.current = hotkeys;
@@ -220,7 +222,7 @@ export function CodeEditor({
 			defaultColor: "light",
 			themeStyle: "cm",
 			onUpdate: (update) => {
-				if (update.docChanged)
+				if (update.docChanged && !applyingValue.current)
 					onChangeRef.current?.(update.state.doc.toString());
 			},
 			extensions: [
@@ -240,6 +242,18 @@ export function CodeEditor({
 			editorRef.current = null;
 		};
 	}, []);
+
+	// Picks up content changed outside the editor, such as bal-bot edits.
+	React.useEffect(() => {
+		const editor = editorRef.current;
+		if (!editor || value === undefined || editor.getValue() === value) return;
+		applyingValue.current = true;
+		try {
+			editor.setValue(value);
+		} finally {
+			applyingValue.current = false;
+		}
+	}, [value]);
 
 	React.useEffect(() => {
 		const editor = editorRef.current;
