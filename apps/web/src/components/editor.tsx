@@ -6,6 +6,7 @@ import {
 	ChevronDown,
 	ChevronUp,
 	CleanIcon,
+	CodeIcon,
 	GithubFreeIcons,
 	LayoutAlignRightIcon,
 	LayoutRightIcon,
@@ -256,14 +257,32 @@ function formatJsonOutput(output: string): string {
 	}
 }
 
-function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
+function RightPane({
+	listenerAddresses,
+	testId = "output-pane",
+	drawer,
+}: {
+	listenerAddresses: string[];
+	testId?: string;
+	/** Collapsible on every screen size, under the caller's control. */
+	drawer?: { open: boolean; onToggle: () => void };
+}) {
 	const output = useEditorStore((s) => s.output);
 	const formattedOutput = React.useMemo(
 		() => formatJsonOutput(output),
 		[output],
 	);
-	const outputOpen = useEditorStore((s) => s.outputOpen);
-	const toggleOutputOpen = useEditorStore((s) => s.toggleOutputOpen);
+	const storeOutputOpen = useEditorStore((s) => s.outputOpen);
+	const toggleStoreOutputOpen = useEditorStore((s) => s.toggleOutputOpen);
+	const outputOpen = drawer ? drawer.open : storeOutputOpen;
+	const toggleOutputOpen = drawer ? drawer.onToggle : toggleStoreOutputOpen;
+	const contentClassName = drawer
+		? outputOpen
+			? "flex-1"
+			: "hidden"
+		: outputOpen
+			? "flex-1"
+			: "hidden lg:block lg:flex-1";
 	const clearOutput = useEditorStore((s) => s.clearOutput);
 
 	const scrollRef = React.useRef<HTMLDivElement>(null);
@@ -332,8 +351,10 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 	return (
 		<div
 			className={cn(
-				"flex flex-col min-h-0 min-w-0 overflow-hidden lg:h-full",
-				outputOpen ? "flex-1 lg:flex" : "shrink-0 lg:flex",
+				"flex flex-col min-h-0 min-w-0 overflow-hidden",
+				drawer
+					? cn("border-t", outputOpen ? "h-2/5" : "shrink-0")
+					: cn("lg:h-full", outputOpen ? "flex-1 lg:flex" : "shrink-0 lg:flex"),
 			)}
 		>
 			<Tabs
@@ -341,7 +362,14 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 				onValueChange={(value) => setActiveTab(String(value))}
 				className="min-h-0 flex-1 gap-0 overflow-hidden"
 			>
-				<div className="flex h-10 shrink-0 items-center justify-between border-b border-t lg:border-t-0">
+				<div
+					className={cn(
+						"flex h-10 shrink-0 items-center justify-between",
+						drawer
+							? outputOpen && "border-b"
+							: "border-b border-t lg:border-t-0",
+					)}
+				>
 					<TabsList className="h-full! p-0">
 						<TabsTrigger
 							value="output"
@@ -360,8 +388,9 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 					</TabsList>
 					<div className="flex items-center h-full">
 						<Button
-							className="h-full border-l lg:hidden"
+							className={cn("h-full border-l", !drawer && "lg:hidden")}
 							variant="ghost"
+							data-testid={`${testId}-toggle`}
 							onClick={toggleOutputOpen}
 						>
 							<HugeiconsIcon
@@ -386,12 +415,9 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 					value="output"
 					keepMounted
 					ref={scrollRef}
-					data-testid="output-pane"
+					data-testid={testId}
 					onScroll={updateAutoScrollState}
-					className={cn(
-						"min-h-0 overflow-y-auto p-4",
-						outputOpen ? "flex-1" : "hidden lg:block lg:flex-1",
-					)}
+					className={cn("min-h-0 overflow-y-auto p-4", contentClassName)}
 				>
 					<pre className="text-[13px] font-sans whitespace-pre-wrap wrap-break-word">
 						<ANSI value={formattedOutput} />
@@ -401,10 +427,7 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 					<TabsContent
 						value="try-it"
 						keepMounted
-						className={cn(
-							"min-h-0 overflow-y-auto p-4",
-							outputOpen ? "flex-1" : "hidden lg:block lg:flex-1",
-						)}
+						className={cn("min-h-0 overflow-y-auto p-4", contentClassName)}
 					>
 						<TryItPanel
 							ref={tryItPanelRef}
@@ -414,6 +437,54 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 				)}
 			</Tabs>
 		</div>
+	);
+}
+
+function RunButton({
+	testId,
+	onRun,
+	isRunning,
+	onStop,
+}: {
+	testId: string;
+	onRun: () => void;
+	isRunning: boolean;
+	onStop: () => void;
+}) {
+	const activeFile = useActiveFile();
+	const { isReady, progress, error } = useBallerina();
+	return (
+		<Button
+			className="h-full"
+			variant="ghost"
+			data-testid={testId}
+			onClick={isRunning ? onStop : onRun}
+			disabled={
+				!isRunning &&
+				(!isReady ||
+					!activeFile ||
+					getLanguage(activeFile.path) !== "ballerina")
+			}
+		>
+			{!isRunning && error ? (
+				<span className="min-w-7.5 text-destructive">Failed to load</span>
+			) : !isRunning && !isReady ? (
+				<>
+					<LoadingCircle progress={progress} />
+					<span className="min-w-7.5">Run</span>
+				</>
+			) : !isRunning ? (
+				<>
+					<HugeiconsIcon icon={PlayIcon} strokeWidth={1.5} />
+					<span className="min-w-7.5">Run</span>
+				</>
+			) : (
+				<>
+					<HugeiconsIcon icon={StopIcon} strokeWidth={1.5} />
+					<span className="min-w-7.5">Stop</span>
+				</>
+			)}
+		</Button>
 	);
 }
 
@@ -435,7 +506,6 @@ function EditorPane({
 	balBotDisabledReason: string | null;
 }) {
 	const activeFile = useActiveFile();
-	const { isReady, progress, error } = useBallerina();
 
 	const { updateFileContent } = useFileTreeActions();
 
@@ -484,37 +554,12 @@ function EditorPane({
 							</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
-					<Button
-						className="h-full"
-						variant="ghost"
-						data-testid="run-button"
-						onClick={isRunning ? () => void onStop() : () => void onRun()}
-						disabled={
-							!isRunning &&
-							(!isReady ||
-								!activeFile ||
-								getLanguage(activeFile.path) !== "ballerina")
-						}
-					>
-						{!isRunning && error ? (
-							<span className="min-w-7.5 text-destructive">Failed to load</span>
-						) : !isRunning && !isReady ? (
-							<>
-								<LoadingCircle progress={progress} />
-								<span className="min-w-7.5">Run</span>
-							</>
-						) : !isRunning ? (
-							<>
-								<HugeiconsIcon icon={PlayIcon} strokeWidth={1.5} />
-								<span className="min-w-7.5">Run</span>
-							</>
-						) : (
-							<>
-								<HugeiconsIcon icon={StopIcon} strokeWidth={1.5} />
-								<span className="min-w-7.5">Stop</span>
-							</>
-						)}
-					</Button>
+					<RunButton
+						testId="run-button"
+						onRun={() => void onRun()}
+						isRunning={isRunning}
+						onStop={() => void onStop()}
+					/>
 					{onToggleOutput && (
 						<Button
 							className="h-full w-10 border-l"
@@ -677,6 +722,8 @@ function EditorContent() {
 		files: Record<string, string>;
 	} | null>(null);
 	const balBotOpen = balBotProject !== null;
+	// The view's output drawer starts collapsed every time the view opens.
+	const [balBotOutputOpen, setBalBotOutputOpen] = React.useState(false);
 	const balBotOpening = React.useRef(false);
 
 	// undefined while the latest check is pending. The trees are replaced on
@@ -761,6 +808,7 @@ function EditorContent() {
 			const files = await readBallerinaProjectFiles(fs, target);
 			// The active file may have changed while reading; that must not open the view.
 			if (previousPath.current !== activeFile.path) return;
+			setBalBotOutputOpen(false);
 			setBalBotProject({ dir: target, files });
 		} catch (cause) {
 			toast.error(
@@ -771,8 +819,7 @@ function EditorContent() {
 		}
 	}, [activeFile, fs, saveFile]);
 
-	const handleRun = React.useCallback(async () => {
-		if (balBotOpen || balBotOpening.current) return;
+	const runProject = React.useCallback(async () => {
 		if (isRunning || !isReady) return;
 		if (!activeFile || getLanguage(activeFile.path) !== "ballerina") return;
 
@@ -811,8 +858,17 @@ function EditorContent() {
 		appendOutput,
 		isRunning,
 		isReady,
-		balBotOpen,
 	]);
+
+	const handleRun = React.useCallback(async () => {
+		if (balBotOpen || balBotOpening.current) return;
+		await runProject();
+	}, [runProject, balBotOpen]);
+
+	const handleRunFromBalBot = React.useCallback(() => {
+		setBalBotOutputOpen(true);
+		void runProject();
+	}, [runProject]);
 
 	const handleStop = React.useCallback(async () => {
 		try {
@@ -868,7 +924,47 @@ function EditorContent() {
 									<BalBotView
 										files={balBotProject.files}
 										onChange={handleBalBotChange}
-										onBack={closeBalBot}
+										actions={
+											<>
+												<TooltipProvider>
+													<Tooltip>
+														<TooltipTrigger
+															render={<span className="flex h-full border-r" />}
+														>
+															<Button
+																className="h-full w-10"
+																variant="ghost"
+																data-testid="bal-bot-code"
+																aria-label="Back to code editor"
+																onClick={closeBalBot}
+															>
+																<HugeiconsIcon
+																	icon={CodeIcon}
+																	strokeWidth={1.5}
+																/>
+															</Button>
+														</TooltipTrigger>
+														<TooltipContent>Back to code editor</TooltipContent>
+													</Tooltip>
+												</TooltipProvider>
+												<RunButton
+													testId="bal-bot-run"
+													onRun={handleRunFromBalBot}
+													isRunning={isRunning}
+													onStop={() => void handleStop()}
+												/>
+											</>
+										}
+										footer={
+											<RightPane
+												listenerAddresses={listenerAddresses}
+												testId="bal-bot-output-pane"
+												drawer={{
+													open: balBotOutputOpen,
+													onToggle: () => setBalBotOutputOpen((open) => !open),
+												}}
+											/>
+										}
 									/>
 								</React.Suspense>
 							</div>

@@ -237,7 +237,7 @@ test.describe("bal-bot view", () => {
 			.toBe(true);
 	});
 
-	test("Back restores the editor, the active file, output and layout", async ({
+	test("Code restores the editor, the active file, output and layout", async ({
 		page,
 	}) => {
 		const playground = new PlaygroundPage(page);
@@ -283,6 +283,35 @@ test.describe("bal-bot view", () => {
 		await playground.closeBalBot();
 		await expect(playground.outputPane).toHaveText("");
 		await expect(playground.runButton).toHaveText("Run");
+	});
+
+	test("the output drawer starts collapsed, toggles, and Run opens it", async ({
+		page,
+	}) => {
+		const playground = new PlaygroundPage(page);
+		await playground.open();
+		await playground.openBalBot();
+		const output = page.getByTestId("bal-bot-output-pane");
+		const toggle = page.getByTestId("bal-bot-output-pane-toggle");
+		await expect(output).toBeHidden();
+
+		await toggle.click();
+		await expect(output).toBeVisible();
+		await toggle.click();
+		await expect(output).toBeHidden();
+
+		const run = page.getByTestId("bal-bot-run");
+		await expect(run).toBeEnabled({ timeout: 10_000 });
+		await run.click();
+		await expect(output).toBeVisible();
+		await expect(run).toHaveText("Run", { timeout: 10_000 });
+		await expect(output).not.toHaveText("");
+		await expect(playground.balBotView).toBeVisible();
+
+		// The editor shows the same output after returning.
+		const text = await output.innerText();
+		await playground.closeBalBot();
+		await expect(playground.outputPane).toHaveText(text);
 	});
 
 	test("a dirty edit appears in the snapshot", async ({ page }) => {

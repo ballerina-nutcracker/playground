@@ -124,7 +124,7 @@ export class PlaygroundPage {
 	}
 
 	async closeBalBot() {
-		await this.page.getByTestId("bal-bot-back").click();
+		await this.page.getByTestId("bal-bot-code").click();
 		await expect(this.balBotView).toHaveCount(0);
 	}
 
