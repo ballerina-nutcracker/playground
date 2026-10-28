@@ -1,8 +1,6 @@
 import { BrowserWorkspace } from "@bal-bot/browser-workspace";
 import { createCompiler } from "@bal-bot/compiler";
-import { useEffect, useRef, useState } from "react";
-
-import { Button } from "@/components/ui/button";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 
 import "./bal-bot.css";
 import { Editor } from "./editor";
@@ -40,12 +38,16 @@ function projectNameOf(files: Record<string, string>): string {
 export function BalBotView({
 	files,
 	onChange,
-	onBack,
+	actions,
+	footer,
 }: {
 	files: Files;
 	/** Persists a workspace change; must not reject. */
 	onChange: (prev: Files, next: Files) => Promise<void>;
-	onBack: () => void;
+	/** Buttons shown at the right of the toolbar. */
+	actions: ReactNode;
+	/** Shown below the workspace. */
+	footer?: ReactNode;
 }) {
 	const [workspace, setWorkspace] = useState<BrowserWorkspace | null>(null);
 	// A new callback must not recreate the workspace.
@@ -73,20 +75,16 @@ export function BalBotView({
 
 	return (
 		<div className="bal-bot-root flex h-full min-h-0 flex-col bg-background text-foreground">
-			<div className="flex-none border-b px-3 py-2">
-				<Button
-					type="button"
-					variant="outline"
-					size="sm"
-					onClick={onBack}
-					data-testid="bal-bot-back"
-				>
-					← Back
-				</Button>
+			<div className="flex h-10 flex-none items-center justify-between border-b">
+				<span className="flex h-full max-w-[60%] items-center truncate border-r px-4 text-xs">
+					{projectNameOf(files)}
+				</span>
+				<div className="flex h-full">{actions}</div>
 			</div>
 			<div className="min-h-0 flex-1">
 				{workspace && <Editor workspace={workspace} />}
 			</div>
+			{footer}
 		</div>
 	);
 }

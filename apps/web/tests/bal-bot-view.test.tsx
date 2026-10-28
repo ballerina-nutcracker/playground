@@ -51,7 +51,7 @@ test("StrictMode leaves one live workspace and unmount disposes it", async () =>
 	await act(async () => {
 		root.render(
 			<StrictMode>
-				<BalBotView files={files} onChange={async () => {}} onBack={() => {}} />
+				<BalBotView files={files} onChange={async () => {}} actions={null} />
 			</StrictMode>,
 		);
 	});
@@ -68,26 +68,20 @@ test("StrictMode leaves one live workspace and unmount disposes it", async () =>
 	expect(disposed.size).toBe(2);
 });
 
-test("Back button calls onBack", async () => {
+test("renders the given actions in the toolbar", async () => {
 	const container = document.createElement("div");
 	document.body.appendChild(container);
 	const root = createRoot(container);
-	let backs = 0;
 	await act(async () => {
 		root.render(
 			<BalBotView
 				files={{}}
 				onChange={async () => {}}
-				onBack={() => backs++}
+				actions={<button type="button" data-testid="action" />}
 			/>,
 		);
 	});
-	await act(async () => {
-		(
-			container.querySelector('[data-testid="bal-bot-back"]') as HTMLElement
-		).click();
-	});
-	expect(backs).toBe(1);
+	expect(container.querySelector('[data-testid="action"]')).not.toBeNull();
 	await act(async () => root.unmount());
 });
 
@@ -111,7 +105,7 @@ test("workspace edits reach onChange in order, with the snapshot before each", a
 	};
 	await act(async () => {
 		root.render(
-			<BalBotView files={files} onChange={onChange} onBack={() => {}} />,
+			<BalBotView files={files} onChange={onChange} actions={null} />,
 		);
 	});
 	const workspace = live()[0] as InstanceType<typeof BrowserWorkspace>;
