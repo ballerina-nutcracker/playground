@@ -260,6 +260,19 @@ test.describe("bal-bot view", () => {
 		).toBe(layoutBefore);
 	});
 
+	test("the sidebar collapses while the view is open and is restored after", async ({
+		page,
+	}) => {
+		const playground = new PlaygroundPage(page);
+		await playground.open();
+		const sidebar = page.locator('[data-slot="sidebar"]');
+		await expect(sidebar).toHaveAttribute("data-state", "expanded");
+		await playground.openBalBot();
+		await expect(sidebar).toHaveAttribute("data-state", "collapsed");
+		await playground.closeBalBot();
+		await expect(sidebar).toHaveAttribute("data-state", "expanded");
+	});
+
 	test("Run is inert while the view is open", async ({ page }) => {
 		const playground = new PlaygroundPage(page);
 		await playground.open();
@@ -352,11 +365,17 @@ test.describe("bal-bot view", () => {
 			'[data-example-path$="01-hello-world/main.bal"]',
 		);
 
+		const sidebar = page.locator('[data-slot="sidebar"]');
+		const toggle = page.getByRole("button", { name: "Toggle Sidebar" });
+
 		await playground.openBalBot();
+		await expect(sidebar).toHaveAttribute("data-state", "collapsed");
+		await toggle.click();
 		await active.click();
 		await expect(playground.balBotView).toHaveCount(0);
 
 		await playground.openBalBot();
+		await toggle.click();
 		await second.click();
 		await expect(playground.balBotView).toHaveCount(0);
 		await expect(page).toHaveURL(/02-http-client/);

@@ -7,7 +7,10 @@
 	height: 100%;
 }
 /* The flow keeps upstream's light surfaces in both themes, so pin its text colour. */
-.bal-bot-root :where(.inspection, .function-workspace-scroll, .function-card) {
+.bal-bot-root .inspection {
+	color: var(--foreground);
+}
+.bal-bot-root :where(.function-main, .function-card, .flow-notice, .flow-diagnostics) {
 	color: #25312c;
 }
 /* Flow and function-card buttons relied on bal-bot's global button styling. */
@@ -42,9 +45,9 @@
 .bal-bot-root .flow-workspace .endpoint { display: grid; grid-template-columns: 46px minmax(0, 1fr); align-items: baseline; gap: 8px; padding: 9px 12px 9px 28px; }
 .bal-bot-root .flow-workspace .endpoint small { color: var(--muted-foreground); font-size: 10px; }
 .bal-bot-root .endpoint-label { min-width: 0; }
-.bal-bot-root .inspection { border-left: 1px solid #e2e5eb; min-width: 0; overflow: hidden; background: #fafbfd; display: flex; flex-direction: column; }
+.bal-bot-root .inspection { border-left: 1px solid var(--border); min-width: 0; overflow: hidden; background: var(--muted); display: flex; flex-direction: column; }
 .bal-bot-root .inspection-toolbar { display: flex; justify-content: flex-end; padding: 10px 12px; flex: none; }
-.bal-bot-root .inspection-toggle { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 1px solid #ddd; border-radius: 6px; padding: 8px; background: white; color: #586885; }
+.bal-bot-root .inspection-toggle { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 6px; padding: 8px; background: var(--background); color: var(--foreground); }
 .bal-bot-root .inspection-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .bal-bot-root .flow-view { min-height: 0; flex: 1; display: flex; flex-direction: column; overflow: auto; }
 .bal-bot-root .diagram-scroll { flex: 1; overflow-y: auto; overflow-x: hidden; min-height: 0; }
@@ -69,10 +72,10 @@
 .bal-bot-root .flow-notice { white-space: pre-wrap; padding: 14px; background: #fff5de; font-size: 12px; line-height: 1.5; }
 .bal-bot-root .flow-diagnostics { padding: 12px 16px 12px 28px; font-size: 12px; margin: 0; background: #fff1ec; overflow-wrap: anywhere; }
 .bal-bot-root .definitions { padding: 18px 12px; }
-.bal-bot-root .definitions h2 { font-size: 11px; color: #798296; text-transform: uppercase; letter-spacing: .08em; margin: 10px 0; }
-.bal-bot-root .definition { display: flex; justify-content: space-between; border-bottom: 1px solid #edf0f5; }
-.bal-bot-root .definition button { border: 0; background: transparent; padding: 10px 4px; text-align: left; overflow-wrap: anywhere; color: #33435a; }
-.bal-bot-root .back-definitions { align-self: flex-start; background: transparent; border: 0; padding: 12px; color: #586885; }
+.bal-bot-root .definitions h2 { font-size: 11px; color: var(--muted-foreground); text-transform: uppercase; letter-spacing: .08em; margin: 10px 0; }
+.bal-bot-root .definition { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); }
+.bal-bot-root .definition button { border: 0; background: transparent; padding: 10px 4px; text-align: left; overflow-wrap: anywhere; color: var(--foreground); }
+.bal-bot-root .back-definitions { align-self: flex-start; background: transparent; border: 0; padding: 12px; color: var(--foreground); }
 .bal-bot-root .reference-chips { display: flex; gap: 5px; flex-wrap: wrap; padding: 4px; }
 .bal-bot-root .reference-chip { display: inline-flex; align-items: center; gap: 5px; font: 11px monospace; border: 1px solid #c7d8ec; border-radius: 6px; background: #edf5fd; padding: 4px 6px; overflow-wrap: anywhere; }
 .bal-bot-root .reference-chip.stale { border-color: #d9aa68; background: #fff2da; }
@@ -179,3 +182,6 @@
 .bal-bot-root .template-header .node-select { display: grid; grid-template-columns: 56px 272px; gap: 12px; width: 340px; max-width: 340px; text-align: left; align-items: center; }
 .bal-bot-root .template-type { display: flex; align-self: stretch; align-items: center; justify-content: center; color: #47638d; border-right: 1px solid #adc7e3; }
 .bal-bot-root .template-expression { min-width: 0; text-align: center; }
+/* Expanded: the flow canvas shares the panel's background and the card sits in the middle. */
+.bal-bot-root .inspection-expanded .function-workspace { width: fit-content; margin-inline: auto; }
+.bal-bot-root .inspection-toggle:hover { background: var(--accent); }

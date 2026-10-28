@@ -32,6 +32,7 @@ import {
 	SidebarInset,
 	SidebarProvider,
 	SidebarTrigger,
+	useSidebar,
 } from "@/components/ui/sidebar";
 
 import { AppSidebar } from "@/components/app-sidebar";
@@ -704,6 +705,20 @@ function EditorContent() {
 	}, [activePath]);
 
 	const closeBalBot = React.useCallback(() => setBalBotFiles(null), []);
+
+	// The view needs the room: collapse the sidebar while it is open and restore it after.
+	const { open: sidebarOpen, setOpen: setSidebarOpen } = useSidebar();
+	const sidebarBeforeBalBot = React.useRef<boolean | null>(null);
+	// biome-ignore lint/correctness/useExhaustiveDependencies: only the open/close transition matters
+	React.useEffect(() => {
+		if (balBotOpen) {
+			sidebarBeforeBalBot.current = sidebarOpen;
+			setSidebarOpen(false);
+		} else if (sidebarBeforeBalBot.current !== null) {
+			setSidebarOpen(sidebarBeforeBalBot.current);
+			sidebarBeforeBalBot.current = null;
+		}
+	}, [balBotOpen]);
 
 	const handleOpenBalBot = React.useCallback(async () => {
 		if (!activeFile || balBotOpening.current) return;

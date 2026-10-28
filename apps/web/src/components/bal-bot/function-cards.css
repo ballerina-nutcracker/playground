@@ -1,4 +1,4 @@
-.bal-bot-root .function-workspace-scroll { flex: 1; min-height: 0; overflow: auto; background: #f6f8fb; }
+.bal-bot-root .function-workspace-scroll { flex: 1; min-height: 0; overflow: auto; }
 .bal-bot-root .function-workspace { position: relative; padding: 2px; }
 .bal-bot-root .function-main { width: 440px; min-height: 600px; background: white; border: 2px solid transparent; border-radius: 10px; }
 .bal-bot-root .function-card { position: absolute; display: flex; flex-direction: column; width: 440px; max-height: 590px; background: white; border: 2px solid #d0d7e2; border-radius: 10px; box-shadow: 0 8px 26px #182d4924; overflow: hidden; }
