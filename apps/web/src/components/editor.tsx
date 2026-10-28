@@ -45,6 +45,7 @@ import { ANSI } from "@/components/ansi";
 import { basename, ext } from "@/lib/fs/core/path-utils";
 import { startBalBotCheck } from "@/lib/bal-bot-availability";
 import {
+	diffProjectFiles,
 	getBallerinaProjectTarget,
 	readBallerinaProjectFiles,
 } from "@/lib/fs/project-target";
@@ -660,7 +661,7 @@ function EditorContent() {
 
 	const activeFile = useActiveFile();
 
-	const { saveFile } = useFileTreeActions();
+	const { saveFile, applyProjectChanges } = useFileTreeActions();
 	const [isRunning, setIsRunning] = React.useState(false);
 	const [listenerAddresses, setListenerAddresses] = React.useState<string[]>(
 		[],
@@ -670,12 +671,12 @@ function EditorContent() {
 	const appendOutput = useEditorStore((s) => s.appendOutput);
 	const toggleEditorMode = useEditorStore((s) => s.toggleEditorMode);
 
-	// Snapshot of the project shown in the bal-bot view; null while closed.
-	const [balBotFiles, setBalBotFiles] = React.useState<Record<
-		string,
-		string
-	> | null>(null);
-	const balBotOpen = balBotFiles !== null;
+	// The project shown in the bal-bot view, as read when it opened; null while closed.
+	const [balBotProject, setBalBotProject] = React.useState<{
+		dir: string;
+		files: Record<string, string>;
+	} | null>(null);
+	const balBotOpen = balBotProject !== null;
 	const balBotOpening = React.useRef(false);
 
 	// undefined while the latest check is pending. The trees are replaced on
@@ -697,15 +698,42 @@ function EditorContent() {
 			? "Checking project…"
 			: projectReason;
 
-	// Any change of the active file closes the view.
+	// Any change of the active file closes the view, except bal-bot deleting it.
 	const previousPath = React.useRef(activePath);
+	const deletedByBalBot = React.useRef<string | null>(null);
 	React.useEffect(() => {
 		if (previousPath.current === activePath) return;
+		const deleted =
+			activePath === null && previousPath.current === deletedByBalBot.current;
 		previousPath.current = activePath;
-		setBalBotFiles(null);
+		deletedByBalBot.current = null;
+		if (!deleted) setBalBotProject(null);
 	}, [activePath]);
 
-	const closeBalBot = React.useCallback(() => setBalBotFiles(null), []);
+	const closeBalBot = React.useCallback(() => setBalBotProject(null), []);
+
+	// bal-bot edits go straight to the playground files, so the editor sees them.
+	const balBotDir = balBotProject?.dir;
+	const handleBalBotChange = React.useCallback(
+		async (prev: Record<string, string>, next: Record<string, string>) => {
+			if (!balBotDir) return;
+			const changes = diffProjectFiles(balBotDir, prev, next);
+			if (!changes.length) return;
+			for (const change of changes)
+				if (change.kind === "delete" && change.path === previousPath.current)
+					deletedByBalBot.current = change.path;
+			try {
+				await applyProjectChanges(changes);
+			} catch (cause) {
+				toast.error(
+					cause instanceof Error
+						? cause.message
+						: "Failed to save bal-bot edit",
+				);
+			}
+		},
+		[balBotDir, applyProjectChanges],
+	);
 
 	// The view needs the room: collapse the sidebar while it is open and restore it after.
 	const { open: sidebarOpen, setOpen: setSidebarOpen } = useSidebar();
@@ -733,7 +761,7 @@ function EditorContent() {
 			const files = await readBallerinaProjectFiles(fs, target);
 			// The active file may have changed while reading; that must not open the view.
 			if (previousPath.current !== activeFile.path) return;
-			setBalBotFiles(files);
+			setBalBotProject({ dir: target, files });
 		} catch (cause) {
 			toast.error(
 				cause instanceof Error ? cause.message : "Failed to open bal-bot",
@@ -828,7 +856,7 @@ function EditorContent() {
 								balBotDisabledReason={balBotDisabledReason}
 							/>
 						</div>
-						{balBotFiles && (
+						{balBotProject && (
 							<div className="absolute inset-0 z-10 bg-background">
 								<React.Suspense
 									fallback={
@@ -837,7 +865,11 @@ function EditorContent() {
 										</div>
 									}
 								>
-									<BalBotView files={balBotFiles} onBack={closeBalBot} />
+									<BalBotView
+										files={balBotProject.files}
+										onChange={handleBalBotChange}
+										onBack={closeBalBot}
+									/>
 								</React.Suspense>
 							</div>
 						)}
