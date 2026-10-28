@@ -21,7 +21,7 @@ export class PlaygroundPage {
 
 	async open(path = "/") {
 		await this.page.goto(path);
-		await expect(this.page.getByTestId("wasm-loading")).toBeHidden({
+		await expect(this.page.getByTestId("run-loading")).toBeHidden({
 			timeout: 90_000,
 		});
 	}
