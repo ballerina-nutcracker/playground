@@ -149,21 +149,33 @@ func wasmFileInfo(fsys *bridgeFS, p string) (*pal.FileInfo, error) {
 }
 
 func copyWasmPath(fsys *bridgeFS, src, dst string, opts pal.CopyOptions) error {
+	cleanSrc := path.Clean(src)
+	cleanDst := path.Clean(dst)
 	info, err := fs.Stat(fsys, src)
 	if err != nil {
 		return err
 	}
-	if src == dst {
+	if cleanSrc == cleanDst {
 		return nil
 	}
 	if info.IsDir() {
-		cleanSrc := path.Clean(src)
-		cleanDst := path.Clean(dst)
 		if cleanSrc != cleanDst && strings.HasPrefix(cleanDst, strings.TrimSuffix(cleanSrc, "/")+"/") {
 			return &fs.PathError{Op: "copy", Path: dst, Err: fs.ErrInvalid}
 		}
-		if dstInfo, err := fs.Stat(fsys, dst); err == nil && !dstInfo.IsDir() {
-			return &fs.PathError{Op: "copy", Path: dst, Err: fs.ErrInvalid}
+		if dstInfo, err := fs.Stat(fsys, dst); err == nil {
+			if !dstInfo.IsDir() {
+				return &fs.PathError{Op: "copy", Path: dst, Err: fs.ErrInvalid}
+			}
+		} else if !errors.Is(err, fs.ErrNotExist) {
+			return err
+		} else {
+			parent, err := fs.Stat(fsys, path.Dir(dst))
+			if err != nil {
+				return err
+			}
+			if !parent.IsDir() {
+				return &fs.PathError{Op: "copy", Path: dst, Err: fs.ErrInvalid}
+			}
 		}
 		if err := fsys.MkdirAll(dst, 0o755); err != nil {
 			return err
@@ -318,7 +330,7 @@ func wasmPal(fsys *bridgeFS, cwd string, stderr, stdout io.Writer, signals pal.S
 				} else if !errors.Is(err, fs.ErrNotExist) {
 					return err
 				}
-				parent, err := fs.Stat(fsys, path.Dir(resolved))
+				parent, err := fs.Stat(fsys, path.Dir(path.Clean(resolved)))
 				if err != nil {
 					return err
 				}
@@ -368,7 +380,7 @@ func wasmPal(fsys *bridgeFS, cwd string, stderr, stdout io.Writer, signals pal.S
 
 				oldResolved := resolvePath(cwd, oldPath)
 				newResolved := resolvePath(cwd, newPath)
-				if oldResolved != newResolved {
+				if path.Clean(oldResolved) != path.Clean(newResolved) {
 					if _, err := fs.Stat(fsys, newResolved); err == nil {
 						return &fs.PathError{Op: "rename", Path: newResolved, Err: fs.ErrExist}
 					} else if !errors.Is(err, fs.ErrNotExist) {

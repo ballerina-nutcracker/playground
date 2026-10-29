@@ -101,7 +101,7 @@ const testCases: TestCase[] = [
 			new Map([["/tmp/main.bal", await load("./fixtures/file-api.bal")]]),
 		entryPoint: "/tmp/main.bal",
 		expectedStdout:
-			"true\n2\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\nfalse\nfalse\ntrue\ntrue\nfalse\n",
+			"true\n2\ntrue\ntrue\ntrue\ncopied content\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\nfalse\nfalse\ntrue\ntrue\nfalse\n",
 	},
 	{
 		name: "file API defaults temporary files to the working directory",

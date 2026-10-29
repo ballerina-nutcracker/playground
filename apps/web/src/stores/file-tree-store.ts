@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { useShallow } from "zustand/react/shallow";
 import { immer } from "zustand/middleware/immer";
+import { toast } from "sonner";
 
 import { LOCAL_ROOT } from "@/lib/fs/fs-roots";
 import { publishFileMutation } from "@/lib/fs/mutations";
@@ -25,6 +26,7 @@ export type ActiveFile = {
 	path: string;
 	content: string;
 	dirty: boolean;
+	deleted?: boolean;
 };
 
 export type FileOperationDialog = {
@@ -144,6 +146,10 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 			async saveFile() {
 				const { activeFile } = get();
 				if (!activeFile?.dirty) return false;
+				if (activeFile.deleted) {
+					toast.error("This file was deleted by the running program.");
+					return false;
+				}
 				const result = await _fs().writeFile(
 					activeFile.path,
 					activeFile.content,
@@ -229,7 +235,13 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 			},
 
 			clearLocalspace() {
+				const removedPaths = get().localTree.map(
+					(entry) => `${LOCAL_ROOT}/${entry.name}`,
+				);
 				_fs().clearLocalspace();
+				for (const path of removedPaths) {
+					publishFileMutation({ type: "remove", path });
+				}
 				set((s) => {
 					s.localTree = [];
 					s.expandedPaths = new Set(
@@ -360,17 +372,29 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 				const fs = _fs();
 				switch (mutation.type) {
 					case "writeFile": {
+						const existing = await fs.open(mutation.path);
+						const changed = existing?.content !== mutation.content;
 						const result = await fs.writeFile(mutation.path, mutation.content);
 						if (!result) {
 							throw new Error(`writeFile failed: ${mutation.path}`);
 						}
 						const dirs = ancestorDirPathsForFile(mutation.path);
+						let conflicted = false;
 						set((s) => {
 							for (const d of dirs) s.expandedPaths.add(d);
-							if (s.activeFile?.path === mutation.path && !s.activeFile.dirty) {
+							if (s.activeFile?.path !== mutation.path) return;
+							s.activeFile.deleted = false;
+							if (s.activeFile.dirty) {
+								conflicted = changed;
+							} else {
 								s.activeFile.content = mutation.content;
 							}
 						});
+						if (conflicted) {
+							toast.warning(
+								"The running program changed this file; saving will overwrite its changes.",
+							);
+						}
 						break;
 					}
 					case "mkdirAll": {
@@ -389,15 +413,27 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 					case "remove": {
 						const result = await fs.remove(mutation.path);
 						if (!result) throw new Error(`remove failed: ${mutation.path}`);
+						let preservedDraft = false;
 						set((s) => {
+							const activeFile = s.activeFile;
 							if (
-								s.activeFile &&
-								(s.activeFile.path === mutation.path ||
-									s.activeFile.path.startsWith(`${mutation.path}/`))
-							) {
+								!activeFile ||
+								(activeFile.path !== mutation.path &&
+									!activeFile.path.startsWith(`${mutation.path}/`))
+							)
+								return;
+							if (activeFile.dirty) {
+								activeFile.deleted = true;
+								preservedDraft = true;
+							} else {
 								s.activeFile = null;
 							}
 						});
+						if (preservedDraft) {
+							toast.warning(
+								"The running program deleted this file; its unsaved changes are still open.",
+							);
+						}
 						break;
 					}
 					case "move": {
@@ -408,12 +444,21 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 							);
 						}
 						set((s) => {
-							if (
-								s.activeFile &&
-								(s.activeFile.path === mutation.oldPath ||
-									s.activeFile.path.startsWith(`${mutation.oldPath}/`))
-							) {
-								s.activeFile.path = `${mutation.newPath}${s.activeFile.path.slice(mutation.oldPath.length)}`;
+							if (!s.activeFile) return;
+							const currentPath = s.activeFile.path;
+							let moved = false;
+							if (currentPath === mutation.oldPath) {
+								s.activeFile.path = mutation.newPath;
+								moved = true;
+							} else if (currentPath.startsWith(`${mutation.oldPath}/`)) {
+								s.activeFile.path =
+									mutation.newPath + currentPath.slice(mutation.oldPath.length);
+								moved = true;
+							}
+							if (moved) {
+								for (const path of ancestorDirPathsForFile(s.activeFile.path)) {
+									s.expandedPaths.add(path);
+								}
 							}
 						});
 						break;

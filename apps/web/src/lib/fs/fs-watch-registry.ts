@@ -6,15 +6,14 @@ export type FSWatchEvent =
 
 export type FSWatchCallback = (event: FSWatchEvent) => void | Promise<void>;
 
-export const WATCH_QUEUE_LIMIT = 256;
-
 type Subscription = {
 	path: string;
 	recursive: boolean;
 	callback: FSWatchCallback;
 	queue: FSWatchEvent[];
 	active: boolean;
-	failed: boolean;
+	accepting: boolean;
+	inCallback: boolean;
 	delivery?: Promise<void>;
 };
 
@@ -51,35 +50,28 @@ export class FSWatchRegistry {
 			callback,
 			queue: [],
 			active: true,
-			failed: false,
+			accepting: true,
+			inCallback: false,
 		});
 		return id;
 	}
 
 	publish(event: Exclude<FSWatchEvent, { error: string }>): void {
 		for (const subscription of this.subscriptions.values()) {
-			if (!subscription.active || subscription.failed) continue;
+			if (!subscription.active || !subscription.accepting) continue;
 			if (event.op === "delete" && event.path === subscription.path) {
-				this.fail(subscription, "Watched directory was removed");
+				subscription.accepting = false;
+				subscription.queue.push(event);
+				this.deliver(subscription);
 			} else if (
 				subscription.recursive
 					? isDescendant(event.path, subscription.path)
 					: cleanFSPath(dirname(event.path)) === subscription.path
 			) {
-				if (subscription.queue.length >= WATCH_QUEUE_LIMIT) {
-					this.fail(subscription, "Directory watch event queue overflow");
-				} else {
-					subscription.queue.push(event);
-					this.deliver(subscription);
-				}
+				subscription.queue.push(event);
+				this.deliver(subscription);
 			}
 		}
-	}
-
-	private fail(subscription: Subscription, error: string): void {
-		subscription.failed = true;
-		subscription.queue = [{ error }];
-		this.deliver(subscription);
 	}
 
 	private deliver(subscription: Subscription): void {
@@ -88,7 +80,15 @@ export class FSWatchRegistry {
 			.then(async () => {
 				while (subscription.active && subscription.queue.length) {
 					const event = subscription.queue.shift();
-					if (event) await subscription.callback(event);
+					if (!event) continue;
+					subscription.inCallback = true;
+					let callbackResult: void | Promise<void>;
+					try {
+						callbackResult = subscription.callback(event);
+					} finally {
+						subscription.inCallback = false;
+					}
+					await callbackResult;
 				}
 			})
 			.catch(() => {
@@ -103,13 +103,19 @@ export class FSWatchRegistry {
 			});
 	}
 
-	async unwatch(id: string): Promise<void> {
+	unwatch(id: string): Promise<void> {
 		const subscription = this.subscriptions.get(id);
-		if (!subscription) return;
+		if (!subscription) return Promise.resolve();
 		subscription.active = false;
+		subscription.accepting = false;
 		subscription.queue = [];
-		await subscription.delivery;
-		this.subscriptions.delete(id);
+		if (subscription.inCallback) {
+			this.subscriptions.delete(id);
+			return Promise.resolve();
+		}
+		return (subscription.delivery ?? Promise.resolve()).then(() => {
+			this.subscriptions.delete(id);
+		});
 	}
 
 	dispose(): void {
