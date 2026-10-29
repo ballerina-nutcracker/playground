@@ -8,7 +8,9 @@ import (
 	"maps"
 	"net"
 	"path"
+	"strings"
 	"sync"
+	"syscall"
 	"time"
 	"uuid"
 
@@ -122,6 +124,9 @@ func absolutePath(cwd, p string) string {
 	if path.IsAbs(p) {
 		return p
 	}
+	if p == "" {
+		return cwd
+	}
 	if cwd == "/" {
 		return "/" + p
 	}
@@ -144,15 +149,19 @@ func wasmFileInfo(fsys *bridgeFS, p string) (*pal.FileInfo, error) {
 }
 
 func copyWasmPath(fsys *bridgeFS, src, dst string, opts pal.CopyOptions) error {
-	if src == dst {
-		return nil
-	}
-
 	info, err := fs.Stat(fsys, src)
 	if err != nil {
 		return err
 	}
+	if src == dst {
+		return nil
+	}
 	if info.IsDir() {
+		cleanSrc := path.Clean(src)
+		cleanDst := path.Clean(dst)
+		if cleanSrc != cleanDst && strings.HasPrefix(cleanDst, strings.TrimSuffix(cleanSrc, "/")+"/") {
+			return &fs.PathError{Op: "copy", Path: dst, Err: fs.ErrInvalid}
+		}
 		if dstInfo, err := fs.Stat(fsys, dst); err == nil && !dstInfo.IsDir() {
 			return &fs.PathError{Op: "copy", Path: dst, Err: fs.ErrInvalid}
 		}
@@ -193,8 +202,14 @@ func copyWasmPath(fsys *bridgeFS, src, dst string, opts pal.CopyOptions) error {
 }
 
 func createWasmTemp(fsys *bridgeFS, cwd, prefix, suffix, dir string, isDir bool) (string, error) {
+	if strings.Contains(prefix, "/") || strings.Contains(suffix, "/") {
+		return "", &fs.PathError{Op: "createTemp", Path: dir, Err: fs.ErrInvalid}
+	}
 	if dir == "" {
-		dir = "/tmp"
+		// The browser snapshot need not contain the host's default /tmp. The
+		// working directory is always mounted and provides an isolated run-local
+		// location for temporary files.
+		dir = cwd
 	}
 	resolvedDir := resolvePath(cwd, dir)
 	info, err := fs.Stat(fsys, resolvedDir)
@@ -327,12 +342,15 @@ func wasmPal(fsys *bridgeFS, cwd string, stderr, stdout io.Writer, signals pal.S
 						return err
 					}
 					if len(entries) > 0 {
-						return &fs.PathError{Op: "remove", Path: resolved, Err: fs.ErrInvalid}
+						return &fs.PathError{Op: "remove", Path: resolved, Err: syscall.ENOTEMPTY}
 					}
 				}
 				return fsys.Remove(resolved)
 			},
 			RemoveAll: func(p string) error {
+				fsys.mu.Lock()
+				defer fsys.mu.Unlock()
+
 				resolved := resolvePath(cwd, p)
 				if _, err := fs.Stat(fsys, resolved); errors.Is(err, fs.ErrNotExist) {
 					return nil
