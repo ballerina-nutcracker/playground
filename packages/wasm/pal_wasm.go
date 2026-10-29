@@ -1,10 +1,12 @@
 package main
 
 import (
+	"context"
 	"errors"
 	"io"
 	"io/fs"
 	"maps"
+	"net"
 	"path"
 	"sync"
 	"time"
@@ -12,7 +14,10 @@ import (
 	"github.com/ballerina-nutcracker/ballerina/platform/pal"
 )
 
-var processStart = time.Now()
+var (
+	processStart              = time.Now()
+	errRawNetworkNotSupported = errors.New("Network sockets are not supported in Playground")
+)
 
 func resolvePath(cwd string, p string) string {
 	if path.IsAbs(p) {
@@ -193,6 +198,23 @@ func wasmPal(fsys *bridgeFS, cwd string, stderr, stdout io.Writer, signals pal.S
 				return &fetchHTTPClient{cfg: cfg}, nil
 			},
 			Listen: listen,
+		},
+		Net: pal.Net{
+			Dial: func(_ context.Context, _, _, _ string, _ *pal.TLSConfig) (net.Conn, error) {
+				return nil, errRawNetworkNotSupported
+			},
+			Listen: func(_, _ string, _ *pal.ServerTLSConfig) (net.Listener, error) {
+				return nil, errRawNetworkNotSupported
+			},
+			DialPacket: func(_ context.Context, _, _, _ string) (net.Conn, error) {
+				return nil, errRawNetworkNotSupported
+			},
+			ListenPacket: func(_, _ string) (net.PacketConn, error) {
+				return nil, errRawNetworkNotSupported
+			},
+			ResolvePacketAddr: func(_, _ string) (net.Addr, error) {
+				return nil, errRawNetworkNotSupported
+			},
 		},
 		Signals: signals,
 	}
