@@ -91,6 +91,14 @@ const testCases: TestCase[] = [
 		expectedStdout: "true\ntrue\n",
 	},
 	{
+		name: "file API",
+		files: async () =>
+			new Map([["/tmp/main.bal", await load("./fixtures/file-api.bal")]]),
+		entryPoint: "/tmp/main.bal",
+		expectedStdout:
+			"true\n2\ntrue\ntrue\ntrue\ntrue\nfalse\nfalse\ntrue\ntrue\nfalse\n",
+	},
+	{
 		name: "os env",
 		files: async () =>
 			new Map([["/tmp/main.bal", await load("./fixtures/os-env.bal")]]),
