@@ -1,6 +1,7 @@
 import { beforeAll, expect, test } from "bun:test";
 
 import { createFs } from "./test-fs";
+import { SnapshotFS } from "../src/lib/fs/snapshot";
 import "../src/wasm_exec";
 
 import type { RunEvent } from "../src/workers/ballerina-worker-api";
@@ -21,14 +22,18 @@ async function runBallerina(
 	files: Map<string, string>,
 	entryPoint: string,
 ): Promise<{ stdout: string; stderr: string }> {
-	const fs = createFs(files);
+	const fs = await SnapshotFS.from(createFs(files), "/");
 	const output = { stdout: "", stderr: "" };
 	const onEvent = (event: RunEvent) => {
 		if (event.type === "output") output[event.stream] += event.text;
 	};
 
-	await globalThis.run(fs, entryPoint, onEvent);
-	return output;
+	try {
+		await globalThis.run(fs, entryPoint, onEvent);
+		return output;
+	} finally {
+		fs.dispose();
+	}
 }
 
 beforeAll(async () => {
@@ -128,6 +133,44 @@ const testCases: TestCase[] = [
 			"error: Can't connect to remote host: Network sockets are not supported in Playground\n",
 	},
 ];
+
+test("directory listener handles reentrant writes, self-stop, and a fresh run", async () => {
+	const source = await load("../../../e2e/fixtures/directory-listener.bal");
+	const runtime = globalThis as typeof globalThis & {
+		sendStopSignal(): boolean;
+	};
+	for (let attempt = 0; attempt < 2; attempt++) {
+		const fs = await SnapshotFS.from(
+			createFs(new Map([["/tmp/main.bal", source]])),
+			"/",
+		);
+		let stdout = "";
+		let stderr = "";
+		const ready = Promise.withResolvers<void>();
+		const run = globalThis.run(fs, "/tmp/main.bal", (event: RunEvent) => {
+			if (event.type !== "output") return;
+			if (event.stream === "stdout") stdout += event.text;
+			else stderr += event.text;
+			if (stdout.includes("watch stopped\n")) ready.resolve();
+		});
+		try {
+			await Promise.race([
+				ready.promise,
+				run.then(() => {
+					throw new Error(`Run exited before watch events: ${stderr}`);
+				}),
+			]);
+			expect(stdout).toBe(
+				"create:item.txt\nmodify:item.txt\ndelete:item.txt\ncreate:renamed.txt\nwatch stopped\n",
+			);
+			expect(stderr).toBe("");
+		} finally {
+			runtime.sendStopSignal();
+			await run;
+			fs.dispose();
+		}
+	}
+}, 20_000);
 
 for (const tc of testCases) {
 	test(tc.name, async () => {
