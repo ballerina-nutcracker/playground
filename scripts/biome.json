@@ -1,7 +1,0 @@
-{
-	"root": false,
-	"extends": "//",
-	"files": {
-		"includes": ["**", "!build_skills.mjs"]
-	}
-}

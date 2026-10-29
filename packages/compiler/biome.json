@@ -2,6 +2,6 @@
 	"root": false,
 	"extends": "//",
 	"files": {
-		"includes": ["!**"]
+		"includes": ["**", "!testdata"]
 	}
 }

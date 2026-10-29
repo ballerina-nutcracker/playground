@@ -9,10 +9,7 @@
 			"!src/assets/**/*",
 			"!src/wasm_exec.js",
 			"!src/types/wasm-types.d.ts",
-			"!**/routeTree.gen.ts",
-			"!src/components/bal-bot/*",
-			"!tests/bal-bot",
-			"src/components/bal-bot/bal-bot-view.tsx"
+			"!**/routeTree.gen.ts"
 		]
 	},
 	"css": {

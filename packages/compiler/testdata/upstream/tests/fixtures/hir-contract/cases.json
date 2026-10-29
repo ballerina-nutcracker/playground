@@ -24,11 +24,6 @@
       "accept": false
     },
     {
-      "name": "conditional-port-active-binding-target",
-      "file": "conditional-port-active-binding-target.json",
-      "accept": false
-    },
-    {
       "name": "conditional-port-missing-emission",
       "file": "conditional-port-missing-emission.json",
       "accept": false
@@ -626,11 +621,6 @@
     {
       "name": "root-connect-dangling-port",
       "file": "root-connect-dangling-port.json",
-      "accept": false
-    },
-    {
-      "name": "null-reference-collapsed-interfaces",
-      "file": "null-reference-collapsed-interfaces.json",
       "accept": false
     },
     {

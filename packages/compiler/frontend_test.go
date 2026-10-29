@@ -14,7 +14,7 @@ import (
 func exampleFiles(t *testing.T, name string) Files {
 	t.Helper()
 	files := Files{}
-	root := filepath.Join("testdata/upstream/examples", name)
+	root := filepath.Join(hirProjectsRoot, "example-"+name, "source")
 	err := filepath.WalkDir(root, func(path string, entry fs.DirEntry, err error) error {
 		if err != nil {
 			return err
