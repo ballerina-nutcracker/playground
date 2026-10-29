@@ -2,8 +2,7 @@
 ===========
 
 Copied from https://github.com/heshanpadmasiri/bal-bot (packages/compiler)
-at commit aee88c17, with the changes listed under "Patches" below. All
-other files are byte-identical to that commit.
+at commit aee88c17, with the changes listed under "Patches" below.
 
 Upstream license (MIT):
 
@@ -48,5 +47,9 @@ Patches
   `testdata/upstream/tests/fixtures` and `../src/protocol.ts`. Not copied:
   tests/browser (Playwright), tests/native (Go main harness).
 - package.json: `test` runs the Go tests and the node:test suites via bun.
+- src/, tests/ and package.json: formatted with this repository's Biome
+  configuration, and Biome lint findings fixed (non-null assertions replaced
+  with checked lookups, `forEach` callbacks rewritten as loops). testdata/ is
+  excluded from Biome and stays verbatim.
 
 Other files added by this repository: NOTICE, biome.json.

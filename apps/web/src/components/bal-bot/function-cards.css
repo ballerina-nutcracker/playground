@@ -1,12 +1,82 @@
-.bal-bot-root .function-workspace-scroll { flex: 1; min-height: 0; overflow: auto; }
-.bal-bot-root .function-workspace { position: relative; padding: 2px; }
-.bal-bot-root .function-main { width: 440px; min-height: 600px; background: white; border: 2px solid transparent; border-radius: 10px; }
-.bal-bot-root .function-card { position: absolute; display: flex; flex-direction: column; width: 440px; max-height: 590px; background: white; border: 2px solid #d0d7e2; border-radius: 10px; box-shadow: 0 8px 26px #182d4924; overflow: hidden; }
-.bal-bot-root .function-card .flow-view { flex: 0 1 auto; }
-.bal-bot-root .function-card-handle { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: #edf5fd; cursor: grab; touch-action: none; user-select: none; font-weight: 600; flex: none; }
-.bal-bot-root .function-card-handle button { border: 0; background: transparent; font-size: 22px; cursor: pointer; }
-.bal-bot-root .function-highlighted { border-color: #3578d4; box-shadow: 0 0 0 3px #3578d433; }
-.bal-bot-root .function-call-name { display: inline; border: 0; padding: 0; background: transparent; color: #245fa5; text-decoration: underline; font: inherit; cursor: pointer; }
-.bal-bot-root .function-call-name:disabled { color: inherit; cursor: help; text-decoration: underline dotted; }
-.bal-bot-root .call-label { word-break: break-all; }
-.bal-bot-root .statement-reference { position: absolute; right: 0; top: 0; border: 0; padding: 0 2px; background: transparent; color: #586885; font: inherit; cursor: pointer; }
+.bal-bot-root .function-workspace-scroll {
+	flex: 1;
+	min-height: 0;
+	overflow: auto;
+}
+.bal-bot-root .function-workspace {
+	position: relative;
+	padding: 2px;
+}
+.bal-bot-root .function-main {
+	width: 440px;
+	min-height: 600px;
+	background: white;
+	border: 2px solid transparent;
+	border-radius: 10px;
+}
+.bal-bot-root .function-card {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	width: 440px;
+	max-height: 590px;
+	background: white;
+	border: 2px solid #d0d7e2;
+	border-radius: 10px;
+	box-shadow: 0 8px 26px #182d4924;
+	overflow: hidden;
+}
+.bal-bot-root .function-card .flow-view {
+	flex: 0 1 auto;
+}
+.bal-bot-root .function-card-handle {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 14px;
+	background: #edf5fd;
+	cursor: grab;
+	touch-action: none;
+	user-select: none;
+	font-weight: 600;
+	flex: none;
+}
+.bal-bot-root .function-card-handle button {
+	border: 0;
+	background: transparent;
+	font-size: 22px;
+	cursor: pointer;
+}
+.bal-bot-root .function-highlighted {
+	border-color: #3578d4;
+	box-shadow: 0 0 0 3px #3578d433;
+}
+.bal-bot-root .function-call-name {
+	display: inline;
+	border: 0;
+	padding: 0;
+	background: transparent;
+	color: #245fa5;
+	text-decoration: underline;
+	font: inherit;
+	cursor: pointer;
+}
+.bal-bot-root .function-call-name:disabled {
+	color: inherit;
+	cursor: help;
+	text-decoration: underline dotted;
+}
+.bal-bot-root .call-label {
+	word-break: break-all;
+}
+.bal-bot-root .statement-reference {
+	position: absolute;
+	right: 0;
+	top: 0;
+	border: 0;
+	padding: 0 2px;
+	background: transparent;
+	color: #586885;
+	font: inherit;
+	cursor: pointer;
+}

@@ -2,8 +2,7 @@
 ===========
 
 Copied from https://github.com/heshanpadmasiri/bal-bot (packages/browser-workspace)
-at commit aee88c17, with the changes listed under "Patches" below. All
-other files are byte-identical to that commit.
+at commit aee88c17, with the changes listed under "Patches" below.
 
 Upstream license (MIT):
 
@@ -37,5 +36,9 @@ Patches
   instead of `initialFiles`) and `BrowserWorkspace.dispose()` (aborts analysis
   and agents, clears listeners, blocks new analysis; idempotent).
 - tests/files-dispose.test.mjs: new tests for the two additions above.
+- All source, test, CSS and JSON files: formatted with this repository's Biome
+  configuration, and Biome lint findings fixed (non-null assertions replaced
+  with checked lookups, explicit button types, accessibility fixes, and
+  justified `biome-ignore` comments where the rule does not apply).
 
-Other files added by this repository: NOTICE, biome.json.
+Other files added by this repository: NOTICE.

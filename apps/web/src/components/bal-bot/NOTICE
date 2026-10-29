@@ -32,8 +32,7 @@ Patches
 - editor.tsx, accounts.tsx, file-tree.tsx: restyled with the playground's
   Tailwind tokens and `@/components/ui` Button/Input/Textarea. Only JSX
   markup and classNames changed (plus the three imports); state, effects and
-  handlers are unchanged. All other copied .ts/.tsx files are byte-identical
-  to upstream and compile unchanged under the strict tsconfig.app.json.
+  handlers are unchanged.
 - function-cards.css: every selector prefixed with `.bal-bot-root`.
 - bal-bot.css: extracted from upstream style.css: only flow, floating-chat,
   workspace-layout, anchor-activity and chat-markdown rules are kept, every
@@ -49,5 +48,9 @@ Patches
   and packages/compiler/testdata/upstream. Skipped: hir-type-cast-render and
   post-baseline/template-rendering (need Playwright/Chromium), browser harness
   HTML/tsx files.
+- All copied source, test, CSS and JSON files: formatted with this repository's Biome
+  configuration, and Biome lint findings fixed (non-null assertions replaced
+  with checked lookups, explicit button types, accessibility fixes, and
+  justified `biome-ignore` comments where the rule does not apply).
 
 Files added by this repository: NOTICE, bal-bot-view.tsx.

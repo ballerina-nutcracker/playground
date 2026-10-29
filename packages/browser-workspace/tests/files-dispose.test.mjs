@@ -11,7 +11,7 @@ const streamFn = () => {
 
 test("injected files replace the default project and reach the compiler", async () => {
 	const files = {
-		"Ballerina.toml": "[package]\nname = \"demo\"\n",
+		"Ballerina.toml": '[package]\nname = "demo"\n',
 		"main.bal": "public function main() {}\n",
 		"modules/util/util.bal": "public function f() {}\n",
 	};
