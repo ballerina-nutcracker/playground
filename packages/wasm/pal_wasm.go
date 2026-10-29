@@ -1,7 +1,7 @@
 package main
 
 import (
-	"ballerina/platform/pal"
+	"github.com/ballerina-nutcracker/ballerina/platform/pal"
 	"errors"
 	"io"
 	"io/fs"
@@ -130,8 +130,8 @@ func wasmPal(fsys *bridgeFS, cwd string, stderr, stdout io.Writer, signals pal.S
 			MonotonicNow: func() time.Duration { return time.Since(processStart) },
 		},
 		HTTP: pal.HTTP{
-			NewClient: func(cfg pal.ClientConfig) pal.HTTPClient {
-				return &fetchHTTPClient{cfg: cfg}
+			NewClient: func(cfg pal.ClientConfig) (pal.HTTPClient, error) {
+				return &fetchHTTPClient{cfg: cfg}, nil
 			},
 			Listen: listen,
 		},

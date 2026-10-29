@@ -1,0 +1,18 @@
+[
+  {
+    "severity": "error",
+    "code": "SEMANTIC_ERROR",
+    "message": "expect numeric, string, or xml types for +",
+    "file": "main.bal",
+    "range": {
+      "start": {
+        "line": 2,
+        "column": 18
+      },
+      "end": {
+        "line": 2,
+        "column": 26
+      }
+    }
+  }
+]

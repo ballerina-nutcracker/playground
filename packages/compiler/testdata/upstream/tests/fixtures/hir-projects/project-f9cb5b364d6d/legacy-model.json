@@ -1,0 +1,546 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 2
+          },
+          "end": {
+            "line": 7,
+            "column": 3
+          }
+        }
+      },
+      "text": "public function main() returns error? {\n   int|error captured = trap checkpanic risky();\n   int checked = check (trap risky());\n   string message = string `value ${check risky()}`;\n _ = captured; _ = checked; _ = message;\n }",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "browser/http_service",
+      "serviceType": null,
+      "functionId": "browser/http_service/function/main"
+    }
+  ],
+  "functions": {
+    "browser/http_service/function/main": {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 2
+          },
+          "end": {
+            "line": 7,
+            "column": 3
+          }
+        }
+      },
+      "text": "public function main() returns error? {\n   int|error captured = trap checkpanic risky();\n   int checked = check (trap risky());\n   string message = string `value ${check risky()}`;\n _ = captured; _ = checked; _ = message;\n }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main() returns error?",
+        "parameters": [],
+        "returnType": "error?"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 4
+              },
+              "end": {
+                "line": 3,
+                "column": 49
+              }
+            }
+          },
+          "text": "int|error captured = trap checkpanic risky();",
+          "evaluation": {
+            "id": "browser/http_service/function/main/statement/0/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 3,
+                  "column": 25
+                },
+                "end": {
+                  "line": 3,
+                  "column": 48
+                }
+              }
+            },
+            "text": "trap checkpanic risky()",
+            "kind": "trap",
+            "children": [
+              {
+                "id": "browser/http_service/function/main/statement/0/value/part/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 3,
+                      "column": 30
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 48
+                    }
+                  }
+                },
+                "text": "checkpanic risky()",
+                "kind": "checkpanic",
+                "children": [
+                  {
+                    "id": "browser/http_service/function/main/statement/0/value/part/0/part/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 3,
+                          "column": 41
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 48
+                        }
+                      }
+                    },
+                    "text": "risky()",
+                    "kind": "call",
+                    "children": [],
+                    "call": {
+                      "id": "browser/http_service/function/main/statement/0/call/0",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 3,
+                            "column": 41
+                          },
+                          "end": {
+                            "line": 3,
+                            "column": 48
+                          }
+                        }
+                      },
+                      "text": "risky()",
+                      "target": {
+                        "kind": "workspace",
+                        "functionId": "browser/http_service/function/risky"
+                      },
+                      "expansion": "supported"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "binding": "int|error captured",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/function/main/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 3,
+                    "column": 41
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 48
+                  }
+                }
+              },
+              "text": "risky()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/function/risky"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/function/main/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 4
+              },
+              "end": {
+                "line": 4,
+                "column": 39
+              }
+            }
+          },
+          "text": "int checked = check (trap risky());",
+          "evaluation": {
+            "id": "browser/http_service/function/main/statement/1/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 4,
+                  "column": 18
+                },
+                "end": {
+                  "line": 4,
+                  "column": 38
+                }
+              }
+            },
+            "text": "check (trap risky())",
+            "kind": "check",
+            "children": [
+              {
+                "id": "browser/http_service/function/main/statement/1/value/part/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 4,
+                      "column": 25
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 37
+                    }
+                  }
+                },
+                "text": "trap risky()",
+                "kind": "trap",
+                "children": [
+                  {
+                    "id": "browser/http_service/function/main/statement/1/value/part/0/part/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 4,
+                          "column": 30
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 37
+                        }
+                      }
+                    },
+                    "text": "risky()",
+                    "kind": "call",
+                    "children": [],
+                    "call": {
+                      "id": "browser/http_service/function/main/statement/1/call/0",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 4,
+                            "column": 30
+                          },
+                          "end": {
+                            "line": 4,
+                            "column": 37
+                          }
+                        }
+                      },
+                      "text": "risky()",
+                      "target": {
+                        "kind": "workspace",
+                        "functionId": "browser/http_service/function/risky"
+                      },
+                      "expansion": "supported"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "binding": "int checked",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/function/main/statement/1/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 4,
+                    "column": 30
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 37
+                  }
+                }
+              },
+              "text": "risky()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/function/risky"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/function/main/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 5,
+                "column": 4
+              },
+              "end": {
+                "line": 5,
+                "column": 53
+              }
+            }
+          },
+          "text": "string message = string `value ${check risky()}`;",
+          "evaluation": {
+            "id": "browser/http_service/function/main/statement/2/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 5,
+                  "column": 21
+                },
+                "end": {
+                  "line": 5,
+                  "column": 52
+                }
+              }
+            },
+            "text": "string `value ${check risky()}`",
+            "kind": "template",
+            "children": [
+              {
+                "id": "browser/http_service/function/main/statement/2/value/insertion/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 5,
+                      "column": 37
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 50
+                    }
+                  }
+                },
+                "text": "check risky()",
+                "kind": "check",
+                "children": [
+                  {
+                    "id": "browser/http_service/function/main/statement/2/value/insertion/0/part/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 5,
+                          "column": 43
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 50
+                        }
+                      }
+                    },
+                    "text": "risky()",
+                    "kind": "call",
+                    "children": [],
+                    "call": {
+                      "id": "browser/http_service/function/main/statement/2/call/0",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 5,
+                            "column": 43
+                          },
+                          "end": {
+                            "line": 5,
+                            "column": 50
+                          }
+                        }
+                      },
+                      "text": "risky()",
+                      "target": {
+                        "kind": "workspace",
+                        "functionId": "browser/http_service/function/risky"
+                      },
+                      "expansion": "supported"
+                    }
+                  }
+                ]
+              }
+            ],
+            "strings": [
+              "value ",
+              ""
+            ]
+          },
+          "binding": "string message",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/function/main/statement/2/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 5,
+                    "column": 43
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 50
+                  }
+                }
+              },
+              "text": "risky()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/function/risky"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/function/main/statement/3",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 6,
+                "column": 2
+              },
+              "end": {
+                "line": 6,
+                "column": 15
+              }
+            }
+          },
+          "text": "_ = captured;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "browser/http_service/function/main/statement/4",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 6,
+                "column": 16
+              },
+              "end": {
+                "line": 6,
+                "column": 28
+              }
+            }
+          },
+          "text": "_ = checked;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "browser/http_service/function/main/statement/5",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 6,
+                "column": 29
+              },
+              "end": {
+                "line": 6,
+                "column": 41
+              }
+            }
+          },
+          "text": "_ = message;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        }
+      ]
+    },
+    "browser/http_service/function/risky": {
+      "id": "browser/http_service/function/risky",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 49
+          }
+        }
+      },
+      "text": "function risky() returns int|error { return 1; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "risky",
+        "signature": "function risky() returns int|error",
+        "parameters": [],
+        "returnType": "int|error"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/risky/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 38
+              },
+              "end": {
+                "line": 1,
+                "column": 47
+              }
+            }
+          },
+          "text": "return 1;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

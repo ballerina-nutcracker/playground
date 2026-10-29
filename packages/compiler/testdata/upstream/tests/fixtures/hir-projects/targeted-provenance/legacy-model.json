@@ -1,0 +1,1448 @@
+{
+  "scopes": [
+    {
+      "id": "corpus/provenance/service/main.bal//api/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 22,
+            "column": 1
+          },
+          "end": {
+            "line": 24,
+            "column": 2
+          }
+        }
+      },
+      "text": "service /api on new http:Listener(8080) {\n    resource function get items/[string id]() returns string =\u003e id;\n}",
+      "kind": "service",
+      "title": "/api",
+      "moduleId": "corpus/provenance",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [
+        {
+          "id": "corpus/provenance/service/main.bal//api/1/resource/get/items/[string id]",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 23,
+                "column": 5
+              },
+              "end": {
+                "line": 23,
+                "column": 68
+              }
+            }
+          },
+          "text": "resource function get items/[string id]() returns string =\u003e id;",
+          "kind": "resource",
+          "title": "get /api/items/[string id]",
+          "functionId": "corpus/provenance/service/main.bal//api/1/resource/get/items/[string id]"
+        }
+      ],
+      "definitions": [
+        {
+          "id": "corpus/provenance/function/index",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 9,
+                "column": 1
+              },
+              "end": {
+                "line": 9,
+                "column": 35
+              }
+            }
+          },
+          "text": "function index() returns int =\u003e 0;",
+          "kind": "function",
+          "label": "index",
+          "functionId": "corpus/provenance/function/index"
+        },
+        {
+          "id": "corpus/provenance/function/identity",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 10,
+                "column": 1
+              },
+              "end": {
+                "line": 10,
+                "column": 57
+              }
+            }
+          },
+          "text": "function identity(string value) returns string =\u003e value;",
+          "kind": "function",
+          "label": "identity",
+          "functionId": "corpus/provenance/function/identity"
+        },
+        {
+          "id": "corpus/provenance/function/fill",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 11,
+                "column": 1
+              },
+              "end": {
+                "line": 13,
+                "column": 2
+              }
+            }
+          },
+          "text": "function fill(Queue queue, string[] values) returns error? {\n    values[index()] = check queue-\u003eread(topic = identity(\"orders\"));\n}",
+          "kind": "function",
+          "label": "fill",
+          "functionId": "corpus/provenance/function/fill"
+        },
+        {
+          "id": "corpus/provenance/function/fetch",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 14,
+                "column": 1
+              },
+              "end": {
+                "line": 16,
+                "column": 2
+              }
+            }
+          },
+          "text": "function fetch(Queue caller) returns string|error {\n    return check caller-\u003e/items/[identity(\"café🚀\")].get();\n}",
+          "kind": "function",
+          "label": "fetch",
+          "functionId": "corpus/provenance/function/fetch"
+        },
+        {
+          "id": "corpus/provenance/function/main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 17,
+                "column": 1
+              },
+              "end": {
+                "line": 21,
+                "column": 2
+              }
+            }
+          },
+          "text": "public function main() {\n    Queue queue = new (identity(\"broker\"), port = index());\n    string text = queue.label(value = \"සිංහල\");\n    _ = text;\n}",
+          "kind": "function",
+          "label": "main",
+          "functionId": "corpus/provenance/function/main"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "corpus/provenance/class/Queue/method/$remote$read": {
+      "id": "corpus/provenance/class/Queue/method/$remote$read",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 5
+          },
+          "end": {
+            "line": 5,
+            "column": 87
+          }
+        }
+      },
+      "text": "remote function read(string topic = \"jobs\") returns string|error { return topic; }",
+      "moduleId": "corpus/provenance",
+      "entry": {
+        "kind": "remote",
+        "name": "Queue.read",
+        "signature": "remote function read(string topic = \"jobs\") returns string|error",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "string topic = \"jobs\""
+          }
+        ],
+        "returnType": "string|error"
+      },
+      "body": [
+        {
+          "id": "corpus/provenance/class/Queue/method/$remote$read/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 5,
+                "column": 72
+              },
+              "end": {
+                "line": 5,
+                "column": 85
+              }
+            }
+          },
+          "text": "return topic;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "corpus/provenance/class/Queue/method/label": {
+      "id": "corpus/provenance/class/Queue/method/label",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 6,
+            "column": 5
+          },
+          "end": {
+            "line": 6,
+            "column": 58
+          }
+        }
+      },
+      "text": "function label(string value) returns string =\u003e value;",
+      "moduleId": "corpus/provenance",
+      "entry": {
+        "kind": "method",
+        "name": "Queue.label",
+        "signature": "function label(string value) returns string",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "string value"
+          }
+        ],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "corpus/provenance/class/Queue/method/label/expression",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 6,
+                "column": 52
+              },
+              "end": {
+                "line": 6,
+                "column": 57
+              }
+            }
+          },
+          "text": "value",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "corpus/provenance/class/Queue/resource/get/items/[string id]": {
+      "id": "corpus/provenance/class/Queue/resource/get/items/[string id]",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 7,
+            "column": 5
+          },
+          "end": {
+            "line": 7,
+            "column": 68
+          }
+        }
+      },
+      "text": "resource function get items/[string id]() returns string =\u003e id;",
+      "moduleId": "corpus/provenance",
+      "entry": {
+        "kind": "resource",
+        "name": "get /items/[string id]",
+        "signature": "resource function get items/[string id]() returns string",
+        "parameters": [
+          {
+            "kind": "path",
+            "text": "[string id]"
+          }
+        ],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "corpus/provenance/class/Queue/resource/get/items/[string id]/expression",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 7,
+                "column": 65
+              },
+              "end": {
+                "line": 7,
+                "column": 67
+              }
+            }
+          },
+          "text": "id",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "corpus/provenance/function/fetch": {
+      "id": "corpus/provenance/function/fetch",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 14,
+            "column": 1
+          },
+          "end": {
+            "line": 16,
+            "column": 2
+          }
+        }
+      },
+      "text": "function fetch(Queue caller) returns string|error {\n    return check caller-\u003e/items/[identity(\"café🚀\")].get();\n}",
+      "moduleId": "corpus/provenance",
+      "entry": {
+        "kind": "function",
+        "name": "fetch",
+        "signature": "function fetch(Queue caller) returns string|error",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "Queue caller"
+          }
+        ],
+        "returnType": "string|error"
+      },
+      "body": [
+        {
+          "id": "corpus/provenance/function/fetch/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 15,
+                "column": 5
+              },
+              "end": {
+                "line": 15,
+                "column": 59
+              }
+            }
+          },
+          "text": "return check caller-\u003e/items/[identity(\"café🚀\")].get();",
+          "evaluation": {
+            "id": "corpus/provenance/function/fetch/statement/0/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 15,
+                  "column": 12
+                },
+                "end": {
+                  "line": 15,
+                  "column": 58
+                }
+              }
+            },
+            "text": "check caller-\u003e/items/[identity(\"café🚀\")].get()",
+            "kind": "check",
+            "children": [
+              {
+                "id": "corpus/provenance/function/fetch/statement/0/value/part/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 15,
+                      "column": 18
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 58
+                    }
+                  }
+                },
+                "text": "caller-\u003e/items/[identity(\"café🚀\")].get()",
+                "kind": "call",
+                "children": [
+                  {
+                    "id": "corpus/provenance/function/fetch/statement/0/value/part/0/part/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 15,
+                          "column": 34
+                        },
+                        "end": {
+                          "line": 15,
+                          "column": 51
+                        }
+                      }
+                    },
+                    "text": "identity(\"café🚀\")",
+                    "kind": "call",
+                    "children": [],
+                    "call": {
+                      "id": "corpus/provenance/function/fetch/statement/0/call/0",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 15,
+                            "column": 34
+                          },
+                          "end": {
+                            "line": 15,
+                            "column": 51
+                          }
+                        }
+                      },
+                      "text": "identity(\"café🚀\")",
+                      "target": {
+                        "kind": "workspace",
+                        "functionId": "corpus/provenance/function/identity"
+                      },
+                      "expansion": "unavailable",
+                      "reason": "Expansion in this expression evaluation is not modeled."
+                    }
+                  }
+                ],
+                "call": {
+                  "id": "corpus/provenance/function/fetch/statement/0/call/1",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 15,
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 58
+                      }
+                    }
+                  },
+                  "text": "caller-\u003e/items/[identity(\"café🚀\")].get()",
+                  "client": {
+                    "context": {
+                      "receiver": {
+                        "id": "corpus/provenance/function/fetch/statement/0/call/1/receiver",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 15,
+                              "column": 18
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 24
+                            }
+                          }
+                        },
+                        "text": "caller"
+                      },
+                      "type": "Queue",
+                      "origin": "parameter"
+                    },
+                    "method": "-\u003e/items/[identity(\"café🚀\")].get()",
+                    "arguments": []
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "corpus/provenance/class/Queue/resource/get/items/[string id]"
+                  },
+                  "expansion": "unavailable",
+                  "reason": "Expansion in this expression evaluation is not modeled."
+                }
+              }
+            ]
+          },
+          "kind": "return",
+          "calls": [
+            {
+              "id": "corpus/provenance/function/fetch/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 15,
+                    "column": 34
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 51
+                  }
+                }
+              },
+              "text": "identity(\"café🚀\")",
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/provenance/function/identity"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            },
+            {
+              "id": "corpus/provenance/function/fetch/statement/0/call/1",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 15,
+                    "column": 18
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 58
+                  }
+                }
+              },
+              "text": "caller-\u003e/items/[identity(\"café🚀\")].get()",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "corpus/provenance/function/fetch/statement/0/call/1/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 15,
+                          "column": 18
+                        },
+                        "end": {
+                          "line": 15,
+                          "column": 24
+                        }
+                      }
+                    },
+                    "text": "caller"
+                  },
+                  "type": "Queue",
+                  "origin": "parameter"
+                },
+                "method": "-\u003e/items/[identity(\"café🚀\")].get()",
+                "arguments": []
+              },
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/provenance/class/Queue/resource/get/items/[string id]"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            }
+          ]
+        }
+      ]
+    },
+    "corpus/provenance/function/fill": {
+      "id": "corpus/provenance/function/fill",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 11,
+            "column": 1
+          },
+          "end": {
+            "line": 13,
+            "column": 2
+          }
+        }
+      },
+      "text": "function fill(Queue queue, string[] values) returns error? {\n    values[index()] = check queue-\u003eread(topic = identity(\"orders\"));\n}",
+      "moduleId": "corpus/provenance",
+      "entry": {
+        "kind": "function",
+        "name": "fill",
+        "signature": "function fill(Queue queue, string[] values) returns error?",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "Queue queue"
+          },
+          {
+            "kind": "input",
+            "text": "string[] values"
+          }
+        ],
+        "returnType": "error?"
+      },
+      "body": [
+        {
+          "id": "corpus/provenance/function/fill/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 12,
+                "column": 5
+              },
+              "end": {
+                "line": 12,
+                "column": 69
+              }
+            }
+          },
+          "text": "values[index()] = check queue-\u003eread(topic = identity(\"orders\"));",
+          "evaluation": {
+            "id": "corpus/provenance/function/fill/statement/0/evaluation",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 12,
+                  "column": 5
+                },
+                "end": {
+                  "line": 12,
+                  "column": 69
+                }
+              }
+            },
+            "text": "values[index()] = check queue-\u003eread(topic = identity(\"orders\"));",
+            "kind": "source",
+            "children": [
+              {
+                "id": "corpus/provenance/function/fill/statement/0/target",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 12,
+                      "column": 5
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 20
+                    }
+                  }
+                },
+                "text": "values[index()]",
+                "kind": "source",
+                "children": [
+                  {
+                    "id": "corpus/provenance/function/fill/statement/0/target/part/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 12,
+                          "column": 12
+                        },
+                        "end": {
+                          "line": 12,
+                          "column": 19
+                        }
+                      }
+                    },
+                    "text": "index()",
+                    "kind": "call",
+                    "children": [],
+                    "call": {
+                      "id": "corpus/provenance/function/fill/statement/0/lhs/call/0",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 12,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 12,
+                            "column": 19
+                          }
+                        }
+                      },
+                      "text": "index()",
+                      "target": {
+                        "kind": "workspace",
+                        "functionId": "corpus/provenance/function/index"
+                      },
+                      "expansion": "unavailable",
+                      "reason": "Expansion in this expression evaluation is not modeled."
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "corpus/provenance/function/fill/statement/0/value",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 12,
+                      "column": 23
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 68
+                    }
+                  }
+                },
+                "text": "check queue-\u003eread(topic = identity(\"orders\"))",
+                "kind": "check",
+                "children": [
+                  {
+                    "id": "corpus/provenance/function/fill/statement/0/value/part/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 12,
+                          "column": 29
+                        },
+                        "end": {
+                          "line": 12,
+                          "column": 68
+                        }
+                      }
+                    },
+                    "text": "queue-\u003eread(topic = identity(\"orders\"))",
+                    "kind": "call",
+                    "children": [
+                      {
+                        "id": "corpus/provenance/function/fill/statement/0/value/part/0/part/0",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 12,
+                              "column": 41
+                            },
+                            "end": {
+                              "line": 12,
+                              "column": 67
+                            }
+                          }
+                        },
+                        "text": "topic = identity(\"orders\")",
+                        "kind": "source",
+                        "children": [
+                          {
+                            "id": "corpus/provenance/function/fill/statement/0/value/part/0/part/0/part/0",
+                            "source": {
+                              "file": "main.bal",
+                              "range": {
+                                "start": {
+                                  "line": 12,
+                                  "column": 49
+                                },
+                                "end": {
+                                  "line": 12,
+                                  "column": 67
+                                }
+                              }
+                            },
+                            "text": "identity(\"orders\")",
+                            "kind": "call",
+                            "children": [],
+                            "call": {
+                              "id": "corpus/provenance/function/fill/statement/0/call/0",
+                              "source": {
+                                "file": "main.bal",
+                                "range": {
+                                  "start": {
+                                    "line": 12,
+                                    "column": 49
+                                  },
+                                  "end": {
+                                    "line": 12,
+                                    "column": 67
+                                  }
+                                }
+                              },
+                              "text": "identity(\"orders\")",
+                              "target": {
+                                "kind": "workspace",
+                                "functionId": "corpus/provenance/function/identity"
+                              },
+                              "expansion": "unavailable",
+                              "reason": "Expansion in this expression evaluation is not modeled."
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "call": {
+                      "id": "corpus/provenance/function/fill/statement/0/call/1",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 12,
+                            "column": 29
+                          },
+                          "end": {
+                            "line": 12,
+                            "column": 68
+                          }
+                        }
+                      },
+                      "text": "queue-\u003eread(topic = identity(\"orders\"))",
+                      "client": {
+                        "context": {
+                          "receiver": {
+                            "id": "corpus/provenance/function/fill/statement/0/call/1/receiver",
+                            "source": {
+                              "file": "main.bal",
+                              "range": {
+                                "start": {
+                                  "line": 12,
+                                  "column": 29
+                                },
+                                "end": {
+                                  "line": 12,
+                                  "column": 34
+                                }
+                              }
+                            },
+                            "text": "queue"
+                          },
+                          "type": "Queue",
+                          "origin": "parameter"
+                        },
+                        "method": "read",
+                        "arguments": [
+                          {
+                            "id": "corpus/provenance/function/fill/statement/0/call/1/argument/0",
+                            "source": {
+                              "file": "main.bal",
+                              "range": {
+                                "start": {
+                                  "line": 12,
+                                  "column": 41
+                                },
+                                "end": {
+                                  "line": 12,
+                                  "column": 67
+                                }
+                              }
+                            },
+                            "text": "topic = identity(\"orders\")"
+                          }
+                        ]
+                      },
+                      "target": {
+                        "kind": "workspace",
+                        "functionId": "corpus/provenance/class/Queue/method/$remote$read"
+                      },
+                      "expansion": "unavailable",
+                      "reason": "Expansion in this expression evaluation is not modeled."
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "binding": "values[index()]",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "corpus/provenance/function/fill/statement/0/lhs/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 12,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 19
+                  }
+                }
+              },
+              "text": "index()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/provenance/function/index"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            },
+            {
+              "id": "corpus/provenance/function/fill/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 12,
+                    "column": 49
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 67
+                  }
+                }
+              },
+              "text": "identity(\"orders\")",
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/provenance/function/identity"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            },
+            {
+              "id": "corpus/provenance/function/fill/statement/0/call/1",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 12,
+                    "column": 29
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 68
+                  }
+                }
+              },
+              "text": "queue-\u003eread(topic = identity(\"orders\"))",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "corpus/provenance/function/fill/statement/0/call/1/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 12,
+                          "column": 29
+                        },
+                        "end": {
+                          "line": 12,
+                          "column": 34
+                        }
+                      }
+                    },
+                    "text": "queue"
+                  },
+                  "type": "Queue",
+                  "origin": "parameter"
+                },
+                "method": "read",
+                "arguments": [
+                  {
+                    "id": "corpus/provenance/function/fill/statement/0/call/1/argument/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 12,
+                          "column": 41
+                        },
+                        "end": {
+                          "line": 12,
+                          "column": 67
+                        }
+                      }
+                    },
+                    "text": "topic = identity(\"orders\")"
+                  }
+                ]
+              },
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/provenance/class/Queue/method/$remote$read"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            }
+          ]
+        }
+      ]
+    },
+    "corpus/provenance/function/identity": {
+      "id": "corpus/provenance/function/identity",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 1
+          },
+          "end": {
+            "line": 10,
+            "column": 57
+          }
+        }
+      },
+      "text": "function identity(string value) returns string =\u003e value;",
+      "moduleId": "corpus/provenance",
+      "entry": {
+        "kind": "function",
+        "name": "identity",
+        "signature": "function identity(string value) returns string",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "string value"
+          }
+        ],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "corpus/provenance/function/identity/expression",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 10,
+                "column": 51
+              },
+              "end": {
+                "line": 10,
+                "column": 56
+              }
+            }
+          },
+          "text": "value",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "corpus/provenance/function/index": {
+      "id": "corpus/provenance/function/index",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 1
+          },
+          "end": {
+            "line": 9,
+            "column": 35
+          }
+        }
+      },
+      "text": "function index() returns int =\u003e 0;",
+      "moduleId": "corpus/provenance",
+      "entry": {
+        "kind": "function",
+        "name": "index",
+        "signature": "function index() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "corpus/provenance/function/index/expression",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 9,
+                "column": 33
+              },
+              "end": {
+                "line": 9,
+                "column": 34
+              }
+            }
+          },
+          "text": "0",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "corpus/provenance/function/main": {
+      "id": "corpus/provenance/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 17,
+            "column": 1
+          },
+          "end": {
+            "line": 21,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    Queue queue = new (identity(\"broker\"), port = index());\n    string text = queue.label(value = \"සිංහල\");\n    _ = text;\n}",
+      "moduleId": "corpus/provenance",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "corpus/provenance/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 18,
+                "column": 5
+              },
+              "end": {
+                "line": 18,
+                "column": 60
+              }
+            }
+          },
+          "text": "Queue queue = new (identity(\"broker\"), port = index());",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "corpus/provenance/function/main/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 18,
+                    "column": 24
+                  },
+                  "end": {
+                    "line": 18,
+                    "column": 42
+                  }
+                }
+              },
+              "text": "identity(\"broker\")",
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/provenance/function/identity"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            },
+            {
+              "id": "corpus/provenance/function/main/statement/0/call/1",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 18,
+                    "column": 51
+                  },
+                  "end": {
+                    "line": 18,
+                    "column": 58
+                  }
+                }
+              },
+              "text": "index()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/provenance/function/index"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            }
+          ]
+        },
+        {
+          "id": "corpus/provenance/function/main/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 19,
+                "column": 5
+              },
+              "end": {
+                "line": 19,
+                "column": 48
+              }
+            }
+          },
+          "text": "string text = queue.label(value = \"සිංහල\");",
+          "evaluation": {
+            "id": "corpus/provenance/function/main/statement/1/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 19,
+                  "column": 19
+                },
+                "end": {
+                  "line": 19,
+                  "column": 47
+                }
+              }
+            },
+            "text": "queue.label(value = \"සිංහල\")",
+            "kind": "call",
+            "children": [],
+            "call": {
+              "id": "corpus/provenance/function/main/statement/1/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 19,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 19,
+                    "column": 47
+                  }
+                }
+              },
+              "text": "queue.label(value = \"සිංහල\")",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "corpus/provenance/function/main/statement/1/call/0/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 19,
+                          "column": 19
+                        },
+                        "end": {
+                          "line": 19,
+                          "column": 24
+                        }
+                      }
+                    },
+                    "text": "queue"
+                  },
+                  "type": "Queue",
+                  "origin": "constructor",
+                  "initializer": {
+                    "id": "receiver/4/initializer",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 18,
+                          "column": 19
+                        },
+                        "end": {
+                          "line": 18,
+                          "column": 59
+                        }
+                      }
+                    },
+                    "text": "new (identity(\"broker\"), port = index())"
+                  }
+                },
+                "method": "label",
+                "arguments": [
+                  {
+                    "id": "corpus/provenance/function/main/statement/1/call/0/argument/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 19,
+                          "column": 31
+                        },
+                        "end": {
+                          "line": 19,
+                          "column": 46
+                        }
+                      }
+                    },
+                    "text": "value = \"සිංහල\""
+                  }
+                ]
+              },
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/provenance/class/Queue/method/label"
+              },
+              "expansion": "supported"
+            }
+          },
+          "binding": "string text",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "corpus/provenance/function/main/statement/1/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 19,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 19,
+                    "column": 47
+                  }
+                }
+              },
+              "text": "queue.label(value = \"සිංහල\")",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "corpus/provenance/function/main/statement/1/call/0/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 19,
+                          "column": 19
+                        },
+                        "end": {
+                          "line": 19,
+                          "column": 24
+                        }
+                      }
+                    },
+                    "text": "queue"
+                  },
+                  "type": "Queue",
+                  "origin": "constructor",
+                  "initializer": {
+                    "id": "receiver/4/initializer",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 18,
+                          "column": 19
+                        },
+                        "end": {
+                          "line": 18,
+                          "column": 59
+                        }
+                      }
+                    },
+                    "text": "new (identity(\"broker\"), port = index())"
+                  }
+                },
+                "method": "label",
+                "arguments": [
+                  {
+                    "id": "corpus/provenance/function/main/statement/1/call/0/argument/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 19,
+                          "column": 31
+                        },
+                        "end": {
+                          "line": 19,
+                          "column": 46
+                        }
+                      }
+                    },
+                    "text": "value = \"සිංහල\""
+                  }
+                ]
+              },
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/provenance/class/Queue/method/label"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "corpus/provenance/function/main/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 20,
+                "column": 5
+              },
+              "end": {
+                "line": 20,
+                "column": 14
+              }
+            }
+          },
+          "text": "_ = text;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        }
+      ]
+    },
+    "corpus/provenance/service/main.bal//api/1/resource/get/items/[string id]": {
+      "id": "corpus/provenance/service/main.bal//api/1/resource/get/items/[string id]",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 23,
+            "column": 5
+          },
+          "end": {
+            "line": 23,
+            "column": 68
+          }
+        }
+      },
+      "text": "resource function get items/[string id]() returns string =\u003e id;",
+      "moduleId": "corpus/provenance",
+      "entry": {
+        "kind": "resource",
+        "name": "get /items/[string id]",
+        "signature": "resource function get items/[string id]() returns string",
+        "parameters": [
+          {
+            "kind": "path",
+            "text": "[string id]"
+          }
+        ],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "corpus/provenance/service/main.bal//api/1/resource/get/items/[string id]/expression",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 23,
+                "column": 65
+              },
+              "end": {
+                "line": 23,
+                "column": 67
+              }
+            }
+          },
+          "text": "id",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

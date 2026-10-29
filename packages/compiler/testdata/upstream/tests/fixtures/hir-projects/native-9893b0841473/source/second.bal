@@ -1,0 +1,1 @@
+public int b = a;

@@ -1,0 +1,49 @@
+{
+  "catalogRef": "5b3a0a37650e349ef4fa404b1d327fc4c54bc07fc691a00ce0e845efec1d2666",
+  "legacyProgram": {
+    "scopes": [],
+    "functions": {}
+  },
+  "hir": {
+    "scopes": [],
+    "sources": {
+      "receiver/main.bal/0/17/type": {
+        "id": "receiver/main.bal/0/17/type",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 8
+            },
+            "end": {
+              "line": 1,
+              "column": 11
+            }
+          }
+        },
+        "text": "int"
+      },
+      "receiver/second.bal/0/17/type": {
+        "id": "receiver/second.bal/0/17/type",
+        "source": {
+          "file": "second.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 8
+            },
+            "end": {
+              "line": 1,
+              "column": 11
+            }
+          }
+        },
+        "text": "int"
+      }
+    },
+    "functions": {}
+  },
+  "graphOnly": true,
+  "provenance": "Archived synthetic graph input; no AST exists or is fabricated. Entry metadata is omitted by graphOnly exactly when the original fixture omitted it."
+}

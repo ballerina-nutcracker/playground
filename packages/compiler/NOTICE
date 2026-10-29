@@ -1,0 +1,55 @@
+@bal-bot/compiler
+===========
+
+Copied from https://github.com/heshanpadmasiri/bal-bot (packages/compiler)
+at commit aee88c17, with the changes listed under "Patches" below.
+
+Upstream license (MIT):
+
+MIT License
+
+Copyright (c) 2026 Heshan Padmasiri
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Patches
+-------
+
+- package.json: added a `test` script.
+- *_test.go (frontend, hir, hir_corpus, hir_synthetic, hir_text,
+  hir_variables_validation): repo-root paths (`../..`) repointed to
+  `testdata/upstream/`.
+- hir_corpus_test.go: the provenance existence check only stats this package's
+  `.go` files (other provenance entries name upstream-only files);
+  `TestHIRSourceInventory` is skipped (upstream bookkeeping needing node,
+  Playwright and upstream browser specs).
+- testdata/upstream/{examples,tests/fixtures}: copied verbatim from the same
+  commit.
+- tests/{client,function-views,hir,variable-protocol}.test.mjs,
+  tests/testDataBuilder.mjs: copied from upstream (variable-protocol from the
+  repo-root tests/); fixture and protocol import paths repointed to
+  `testdata/upstream/tests/fixtures` and `../src/protocol.ts`. Not copied:
+  tests/browser (Playwright), tests/native (Go main harness).
+- package.json: `test` runs the Go tests and the node:test suites via bun.
+- src/, tests/ and package.json: formatted with this repository's Biome
+  configuration, and Biome lint findings fixed (non-null assertions replaced
+  with checked lookups, `forEach` callbacks rewritten as loops). testdata/ is
+  excluded from Biome and stays verbatim.
+
+Other files added by this repository: NOTICE, biome.json.

@@ -1,0 +1,192 @@
+{
+  "scopes": [
+    {
+      "id": "examples/analysis_recovery/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 5,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "examples/analysis_recovery",
+      "serviceType": null,
+      "functionId": "examples/analysis_recovery/function/main"
+    }
+  ],
+  "functions": {
+    "examples/analysis_recovery/function/double": {
+      "id": "examples/analysis_recovery/function/double",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 7,
+            "column": 1
+          },
+          "end": {
+            "line": 7,
+            "column": 63
+          }
+        }
+      },
+      "text": "function double(int amount) returns int { return amount * 2; }",
+      "moduleId": "examples/analysis_recovery",
+      "entry": {
+        "kind": "function",
+        "name": "double",
+        "signature": "function double(int amount) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int amount"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/analysis_recovery/function/double/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 7,
+                "column": 43
+              },
+              "end": {
+                "line": 7,
+                "column": 61
+              }
+            }
+          },
+          "text": "return amount * 2;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/analysis_recovery/function/main": {
+      "id": "examples/analysis_recovery/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 5,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+      "moduleId": "examples/analysis_recovery",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "examples/analysis_recovery/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 2,
+                "column": 5
+              },
+              "end": {
+                "line": 2,
+                "column": 20
+              }
+            }
+          },
+          "text": "int amount = 2;",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/analysis_recovery/function/main/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 5
+              },
+              "end": {
+                "line": 3,
+                "column": 33
+              }
+            }
+          },
+          "text": "int result = double(amount);",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/analysis_recovery/function/main/statement/1/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 3,
+                    "column": 18
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 32
+                  }
+                }
+              },
+              "text": "double(amount)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/analysis_recovery/function/double"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "examples/analysis_recovery/function/main/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 4,
+                "column": 16
+              }
+            }
+          },
+          "text": "_ = result;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

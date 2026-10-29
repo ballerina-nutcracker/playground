@@ -1,0 +1,56 @@
+bal-bot view (apps/web/src/components/bal-bot, apps/web/tests/bal-bot)
+=====================================================================
+
+Copied from https://github.com/heshanpadmasiri/bal-bot (apps/editor/src) at
+commit aee88c17. Upstream license (MIT):
+
+MIT License
+
+Copyright (c) 2026 Heshan Padmasiri
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Patches
+-------
+
+- editor.tsx, accounts.tsx, file-tree.tsx: restyled with the playground's
+  Tailwind tokens and `@/components/ui` Button/Input/Textarea. Only JSX
+  markup and classNames changed (plus the three imports); state, effects and
+  handlers are unchanged.
+- function-cards.css: every selector prefixed with `.bal-bot-root`.
+- bal-bot.css: extracted from upstream style.css: only flow, floating-chat,
+  workspace-layout, anchor-activity and chat-markdown rules are kept, every
+  selector is prefixed with `.bal-bot-root`, chat-markdown colours use the
+  playground tokens, and a scoped button base for the flow panel replaces
+  upstream's global `button` rule. Chrome rules were replaced by Tailwind
+  classes; the global `:root`, `*`, `body` rules and the Google Fonts @import
+  are dropped.
+- Not copied: main.tsx (replaced by bal-bot-view.tsx), style.css (see above),
+  vite-env.d.ts.
+- tests/bal-bot: copied from upstream apps/editor/tests (variable-text from the
+  repo-root tests/); import and fixture paths repointed to the components dir
+  and packages/compiler/testdata/upstream. Skipped: hir-type-cast-render and
+  post-baseline/template-rendering (need Playwright/Chromium), browser harness
+  HTML/tsx files.
+- All copied source, test, CSS and JSON files: formatted with this repository's Biome
+  configuration, and Biome lint findings fixed (non-null assertions replaced
+  with checked lookups, explicit button types, accessibility fixes, and
+  justified `biome-ignore` comments where the rule does not apply).
+
+Files added by this repository: NOTICE, bal-bot-view.tsx.

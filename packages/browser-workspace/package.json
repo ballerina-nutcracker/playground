@@ -1,0 +1,16 @@
+{
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"name": "@bal-bot/browser-workspace",
+	"exports": "./src/index.ts",
+	"dependencies": {
+		"@bal-bot/workspace": "*",
+		"@earendil-works/pi-agent-core": "^1.4.0",
+		"@earendil-works/pi-ai": "^1.4.0",
+		"@bal-bot/compiler": "*"
+	},
+	"scripts": {
+		"test": "bun ../../scripts/build_skills.mjs && bun test tests/"
+	}
+}

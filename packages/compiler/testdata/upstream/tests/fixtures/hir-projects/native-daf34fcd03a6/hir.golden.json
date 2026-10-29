@@ -1,0 +1,282 @@
+{
+  "scopes": [],
+  "sources": {
+    "browser/http_service/function/value": {
+      "id": "browser/http_service/function/value",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 33
+          }
+        }
+      },
+      "text": "function value() returns int { }"
+    },
+    "browser/http_service/function/value/returnType": {
+      "id": "browser/http_service/function/value/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 26
+          },
+          "end": {
+            "line": 1,
+            "column": 29
+          }
+        }
+      },
+      "text": "int"
+    }
+  },
+  "functions": {
+    "browser/http_service/function/value": {
+      "id": "browser/http_service/function/value",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 33
+          }
+        }
+      },
+      "text": "function value() returns int { }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "value",
+        "signature": "function value() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "nodes": [
+        {
+          "id": "browser/http_service/function/value/root",
+          "occurrenceKey": "/root",
+          "sourceId": "browser/http_service/function/value",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "browser/http_service/function/value/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "browser/http_service/function/value/root:entry",
+          "nodeId": "browser/http_service/function/value/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "browser/http_service/function/value/root:normal-exit",
+          "nodeId": "browser/http_service/function/value/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [],
+      "groups": [
+        {
+          "id": "browser/http_service/function/value/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": []
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/function/value/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/function/value/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "browser/http_service/function/value/graph",
+      "interfaces": [
+        {
+          "id": "root/entry",
+          "members": [
+            {
+              "portId": "browser/http_service/function/value/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/function/value/root/binding/entry",
+            "toPort": "browser/http_service/function/value/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/function/value/root/binding/normal",
+            "toPort": "browser/http_service/function/value/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/value/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/function/value/root/binding/entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/function/value/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [],
+          "ports": [],
+          "edges": []
+        }
+      }
+    }
+  }
+}

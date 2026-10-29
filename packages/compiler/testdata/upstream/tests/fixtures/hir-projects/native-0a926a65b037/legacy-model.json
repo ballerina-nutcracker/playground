@@ -1,0 +1,28 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/service/main.bal///1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 1
+          },
+          "end": {
+            "line": 2,
+            "column": 40
+          }
+        }
+      },
+      "text": "service / on new http:Listener(8080) {}",
+      "kind": "service",
+      "title": "/",
+      "moduleId": "browser/http_service",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [],
+      "definitions": []
+    }
+  ],
+  "functions": {}
+}

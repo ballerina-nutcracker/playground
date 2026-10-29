@@ -1,0 +1,591 @@
+{
+  "scopes": [
+    {
+      "id": "examples/definitions_and_calls/service/main.bal//orders/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 14,
+            "column": 1
+          },
+          "end": {
+            "line": 19,
+            "column": 2
+          }
+        }
+      },
+      "text": "service /orders on new http:Listener(8080) {\n    resource function get total() returns int {\n        int local = calculate(minimumAmount);\n        return math:calculate(local);\n    }\n}",
+      "kind": "service",
+      "title": "/orders",
+      "moduleId": "examples/definitions_and_calls",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [
+        {
+          "id": "examples/definitions_and_calls/service/main.bal//orders/1/resource/get/total",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 15,
+                "column": 5
+              },
+              "end": {
+                "line": 18,
+                "column": 6
+              }
+            }
+          },
+          "text": "resource function get total() returns int {\n        int local = calculate(minimumAmount);\n        return math:calculate(local);\n    }",
+          "kind": "resource",
+          "title": "get /orders/total",
+          "functionId": "examples/definitions_and_calls/service/main.bal//orders/1/resource/get/total"
+        }
+      ],
+      "definitions": [
+        {
+          "id": "examples/definitions_and_calls/function/calculate",
+          "source": {
+            "file": "helpers.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 64
+              }
+            }
+          },
+          "text": "function calculate(int value) returns int { return value + 1; }",
+          "kind": "function",
+          "label": "calculate",
+          "functionId": "examples/definitions_and_calls/function/calculate"
+        },
+        {
+          "id": "examples/definitions_and_calls/function/unusedHelper",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 21,
+                "column": 1
+              },
+              "end": {
+                "line": 24,
+                "column": 2
+              }
+            }
+          },
+          "text": "function unusedHelper() returns string {\n    string status = upstreamClient-\u003esend();\n    return upstream + \": \" + status;\n}",
+          "kind": "function",
+          "label": "unusedHelper",
+          "functionId": "examples/definitions_and_calls/function/unusedHelper"
+        },
+        {
+          "id": "examples/definitions_and_calls/type/Order",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 11,
+                "column": 1
+              },
+              "end": {
+                "line": 11,
+                "column": 37
+              }
+            }
+          },
+          "text": "type Order record {| int amount; |};",
+          "kind": "type",
+          "label": "Order"
+        },
+        {
+          "id": "examples/definitions_and_calls/type/UnusedRecord",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 12,
+                "column": 1
+              },
+              "end": {
+                "line": 12,
+                "column": 52
+              }
+            }
+          },
+          "text": "type UnusedRecord record {| string description; |};",
+          "kind": "type",
+          "label": "UnusedRecord"
+        },
+        {
+          "id": "examples/definitions_and_calls/connector/upstreamClient",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 6,
+                "column": 1
+              },
+              "end": {
+                "line": 6,
+                "column": 37
+              }
+            }
+          },
+          "text": "LocalClient upstreamClient = new ();",
+          "kind": "connector",
+          "label": "upstreamClient"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "examples/definitions_and_calls.math/function/calculate": {
+      "id": "examples/definitions_and_calls.math/function/calculate",
+      "source": {
+        "file": "modules/math/calculate.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 71
+          }
+        }
+      },
+      "text": "public function calculate(int value) returns int { return value * 2; }",
+      "moduleId": "examples/definitions_and_calls.math",
+      "entry": {
+        "kind": "function",
+        "name": "calculate",
+        "signature": "public function calculate(int value) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/definitions_and_calls.math/function/calculate/statement/0",
+          "source": {
+            "file": "modules/math/calculate.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 52
+              },
+              "end": {
+                "line": 1,
+                "column": 69
+              }
+            }
+          },
+          "text": "return value * 2;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/definitions_and_calls/class/LocalClient/method/$remote$send": {
+      "id": "examples/definitions_and_calls/class/LocalClient/method/$remote$send",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 5
+          },
+          "end": {
+            "line": 9,
+            "column": 61
+          }
+        }
+      },
+      "text": "remote function send() returns string { return \"sent\"; }",
+      "moduleId": "examples/definitions_and_calls",
+      "entry": {
+        "kind": "remote",
+        "name": "LocalClient.send",
+        "signature": "remote function send() returns string",
+        "parameters": [],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "examples/definitions_and_calls/class/LocalClient/method/$remote$send/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 9,
+                "column": 45
+              },
+              "end": {
+                "line": 9,
+                "column": 59
+              }
+            }
+          },
+          "text": "return \"sent\";",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/definitions_and_calls/function/calculate": {
+      "id": "examples/definitions_and_calls/function/calculate",
+      "source": {
+        "file": "helpers.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 64
+          }
+        }
+      },
+      "text": "function calculate(int value) returns int { return value + 1; }",
+      "moduleId": "examples/definitions_and_calls",
+      "entry": {
+        "kind": "function",
+        "name": "calculate",
+        "signature": "function calculate(int value) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/definitions_and_calls/function/calculate/statement/0",
+          "source": {
+            "file": "helpers.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 45
+              },
+              "end": {
+                "line": 1,
+                "column": 62
+              }
+            }
+          },
+          "text": "return value + 1;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/definitions_and_calls/function/unusedHelper": {
+      "id": "examples/definitions_and_calls/function/unusedHelper",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 21,
+            "column": 1
+          },
+          "end": {
+            "line": 24,
+            "column": 2
+          }
+        }
+      },
+      "text": "function unusedHelper() returns string {\n    string status = upstreamClient-\u003esend();\n    return upstream + \": \" + status;\n}",
+      "moduleId": "examples/definitions_and_calls",
+      "entry": {
+        "kind": "function",
+        "name": "unusedHelper",
+        "signature": "function unusedHelper() returns string",
+        "parameters": [],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "examples/definitions_and_calls/function/unusedHelper/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 22,
+                "column": 5
+              },
+              "end": {
+                "line": 22,
+                "column": 44
+              }
+            }
+          },
+          "text": "string status = upstreamClient-\u003esend();",
+          "evaluation": {
+            "id": "examples/definitions_and_calls/function/unusedHelper/statement/0/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 22,
+                  "column": 21
+                },
+                "end": {
+                  "line": 22,
+                  "column": 43
+                }
+              }
+            },
+            "text": "upstreamClient-\u003esend()",
+            "kind": "call",
+            "children": [],
+            "call": {
+              "id": "examples/definitions_and_calls/function/unusedHelper/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 22,
+                    "column": 21
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 43
+                  }
+                }
+              },
+              "text": "upstreamClient-\u003esend()",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "examples/definitions_and_calls/function/unusedHelper/statement/0/call/0/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 22,
+                          "column": 21
+                        },
+                        "end": {
+                          "line": 22,
+                          "column": 35
+                        }
+                      }
+                    },
+                    "text": "upstreamClient"
+                  },
+                  "type": "LocalClient",
+                  "origin": "unavailable"
+                },
+                "method": "send",
+                "arguments": []
+              },
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/definitions_and_calls/class/LocalClient/method/$remote$send"
+              },
+              "expansion": "supported"
+            }
+          },
+          "binding": "string status",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/definitions_and_calls/function/unusedHelper/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 22,
+                    "column": 21
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 43
+                  }
+                }
+              },
+              "text": "upstreamClient-\u003esend()",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "examples/definitions_and_calls/function/unusedHelper/statement/0/call/0/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 22,
+                          "column": 21
+                        },
+                        "end": {
+                          "line": 22,
+                          "column": 35
+                        }
+                      }
+                    },
+                    "text": "upstreamClient"
+                  },
+                  "type": "LocalClient",
+                  "origin": "unavailable"
+                },
+                "method": "send",
+                "arguments": []
+              },
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/definitions_and_calls/class/LocalClient/method/$remote$send"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "examples/definitions_and_calls/function/unusedHelper/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 23,
+                "column": 5
+              },
+              "end": {
+                "line": 23,
+                "column": 37
+              }
+            }
+          },
+          "text": "return upstream + \": \" + status;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/definitions_and_calls/service/main.bal//orders/1/resource/get/total": {
+      "id": "examples/definitions_and_calls/service/main.bal//orders/1/resource/get/total",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 15,
+            "column": 5
+          },
+          "end": {
+            "line": 18,
+            "column": 6
+          }
+        }
+      },
+      "text": "resource function get total() returns int {\n        int local = calculate(minimumAmount);\n        return math:calculate(local);\n    }",
+      "moduleId": "examples/definitions_and_calls",
+      "entry": {
+        "kind": "resource",
+        "name": "get /total",
+        "signature": "resource function get total() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/definitions_and_calls/service/main.bal//orders/1/resource/get/total/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 16,
+                "column": 9
+              },
+              "end": {
+                "line": 16,
+                "column": 46
+              }
+            }
+          },
+          "text": "int local = calculate(minimumAmount);",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/definitions_and_calls/service/main.bal//orders/1/resource/get/total/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 16,
+                    "column": 21
+                  },
+                  "end": {
+                    "line": 16,
+                    "column": 45
+                  }
+                }
+              },
+              "text": "calculate(minimumAmount)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/definitions_and_calls/function/calculate"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "examples/definitions_and_calls/service/main.bal//orders/1/resource/get/total/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 17,
+                "column": 9
+              },
+              "end": {
+                "line": 17,
+                "column": 38
+              }
+            }
+          },
+          "text": "return math:calculate(local);",
+          "kind": "return",
+          "calls": [
+            {
+              "id": "examples/definitions_and_calls/service/main.bal//orders/1/resource/get/total/statement/1/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 17,
+                    "column": 16
+                  },
+                  "end": {
+                    "line": 17,
+                    "column": 37
+                  }
+                }
+              },
+              "text": "math:calculate(local)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/definitions_and_calls.math/function/calculate"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

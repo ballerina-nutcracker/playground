@@ -1,0 +1,18 @@
+[
+  {
+    "severity": "error",
+    "code": "SEMANTIC_ERROR",
+    "message": "unused variable 'x'",
+    "file": "main.bal",
+    "range": {
+      "start": {
+        "line": 1,
+        "column": 26
+      },
+      "end": {
+        "line": 1,
+        "column": 40
+      }
+    }
+  }
+]

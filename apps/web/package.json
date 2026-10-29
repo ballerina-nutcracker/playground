@@ -3,15 +3,20 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "bun run gen:examples && vite",
-		"build": "bun run gen:examples && tsc -b && vite build",
+		"dev": "bun run gen:examples && bun run gen:skills && vite",
+		"build": "bun run gen:examples && bun run gen:skills && tsc -b && vite build",
 		"preview": "vite preview",
-		"test": "bun test",
+		"test": "bun run gen:skills && bun test",
 		"gen:examples": "go run ../../scripts/example_gen/main.go ../../examples src/assets/examples.json",
 		"copy:wasm": "cp ../../packages/wasm/dist/ballerina.wasm public/ballerina.wasm && cp ../../packages/wasm/dist/ballerina-meta.json public/ballerina-meta.json",
-		"clean": "git clean -xdf .turbo dist node_modules"
+		"clean": "git clean -xdf .turbo dist node_modules",
+		"gen:skills": "bun ../../scripts/build_skills.mjs",
+		"copy:compiler-wasm": "mkdir -p public/compiler && (cd ../../packages/compiler && GOOS=js GOARCH=wasm GOWORK=off go build -mod=readonly -o ../../apps/web/public/compiler/ballerina-compiler.wasm ./cmd/wasm) && cp \"$(go env GOROOT)/lib/wasm/wasm_exec.js\" public/compiler/wasm_exec.js"
 	},
 	"dependencies": {
+		"@bal-bot/browser-workspace": "workspace:*",
+		"@bal-bot/compiler": "workspace:*",
+		"@bal-bot/workspace": "workspace:*",
 		"@base-ui/react": "^1.4.1",
 		"@codemirror/autocomplete": "^6.20.1",
 		"@codemirror/commands": "^6.10.3",
@@ -21,6 +26,8 @@
 		"@codemirror/search": "^6.6.0",
 		"@codemirror/state": "^6.6.0",
 		"@codemirror/view": "^6.41.0",
+		"@earendil-works/pi-agent-core": "^1.4.0",
+		"@earendil-works/pi-ai": "^1.4.0",
 		"@fontsource-variable/jetbrains-mono": "^5.2.8",
 		"@hookform/resolvers": "^5.4.0",
 		"@hugeicons/core-free-icons": "^4.1.1",
@@ -37,7 +44,9 @@
 		"react-dom": "^19.2.5",
 		"react-hook-form": "^7.80.0",
 		"react-hotkeys-hook": "^5.2.4",
+		"react-markdown": "^10.1.0",
 		"react-resizable-panels": "^4.12.2",
+		"remark-gfm": "^4.0.1",
 		"shadcn": "^4.4.0",
 		"shiki": "^4.0.2",
 		"sonner": "^2.0.7",
@@ -48,6 +57,7 @@
 		"zustand": "^5.0.11"
 	},
 	"devDependencies": {
+		"@happy-dom/global-registrator": "^21.0.4",
 		"@tanstack/router-plugin": "^1.167.22",
 		"@types/bun": "^1.3.14",
 		"@types/node": "^25.6.0",

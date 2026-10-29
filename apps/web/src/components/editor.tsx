@@ -2,9 +2,11 @@ import * as React from "react";
 
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
+	AiMagicIcon,
 	ChevronDown,
 	ChevronUp,
 	CleanIcon,
+	CodeIcon,
 	GithubFreeIcons,
 	LayoutAlignRightIcon,
 	LayoutRightIcon,
@@ -15,7 +17,12 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { useDefaultLayout, usePanelRef } from "react-resizable-panels";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
 	ResizableHandle,
@@ -26,6 +33,7 @@ import {
 	SidebarInset,
 	SidebarProvider,
 	SidebarTrigger,
+	useSidebar,
 } from "@/components/ui/sidebar";
 
 import { AppSidebar } from "@/components/app-sidebar";
@@ -36,18 +44,35 @@ import { SettingsDialog } from "@/components/settings-dialog";
 import { ANSI } from "@/components/ansi";
 
 import { basename, ext } from "@/lib/fs/core/path-utils";
-import { getBallerinaProjectTarget } from "@/lib/fs/project-target";
+import { startBalBotCheck } from "@/lib/bal-bot-availability";
+import {
+	diffProjectFiles,
+	getBallerinaProjectTarget,
+	readBallerinaProjectFiles,
+} from "@/lib/fs/project-target";
 import { cn } from "@/lib/utils";
 
 import { useIsDesktop } from "@/hooks/use-is-desktop";
 import { useEditorStore } from "@/stores/editor-store";
-import { useActiveFile, useFileTreeActions } from "@/stores/file-tree-store";
+import {
+	useActiveFile,
+	useFileTreeActions,
+	useLocalTree,
+	useTempTree,
+} from "@/stores/file-tree-store";
 
 import { useBallerina } from "@/providers/ballerina-provider";
 import { useFS } from "@/providers/fs-provider";
 
 import type { TryItPanelHandle } from "@/components/try-it-panel";
 import type { EditorLanguage } from "@/components/code-editor";
+
+// Dynamic import only from here: bal-bot, pi and the compiler load on first use.
+const BalBotView = React.lazy(() =>
+	import("@/components/bal-bot/bal-bot-view").then((m) => ({
+		default: m.BalBotView,
+	})),
+);
 
 function getLanguage(path: string): EditorLanguage {
 	const ex = ext(path);
@@ -59,6 +84,44 @@ function getLanguage(path: string): EditorLanguage {
 		default:
 			return "text";
 	}
+}
+
+function LoadingCircle({ progress }: { progress: number }) {
+	const value = Math.max(0, Math.min(100, progress));
+	const radius = 7;
+	const circumference = 2 * Math.PI * radius;
+	return (
+		<svg
+			role="progressbar"
+			aria-label="Loading Ballerina runtime"
+			aria-valuemin={0}
+			aria-valuemax={100}
+			aria-valuenow={value}
+			data-testid="run-loading"
+			viewBox="0 0 20 20"
+			className="size-4 -rotate-90"
+		>
+			<circle
+				cx="10"
+				cy="10"
+				r={radius}
+				fill="none"
+				stroke="currentColor"
+				strokeOpacity={0.25}
+				strokeWidth={2}
+			/>
+			<circle
+				cx="10"
+				cy="10"
+				r={radius}
+				fill="none"
+				stroke="currentColor"
+				strokeWidth={2}
+				strokeDasharray={circumference}
+				strokeDashoffset={circumference * (1 - value / 100)}
+			/>
+		</svg>
+	);
 }
 
 function findJsonFragmentEnd(text: string, start: number): number | null {
@@ -194,14 +257,32 @@ function formatJsonOutput(output: string): string {
 	}
 }
 
-function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
+function RightPane({
+	listenerAddresses,
+	testId = "output-pane",
+	drawer,
+}: {
+	listenerAddresses: string[];
+	testId?: string;
+	/** Collapsible on every screen size, under the caller's control. */
+	drawer?: { open: boolean; onToggle: () => void };
+}) {
 	const output = useEditorStore((s) => s.output);
 	const formattedOutput = React.useMemo(
 		() => formatJsonOutput(output),
 		[output],
 	);
-	const outputOpen = useEditorStore((s) => s.outputOpen);
-	const toggleOutputOpen = useEditorStore((s) => s.toggleOutputOpen);
+	const storeOutputOpen = useEditorStore((s) => s.outputOpen);
+	const toggleStoreOutputOpen = useEditorStore((s) => s.toggleOutputOpen);
+	const outputOpen = drawer ? drawer.open : storeOutputOpen;
+	const toggleOutputOpen = drawer ? drawer.onToggle : toggleStoreOutputOpen;
+	const contentClassName = drawer
+		? outputOpen
+			? "flex-1"
+			: "hidden"
+		: outputOpen
+			? "flex-1"
+			: "hidden lg:block lg:flex-1";
 	const clearOutput = useEditorStore((s) => s.clearOutput);
 
 	const scrollRef = React.useRef<HTMLDivElement>(null);
@@ -270,8 +351,10 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 	return (
 		<div
 			className={cn(
-				"flex flex-col min-h-0 min-w-0 overflow-hidden lg:h-full",
-				outputOpen ? "flex-1 lg:flex" : "shrink-0 lg:flex",
+				"flex flex-col min-h-0 min-w-0 overflow-hidden",
+				drawer
+					? cn("border-t", outputOpen ? "h-2/5" : "shrink-0")
+					: cn("lg:h-full", outputOpen ? "flex-1 lg:flex" : "shrink-0 lg:flex"),
 			)}
 		>
 			<Tabs
@@ -279,7 +362,14 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 				onValueChange={(value) => setActiveTab(String(value))}
 				className="min-h-0 flex-1 gap-0 overflow-hidden"
 			>
-				<div className="flex h-10 shrink-0 items-center justify-between border-b border-t lg:border-t-0">
+				<div
+					className={cn(
+						"flex h-10 shrink-0 items-center justify-between",
+						drawer
+							? outputOpen && "border-b"
+							: "border-b border-t lg:border-t-0",
+					)}
+				>
 					<TabsList className="h-full! p-0">
 						<TabsTrigger
 							value="output"
@@ -298,8 +388,9 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 					</TabsList>
 					<div className="flex items-center h-full">
 						<Button
-							className="h-full border-l lg:hidden"
+							className={cn("h-full border-l", !drawer && "lg:hidden")}
 							variant="ghost"
+							data-testid={`${testId}-toggle`}
 							onClick={toggleOutputOpen}
 						>
 							<HugeiconsIcon
@@ -324,12 +415,9 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 					value="output"
 					keepMounted
 					ref={scrollRef}
-					data-testid="output-pane"
+					data-testid={testId}
 					onScroll={updateAutoScrollState}
-					className={cn(
-						"min-h-0 overflow-y-auto p-4",
-						outputOpen ? "flex-1" : "hidden lg:block lg:flex-1",
-					)}
+					className={cn("min-h-0 overflow-y-auto p-4", contentClassName)}
 				>
 					<pre className="text-[13px] font-sans whitespace-pre-wrap wrap-break-word">
 						<ANSI value={formattedOutput} />
@@ -339,10 +427,7 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 					<TabsContent
 						value="try-it"
 						keepMounted
-						className={cn(
-							"min-h-0 overflow-y-auto p-4",
-							outputOpen ? "flex-1" : "hidden lg:block lg:flex-1",
-						)}
+						className={cn("min-h-0 overflow-y-auto p-4", contentClassName)}
 					>
 						<TryItPanel
 							ref={tryItPanelRef}
@@ -355,18 +440,70 @@ function RightPane({ listenerAddresses }: { listenerAddresses: string[] }) {
 	);
 }
 
+function RunButton({
+	testId,
+	onRun,
+	isRunning,
+	onStop,
+}: {
+	testId: string;
+	onRun: () => void;
+	isRunning: boolean;
+	onStop: () => void;
+}) {
+	const activeFile = useActiveFile();
+	const { isReady, progress, error } = useBallerina();
+	return (
+		<Button
+			className="h-full"
+			variant="ghost"
+			data-testid={testId}
+			onClick={isRunning ? onStop : onRun}
+			disabled={
+				!isRunning &&
+				(!isReady ||
+					!activeFile ||
+					getLanguage(activeFile.path) !== "ballerina")
+			}
+		>
+			{!isRunning && error ? (
+				<span className="min-w-7.5 text-destructive">Failed to load</span>
+			) : !isRunning && !isReady ? (
+				<>
+					<LoadingCircle progress={progress} />
+					<span className="min-w-7.5">Run</span>
+				</>
+			) : !isRunning ? (
+				<>
+					<HugeiconsIcon icon={PlayIcon} strokeWidth={1.5} />
+					<span className="min-w-7.5">Run</span>
+				</>
+			) : (
+				<>
+					<HugeiconsIcon icon={StopIcon} strokeWidth={1.5} />
+					<span className="min-w-7.5">Stop</span>
+				</>
+			)}
+		</Button>
+	);
+}
+
 function EditorPane({
 	onRun,
 	isRunning,
 	onStop,
 	onToggleOutput,
 	outputCollapsed = false,
+	onOpenBalBot,
+	balBotDisabledReason,
 }: {
 	onRun: () => Promise<void>;
 	isRunning: boolean;
 	onStop: () => Promise<void>;
 	onToggleOutput?: () => void;
 	outputCollapsed?: boolean;
+	onOpenBalBot: () => void;
+	balBotDisabledReason: string | null;
 }) {
 	const activeFile = useActiveFile();
 
@@ -395,28 +532,33 @@ function EditorPane({
 					{activeFile ? basename(activeFile.path) : "No file selected"}
 				</span>
 				<div className="flex h-full">
-					<Button
-						className="h-full"
-						variant="ghost"
-						data-testid="run-button"
-						onClick={isRunning ? () => void onStop() : () => void onRun()}
-						disabled={
-							!isRunning &&
-							(!activeFile || getLanguage(activeFile.path) !== "ballerina")
-						}
-					>
-						{!isRunning ? (
-							<>
-								<HugeiconsIcon icon={PlayIcon} strokeWidth={1.5} />
-								<span className="min-w-7.5">Run</span>
-							</>
-						) : (
-							<>
-								<HugeiconsIcon icon={StopIcon} strokeWidth={1.5} />
-								<span className="min-w-7.5">Stop</span>
-							</>
-						)}
-					</Button>
+					<TooltipProvider>
+						<Tooltip>
+							<TooltipTrigger
+								render={<span className="flex h-full border-r" />}
+							>
+								<Button
+									className="h-full w-10"
+									variant="ghost"
+									data-testid="bal-bot-button"
+									aria-label="Open project in agent view (beta)"
+									onClick={onOpenBalBot}
+									disabled={balBotDisabledReason !== null}
+								>
+									<HugeiconsIcon icon={AiMagicIcon} strokeWidth={1.5} />
+								</Button>
+							</TooltipTrigger>
+							<TooltipContent>
+								{balBotDisabledReason ?? "Open project in agent view (beta)"}
+							</TooltipContent>
+						</Tooltip>
+					</TooltipProvider>
+					<RunButton
+						testId="run-button"
+						onRun={() => void onRun()}
+						isRunning={isRunning}
+						onStop={() => void onStop()}
+					/>
 					{onToggleOutput && (
 						<Button
 							className="h-full w-10 border-l"
@@ -457,11 +599,15 @@ function EditorWorkspace({
 	isRunning,
 	onStop,
 	listenerAddresses,
+	onOpenBalBot,
+	balBotDisabledReason,
 }: {
 	onRun: () => Promise<void>;
 	isRunning: boolean;
 	onStop: () => Promise<void>;
 	listenerAddresses: string[];
+	onOpenBalBot: () => void;
+	balBotDisabledReason: string | null;
 }) {
 	const isDesktop = useIsDesktop();
 	const outputPanelRef = usePanelRef();
@@ -482,6 +628,8 @@ function EditorWorkspace({
 			onStop={onStop}
 			onToggleOutput={isDesktop ? toggleOutputPanel : undefined}
 			outputCollapsed={outputCollapsed}
+			onOpenBalBot={onOpenBalBot}
+			balBotDisabledReason={balBotDisabledReason}
 		/>
 	);
 	const rightPane = <RightPane listenerAddresses={listenerAddresses} />;
@@ -553,11 +701,11 @@ function EditorHeader() {
 function EditorContent() {
 	const fs = useFS();
 
-	const { isReady, progress, error, run, sendStopSignal } = useBallerina();
+	const { isReady, run, sendStopSignal } = useBallerina();
 
 	const activeFile = useActiveFile();
 
-	const { saveFile } = useFileTreeActions();
+	const { saveFile, applyProjectChanges } = useFileTreeActions();
 	const [isRunning, setIsRunning] = React.useState(false);
 	const [listenerAddresses, setListenerAddresses] = React.useState<string[]>(
 		[],
@@ -567,8 +715,111 @@ function EditorContent() {
 	const appendOutput = useEditorStore((s) => s.appendOutput);
 	const toggleEditorMode = useEditorStore((s) => s.toggleEditorMode);
 
-	const handleRun = React.useCallback(async () => {
-		if (isRunning) return;
+	// The project shown in the bal-bot view, as read when it opened; null while closed.
+	const [balBotProject, setBalBotProject] = React.useState<{
+		dir: string;
+		files: Record<string, string>;
+	} | null>(null);
+	const balBotOpen = balBotProject !== null;
+	// The view's output drawer starts collapsed every time the view opens.
+	const [balBotOutputOpen, setBalBotOutputOpen] = React.useState(false);
+	const balBotOpening = React.useRef(false);
+
+	// undefined while the latest check is pending. The trees are replaced on
+	// every file-system sync, so creating or deleting Ballerina.toml re-runs it.
+	const tempTree = useTempTree();
+	const localTree = useLocalTree();
+	const activePath = activeFile?.path ?? null;
+	const [projectReason, setProjectReason] = React.useState<
+		string | null | undefined
+	>(undefined);
+	// biome-ignore lint/correctness/useExhaustiveDependencies: the trees only re-trigger the check
+	React.useEffect(() => {
+		setProjectReason(undefined);
+		return startBalBotCheck(fs, activePath, setProjectReason);
+	}, [fs, activePath, tempTree, localTree]);
+	const balBotDisabledReason = isRunning
+		? "Stop the running program first"
+		: projectReason === undefined
+			? "Checking project…"
+			: projectReason;
+
+	// Any change of the active file closes the view, except bal-bot deleting it.
+	const previousPath = React.useRef(activePath);
+	const deletedByBalBot = React.useRef<string | null>(null);
+	React.useEffect(() => {
+		if (previousPath.current === activePath) return;
+		const deleted =
+			activePath === null && previousPath.current === deletedByBalBot.current;
+		previousPath.current = activePath;
+		deletedByBalBot.current = null;
+		if (!deleted) setBalBotProject(null);
+	}, [activePath]);
+
+	const closeBalBot = React.useCallback(() => setBalBotProject(null), []);
+
+	// bal-bot edits go straight to the playground files, so the editor sees them.
+	const balBotDir = balBotProject?.dir;
+	const handleBalBotChange = React.useCallback(
+		async (prev: Record<string, string>, next: Record<string, string>) => {
+			if (!balBotDir) return;
+			const changes = diffProjectFiles(balBotDir, prev, next);
+			if (!changes.length) return;
+			for (const change of changes)
+				if (change.kind === "delete" && change.path === previousPath.current)
+					deletedByBalBot.current = change.path;
+			try {
+				await applyProjectChanges(changes);
+			} catch (cause) {
+				toast.error(
+					cause instanceof Error
+						? cause.message
+						: "Failed to save bal-bot edit",
+				);
+			}
+		},
+		[balBotDir, applyProjectChanges],
+	);
+
+	// The view needs the room: collapse the sidebar while it is open and restore it after.
+	const { open: sidebarOpen, setOpen: setSidebarOpen } = useSidebar();
+	const sidebarBeforeBalBot = React.useRef<boolean | null>(null);
+	// biome-ignore lint/correctness/useExhaustiveDependencies: only the open/close transition matters
+	React.useEffect(() => {
+		if (balBotOpen) {
+			sidebarBeforeBalBot.current = sidebarOpen;
+			setSidebarOpen(false);
+		} else if (sidebarBeforeBalBot.current !== null) {
+			setSidebarOpen(sidebarBeforeBalBot.current);
+			sidebarBeforeBalBot.current = null;
+		}
+	}, [balBotOpen]);
+
+	const handleOpenBalBot = React.useCallback(async () => {
+		if (!activeFile || balBotOpening.current) return;
+		balBotOpening.current = true;
+		try {
+			// FIXME: We should automatically save files on change.
+			await saveFile();
+			const target = await getBallerinaProjectTarget(fs, activeFile.path);
+			if (target === activeFile.path)
+				throw new Error("Not part of a Ballerina project (no Ballerina.toml)");
+			const files = await readBallerinaProjectFiles(fs, target);
+			// The active file may have changed while reading; that must not open the view.
+			if (previousPath.current !== activeFile.path) return;
+			setBalBotOutputOpen(false);
+			setBalBotProject({ dir: target, files });
+		} catch (cause) {
+			toast.error(
+				cause instanceof Error ? cause.message : "Failed to open bal-bot",
+			);
+		} finally {
+			balBotOpening.current = false;
+		}
+	}, [activeFile, fs, saveFile]);
+
+	const runProject = React.useCallback(async () => {
+		if (isRunning || !isReady) return;
 		if (!activeFile || getLanguage(activeFile.path) !== "ballerina") return;
 
 		let isRunActive = true;
@@ -597,7 +848,26 @@ function EditorContent() {
 			setIsRunning(false);
 			setListenerAddresses([]);
 		}
-	}, [activeFile, fs, saveFile, run, openOutputWith, appendOutput, isRunning]);
+	}, [
+		activeFile,
+		fs,
+		saveFile,
+		run,
+		openOutputWith,
+		appendOutput,
+		isRunning,
+		isReady,
+	]);
+
+	const handleRun = React.useCallback(async () => {
+		if (balBotOpen || balBotOpening.current) return;
+		await runProject();
+	}, [runProject, balBotOpen]);
+
+	const handleRunFromBalBot = React.useCallback(() => {
+		setBalBotOutputOpen(true);
+		void runProject();
+	}, [runProject]);
 
 	const handleStop = React.useCallback(async () => {
 		try {
@@ -613,60 +883,95 @@ function EditorContent() {
 
 	useHotkeys("mod+enter", () => void handleRun(), {
 		preventDefault: true,
+		enabled: !balBotOpen,
 	});
 
 	useHotkeys("mod+alt+v", () => toggleEditorMode(), {
 		preventDefault: true,
+		enabled: !balBotOpen,
 	});
-
-	if (!isReady) return <WasmLoadingScreen progress={progress} error={error} />;
 
 	return (
 		<>
-			<AppSidebar />
+			<AppSidebar onFileSelect={closeBalBot} />
 			<SidebarInset className="flex flex-col h-dvh overflow-hidden">
 				<EditorHeader />
 				<main className="flex flex-1 min-h-0">
-					<EditorWorkspace
-						onRun={handleRun}
-						isRunning={isRunning}
-						onStop={handleStop}
-						listenerAddresses={listenerAddresses}
-					/>
+					<div className="relative flex-1 min-h-0 min-w-0">
+						{/* Hidden, never display:none, so the panel layout and the editor scroll survive. */}
+						<div
+							className={cn("absolute inset-0 flex", balBotOpen && "invisible")}
+						>
+							<EditorWorkspace
+								onRun={handleRun}
+								isRunning={isRunning}
+								onStop={handleStop}
+								listenerAddresses={listenerAddresses}
+								onOpenBalBot={() => void handleOpenBalBot()}
+								balBotDisabledReason={balBotDisabledReason}
+							/>
+						</div>
+						{balBotProject && (
+							<div className="absolute inset-0 z-10 bg-background">
+								<React.Suspense
+									fallback={
+										<div className="flex h-full items-center justify-center text-xs text-muted-foreground">
+											Loading bal-bot…
+										</div>
+									}
+								>
+									<BalBotView
+										files={balBotProject.files}
+										onChange={handleBalBotChange}
+										actions={
+											<>
+												<TooltipProvider>
+													<Tooltip>
+														<TooltipTrigger
+															render={<span className="flex h-full border-r" />}
+														>
+															<Button
+																className="h-full w-10"
+																variant="ghost"
+																data-testid="bal-bot-code"
+																aria-label="Back to code editor"
+																onClick={closeBalBot}
+															>
+																<HugeiconsIcon
+																	icon={CodeIcon}
+																	strokeWidth={1.5}
+																/>
+															</Button>
+														</TooltipTrigger>
+														<TooltipContent>Back to code editor</TooltipContent>
+													</Tooltip>
+												</TooltipProvider>
+												<RunButton
+													testId="bal-bot-run"
+													onRun={handleRunFromBalBot}
+													isRunning={isRunning}
+													onStop={() => void handleStop()}
+												/>
+											</>
+										}
+										footer={
+											<RightPane
+												listenerAddresses={listenerAddresses}
+												testId="bal-bot-output-pane"
+												drawer={{
+													open: balBotOutputOpen,
+													onToggle: () => setBalBotOutputOpen((open) => !open),
+												}}
+											/>
+										}
+									/>
+								</React.Suspense>
+							</div>
+						)}
+					</div>
 				</main>
 			</SidebarInset>
 		</>
-	);
-}
-
-function WasmLoadingScreen({
-	progress,
-	error,
-}: {
-	progress: number;
-	error: Error | null;
-}) {
-	const pct = Math.max(0, Math.min(100, progress));
-	return (
-		<div
-			className="w-full flex items-center justify-center min-h-dvh"
-			data-testid="wasm-loading"
-		>
-			<div className="flex flex-col items-center gap-4">
-				<div className="text-sm text-muted-foreground">
-					Loading WASM binaries...&nbsp;
-					<span className="inline-block text-right w-10 tabular-nums">
-						{pct}%
-					</span>
-				</div>
-				<Progress className="w-full" value={progress} />
-				{error ? (
-					<p className="max-w-md text-center text-sm text-destructive">
-						{error.message}
-					</p>
-				) : null}
-			</div>
-		</div>
 	);
 }
 

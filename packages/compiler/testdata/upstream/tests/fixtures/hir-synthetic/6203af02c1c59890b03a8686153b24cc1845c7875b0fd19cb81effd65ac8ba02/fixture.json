@@ -1,0 +1,2092 @@
+{
+  "catalogRef": "6203af02c1c59890b03a8686153b24cc1845c7875b0fd19cb81effd65ac8ba02",
+  "legacyProgram": {
+    "scopes": [
+      {
+        "id": "examples/analysis_recovery/function/main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 2
+            }
+          }
+        },
+        "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+        "kind": "automation",
+        "title": "Automation",
+        "moduleId": "examples/analysis_recovery",
+        "serviceType": null,
+        "functionId": "examples/analysis_recovery/function/main"
+      }
+    ],
+    "functions": {
+      "examples/analysis_recovery/function/double": {
+        "id": "examples/analysis_recovery/function/double",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 63
+            }
+          }
+        },
+        "text": "function double(int amount) returns int { return amount * 2; }",
+        "moduleId": "examples/analysis_recovery",
+        "entry": {
+          "kind": "function",
+          "name": "double",
+          "signature": "function double(int amount) returns int",
+          "parameters": [
+            {
+              "kind": "input",
+              "text": "int amount"
+            }
+          ],
+          "returnType": "int"
+        },
+        "body": [
+          {
+            "id": "examples/analysis_recovery/function/double/statement/0",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 7,
+                  "column": 43
+                },
+                "end": {
+                  "line": 7,
+                  "column": 61
+                }
+              }
+            },
+            "text": "return amount * 2;",
+            "kind": "return",
+            "calls": []
+          }
+        ]
+      },
+      "examples/analysis_recovery/function/main": {
+        "id": "examples/analysis_recovery/function/main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 2
+            }
+          }
+        },
+        "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+        "moduleId": "examples/analysis_recovery",
+        "entry": {
+          "kind": "function",
+          "name": "main",
+          "signature": "public function main()",
+          "parameters": [],
+          "returnType": "()"
+        },
+        "body": [
+          {
+            "id": "examples/analysis_recovery/function/main/statement/0",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 2,
+                  "column": 5
+                },
+                "end": {
+                  "line": 2,
+                  "column": 20
+                }
+              }
+            },
+            "text": "int amount = 2;",
+            "kind": "simple",
+            "operation": "declare",
+            "presentation": "step",
+            "calls": []
+          },
+          {
+            "id": "examples/analysis_recovery/function/main/statement/1",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 3,
+                  "column": 5
+                },
+                "end": {
+                  "line": 3,
+                  "column": 33
+                }
+              }
+            },
+            "text": "int result = double(amount);",
+            "kind": "simple",
+            "operation": "declare",
+            "presentation": "step",
+            "calls": [
+              {
+                "id": "examples/analysis_recovery/function/main/statement/1/call/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 3,
+                      "column": 18
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 32
+                    }
+                  }
+                },
+                "text": "double(amount)",
+                "target": {
+                  "kind": "workspace",
+                  "functionId": "examples/analysis_recovery/function/double"
+                },
+                "expansion": "supported"
+              }
+            ]
+          },
+          {
+            "id": "examples/analysis_recovery/function/main/statement/2",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 4,
+                  "column": 5
+                },
+                "end": {
+                  "line": 4,
+                  "column": 16
+                }
+              }
+            },
+            "text": "_ = result;",
+            "kind": "simple",
+            "operation": "assign",
+            "presentation": "step",
+            "calls": []
+          }
+        ]
+      }
+    }
+  },
+  "hir": {
+    "scopes": [
+      {
+        "id": "examples/analysis_recovery/function/main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 2
+            }
+          }
+        },
+        "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+        "kind": "automation",
+        "title": "Automation",
+        "moduleId": "examples/analysis_recovery",
+        "serviceType": null,
+        "functionId": "examples/analysis_recovery/function/main"
+      }
+    ],
+    "sources": {
+      "examples/analysis_recovery/function/double": {
+        "id": "examples/analysis_recovery/function/double",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 63
+            }
+          }
+        },
+        "text": "function double(int amount) returns int { return amount * 2; }"
+      },
+      "examples/analysis_recovery/function/double/parameter/0": {
+        "id": "examples/analysis_recovery/function/double/parameter/0",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 7,
+              "column": 17
+            },
+            "end": {
+              "line": 7,
+              "column": 27
+            }
+          }
+        },
+        "text": "int amount"
+      },
+      "examples/analysis_recovery/function/double/returnType": {
+        "id": "examples/analysis_recovery/function/double/returnType",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 7,
+              "column": 37
+            },
+            "end": {
+              "line": 7,
+              "column": 40
+            }
+          }
+        },
+        "text": "int"
+      },
+      "examples/analysis_recovery/function/double/statement/0": {
+        "id": "examples/analysis_recovery/function/double/statement/0",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 7,
+              "column": 43
+            },
+            "end": {
+              "line": 7,
+              "column": 61
+            }
+          }
+        },
+        "text": "return amount * 2;"
+      },
+      "examples/analysis_recovery/function/main": {
+        "id": "examples/analysis_recovery/function/main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 2
+            }
+          }
+        },
+        "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}"
+      },
+      "examples/analysis_recovery/function/main/statement/0": {
+        "id": "examples/analysis_recovery/function/main/statement/0",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 2,
+              "column": 5
+            },
+            "end": {
+              "line": 2,
+              "column": 20
+            }
+          }
+        },
+        "text": "int amount = 2;"
+      },
+      "examples/analysis_recovery/function/main/statement/1": {
+        "id": "examples/analysis_recovery/function/main/statement/1",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 3,
+              "column": 5
+            },
+            "end": {
+              "line": 3,
+              "column": 33
+            }
+          }
+        },
+        "text": "int result = double(amount);"
+      },
+      "examples/analysis_recovery/function/main/statement/1/call/0": {
+        "id": "examples/analysis_recovery/function/main/statement/1/call/0",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 3,
+              "column": 18
+            },
+            "end": {
+              "line": 3,
+              "column": 32
+            }
+          }
+        },
+        "text": "double(amount)"
+      },
+      "examples/analysis_recovery/function/main/statement/2": {
+        "id": "examples/analysis_recovery/function/main/statement/2",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 4,
+              "column": 5
+            },
+            "end": {
+              "line": 4,
+              "column": 16
+            }
+          }
+        },
+        "text": "_ = result;"
+      },
+      "receiver/0/initializer": {
+        "id": "receiver/0/initializer",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 2,
+              "column": 18
+            },
+            "end": {
+              "line": 2,
+              "column": 19
+            }
+          }
+        },
+        "text": "2"
+      },
+      "receiver/1/initializer": {
+        "id": "receiver/1/initializer",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 3,
+              "column": 18
+            },
+            "end": {
+              "line": 3,
+              "column": 32
+            }
+          }
+        },
+        "text": "double(amount)"
+      },
+      "receiver/main.bal/113/123/type": {
+        "id": "receiver/main.bal/113/123/type",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 7,
+              "column": 17
+            },
+            "end": {
+              "line": 7,
+              "column": 20
+            }
+          }
+        },
+        "text": "int"
+      },
+      "receiver/main.bal/29/44/type": {
+        "id": "receiver/main.bal/29/44/type",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 2,
+              "column": 5
+            },
+            "end": {
+              "line": 2,
+              "column": 8
+            }
+          }
+        },
+        "text": "int"
+      },
+      "receiver/main.bal/49/77/type": {
+        "id": "receiver/main.bal/49/77/type",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 3,
+              "column": 5
+            },
+            "end": {
+              "line": 3,
+              "column": 8
+            }
+          }
+        },
+        "text": "int"
+      }
+    },
+    "functions": {
+      "examples/analysis_recovery/function/double": {
+        "id": "examples/analysis_recovery/function/double",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 63
+            }
+          }
+        },
+        "text": "function double(int amount) returns int { return amount * 2; }",
+        "moduleId": "examples/analysis_recovery",
+        "entry": {
+          "signatureVariables": [
+            {
+              "variableId": "variable/main.bal/117",
+              "start": 20,
+              "end": 26
+            }
+          ],
+          "kind": "function",
+          "owner": null,
+          "operation": null,
+          "name": "double",
+          "signature": "function double(int amount) returns int",
+          "parameters": [
+            {
+              "variables": [
+                {
+                  "variableId": "variable/main.bal/117",
+                  "start": 4,
+                  "end": 10
+                }
+              ],
+              "label": "Input",
+              "text": "int amount"
+            }
+          ],
+          "returnType": "int"
+        },
+        "nodes": [
+          {
+            "id": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0",
+            "occurrenceKey": "/examples/analysis_recovery/function/double/statement/0",
+            "sourceId": "examples/analysis_recovery/function/double/statement/0",
+            "presentation": {
+              "kind": "plain",
+              "variables": [
+                {
+                  "variableId": "variable/main.bal/117",
+                  "start": 7,
+                  "end": 13
+                }
+              ],
+              "style": "return",
+              "label": "return amount * 2;",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "examples/analysis_recovery/function/double/root",
+            "occurrenceKey": "/root",
+            "sourceId": "examples/analysis_recovery/function/double",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "examples/analysis_recovery/function/double/root/group"
+            }
+          }
+        ],
+        "ports": [
+          {
+            "occurrenceKey": "/examples/analysis_recovery/function/double/statement/0:entry",
+            "id": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0:entry",
+            "nodeId": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/examples/analysis_recovery/function/double/statement/0:normal-exit",
+            "id": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0:normal-exit",
+            "nodeId": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/examples/analysis_recovery/function/double/statement/0:return",
+            "id": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0:return",
+            "nodeId": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0",
+            "role": "return",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:entry",
+            "id": "examples/analysis_recovery/function/double/root:entry",
+            "nodeId": "examples/analysis_recovery/function/double/root",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:normal-exit",
+            "id": "examples/analysis_recovery/function/double/root:normal-exit",
+            "nodeId": "examples/analysis_recovery/function/double/root",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          }
+        ],
+        "edges": [],
+        "groups": [
+          {
+            "id": "examples/analysis_recovery/function/double/root/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0"
+              ]
+            },
+            "style": {
+              "profile": "root",
+              "root": {
+                "node": true,
+                "header": false,
+                "container": true
+              },
+              "inline": {
+                "node": false,
+                "header": false,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "examples/analysis_recovery/function/double/graph",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "examples/analysis_recovery/function/double/root"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          }
+        ],
+        "rootGroup": "examples/analysis_recovery/function/double/graph",
+        "interfaces": [
+          {
+            "id": "root/entry/0",
+            "members": [
+              {
+                "portId": "examples/analysis_recovery/function/double/root:entry",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "examples/analysis_recovery/function/double/root/binding/entry/0",
+              "toPort": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0:entry",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "root/normal",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "examples/analysis_recovery/function/double/root/binding/normal",
+              "toPort": "examples/analysis_recovery/function/double/root:normal-exit",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "entry",
+            "members": [
+              {
+                "portId": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "normal",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "returns",
+            "members": [
+              {
+                "portId": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0:return",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "any",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "panics",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          }
+        ],
+        "emission": {
+          "root": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/double/root",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0:return",
+                "when": {
+                  "kind": "any",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/double/root:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/double/root:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "binding",
+                "bindingId": "examples/analysis_recovery/function/double/root/binding/entry/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "examples/analysis_recovery/function/double/root/binding/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "inline": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/double/examples/analysis_recovery/function/double/statement/0:return",
+                "when": {
+                  "kind": "any",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ],
+            "edges": []
+          }
+        }
+      },
+      "examples/analysis_recovery/function/main": {
+        "id": "examples/analysis_recovery/function/main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 2
+            }
+          }
+        },
+        "text": "public function main() {\n    int amount = 2;\n    int result = double(amount);\n    _ = result;\n}",
+        "moduleId": "examples/analysis_recovery",
+        "entry": {
+          "kind": "function",
+          "owner": null,
+          "operation": null,
+          "name": "main",
+          "signature": "public function main()",
+          "parameters": [],
+          "returnType": "()"
+        },
+        "nodes": [
+          {
+            "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0",
+            "occurrenceKey": "/examples/analysis_recovery/function/main/statement/0",
+            "sourceId": "examples/analysis_recovery/function/main/statement/0",
+            "presentation": {
+              "kind": "plain",
+              "variables": [
+                {
+                  "variableId": "variable/main.bal/33",
+                  "start": 4,
+                  "end": 10
+                }
+              ],
+              "style": "step",
+              "label": "int amount = 2;",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1",
+            "occurrenceKey": "/examples/analysis_recovery/function/main/statement/1",
+            "sourceId": "examples/analysis_recovery/function/main/statement/1",
+            "presentation": {
+              "kind": "plain",
+              "variables": [
+                {
+                  "variableId": "variable/main.bal/53",
+                  "start": 4,
+                  "end": 10
+                },
+                {
+                  "variableId": "variable/main.bal/33",
+                  "start": 20,
+                  "end": 26
+                }
+              ],
+              "style": "step",
+              "label": "int result = double(amount);",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/group"
+            }
+          },
+          {
+            "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+            "occurrenceKey": "/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+            "sourceId": "examples/analysis_recovery/function/main/statement/1/call/0",
+            "presentation": {
+              "kind": "plain",
+              "variables": [
+                {
+                  "variableId": "variable/main.bal/33",
+                  "start": 7,
+                  "end": 13
+                }
+              ],
+              "style": "function",
+              "label": "double(amount)",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "call",
+                "occurrenceKey": "/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                "availability": {
+                  "kind": "available"
+                },
+                "recursive": {
+                  "variables": [
+                    {
+                      "variableId": "variable/main.bal/33",
+                      "start": 7,
+                      "end": 13
+                    }
+                  ],
+                  "label": "double(amount)",
+                  "sections": [],
+                  "limitation": "Recursive calls remain collapsed.",
+                  "title": "Recursive calls remain collapsed.",
+                  "ariaLabel": "Recursive call double(amount)",
+                  "glyph": "↻"
+                }
+              }
+            },
+            "body": {
+              "kind": "reference",
+              "reference": {
+                "graphId": "examples/analysis_recovery/function/double",
+                "occurrenceKey": "/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                "availability": {
+                  "kind": "available"
+                },
+                "container": {
+                  "profile": "call",
+                  "root": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  },
+                  "inline": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  }
+                },
+                "collapsed": {
+                  "interfaces": [
+                    {
+                      "id": "entry",
+                      "members": [
+                        {
+                          "portId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:entry",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "normal",
+                      "members": [
+                        {
+                          "portId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:normal-exit",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "returns",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "panics",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    }
+                  ],
+                  "edges": []
+                },
+                "inline": [
+                  {
+                    "kind": "entry",
+                    "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0/enter",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:entry",
+                    "targetInterfaceId": "entry",
+                    "edge": {
+                      "kind": "sequence",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0/exit/normal",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:normal-exit",
+                    "targetInterfaceId": "normal",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0/exit/returns",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:normal-exit",
+                    "targetInterfaceId": "returns",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2",
+            "occurrenceKey": "/examples/analysis_recovery/function/main/statement/2",
+            "sourceId": "examples/analysis_recovery/function/main/statement/2",
+            "presentation": {
+              "kind": "plain",
+              "variables": [
+                {
+                  "variableId": "variable/main.bal/53",
+                  "start": 4,
+                  "end": 10
+                }
+              ],
+              "style": "step",
+              "label": "_ = result;",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "examples/analysis_recovery/function/main/root",
+            "occurrenceKey": "/root",
+            "sourceId": "examples/analysis_recovery/function/main",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "examples/analysis_recovery/function/main/root/group"
+            }
+          }
+        ],
+        "ports": [
+          {
+            "occurrenceKey": "/examples/analysis_recovery/function/main/statement/0:entry",
+            "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0:entry",
+            "nodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/examples/analysis_recovery/function/main/statement/0:normal-exit",
+            "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0:normal-exit",
+            "nodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/examples/analysis_recovery/function/main/statement/1:entry",
+            "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1:entry",
+            "nodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/examples/analysis_recovery/function/main/statement/1:normal-exit",
+            "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1:normal-exit",
+            "nodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "header-bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:entry",
+            "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:entry",
+            "nodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:normal-exit",
+            "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:normal-exit",
+            "nodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/examples/analysis_recovery/function/main/statement/2:entry",
+            "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2:entry",
+            "nodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/examples/analysis_recovery/function/main/statement/2:normal-exit",
+            "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2:normal-exit",
+            "nodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:entry",
+            "id": "examples/analysis_recovery/function/main/root:entry",
+            "nodeId": "examples/analysis_recovery/function/main/root",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:normal-exit",
+            "id": "examples/analysis_recovery/function/main/root:normal-exit",
+            "nodeId": "examples/analysis_recovery/function/main/root",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/0",
+            "fromPort": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1:normal-exit",
+            "toPort": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/1",
+            "fromPort": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:entry",
+            "toPort": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:normal-exit",
+            "when": {
+              "kind": "not",
+              "operand": {
+                "kind": "nonempty",
+                "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                "interfaceId": "entry"
+              }
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/2",
+            "fromPort": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0:normal-exit",
+            "toPort": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/3",
+            "fromPort": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:normal-exit",
+            "toPort": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "any",
+                      "operands": [
+                        {
+                          "kind": "not",
+                          "operand": {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                            "interfaceId": "entry"
+                          }
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                          "interfaceId": "normal"
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                          "interfaceId": "returns"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          },
+          {
+            "id": "examples/analysis_recovery/function/main/root/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0",
+                "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1",
+                "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2"
+              ]
+            },
+            "style": {
+              "profile": "root",
+              "root": {
+                "node": true,
+                "header": false,
+                "container": true
+              },
+              "inline": {
+                "node": false,
+                "header": false,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "examples/analysis_recovery/function/main/graph",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "examples/analysis_recovery/function/main/root"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          }
+        ],
+        "rootGroup": "examples/analysis_recovery/function/main/graph",
+        "interfaces": [
+          {
+            "id": "root/entry/0",
+            "members": [
+              {
+                "portId": "examples/analysis_recovery/function/main/root:entry",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "examples/analysis_recovery/function/main/root/binding/entry/0",
+              "toPort": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0:entry",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "root/normal",
+            "members": [
+              {
+                "portId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "examples/analysis_recovery/function/main/root/binding/normal",
+              "toPort": "examples/analysis_recovery/function/main/root:normal-exit",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "entry",
+            "members": [
+              {
+                "portId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "normal",
+            "members": [
+              {
+                "portId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "returns",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "panics",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          }
+        ],
+        "emission": {
+          "root": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/root",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/root:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/root:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/3",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "examples/analysis_recovery/function/main/root/binding/entry/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "examples/analysis_recovery/function/main/root/binding/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "inline": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/2:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/3",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/analysis_recovery/function/main/examples/analysis_recovery/function/main/statement/1/expand/examples/analysis_recovery/function/main/statement/1/call/0",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "graphOnly": false,
+  "provenance": "Archived synthetic graph input; no AST exists or is fabricated. Entry metadata is omitted by graphOnly exactly when the original fixture omitted it."
+}

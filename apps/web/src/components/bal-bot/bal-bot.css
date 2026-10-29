@@ -1,0 +1,693 @@
+.bal-bot-root {
+	font-size: 14px;
+	height: 100%;
+	min-height: 0;
+}
+.bal-bot-root .app {
+	height: 100%;
+}
+/* The flow keeps upstream's light surfaces in both themes, so pin its text colour. */
+.bal-bot-root .inspection {
+	color: var(--foreground);
+}
+.bal-bot-root
+	:where(.function-main, .function-card, .flow-notice, .flow-diagnostics) {
+	color: #25312c;
+}
+/* Flow and function-card buttons relied on bal-bot's global button styling. */
+.bal-bot-root :where(.inspection, .function-workspace) button {
+	font: inherit;
+	cursor: pointer;
+	border: 1px solid #dce2db;
+	background: white;
+	color: inherit;
+	border-radius: 7px;
+	padding: 7px 11px;
+}
+.bal-bot-root :where(.inspection, .function-workspace) button:hover {
+	background: #edf2eb;
+}
+.bal-bot-root :where(.inspection, .function-workspace) button:disabled {
+	opacity: 0.4;
+	cursor: default;
+}
+.bal-bot-root :where(.inspection, .function-workspace) button:focus-visible {
+	outline: 2px solid #628952;
+	outline-offset: 2px;
+}
+.bal-bot-root .flow-workspace {
+	position: relative;
+	display: grid;
+	grid-template-columns: 20% 60% 20%;
+	min-height: 0;
+	overflow: hidden;
+}
+.bal-bot-root .flow-workspace > aside,
+.bal-bot-root .flow-workspace > main {
+	width: auto;
+	min-width: 0;
+}
+.bal-bot-root .flow-workspace > main {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+.bal-bot-root .flow-workspace .sidebar-content {
+	overflow: auto;
+}
+.bal-bot-root .flow-workspace .service,
+.bal-bot-root .flow-workspace .endpoint {
+	width: 100%;
+	text-align: left;
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+.bal-bot-root .flow-workspace .service small {
+	display: block;
+	font-size: 10px;
+	opacity: 0.65;
+}
+.bal-bot-root .flow-workspace .endpoint {
+	display: grid;
+	grid-template-columns: 46px minmax(0, 1fr);
+	align-items: baseline;
+	gap: 8px;
+	padding: 9px 12px 9px 28px;
+}
+.bal-bot-root .flow-workspace .endpoint small {
+	color: var(--muted-foreground);
+	font-size: 10px;
+}
+.bal-bot-root .endpoint-label {
+	min-width: 0;
+}
+.bal-bot-root .inspection {
+	border-left: 1px solid var(--border);
+	min-width: 0;
+	overflow: hidden;
+	background: var(--muted);
+	display: flex;
+	flex-direction: column;
+}
+.bal-bot-root .inspection-toolbar {
+	display: flex;
+	justify-content: flex-end;
+	padding: 10px 12px;
+	flex: none;
+}
+.bal-bot-root .inspection-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 34px;
+	height: 34px;
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	padding: 8px;
+	background: var(--background);
+	color: var(--foreground);
+}
+.bal-bot-root .inspection-toggle svg {
+	width: 16px;
+	height: 16px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.5;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.bal-bot-root .flow-view {
+	min-height: 0;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
+}
+.bal-bot-root .diagram-scroll {
+	flex: 1;
+	overflow-y: auto;
+	overflow-x: hidden;
+	min-height: 0;
+}
+.bal-bot-root .diagram {
+	display: block;
+	width: calc(100% - 40px);
+	height: auto;
+	margin: 0 auto 20px;
+	flex: none;
+}
+.bal-bot-root .flow-node {
+	fill: #fff;
+	stroke: #d0d7e2;
+	stroke-width: 1.2;
+}
+.bal-bot-root .flow-node.condition {
+	fill: #f5f1fd;
+	stroke: #b4a2d4;
+}
+.bal-bot-root .flow-node.function,
+.bal-bot-root .container.function {
+	fill: #edf5fd;
+	stroke: #adc7e3;
+}
+.bal-bot-root .flow-node.loop,
+.bal-bot-root .container.loop {
+	fill: #f3edfa;
+	stroke: #baa8d4;
+}
+.bal-bot-root .flow-node.return {
+	fill: #e4f4e9;
+	stroke: #74a887;
+}
+.bal-bot-root .flow-node.mapping {
+	fill: #fff7e7;
+	stroke: #d8ba78;
+}
+.bal-bot-root .flow-node.unsupported {
+	fill: #fff0e9;
+	stroke: #d2a488;
+}
+.bal-bot-root .container {
+	fill: #f9fafc;
+	stroke: #d4dce7;
+}
+.bal-bot-root .node-header {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+.bal-bot-root .node-select {
+	border: 0;
+	background: transparent;
+	color: #263047;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+	font: 13px / 19px monospace;
+	text-align: center;
+	padding: 4px 0;
+	width: 100%;
+	max-width: 340px;
+	cursor: pointer;
+}
+.bal-bot-root .node-select:disabled {
+	cursor: default;
+	opacity: 0.6;
+}
+.bal-bot-root .node-disclosure {
+	display: block;
+	padding: 0;
+	border: 1px solid #a8bed7;
+	border-radius: 5px;
+	background: #fff;
+	color: #47638d;
+	width: 26px;
+	height: 26px;
+}
+.bal-bot-root .node-limitation {
+	font: 11px / 14px sans-serif;
+	padding: 0 5px;
+	color: #85633b;
+}
+.bal-bot-root .edge-label {
+	font: 11px sans-serif;
+	fill: #69758b;
+}
+.bal-bot-root .flow-notice {
+	white-space: pre-wrap;
+	padding: 14px;
+	background: #fff5de;
+	font-size: 12px;
+	line-height: 1.5;
+}
+.bal-bot-root .flow-diagnostics {
+	padding: 12px 16px 12px 28px;
+	font-size: 12px;
+	margin: 0;
+	background: #fff1ec;
+	overflow-wrap: anywhere;
+}
+.bal-bot-root .definitions {
+	padding: 18px 12px;
+}
+.bal-bot-root .definitions h2 {
+	font-size: 11px;
+	color: var(--muted-foreground);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	margin: 10px 0;
+}
+.bal-bot-root .definition {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid var(--border);
+}
+.bal-bot-root .definition button {
+	border: 0;
+	background: transparent;
+	padding: 10px 4px;
+	text-align: left;
+	overflow-wrap: anywhere;
+	color: var(--foreground);
+}
+.bal-bot-root .back-definitions {
+	align-self: flex-start;
+	background: transparent;
+	border: 0;
+	padding: 12px;
+	color: var(--foreground);
+}
+.bal-bot-root .reference-chips {
+	display: flex;
+	gap: 5px;
+	flex-wrap: wrap;
+	padding: 4px;
+}
+.bal-bot-root .reference-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	font: 11px monospace;
+	border: 1px solid #c7d8ec;
+	border-radius: 6px;
+	background: #edf5fd;
+	padding: 4px 6px;
+	overflow-wrap: anywhere;
+}
+.bal-bot-root .reference-chip.stale {
+	border-color: #d9aa68;
+	background: #fff2da;
+}
+.bal-bot-root .reference-chip button {
+	border: 0;
+	background: transparent;
+	padding: 0 2px;
+}
+.bal-bot-root .inspection-expanded .back-definitions {
+	align-self: flex-end;
+}
+.bal-bot-root .inspection-expanded > aside {
+	display: none;
+}
+.bal-bot-root .inspection-expanded {
+	display: block;
+}
+.bal-bot-root .inspection-expanded > .inspection {
+	position: absolute;
+	inset: 0;
+	border: 0;
+}
+.bal-bot-root .inspection-expanded > main.floating-chat {
+	position: absolute;
+	z-index: 5;
+	width: min(420px, 100%);
+	height: min(480px, 100%);
+	border: 1px solid var(--border);
+	box-shadow: 0 10px 35px #182d4933;
+	background: var(--background);
+}
+.bal-bot-root .floating-chat .main-bar {
+	cursor: move;
+	touch-action: none;
+	flex: none;
+	user-select: none;
+}
+.bal-bot-root .floating-chat .conversation {
+	padding: 14px;
+}
+.bal-bot-root .floating-chat .composer-area {
+	padding: 10px;
+}
+.bal-bot-root .flow-workspace .conversation {
+	min-height: 0;
+	flex: 1;
+	overflow: auto;
+}
+.bal-bot-root .flow-workspace .composer-area {
+	flex: none;
+}
+.bal-bot-root .flow-workspace .composer textarea {
+	min-height: 56px;
+}
+.bal-bot-root .flow-workspace .service {
+	display: block;
+}
+.bal-bot-root .flow-node.referenced {
+	stroke: #3578d4;
+	stroke-width: 2.5;
+	vector-effect: non-scaling-stroke;
+}
+.bal-bot-root .flow-node.variable-related {
+	fill: #fff2bf;
+}
+.bal-bot-root .flow-entry.variable-related {
+	box-shadow: inset 0 0 0 3px #eed47b;
+}
+.bal-bot-root .variable-active {
+	text-shadow:
+		0.45px 0 currentColor,
+		-0.45px 0 currentColor;
+}
+.bal-bot-root .message-body {
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+.bal-bot-root .message-body > :first-child {
+	margin-top: 0;
+}
+.bal-bot-root .message-body > :last-child {
+	margin-bottom: 0;
+}
+.bal-bot-root .message-body p,
+.bal-bot-root .message-body ul,
+.bal-bot-root .message-body ol,
+.bal-bot-root .message-body blockquote {
+	margin: 0 0 12px;
+}
+.bal-bot-root .message-body h1,
+.bal-bot-root .message-body h2,
+.bal-bot-root .message-body h3,
+.bal-bot-root .message-body h4,
+.bal-bot-root .message-body h5,
+.bal-bot-root .message-body h6 {
+	font-weight: 600;
+	letter-spacing: normal;
+	line-height: 1.4;
+	margin: 18px 0 8px;
+}
+.bal-bot-root .message-body h1 {
+	font-size: 22px;
+}
+.bal-bot-root .message-body h2 {
+	font-size: 19px;
+}
+.bal-bot-root .message-body h3 {
+	font-size: 16px;
+}
+.bal-bot-root .message-body h4,
+.bal-bot-root .message-body h5,
+.bal-bot-root .message-body h6 {
+	font-size: 14px;
+}
+.bal-bot-root .message-body ul,
+.bal-bot-root .message-body ol {
+	padding-left: 24px;
+}
+.bal-bot-root .message-body li + li {
+	margin-top: 4px;
+}
+.bal-bot-root .message-body a {
+	color: var(--primary);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+.bal-bot-root .message-body code {
+	font:
+		12px / 1.6 "JetBrains Mono",
+		monospace;
+	background: var(--muted);
+	padding: 2px 4px;
+}
+.bal-bot-root .message-body pre {
+	overflow-x: auto;
+	white-space: pre;
+	overflow-wrap: normal;
+	padding: 12px;
+	margin: 0 0 12px;
+	background: var(--muted);
+	border: 1px solid var(--border);
+}
+.bal-bot-root .message-body pre code {
+	background: none;
+	padding: 0;
+	border-radius: 0;
+}
+.bal-bot-root .message-body blockquote {
+	border-left: 3px solid var(--border);
+	padding-left: 12px;
+	color: var(--muted-foreground);
+}
+.bal-bot-root .message-body table {
+	display: block;
+	max-width: 100%;
+	overflow-x: auto;
+	border-collapse: collapse;
+	margin: 0 0 12px;
+}
+.bal-bot-root .message-body th,
+.bal-bot-root .message-body td {
+	border: 1px solid var(--border);
+	padding: 6px 10px;
+	text-align: left;
+}
+.bal-bot-root .message-body th {
+	background: var(--muted);
+}
+.bal-bot-root .message-body img {
+	max-width: 100%;
+	height: auto;
+}
+.bal-bot-root .message-body hr {
+	border: 0;
+	border-top: 1px solid var(--border);
+	margin: 16px 0;
+}
+.bal-bot-root .flow-workspace .service,
+.bal-bot-root .flow-workspace .endpoint {
+	position: relative;
+	padding-right: 34px;
+}
+.bal-bot-root .anchor-activity {
+	position: absolute;
+	right: 12px;
+	top: 50%;
+	width: 12px;
+	height: 12px;
+	margin-top: -6px;
+	pointer-events: none;
+}
+.bal-bot-root .anchor-running {
+	border: 2px solid #cad6c3;
+	border-top-color: #50723d;
+	border-radius: 50%;
+	animation: anchor-spin 0.8s linear infinite;
+}
+.bal-bot-root .anchor-completed {
+	width: 8px;
+	height: 8px;
+	margin-top: -4px;
+	right: 14px;
+	border-radius: 50%;
+	background: #50723d;
+}
+@keyframes anchor-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.bal-bot-root .anchor-running {
+		animation: none;
+	}
+}
+.bal-bot-root .flow-entry-context {
+	width: calc(100% - 40px);
+	max-width: 440px;
+	margin: 20px auto 0;
+	flex: none;
+}
+.bal-bot-root .flow-entry-owner {
+	font-size: 12px;
+	line-height: 1.6;
+	color: #69796f;
+	margin-bottom: 14px;
+	overflow-wrap: anywhere;
+}
+.bal-bot-root .flow-entry {
+	background: #fff;
+	border: 1px solid #dce4dc;
+	border-radius: 10px;
+	overflow: hidden;
+}
+.bal-bot-root .flow-entry-heading {
+	padding: 14px 16px;
+}
+.bal-bot-root .flow-entry-kind {
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.07em;
+	color: #69796f;
+}
+.bal-bot-root .flow-entry h2 {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	flex-wrap: wrap;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 1.5;
+	margin: 5px 0 0;
+	overflow-wrap: anywhere;
+}
+.bal-bot-root .flow-entry-operation {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: #286151;
+	background: #e4ede0;
+	padding: 3px 6px;
+	border-radius: 4px;
+}
+.bal-bot-root .flow-entry details {
+	border-top: 1px solid #dce4dc;
+	padding: 10px 16px;
+}
+.bal-bot-root .flow-entry summary {
+	font-size: 12px;
+	color: #286151;
+	cursor: pointer;
+	line-height: 1.6;
+}
+.bal-bot-root .flow-entry summary:focus-visible {
+	outline: 2px solid #628952;
+	outline-offset: 3px;
+}
+.bal-bot-root .flow-entry details[open] summary {
+	margin-bottom: 12px;
+}
+.bal-bot-root .flow-entry-signature,
+.bal-bot-root .flow-entry dd {
+	font:
+		12px / 1.7 "JetBrains Mono",
+		monospace;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+.bal-bot-root .flow-entry dl {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: 8px 14px;
+	margin: 16px 0 4px;
+}
+.bal-bot-root .flow-entry dt {
+	font-size: 12px;
+	color: #69796f;
+}
+.bal-bot-root .flow-entry dd {
+	margin: 0;
+}
+.bal-bot-root .flow-entry-connector {
+	width: 1px;
+	height: 16px;
+	margin: auto;
+	background: #7c8899;
+}
+.bal-bot-root .flow-empty {
+	font-size: 12px;
+	color: #69796f;
+	text-align: center;
+	padding: 16px 20px;
+}
+@media (pointer: coarse) {
+	.bal-bot-root .flow-entry summary {
+		min-height: 34px;
+		padding: 6px 0;
+	}
+}
+.bal-bot-root .flow-node.function.recursive {
+	stroke-dasharray: 5 3;
+}
+.bal-bot-root [data-recursive] .node-disclosure:disabled {
+	opacity: 1;
+	color: #85633b;
+	border-color: #b99d75;
+}
+.bal-bot-root .flow-node.client {
+	fill: #effaf8;
+	stroke: #68b5a8;
+}
+.bal-bot-root .flow-node.trap,
+.bal-bot-root .container.trap {
+	fill: #f5f0fc;
+	stroke: #b6a1d2;
+}
+.bal-bot-root .flow-node.panic {
+	fill: #fff0ef;
+	stroke: #d68b86;
+}
+.bal-bot-root .flow-node.template {
+	fill: #edf5fd;
+	stroke: #adc7e3;
+}
+.bal-bot-root .client-receiver,
+.bal-bot-root .client-context,
+.bal-bot-root .client-method {
+	display: block;
+}
+.bal-bot-root .client-receiver {
+	color: #336b65;
+	font-weight: 600;
+}
+.bal-bot-root .client-context {
+	color: #667582;
+}
+.bal-bot-root .client-method {
+	color: #164e49;
+	font-weight: 600;
+}
+.bal-bot-root .node-header.client-header .node-select {
+	width: 100%;
+}
+.bal-bot-root .flow-node.error-constructor {
+	fill: #fff8f1;
+	stroke: #d6ad85;
+}
+.bal-bot-root .error-header .node-select {
+	text-align: left;
+}
+.bal-bot-root .error-message {
+	color: #60391f;
+	font-weight: 600;
+}
+.bal-bot-root .error-message:not(:first-child),
+.bal-bot-root .error-cause {
+	color: #745b48;
+	font-weight: 400;
+}
+.bal-bot-root .error-detail {
+	color: #78716b;
+}
+.bal-bot-root .template-header .node-select {
+	display: grid;
+	grid-template-columns: 56px 272px;
+	gap: 12px;
+	width: 340px;
+	max-width: 340px;
+	text-align: left;
+	align-items: center;
+}
+.bal-bot-root .node-header.has-disclosure .node-select {
+	width: calc(100% - 64px);
+}
+.bal-bot-root .template-type {
+	display: flex;
+	align-self: stretch;
+	align-items: center;
+	justify-content: center;
+	color: #47638d;
+	border-right: 1px solid #adc7e3;
+}
+.bal-bot-root .template-expression {
+	min-width: 0;
+	text-align: center;
+}
+/* Expanded: the flow canvas shares the panel's background and the card sits in the middle. */
+.bal-bot-root .inspection-expanded .function-workspace {
+	width: fit-content;
+	margin-inline: auto;
+}
+.bal-bot-root .inspection-toggle:hover {
+	background: var(--accent);
+}
