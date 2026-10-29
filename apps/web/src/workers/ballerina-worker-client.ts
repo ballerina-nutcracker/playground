@@ -1,5 +1,7 @@
 import * as Comlink from "comlink";
 
+import { exposeSnapshotFS } from "@/workers/fs-watch-bridge";
+
 import type {
 	BallerinaWorkerAPI,
 	HttpDispatchRequest,
@@ -9,6 +11,7 @@ import type {
 import type { SnapshotFS } from "@/lib/fs/snapshot";
 
 export class BallerinaWorkerClient {
+	private readonly runCleanups = new Set<() => void>();
 	private worker: Worker | null = null;
 	private api: Comlink.Remote<BallerinaWorkerAPI> | null = null;
 
@@ -49,7 +52,18 @@ export class BallerinaWorkerClient {
 		onEvent: RunEventCallback,
 	): Promise<void> {
 		if (!this.api) throw new Error("Ballerina runtime is not ready");
-		return this.api.run(Comlink.proxy(snapshot), path, Comlink.proxy(onEvent));
+		const bridge = exposeSnapshotFS(snapshot);
+		this.runCleanups.add(bridge.dispose);
+		try {
+			await this.api.run(
+				Comlink.proxy(bridge.fs),
+				path,
+				Comlink.proxy(onEvent),
+			);
+		} finally {
+			bridge.dispose();
+			this.runCleanups.delete(bridge.dispose);
+		}
 	}
 
 	async sendStopSignal(): Promise<void> {
@@ -73,6 +87,8 @@ export class BallerinaWorkerClient {
 	}
 
 	dispose() {
+		for (const cleanup of this.runCleanups) cleanup();
+		this.runCleanups.clear();
 		this.worker?.terminate();
 		this.worker = null;
 		this.api = null;
