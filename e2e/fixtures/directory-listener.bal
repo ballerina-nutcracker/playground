@@ -18,6 +18,7 @@ service on directory {
             check directory.gracefulStop();
             check directory.gracefulStop();
             check file:create("changes/ignored.txt");
+            check file:remove("changes", file:RECURSIVE);
             io:println("watch stopped");
         } else {
             io:println("unexpected:", name);
