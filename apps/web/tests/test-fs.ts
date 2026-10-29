@@ -3,7 +3,7 @@ export function createFs(inputFiles: Map<string, string>) {
 	const files = new Map(
 		[...inputFiles.entries()].map(([path, content]) => [path, content]),
 	);
-	const dirs = new Set<string>(["/"]);
+	const dirs = new Set<string>(["/", "/tmp"]);
 
 	function dirname(path: string) {
 		return path.split("/").slice(0, -1).join("/") || "/";

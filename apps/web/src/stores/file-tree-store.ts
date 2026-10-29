@@ -362,6 +362,54 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 						});
 						break;
 					}
+					case "remove": {
+						const result = await fs.remove(mutation.path);
+						if (!result) {
+							throw new Error(`remove failed: ${mutation.path}`);
+						}
+						set((s) => {
+							s.expandedPaths = new Set(
+								[...s.expandedPaths].filter(
+									(path) =>
+										path !== mutation.path &&
+										!path.startsWith(`${mutation.path}/`),
+								),
+							);
+							if (
+								s.activeFile &&
+								(s.activeFile.path === mutation.path ||
+									s.activeFile.path.startsWith(`${mutation.path}/`))
+							) {
+								s.activeFile = null;
+							}
+						});
+						break;
+					}
+					case "move": {
+						if (
+							mutation.oldPath !== mutation.newPath &&
+							(await fs.stat(mutation.newPath))
+						) {
+							throw new Error(`move destination exists: ${mutation.newPath}`);
+						}
+						const result = await fs.move(mutation.oldPath, mutation.newPath);
+						if (!result) {
+							throw new Error(`move failed: ${mutation.oldPath}`);
+						}
+						set((s) => {
+							if (
+								s.activeFile &&
+								(s.activeFile.path === mutation.oldPath ||
+									s.activeFile.path.startsWith(`${mutation.oldPath}/`))
+							) {
+								s.activeFile.path = `${mutation.newPath}${s.activeFile.path.slice(mutation.oldPath.length)}`;
+								for (const path of ancestorDirPathsForFile(s.activeFile.path)) {
+									s.expandedPaths.add(path);
+								}
+							}
+						});
+						break;
+					}
 				}
 				await get()._syncTrees();
 			},
