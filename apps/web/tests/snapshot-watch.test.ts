@@ -1,10 +1,6 @@
 import { expect, test } from "bun:test";
 
-import {
-	cleanFSPath,
-	FSWatchRegistry,
-	WATCH_QUEUE_LIMIT,
-} from "../src/lib/fs/fs-watch-registry";
+import { cleanFSPath, FSWatchRegistry } from "../src/lib/fs/fs-watch-registry";
 import { SnapshotFS } from "../src/lib/fs/snapshot";
 import { createFs } from "./test-fs";
 
@@ -195,7 +191,7 @@ test("watch callbacks can write without blocking the mutation or other listeners
 	}
 });
 
-test("slow callbacks have bounded queues and receive an overflow error", async () => {
+test("slow callbacks retain bulk mutations until they can be delivered", async () => {
 	const registry = new FSWatchRegistry();
 	const started = Promise.withResolvers<void>();
 	const release = Promise.withResolvers<void>();
@@ -210,31 +206,53 @@ test("slow callbacks have bounded queues and receive an overflow error", async (
 	try {
 		registry.publish({ path: "/work/first", op: "create" });
 		await started.promise;
-		for (let i = 0; i <= WATCH_QUEUE_LIMIT; i++) {
+		for (let i = 0; i < 300; i++) {
 			registry.publish({ path: `/work/${i}`, op: "create" });
 		}
 		expect(log.events).toHaveLength(1);
 		release.resolve();
-		await log.waitFor(2);
-		expect(log.events[1]).toEqual({
-			error: "Directory watch event queue overflow",
-		});
+		await log.waitFor(301);
+		expect(log.events).toHaveLength(301);
 	} finally {
 		release.resolve();
 		registry.dispose();
 	}
 });
 
-test("removing the watched root terminates its subscription, even if recreated", async () => {
+test("removing the watched root reports its deletion and stops its subscription", async () => {
 	const fs = await snapshot();
 	const log = recorder();
 	await fs.watch("/work/nested", true, log.callback);
 	try {
 		await fs.remove("/work/nested");
-		await log.waitFor(1);
+		await log.waitFor(2);
 		await fs.mkdirAll("/work/nested");
 		await fs.writeFile("/work/nested/ignored", "");
-		expect(log.events).toEqual([{ error: "Watched directory was removed" }]);
+		expect(log.events).toEqual([
+			{ path: "/work/nested/existing.txt", op: "delete" },
+			{ path: "/work/nested", op: "delete" },
+		]);
+	} finally {
+		fs.dispose();
+	}
+});
+
+test("a callback can await its own unwatch", async () => {
+	const fs = await snapshot();
+	const unwatched = Promise.withResolvers<void>();
+	let id = "";
+	id = await fs.watch("/work", false, async () => {
+		await fs.unwatch(id);
+		unwatched.resolve();
+	});
+	try {
+		await fs.writeFile("/work/file", "");
+		await Promise.race([
+			unwatched.promise,
+			new Promise<void>((_, reject) =>
+				setTimeout(() => reject(new Error("unwatch timed out")), 100),
+			),
+		]);
 	} finally {
 		fs.dispose();
 	}

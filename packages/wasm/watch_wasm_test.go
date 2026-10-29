@@ -64,6 +64,7 @@ func receiveWatchEvent(t *testing.T, events <-chan pal.WatchEvent) pal.WatchEven
 }
 
 func TestWatchDispatchAndCleanup(t *testing.T) {
+	t.Parallel()
 	bridge, proxy := newWatchProxy(t)
 	events := make(chan pal.WatchEvent, 3)
 	handle, err := bridge.Watch("/work", true, func(event pal.WatchEvent) {
@@ -98,6 +99,7 @@ func TestWatchDispatchAndCleanup(t *testing.T) {
 }
 
 func TestWatchHandlerCanCloseItself(t *testing.T) {
+	t.Parallel()
 	bridge, proxy := newWatchProxy(t)
 	events := make(chan pal.WatchEvent, 1)
 	var handle pal.WatchHandle
@@ -121,6 +123,7 @@ func TestWatchHandlerCanCloseItself(t *testing.T) {
 }
 
 func TestWatchOverflowIsReportedWithoutBlockingCallback(t *testing.T) {
+	t.Parallel()
 	bridge, proxy := newWatchProxy(t)
 	started := make(chan pal.WatchEvent, 1)
 	resume := make(chan struct{})
@@ -164,6 +167,7 @@ func TestWatchOverflowIsReportedWithoutBlockingCallback(t *testing.T) {
 }
 
 func TestWatchRegistrationFailureAndBridgeDisposal(t *testing.T) {
+	t.Parallel()
 	bridge, proxy := newWatchProxy(t)
 	proxy.reject = true
 	if handle, err := bridge.Watch("/work", false, func(pal.WatchEvent) {}); handle != nil || err == nil {
@@ -190,6 +194,7 @@ func TestWatchRegistrationFailureAndBridgeDisposal(t *testing.T) {
 }
 
 func TestBridgeDisposalWaitsForInFlightHandler(t *testing.T) {
+	t.Parallel()
 	bridge, proxy := newWatchProxy(t)
 	proxy.onClose = make(chan struct{}, 1)
 	started := make(chan pal.WatchEvent, 1)
@@ -224,6 +229,7 @@ func TestBridgeDisposalWaitsForInFlightHandler(t *testing.T) {
 }
 
 func TestWatchEventValidation(t *testing.T) {
+	t.Parallel()
 	for _, value := range []any{
 		nil, true, "invalid",
 		map[string]any{"path": 12, "op": "create"},

@@ -46,6 +46,10 @@ test("directory listener receives file-tree mutations", async ({ page }) => {
 	await expect(playground.outputPane).toContainText("ready", {
 		timeout: 10_000,
 	});
+	await playground.createFile(watchedDir, "live.txt");
+	await expect(playground.outputPane).toContainText("create:live.txt", {
+		timeout: 10_000,
+	});
 
 	await playground.openFile(sourcePath);
 	await playground.replaceEditorContent("updated");
