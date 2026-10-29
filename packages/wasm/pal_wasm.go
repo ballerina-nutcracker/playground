@@ -250,6 +250,9 @@ func wasmPal(fsys *bridgeFS, cwd string, stderr, stdout io.Writer, signals pal.S
 			Stderr: stderr.Write,
 		},
 		FS: pal.FS{
+			Watch: func(p string, recursive bool, handler pal.WatchHandler) (pal.WatchHandle, error) {
+				return fsys.Watch(resolvePath(cwd, p), recursive, handler)
+			},
 			OpenReadable: func(p string) (io.ReadCloser, error) {
 				return fsys.Open(resolvePath(cwd, p))
 			},
