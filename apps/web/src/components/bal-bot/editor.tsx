@@ -95,7 +95,7 @@ const emptyView: AnchorView = {
 	expanded: new Set(),
 };
 const DISCLAIMER =
-	"ballerina-agent (beta) runs entirely in your browser. Your conversation and API keys are ephemeral and never stored.";
+	"Agent view (beta) runs entirely in your browser. Your conversation and API keys are ephemeral and never stored.";
 export function Editor({
 	workspace,
 }: {

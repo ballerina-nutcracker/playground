@@ -541,7 +541,7 @@ function EditorPane({
 									className="h-full w-10"
 									variant="ghost"
 									data-testid="bal-bot-button"
-									aria-label="Open project in ballerina-agent (beta)"
+									aria-label="Open project in agent view (beta)"
 									onClick={onOpenBalBot}
 									disabled={balBotDisabledReason !== null}
 								>
@@ -549,8 +549,7 @@ function EditorPane({
 								</Button>
 							</TooltipTrigger>
 							<TooltipContent>
-								{balBotDisabledReason ??
-									"Open project in ballerina-agent (beta)"}
+								{balBotDisabledReason ?? "Open project in agent view (beta)"}
 							</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
