@@ -97,6 +97,16 @@ const testCases: TestCase[] = [
 		entryPoint: "/tmp/main.bal",
 		expectedStdout: "true\ntrue\ntrue\ntrue\ntrue\n",
 	},
+	{
+		name: "unsupported UDP networking",
+		files: async () =>
+			new Map([
+				["/tmp/main.bal", await load("./fixtures/udp-unsupported.bal")],
+			]),
+		entryPoint: "/tmp/main.bal",
+		expectedStderr:
+			"error: Can't connect to remote host: Network sockets are not supported in Playground\n",
+	},
 ];
 
 for (const tc of testCases) {
