@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowDown01Icon, Tick02Icon } from "@hugeicons/core-free-icons";
 import {
 	loginProvider,
 	logoutProvider,
@@ -6,6 +8,18 @@ import {
 	type ProviderAccount,
 } from "./providers";
 import { Button } from "@/components/ui/button";
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+} from "@/components/ui/dialog";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuRadioGroup,
+	DropdownMenuRadioItem,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 
 interface Props {
@@ -49,35 +63,11 @@ export function Accounts({
 	const [working, setWorking] = useState(false);
 	const [showLogin, setShowLogin] = useState(false);
 	const [pickerOpen, setPickerOpen] = useState(false);
-	const picker = useRef<HTMLDivElement>(null);
 	const lastLoginRequest = useRef(loginRequest);
 	const selected =
 		providerOptions.find((option) => option.id === provider) ??
 		providerOptions[0];
 	const current = accounts.find((account) => account.id === provider);
-	useEffect(() => {
-		if (!pickerOpen && !showLogin) return;
-		const dismiss = (event: MouseEvent) => {
-			if (!picker.current?.contains(event.target as Node)) {
-				setPickerOpen(false);
-				setShowLogin(false);
-				setKey("");
-			}
-		};
-		const closeOnEscape = (event: KeyboardEvent) => {
-			if (event.key === "Escape") {
-				setPickerOpen(false);
-				setShowLogin(false);
-				setKey("");
-			}
-		};
-		document.addEventListener("mousedown", dismiss);
-		document.addEventListener("keydown", closeOnEscape);
-		return () => {
-			document.removeEventListener("mousedown", dismiss);
-			document.removeEventListener("keydown", closeOnEscape);
-		};
-	}, [pickerOpen, showLogin]);
 	useEffect(() => {
 		if (lastLoginRequest.current === loginRequest) return;
 		lastLoginRequest.current = loginRequest;
@@ -115,44 +105,46 @@ export function Accounts({
 		}
 	}
 	return (
-		<div
-			className="provider-controls flex flex-none items-center gap-2"
-			ref={picker}
-		>
-			<div className="provider-picker relative">
-				<Button
-					variant="outline"
-					size="sm"
-					className="provider-trigger"
-					aria-label={`Provider: ${selected.name}`}
-					aria-expanded={pickerOpen}
-					aria-controls="provider-options"
-					disabled={busy || working}
-					onClick={() => {
-						setPickerOpen(!pickerOpen);
+		<div className="provider-controls flex flex-none items-center gap-2">
+			<DropdownMenu
+				open={pickerOpen}
+				onOpenChange={(open) => {
+					setPickerOpen(open);
+					if (open) {
 						setShowLogin(false);
 						setKey("");
-					}}
+					}
+				}}
+			>
+				<DropdownMenuTrigger
+					render={
+						<Button
+							variant="outline"
+							size="sm"
+							className="provider-trigger"
+							aria-label={`Provider: ${selected.name}`}
+						/>
+					}
+					disabled={busy || working}
 				>
 					<ProviderIcon id={provider} />
 					<span>{selected.name}</span>
-					<span aria-hidden="true">⌄</span>
-				</Button>
-				{pickerOpen && (
-					<fieldset
-						id="provider-options"
-						className="provider-options absolute right-0 top-full z-20 mt-1 flex w-72 flex-col border bg-popover p-1 text-popover-foreground shadow-md"
-						aria-label="Select provider"
-					>
+					<HugeiconsIcon
+						icon={ArrowDown01Icon}
+						strokeWidth={1.5}
+						aria-hidden="true"
+					/>
+				</DropdownMenuTrigger>
+				<DropdownMenuContent align="end" className="provider-options w-72 p-1">
+					<DropdownMenuRadioGroup value={provider}>
 						{providerOptions.map((option) => (
-							<Button
+							<DropdownMenuRadioItem
 								key={option.id}
-								variant="ghost"
-								className="provider-option h-auto w-full justify-start gap-2 py-2 text-left"
-								aria-pressed={provider === option.id}
+								value={option.id}
+								closeOnClick
+								className="provider-option gap-2"
 								onClick={() => {
 									chooseProvider(option.id);
-									setPickerOpen(false);
 									setError("");
 									setKey("");
 									setShowLogin(true);
@@ -167,27 +159,41 @@ export function Accounts({
 								</span>
 								{accounts.find((account) => account.id === option.id)
 									?.connected && (
-									<span role="img" aria-label="API key configured">
-										✓
+									<span
+										className="inline-flex"
+										role="img"
+										aria-label="API key configured"
+									>
+										<HugeiconsIcon
+											icon={Tick02Icon}
+											strokeWidth={1.5}
+											aria-hidden="true"
+										/>
 									</span>
 								)}
-							</Button>
+							</DropdownMenuRadioItem>
 						))}
-					</fieldset>
-				)}
-			</div>
-			{showLogin && (
-				<section
-					className="settings accounts provider-popover absolute right-3 top-12 z-20 flex w-[min(460px,calc(100vw-2rem))] flex-col gap-3 border bg-popover p-4 text-popover-foreground shadow-md"
+					</DropdownMenuRadioGroup>
+				</DropdownMenuContent>
+			</DropdownMenu>
+			<Dialog
+				open={showLogin}
+				onOpenChange={(open) => {
+					setShowLogin(open);
+					if (!open) setKey("");
+				}}
+			>
+				<DialogContent
+					className="provider-popover flex flex-col gap-3 sm:max-w-[460px]"
 					aria-label="Provider API key"
 				>
 					<div className="login-heading text-sm font-semibold">
 						{selected.name} API key
 					</div>
-					<p className="text-[11px] text-muted-foreground">
+					<DialogDescription className="text-[11px]">
 						Use an API key, not a subscription sign-in. Keys stay in this tab’s
 						memory and are forgotten on refresh or close.
-					</p>
+					</DialogDescription>
 					{current?.connected && (
 						<p className="text-[11px] text-muted-foreground" role="status">
 							API key configured. It will be checked when you send a message.
@@ -242,8 +248,8 @@ export function Accounts({
 							</Button>
 						</div>
 					)}
-				</section>
-			)}
+				</DialogContent>
+			</Dialog>
 		</div>
 	);
 }

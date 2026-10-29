@@ -67,12 +67,24 @@ import { useFS } from "@/providers/fs-provider";
 import type { TryItPanelHandle } from "@/components/try-it-panel";
 import type { EditorLanguage } from "@/components/code-editor";
 
+type BalBotViewComponent =
+	typeof import("@/components/bal-bot/bal-bot-view").BalBotView;
+
 // Dynamic import only from here: bal-bot, pi and the compiler load on first use.
-const BalBotView = React.lazy(() =>
-	import("@/components/bal-bot/bal-bot-view").then((m) => ({
-		default: m.BalBotView,
-	})),
-);
+// Not React.lazy: it caches a rejected import for good, and a failed chunk load
+// (offline, or a deploy removed the hashed chunk) would reach the router's error
+// page. A failure is forgotten here so the next open retries the import.
+let balBotViewLoad: Promise<BalBotViewComponent> | null = null;
+function loadBalBotView(): Promise<BalBotViewComponent> {
+	balBotViewLoad ??= import("@/components/bal-bot/bal-bot-view").then(
+		(m) => m.BalBotView,
+		(cause: unknown) => {
+			balBotViewLoad = null;
+			throw cause;
+		},
+	);
+	return balBotViewLoad;
+}
 
 function getLanguage(path: string): EditorLanguage {
 	const ex = ext(path);
@@ -276,12 +288,10 @@ function RightPane({
 	const toggleStoreOutputOpen = useEditorStore((s) => s.toggleOutputOpen);
 	const outputOpen = drawer ? drawer.open : storeOutputOpen;
 	const toggleOutputOpen = drawer ? drawer.onToggle : toggleStoreOutputOpen;
-	const contentClassName = drawer
-		? outputOpen
-			? "flex-1"
-			: "hidden"
-		: outputOpen
-			? "flex-1"
+	const contentClassName = outputOpen
+		? "flex-1"
+		: drawer
+			? "hidden"
 			: "hidden lg:block lg:flex-1";
 	const clearOutput = useEditorStore((s) => s.clearOutput);
 
@@ -541,7 +551,7 @@ function EditorPane({
 									className="h-full w-10"
 									variant="ghost"
 									data-testid="bal-bot-button"
-									aria-label="Open project in ballerina-agent (beta)"
+									aria-label="Open project in agent view (beta)"
 									onClick={onOpenBalBot}
 									disabled={balBotDisabledReason !== null}
 								>
@@ -549,8 +559,7 @@ function EditorPane({
 								</Button>
 							</TooltipTrigger>
 							<TooltipContent>
-								{balBotDisabledReason ??
-									"Open project in ballerina-agent (beta)"}
+								{balBotDisabledReason ?? "Open project in agent view (beta)"}
 							</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
@@ -725,6 +734,9 @@ function EditorContent() {
 	// The view's output drawer starts collapsed every time the view opens.
 	const [balBotOutputOpen, setBalBotOutputOpen] = React.useState(false);
 	const balBotOpening = React.useRef(false);
+	// null until the view's chunk has loaded; it loads when the view first opens.
+	const [BalBotView, setBalBotView] =
+		React.useState<BalBotViewComponent | null>(null);
 
 	// undefined while the latest check is pending. The trees are replaced on
 	// every file-system sync, so creating or deleting Ballerina.toml re-runs it.
@@ -759,6 +771,27 @@ function EditorContent() {
 
 	const closeBalBot = React.useCallback(() => setBalBotProject(null), []);
 
+	// A failed load closes the view and leaves the playground as it was.
+	React.useEffect(() => {
+		if (!balBotOpen || BalBotView) return;
+		let cancelled = false;
+		loadBalBotView().then(
+			(view) => {
+				if (!cancelled) setBalBotView(() => view);
+			},
+			() => {
+				if (cancelled) return;
+				setBalBotProject(null);
+				toast.error(
+					"Failed to load the agent view. Check your connection and try again.",
+				);
+			},
+		);
+		return () => {
+			cancelled = true;
+		};
+	}, [balBotOpen, BalBotView]);
+
 	// bal-bot edits go straight to the playground files, so the editor sees them.
 	const balBotDir = balBotProject?.dir;
 	const handleBalBotChange = React.useCallback(
@@ -775,7 +808,7 @@ function EditorContent() {
 				toast.error(
 					cause instanceof Error
 						? cause.message
-						: "Failed to save bal-bot edit",
+						: "Failed to save agent view edit",
 				);
 			}
 		},
@@ -812,7 +845,9 @@ function EditorContent() {
 			setBalBotProject({ dir: target, files });
 		} catch (cause) {
 			toast.error(
-				cause instanceof Error ? cause.message : "Failed to open bal-bot",
+				cause instanceof Error
+					? cause.message
+					: "Failed to open the agent view",
 			);
 		} finally {
 			balBotOpening.current = false;
@@ -914,13 +949,7 @@ function EditorContent() {
 						</div>
 						{balBotProject && (
 							<div className="absolute inset-0 z-10 bg-background">
-								<React.Suspense
-									fallback={
-										<div className="flex h-full items-center justify-center text-xs text-muted-foreground">
-											Loading bal-bot…
-										</div>
-									}
-								>
+								{BalBotView ? (
 									<BalBotView
 										files={balBotProject.files}
 										onChange={handleBalBotChange}
@@ -966,7 +995,11 @@ function EditorContent() {
 											/>
 										}
 									/>
-								</React.Suspense>
+								) : (
+									<div className="flex h-full items-center justify-center text-xs text-muted-foreground">
+										Loading agent view…
+									</div>
+								)}
 							</div>
 						)}
 					</div>

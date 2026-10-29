@@ -1,4 +1,10 @@
 import { useId, useState } from "react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import {
+	ArrowDown01Icon,
+	ArrowRight01Icon,
+	File01Icon,
+} from "@hugeicons/core-free-icons";
 import { Button } from "@/components/ui/button";
 
 interface TreeNode {
@@ -33,9 +39,12 @@ function Folder({
 				onClick={() => setExpanded(!expanded)}
 				title={node.path}
 			>
-				<span className="disclosure w-3" aria-hidden="true">
-					{expanded ? "⌄" : "›"}
-				</span>
+				<HugeiconsIcon
+					icon={expanded ? ArrowDown01Icon : ArrowRight01Icon}
+					strokeWidth={1.5}
+					className="disclosure size-3"
+					aria-hidden="true"
+				/>
 				<svg
 					className="folder-icon size-3.5 flex-none fill-none stroke-current"
 					viewBox="0 0 16 16"
@@ -86,7 +95,15 @@ function Entries({
 								className="file-icon w-3 flex-none font-mono text-[11px] text-muted-foreground"
 								aria-hidden="true"
 							>
-								{node.name.endsWith(".bal") ? "B" : "≡"}
+								{node.name.endsWith(".bal") ? (
+									"B"
+								) : (
+									<HugeiconsIcon
+										icon={File01Icon}
+										strokeWidth={1.5}
+										className="size-3"
+									/>
+								)}
 							</span>
 							<span className="file-name">{node.name}</span>
 						</Button>

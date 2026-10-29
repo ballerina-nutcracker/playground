@@ -330,6 +330,60 @@ test.describe("bal-bot view", () => {
 		).toContainText("dirty-marker");
 	});
 
+	test("Escape closes the provider picker and key dialog, which traps focus", async ({
+		page,
+	}) => {
+		const playground = new PlaygroundPage(page);
+		await playground.open();
+		await playground.openBalBot();
+		const view = playground.balBotView;
+		const trigger = view.getByRole("button", { name: /^Provider:/ });
+
+		await trigger.click();
+		const menu = page.getByRole("menu", { name: /^Provider:/ });
+		await expect(menu).toBeVisible();
+		await page.keyboard.press("Escape");
+		await expect(menu).toBeHidden();
+		await expect(trigger).toBeFocused();
+
+		await trigger.click();
+		await page.getByRole("menuitemradio", { name: /^Anthropic/ }).click();
+		const dialog = page.getByRole("dialog", { name: "Provider API key" });
+		await expect(dialog).toBeVisible();
+		const input = dialog.getByLabel("API key", { exact: true });
+		await expect(input).toBeFocused();
+		await input.fill("sk-ant-escape-key");
+		// Tab cycles input -> submit -> close and wraps back to the input;
+		// Shift+Tab from the input wraps to the close button.
+		const submit = dialog.getByRole("button", { name: "Use API key" });
+		const close = dialog.getByRole("button", { name: "Close" });
+		for (const next of [submit, close, input]) {
+			await page.keyboard.press("Tab");
+			await expect(next).toBeFocused();
+		}
+		await page.keyboard.press("Shift+Tab");
+		await expect(close).toBeFocused();
+		await page.keyboard.press("Shift+Tab");
+		await expect(submit).toBeFocused();
+		await page.keyboard.press("Escape");
+		await expect(dialog).toBeHidden();
+		await expect(trigger).toHaveAccessibleName("Provider: Anthropic");
+
+		// The dismissed key is not kept for the next time the dialog opens.
+		await trigger.click();
+		await page.getByRole("menuitemradio", { name: /^Anthropic/ }).click();
+		await expect(dialog.getByLabel("API key", { exact: true })).toHaveValue("");
+		await page.keyboard.press("Escape");
+		await expect(dialog).toBeHidden();
+
+		// Sending without a configured key opens the dialog from outside.
+		await view.locator("[data-scope-id]").first().click();
+		await view.getByRole("textbox", { name: "Message" }).fill("hello");
+		await view.getByRole("button", { name: "Send message" }).click();
+		await expect(dialog).toBeVisible();
+		await expect(dialog.getByLabel("API key", { exact: true })).toBeFocused();
+	});
+
 	test("agent edits reach the editor and API keys are never stored", async ({
 		page,
 	}) => {
@@ -343,8 +397,8 @@ test.describe("bal-bot view", () => {
 		const view = playground.balBotView;
 
 		await view.getByRole("button", { name: /^Provider:/ }).click();
-		await view.getByRole("button", { name: /^Anthropic/ }).click();
-		const panel = view.getByRole("region", { name: "Provider API key" });
+		await page.getByRole("menuitemradio", { name: /^Anthropic/ }).click();
+		const panel = page.getByRole("dialog", { name: "Provider API key" });
 		await panel.getByLabel("API key", { exact: true }).fill("sk-ant-test-key");
 		await panel
 			.getByRole("button", { name: "Use API key", exact: true })
@@ -381,6 +435,57 @@ test.describe("bal-bot view", () => {
 		await expect(view.getByLabel("Contents of main.bal")).toContainText(
 			"agent-edit",
 		);
+	});
+
+	test("the model chosen in the composer is the one the agent requests", async ({
+		page,
+	}) => {
+		const calls = await mockAnthropic(page, {
+			path: "main.bal",
+			content: "public function main() {}\n",
+		});
+		const requested: string[] = [];
+		page.on("request", (request) => {
+			if (
+				/https:\/\/api\.anthropic\.com\//.test(request.url()) &&
+				request.method() === "POST"
+			)
+				requested.push(request.postDataJSON().model);
+		});
+		const playground = new PlaygroundPage(page);
+		await playground.open();
+		await playground.openBalBot();
+		const view = playground.balBotView;
+
+		await view.getByRole("button", { name: /^Provider:/ }).click();
+		await page.getByRole("menuitemradio", { name: /^Anthropic/ }).click();
+		const panel = page.getByRole("dialog", { name: "Provider API key" });
+		await panel.getByLabel("API key", { exact: true }).fill("sk-ant-test-key");
+		await panel
+			.getByRole("button", { name: "Use API key", exact: true })
+			.click();
+		await expect(panel).toBeHidden();
+
+		const model = view.getByRole("combobox", { name: "Model" });
+		await expect(model).toBeEnabled();
+		await expect(model).toHaveText(/Sonnet/);
+		await model.click();
+		const opus = page.getByRole("option", { name: /Opus/ });
+		await expect(opus).toBeVisible();
+		// The portalled list is above the agent view, so the click reaches it.
+		await opus.click();
+		await expect(page.getByRole("listbox")).toBeHidden();
+		await expect(model).toHaveText(/Opus/);
+
+		await view.locator("[data-scope-id]").first().click();
+		await view.getByRole("textbox", { name: "Message" }).fill("hello");
+		await view.getByRole("button", { name: "Send message" }).click();
+		await expect.poll(calls, { timeout: 30_000 }).toBeGreaterThan(0);
+		await expect.poll(() => requested[0]).toBe("claude-opus-5-5");
+		// Every request of the run, including the follow-up turn, uses it.
+		await expect.poll(calls, { timeout: 30_000 }).toBeGreaterThan(1);
+		await expect(model).toBeEnabled({ timeout: 15_000 });
+		expect(new Set(requested)).toEqual(new Set(["claude-opus-5-5"]));
 	});
 
 	test("selecting a file or re-clicking the active file closes the view", async ({
@@ -481,7 +586,7 @@ test.describe("bal-bot view", () => {
 			.getByRole("button", { name: /^Provider:/ })
 			.click();
 		await expect(
-			playground.balBotView.locator("img[src$='openai.svg']").first(),
+			page.getByRole("menu").locator("img[src$='openai.svg']").first(),
 		).toBeVisible();
 		expect(failed).toEqual([]);
 		expect(

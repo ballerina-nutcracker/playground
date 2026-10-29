@@ -1,4 +1,6 @@
 import type React from "react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Cancel01Icon } from "@hugeicons/core-free-icons";
 import { useEffect, useRef, useState } from "react";
 import type { HIRGraph, Id } from "@bal-bot/workspace";
 import type { FunctionInteraction } from "./flow-svg";
@@ -181,6 +183,7 @@ export function FunctionCards({
 							<button
 								type="button"
 								aria-label={`Close ${graphs[card.id].entry.name}`}
+								className="inline-flex items-center"
 								onClick={() => {
 									setCards((previous) =>
 										previous.map((item) =>
@@ -191,7 +194,12 @@ export function FunctionCards({
 									activate(null);
 								}}
 							>
-								×
+								<HugeiconsIcon
+									icon={Cancel01Icon}
+									strokeWidth={1.5}
+									className="size-4"
+									aria-hidden="true"
+								/>
 							</button>
 						</header>
 						{render(card.id, functions)}

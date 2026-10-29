@@ -67,6 +67,30 @@ test("agent view fits a 390px phone screen", async ({ page }) => {
 		main.getByRole("button", { name: "Send message" }),
 	).toBeVisible();
 
+	// The model list opens on top of the view and within the screen.
+	const model = main.getByRole("combobox", { name: "Model" });
+	await expect(model).toBeEnabled();
+	await model.click();
+	const listbox = page.getByRole("listbox");
+	await expect(listbox).toBeVisible();
+	const list = await listbox.boundingBox();
+	expect(list && list.x >= 0 && list.x + list.width <= WIDTH).toBe(true);
+	const options = page.getByRole("option");
+	const last = options.last();
+	const picked = (await last.innerText()).trim();
+	const hit = await last.evaluate((option) => {
+		const box = option.getBoundingClientRect();
+		const top = document.elementFromPoint(
+			box.left + box.width / 2,
+			box.top + box.height / 2,
+		);
+		return !!top && option.contains(top);
+	});
+	expect(hit).toBe(true);
+	await last.click();
+	await expect(listbox).toBeHidden();
+	await expect(model).toHaveText(picked);
+
 	// The flow pane below the chat is reachable by scrolling the workspace.
 	const inspection = view.getByRole("region", { name: "Flow inspection" });
 	await inspection.scrollIntoViewIfNeeded();

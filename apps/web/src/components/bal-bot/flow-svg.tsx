@@ -1,4 +1,11 @@
 import React from "react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import {
+	ArrowUpRight01Icon,
+	MinusSignIcon,
+	PlusSignIcon,
+	RepeatIcon,
+} from "@hugeicons/core-free-icons";
 import type {
 	Id,
 	Located,
@@ -51,7 +58,7 @@ export interface FlowSvgNode {
 		readonly unavailable?: string;
 		readonly title: string;
 		readonly ariaLabel: string;
-		readonly glyph: string;
+		readonly icon: "expand" | "collapse" | "recursive";
 	};
 	readonly unavailable?: string;
 }
@@ -276,7 +283,12 @@ function CallLabel({
 				aria-label={`Reference ${node.label}`}
 				onClick={() => onSelect(node.selection)}
 			>
-				↗
+				<HugeiconsIcon
+					icon={ArrowUpRight01Icon}
+					strokeWidth={1.5}
+					className="size-3.5"
+					aria-hidden="true"
+				/>
 			</button>
 		</div>
 	);
@@ -472,7 +484,12 @@ export function FlowSvg({
 										aria-expanded={context.expanded}
 										onClick={() => onToggle(context.path)}
 									>
-										{context.expanded ? "−" : "+"}
+										<HugeiconsIcon
+											icon={context.expanded ? MinusSignIcon : PlusSignIcon}
+											strokeWidth={1.5}
+											className="mx-auto block size-3.5"
+											aria-hidden="true"
+										/>
 									</button>
 								</foreignObject>
 							)}
@@ -493,7 +510,18 @@ export function FlowSvg({
 										aria-expanded={!call.unavailable && call.expanded}
 										onClick={() => onToggle(call.path)}
 									>
-										{call.glyph}
+										<HugeiconsIcon
+											icon={
+												call.icon === "recursive"
+													? RepeatIcon
+													: call.icon === "collapse"
+														? MinusSignIcon
+														: PlusSignIcon
+											}
+											strokeWidth={1.5}
+											className="mx-auto block size-3.5"
+											aria-hidden="true"
+										/>
 									</button>
 								</foreignObject>
 							)}
