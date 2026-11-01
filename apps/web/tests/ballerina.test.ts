@@ -91,11 +91,41 @@ const testCases: TestCase[] = [
 		expectedStdout: "true\ntrue\n",
 	},
 	{
+		name: "file API",
+		files: async () =>
+			new Map([["/tmp/main.bal", await load("./fixtures/file-api.bal")]]),
+		entryPoint: "/tmp/main.bal",
+		expectedStdout:
+			"true\n2\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\nfalse\nfalse\ntrue\ntrue\nfalse\n",
+	},
+	{
+		name: "file API defaults temporary files to the working directory",
+		files: async () =>
+			new Map([
+				[
+					"/local/project/main.bal",
+					await load("./fixtures/file-temp-default.bal"),
+				],
+			]),
+		entryPoint: "/local/project/main.bal",
+		expectedStdout: "true\ntrue\n",
+	},
+	{
 		name: "os env",
 		files: async () =>
 			new Map([["/tmp/main.bal", await load("./fixtures/os-env.bal")]]),
 		entryPoint: "/tmp/main.bal",
 		expectedStdout: "true\ntrue\ntrue\ntrue\ntrue\n",
+	},
+	{
+		name: "unsupported UDP networking",
+		files: async () =>
+			new Map([
+				["/tmp/main.bal", await load("./fixtures/udp-unsupported.bal")],
+			]),
+		entryPoint: "/tmp/main.bal",
+		expectedStderr:
+			"error: Can't connect to remote host: Network sockets are not supported in Playground\n",
 	},
 ];
 
