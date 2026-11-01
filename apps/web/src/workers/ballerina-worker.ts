@@ -8,7 +8,9 @@ import type {
 	HttpDispatchResponse,
 	RunEventCallback,
 } from "@/workers/ballerina-worker-api";
-import type { SnapshotFS } from "@/lib/fs/snapshot";
+import type { FS } from "@/lib/fs/core/fs.interface";
+import { connectWatchableFS } from "@/workers/fs-watch-bridge";
+import type { WatchableFS } from "@/workers/fs-watch-bridge";
 
 export interface GoRuntime {
 	importObject: WebAssembly.Imports;
@@ -18,7 +20,7 @@ export interface GoRuntime {
 declare const self: typeof globalThis & {
 	Go: new () => GoRuntime;
 	run: (
-		fs: SnapshotFS,
+		fs: WatchableFS,
 		path: string,
 		onEvent: RunEventCallback,
 	) => Promise<void>;
@@ -27,7 +29,7 @@ declare const self: typeof globalThis & {
 		request: HttpDispatchRequest,
 	) => Promise<HttpDispatchResponse>;
 	getDiagnostics: (
-		fs: SnapshotFS,
+		fs: FS,
 		path: string,
 	) => Promise<Array<Record<string, unknown>>>;
 };
@@ -98,13 +100,22 @@ const api: BallerinaWorkerAPI = {
 		return initPromise;
 	},
 	run: async (
-		snapshot: SnapshotFS,
+		snapshot: WatchableFS,
 		path: string,
 		onEvent: RunEventCallback,
 	): Promise<void> => {
 		if (typeof self.run !== "function")
 			throw new Error("Ballerina runtime is not initialized");
-		return self.run(snapshot, path, onEvent);
+		const bridge = connectWatchableFS(snapshot);
+		try {
+			await self.run(bridge.fs, path, onEvent);
+		} finally {
+			try {
+				await bridge.dispose();
+			} finally {
+				(snapshot as Comlink.Remote<WatchableFS>)[Comlink.releaseProxy]();
+			}
+		}
 	},
 	sendStopSignal: async () => {
 		if (typeof self.sendStopSignal !== "function")
@@ -119,7 +130,7 @@ const api: BallerinaWorkerAPI = {
 		return self.dispatchHttpRequest(request);
 	},
 	getDiagnostics: (
-		snapshot: SnapshotFS,
+		snapshot: FS,
 		path: string,
 	): Promise<Array<Record<string, unknown>>> => {
 		if (typeof self.getDiagnostics !== "function")

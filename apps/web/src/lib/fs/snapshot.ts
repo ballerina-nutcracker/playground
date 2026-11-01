@@ -1,9 +1,17 @@
+import { TEMP_ROOT } from "@/lib/fs/fs-roots";
 import {
 	basename,
 	dirname,
 	join,
 	pathSegments,
 } from "@/lib/fs/core/path-utils";
+
+import {
+	cleanFSPath,
+	FSWatchRegistry,
+	isDescendant,
+} from "@/lib/fs/fs-watch-registry";
+import type { FSWatchCallback } from "@/lib/fs/fs-watch-registry";
 
 import type {
 	DirEntry,
@@ -29,19 +37,31 @@ type SnapshotNode = SnapshotFileNode | SnapshotDirNode;
 
 export type SnapshotFSMutation =
 	| { type: "writeFile"; path: string; content: string }
-	| { type: "mkdirAll"; path: string };
+	| { type: "mkdirAll"; path: string }
+	| { type: "remove"; path: string }
+	| { type: "move"; oldPath: string; newPath: string };
 
 export type SnapshotFSListener = (mutation: SnapshotFSMutation) => void;
 
 export class SnapshotFS implements FS {
 	private readonly listeners: Set<SnapshotFSListener> = new Set();
+	private readonly watches = new FSWatchRegistry();
 
 	private constructor(private readonly nodes: Map<string, SnapshotNode>) {}
 
 	static async from(source: FS, rootPath: string): Promise<SnapshotFS> {
+		rootPath = cleanFSPath(rootPath);
 		const nodes = new Map<string, SnapshotNode>();
 		await collectNodes(source, nodes, rootPath);
 		await collectAncestorDirs(source, nodes, rootPath);
+		await collectNodes(source, nodes, TEMP_ROOT);
+		if (!nodes.has(TEMP_ROOT)) {
+			nodes.set(TEMP_ROOT, {
+				isDir: true,
+				modTime: Date.now(),
+				entries: [],
+			});
+		}
 		return new SnapshotFS(nodes);
 	}
 
@@ -56,6 +76,27 @@ export class SnapshotFS implements FS {
 		return () => this.listeners.delete(listener);
 	}
 
+	async watch(
+		path: string,
+		recursive: boolean,
+		callback: FSWatchCallback,
+	): Promise<string> {
+		path = cleanFSPath(path);
+		const node = this.nodes.get(path);
+		if (!node) throw new Error(`Watch directory does not exist: ${path}`);
+		if (!node.isDir) throw new Error(`Watch path is not a directory: ${path}`);
+		return this.watches.watch(path, recursive, callback);
+	}
+
+	unwatch(id: string): Promise<void> {
+		return this.watches.unwatch(id);
+	}
+
+	dispose(): void {
+		this.watches.dispose();
+		this.listeners.clear();
+	}
+
 	private getDirectoryEntries(path: string): DirEntry[] {
 		const entries: DirEntry[] = [];
 		for (const [candidate, node] of this.nodes) {
@@ -66,6 +107,7 @@ export class SnapshotFS implements FS {
 	}
 
 	async open(path: string): Promise<OpenResult | null> {
+		path = cleanFSPath(path);
 		const node = this.nodes.get(path);
 		if (!node || node.isDir) return null;
 		return {
@@ -77,6 +119,7 @@ export class SnapshotFS implements FS {
 	}
 
 	async stat(path: string): Promise<StatResult | null> {
+		path = cleanFSPath(path);
 		const node = this.nodes.get(path);
 		if (!node) return null;
 		return {
@@ -88,12 +131,14 @@ export class SnapshotFS implements FS {
 	}
 
 	async readDir(path: string): Promise<DirEntry[] | null> {
+		path = cleanFSPath(path);
 		const node = this.nodes.get(path);
 		if (!node?.isDir) return null;
 		return this.getDirectoryEntries(path);
 	}
 
 	async writeFile(path: string, content: string): Promise<boolean> {
+		path = cleanFSPath(path);
 		const parentPath = dirname(path);
 		const parent = this.nodes.get(parentPath);
 		if (parentPath && parentPath !== "." && !parent?.isDir) {
@@ -109,11 +154,13 @@ export class SnapshotFS implements FS {
 			modTime: Date.now(),
 			size: new TextEncoder().encode(content).byteLength,
 		});
+		this.watches.publish({ path, op: existing ? "modify" : "create" });
 		this.notifyListeners({ type: "writeFile", path, content });
 		return true;
 	}
 
 	async mkdirAll(path: string): Promise<boolean> {
+		path = cleanFSPath(path);
 		if (!path || path === "." || path === "/") return true;
 
 		const leading = path.startsWith("/") ? "/" : "";
@@ -142,16 +189,67 @@ export class SnapshotFS implements FS {
 				created.push(current);
 			}
 		}
+		for (const createdPath of created) {
+			this.watches.publish({ path: createdPath, op: "create" });
+		}
 		this.notifyListeners({ type: "mkdirAll", path });
 		return true;
 	}
 
-	async remove(): Promise<boolean> {
-		return false;
+	private subtree(path: string): string[] {
+		return [...this.nodes.keys()]
+			.filter(
+				(candidate) => candidate === path || isDescendant(candidate, path),
+			)
+			.sort(
+				(a, b) =>
+					a.split("/").length - b.split("/").length || a.localeCompare(b),
+			);
 	}
 
-	async move(): Promise<boolean> {
-		return false;
+	async remove(path: string): Promise<boolean> {
+		path = cleanFSPath(path);
+		if (path === "/" || path === "." || !this.nodes.has(path)) return false;
+		const removed = this.subtree(path).reverse();
+		for (const candidate of removed) this.nodes.delete(candidate);
+		for (const candidate of removed) {
+			this.watches.publish({ path: candidate, op: "delete" });
+		}
+		this.notifyListeners({ type: "remove", path });
+		return true;
+	}
+
+	async move(oldPath: string, newPath: string): Promise<boolean> {
+		oldPath = cleanFSPath(oldPath);
+		newPath = cleanFSPath(newPath);
+		if (!this.nodes.has(oldPath)) return false;
+		if (oldPath === newPath) return true;
+		if (
+			oldPath === "/" ||
+			oldPath === "." ||
+			isDescendant(newPath, oldPath) ||
+			this.nodes.has(newPath) ||
+			!this.nodes.get(dirname(newPath))?.isDir
+		)
+			return false;
+
+		const moved = this.subtree(oldPath);
+		for (const candidate of moved) {
+			const node = this.nodes.get(candidate);
+			if (node) this.nodes.set(newPath + candidate.slice(oldPath.length), node);
+			this.nodes.delete(candidate);
+		}
+		for (const candidate of [...moved].reverse()) {
+			this.watches.publish({ path: candidate, op: "delete" });
+		}
+		for (const candidate of moved) {
+			this.watches.publish({
+				path: newPath + candidate.slice(oldPath.length),
+				op: "create",
+			});
+		}
+		this.notifyListeners({ type: "move", oldPath, newPath });
+		return true;
 	}
 }
 

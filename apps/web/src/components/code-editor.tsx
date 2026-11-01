@@ -194,6 +194,7 @@ export function CodeEditor({
 
 	const onChangeRef = React.useRef(onChange);
 	onChangeRef.current = onChange;
+	const isSynchronizingValueRef = React.useRef(false);
 
 	const hotkeysRef = React.useRef(hotkeys);
 	hotkeysRef.current = hotkeys;
@@ -220,7 +221,7 @@ export function CodeEditor({
 			defaultColor: "light",
 			themeStyle: "cm",
 			onUpdate: (update) => {
-				if (update.docChanged)
+				if (update.docChanged && !isSynchronizingValueRef.current)
 					onChangeRef.current?.(update.state.doc.toString());
 			},
 			extensions: [
@@ -249,6 +250,14 @@ export function CodeEditor({
 			language === "ballerina" ? ballerinaMode : [],
 		);
 	}, [language]);
+
+	React.useEffect(() => {
+		const editor = editorRef.current;
+		if (!editor || value === undefined || editor.getValue() === value) return;
+		isSynchronizingValueRef.current = true;
+		editor.setValue(value);
+		isSynchronizingValueRef.current = false;
+	}, [value]);
 
 	React.useEffect(() => {
 		const editor = editorRef.current;

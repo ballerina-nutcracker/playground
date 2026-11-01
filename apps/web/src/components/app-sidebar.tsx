@@ -115,6 +115,7 @@ function FileTreeFileNode({
 				)}
 			>
 				<SidebarMenuButton
+					data-file-path={path}
 					data-example-path={isExampleFile ? path : undefined}
 					isActive={activeFilePath === path}
 					onClick={() => void handleClick()}
@@ -125,7 +126,10 @@ function FileTreeFileNode({
 				<DropdownMenu>
 					<DropdownMenuTrigger
 						render={
-							<SidebarMenuAction className="peer-data-[active=true]/menu-button:opacity-100 group-hover/row:opacity-100 group-focus-within/row:opacity-100 aria-expanded:opacity-100 md:opacity-0" />
+							<SidebarMenuAction
+								data-testid={`file-actions-${path}`}
+								className="peer-data-[active=true]/menu-button:opacity-100 group-hover/row:opacity-100 group-focus-within/row:opacity-100 aria-expanded:opacity-100 md:opacity-0"
+							/>
 						}
 						onClick={(e) => e.stopPropagation()}
 					>
@@ -257,6 +261,7 @@ function FileTreeDirNode({
 				>
 					<SidebarMenuButton
 						className="w-full"
+						data-file-path={path}
 						data-example-directory={isExampleDir || undefined}
 						data-example-path={isExampleDir ? path : undefined}
 						data-expanded={isExampleDir ? expanded : undefined}
@@ -269,7 +274,10 @@ function FileTreeDirNode({
 					<DropdownMenu modal={false}>
 						<DropdownMenuTrigger
 							render={
-								<SidebarMenuAction className="peer-data-[active=true]/menu-button:opacity-100 group-hover/row:opacity-100 group-focus-within/row:opacity-100 aria-expanded:opacity-100 md:opacity-0" />
+								<SidebarMenuAction
+									data-testid={`directory-actions-${path}`}
+									className="peer-data-[active=true]/menu-button:opacity-100 group-hover/row:opacity-100 group-focus-within/row:opacity-100 aria-expanded:opacity-100 md:opacity-0"
+								/>
 							}
 							onClick={(e) => e.stopPropagation()}
 						>
