@@ -3,10 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { validateHIR } from "../src/protocol.ts";
 
-const root = new URL(
-	"../testdata/upstream/tests/fixtures/hir-contract/",
-	import.meta.url,
-);
+const root = new URL("../testdata/hir-contract/", import.meta.url);
 const minimal = JSON.parse(
 	await readFile(new URL("minimal.json", root), "utf8"),
 );

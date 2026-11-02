@@ -25,7 +25,7 @@ import (
 
 var updateHIRGoldens = flag.Bool("update", false, "explicitly update HIR corpus and test-only parity lookup/synthetic fixtures")
 
-const hirProjectsRoot = "testdata/upstream/tests/fixtures/hir-projects"
+const hirProjectsRoot = "testdata/hir-projects"
 
 type hirCorpusCase struct {
 	ID           string            `json:"id"`
@@ -97,7 +97,7 @@ func TestHIRCorpusCoverage(t *testing.T) {
 		Kind  string `json:"kind"`
 		Files Files  `json:"files"`
 	}
-	data, err := os.ReadFile("testdata/upstream/tests/fixtures/flow-rendering/inputs/catalog.json")
+	data, err := os.ReadFile("testdata/flow-rendering/inputs/catalog.json")
 	if err != nil {
 		t.Fatal(err)
 	}

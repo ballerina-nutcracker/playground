@@ -61,7 +61,7 @@ func TestVariableSpanValidationDisplayVariants(t *testing.T) {
 }
 
 func TestVariableMetadataLegacyDecode(t *testing.T) {
-	data, err := os.ReadFile("testdata/upstream/tests/fixtures/hir-contract/minimal.json")
+	data, err := os.ReadFile("testdata/hir-contract/minimal.json")
 	if err != nil {
 		t.Fatal(err)
 	}

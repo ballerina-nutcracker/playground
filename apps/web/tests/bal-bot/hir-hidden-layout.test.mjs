@@ -6,7 +6,7 @@ import { layoutDiagram } from "../../src/components/bal-bot/flow.ts";
 import { validateHIR } from "../../../../packages/compiler/src/protocol.ts";
 
 const fixtures = new URL(
-	"../../../../packages/compiler/testdata/upstream/tests/fixtures/hir-contract/",
+	"../../../../packages/compiler/testdata/hir-contract/",
 	import.meta.url,
 );
 const json = async (file) =>
@@ -320,7 +320,7 @@ const load = async () =>
 	JSON.parse(
 		await readFile(
 			new URL(
-				"../../../../packages/compiler/testdata/upstream/tests/fixtures/hir-contract/expandable-function-reference.json",
+				"../../../../packages/compiler/testdata/hir-contract/expandable-function-reference.json",
 				import.meta.url,
 			),
 			"utf8",

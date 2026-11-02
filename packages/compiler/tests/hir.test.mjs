@@ -5,10 +5,7 @@ import { validateHIR } from "../src/protocol.ts";
 
 // Share exact JSON bytes and expectations with TestHIRSharedContract in Go.
 // Node's native TS loader is also used by the adjacent compiler client tests.
-const root = new URL(
-	"../testdata/upstream/tests/fixtures/hir-contract/",
-	import.meta.url,
-);
+const root = new URL("../testdata/hir-contract/", import.meta.url);
 const corpus = JSON.parse(await readFile(new URL("cases.json", root), "utf8"));
 assert.ok(corpus.cases.length > 0, "empty HIR corpus");
 
@@ -88,10 +85,7 @@ test("HIR scalar Unicode contract", async () => {
 });
 
 // Exercise the actual Go-lowered wire output, not just hand-built schema cases.
-const projectRoot = new URL(
-	"../testdata/upstream/tests/fixtures/hir-projects/",
-	import.meta.url,
-);
+const projectRoot = new URL("../testdata/hir-projects/", import.meta.url);
 const projects = JSON.parse(
 	await readFile(new URL("manifest.json", projectRoot), "utf8"),
 );

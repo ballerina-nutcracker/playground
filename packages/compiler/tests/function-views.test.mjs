@@ -5,10 +5,7 @@ import { validateHIR } from "../src/protocol.ts";
 
 const base = JSON.parse(
 	await readFile(
-		new URL(
-			"../testdata/upstream/tests/fixtures/hir-contract/minimal.json",
-			import.meta.url,
-		),
+		new URL("../testdata/hir-contract/minimal.json", import.meta.url),
 		"utf8",
 	),
 );

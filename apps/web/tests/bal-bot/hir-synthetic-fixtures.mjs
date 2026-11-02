@@ -1,7 +1,7 @@
 // Test-only fixture lookup. Never interpret archived legacy bodies at runtime.
 import { readFileSync, readdirSync } from "node:fs";
 const directory = new URL(
-	"../../../../packages/compiler/testdata/upstream/tests/fixtures/hir-synthetic/",
+	"../../../../packages/compiler/testdata/hir-synthetic/",
 	import.meta.url,
 );
 export function syntheticHIR(prefix) {

@@ -4,10 +4,7 @@ import { readFileSync } from "node:fs";
 export function analysisResponse(fixture = "minimal", text = "x") {
 	const program = JSON.parse(
 		readFileSync(
-			new URL(
-				`../testdata/upstream/tests/fixtures/hir-contract/${fixture}.json`,
-				import.meta.url,
-			),
+			new URL(`../testdata/hir-contract/${fixture}.json`, import.meta.url),
 			"utf8",
 		),
 	);

@@ -389,7 +389,7 @@ func (s *syntheticHIRBuilder) evaluate(v EvaluationModel, path string) fragment 
 }
 
 func TestHIRSyntheticFixtures(t *testing.T) {
-	data, err := os.ReadFile("testdata/upstream/tests/fixtures/flow-rendering/inputs/catalog.json")
+	data, err := os.ReadFile("testdata/flow-rendering/inputs/catalog.json")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -481,7 +481,7 @@ func TestHIRSyntheticFixtures(t *testing.T) {
 			if e != nil {
 				t.Fatal(e)
 			}
-			root := filepath.Join("testdata/upstream/tests/fixtures/hir-synthetic", id)
+			root := filepath.Join("testdata/hir-synthetic", id)
 			path := filepath.Join(root, "fixture.json")
 			if *updateHIRGoldens {
 				if e = os.MkdirAll(root, 0755); e != nil {

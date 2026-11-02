@@ -17,7 +17,7 @@ import (
 )
 
 func TestHIRUnicodeScalarContract(t *testing.T) {
-	data, err := os.ReadFile("testdata/upstream/tests/fixtures/hir-contract/minimal.json")
+	data, err := os.ReadFile("testdata/hir-contract/minimal.json")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -94,7 +94,7 @@ func TestHIRUnicodeScalarContract(t *testing.T) {
 
 // This suite intentionally uses the post-baseline HIR corpus, not rendering fixtures.
 func TestHIRSharedContract(t *testing.T) {
-	dir := filepath.Join("testdata/upstream", "tests", "fixtures", "hir-contract")
+	dir := filepath.Join("testdata", "hir-contract")
 	var corpus struct {
 		Cases []struct {
 			Name   string `json:"name"`
@@ -220,7 +220,7 @@ for (const stage of stages.slice(1)) assert.deepEqual(stage, stages[0]);
 }
 
 func TestHIRPresentationUTF16RoundTrip(t *testing.T) {
-	fixture, err := os.ReadFile(filepath.Join("testdata/upstream", "tests", "fixtures", "hir-contract", "minimal.json"))
+	fixture, err := os.ReadFile(filepath.Join("testdata", "hir-contract", "minimal.json"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -389,7 +389,7 @@ func TestHIREmptyCollectionsEncoding(t *testing.T) {
 // partition must be checked symbolically, including the single all-expanded
 // assignment; checking only all-collapsed or each reference in isolation misses it.
 func TestHIRSymbolicIndependentReferences(t *testing.T) {
-	data, err := os.ReadFile(filepath.Join("testdata/upstream", "tests", "fixtures", "hir-contract", "symbolic-24-independent-references.json"))
+	data, err := os.ReadFile(filepath.Join("testdata", "hir-contract", "symbolic-24-independent-references.json"))
 	if err != nil {
 		t.Fatal(err)
 	}

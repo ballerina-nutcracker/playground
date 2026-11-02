@@ -14,7 +14,7 @@ import { layoutDiagram } from "../../src/components/bal-bot/flow.ts";
 import { syntheticHIR } from "./hir-synthetic-fixtures.mjs";
 import { validateHIR } from "../../../../packages/compiler/src/protocol.ts";
 const fixtures = new URL(
-	"../../../../packages/compiler/testdata/upstream/tests/fixtures/",
+	"../../../../packages/compiler/testdata/",
 	import.meta.url,
 );
 const json = async (path) =>
