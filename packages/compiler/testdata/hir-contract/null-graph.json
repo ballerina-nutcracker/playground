@@ -1,0 +1,59 @@
+{
+  "scopes": [],
+  "sources": {
+    "main": {
+      "id": "main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "text": "😀"
+    },
+    "source-a": {
+      "id": "source-a",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "text": "😀"
+    },
+    "source-b": {
+      "id": "source-b",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "text": "😀"
+    }
+  },
+  "functions": {
+    "main": null
+  }
+}

@@ -1,0 +1,1 @@
+public function main() { var result = (value(1) + value(2) > 0) && (value(3) + value(4) > 0); _ = result; } function value(int n) returns int { return n; }

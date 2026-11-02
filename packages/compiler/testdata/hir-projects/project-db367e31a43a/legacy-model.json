@@ -1,0 +1,1440 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 17,
+            "column": 2
+          },
+          "end": {
+            "line": 17,
+            "column": 27
+          }
+        }
+      },
+      "text": "public function main() {}",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "browser/http_service",
+      "serviceType": null,
+      "functionId": "browser/http_service/function/main"
+    }
+  ],
+  "functions": {
+    "browser/http_service/class/Queue/method/$remote$send": {
+      "id": "browser/http_service/class/Queue/method/$remote$send",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 4
+          },
+          "end": {
+            "line": 3,
+            "column": 112
+          }
+        }
+      },
+      "text": "remote function send(string message, string topic = \"jobs\") returns string|error { return topic + message; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "remote",
+        "name": "Queue.send",
+        "signature": "remote function send(string message, string topic = \"jobs\") returns string|error",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "string message"
+          },
+          {
+            "kind": "input",
+            "text": "string topic = \"jobs\""
+          }
+        ],
+        "returnType": "string|error"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/class/Queue/method/$remote$send/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 87
+              },
+              "end": {
+                "line": 3,
+                "column": 110
+              }
+            }
+          },
+          "text": "return topic + message;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "browser/http_service/function/main": {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 17,
+            "column": 2
+          },
+          "end": {
+            "line": 17,
+            "column": 27
+          }
+        }
+      },
+      "text": "public function main() {}",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": []
+    },
+    "browser/http_service/function/makeQueue": {
+      "id": "browser/http_service/function/makeQueue",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 6,
+            "column": 2
+          },
+          "end": {
+            "line": 6,
+            "column": 64
+          }
+        }
+      },
+      "text": "function makeQueue() returns Queue { return new (\"factory\"); }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "makeQueue",
+        "signature": "function makeQueue() returns Queue",
+        "parameters": [],
+        "returnType": "Queue"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/makeQueue/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 6,
+                "column": 39
+              },
+              "end": {
+                "line": 6,
+                "column": 62
+              }
+            }
+          },
+          "text": "return new (\"factory\");",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "browser/http_service/function/run": {
+      "id": "browser/http_service/function/run",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 7,
+            "column": 2
+          },
+          "end": {
+            "line": 16,
+            "column": 3
+          }
+        }
+      },
+      "text": "function run(Queue inputQueue) returns error? {\n   string first = check globalQueue-\u003esend(\"one\", topic = \"orders\");\n   Queue local = makeQueue();\n   string second = check local-\u003esend(\"two\");\n   local = new (\"replacement\");\n   string third = check local-\u003esend(\"three\");\n   string fourth = check inputQueue-\u003esend(\"four\");\n _ = first; _ = second; _ = third; _ = fourth;\n   { Queue globalQueue = new (\"shadow\"); string fifth = check globalQueue-\u003esend(\"five\"); _ = fifth; }\n }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "run",
+        "signature": "function run(Queue inputQueue) returns error?",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "Queue inputQueue"
+          }
+        ],
+        "returnType": "error?"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/run/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 8,
+                "column": 4
+              },
+              "end": {
+                "line": 8,
+                "column": 68
+              }
+            }
+          },
+          "text": "string first = check globalQueue-\u003esend(\"one\", topic = \"orders\");",
+          "evaluation": {
+            "id": "browser/http_service/function/run/statement/0/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 8,
+                  "column": 19
+                },
+                "end": {
+                  "line": 8,
+                  "column": 67
+                }
+              }
+            },
+            "text": "check globalQueue-\u003esend(\"one\", topic = \"orders\")",
+            "kind": "check",
+            "children": [
+              {
+                "id": "browser/http_service/function/run/statement/0/value/part/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 8,
+                      "column": 25
+                    },
+                    "end": {
+                      "line": 8,
+                      "column": 67
+                    }
+                  }
+                },
+                "text": "globalQueue-\u003esend(\"one\", topic = \"orders\")",
+                "kind": "call",
+                "children": [],
+                "call": {
+                  "id": "browser/http_service/function/run/statement/0/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 8,
+                        "column": 25
+                      },
+                      "end": {
+                        "line": 8,
+                        "column": 67
+                      }
+                    }
+                  },
+                  "text": "globalQueue-\u003esend(\"one\", topic = \"orders\")",
+                  "client": {
+                    "context": {
+                      "receiver": {
+                        "id": "browser/http_service/function/run/statement/0/call/0/receiver",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 8,
+                              "column": 25
+                            },
+                            "end": {
+                              "line": 8,
+                              "column": 36
+                            }
+                          }
+                        },
+                        "text": "globalQueue"
+                      },
+                      "type": "Queue",
+                      "origin": "constructor",
+                      "initializer": {
+                        "id": "receiver/0/initializer",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 5,
+                              "column": 28
+                            },
+                            "end": {
+                              "line": 5,
+                              "column": 51
+                            }
+                          }
+                        },
+                        "text": "new (\"host\", port = 99)"
+                      }
+                    },
+                    "method": "send",
+                    "arguments": [
+                      {
+                        "id": "browser/http_service/function/run/statement/0/call/0/argument/0",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 8,
+                              "column": 43
+                            },
+                            "end": {
+                              "line": 8,
+                              "column": 48
+                            }
+                          }
+                        },
+                        "text": "\"one\""
+                      },
+                      {
+                        "id": "browser/http_service/function/run/statement/0/call/0/argument/1",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 8,
+                              "column": 50
+                            },
+                            "end": {
+                              "line": 8,
+                              "column": 66
+                            }
+                          }
+                        },
+                        "text": "topic = \"orders\""
+                      }
+                    ]
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "browser/http_service/class/Queue/method/$remote$send"
+                  },
+                  "expansion": "supported"
+                }
+              }
+            ]
+          },
+          "binding": "string first",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/function/run/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 8,
+                    "column": 25
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 67
+                  }
+                }
+              },
+              "text": "globalQueue-\u003esend(\"one\", topic = \"orders\")",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "browser/http_service/function/run/statement/0/call/0/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 8,
+                          "column": 25
+                        },
+                        "end": {
+                          "line": 8,
+                          "column": 36
+                        }
+                      }
+                    },
+                    "text": "globalQueue"
+                  },
+                  "type": "Queue",
+                  "origin": "constructor",
+                  "initializer": {
+                    "id": "receiver/0/initializer",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 5,
+                          "column": 28
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 51
+                        }
+                      }
+                    },
+                    "text": "new (\"host\", port = 99)"
+                  }
+                },
+                "method": "send",
+                "arguments": [
+                  {
+                    "id": "browser/http_service/function/run/statement/0/call/0/argument/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 8,
+                          "column": 43
+                        },
+                        "end": {
+                          "line": 8,
+                          "column": 48
+                        }
+                      }
+                    },
+                    "text": "\"one\""
+                  },
+                  {
+                    "id": "browser/http_service/function/run/statement/0/call/0/argument/1",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 8,
+                          "column": 50
+                        },
+                        "end": {
+                          "line": 8,
+                          "column": 66
+                        }
+                      }
+                    },
+                    "text": "topic = \"orders\""
+                  }
+                ]
+              },
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/class/Queue/method/$remote$send"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/function/run/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 9,
+                "column": 4
+              },
+              "end": {
+                "line": 9,
+                "column": 30
+              }
+            }
+          },
+          "text": "Queue local = makeQueue();",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/function/run/statement/1/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 9,
+                    "column": 18
+                  },
+                  "end": {
+                    "line": 9,
+                    "column": 29
+                  }
+                }
+              },
+              "text": "makeQueue()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/function/makeQueue"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/function/run/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 10,
+                "column": 4
+              },
+              "end": {
+                "line": 10,
+                "column": 45
+              }
+            }
+          },
+          "text": "string second = check local-\u003esend(\"two\");",
+          "evaluation": {
+            "id": "browser/http_service/function/run/statement/2/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 10,
+                  "column": 20
+                },
+                "end": {
+                  "line": 10,
+                  "column": 44
+                }
+              }
+            },
+            "text": "check local-\u003esend(\"two\")",
+            "kind": "check",
+            "children": [
+              {
+                "id": "browser/http_service/function/run/statement/2/value/part/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 10,
+                      "column": 26
+                    },
+                    "end": {
+                      "line": 10,
+                      "column": 44
+                    }
+                  }
+                },
+                "text": "local-\u003esend(\"two\")",
+                "kind": "call",
+                "children": [],
+                "call": {
+                  "id": "browser/http_service/function/run/statement/2/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 10,
+                        "column": 26
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 44
+                      }
+                    }
+                  },
+                  "text": "local-\u003esend(\"two\")",
+                  "client": {
+                    "context": {
+                      "receiver": {
+                        "id": "browser/http_service/function/run/statement/2/call/0/receiver",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 10,
+                              "column": 26
+                            },
+                            "end": {
+                              "line": 10,
+                              "column": 31
+                            }
+                          }
+                        },
+                        "text": "local"
+                      },
+                      "type": "Queue",
+                      "origin": "unavailable"
+                    },
+                    "method": "send",
+                    "arguments": [
+                      {
+                        "id": "browser/http_service/function/run/statement/2/call/0/argument/0",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 10,
+                              "column": 38
+                            },
+                            "end": {
+                              "line": 10,
+                              "column": 43
+                            }
+                          }
+                        },
+                        "text": "\"two\""
+                      }
+                    ]
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "browser/http_service/class/Queue/method/$remote$send"
+                  },
+                  "expansion": "supported"
+                }
+              }
+            ]
+          },
+          "binding": "string second",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/function/run/statement/2/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 10,
+                    "column": 26
+                  },
+                  "end": {
+                    "line": 10,
+                    "column": 44
+                  }
+                }
+              },
+              "text": "local-\u003esend(\"two\")",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "browser/http_service/function/run/statement/2/call/0/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 10,
+                          "column": 26
+                        },
+                        "end": {
+                          "line": 10,
+                          "column": 31
+                        }
+                      }
+                    },
+                    "text": "local"
+                  },
+                  "type": "Queue",
+                  "origin": "unavailable"
+                },
+                "method": "send",
+                "arguments": [
+                  {
+                    "id": "browser/http_service/function/run/statement/2/call/0/argument/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 10,
+                          "column": 38
+                        },
+                        "end": {
+                          "line": 10,
+                          "column": 43
+                        }
+                      }
+                    },
+                    "text": "\"two\""
+                  }
+                ]
+              },
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/class/Queue/method/$remote$send"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/function/run/statement/3",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 11,
+                "column": 4
+              },
+              "end": {
+                "line": 11,
+                "column": 32
+              }
+            }
+          },
+          "text": "local = new (\"replacement\");",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "browser/http_service/function/run/statement/4",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 12,
+                "column": 4
+              },
+              "end": {
+                "line": 12,
+                "column": 46
+              }
+            }
+          },
+          "text": "string third = check local-\u003esend(\"three\");",
+          "evaluation": {
+            "id": "browser/http_service/function/run/statement/4/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 12,
+                  "column": 19
+                },
+                "end": {
+                  "line": 12,
+                  "column": 45
+                }
+              }
+            },
+            "text": "check local-\u003esend(\"three\")",
+            "kind": "check",
+            "children": [
+              {
+                "id": "browser/http_service/function/run/statement/4/value/part/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 12,
+                      "column": 25
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 45
+                    }
+                  }
+                },
+                "text": "local-\u003esend(\"three\")",
+                "kind": "call",
+                "children": [],
+                "call": {
+                  "id": "browser/http_service/function/run/statement/4/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 12,
+                        "column": 25
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 45
+                      }
+                    }
+                  },
+                  "text": "local-\u003esend(\"three\")",
+                  "client": {
+                    "context": {
+                      "receiver": {
+                        "id": "browser/http_service/function/run/statement/4/call/0/receiver",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 12,
+                              "column": 25
+                            },
+                            "end": {
+                              "line": 12,
+                              "column": 30
+                            }
+                          }
+                        },
+                        "text": "local"
+                      },
+                      "type": "Queue",
+                      "origin": "unavailable"
+                    },
+                    "method": "send",
+                    "arguments": [
+                      {
+                        "id": "browser/http_service/function/run/statement/4/call/0/argument/0",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 12,
+                              "column": 37
+                            },
+                            "end": {
+                              "line": 12,
+                              "column": 44
+                            }
+                          }
+                        },
+                        "text": "\"three\""
+                      }
+                    ]
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "browser/http_service/class/Queue/method/$remote$send"
+                  },
+                  "expansion": "supported"
+                }
+              }
+            ]
+          },
+          "binding": "string third",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/function/run/statement/4/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 12,
+                    "column": 25
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 45
+                  }
+                }
+              },
+              "text": "local-\u003esend(\"three\")",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "browser/http_service/function/run/statement/4/call/0/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 12,
+                          "column": 25
+                        },
+                        "end": {
+                          "line": 12,
+                          "column": 30
+                        }
+                      }
+                    },
+                    "text": "local"
+                  },
+                  "type": "Queue",
+                  "origin": "unavailable"
+                },
+                "method": "send",
+                "arguments": [
+                  {
+                    "id": "browser/http_service/function/run/statement/4/call/0/argument/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 12,
+                          "column": 37
+                        },
+                        "end": {
+                          "line": 12,
+                          "column": 44
+                        }
+                      }
+                    },
+                    "text": "\"three\""
+                  }
+                ]
+              },
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/class/Queue/method/$remote$send"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/function/run/statement/5",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 13,
+                "column": 4
+              },
+              "end": {
+                "line": 13,
+                "column": 51
+              }
+            }
+          },
+          "text": "string fourth = check inputQueue-\u003esend(\"four\");",
+          "evaluation": {
+            "id": "browser/http_service/function/run/statement/5/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 13,
+                  "column": 20
+                },
+                "end": {
+                  "line": 13,
+                  "column": 50
+                }
+              }
+            },
+            "text": "check inputQueue-\u003esend(\"four\")",
+            "kind": "check",
+            "children": [
+              {
+                "id": "browser/http_service/function/run/statement/5/value/part/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 13,
+                      "column": 26
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 50
+                    }
+                  }
+                },
+                "text": "inputQueue-\u003esend(\"four\")",
+                "kind": "call",
+                "children": [],
+                "call": {
+                  "id": "browser/http_service/function/run/statement/5/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 13,
+                        "column": 26
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 50
+                      }
+                    }
+                  },
+                  "text": "inputQueue-\u003esend(\"four\")",
+                  "client": {
+                    "context": {
+                      "receiver": {
+                        "id": "browser/http_service/function/run/statement/5/call/0/receiver",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 13,
+                              "column": 26
+                            },
+                            "end": {
+                              "line": 13,
+                              "column": 36
+                            }
+                          }
+                        },
+                        "text": "inputQueue"
+                      },
+                      "type": "Queue",
+                      "origin": "parameter"
+                    },
+                    "method": "send",
+                    "arguments": [
+                      {
+                        "id": "browser/http_service/function/run/statement/5/call/0/argument/0",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 13,
+                              "column": 43
+                            },
+                            "end": {
+                              "line": 13,
+                              "column": 49
+                            }
+                          }
+                        },
+                        "text": "\"four\""
+                      }
+                    ]
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "browser/http_service/class/Queue/method/$remote$send"
+                  },
+                  "expansion": "supported"
+                }
+              }
+            ]
+          },
+          "binding": "string fourth",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/function/run/statement/5/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 13,
+                    "column": 26
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 50
+                  }
+                }
+              },
+              "text": "inputQueue-\u003esend(\"four\")",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "browser/http_service/function/run/statement/5/call/0/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 13,
+                          "column": 26
+                        },
+                        "end": {
+                          "line": 13,
+                          "column": 36
+                        }
+                      }
+                    },
+                    "text": "inputQueue"
+                  },
+                  "type": "Queue",
+                  "origin": "parameter"
+                },
+                "method": "send",
+                "arguments": [
+                  {
+                    "id": "browser/http_service/function/run/statement/5/call/0/argument/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 13,
+                          "column": 43
+                        },
+                        "end": {
+                          "line": 13,
+                          "column": 49
+                        }
+                      }
+                    },
+                    "text": "\"four\""
+                  }
+                ]
+              },
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/class/Queue/method/$remote$send"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/function/run/statement/6",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 14,
+                "column": 2
+              },
+              "end": {
+                "line": 14,
+                "column": 12
+              }
+            }
+          },
+          "text": "_ = first;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "browser/http_service/function/run/statement/7",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 14,
+                "column": 13
+              },
+              "end": {
+                "line": 14,
+                "column": 24
+              }
+            }
+          },
+          "text": "_ = second;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "browser/http_service/function/run/statement/8",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 14,
+                "column": 25
+              },
+              "end": {
+                "line": 14,
+                "column": 35
+              }
+            }
+          },
+          "text": "_ = third;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "browser/http_service/function/run/statement/9",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 14,
+                "column": 36
+              },
+              "end": {
+                "line": 14,
+                "column": 47
+              }
+            }
+          },
+          "text": "_ = fourth;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "browser/http_service/function/run/statement/10/block/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 15,
+                "column": 6
+              },
+              "end": {
+                "line": 15,
+                "column": 41
+              }
+            }
+          },
+          "text": "Queue globalQueue = new (\"shadow\");",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "browser/http_service/function/run/statement/10/block/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 15,
+                "column": 42
+              },
+              "end": {
+                "line": 15,
+                "column": 89
+              }
+            }
+          },
+          "text": "string fifth = check globalQueue-\u003esend(\"five\");",
+          "evaluation": {
+            "id": "browser/http_service/function/run/statement/10/block/statement/1/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 15,
+                  "column": 57
+                },
+                "end": {
+                  "line": 15,
+                  "column": 88
+                }
+              }
+            },
+            "text": "check globalQueue-\u003esend(\"five\")",
+            "kind": "check",
+            "children": [
+              {
+                "id": "browser/http_service/function/run/statement/10/block/statement/1/value/part/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 15,
+                      "column": 63
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 88
+                    }
+                  }
+                },
+                "text": "globalQueue-\u003esend(\"five\")",
+                "kind": "call",
+                "children": [],
+                "call": {
+                  "id": "browser/http_service/function/run/statement/10/block/statement/1/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 15,
+                        "column": 63
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 88
+                      }
+                    }
+                  },
+                  "text": "globalQueue-\u003esend(\"five\")",
+                  "client": {
+                    "context": {
+                      "receiver": {
+                        "id": "browser/http_service/function/run/statement/10/block/statement/1/call/0/receiver",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 15,
+                              "column": 63
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 74
+                            }
+                          }
+                        },
+                        "text": "globalQueue"
+                      },
+                      "type": "Queue",
+                      "origin": "constructor",
+                      "initializer": {
+                        "id": "receiver/7/initializer",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 15,
+                              "column": 26
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 40
+                            }
+                          }
+                        },
+                        "text": "new (\"shadow\")"
+                      }
+                    },
+                    "method": "send",
+                    "arguments": [
+                      {
+                        "id": "browser/http_service/function/run/statement/10/block/statement/1/call/0/argument/0",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 15,
+                              "column": 81
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 87
+                            }
+                          }
+                        },
+                        "text": "\"five\""
+                      }
+                    ]
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "browser/http_service/class/Queue/method/$remote$send"
+                  },
+                  "expansion": "supported"
+                }
+              }
+            ]
+          },
+          "binding": "string fifth",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/function/run/statement/10/block/statement/1/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 15,
+                    "column": 63
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 88
+                  }
+                }
+              },
+              "text": "globalQueue-\u003esend(\"five\")",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "browser/http_service/function/run/statement/10/block/statement/1/call/0/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 15,
+                          "column": 63
+                        },
+                        "end": {
+                          "line": 15,
+                          "column": 74
+                        }
+                      }
+                    },
+                    "text": "globalQueue"
+                  },
+                  "type": "Queue",
+                  "origin": "constructor",
+                  "initializer": {
+                    "id": "receiver/7/initializer",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 15,
+                          "column": 26
+                        },
+                        "end": {
+                          "line": 15,
+                          "column": 40
+                        }
+                      }
+                    },
+                    "text": "new (\"shadow\")"
+                  }
+                },
+                "method": "send",
+                "arguments": [
+                  {
+                    "id": "browser/http_service/function/run/statement/10/block/statement/1/call/0/argument/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 15,
+                          "column": 81
+                        },
+                        "end": {
+                          "line": 15,
+                          "column": 87
+                        }
+                      }
+                    },
+                    "text": "\"five\""
+                  }
+                ]
+              },
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/class/Queue/method/$remote$send"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/function/run/statement/10/block/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 15,
+                "column": 90
+              },
+              "end": {
+                "line": 15,
+                "column": 100
+              }
+            }
+          },
+          "text": "_ = fifth;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

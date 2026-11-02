@@ -67,6 +67,11 @@ import { LOCAL_ROOT } from "@/lib/fs/fs-roots";
 
 import type { FileNode } from "@/lib/fs/core/file-node.types";
 
+// Lets the editor react to any click on a file, including the already-active one.
+const FileSelectContext = React.createContext<(() => void) | undefined>(
+	undefined,
+);
+
 type FileTreeNodeProps = {
 	node: FileNode;
 	path: string;
@@ -87,6 +92,7 @@ function FileTreeFileNode({
 	const isExampleFile = isExamplesPath(path);
 
 	const { toggleSidebar } = useSidebar();
+	const onFileSelect = React.useContext(FileSelectContext);
 
 	const activeFilePath = useActiveFilePath();
 
@@ -103,6 +109,7 @@ function FileTreeFileNode({
 		// TODO: This is a bit hacky, we should ideally have a separate "switchFile" action that doesn't mark the file as dirty
 		await saveFile();
 		await openFile(path);
+		onFileSelect?.();
 		if (isMobile) toggleSidebar();
 	}
 
@@ -401,7 +408,10 @@ function FileTreeNode({ node, path, defaultOpen }: FileTreeNodeProps) {
 	);
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({
+	onFileSelect,
+	...props
+}: React.ComponentProps<typeof Sidebar> & { onFileSelect?: () => void }) {
 	const isMobile = useIsMobile();
 
 	const tempTree = useTempTree();
@@ -421,87 +431,91 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	const { setFileOperationDialog } = useFileTreeActions();
 
 	return (
-		<Sidebar {...props}>
-			<SidebarContent>
-				<SidebarGroup data-testid="examples-sidebar">
-					<SidebarGroupLabel className="uppercase">Examples</SidebarGroupLabel>
-					<SidebarGroupContent className="mt-2">
-						<SidebarMenu>
-							{exampleEntries.map(({ node, path }) => (
-								<FileTreeNode
-									key={node.name}
-									node={node}
-									path={path}
-									defaultOpen={isActiveOrAncestor(path, activeFilePath)}
-								/>
-							))}
-						</SidebarMenu>
-					</SidebarGroupContent>
-				</SidebarGroup>
-				<SidebarSeparator />
-				<SidebarGroup>
-					<div className="flex items-center justify-between">
+		<FileSelectContext.Provider value={onFileSelect}>
+			<Sidebar {...props}>
+				<SidebarContent>
+					<SidebarGroup data-testid="examples-sidebar">
 						<SidebarGroupLabel className="uppercase">
-							Localspace
+							Examples
 						</SidebarGroupLabel>
-						<DropdownMenu>
-							<DropdownMenuTrigger
-								render={
-									<Button
-										variant="ghost"
-										size="icon-xs"
-										aria-label="Add to localspace"
-										data-testid="localspace-add"
-									/>
-								}
-							>
-								<HugeiconsIcon icon={PlusSignIcon} strokeWidth={1.5} />
-							</DropdownMenuTrigger>
-							<DropdownMenuContent
-								side="bottom"
-								align={isMobile ? "end" : "start"}
-							>
-								<DropdownMenuItem
-									onClick={() =>
-										setFileOperationDialog({
-											type: "new-package",
-											path: "/local",
-										})
-									}
-								>
-									<HugeiconsIcon icon={PackageIcon} strokeWidth={1.5} />
-									<span>New Package</span>
-								</DropdownMenuItem>
-							</DropdownMenuContent>
-						</DropdownMenu>
-					</div>
-					<SidebarGroupContent className="mt-2">
-						<SidebarMenu>
-							{sharedEntries.map(({ node, path }) => (
-								<FileTreeNode
-									key={`shared:${node.name}`}
-									node={node}
-									path={path}
-									defaultOpen={isActiveOrAncestor(path, activeFilePath)}
-								/>
-							))}
-							{localTree.map((node) => {
-								const path = `${LOCAL_ROOT}/${node.name}`;
-								return (
+						<SidebarGroupContent className="mt-2">
+							<SidebarMenu>
+								{exampleEntries.map(({ node, path }) => (
 									<FileTreeNode
-										key={`local:${node.name}`}
+										key={node.name}
 										node={node}
 										path={path}
 										defaultOpen={isActiveOrAncestor(path, activeFilePath)}
 									/>
-								);
-							})}
-						</SidebarMenu>
-					</SidebarGroupContent>
-				</SidebarGroup>
-			</SidebarContent>
-			<FileTreeDialog />
-			<SidebarRail />
-		</Sidebar>
+								))}
+							</SidebarMenu>
+						</SidebarGroupContent>
+					</SidebarGroup>
+					<SidebarSeparator />
+					<SidebarGroup>
+						<div className="flex items-center justify-between">
+							<SidebarGroupLabel className="uppercase">
+								Localspace
+							</SidebarGroupLabel>
+							<DropdownMenu>
+								<DropdownMenuTrigger
+									render={
+										<Button
+											variant="ghost"
+											size="icon-xs"
+											aria-label="Add to localspace"
+											data-testid="localspace-add"
+										/>
+									}
+								>
+									<HugeiconsIcon icon={PlusSignIcon} strokeWidth={1.5} />
+								</DropdownMenuTrigger>
+								<DropdownMenuContent
+									side="bottom"
+									align={isMobile ? "end" : "start"}
+								>
+									<DropdownMenuItem
+										onClick={() =>
+											setFileOperationDialog({
+												type: "new-package",
+												path: "/local",
+											})
+										}
+									>
+										<HugeiconsIcon icon={PackageIcon} strokeWidth={1.5} />
+										<span>New Package</span>
+									</DropdownMenuItem>
+								</DropdownMenuContent>
+							</DropdownMenu>
+						</div>
+						<SidebarGroupContent className="mt-2">
+							<SidebarMenu>
+								{sharedEntries.map(({ node, path }) => (
+									<FileTreeNode
+										key={`shared:${node.name}`}
+										node={node}
+										path={path}
+										defaultOpen={isActiveOrAncestor(path, activeFilePath)}
+									/>
+								))}
+								{localTree.map((node) => {
+									const path = `${LOCAL_ROOT}/${node.name}`;
+									return (
+										<FileTreeNode
+											key={`local:${node.name}`}
+											node={node}
+											path={path}
+											defaultOpen={isActiveOrAncestor(path, activeFilePath)}
+										/>
+									);
+								})}
+							</SidebarMenu>
+						</SidebarGroupContent>
+					</SidebarGroup>
+				</SidebarContent>
+				<FileTreeDialog />
+				<SidebarRail />
+			</Sidebar>
+		</FileSelectContext.Provider>
 	);
 }

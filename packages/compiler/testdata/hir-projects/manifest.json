@@ -1,0 +1,2698 @@
+{
+  "version": 1,
+  "phase": "after resolution; before semantic analysis, CFG, desugaring, lowering or backend generation",
+  "hashAlgorithm": "sha256",
+  "inputHashEncoding": "Canonical JSON: recursively sort object keys with localeCompare; preserve arrays and exact source text.",
+  "sourcePolicy": "Original .bal/.toml request bytes archived under source/. source-inventory.json independently covers current native and browser compiler scenarios, reconstructs source bytes from static original definitions, and pins original test file hashes. Frozen render-catalog coverage is additional, not the source completeness oracle. No frozen rendering output is updated.",
+  "cases": [
+    {
+      "id": "example-analysis-recovery",
+      "kind": "project",
+      "inputHash": "bce47182b8bfa076635d1fb0a6f695b8b0bbe55fe8d2be5a2c9675a4eed38602",
+      "catalogRef": "bce47182b8bfa076635d1fb0a6f695b8b0bbe55fe8d2be5a2c9675a4eed38602",
+      "renderCases": [
+        "example-analysis-recovery-fn-9153ad759f-normal",
+        "example-analysis-recovery-fn-9153ad759f-signature",
+        "example-analysis-recovery-fn-9153ad759f-panel-expanded",
+        "example-analysis-recovery-fn-9153ad759f-resize",
+        "example-analysis-recovery-fn-9153ad759f-reference",
+        "example-analysis-recovery-fn-9153ad759f-isolated-1",
+        "example-analysis-recovery-fn-9153ad759f-expand-1",
+        "example-analysis-recovery-fn-9153ad759f-expanded-panel",
+        "example-analysis-recovery-fn-9153ad759f-expanded-resize",
+        "browser-stale-invalid",
+        "browser-stale-repaired",
+        "browser-failed-previous"
+      ],
+      "provenance": [
+        {
+          "file": "examples/analysis-recovery",
+          "scenario": "analysis-recovery",
+          "example": "analysis-recovery"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeExamples",
+          "subtest": "TestAnalyzeExamples/analysis-recovery"
+        },
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendExamples",
+          "subtest": "TestResolvedFrontendExamples/analysis-recovery"
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "invalid edits retain stale flow, disable references and repair",
+          "line": 193,
+          "writeOrdinal": 2
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "invalid edits retain stale flow, disable references and repair"
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "obsolete browser completions and infrastructure failures retain current flow"
+        }
+      ],
+      "directory": "example-analysis-recovery",
+      "sourceHashes": {
+        "Ballerina.toml": "7f4bb0c07a63bae2a71a596b0cd98fd958baa1eed8e80646ec93e59c7e169b40",
+        "main.bal": "bce56c69c251c73ecfbf7bdd0f6653d074e9aee0dfbf13a6ae7c1847848e3abb"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "example-automation-flow",
+      "kind": "project",
+      "inputHash": "df75cfd85efb26c50277458cb1be9eb48b5d5f2493b4ed18616bad312b7c98fc",
+      "catalogRef": "df75cfd85efb26c50277458cb1be9eb48b5d5f2493b4ed18616bad312b7c98fc",
+      "renderCases": [
+        "example-automation-flow-fn-b134c6067b-normal",
+        "example-automation-flow-fn-b134c6067b-signature",
+        "example-automation-flow-fn-b134c6067b-panel-expanded",
+        "example-automation-flow-fn-b134c6067b-resize",
+        "example-automation-flow-fn-b134c6067b-reference",
+        "example-automation-flow-fn-b134c6067b-isolated-1",
+        "example-automation-flow-fn-b134c6067b-expand-1",
+        "example-automation-flow-fn-b134c6067b-expanded-panel",
+        "example-automation-flow-fn-b134c6067b-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "examples/automation-flow",
+          "scenario": "automation-flow",
+          "example": "automation-flow"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeExamples",
+          "subtest": "TestAnalyzeExamples/automation-flow"
+        },
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendExamples",
+          "subtest": "TestResolvedFrontendExamples/automation-flow"
+        }
+      ],
+      "directory": "example-automation-flow",
+      "sourceHashes": {
+        "Ballerina.toml": "1cdfc3168d1d1c3df4fbd5cc43c76108befa243458f3cf20690827109f26e1bf",
+        "main.bal": "99470e598458900cc0cbffb66b58f65d5b6c32fc75b933cd77f883bf744478fc"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "example-chat-references",
+      "kind": "project",
+      "inputHash": "6cc8aba26b2578db57e11f862a83df3bfca5f17fb846956c7f9ab2ff4f08fff8",
+      "catalogRef": "6cc8aba26b2578db57e11f862a83df3bfca5f17fb846956c7f9ab2ff4f08fff8",
+      "renderCases": [
+        "example-chat-references-scope-1-definitions",
+        "example-chat-references-fn-21e4194761-normal",
+        "example-chat-references-fn-21e4194761-signature",
+        "example-chat-references-fn-21e4194761-panel-expanded",
+        "example-chat-references-fn-21e4194761-resize",
+        "example-chat-references-fn-21e4194761-reference",
+        "example-chat-references-fn-03d4350f72-normal",
+        "example-chat-references-fn-03d4350f72-signature",
+        "example-chat-references-fn-03d4350f72-panel-expanded",
+        "example-chat-references-fn-03d4350f72-resize",
+        "example-chat-references-fn-03d4350f72-reference",
+        "example-chat-references-fn-03d4350f72-isolated-1",
+        "example-chat-references-fn-03d4350f72-expand-1",
+        "example-chat-references-fn-03d4350f72-expanded-panel",
+        "example-chat-references-fn-03d4350f72-expanded-resize",
+        "example-chat-references-fn-ab75c87a86-normal",
+        "example-chat-references-fn-ab75c87a86-signature",
+        "example-chat-references-fn-ab75c87a86-panel-expanded",
+        "example-chat-references-fn-ab75c87a86-resize",
+        "example-chat-references-fn-ab75c87a86-reference",
+        "example-chat-references-fn-ab75c87a86-isolated-1",
+        "example-chat-references-fn-ab75c87a86-expand-1",
+        "example-chat-references-fn-ab75c87a86-expanded-panel",
+        "example-chat-references-fn-ab75c87a86-expanded-resize",
+        "browser-reference-highlight",
+        "browser-reference-removed",
+        "browser-reference-scope-away",
+        "browser-reference-scope-restored",
+        "browser-reference-lifecycle-removed",
+        "browser-reference-lifecycle-sent"
+      ],
+      "provenance": [
+        {
+          "file": "examples/chat-references",
+          "scenario": "chat-references",
+          "example": "chat-references"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeExamples",
+          "subtest": "TestAnalyzeExamples/chat-references"
+        },
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendExamples",
+          "subtest": "TestResolvedFrontendExamples/chat-references"
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "prompt references highlight matching nodes and clear on removal, scope change and send"
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "prompt references highlight matching nodes and clear on removal, scope change and send",
+          "line": 252
+        }
+      ],
+      "directory": "example-chat-references",
+      "sourceHashes": {
+        "Ballerina.toml": "fee5b766fb9fbb6b1b52468afd2a3a608dcdea95281f614d6a007217cce7ee82",
+        "main.bal": "be1f5d133d902baf347d70e9cb25e4b79517944a5d850b19599ec0d95b1d8bf5"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "example-client-calls",
+      "kind": "project",
+      "inputHash": "d7b4433c585e3417e0f8238a9bb02b8beb5278274b659af8e295228968d73147",
+      "catalogRef": "d7b4433c585e3417e0f8238a9bb02b8beb5278274b659af8e295228968d73147",
+      "renderCases": [
+        "example-client-calls-scope-1-definitions",
+        "example-client-calls-fn-a208dc4c53-normal",
+        "example-client-calls-fn-a208dc4c53-signature",
+        "example-client-calls-fn-a208dc4c53-panel-expanded",
+        "example-client-calls-fn-a208dc4c53-resize",
+        "example-client-calls-fn-a208dc4c53-reference",
+        "example-client-calls-fn-a208dc4c53-isolated-1",
+        "example-client-calls-fn-a208dc4c53-expand-1",
+        "example-client-calls-fn-a208dc4c53-expanded-panel",
+        "example-client-calls-fn-a208dc4c53-expanded-resize",
+        "example-client-calls-fn-4683679e5d-normal",
+        "example-client-calls-fn-4683679e5d-signature",
+        "example-client-calls-fn-4683679e5d-panel-expanded",
+        "example-client-calls-fn-4683679e5d-resize",
+        "example-client-calls-fn-4683679e5d-reference",
+        "example-client-calls-fn-4683679e5d-isolated-1",
+        "example-client-calls-fn-4683679e5d-expand-1",
+        "example-client-calls-fn-4683679e5d-expand-2",
+        "example-client-calls-fn-4683679e5d-expanded-panel",
+        "example-client-calls-fn-4683679e5d-expanded-resize",
+        "example-client-calls-fn-97394e5402-normal",
+        "example-client-calls-fn-97394e5402-signature",
+        "example-client-calls-fn-97394e5402-panel-expanded",
+        "example-client-calls-fn-97394e5402-resize",
+        "example-client-calls-fn-97394e5402-reference",
+        "browser-client-card-highlight"
+      ],
+      "provenance": [
+        {
+          "file": "examples/client-calls",
+          "scenario": "client-calls",
+          "example": "client-calls"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeExamples",
+          "subtest": "TestAnalyzeExamples/client-calls"
+        },
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendExamples",
+          "subtest": "TestResolvedFrontendExamples/client-calls"
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "client call cards render generic source context, explicit errors and string templates",
+          "line": 415
+        }
+      ],
+      "directory": "example-client-calls",
+      "sourceHashes": {
+        "Ballerina.toml": "91937b1d38c25def3d5e102ab4f8268dd6abc3609c7888ed4271e615662bde53",
+        "main.bal": "2432ed2e8cde21e54e8119556e550d91880206f906d9ff4d118fb77644303f4c"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "example-control-flow",
+      "kind": "project",
+      "inputHash": "c83d6c0d3068629f1a62d4ee46ba7225c755172cb959b68996917e78b1b1472a",
+      "catalogRef": "c83d6c0d3068629f1a62d4ee46ba7225c755172cb959b68996917e78b1b1472a",
+      "renderCases": [
+        "example-control-flow-fn-6792def654-normal",
+        "example-control-flow-fn-6792def654-signature",
+        "example-control-flow-fn-6792def654-panel-expanded",
+        "example-control-flow-fn-6792def654-resize",
+        "example-control-flow-fn-6792def654-reference",
+        "example-control-flow-fn-6792def654-isolated-1",
+        "example-control-flow-fn-6792def654-expand-1",
+        "example-control-flow-fn-6792def654-expanded-panel",
+        "example-control-flow-fn-6792def654-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "examples/control-flow",
+          "scenario": "control-flow",
+          "example": "control-flow"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeExamples",
+          "subtest": "TestAnalyzeExamples/control-flow"
+        },
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendExamples",
+          "subtest": "TestResolvedFrontendExamples/control-flow"
+        }
+      ],
+      "directory": "example-control-flow",
+      "sourceHashes": {
+        "Ballerina.toml": "cc58a7acf247bf97345ff926964a9623e5b4d4f6ba07e923d1f43393b372521c",
+        "main.bal": "61830ab9bbcda70636b557321321600318ca6ef4fa66ceb5fc72094ff546ed2d"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "example-definitions-and-calls",
+      "kind": "project",
+      "inputHash": "53c77adeee9564d7bbfde6d489fb448f0110fa3b650e8b62fb069695b3b11842",
+      "catalogRef": "53c77adeee9564d7bbfde6d489fb448f0110fa3b650e8b62fb069695b3b11842",
+      "renderCases": [
+        "example-definitions-and-calls-scope-1-definitions",
+        "example-definitions-and-calls-fn-5750fe16dd-normal",
+        "example-definitions-and-calls-fn-5750fe16dd-signature",
+        "example-definitions-and-calls-fn-5750fe16dd-panel-expanded",
+        "example-definitions-and-calls-fn-5750fe16dd-resize",
+        "example-definitions-and-calls-fn-5750fe16dd-reference",
+        "example-definitions-and-calls-fn-0b31eb9359-normal",
+        "example-definitions-and-calls-fn-0b31eb9359-signature",
+        "example-definitions-and-calls-fn-0b31eb9359-panel-expanded",
+        "example-definitions-and-calls-fn-0b31eb9359-resize",
+        "example-definitions-and-calls-fn-0b31eb9359-reference",
+        "example-definitions-and-calls-fn-0b31eb9359-isolated-1",
+        "example-definitions-and-calls-fn-0b31eb9359-expand-1",
+        "example-definitions-and-calls-fn-0b31eb9359-expanded-panel",
+        "example-definitions-and-calls-fn-0b31eb9359-expanded-resize",
+        "example-definitions-and-calls-fn-402e42b52f-normal",
+        "example-definitions-and-calls-fn-402e42b52f-signature",
+        "example-definitions-and-calls-fn-402e42b52f-panel-expanded",
+        "example-definitions-and-calls-fn-402e42b52f-resize",
+        "example-definitions-and-calls-fn-402e42b52f-reference",
+        "example-definitions-and-calls-fn-402e42b52f-isolated-1",
+        "example-definitions-and-calls-fn-402e42b52f-isolated-2",
+        "example-definitions-and-calls-fn-402e42b52f-expand-1",
+        "example-definitions-and-calls-fn-402e42b52f-expand-2",
+        "example-definitions-and-calls-fn-402e42b52f-expanded-panel",
+        "example-definitions-and-calls-fn-402e42b52f-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "examples/definitions-and-calls",
+          "scenario": "definitions-and-calls",
+          "example": "definitions-and-calls"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeExamples",
+          "subtest": "TestAnalyzeExamples/definitions-and-calls"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestResolvedDiscoveryAndTargets",
+          "subtest": "TestResolvedDiscoveryAndTargets"
+        },
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendExamples",
+          "subtest": "TestResolvedFrontendExamples/definitions-and-calls"
+        }
+      ],
+      "directory": "example-definitions-and-calls",
+      "sourceHashes": {
+        "Ballerina.toml": "5ec0173282c08fdf23caf29177ff4d94d334fb9bfc90f5ebd2b08fba9855ea58",
+        "helpers.bal": "a631a28efd6d2422f281d13088d83e2c348b9b056051fa8c83689ad3c09f7972",
+        "main.bal": "03ba613e7b70dfdb82e5557436b98d48a76fcdf7591808f3b82153555230e4a1",
+        "modules/math/calculate.bal": "b3d966c793828e3c7a5cde15be817d192abcd5e32e9393e1d425e5e757119e32"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "example-design-critique",
+      "kind": "project",
+      "inputHash": "132445b2d54fb343d6e3e1bcb218a2d0f28bcdc835d2574a21c10dc21f58086e",
+      "catalogRef": "132445b2d54fb343d6e3e1bcb218a2d0f28bcdc835d2574a21c10dc21f58086e",
+      "renderCases": [
+        "example-design-critique-scope-1-definitions",
+        "example-design-critique-fn-4353aabe1e-normal",
+        "example-design-critique-fn-4353aabe1e-signature",
+        "example-design-critique-fn-4353aabe1e-panel-expanded",
+        "example-design-critique-fn-4353aabe1e-resize",
+        "example-design-critique-fn-4353aabe1e-reference",
+        "example-design-critique-fn-a975ed8d4b-normal",
+        "example-design-critique-fn-a975ed8d4b-signature",
+        "example-design-critique-fn-a975ed8d4b-panel-expanded",
+        "example-design-critique-fn-a975ed8d4b-resize",
+        "example-design-critique-fn-a975ed8d4b-reference",
+        "example-design-critique-fn-a975ed8d4b-isolated-1",
+        "example-design-critique-fn-a975ed8d4b-expand-1",
+        "example-design-critique-fn-a975ed8d4b-expanded-panel",
+        "example-design-critique-fn-a975ed8d4b-expanded-resize",
+        "example-design-critique-fn-dd39c386a1-normal",
+        "example-design-critique-fn-dd39c386a1-signature",
+        "example-design-critique-fn-dd39c386a1-panel-expanded",
+        "example-design-critique-fn-dd39c386a1-resize",
+        "example-design-critique-fn-dd39c386a1-reference",
+        "browser-width-fit-normal",
+        "browser-width-fit-expanded",
+        "browser-width-fit-expanded-resized",
+        "browser-width-fit-collapsed",
+        "browser-width-fit-final-reference",
+        "browser-definitions-reset",
+        "browser-definitions-reset-endpoint"
+      ],
+      "provenance": [
+        {
+          "file": "examples/design-critique",
+          "scenario": "design-critique",
+          "example": "design-critique"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeExamples",
+          "subtest": "TestAnalyzeExamples/design-critique"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestRangesAndSupportedBlocks",
+          "subtest": "TestRangesAndSupportedBlocks"
+        },
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendExamples",
+          "subtest": "TestResolvedFrontendExamples/design-critique"
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "flow fits panel width with margins through resize, panel mode and call expansion",
+          "line": 240
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "inspection expansion is available only for flow diagrams",
+          "line": 303
+        }
+      ],
+      "directory": "example-design-critique",
+      "sourceHashes": {
+        "Ballerina.toml": "7760dd259ab9cb7d949bda331f5bf5e7b7dab2800be5277d2b31e7993527385a",
+        "main.bal": "cf56a9985c722fbed01f4fa4f23876effb7139adb75e08a45c90f695269bcf3b"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "example-function-expansion",
+      "kind": "project",
+      "inputHash": "d8758335cc5442d663f1ea7062a5e5a1a12995875ca2319e7bcdefd11a2dce73",
+      "catalogRef": "d8758335cc5442d663f1ea7062a5e5a1a12995875ca2319e7bcdefd11a2dce73",
+      "renderCases": [
+        "example-function-expansion-fn-b9ac77aab0-normal",
+        "example-function-expansion-fn-b9ac77aab0-signature",
+        "example-function-expansion-fn-b9ac77aab0-panel-expanded",
+        "example-function-expansion-fn-b9ac77aab0-resize",
+        "example-function-expansion-fn-b9ac77aab0-reference",
+        "example-function-expansion-fn-b9ac77aab0-isolated-1",
+        "example-function-expansion-fn-b9ac77aab0-isolated-2",
+        "example-function-expansion-fn-b9ac77aab0-isolated-3",
+        "example-function-expansion-fn-b9ac77aab0-isolated-4",
+        "example-function-expansion-fn-b9ac77aab0-expand-1",
+        "example-function-expansion-fn-b9ac77aab0-expand-2",
+        "example-function-expansion-fn-b9ac77aab0-expand-3",
+        "example-function-expansion-fn-b9ac77aab0-expand-4",
+        "example-function-expansion-fn-b9ac77aab0-expand-5",
+        "example-function-expansion-fn-b9ac77aab0-expand-6",
+        "example-function-expansion-fn-b9ac77aab0-expand-7",
+        "example-function-expansion-fn-b9ac77aab0-expanded-panel",
+        "example-function-expansion-fn-b9ac77aab0-expanded-resize",
+        "browser-occurrence-combination-1",
+        "browser-occurrence-combination-2",
+        "browser-occurrence-combination-3",
+        "browser-occurrence-combination-4",
+        "browser-occurrence-combination-5",
+        "browser-repeated-source-highlight",
+        "browser-recursion-with-references"
+      ],
+      "provenance": [
+        {
+          "file": "examples/function-expansion",
+          "scenario": "function-expansion",
+          "example": "function-expansion"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeExamples",
+          "subtest": "TestAnalyzeExamples/function-expansion"
+        },
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendExamples",
+          "subtest": "TestResolvedFrontendExamples/function-expansion"
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "expanded call bodies reference definitions, call headers reference sites, and recursion stays finite"
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "expanded call bodies reference definitions, call headers reference sites, and recursion stays finite",
+          "line": 199
+        }
+      ],
+      "directory": "example-function-expansion",
+      "sourceHashes": {
+        "Ballerina.toml": "a0220feef81465ee686fdabcdfc8a2d5d86fd375e18bb7186465f63d8e5b8e57",
+        "helpers.bal": "6a9c000e5b12df9ca84f119499554d1a3a75d7cee0aa4906b478c4355c9a4a2f",
+        "main.bal": "630a951fae6e09bae625ca99c128f705f0f3be2d78d9aebe6c14f4078382752f"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "example-panel-state",
+      "kind": "project",
+      "inputHash": "c81304f55f2038c6f16475245619a1f5c04bda0b109f7f559a52c35e55d3cd73",
+      "catalogRef": "c81304f55f2038c6f16475245619a1f5c04bda0b109f7f559a52c35e55d3cd73",
+      "renderCases": [
+        "example-panel-state-scope-1-definitions",
+        "example-panel-state-fn-569df967dd-normal",
+        "example-panel-state-fn-569df967dd-signature",
+        "example-panel-state-fn-569df967dd-panel-expanded",
+        "example-panel-state-fn-569df967dd-resize",
+        "example-panel-state-fn-569df967dd-reference",
+        "example-panel-state-fn-8851f4804a-normal",
+        "example-panel-state-fn-8851f4804a-signature",
+        "example-panel-state-fn-8851f4804a-panel-expanded",
+        "example-panel-state-fn-8851f4804a-resize",
+        "example-panel-state-fn-8851f4804a-reference",
+        "example-panel-state-fn-8851f4804a-isolated-1",
+        "example-panel-state-fn-8851f4804a-expand-1",
+        "example-panel-state-fn-8851f4804a-expanded-panel",
+        "example-panel-state-fn-8851f4804a-expanded-resize",
+        "example-panel-state-fn-40d5a155b2-normal",
+        "example-panel-state-fn-40d5a155b2-signature",
+        "example-panel-state-fn-40d5a155b2-panel-expanded",
+        "example-panel-state-fn-40d5a155b2-resize",
+        "example-panel-state-fn-40d5a155b2-reference",
+        "example-panel-state-fn-40d5a155b2-isolated-1",
+        "example-panel-state-fn-40d5a155b2-expand-1",
+        "example-panel-state-fn-40d5a155b2-expanded-panel",
+        "example-panel-state-fn-40d5a155b2-expanded-resize",
+        "browser-panel-expanded",
+        "browser-panel-resized",
+        "browser-panel-draft-pre-drag",
+        "browser-panel-expanded-collapse",
+        "browser-panel-endpoint-retention"
+      ],
+      "provenance": [
+        {
+          "file": "examples/panel-state",
+          "scenario": "panel-state",
+          "example": "panel-state"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeExamples",
+          "subtest": "TestAnalyzeExamples/panel-state"
+        },
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendExamples",
+          "subtest": "TestResolvedFrontendExamples/panel-state"
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "20/60/20, scope drafts, expansion and floating chat survive panel changes"
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "20/60/20, scope drafts, expansion and floating chat survive panel changes",
+          "line": 173
+        }
+      ],
+      "directory": "example-panel-state",
+      "sourceHashes": {
+        "Ballerina.toml": "e67ff4278674d93e60364641d5cf1971bc39b94359957bb9b81e59eccc69ed7d",
+        "main.bal": "887934875e1020ef16c51b30665a31dc0e57bd019de2ae08f560f661f81ece30"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "example-service-discovery",
+      "kind": "project",
+      "inputHash": "e3ff3af7604df78ec1159d6414172342436b2811b199295b65451ed5880bee97",
+      "catalogRef": "e3ff3af7604df78ec1159d6414172342436b2811b199295b65451ed5880bee97",
+      "renderCases": [
+        "example-service-discovery-scope-1-definitions",
+        "example-service-discovery-scope-2-definitions",
+        "example-service-discovery-scope-3-definitions",
+        "example-service-discovery-fn-31f98cdba8-normal",
+        "example-service-discovery-fn-31f98cdba8-signature",
+        "example-service-discovery-fn-31f98cdba8-panel-expanded",
+        "example-service-discovery-fn-31f98cdba8-resize",
+        "example-service-discovery-fn-31f98cdba8-reference",
+        "example-service-discovery-fn-f3c08bbb2a-normal",
+        "example-service-discovery-fn-f3c08bbb2a-signature",
+        "example-service-discovery-fn-f3c08bbb2a-panel-expanded",
+        "example-service-discovery-fn-f3c08bbb2a-resize",
+        "example-service-discovery-fn-f3c08bbb2a-reference",
+        "example-service-discovery-fn-3e0262b224-normal",
+        "example-service-discovery-fn-3e0262b224-signature",
+        "example-service-discovery-fn-3e0262b224-panel-expanded",
+        "example-service-discovery-fn-3e0262b224-resize",
+        "example-service-discovery-fn-3e0262b224-reference",
+        "example-service-discovery-fn-dd33049aba-normal",
+        "example-service-discovery-fn-dd33049aba-signature",
+        "example-service-discovery-fn-dd33049aba-panel-expanded",
+        "example-service-discovery-fn-dd33049aba-resize",
+        "example-service-discovery-fn-dd33049aba-reference",
+        "example-service-discovery-fn-dd33049aba-isolated-1",
+        "example-service-discovery-fn-dd33049aba-expand-1",
+        "example-service-discovery-fn-dd33049aba-expanded-panel",
+        "example-service-discovery-fn-dd33049aba-expanded-resize",
+        "example-service-discovery-fn-990e68e24c-normal",
+        "example-service-discovery-fn-990e68e24c-signature",
+        "example-service-discovery-fn-990e68e24c-panel-expanded",
+        "example-service-discovery-fn-990e68e24c-resize",
+        "example-service-discovery-fn-990e68e24c-reference",
+        "example-service-discovery-fn-990e68e24c-isolated-1",
+        "example-service-discovery-fn-990e68e24c-expand-1",
+        "example-service-discovery-fn-990e68e24c-expanded-panel",
+        "example-service-discovery-fn-990e68e24c-expanded-resize",
+        "example-service-discovery-fn-9cf35468a0-normal",
+        "example-service-discovery-fn-9cf35468a0-signature",
+        "example-service-discovery-fn-9cf35468a0-panel-expanded",
+        "example-service-discovery-fn-9cf35468a0-resize",
+        "example-service-discovery-fn-9cf35468a0-reference",
+        "example-service-discovery-fn-b7716de5d3-normal",
+        "example-service-discovery-fn-b7716de5d3-signature",
+        "example-service-discovery-fn-b7716de5d3-panel-expanded",
+        "example-service-discovery-fn-b7716de5d3-resize",
+        "example-service-discovery-fn-b7716de5d3-reference",
+        "example-service-discovery-fn-b7716de5d3-isolated-1",
+        "example-service-discovery-fn-b7716de5d3-expand-1",
+        "example-service-discovery-fn-b7716de5d3-expand-2",
+        "example-service-discovery-fn-b7716de5d3-expanded-panel",
+        "example-service-discovery-fn-b7716de5d3-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "examples/service-discovery",
+          "scenario": "service-discovery",
+          "example": "service-discovery"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeExamples",
+          "subtest": "TestAnalyzeExamples/service-discovery"
+        },
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendExamples",
+          "subtest": "TestResolvedFrontendExamples/service-discovery"
+        }
+      ],
+      "directory": "example-service-discovery",
+      "sourceHashes": {
+        "Ballerina.toml": "1c8298af67dc28270838e823486226e3466ee49bffe7b4edb4dd249185364472",
+        "datagrams.bal": "bff42f06448c83317dafe89ab72e0862350cd422e4d3f148b9629515403ce0cf",
+        "inventory.bal": "1ce41057ed1d26aa3d61aba85a419b6aab3271dd48c3b7ac8db3a2898682c144",
+        "orders.bal": "6cf85d9cb3fcc66bfa032ebf0958c376403c302d0472646d3d48f31b0756e5cf"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "example-source-ranges",
+      "kind": "project",
+      "inputHash": "c60f8cbbe889e17999b436e5631a995adde608c7546d6741717d3b02de744901",
+      "catalogRef": "c60f8cbbe889e17999b436e5631a995adde608c7546d6741717d3b02de744901",
+      "renderCases": [
+        "example-source-ranges-fn-ddfe9380d6-normal",
+        "example-source-ranges-fn-ddfe9380d6-signature",
+        "example-source-ranges-fn-ddfe9380d6-panel-expanded",
+        "example-source-ranges-fn-ddfe9380d6-resize",
+        "example-source-ranges-fn-ddfe9380d6-reference",
+        "example-source-ranges-fn-ddfe9380d6-isolated-1",
+        "example-source-ranges-fn-ddfe9380d6-isolated-2",
+        "example-source-ranges-fn-ddfe9380d6-expand-1",
+        "example-source-ranges-fn-ddfe9380d6-expand-2",
+        "example-source-ranges-fn-ddfe9380d6-expanded-panel",
+        "example-source-ranges-fn-ddfe9380d6-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "examples/source-ranges",
+          "scenario": "source-ranges",
+          "example": "source-ranges"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeExamples",
+          "subtest": "TestAnalyzeExamples/source-ranges"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestRangesAndSupportedBlocks",
+          "subtest": "TestRangesAndSupportedBlocks"
+        },
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendExamples",
+          "subtest": "TestResolvedFrontendExamples/source-ranges"
+        }
+      ],
+      "directory": "example-source-ranges",
+      "sourceHashes": {
+        "Ballerina.toml": "90f752a30d33f14faf225117cb96b3f763f2ab6bc78f3fd8f0747b4a4db505bb",
+        "main.bal": "885c318d71eb83adc3753dd6905bf3338f1eae10e69598abe9530f63cc9391a2",
+        "windows.bal": "0d196f493936bf1527e54208612a158a9da5e1baefce96f41a925a9851bd6e25"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "example-unsupported-constructs",
+      "kind": "project",
+      "inputHash": "b0de50fb7d7e36d468f1526eef3a87aeb2418b22421291ac372565e71b31d4ad",
+      "catalogRef": "b0de50fb7d7e36d468f1526eef3a87aeb2418b22421291ac372565e71b31d4ad",
+      "renderCases": [
+        "example-unsupported-constructs-fn-e8c3f63b82-normal",
+        "example-unsupported-constructs-fn-e8c3f63b82-signature",
+        "example-unsupported-constructs-fn-e8c3f63b82-panel-expanded",
+        "example-unsupported-constructs-fn-e8c3f63b82-resize",
+        "example-unsupported-constructs-fn-e8c3f63b82-reference"
+      ],
+      "provenance": [
+        {
+          "file": "examples/unsupported-constructs",
+          "scenario": "unsupported-constructs",
+          "example": "unsupported-constructs"
+        },
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeExamples",
+          "subtest": "TestAnalyzeExamples/unsupported-constructs"
+        },
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendExamples",
+          "subtest": "TestResolvedFrontendExamples/unsupported-constructs"
+        }
+      ],
+      "directory": "example-unsupported-constructs",
+      "sourceHashes": {
+        "Ballerina.toml": "4a6e4ea15651e10f5a3cb9134ac799046e5cef4430740e1be0ea24165f9706ce",
+        "main.bal": "02aa180ec4c1c1b8d95d1574b1181913726587bd17218ac886c92037f5dd744f"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "invalid-syntax",
+      "kind": "project",
+      "directory": "invalid-syntax",
+      "inputHash": "f0e159a650622f370cc37b6cf4c0e6287ba48826e232af87fc8af71acb65c31c",
+      "catalogRef": null,
+      "renderCases": [],
+      "provenance": [
+        {
+          "file": "tests/fixtures/hir-projects/invalid-syntax/source",
+          "scenario": "Stage 3 invalid source preserves diagnostics and has no fabricated AST"
+        }
+      ],
+      "sourceHashes": {
+        "Ballerina.toml": "81c67950615e393ddbb2dc11155f60f52090bab3df4231bef4440c82b5b18e51",
+        "main.bal": "31c80633c9c4cf193865c9f1bab6cedcc2622a37409bf835a5ba247285e0f88f"
+      },
+      "ast": null,
+      "hir": null,
+      "diagnostics": "diagnostics.json",
+      "reason": "Syntax errors prevent resolution; diagnostic expectations only."
+    },
+    {
+      "id": "project-0c8276a7d1ac",
+      "kind": "project",
+      "inputHash": "0c8276a7d1ac23385493bd8a056ee4eee1f20e96de29f30e52babefb408b6dfa",
+      "catalogRef": "0c8276a7d1ac23385493bd8a056ee4eee1f20e96de29f30e52babefb408b6dfa",
+      "renderCases": [
+        "project-8e7cf1225601-fn-88b4f75c42-normal",
+        "project-8e7cf1225601-fn-88b4f75c42-signature"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/evaluation_test.go",
+          "scenario": "TestClientAssignmentRetainsComputedTarget",
+          "subtest": "TestClientAssignmentRetainsComputedTarget"
+        }
+      ],
+      "directory": "project-0c8276a7d1ac",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "5cf1dd883156f6715530f8c6ee366dae43b77423ef1e023140b50f98b9bddbd7"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-12688e149e5f",
+      "kind": "project",
+      "inputHash": "12688e149e5f8bcf721ba38317cb927144102b5fb9c9247f4206705982d19c77",
+      "catalogRef": "12688e149e5f8bcf721ba38317cb927144102b5fb9c9247f4206705982d19c77",
+      "renderCases": [
+        "project-02a88e8fcbb3-fn-88b4f75c42-normal",
+        "project-02a88e8fcbb3-fn-88b4f75c42-signature",
+        "project-02a88e8fcbb3-fn-88b4f75c42-panel-expanded",
+        "project-02a88e8fcbb3-fn-88b4f75c42-resize",
+        "project-02a88e8fcbb3-fn-88b4f75c42-reference"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestArithmeticExpansionRespectsEvaluationContext",
+          "subtest": "TestArithmeticExpansionRespectsEvaluationContext/value(value(1)_+_value(2))"
+        }
+      ],
+      "directory": "project-12688e149e5f",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "6c5de89bdd5fc8a9ed443643f299f3da0b9977faba9dff1a574144bdd49b468a"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-12c458a39d7a",
+      "kind": "project",
+      "inputHash": "12c458a39d7a06e6b6b764a2153222c69fd74996bdadad3d4e0e0978ba98c3ae",
+      "catalogRef": "12c458a39d7a06e6b6b764a2153222c69fd74996bdadad3d4e0e0978ba98c3ae",
+      "renderCases": [
+        "project-47e02158f97c-fn-9153ad759f-normal",
+        "project-47e02158f97c-fn-9153ad759f-signature",
+        "project-47e02158f97c-fn-9153ad759f-panel-expanded",
+        "project-47e02158f97c-fn-9153ad759f-resize",
+        "project-47e02158f97c-fn-9153ad759f-reference",
+        "project-47e02158f97c-fn-9153ad759f-isolated-1",
+        "project-47e02158f97c-fn-9153ad759f-expand-1",
+        "project-47e02158f97c-fn-9153ad759f-expanded-panel",
+        "project-47e02158f97c-fn-9153ad759f-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "obsolete browser completions and infrastructure failures retain current flow",
+          "line": 214,
+          "writeOrdinal": 2
+        }
+      ],
+      "directory": "project-12c458a39d7a",
+      "sourceHashes": {
+        "Ballerina.toml": "7f4bb0c07a63bae2a71a596b0cd98fd958baa1eed8e80646ec93e59c7e169b40",
+        "main.bal": "48478fa30fa8d78eb17c63e7843bb75b8175b01301309a1b6446acaca05f6a39"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-1bd8ec8f8a3e",
+      "kind": "project",
+      "inputHash": "1bd8ec8f8a3ef901571c338355c4d4f3bd2db9d9b7a86fda4230b15947e6ca0b",
+      "catalogRef": "1bd8ec8f8a3ef901571c338355c4d4f3bd2db9d9b7a86fda4230b15947e6ca0b",
+      "renderCases": [
+        "project-fec396315d44-fn-88b4f75c42-normal",
+        "project-fec396315d44-fn-88b4f75c42-signature",
+        "project-fec396315d44-fn-88b4f75c42-panel-expanded",
+        "project-fec396315d44-fn-88b4f75c42-resize",
+        "project-fec396315d44-fn-88b4f75c42-reference"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestArithmeticExpansionRespectsEvaluationContext",
+          "subtest": "TestArithmeticExpansionRespectsEvaluationContext/(value(1)_>_0)_||_(value(2)_>_0)"
+        }
+      ],
+      "directory": "project-1bd8ec8f8a3e",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "6371743f0c536edd9e136cfd740d07cd32296282c031fcf50c6e222a871b3aee"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-203fd4c9744b",
+      "kind": "project",
+      "inputHash": "203fd4c9744bb057456a215b577efb0a339a60a8b612e16622cc1b730abef7ad",
+      "catalogRef": "203fd4c9744bb057456a215b577efb0a339a60a8b612e16622cc1b730abef7ad",
+      "renderCases": [
+        "project-be01db10c67b-fn-88b4f75c42-normal",
+        "project-be01db10c67b-fn-88b4f75c42-signature",
+        "project-be01db10c67b-fn-88b4f75c42-panel-expanded",
+        "project-be01db10c67b-fn-88b4f75c42-resize",
+        "project-be01db10c67b-fn-88b4f75c42-reference",
+        "project-be01db10c67b-fn-88b4f75c42-isolated-1",
+        "project-be01db10c67b-fn-88b4f75c42-isolated-2",
+        "project-be01db10c67b-fn-88b4f75c42-isolated-3",
+        "project-be01db10c67b-fn-88b4f75c42-isolated-4",
+        "project-be01db10c67b-fn-88b4f75c42-expand-1",
+        "project-be01db10c67b-fn-88b4f75c42-expand-2",
+        "project-be01db10c67b-fn-88b4f75c42-expand-3",
+        "project-be01db10c67b-fn-88b4f75c42-expand-4",
+        "project-be01db10c67b-fn-88b4f75c42-expanded-panel",
+        "project-be01db10c67b-fn-88b4f75c42-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestArithmeticExpansionRespectsEvaluationContext",
+          "subtest": "TestArithmeticExpansionRespectsEvaluationContext/(value(1)_-_value(2))_/_value(3)_%_value(4)"
+        }
+      ],
+      "directory": "project-203fd4c9744b",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "70f65c97c001ff70f12c5ed92349592e054feda00265c8fc44ad8214feff55a7"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-20efed10a875",
+      "kind": "project",
+      "inputHash": "20efed10a8750b51f1f16bb7bf55a7226072d9bf50d41c57ccfc03899787a3e6",
+      "catalogRef": "20efed10a8750b51f1f16bb7bf55a7226072d9bf50d41c57ccfc03899787a3e6",
+      "renderCases": [
+        "project-73837bd2e054-fn-9153ad759f-normal",
+        "project-73837bd2e054-fn-9153ad759f-signature",
+        "project-73837bd2e054-fn-9153ad759f-panel-expanded",
+        "project-73837bd2e054-fn-9153ad759f-resize",
+        "project-73837bd2e054-fn-9153ad759f-reference",
+        "project-73837bd2e054-fn-9153ad759f-isolated-1",
+        "project-73837bd2e054-fn-9153ad759f-expand-1",
+        "project-73837bd2e054-fn-9153ad759f-expanded-panel",
+        "project-73837bd2e054-fn-9153ad759f-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "obsolete browser completions and infrastructure failures retain current flow",
+          "line": 214,
+          "writeOrdinal": 1
+        }
+      ],
+      "directory": "project-20efed10a875",
+      "sourceHashes": {
+        "Ballerina.toml": "7f4bb0c07a63bae2a71a596b0cd98fd958baa1eed8e80646ec93e59c7e169b40",
+        "main.bal": "ee156a5a4db294c7ebd7615e0fa26dc85111b3ffde6fe518522a908827bbb5c4"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-2371c674cc7b",
+      "kind": "project",
+      "inputHash": "2371c674cc7bf52a141b2e842bfb21686c6739f9cd65eb566d2baac2460c6f7b",
+      "catalogRef": "2371c674cc7bf52a141b2e842bfb21686c6739f9cd65eb566d2baac2460c6f7b",
+      "renderCases": [
+        "project-861fab19a71f-fn-88b4f75c42-normal",
+        "project-861fab19a71f-fn-88b4f75c42-signature",
+        "project-861fab19a71f-fn-88b4f75c42-panel-expanded",
+        "project-861fab19a71f-fn-88b4f75c42-resize",
+        "project-861fab19a71f-fn-88b4f75c42-reference"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalysisIsNotFullChecking",
+          "subtest": "TestAnalysisIsNotFullChecking"
+        }
+      ],
+      "directory": "project-2371c674cc7b",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "6564ca4fd8c6e5ac8e574e3481d86c9ea51e251171bf3c295d403d1b1deb0ad0"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-3669d5697eba",
+      "kind": "project",
+      "inputHash": "3669d5697ebac79d5bd6c74a5d661f66c6c6fc2df64a37c32bb55ba2d10f3aaa",
+      "catalogRef": "3669d5697ebac79d5bd6c74a5d661f66c6c6fc2df64a37c32bb55ba2d10f3aaa",
+      "renderCases": [
+        "project-78cfc5bbba59-fn-1e34c371c9-normal",
+        "project-78cfc5bbba59-fn-1e34c371c9-signature"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "unsaved editor text does not invalidate analysis; removing selected scopes falls back to Automation",
+          "line": 227,
+          "writeOrdinal": 1
+        }
+      ],
+      "directory": "project-3669d5697eba",
+      "sourceHashes": {
+        "Ballerina.toml": "fee5b766fb9fbb6b1b52468afd2a3a608dcdea95281f614d6a007217cce7ee82",
+        "main.bal": "5ce2346ee471132adf50f9cbe7c2d211843ad987911c2ed06fe246a57fa6d3b9"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-3f93ca42e40c",
+      "kind": "project",
+      "inputHash": "3f93ca42e40c8db0a648bedbbc78335d319247c459b2c5d53e36d2b0d706fcbb",
+      "catalogRef": "3f93ca42e40c8db0a648bedbbc78335d319247c459b2c5d53e36d2b0d706fcbb",
+      "renderCases": [
+        "project-03da09811dcd-scope-1-definitions",
+        "project-03da09811dcd-scope-2-definitions",
+        "project-03da09811dcd-scope-3-definitions",
+        "project-03da09811dcd-fn-31f98cdba8-normal",
+        "project-03da09811dcd-fn-31f98cdba8-signature",
+        "project-03da09811dcd-fn-31f98cdba8-panel-expanded",
+        "project-03da09811dcd-fn-31f98cdba8-resize",
+        "project-03da09811dcd-fn-31f98cdba8-reference",
+        "project-03da09811dcd-fn-f3c08bbb2a-normal",
+        "project-03da09811dcd-fn-f3c08bbb2a-signature",
+        "project-03da09811dcd-fn-f3c08bbb2a-panel-expanded",
+        "project-03da09811dcd-fn-f3c08bbb2a-resize",
+        "project-03da09811dcd-fn-f3c08bbb2a-reference",
+        "project-03da09811dcd-fn-3e0262b224-normal",
+        "project-03da09811dcd-fn-3e0262b224-signature",
+        "project-03da09811dcd-fn-3e0262b224-panel-expanded",
+        "project-03da09811dcd-fn-3e0262b224-resize",
+        "project-03da09811dcd-fn-3e0262b224-reference",
+        "project-03da09811dcd-fn-dd33049aba-normal",
+        "project-03da09811dcd-fn-dd33049aba-signature",
+        "project-03da09811dcd-fn-dd33049aba-panel-expanded",
+        "project-03da09811dcd-fn-dd33049aba-resize",
+        "project-03da09811dcd-fn-dd33049aba-reference",
+        "project-03da09811dcd-fn-dd33049aba-isolated-1",
+        "project-03da09811dcd-fn-dd33049aba-expand-1",
+        "project-03da09811dcd-fn-dd33049aba-expanded-panel",
+        "project-03da09811dcd-fn-dd33049aba-expanded-resize",
+        "project-03da09811dcd-fn-990e68e24c-normal",
+        "project-03da09811dcd-fn-990e68e24c-signature",
+        "project-03da09811dcd-fn-990e68e24c-panel-expanded",
+        "project-03da09811dcd-fn-990e68e24c-resize",
+        "project-03da09811dcd-fn-990e68e24c-reference",
+        "project-03da09811dcd-fn-9cf35468a0-normal",
+        "project-03da09811dcd-fn-9cf35468a0-signature",
+        "project-03da09811dcd-fn-9cf35468a0-panel-expanded",
+        "project-03da09811dcd-fn-9cf35468a0-resize",
+        "project-03da09811dcd-fn-9cf35468a0-reference",
+        "project-03da09811dcd-fn-322cb97dfa-normal",
+        "project-03da09811dcd-fn-322cb97dfa-signature",
+        "project-03da09811dcd-fn-322cb97dfa-panel-expanded",
+        "project-03da09811dcd-fn-322cb97dfa-resize",
+        "project-03da09811dcd-fn-322cb97dfa-reference",
+        "browser-signature-reset-remote",
+        "browser-signature-reset-method",
+        "browser-signature-method-open"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "compact entry follows resource, remote and method selection with source-backed signatures",
+          "line": 93,
+          "writeOrdinal": 1
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "compact entry follows resource, remote and method selection with source-backed signatures",
+          "line": 91
+        }
+      ],
+      "directory": "project-3f93ca42e40c",
+      "sourceHashes": {
+        "Ballerina.toml": "1c8298af67dc28270838e823486226e3466ee49bffe7b4edb4dd249185364472",
+        "datagrams.bal": "bff42f06448c83317dafe89ab72e0862350cd422e4d3f148b9629515403ce0cf",
+        "inventory.bal": "1ce41057ed1d26aa3d61aba85a419b6aab3271dd48c3b7ac8db3a2898682c144",
+        "orders.bal": "0ad21016739f1e595498ec262701ce1a91833d10e438905a930634635f8b5f37"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-518de81998e1",
+      "kind": "project",
+      "inputHash": "518de81998e147d93777b8ce49625e23fa83205962ca32b1c4d5e4f652f2bd42",
+      "catalogRef": "518de81998e147d93777b8ce49625e23fa83205962ca32b1c4d5e4f652f2bd42",
+      "renderCases": [
+        "project-d887fbbca1e0-fn-88b4f75c42-normal",
+        "project-d887fbbca1e0-fn-88b4f75c42-signature",
+        "project-d887fbbca1e0-fn-88b4f75c42-panel-expanded",
+        "project-d887fbbca1e0-fn-88b4f75c42-resize",
+        "project-d887fbbca1e0-fn-88b4f75c42-reference",
+        "project-d887fbbca1e0-fn-88b4f75c42-isolated-1",
+        "project-d887fbbca1e0-fn-88b4f75c42-isolated-2",
+        "project-d887fbbca1e0-fn-88b4f75c42-isolated-3",
+        "project-d887fbbca1e0-fn-88b4f75c42-expand-1",
+        "project-d887fbbca1e0-fn-88b4f75c42-expand-2",
+        "project-d887fbbca1e0-fn-88b4f75c42-expand-3",
+        "project-d887fbbca1e0-fn-88b4f75c42-expanded-panel",
+        "project-d887fbbca1e0-fn-88b4f75c42-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestArithmeticExpansionRespectsEvaluationContext",
+          "subtest": "TestArithmeticExpansionRespectsEvaluationContext/value(1)_+_value(2)_*_value(3)"
+        }
+      ],
+      "directory": "project-518de81998e1",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "c43dccdbfc5bdb213f052124fc4320860576262df7549ba65c88c77d55f6910a"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-580ae4621e7c",
+      "kind": "project",
+      "inputHash": "580ae4621e7c724ae9ed43cfd95a35e4f62c27e105b0632a74856b33a7235ff6",
+      "catalogRef": "580ae4621e7c724ae9ed43cfd95a35e4f62c27e105b0632a74856b33a7235ff6",
+      "renderCases": [
+        "project-95d3fe5b37e7-scope-1-definitions",
+        "project-95d3fe5b37e7-fn-5750fe16dd-normal",
+        "project-95d3fe5b37e7-fn-5750fe16dd-signature",
+        "project-95d3fe5b37e7-fn-5750fe16dd-panel-expanded",
+        "project-95d3fe5b37e7-fn-5750fe16dd-resize",
+        "project-95d3fe5b37e7-fn-5750fe16dd-reference",
+        "project-95d3fe5b37e7-fn-0b31eb9359-normal",
+        "project-95d3fe5b37e7-fn-0b31eb9359-signature",
+        "project-95d3fe5b37e7-fn-0b31eb9359-panel-expanded",
+        "project-95d3fe5b37e7-fn-0b31eb9359-resize",
+        "project-95d3fe5b37e7-fn-0b31eb9359-reference",
+        "project-95d3fe5b37e7-fn-0b31eb9359-isolated-1",
+        "project-95d3fe5b37e7-fn-0b31eb9359-expand-1",
+        "project-95d3fe5b37e7-fn-0b31eb9359-expanded-panel",
+        "project-95d3fe5b37e7-fn-0b31eb9359-expanded-resize",
+        "project-95d3fe5b37e7-fn-402e42b52f-normal",
+        "project-95d3fe5b37e7-fn-402e42b52f-signature",
+        "project-95d3fe5b37e7-fn-402e42b52f-panel-expanded",
+        "project-95d3fe5b37e7-fn-402e42b52f-resize",
+        "project-95d3fe5b37e7-fn-402e42b52f-reference",
+        "project-95d3fe5b37e7-fn-402e42b52f-isolated-1",
+        "project-95d3fe5b37e7-fn-402e42b52f-isolated-2",
+        "project-95d3fe5b37e7-fn-402e42b52f-expand-1",
+        "project-95d3fe5b37e7-fn-402e42b52f-expand-2",
+        "project-95d3fe5b37e7-fn-402e42b52f-expanded-panel",
+        "project-95d3fe5b37e7-fn-402e42b52f-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestResolvedDiscoveryAndTargets",
+          "subtest": "TestResolvedDiscoveryAndTargets"
+        }
+      ],
+      "directory": "project-580ae4621e7c",
+      "sourceHashes": {
+        "Ballerina.toml": "5ec0173282c08fdf23caf29177ff4d94d334fb9bfc90f5ebd2b08fba9855ea58",
+        "helpers.bal": "a631a28efd6d2422f281d13088d83e2c348b9b056051fa8c83689ad3c09f7972",
+        "main.bal": "03ba613e7b70dfdb82e5557436b98d48a76fcdf7591808f3b82153555230e4a1",
+        "modules/math/calculate.bal": "b3d966c793828e3c7a5cde15be817d192abcd5e32e9393e1d425e5e757119e32",
+        "unrelated.bal": "d5f74a17621c21bfc9f3b76eac18237c52679d53527d9c4090b016d05b39a576"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-594b3be7e8da",
+      "kind": "project",
+      "inputHash": "594b3be7e8daab07f6f94fbd121b8c2b0209b9d4caffeb5abd772061af57e911",
+      "catalogRef": "594b3be7e8daab07f6f94fbd121b8c2b0209b9d4caffeb5abd772061af57e911",
+      "renderCases": [
+        "project-037d95b9ee32-scope-1-definitions",
+        "project-037d95b9ee32-fn-706da6fd54-normal",
+        "project-037d95b9ee32-fn-706da6fd54-signature",
+        "project-037d95b9ee32-fn-706da6fd54-panel-expanded",
+        "project-037d95b9ee32-fn-706da6fd54-resize",
+        "project-037d95b9ee32-fn-706da6fd54-reference",
+        "project-037d95b9ee32-fn-64ed4e88e7-normal",
+        "project-037d95b9ee32-fn-64ed4e88e7-signature",
+        "project-037d95b9ee32-fn-64ed4e88e7-panel-expanded",
+        "project-037d95b9ee32-fn-64ed4e88e7-resize",
+        "project-037d95b9ee32-fn-64ed4e88e7-reference",
+        "project-037d95b9ee32-fn-e1064695e0-normal",
+        "project-037d95b9ee32-fn-e1064695e0-signature",
+        "project-037d95b9ee32-fn-e1064695e0-panel-expanded",
+        "project-037d95b9ee32-fn-e1064695e0-resize",
+        "project-037d95b9ee32-fn-e1064695e0-reference",
+        "project-037d95b9ee32-fn-e1064695e0-isolated-1",
+        "project-037d95b9ee32-fn-e1064695e0-isolated-2",
+        "project-037d95b9ee32-fn-e1064695e0-expand-1",
+        "project-037d95b9ee32-fn-e1064695e0-expand-2",
+        "project-037d95b9ee32-fn-e1064695e0-expanded-panel",
+        "project-037d95b9ee32-fn-e1064695e0-expanded-resize",
+        "browser-fib-expanded-collapse",
+        "browser-fib-definition-reference"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "Fibonacci arithmetic calls expand independently and recursive calls stay collapsed",
+          "line": 373,
+          "writeOrdinal": 1
+        },
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "Fibonacci arithmetic calls expand independently and recursive calls stay collapsed",
+          "line": 370
+        }
+      ],
+      "directory": "project-594b3be7e8da",
+      "sourceHashes": {
+        "Ballerina.toml": "1cdfc3168d1d1c3df4fbd5cc43c76108befa243458f3cf20690827109f26e1bf",
+        "main.bal": "d2d0345b061bfdeb599c53ea07e22684c24f98c05d368274f43ca09e7c3080d7"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-64249f728a27",
+      "kind": "project",
+      "inputHash": "64249f728a27081cc838004852eddcde98a5a28daeff86aae831fdc9d789be62",
+      "catalogRef": "64249f728a27081cc838004852eddcde98a5a28daeff86aae831fdc9d789be62",
+      "renderCases": [
+        "project-9949b2276144-fn-9153ad759f-normal",
+        "project-9949b2276144-fn-9153ad759f-signature",
+        "project-9949b2276144-fn-9153ad759f-panel-expanded",
+        "project-9949b2276144-fn-9153ad759f-resize",
+        "project-9949b2276144-fn-9153ad759f-reference",
+        "project-9949b2276144-fn-9153ad759f-isolated-1",
+        "project-9949b2276144-fn-9153ad759f-expand-1",
+        "project-9949b2276144-fn-9153ad759f-expanded-panel",
+        "project-9949b2276144-fn-9153ad759f-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "obsolete browser completions and infrastructure failures retain current flow",
+          "line": 216,
+          "writeOrdinal": 3
+        }
+      ],
+      "directory": "project-64249f728a27",
+      "sourceHashes": {
+        "Ballerina.toml": "7f4bb0c07a63bae2a71a596b0cd98fd958baa1eed8e80646ec93e59c7e169b40",
+        "main.bal": "14f3a2a389c043a4b12ea8f85c8a626435ffc339e5dc997b7134ca3592a03a6d"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-86921277b890",
+      "kind": "project",
+      "inputHash": "86921277b890be6b1b4ff7519c07dfa52ac6da94c3f671bbe73b2bccac8a296d",
+      "catalogRef": "86921277b890be6b1b4ff7519c07dfa52ac6da94c3f671bbe73b2bccac8a296d",
+      "renderCases": [
+        "project-67b501b5a2e8-fn-b134c6067b-normal",
+        "project-67b501b5a2e8-fn-b134c6067b-signature",
+        "project-67b501b5a2e8-fn-b134c6067b-panel-expanded",
+        "project-67b501b5a2e8-fn-b134c6067b-resize",
+        "project-67b501b5a2e8-fn-b134c6067b-reference"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "ordinary function entry handles defaults and empty bodies without an invented execution step",
+          "line": 127,
+          "writeOrdinal": 1
+        }
+      ],
+      "directory": "project-86921277b890",
+      "sourceHashes": {
+        "Ballerina.toml": "1cdfc3168d1d1c3df4fbd5cc43c76108befa243458f3cf20690827109f26e1bf",
+        "main.bal": "d297e33b267facaf8f2a6f305fb2cd547bbd0b80a46e1901ce42e410e068a6e9"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-88601a47fb2c",
+      "kind": "project",
+      "inputHash": "88601a47fb2c2660f59ffe5802cde082f3391f442fc5cf628ea1fe09bd9adff4",
+      "catalogRef": "88601a47fb2c2660f59ffe5802cde082f3391f442fc5cf628ea1fe09bd9adff4",
+      "renderCases": [
+        "project-7b1c0fa526ee-scope-1-definitions",
+        "project-7b1c0fa526ee-fn-d4dbdd0cde-normal",
+        "project-7b1c0fa526ee-fn-d4dbdd0cde-signature",
+        "project-7b1c0fa526ee-fn-d4dbdd0cde-panel-expanded",
+        "project-7b1c0fa526ee-fn-d4dbdd0cde-resize",
+        "project-7b1c0fa526ee-fn-d4dbdd0cde-reference"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/evaluation_test.go",
+          "scenario": "TestClientCallAndTemplate",
+          "subtest": "TestClientCallAndTemplate"
+        }
+      ],
+      "directory": "project-88601a47fb2c",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "80bc61ba614077ea11276de341e9ebbf0a075cc5cbbf6bf83be66c8c39e4a7bb"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-90bf62cce2e1",
+      "kind": "project",
+      "inputHash": "90bf62cce2e13a7bb32a3a3e9a3c7e0f811eadb2222e2ca4e1734d64eca0d276",
+      "catalogRef": "90bf62cce2e13a7bb32a3a3e9a3c7e0f811eadb2222e2ca4e1734d64eca0d276",
+      "renderCases": [
+        "project-2f38bbcd0be2-fn-88b4f75c42-normal",
+        "project-2f38bbcd0be2-fn-88b4f75c42-signature",
+        "project-2f38bbcd0be2-fn-88b4f75c42-panel-expanded",
+        "project-2f38bbcd0be2-fn-88b4f75c42-resize",
+        "project-2f38bbcd0be2-fn-88b4f75c42-reference"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestArithmeticExpansionRespectsEvaluationContext",
+          "subtest": "TestArithmeticExpansionRespectsEvaluationContext/(value(1)_+_value(2)_>_0)_&&_(value(3)_+_value(4)_>_0)"
+        }
+      ],
+      "directory": "project-90bf62cce2e1",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "614ab4f318c6935394ce286d12f647f72d8e266f14ebec026893b99767a7b911"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-99ccabce5034",
+      "kind": "project",
+      "inputHash": "99ccabce50344b4bf71e1119eb0116b8b7fa64501ab4d58c5e0e7464b0a19e71",
+      "catalogRef": "99ccabce50344b4bf71e1119eb0116b8b7fa64501ab4d58c5e0e7464b0a19e71",
+      "renderCases": [
+        "project-40ebda1dd325-scope-1-definitions",
+        "project-40ebda1dd325-fn-c0b40f13b8-normal",
+        "project-40ebda1dd325-fn-c0b40f13b8-signature",
+        "project-40ebda1dd325-fn-c0b40f13b8-panel-expanded",
+        "project-40ebda1dd325-fn-c0b40f13b8-resize",
+        "project-40ebda1dd325-fn-c0b40f13b8-reference",
+        "project-40ebda1dd325-fn-d4dbdd0cde-normal",
+        "project-40ebda1dd325-fn-d4dbdd0cde-signature",
+        "project-40ebda1dd325-fn-d4dbdd0cde-panel-expanded",
+        "project-40ebda1dd325-fn-d4dbdd0cde-resize",
+        "project-40ebda1dd325-fn-d4dbdd0cde-reference",
+        "project-40ebda1dd325-fn-558cad83de-normal",
+        "project-40ebda1dd325-fn-558cad83de-signature",
+        "project-40ebda1dd325-fn-558cad83de-panel-expanded",
+        "project-40ebda1dd325-fn-558cad83de-resize",
+        "project-40ebda1dd325-fn-558cad83de-reference",
+        "project-40ebda1dd325-fn-558cad83de-isolated-1",
+        "project-40ebda1dd325-fn-558cad83de-isolated-2",
+        "project-40ebda1dd325-fn-558cad83de-expand-1",
+        "project-40ebda1dd325-fn-558cad83de-expand-2",
+        "project-40ebda1dd325-fn-558cad83de-expanded-panel",
+        "project-40ebda1dd325-fn-558cad83de-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestArithmeticCallExpansion",
+          "subtest": "TestArithmeticCallExpansion"
+        }
+      ],
+      "directory": "project-99ccabce5034",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "d2d0345b061bfdeb599c53ea07e22684c24f98c05d368274f43ca09e7c3080d7"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-9cd729d43af2",
+      "kind": "project",
+      "inputHash": "9cd729d43af2970bb3248e799582fcdb98f34e2e02f4a585bd522271174f16f6",
+      "catalogRef": "9cd729d43af2970bb3248e799582fcdb98f34e2e02f4a585bd522271174f16f6",
+      "renderCases": [
+        "project-eec8f54e8c8c-scope-1-definitions",
+        "project-eec8f54e8c8c-fn-21e4194761-normal",
+        "project-eec8f54e8c8c-fn-21e4194761-signature",
+        "project-eec8f54e8c8c-fn-21e4194761-panel-expanded",
+        "project-eec8f54e8c8c-fn-21e4194761-resize",
+        "project-eec8f54e8c8c-fn-21e4194761-reference",
+        "project-eec8f54e8c8c-fn-03d4350f72-normal",
+        "project-eec8f54e8c8c-fn-03d4350f72-signature",
+        "project-eec8f54e8c8c-fn-03d4350f72-panel-expanded",
+        "project-eec8f54e8c8c-fn-03d4350f72-resize",
+        "project-eec8f54e8c8c-fn-03d4350f72-reference",
+        "project-eec8f54e8c8c-fn-03d4350f72-isolated-1",
+        "project-eec8f54e8c8c-fn-03d4350f72-expand-1",
+        "project-eec8f54e8c8c-fn-03d4350f72-expanded-panel",
+        "project-eec8f54e8c8c-fn-03d4350f72-expanded-resize",
+        "project-eec8f54e8c8c-fn-ab75c87a86-normal",
+        "project-eec8f54e8c8c-fn-ab75c87a86-signature",
+        "project-eec8f54e8c8c-fn-ab75c87a86-panel-expanded",
+        "project-eec8f54e8c8c-fn-ab75c87a86-resize",
+        "project-eec8f54e8c8c-fn-ab75c87a86-reference",
+        "project-eec8f54e8c8c-fn-ab75c87a86-isolated-1",
+        "project-eec8f54e8c8c-fn-ab75c87a86-expand-1",
+        "project-eec8f54e8c8c-fn-ab75c87a86-expanded-panel",
+        "project-eec8f54e8c8c-fn-ab75c87a86-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "a saved source update immediately before prompting blocks stale references",
+          "line": 221,
+          "writeOrdinal": 1
+        }
+      ],
+      "directory": "project-9cd729d43af2",
+      "sourceHashes": {
+        "Ballerina.toml": "fee5b766fb9fbb6b1b52468afd2a3a608dcdea95281f614d6a007217cce7ee82",
+        "main.bal": "cb825a460fb489df492180774cdbfea41b3fd3b0555d614230294b099d0867a1"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-ba3133adbedd",
+      "kind": "project",
+      "inputHash": "ba3133adbedd3e25b262e1df48987a2ff3536e31906f5748ba667f37d0e33843",
+      "catalogRef": "ba3133adbedd3e25b262e1df48987a2ff3536e31906f5748ba667f37d0e33843",
+      "renderCases": [
+        "project-8a59a53003b3-fn-b134c6067b-normal",
+        "project-8a59a53003b3-fn-b134c6067b-signature"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "ordinary function entry handles defaults and empty bodies without an invented execution step",
+          "line": 135,
+          "writeOrdinal": 2
+        }
+      ],
+      "directory": "project-ba3133adbedd",
+      "sourceHashes": {
+        "Ballerina.toml": "1cdfc3168d1d1c3df4fbd5cc43c76108befa243458f3cf20690827109f26e1bf",
+        "main.bal": "5ce2346ee471132adf50f9cbe7c2d211843ad987911c2ed06fe246a57fa6d3b9"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-bedef3479a8e",
+      "kind": "project",
+      "inputHash": "bedef3479a8e868dc5ba270ac0cfeeca48a0a159bf0a7edf34bd7e2dac1e9af7",
+      "catalogRef": "bedef3479a8e868dc5ba270ac0cfeeca48a0a159bf0a7edf34bd7e2dac1e9af7",
+      "renderCases": [
+        "project-7c94d9798b70-fn-b134c6067b-normal",
+        "project-7c94d9798b70-fn-b134c6067b-signature",
+        "project-7c94d9798b70-fn-b134c6067b-panel-expanded",
+        "project-7c94d9798b70-fn-b134c6067b-resize",
+        "project-7c94d9798b70-fn-b134c6067b-reference"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "Hello World library call renders as one source step",
+          "line": 13,
+          "writeOrdinal": 1
+        }
+      ],
+      "directory": "project-bedef3479a8e",
+      "sourceHashes": {
+        "Ballerina.toml": "1cdfc3168d1d1c3df4fbd5cc43c76108befa243458f3cf20690827109f26e1bf",
+        "main.bal": "986e010116a08a2b47a738e54dda45544e334043b5cdca69d13e68253e1682b6"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-d51b3de05d16",
+      "kind": "project",
+      "inputHash": "d51b3de05d1652b5c8056742735048c3902696a8e05becbd93d72c68b53da3f4",
+      "catalogRef": "d51b3de05d1652b5c8056742735048c3902696a8e05becbd93d72c68b53da3f4",
+      "renderCases": [
+        "project-673afcc7ebe6-scope-1-definitions",
+        "project-673afcc7ebe6-fn-8eea0d910f-normal",
+        "project-673afcc7ebe6-fn-8eea0d910f-signature",
+        "project-673afcc7ebe6-fn-8eea0d910f-panel-expanded",
+        "project-673afcc7ebe6-fn-8eea0d910f-resize",
+        "project-673afcc7ebe6-fn-8eea0d910f-reference",
+        "project-673afcc7ebe6-fn-bcaf95adff-normal",
+        "project-673afcc7ebe6-fn-bcaf95adff-signature",
+        "project-673afcc7ebe6-fn-bcaf95adff-panel-expanded",
+        "project-673afcc7ebe6-fn-bcaf95adff-resize",
+        "project-673afcc7ebe6-fn-bcaf95adff-reference",
+        "project-673afcc7ebe6-fn-88b4f75c42-normal",
+        "project-673afcc7ebe6-fn-88b4f75c42-signature",
+        "project-673afcc7ebe6-fn-87de191d1a-normal",
+        "project-673afcc7ebe6-fn-87de191d1a-signature",
+        "project-673afcc7ebe6-fn-87de191d1a-panel-expanded",
+        "project-673afcc7ebe6-fn-87de191d1a-resize",
+        "project-673afcc7ebe6-fn-87de191d1a-reference",
+        "project-673afcc7ebe6-fn-6906f009fa-normal",
+        "project-673afcc7ebe6-fn-6906f009fa-signature",
+        "project-673afcc7ebe6-fn-6906f009fa-panel-expanded",
+        "project-673afcc7ebe6-fn-6906f009fa-resize",
+        "project-673afcc7ebe6-fn-6906f009fa-reference"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/entry_test.go",
+          "scenario": "TestFunctionEntrySourceMetadata",
+          "subtest": "TestFunctionEntrySourceMetadata"
+        }
+      ],
+      "directory": "project-d51b3de05d16",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "6102b175547e72136d045501472c1bafde975c2550ff494eab5dddbe5f446729"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-db367e31a43a",
+      "kind": "project",
+      "inputHash": "db367e31a43a8a16d5091fa4b524bf13af4df0d3fbe83c3cf77353bcaea0d5f1",
+      "catalogRef": "db367e31a43a8a16d5091fa4b524bf13af4df0d3fbe83c3cf77353bcaea0d5f1",
+      "renderCases": [
+        "project-42ca7330e0e0-fn-88b4f75c42-normal",
+        "project-42ca7330e0e0-fn-88b4f75c42-signature"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/evaluation_test.go",
+          "scenario": "TestGenericClientContexts",
+          "subtest": "TestGenericClientContexts"
+        }
+      ],
+      "directory": "project-db367e31a43a",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "a7c64084ec6ead937e3e1a3bf3714d8666f882d506b39ca7577176691c74ee8d"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-de9d58e670c5",
+      "kind": "project",
+      "inputHash": "de9d58e670c5a9900c008941dc0b73252b939278dca9bce1f6550dc1eb30e083",
+      "catalogRef": "de9d58e670c5a9900c008941dc0b73252b939278dca9bce1f6550dc1eb30e083",
+      "renderCases": [
+        "starter-workspace-scope-1-definitions",
+        "starter-workspace-fn-d4dbdd0cde-normal",
+        "starter-workspace-fn-d4dbdd0cde-signature",
+        "starter-workspace-fn-d4dbdd0cde-panel-expanded",
+        "starter-workspace-fn-d4dbdd0cde-resize",
+        "starter-workspace-fn-d4dbdd0cde-reference"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/static-host.spec.mjs",
+          "scenario": "built app runs under a Pages subpath without backend requests"
+        },
+        {
+          "file": "packages/browser-workspace/src/workspace.ts",
+          "scenario": "Default initialFiles workspace"
+        }
+      ],
+      "directory": "project-de9d58e670c5",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "8734e354a208d5e2a9f3e65ff9eef7086a948234a3d8a8e6312de1dc6d06ca19"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-e3f1a3f22f11",
+      "kind": "project",
+      "inputHash": "e3f1a3f22f1149813588f9f4971aa02536685f995224e433dec18817a4c7b394",
+      "catalogRef": "e3f1a3f22f1149813588f9f4971aa02536685f995224e433dec18817a4c7b394",
+      "renderCases": [
+        "project-27ca780443e3-fn-88b4f75c42-normal",
+        "project-27ca780443e3-fn-88b4f75c42-signature",
+        "project-27ca780443e3-fn-88b4f75c42-panel-expanded",
+        "project-27ca780443e3-fn-88b4f75c42-resize",
+        "project-27ca780443e3-fn-88b4f75c42-reference"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestArithmeticExpansionRespectsEvaluationContext",
+          "subtest": "TestArithmeticExpansionRespectsEvaluationContext/true_?_value(1)_+_value(2)_:_value(3)"
+        }
+      ],
+      "directory": "project-e3f1a3f22f11",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "0fd7bc951f1baec47045e6a8e9eb482129235327d3c8a8c70bc58f273aed3bff"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-e9f6360f5555",
+      "kind": "project",
+      "inputHash": "e9f6360f55554632565f11c5bcb7384b630f580ddee65c78e9c7ddf7a0d4b4ec",
+      "catalogRef": "e9f6360f55554632565f11c5bcb7384b630f580ddee65c78e9c7ddf7a0d4b4ec",
+      "renderCases": [
+        "project-30b5c8bbb369-fn-88b4f75c42-normal",
+        "project-30b5c8bbb369-fn-88b4f75c42-signature",
+        "project-30b5c8bbb369-fn-88b4f75c42-panel-expanded",
+        "project-30b5c8bbb369-fn-88b4f75c42-resize",
+        "project-30b5c8bbb369-fn-88b4f75c42-reference",
+        "project-30b5c8bbb369-fn-88b4f75c42-isolated-1",
+        "project-30b5c8bbb369-fn-88b4f75c42-expand-1",
+        "project-30b5c8bbb369-fn-88b4f75c42-expanded-panel",
+        "project-30b5c8bbb369-fn-88b4f75c42-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendNamedModules",
+          "subtest": "TestResolvedFrontendNamedModules"
+        }
+      ],
+      "directory": "project-e9f6360f5555",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "cd92f6aa7fb15a28472ba31d39211e2c43c7b779667bc15ed3ea7ddadf9d4c2e",
+        "modules/math/calculate.bal": "82f025ea3af517bf11514af7845b19852bd783e6ce14218c855f468c91e02f6b"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-f82046b1a5af",
+      "kind": "project",
+      "inputHash": "f82046b1a5af182d9059e241e778a90940e6b0c92d4745f1d4c105a427953f7c",
+      "catalogRef": "f82046b1a5af182d9059e241e778a90940e6b0c92d4745f1d4c105a427953f7c",
+      "renderCases": [
+        "project-b0c406f990ba-fn-88b4f75c42-normal",
+        "project-b0c406f990ba-fn-88b4f75c42-signature",
+        "project-b0c406f990ba-fn-88b4f75c42-panel-expanded",
+        "project-b0c406f990ba-fn-88b4f75c42-resize",
+        "project-b0c406f990ba-fn-88b4f75c42-reference",
+        "project-b0c406f990ba-fn-88b4f75c42-isolated-1",
+        "project-b0c406f990ba-fn-88b4f75c42-expand-1",
+        "project-b0c406f990ba-fn-88b4f75c42-expanded-panel",
+        "project-b0c406f990ba-fn-88b4f75c42-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/frontend_test.go",
+          "scenario": "TestResolvedFrontendStopsBeforeDesugaring",
+          "subtest": "TestResolvedFrontendStopsBeforeDesugaring"
+        }
+      ],
+      "directory": "project-f82046b1a5af",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "ee3538b0540ce8c956207e72938fed17ab80fbe8183c9995ec8a2477287f2fe2"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "project-f9cb5b364d6d",
+      "kind": "project",
+      "inputHash": "f9cb5b364d6d5b1f1639d9aa8d26bf3726665eb8ac3c4c952ead20323e10688c",
+      "catalogRef": "f9cb5b364d6d5b1f1639d9aa8d26bf3726665eb8ac3c4c952ead20323e10688c",
+      "renderCases": [
+        "project-80b48ba54d83-fn-88b4f75c42-normal",
+        "project-80b48ba54d83-fn-88b4f75c42-signature",
+        "project-80b48ba54d83-fn-88b4f75c42-panel-expanded",
+        "project-80b48ba54d83-fn-88b4f75c42-resize",
+        "project-80b48ba54d83-fn-88b4f75c42-reference",
+        "project-80b48ba54d83-fn-88b4f75c42-isolated-1",
+        "project-80b48ba54d83-fn-88b4f75c42-isolated-2",
+        "project-80b48ba54d83-fn-88b4f75c42-isolated-3",
+        "project-80b48ba54d83-fn-88b4f75c42-expand-1",
+        "project-80b48ba54d83-fn-88b4f75c42-expand-2",
+        "project-80b48ba54d83-fn-88b4f75c42-expand-3",
+        "project-80b48ba54d83-fn-88b4f75c42-expanded-panel",
+        "project-80b48ba54d83-fn-88b4f75c42-expanded-resize"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/evaluation_test.go",
+          "scenario": "TestNestedErrorOperators",
+          "subtest": "TestNestedErrorOperators"
+        }
+      ],
+      "directory": "project-f9cb5b364d6d",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "8f04c53ddd0e9411bbec963eedb77639522d75e65edc5dcb52dd77f56a57abca"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "synthetic-0e5858488fb0",
+      "kind": "synthetic",
+      "inputHash": "0e5858488fb017a74eb46db43a99dd1af2b21995086413222546062af426ab8a",
+      "catalogRef": "0e5858488fb017a74eb46db43a99dd1af2b21995086413222546062af426ab8a",
+      "renderCases": [
+        "synthetic-library-calls-render-once-as-source-steps-and-retain-sequence-co-1",
+        "synthetic-library-calls-render-once-as-source-steps-and-retain-sequence-co-1-reference",
+        "synthetic-library-calls-render-once-as-source-steps-and-retain-sequence-co-1-panel-expanded",
+        "synthetic-library-calls-render-once-as-source-steps-and-retain-sequence-co-1-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "library calls render once as source steps and retain sequence connections",
+          "invocation": 1
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-1932f6b5e789",
+      "kind": "synthetic",
+      "inputHash": "1932f6b5e78902589d171cd470209981fc6186b0efe5e082cc3bfd2e0b42ec2c",
+      "catalogRef": "1932f6b5e78902589d171cd470209981fc6186b0efe5e082cc3bfd2e0b42ec2c",
+      "renderCases": [
+        "synthetic-generic-client-cards-preserve-constructor-and-named-arguments-wi-1",
+        "synthetic-generic-client-cards-preserve-constructor-and-named-arguments-wi-1-reference",
+        "synthetic-generic-client-cards-preserve-constructor-and-named-arguments-wi-1-panel-expanded",
+        "synthetic-generic-client-cards-preserve-constructor-and-named-arguments-wi-1-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "generic client cards preserve constructor and named arguments with explicit check returns",
+          "invocation": 1
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-1ca693d77b46",
+      "kind": "synthetic",
+      "inputHash": "1ca693d77b46682fab04a757e53c1a7747156795b7a8d3d3b4f6e012d9ec8917",
+      "catalogRef": "1ca693d77b46682fab04a757e53c1a7747156795b7a8d3d3b4f6e012d9ec8917",
+      "renderCases": [
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--1",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--5",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--1-reference",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--5-reference",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--1-panel-expanded",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--5-panel-expanded",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--1-reference-panel-expanded",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--5-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "direct and mutual recursion retain call sites and continuations even with stale expansion paths",
+          "invocation": 1
+        },
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "direct and mutual recursion retain call sites and continuations even with stale expansion paths",
+          "invocation": 5
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-27e9ce81cd7b",
+      "kind": "synthetic",
+      "inputHash": "27e9ce81cd7b84ce3e23a23505682e0016451125ac1bc40d561a8ee032d69ec3",
+      "catalogRef": "27e9ce81cd7b84ce3e23a23505682e0016451125ac1bc40d561a8ee032d69ec3",
+      "renderCases": [
+        "synthetic-call-occurrences-expand-independently-callee-returns-stay-inside-2-isolated-1",
+        "synthetic-call-occurrences-expand-independently-callee-returns-stay-inside-2-isolated-1-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "call occurrences expand independently; callee returns stay inside their call and recursion stays finite",
+          "invocation": 2
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-39eec19ae10d",
+      "kind": "synthetic",
+      "inputHash": "39eec19ae10da4669818dfdb236b659207c1dd5ed103dce08a9b4f03aec7203a",
+      "catalogRef": "39eec19ae10da4669818dfdb236b659207c1dd5ed103dce08a9b4f03aec7203a",
+      "renderCases": [
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--2",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--3",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--4",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--2-reference",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--3-reference",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--4-reference",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--2-panel-expanded",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--3-panel-expanded",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--4-panel-expanded",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--2-reference-panel-expanded",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--3-reference-panel-expanded",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--4-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "direct and mutual recursion retain call sites and continuations even with stale expansion paths",
+          "invocation": 2
+        },
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "direct and mutual recursion retain call sites and continuations even with stale expansion paths",
+          "invocation": 3
+        },
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "direct and mutual recursion retain call sites and continuations even with stale expansion paths",
+          "invocation": 4
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-41542145c44f",
+      "kind": "synthetic",
+      "inputHash": "41542145c44fa341120291e1cc36924298d97ef714a5fa2e045bf41342338c92",
+      "catalogRef": "41542145c44fa341120291e1cc36924298d97ef714a5fa2e045bf41342338c92",
+      "renderCases": [
+        "state-pending-initial",
+        "state-pending-initial-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "packages/browser-workspace/tests/analysis.test.mjs",
+          "scenario": "revision publication ignores obsolete completions, retains agents and aborts removed anchors on storage failure"
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-4d61ff828b89",
+      "kind": "synthetic",
+      "inputHash": "4d61ff828b893e8d1a41b59fb76701e262e794424f5bb9a1c3effa005daf6e61",
+      "catalogRef": "4d61ff828b893e8d1a41b59fb76701e262e794424f5bb9a1c3effa005daf6e61",
+      "renderCases": [
+        "synthetic-call-occurrences-expand-independently-callee-returns-stay-inside-2-isolated-2",
+        "synthetic-call-occurrences-expand-independently-callee-returns-stay-inside-2-isolated-2-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "call occurrences expand independently; callee returns stay inside their call and recursion stays finite",
+          "invocation": 2
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-4da8284a5c87",
+      "kind": "synthetic",
+      "inputHash": "4da8284a5c87a7a9e19edcf771f18a486030cc6a4d9f25edc481d95c9b01d7e6",
+      "catalogRef": "4da8284a5c87a7a9e19edcf771f18a486030cc6a4d9f25edc481d95c9b01d7e6",
+      "renderCases": [
+        "synthetic-routing-avoids-unrelated-source-boxes-through-nested-branch-and--1",
+        "synthetic-routing-avoids-unrelated-source-boxes-through-nested-branch-and--1-reference",
+        "synthetic-routing-avoids-unrelated-source-boxes-through-nested-branch-and--1-panel-expanded",
+        "synthetic-routing-avoids-unrelated-source-boxes-through-nested-branch-and--1-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "routing avoids unrelated source boxes through nested branch and loop lanes",
+          "invocation": 1
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-5358fb99b8f6",
+      "kind": "synthetic",
+      "inputHash": "5358fb99b8f633756dd342883ef8bd69036490b52db8c8776e7e69b7f6dbb69a",
+      "catalogRef": "5358fb99b8f633756dd342883ef8bd69036490b52db8c8776e7e69b7f6dbb69a",
+      "renderCases": [
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--7",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--8",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--7-reference",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--8-reference",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--7-panel-expanded",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--8-panel-expanded",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--7-reference-panel-expanded",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--8-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "direct and mutual recursion retain call sites and continuations even with stale expansion paths",
+          "invocation": 7
+        },
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "direct and mutual recursion retain call sites and continuations even with stale expansion paths",
+          "invocation": 8
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-58fe3bab896c",
+      "kind": "synthetic",
+      "inputHash": "58fe3bab896c1943d5fb4fa4fd46055ea0b49c0c07f9beea4b7b8eeef6a5eb77",
+      "catalogRef": "58fe3bab896c1943d5fb4fa4fd46055ea0b49c0c07f9beea4b7b8eeef6a5eb77",
+      "renderCases": [
+        "synthetic-call-occurrences-expand-independently-callee-returns-stay-inside-2",
+        "synthetic-call-occurrences-expand-independently-callee-returns-stay-inside-2-reference",
+        "synthetic-call-occurrences-expand-independently-callee-returns-stay-inside-2-panel-expanded",
+        "synthetic-call-occurrences-expand-independently-callee-returns-stay-inside-2-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "call occurrences expand independently; callee returns stay inside their call and recursion stays finite",
+          "invocation": 2
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-5b3a0a37650e",
+      "kind": "synthetic",
+      "inputHash": "5b3a0a37650e349ef4fa404b1d327fc4c54bc07fc691a00ce0e845efec1d2666",
+      "catalogRef": "5b3a0a37650e349ef4fa404b1d327fc4c54bc07fc691a00ce0e845efec1d2666",
+      "renderCases": [
+        "project-a67467921fc1-invalid",
+        "project-a67467921fc1-invalid-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeInvalidInput",
+          "subtest": "TestAnalyzeInvalidInput"
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-6203af02c1c5",
+      "kind": "synthetic",
+      "inputHash": "6203af02c1c59890b03a8686153b24cc1845c7875b0fd19cb81effd65ac8ba02",
+      "catalogRef": "6203af02c1c59890b03a8686153b24cc1845c7875b0fd19cb81effd65ac8ba02",
+      "renderCases": [
+        "state-failed-initial",
+        "state-failed-initial-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "packages/browser-workspace/tests/analysis.test.mjs",
+          "scenario": "initial invalid and failed analysis settle discovery without invented anchors; aborted flow rejects"
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-68d036330093",
+      "kind": "synthetic",
+      "inputHash": "68d03633009360152ca4654446cc9d04ee5cc7440fc99088991776dc1a216622",
+      "catalogRef": "68d03633009360152ca4654446cc9d04ee5cc7440fc99088991776dc1a216622",
+      "renderCases": [
+        "synthetic-trap-captures-panic-paths-while-check-returns-escape-the-operand-1",
+        "synthetic-trap-captures-panic-paths-while-check-returns-escape-the-operand-1-reference",
+        "synthetic-trap-captures-panic-paths-while-check-returns-escape-the-operand-1-panel-expanded",
+        "synthetic-trap-captures-panic-paths-while-check-returns-escape-the-operand-1-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "trap captures panic paths while check returns escape the operand scope",
+          "invocation": 1
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-7b81aa7471d1",
+      "kind": "synthetic",
+      "inputHash": "7b81aa7471d1b15a2bd385207fbb8f7ff75a21f27866e386e81115eaba86d78e",
+      "catalogRef": "7b81aa7471d1b15a2bd385207fbb8f7ff75a21f27866e386e81115eaba86d78e",
+      "renderCases": [
+        "project-8236f1db1950-invalid",
+        "project-8236f1db1950-invalid-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeInvalidInput",
+          "subtest": "TestAnalyzeInvalidInput"
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-86935bf50e7a",
+      "kind": "synthetic",
+      "inputHash": "86935bf50e7a0f5cf0e6752b60079904271e94ff82f1a012053457a0afd63839",
+      "catalogRef": "86935bf50e7a0f5cf0e6752b60079904271e94ff82f1a012053457a0afd63839",
+      "renderCases": [
+        "synthetic-long-initialization-expands-without-truncating-call-arguments-or-1",
+        "synthetic-long-initialization-expands-without-truncating-call-arguments-or-1-reference",
+        "synthetic-long-initialization-expands-without-truncating-call-arguments-or-1-panel-expanded",
+        "synthetic-long-initialization-expands-without-truncating-call-arguments-or-1-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "long initialization expands without truncating call arguments or losing source selection",
+          "invocation": 1
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-87a51d4b6ed5",
+      "kind": "synthetic",
+      "inputHash": "87a51d4b6ed5773895358a005de710705bb19652fd1ba5f1eaade1d02457359d",
+      "catalogRef": "87a51d4b6ed5773895358a005de710705bb19652fd1ba5f1eaade1d02457359d",
+      "renderCases": [
+        "synthetic-abrupt-exits-empty-branches-and-unsupported-regions-have-no-inve-1",
+        "synthetic-abrupt-exits-empty-branches-and-unsupported-regions-have-no-inve-1-reference",
+        "synthetic-abrupt-exits-empty-branches-and-unsupported-regions-have-no-inve-1-panel-expanded",
+        "synthetic-abrupt-exits-empty-branches-and-unsupported-regions-have-no-inve-1-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "abrupt exits, empty branches and unsupported regions have no invented continuation",
+          "invocation": 1
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-8e68a39eab42",
+      "kind": "synthetic",
+      "inputHash": "8e68a39eab428650444a40bdb0dd863d6c4a63a7fcdc3c9d17ee329ab1b39186",
+      "catalogRef": "8e68a39eab428650444a40bdb0dd863d6c4a63a7fcdc3c9d17ee329ab1b39186",
+      "renderCases": [
+        "synthetic-loops-preserve-nested-break-continue-ownership-and-foreach-has-n-1",
+        "synthetic-loops-preserve-nested-break-continue-ownership-and-foreach-has-n-1-reference",
+        "synthetic-loops-preserve-nested-break-continue-ownership-and-foreach-has-n-1-panel-expanded",
+        "synthetic-loops-preserve-nested-break-continue-ownership-and-foreach-has-n-1-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "loops preserve nested break/continue ownership and foreach has no routine back edge",
+          "invocation": 1
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-a9456a3038a4",
+      "kind": "synthetic",
+      "inputHash": "a9456a3038a49870973582bd28785faed3095cbd972e299fc92428190d786ac7",
+      "catalogRef": "a9456a3038a49870973582bd28785faed3095cbd972e299fc92428190d786ac7",
+      "renderCases": [
+        "synthetic-branch-arrows-leave-opposite-sides-with-orthogonal-routes-and-to-1",
+        "synthetic-branch-arrows-leave-opposite-sides-with-orthogonal-routes-and-to-1-reference",
+        "synthetic-branch-arrows-leave-opposite-sides-with-orthogonal-routes-and-to-1-panel-expanded",
+        "synthetic-branch-arrows-leave-opposite-sides-with-orthogonal-routes-and-to-1-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "branch arrows leave opposite sides with orthogonal routes and top-level returns terminate",
+          "invocation": 1
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-abaf75de0d22",
+      "kind": "synthetic",
+      "inputHash": "abaf75de0d224fa5a232503471a01fb2e399a7cd81ef21258f9af33cc109d429",
+      "catalogRef": "abaf75de0d224fa5a232503471a01fb2e399a7cd81ef21258f9af33cc109d429",
+      "renderCases": [
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--6",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--6-reference",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--6-panel-expanded",
+        "synthetic-direct-and-mutual-recursion-retain-call-sites-and-continuations--6-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "direct and mutual recursion retain call sites and continuations even with stale expansion paths",
+          "invocation": 6
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-abd99afee645",
+      "kind": "synthetic",
+      "inputHash": "abd99afee6457cd3b5fa8497f55e9f2d9a158de710a36ac1294daa0fb1fbf108",
+      "catalogRef": "abd99afee6457cd3b5fa8497f55e9f2d9a158de710a36ac1294daa0fb1fbf108",
+      "renderCases": [
+        "project-45dd8dc7e3be-invalid",
+        "project-45dd8dc7e3be-invalid-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeInvalidInput",
+          "subtest": "TestAnalyzeInvalidInput"
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-b590704ffaf8",
+      "kind": "synthetic",
+      "inputHash": "b590704ffaf826af465a3def93e1556ed76c556911771a8fc9e26d3e249e11f6",
+      "catalogRef": "b590704ffaf826af465a3def93e1556ed76c556911771a8fc9e26d3e249e11f6",
+      "renderCases": [
+        "project-9de7e9557970-invalid",
+        "project-9de7e9557970-invalid-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeInvalidInput",
+          "subtest": "TestAnalyzeInvalidInput"
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-c33e80a7f599",
+      "kind": "synthetic",
+      "inputHash": "c33e80a7f599e53a27a0acf1e72c09f309f348937a849dfd49ab69860f414940",
+      "catalogRef": "c33e80a7f599e53a27a0acf1e72c09f309f348937a849dfd49ab69860f414940",
+      "renderCases": [
+        "synthetic-call-occurrences-expand-independently-callee-returns-stay-inside-1",
+        "synthetic-call-occurrences-expand-independently-callee-returns-stay-inside-1-reference",
+        "synthetic-call-occurrences-expand-independently-callee-returns-stay-inside-1-panel-expanded",
+        "synthetic-call-occurrences-expand-independently-callee-returns-stay-inside-1-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "call occurrences expand independently; callee returns stay inside their call and recursion stays finite",
+          "invocation": 1
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-c4d5cc82d86a",
+      "kind": "synthetic",
+      "inputHash": "c4d5cc82d86a33197f5732eb9bcd4e8cdd31be1fa47b58c6f996690410ee1264",
+      "catalogRef": "c4d5cc82d86a33197f5732eb9bcd4e8cdd31be1fa47b58c6f996690410ee1264",
+      "renderCases": [
+        "project-ebc47cff77d5-invalid",
+        "project-ebc47cff77d5-invalid-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "invalid edits retain stale flow, disable references and repair",
+          "line": 191,
+          "writeOrdinal": 1
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-c83d4e5b1612",
+      "kind": "synthetic",
+      "inputHash": "c83d4e5b1612df0681d7cd1d6a120214a9b90eb27a99d1b2e536ca57f108d991",
+      "catalogRef": "c83d4e5b1612df0681d7cd1d6a120214a9b90eb27a99d1b2e536ca57f108d991",
+      "renderCases": [
+        "state-pending-previous",
+        "state-pending-previous-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "packages/browser-workspace/tests/analysis.test.mjs",
+          "scenario": "revision publication ignores obsolete completions, retains agents and aborts removed anchors on storage failure"
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-eeb1fbca56d6",
+      "kind": "synthetic",
+      "inputHash": "eeb1fbca56d6c6e86e91febd914f16198ce07903de5ef9dfff930daafc34bedc",
+      "catalogRef": "eeb1fbca56d6c6e86e91febd914f16198ce07903de5ef9dfff930daafc34bedc",
+      "renderCases": [
+        "state-failed-previous",
+        "state-failed-previous-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "packages/browser-workspace/tests/analysis.test.mjs",
+          "scenario": "initial invalid and failed analysis settle discovery without invented anchors; aborted flow rejects"
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "synthetic-f3d2c6595ee7",
+      "kind": "synthetic",
+      "inputHash": "f3d2c6595ee7a101286db48845342de8695cbe618c1b821b21646a58fe196030",
+      "catalogRef": "f3d2c6595ee7a101286db48845342de8695cbe618c1b821b21646a58fe196030",
+      "renderCases": [
+        "synthetic-long-initialization-expands-without-truncating-call-arguments-or-2",
+        "synthetic-long-initialization-expands-without-truncating-call-arguments-or-2-reference",
+        "synthetic-long-initialization-expands-without-truncating-call-arguments-or-2-panel-expanded",
+        "synthetic-long-initialization-expands-without-truncating-call-arguments-or-2-reference-panel-expanded"
+      ],
+      "provenance": [
+        {
+          "file": "apps/editor/tests/flow.test.mjs",
+          "scenario": "long initialization expands without truncating call arguments or losing source selection",
+          "invocation": 2
+        }
+      ],
+      "ast": null,
+      "hir": null,
+      "diagnostics": null,
+      "reason": "Synthetic graph/state input has no original project AST; catalogRef and renderCases retain exact provenance."
+    },
+    {
+      "id": "targeted-provenance",
+      "kind": "project",
+      "directory": "targeted-provenance",
+      "inputHash": "b6cfb3ea253f0165532266afe03d0ccebe31e9f99f1b8bf20d943fdd0bba33f0",
+      "catalogRef": null,
+      "renderCases": [],
+      "provenance": [
+        {
+          "file": "tests/fixtures/hir-projects/targeted-provenance/source",
+          "scenario": "Stage 3 additional original argument, attached/expression-body, resource path expression and computed assignment coverage"
+        }
+      ],
+      "sourceHashes": {
+        "Ballerina.toml": "be2f8f660edeb94bfb9439a61d960c707ce6f3553db8b3b0d21cc9d1cb91dd53",
+        "main.bal": "125247bfa8501879ffe8633b44c96a5a17e9803dd68b4c7117cd232669553c42"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-0a926a65b037",
+      "kind": "project",
+      "inputHash": "0d356c6cad79e67dc758d79604417250b72d0484fecf3e12ed99c49abd65b2b0",
+      "provenance": [
+        {
+          "file": "packages/compiler/compiler_test.go",
+          "scenario": "TestProjects",
+          "phase": "starter"
+        }
+      ],
+      "directory": "native-0a926a65b037",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "82bd2758c0936b262872782a072cc05edb00eaf215df732f96793f2b655ae1c1"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-8236f1db1950",
+      "kind": "project",
+      "inputHash": "1a4f045a11116b5421ed265115a82c464f4a8f7b9eb3cf6879397333ce723bf7",
+      "provenance": [
+        {
+          "file": "packages/compiler/compiler_test.go",
+          "scenario": "TestProjects",
+          "phase": "syntax"
+        }
+      ],
+      "directory": "native-8236f1db1950",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "38faa0257f6773ab041ba682b585b80934fbb1e357a56903854af3cbcaa7e832"
+      },
+      "ast": null,
+      "hir": null,
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-ae9c691e4786",
+      "kind": "project",
+      "inputHash": "95ea70e834369b592ce4b785f4fd68074ce501f2ac9f79d1da72919c100e0fc0",
+      "provenance": [
+        {
+          "file": "packages/compiler/compiler_test.go",
+          "scenario": "TestProjects",
+          "phase": "type"
+        }
+      ],
+      "directory": "native-ae9c691e4786",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "9fa36eb2269cbe3503407cd5fdd4f9a55ad50481a41490eb5b633eda71793963"
+      },
+      "ast": null,
+      "hir": null,
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-daf34fcd03a6",
+      "kind": "project",
+      "inputHash": "a978d93e01289f6acd635ee15557b3b19ec881114a56020970b3ef8bf40f334c",
+      "provenance": [
+        {
+          "file": "packages/compiler/compiler_test.go",
+          "scenario": "TestProjects",
+          "phase": "control flow"
+        }
+      ],
+      "directory": "native-daf34fcd03a6",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "db120af883118c2c0cee69e9a0c731fd6bc7de57c62c0aedbc6471a05556f278"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-a00999d07764",
+      "kind": "project",
+      "inputHash": "200282c8fbe16d3ec3de547c9cf1b75e1286069b9e7a2d73898660d11eb7e152",
+      "provenance": [
+        {
+          "file": "packages/compiler/compiler_test.go",
+          "scenario": "TestProjects",
+          "phase": "unresolved import"
+        }
+      ],
+      "directory": "native-a00999d07764",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "3dab31729bb6d9da6d4b7252898e04d35ab7691efef1b4a757d0f5e1dcd23f9d"
+      },
+      "ast": null,
+      "hir": null,
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-9893b0841473",
+      "kind": "project",
+      "inputHash": "53c8d29ad4ebd80353183f38f219f57cded8fd3c3019e7e373794137035041b7",
+      "provenance": [
+        {
+          "file": "packages/compiler/compiler_test.go",
+          "scenario": "TestModulesAndFreshState",
+          "phase": "original"
+        }
+      ],
+      "directory": "native-9893b0841473",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "0b0c0817a2e387fe11c45908585ddfa22e527e8846e1610cde86930b48e2dfa8",
+        "second.bal": "f14ac2a91b570cb48aac3efbce617479f74f6b98edb6ef8a4d2cac7a1a6bfb52",
+        "modules/one/main.bal": "fdf78790d6c85383051b71065aed91ff0e6ffa4b541518ae4b405a0d3f540963",
+        "modules/two/main.bal": "3d6880ce28815a7f343356c04b71d5760b77043a981db72c91392ed038e51f48"
+      },
+      "ast": null,
+      "hir": null,
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-c9742b0a0492",
+      "kind": "project",
+      "inputHash": "598938777367643e2633597bd6b55ecead0b37950c52f5599ed1f03c7fd46eaf",
+      "provenance": [
+        {
+          "file": "packages/compiler/compiler_test.go",
+          "scenario": "TestModulesAndFreshState",
+          "phase": "after named-module removal"
+        }
+      ],
+      "directory": "native-c9742b0a0492",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "0b0c0817a2e387fe11c45908585ddfa22e527e8846e1610cde86930b48e2dfa8",
+        "second.bal": "f14ac2a91b570cb48aac3efbce617479f74f6b98edb6ef8a4d2cac7a1a6bfb52"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-9ccdacdb5391",
+      "kind": "project",
+      "inputHash": "9aa0ca57a11ee64c8c950ac06adaaee2be9bf161d5a8eaaef2d2d4b8b69c89f2",
+      "provenance": [
+        {
+          "file": "packages/compiler/compiler_test.go",
+          "scenario": "TestModulesAndFreshState",
+          "phase": "after root edit"
+        }
+      ],
+      "directory": "native-9ccdacdb5391",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "85fc8311ca403b3a3d304685f6544b01131aa1e6048963efbafaa13d4fbba9a8",
+        "second.bal": "f14ac2a91b570cb48aac3efbce617479f74f6b98edb6ef8a4d2cac7a1a6bfb52"
+      },
+      "ast": null,
+      "hir": null,
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-e2714ec47ba5",
+      "kind": "project",
+      "inputHash": "af593f53b0931eddb0b959e985f839a97d224db40503d4b18fa9b16d9c675687",
+      "provenance": [
+        {
+          "file": "packages/compiler/compiler_test.go",
+          "scenario": "TestUnicodeSourceRange",
+          "phase": "Unicode and original CRLF"
+        }
+      ],
+      "directory": "native-e2714ec47ba5",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "a13b39302b40bc25c89beb6782cbce5ddd2976df16a851e67d34dd82c2ade1a8"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-ece1b45a11de",
+      "kind": "project",
+      "inputHash": "308b12f86a117a492d5b41485bdd914f631cecc27d03e8a4cbc19b003739ae62",
+      "provenance": [
+        {
+          "file": "packages/compiler/compiler_test.go",
+          "scenario": "TestManifestAndDependencyDiagnostics",
+          "phase": "missing readme"
+        }
+      ],
+      "directory": "native-ece1b45a11de",
+      "sourceHashes": {
+        "Ballerina.toml": "5c9438940dd4f73d55c4a2fc072e1eac9512026aa330d3fc04f57b35cb0d0479",
+        "main.bal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "ast": null,
+      "hir": null,
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-6b3ff81ed66c",
+      "kind": "project",
+      "inputHash": "71919f03972eee3c4d8683079e8976a58282ff107bb51f9a8e91efa3930ef9f2",
+      "provenance": [
+        {
+          "file": "packages/compiler/compiler_test.go",
+          "scenario": "TestManifestAndDependencyDiagnostics",
+          "phase": "invalid version"
+        }
+      ],
+      "directory": "native-6b3ff81ed66c",
+      "sourceHashes": {
+        "Ballerina.toml": "12f4452cf4948a0055544327fbff2ff33aef6b4ef5db902ed25881fc69cdf7e1",
+        "main.bal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "ast": null,
+      "hir": null,
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-e63e61117510",
+      "kind": "project",
+      "inputHash": "cc0ed2c35d3d520b256fe87061c6f18bebd0268bd2345bc17705e460a59fbf62",
+      "provenance": [
+        {
+          "file": "packages/compiler/compiler_test.go",
+          "scenario": "TestManifestAndDependencyDiagnostics",
+          "phase": "missing dependency; resources ignored"
+        }
+      ],
+      "directory": "native-e63e61117510",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "4ac42cfa15917139652f83ec4cc89cf7e0a12c06be10b5c724c84544a56544dd",
+        "resources/data.bal": "abc20098e6872dcfe85c2b438b594f3ce2f7c2cd467b1eeeabb264803fe945fc",
+        "modules/sample/resources/data.bal": "abc20098e6872dcfe85c2b438b594f3ce2f7c2cd467b1eeeabb264803fe945fc"
+      },
+      "ast": null,
+      "hir": null,
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-28a7ae9b2e2e",
+      "kind": "project",
+      "inputHash": "bc9c86bfc233bef83de946451209e764cf59ac95714d3268b7a1ac7b6282081c",
+      "provenance": [
+        {
+          "file": "packages/compiler/compiler_test.go",
+          "scenario": "TestResourcesAreNotSource",
+          "phase": "resources excluded; named module retained"
+        }
+      ],
+      "directory": "native-28a7ae9b2e2e",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "resources/data.bal": "abc20098e6872dcfe85c2b438b594f3ce2f7c2cd467b1eeeabb264803fe945fc",
+        "modules/sample/main.bal": "c8e0861ffa80cf3873a79f24b43c48409a83040dedae924dd785aa153ee23bc7",
+        "modules/sample/resources/data.bal": "abc20098e6872dcfe85c2b438b594f3ce2f7c2cd467b1eeeabb264803fe945fc"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "native-45dd8dc7e3be",
+      "kind": "project",
+      "inputHash": "d92c3c5947eb7272f618500ab9c5b13100c42f04bc566948297bfe7a624e0bd5",
+      "provenance": [
+        {
+          "file": "packages/compiler/analysis_test.go",
+          "scenario": "TestAnalyzeInvalidInput",
+          "phase": "source case 3"
+        }
+      ],
+      "directory": "native-45dd8dc7e3be",
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "8f612fa021cfb03685e5444fd71b75cef968408474855ad419a258b117b58265"
+      },
+      "ast": null,
+      "hir": null,
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "browser-3ee1da791bb2",
+      "kind": "project",
+      "inputHash": "3ee1da791bb2a531fba34367a0f61581dfadb8e062ca210bd29189a71fde8c37",
+      "directory": "browser-3ee1da791bb2",
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/flow.spec.mjs",
+          "scenario": "invalid edits retain stale flow, disable references and repair"
+        }
+      ],
+      "sourceHashes": {
+        "Ballerina.toml": "7f4bb0c07a63bae2a71a596b0cd98fd958baa1eed8e80646ec93e59c7e169b40",
+        "main.bal": "89cdf88b4d2d95ea8de0981261e82126ccca2b47f3661991a7db2e7cd962c8f2"
+      },
+      "ast": null,
+      "hir": null,
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "browser-21a431ee2eba",
+      "kind": "project",
+      "inputHash": "21a431ee2eba410f6343e155da3db10788e678153e3381e48e3f2cdc2955b558",
+      "directory": "browser-21a431ee2eba",
+      "provenance": [
+        {
+          "file": "packages/compiler/tests/browser/storage.spec.mjs",
+          "scenario": "source edits stay in memory and reset on reload without server workspace access"
+        }
+      ],
+      "sourceHashes": {
+        "Ballerina.toml": "5def43188fc66a05baccf38e78e985257d63f24ddeff624b9fc5a230c9883b42",
+        "main.bal": "b7a21f77f03f94a021d717960102fda254ad69fca1c26c5f2a569f3b311d758c"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    },
+    {
+      "id": "targeted-nested-presence",
+      "kind": "project",
+      "directory": "targeted-nested-presence",
+      "inputHash": "a1dfbde5066f7202fe2c249b4ef347e42eb2b613df2022e1505308fd9fe3f625",
+      "catalogRef": null,
+      "renderCases": [],
+      "provenance": [
+        {
+          "file": "tests/fixtures/hir-projects/targeted-nested-presence/source",
+          "scenario": "Stage 5 nested required presence and ordered emission: repeated calls, unsupported panic body, empty helper and nested returns"
+        }
+      ],
+      "sourceHashes": {
+        "Ballerina.toml": "644d9833261f11d0b73676921818cb7c11d4b5abab5553d4c13d940a5e3f38dc",
+        "main.bal": "45ee684798d3c705680dc54b8ce0f18119dfafb3a934bb31cc802b5213adca38"
+      },
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
+      "diagnostics": "diagnostics.json"
+    }
+  ]
+}

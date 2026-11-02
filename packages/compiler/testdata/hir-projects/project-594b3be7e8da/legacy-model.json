@@ -1,0 +1,436 @@
+{
+  "scopes": [
+    {
+      "id": "examples/automation_flow/service/main.bal///1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 9,
+            "column": 2
+          }
+        }
+      },
+      "text": "service / on new http:Listener(8080) {\n resource function get hello() returns string { return \"Hello, World!\"; }\n resource function get [int x]/[int y]/sum() returns int {\n  io:println(\"x: \", x, \", y: \", y);\n  return fib(x) + fib(y);\n }\n}",
+      "kind": "service",
+      "title": "/",
+      "moduleId": "examples/automation_flow",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [
+        {
+          "id": "examples/automation_flow/service/main.bal///1/resource/get/hello",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 2
+              },
+              "end": {
+                "line": 4,
+                "column": 74
+              }
+            }
+          },
+          "text": "resource function get hello() returns string { return \"Hello, World!\"; }",
+          "kind": "resource",
+          "title": "get /hello",
+          "functionId": "examples/automation_flow/service/main.bal///1/resource/get/hello"
+        },
+        {
+          "id": "examples/automation_flow/service/main.bal///1/resource/get/[int x]/[int y]/sum",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 5,
+                "column": 2
+              },
+              "end": {
+                "line": 8,
+                "column": 3
+              }
+            }
+          },
+          "text": "resource function get [int x]/[int y]/sum() returns int {\n  io:println(\"x: \", x, \", y: \", y);\n  return fib(x) + fib(y);\n }",
+          "kind": "resource",
+          "title": "get /[int x]/[int y]/sum",
+          "functionId": "examples/automation_flow/service/main.bal///1/resource/get/[int x]/[int y]/sum"
+        }
+      ],
+      "definitions": [
+        {
+          "id": "examples/automation_flow/function/fib",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 10,
+                "column": 1
+              },
+              "end": {
+                "line": 13,
+                "column": 2
+              }
+            }
+          },
+          "text": "function fib(int n) returns int {\n if n \u003c= 1 { return n; }\n return fib(n - 1) + fib(n - 2);\n}",
+          "kind": "function",
+          "label": "fib",
+          "functionId": "examples/automation_flow/function/fib"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "examples/automation_flow/function/fib": {
+      "id": "examples/automation_flow/function/fib",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 1
+          },
+          "end": {
+            "line": 13,
+            "column": 2
+          }
+        }
+      },
+      "text": "function fib(int n) returns int {\n if n \u003c= 1 { return n; }\n return fib(n - 1) + fib(n - 2);\n}",
+      "moduleId": "examples/automation_flow",
+      "entry": {
+        "kind": "function",
+        "name": "fib",
+        "signature": "function fib(int n) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int n"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/automation_flow/function/fib/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 11,
+                "column": 2
+              },
+              "end": {
+                "line": 11,
+                "column": 25
+              }
+            }
+          },
+          "text": "if n \u003c= 1 { return n; }",
+          "kind": "if",
+          "condition": {
+            "id": "examples/automation_flow/function/fib/statement/0/condition",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 11,
+                  "column": 5
+                },
+                "end": {
+                  "line": 11,
+                  "column": 11
+                }
+              }
+            },
+            "text": "n \u003c= 1",
+            "calls": []
+          },
+          "thenBody": [
+            {
+              "id": "examples/automation_flow/function/fib/statement/0/then/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 11,
+                    "column": 14
+                  },
+                  "end": {
+                    "line": 11,
+                    "column": 23
+                  }
+                }
+              },
+              "text": "return n;",
+              "kind": "return",
+              "calls": []
+            }
+          ],
+          "elseBody": []
+        },
+        {
+          "id": "examples/automation_flow/function/fib/statement/1/block/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 12,
+                "column": 2
+              },
+              "end": {
+                "line": 12,
+                "column": 33
+              }
+            }
+          },
+          "text": "return fib(n - 1) + fib(n - 2);",
+          "kind": "return",
+          "calls": [
+            {
+              "id": "examples/automation_flow/function/fib/statement/1/block/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 12,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 19
+                  }
+                }
+              },
+              "text": "fib(n - 1)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/automation_flow/function/fib"
+              },
+              "expansion": "supported"
+            },
+            {
+              "id": "examples/automation_flow/function/fib/statement/1/block/statement/0/call/1",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 12,
+                    "column": 22
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 32
+                  }
+                }
+              },
+              "text": "fib(n - 2)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/automation_flow/function/fib"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    },
+    "examples/automation_flow/service/main.bal///1/resource/get/[int x]/[int y]/sum": {
+      "id": "examples/automation_flow/service/main.bal///1/resource/get/[int x]/[int y]/sum",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 2
+          },
+          "end": {
+            "line": 8,
+            "column": 3
+          }
+        }
+      },
+      "text": "resource function get [int x]/[int y]/sum() returns int {\n  io:println(\"x: \", x, \", y: \", y);\n  return fib(x) + fib(y);\n }",
+      "moduleId": "examples/automation_flow",
+      "entry": {
+        "kind": "resource",
+        "name": "get /[int x]/[int y]/sum",
+        "signature": "resource function get [int x]/[int y]/sum() returns int",
+        "parameters": [
+          {
+            "kind": "path",
+            "text": "[int x]"
+          },
+          {
+            "kind": "path",
+            "text": "[int y]"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/automation_flow/service/main.bal///1/resource/get/[int x]/[int y]/sum/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 6,
+                "column": 3
+              },
+              "end": {
+                "line": 6,
+                "column": 36
+              }
+            }
+          },
+          "text": "io:println(\"x: \", x, \", y: \", y);",
+          "kind": "simple",
+          "operation": "expression",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/automation_flow/service/main.bal///1/resource/get/[int x]/[int y]/sum/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 6,
+                    "column": 3
+                  },
+                  "end": {
+                    "line": 6,
+                    "column": 35
+                  }
+                }
+              },
+              "text": "io:println(\"x: \", x, \", y: \", y)",
+              "target": {
+                "kind": "external",
+                "label": "println"
+              },
+              "expansion": "unavailable",
+              "reason": "The target is outside the workspace."
+            }
+          ]
+        },
+        {
+          "id": "examples/automation_flow/service/main.bal///1/resource/get/[int x]/[int y]/sum/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 7,
+                "column": 3
+              },
+              "end": {
+                "line": 7,
+                "column": 26
+              }
+            }
+          },
+          "text": "return fib(x) + fib(y);",
+          "kind": "return",
+          "calls": [
+            {
+              "id": "examples/automation_flow/service/main.bal///1/resource/get/[int x]/[int y]/sum/statement/1/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 7,
+                    "column": 10
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 16
+                  }
+                }
+              },
+              "text": "fib(x)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/automation_flow/function/fib"
+              },
+              "expansion": "supported"
+            },
+            {
+              "id": "examples/automation_flow/service/main.bal///1/resource/get/[int x]/[int y]/sum/statement/1/call/1",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 7,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 25
+                  }
+                }
+              },
+              "text": "fib(y)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/automation_flow/function/fib"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    },
+    "examples/automation_flow/service/main.bal///1/resource/get/hello": {
+      "id": "examples/automation_flow/service/main.bal///1/resource/get/hello",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 2
+          },
+          "end": {
+            "line": 4,
+            "column": 74
+          }
+        }
+      },
+      "text": "resource function get hello() returns string { return \"Hello, World!\"; }",
+      "moduleId": "examples/automation_flow",
+      "entry": {
+        "kind": "resource",
+        "name": "get /hello",
+        "signature": "resource function get hello() returns string",
+        "parameters": [],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "examples/automation_flow/service/main.bal///1/resource/get/hello/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 49
+              },
+              "end": {
+                "line": 4,
+                "column": 72
+              }
+            }
+          },
+          "text": "return \"Hello, World!\";",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

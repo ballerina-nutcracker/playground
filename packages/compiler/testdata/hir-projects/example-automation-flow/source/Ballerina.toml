@@ -1,0 +1,4 @@
+[package]
+org = "examples"
+name = "automation_flow"
+version = "0.1.0"

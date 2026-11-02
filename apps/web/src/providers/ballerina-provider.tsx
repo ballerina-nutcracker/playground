@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { toast } from "sonner";
+
 import { SnapshotFS } from "@/lib/fs/snapshot";
 
 import { useFS } from "@/providers/fs-provider";
@@ -60,12 +62,13 @@ export function BallerinaProvider({ children }: React.PropsWithChildren) {
 			})
 			.catch((cause: unknown) => {
 				if (cancelled) return;
-				setIsReady(false);
-				setError(
+				const error =
 					cause instanceof Error
 						? cause
-						: new Error("Failed to initialize Ballerina runtime"),
-				);
+						: new Error("Failed to initialize Ballerina runtime");
+				setIsReady(false);
+				setError(error);
+				toast.error(`Failed to load Ballerina runtime: ${error.message}`);
 			});
 
 		return () => {

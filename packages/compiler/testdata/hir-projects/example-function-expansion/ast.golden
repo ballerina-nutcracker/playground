@@ -1,0 +1,159 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/function_expansion / Document helpers.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples function_expansion 0.1.0)
+  (function (position 1:1 1:65) shared (
+    (variable (position 1:17 1:26) value (type
+      (value-type (position 1:17 1:20) int)))) (
+    (value-type (position 1:36 1:39) int))
+    (block-function-body (position 1:40 1:65)
+      (return (position 1:42 1:63)
+        (invocation (position 1:49 1:62) adjust (
+          (simple-var-ref (position 1:56 1:61) value))))))
+  (function (position 2:1 2:61) adjust (
+    (variable (position 2:17 2:26) value (type
+      (value-type (position 2:17 2:20) int)))) (
+    (value-type (position 2:36 2:39) int))
+    (block-function-body (position 2:40 2:61)
+      (return (position 2:42 2:59)
+        (binary-expr (position 2:49 2:58) +
+          (simple-var-ref (position 2:49 2:54) value)
+          (literal (position 2:57 2:58) 1)))))
+  (function (position 3:1 6:2) countdown (
+    (variable (position 3:20 3:29) value (type
+      (value-type (position 3:20 3:23) int)))) (
+    (value-type (position 3:39 3:42) int))
+    (block-function-body (position 3:43 6:2)
+      (if (position 4:5 4:32)
+        (binary-expr (position 4:8 4:18) <=
+          (simple-var-ref (position 4:8 4:13) value)
+          (literal (position 4:17 4:18) 0))
+        (block-stmt (position 4:19 4:32)
+          (return (position 4:21 4:30)
+            (literal (position 4:28 4:29) 0))) ())
+      (block-stmt (position 5:5 6:2)
+        (return (position 5:5 5:33)
+          (invocation (position 5:12 5:32) countdown (
+            (binary-expr (position 5:22 5:31) -
+              (simple-var-ref (position 5:22 5:27) value)
+              (literal (position 5:30 5:31) 1))))))))
+  (function (position 7:1 10:2) evenStep (
+    (variable (position 7:19 7:28) value (type
+      (value-type (position 7:19 7:22) int)))) (
+    (value-type (position 7:38 7:41) int))
+    (block-function-body (position 7:42 10:2)
+      (if (position 8:5 8:32)
+        (binary-expr (position 8:8 8:18) <=
+          (simple-var-ref (position 8:8 8:13) value)
+          (literal (position 8:17 8:18) 0))
+        (block-stmt (position 8:19 8:32)
+          (return (position 8:21 8:30)
+            (literal (position 8:28 8:29) 0))) ())
+      (block-stmt (position 9:5 10:2)
+        (return (position 9:5 9:31)
+          (invocation (position 9:12 9:30) oddStep (
+            (binary-expr (position 9:20 9:29) -
+              (simple-var-ref (position 9:20 9:25) value)
+              (literal (position 9:28 9:29) 1))))))))
+  (function (position 11:1 14:2) oddStep (
+    (variable (position 11:18 11:27) value (type
+      (value-type (position 11:18 11:21) int)))) (
+    (value-type (position 11:37 11:40) int))
+    (block-function-body (position 11:41 14:2)
+      (if (position 12:5 12:32)
+        (binary-expr (position 12:8 12:18) <=
+          (simple-var-ref (position 12:8 12:13) value)
+          (literal (position 12:17 12:18) 0))
+        (block-stmt (position 12:19 12:32)
+          (return (position 12:21 12:30)
+            (literal (position 12:28 12:29) 1))) ())
+      (block-stmt (position 13:5 14:2)
+        (return (position 13:5 13:32)
+          (invocation (position 13:12 13:31) evenStep (
+            (binary-expr (position 13:21 13:30) -
+              (simple-var-ref (position 13:21 13:26) value)
+              (literal (position 13:29 13:30) 1)))))))))
+
+## Module examples/function_expansion / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples function_expansion 0.1.0)
+  (function (position 1:1 8:2) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 1:24 8:2)
+      (var-def (position 2:5 2:27)
+        (variable (position 2:5 2:27) first (type
+          (value-type (position 2:5 2:8) int)) (expr
+          (invocation (position 2:17 2:26) shared (
+            (literal (position 2:24 2:25) 2))))))
+      (var-def (position 3:5 3:28)
+        (variable (position 3:5 3:28) second (type
+          (value-type (position 3:5 3:8) int)) (expr
+          (invocation (position 3:18 3:27) shared (
+            (literal (position 3:25 3:26) 3))))))
+      (var-def (position 4:5 4:38)
+        (variable (position 4:5 4:38) recursive (type
+          (value-type (position 4:5 4:8) int)) (expr
+          (invocation (position 4:21 4:37) countdown (
+            (simple-var-ref (position 4:31 4:36) first))))))
+      (var-def (position 5:5 5:35)
+        (variable (position 5:5 5:35) mutual (type
+          (value-type (position 5:5 5:8) int)) (expr
+          (invocation (position 5:18 5:34) evenStep (
+            (simple-var-ref (position 5:27 5:33) second))))))
+      (assignment (position 6:5 6:19)
+        (wildcard-binding-pattern (position 6:5 6:6))
+        (simple-var-ref (position 6:9 6:18) recursive))
+      (assignment (position 7:5 7:16)
+        (wildcard-binding-pattern (position 7:5 7:6))
+        (simple-var-ref (position 7:9 7:15) mutual)))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### call helpers.bal [48,61)
+arguments: 1
+argument[0]:
+(simple-var-ref (position 1:56 1:61) value)
+
+### call helpers.bal [213,233)
+arguments: 1
+argument[0]:
+(binary-expr (position 5:22 5:31) -
+  (simple-var-ref (position 5:22 5:27) value)
+  (literal (position 5:30 5:31) 1))
+
+### call helpers.bal [323,341)
+arguments: 1
+argument[0]:
+(binary-expr (position 9:20 9:29) -
+  (simple-var-ref (position 9:20 9:25) value)
+  (literal (position 9:28 9:29) 1))
+
+### call helpers.bal [430,449)
+arguments: 1
+argument[0]:
+(binary-expr (position 13:21 13:30) -
+  (simple-var-ref (position 13:21 13:26) value)
+  (literal (position 13:29 13:30) 1))
+
+### call main.bal [41,50)
+arguments: 1
+argument[0]:
+(literal (position 2:24 2:25) 2)
+
+### call main.bal [69,78)
+arguments: 1
+argument[0]:
+(literal (position 3:25 3:26) 3)
+
+### call main.bal [100,116)
+arguments: 1
+argument[0]:
+(simple-var-ref (position 4:31 4:36) first)
+
+### call main.bal [135,151)
+arguments: 1
+argument[0]:
+(simple-var-ref (position 5:27 5:33) second)

@@ -1,0 +1,40 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/automation_flow / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples automation_flow 0.1.0)
+  (function (position 1:1 7:2) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 1:24 7:2)
+      (var-def (position 2:5 2:19)
+        (variable (position 2:5 2:19) count (type
+          (value-type (position 2:5 2:8) int)) (expr
+          (literal (position 2:17 2:18) 3))))
+      (while (position 3:5 5:6)
+        (binary-expr (position 3:11 3:20) >
+          (simple-var-ref (position 3:11 3:16) count)
+          (literal (position 3:19 3:20) 0))
+        (block-stmt (position 3:21 5:6)
+          (compound-assignment (position 4:9 4:20) -
+            (simple-var-ref (position 4:9 4:14) count)
+            (literal (position 4:18 4:19) 1))))
+      (assignment (position 6:5 6:23)
+        (wildcard-binding-pattern (position 6:5 6:6))
+        (invocation (position 6:9 6:22) finish (
+          (simple-var-ref (position 6:16 6:21) count))))))
+  (function (position 9:1 9:57) finish (
+    (variable (position 9:17 9:26) count (type
+      (value-type (position 9:17 9:20) int)))) (
+    (value-type (position 9:36 9:39) int))
+    (block-function-body (position 9:40 9:57)
+      (return (position 9:42 9:55)
+        (simple-var-ref (position 9:49 9:54) count)))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### call main.bal [100,113)
+arguments: 1
+argument[0]:
+(simple-var-ref (position 6:16 6:21) count)

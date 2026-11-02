@@ -1,0 +1,3504 @@
+{
+  "scopes": [
+    {
+      "id": "examples/source_ranges/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 11,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    // café, සිංහල, and an astral character: 🚀\n    string greeting = \"Hello 🚀 café\";\n    string result = decorate(\n        greeting,\n        \"සිංහල\"\n    );\n    int windows = windowsValue();\n    _ = result;\n    _ = windows;\n}",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "examples/source_ranges",
+      "serviceType": null,
+      "functionId": "examples/source_ranges/function/main"
+    }
+  ],
+  "sources": {
+    "examples/source_ranges/function/decorate": {
+      "id": "examples/source_ranges/function/decorate",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 13,
+            "column": 1
+          },
+          "end": {
+            "line": 15,
+            "column": 2
+          }
+        }
+      },
+      "text": "function decorate(string left, string right) returns string {\n    return left + \" / \" + right;\n}"
+    },
+    "examples/source_ranges/function/decorate/parameter/0": {
+      "id": "examples/source_ranges/function/decorate/parameter/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 13,
+            "column": 19
+          },
+          "end": {
+            "line": 13,
+            "column": 30
+          }
+        }
+      },
+      "text": "string left"
+    },
+    "examples/source_ranges/function/decorate/parameter/1": {
+      "id": "examples/source_ranges/function/decorate/parameter/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 13,
+            "column": 32
+          },
+          "end": {
+            "line": 13,
+            "column": 44
+          }
+        }
+      },
+      "text": "string right"
+    },
+    "examples/source_ranges/function/decorate/returnType": {
+      "id": "examples/source_ranges/function/decorate/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 13,
+            "column": 54
+          },
+          "end": {
+            "line": 13,
+            "column": 60
+          }
+        }
+      },
+      "text": "string"
+    },
+    "examples/source_ranges/function/decorate/statement/0": {
+      "id": "examples/source_ranges/function/decorate/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 14,
+            "column": 5
+          },
+          "end": {
+            "line": 14,
+            "column": 33
+          }
+        }
+      },
+      "text": "return left + \" / \" + right;"
+    },
+    "examples/source_ranges/function/main": {
+      "id": "examples/source_ranges/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 11,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    // café, සිංහල, and an astral character: 🚀\n    string greeting = \"Hello 🚀 café\";\n    string result = decorate(\n        greeting,\n        \"සිංහල\"\n    );\n    int windows = windowsValue();\n    _ = result;\n    _ = windows;\n}"
+    },
+    "examples/source_ranges/function/main/statement/0": {
+      "id": "examples/source_ranges/function/main/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 5
+          },
+          "end": {
+            "line": 3,
+            "column": 38
+          }
+        }
+      },
+      "text": "string greeting = \"Hello 🚀 café\";"
+    },
+    "examples/source_ranges/function/main/statement/1": {
+      "id": "examples/source_ranges/function/main/statement/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 5
+          },
+          "end": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      },
+      "text": "string result = decorate(\n        greeting,\n        \"සිංහල\"\n    );"
+    },
+    "examples/source_ranges/function/main/statement/1/call/0": {
+      "id": "examples/source_ranges/function/main/statement/1/call/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 21
+          },
+          "end": {
+            "line": 7,
+            "column": 6
+          }
+        }
+      },
+      "text": "decorate(\n        greeting,\n        \"සිංහල\"\n    )"
+    },
+    "examples/source_ranges/function/main/statement/2": {
+      "id": "examples/source_ranges/function/main/statement/2",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 5
+          },
+          "end": {
+            "line": 8,
+            "column": 34
+          }
+        }
+      },
+      "text": "int windows = windowsValue();"
+    },
+    "examples/source_ranges/function/main/statement/2/call/0": {
+      "id": "examples/source_ranges/function/main/statement/2/call/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 19
+          },
+          "end": {
+            "line": 8,
+            "column": 33
+          }
+        }
+      },
+      "text": "windowsValue()"
+    },
+    "examples/source_ranges/function/main/statement/3": {
+      "id": "examples/source_ranges/function/main/statement/3",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 5
+          },
+          "end": {
+            "line": 9,
+            "column": 16
+          }
+        }
+      },
+      "text": "_ = result;"
+    },
+    "examples/source_ranges/function/main/statement/4": {
+      "id": "examples/source_ranges/function/main/statement/4",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 5
+          },
+          "end": {
+            "line": 10,
+            "column": 17
+          }
+        }
+      },
+      "text": "_ = windows;"
+    },
+    "examples/source_ranges/function/windowsValue": {
+      "id": "examples/source_ranges/function/windowsValue",
+      "source": {
+        "file": "windows.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 4,
+            "column": 2
+          }
+        }
+      },
+      "text": "function windowsValue() returns int {\r\n    int value = 2;\r\n    return value;\r\n}"
+    },
+    "examples/source_ranges/function/windowsValue/returnType": {
+      "id": "examples/source_ranges/function/windowsValue/returnType",
+      "source": {
+        "file": "windows.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 33
+          },
+          "end": {
+            "line": 1,
+            "column": 36
+          }
+        }
+      },
+      "text": "int"
+    },
+    "examples/source_ranges/function/windowsValue/statement/0": {
+      "id": "examples/source_ranges/function/windowsValue/statement/0",
+      "source": {
+        "file": "windows.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 5
+          },
+          "end": {
+            "line": 2,
+            "column": 19
+          }
+        }
+      },
+      "text": "int value = 2;"
+    },
+    "examples/source_ranges/function/windowsValue/statement/1": {
+      "id": "examples/source_ranges/function/windowsValue/statement/1",
+      "source": {
+        "file": "windows.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 5
+          },
+          "end": {
+            "line": 3,
+            "column": 18
+          }
+        }
+      },
+      "text": "return value;"
+    },
+    "receiver/0/initializer": {
+      "id": "receiver/0/initializer",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 23
+          },
+          "end": {
+            "line": 3,
+            "column": 37
+          }
+        }
+      },
+      "text": "\"Hello 🚀 café\""
+    },
+    "receiver/1/initializer": {
+      "id": "receiver/1/initializer",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 21
+          },
+          "end": {
+            "line": 7,
+            "column": 6
+          }
+        }
+      },
+      "text": "decorate(\n        greeting,\n        \"සිංහල\"\n    )"
+    },
+    "receiver/2/initializer": {
+      "id": "receiver/2/initializer",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 19
+          },
+          "end": {
+            "line": 8,
+            "column": 33
+          }
+        }
+      },
+      "text": "windowsValue()"
+    },
+    "receiver/5/initializer": {
+      "id": "receiver/5/initializer",
+      "source": {
+        "file": "windows.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 17
+          },
+          "end": {
+            "line": 2,
+            "column": 18
+          }
+        }
+      },
+      "text": "2"
+    },
+    "receiver/main.bal/132/208/type": {
+      "id": "receiver/main.bal/132/208/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 5
+          },
+          "end": {
+            "line": 4,
+            "column": 11
+          }
+        }
+      },
+      "text": "string"
+    },
+    "receiver/main.bal/213/242/type": {
+      "id": "receiver/main.bal/213/242/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 5
+          },
+          "end": {
+            "line": 8,
+            "column": 8
+          }
+        }
+      },
+      "text": "int"
+    },
+    "receiver/main.bal/297/308/type": {
+      "id": "receiver/main.bal/297/308/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 13,
+            "column": 19
+          },
+          "end": {
+            "line": 13,
+            "column": 25
+          }
+        }
+      },
+      "text": "string"
+    },
+    "receiver/main.bal/310/322/type": {
+      "id": "receiver/main.bal/310/322/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 13,
+            "column": 32
+          },
+          "end": {
+            "line": 13,
+            "column": 38
+          }
+        }
+      },
+      "text": "string"
+    },
+    "receiver/main.bal/90/127/type": {
+      "id": "receiver/main.bal/90/127/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 5
+          },
+          "end": {
+            "line": 3,
+            "column": 11
+          }
+        }
+      },
+      "text": "string"
+    },
+    "receiver/windows.bal/43/57/type": {
+      "id": "receiver/windows.bal/43/57/type",
+      "source": {
+        "file": "windows.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 5
+          },
+          "end": {
+            "line": 2,
+            "column": 8
+          }
+        }
+      },
+      "text": "int"
+    }
+  },
+  "functions": {
+    "examples/source_ranges/function/decorate": {
+      "id": "examples/source_ranges/function/decorate",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 13,
+            "column": 1
+          },
+          "end": {
+            "line": 15,
+            "column": 2
+          }
+        }
+      },
+      "text": "function decorate(string left, string right) returns string {\n    return left + \" / \" + right;\n}",
+      "moduleId": "examples/source_ranges",
+      "entry": {
+        "signatureVariables": [
+          {
+            "variableId": "variable/main.bal/304",
+            "start": 25,
+            "end": 29
+          },
+          {
+            "variableId": "variable/main.bal/317",
+            "start": 38,
+            "end": 43
+          }
+        ],
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "decorate",
+        "signature": "function decorate(string left, string right) returns string",
+        "parameters": [
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/304",
+                "start": 7,
+                "end": 11
+              }
+            ],
+            "label": "Input",
+            "text": "string left"
+          },
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/317",
+                "start": 7,
+                "end": 12
+              }
+            ],
+            "label": "Input",
+            "text": "string right"
+          }
+        ],
+        "returnType": "string"
+      },
+      "nodes": [
+        {
+          "id": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0",
+          "occurrenceKey": "/examples/source_ranges/function/decorate/statement/0",
+          "sourceId": "examples/source_ranges/function/decorate/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/304",
+                "start": 7,
+                "end": 11
+              },
+              {
+                "variableId": "variable/main.bal/317",
+                "start": 22,
+                "end": 27
+              }
+            ],
+            "style": "return",
+            "label": "return left + \" / \" + right;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/decorate/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/source_ranges/function/decorate",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/source_ranges/function/decorate/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/source_ranges/function/decorate/statement/0:entry",
+          "id": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0:entry",
+          "nodeId": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/decorate/statement/0:normal-exit",
+          "id": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0:normal-exit",
+          "nodeId": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/decorate/statement/0:return",
+          "id": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0:return",
+          "nodeId": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/source_ranges/function/decorate/root:entry",
+          "nodeId": "examples/source_ranges/function/decorate/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/source_ranges/function/decorate/root:normal-exit",
+          "nodeId": "examples/source_ranges/function/decorate/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [],
+      "groups": [
+        {
+          "id": "examples/source_ranges/function/decorate/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/decorate/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/source_ranges/function/decorate/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/source_ranges/function/decorate/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/source_ranges/function/decorate/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/source_ranges/function/decorate/root/binding/entry/0",
+            "toPort": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/source_ranges/function/decorate/root/binding/normal",
+            "toPort": "examples/source_ranges/function/decorate/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/decorate/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/decorate/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/decorate/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/decorate/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/decorate/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/decorate/examples/source_ranges/function/decorate/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": []
+        }
+      }
+    },
+    "examples/source_ranges/function/main": {
+      "id": "examples/source_ranges/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 11,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    // café, සිංහල, and an astral character: 🚀\n    string greeting = \"Hello 🚀 café\";\n    string result = decorate(\n        greeting,\n        \"සිංහල\"\n    );\n    int windows = windowsValue();\n    _ = result;\n    _ = windows;\n}",
+      "moduleId": "examples/source_ranges",
+      "entry": {
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "nodes": [
+        {
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0",
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/0",
+          "sourceId": "examples/source_ranges/function/main/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/97",
+                "start": 7,
+                "end": 15
+              }
+            ],
+            "style": "step",
+            "label": "string greeting = \"Hello 🚀 café\";",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1",
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/1",
+          "sourceId": "examples/source_ranges/function/main/statement/1",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/139",
+                "start": 7,
+                "end": 13
+              },
+              {
+                "variableId": "variable/main.bal/97",
+                "start": 34,
+                "end": 42
+              }
+            ],
+            "style": "step",
+            "label": "string result = decorate(\n        greeting,\n        \"සිංහල\"\n    );",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/group"
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+          "sourceId": "examples/source_ranges/function/main/statement/1/call/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/97",
+                "start": 18,
+                "end": 26
+              }
+            ],
+            "style": "function",
+            "label": "decorate(\n        greeting,\n        \"සිංහල\"\n    )",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "call",
+              "occurrenceKey": "/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "recursive": {
+                "variables": [
+                  {
+                    "variableId": "variable/main.bal/97",
+                    "start": 18,
+                    "end": 26
+                  }
+                ],
+                "label": "decorate(\n        greeting,\n        \"සිංහල\"\n    )",
+                "sections": [],
+                "limitation": "Recursive calls remain collapsed.",
+                "title": "Recursive calls remain collapsed.",
+                "ariaLabel": "Recursive call decorate(\n        greeting,\n        \"සිංහල\"\n    )",
+                "glyph": "↻"
+              }
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "examples/source_ranges/function/decorate",
+              "occurrenceKey": "/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [
+                      {
+                        "portId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:entry",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "normal",
+                    "members": [
+                      {
+                        "portId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:normal-exit",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "returns",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "panics",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": [
+                {
+                  "kind": "entry",
+                  "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0/enter",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:entry",
+                  "targetInterfaceId": "entry",
+                  "edge": {
+                    "kind": "sequence",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0/exit/normal",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:normal-exit",
+                  "targetInterfaceId": "normal",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0/exit/returns",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:normal-exit",
+                  "targetInterfaceId": "returns",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2",
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/2",
+          "sourceId": "examples/source_ranges/function/main/statement/2",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/217",
+                "start": 4,
+                "end": 11
+              }
+            ],
+            "style": "step",
+            "label": "int windows = windowsValue();",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/group"
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+          "sourceId": "examples/source_ranges/function/main/statement/2/call/0",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "windowsValue()",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "call",
+              "occurrenceKey": "/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "recursive": {
+                "label": "windowsValue()",
+                "sections": [],
+                "limitation": "Recursive calls remain collapsed.",
+                "title": "Recursive calls remain collapsed.",
+                "ariaLabel": "Recursive call windowsValue()",
+                "glyph": "↻"
+              }
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "examples/source_ranges/function/windowsValue",
+              "occurrenceKey": "/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [
+                      {
+                        "portId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:entry",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "normal",
+                    "members": [
+                      {
+                        "portId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:normal-exit",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "returns",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "panics",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": [
+                {
+                  "kind": "entry",
+                  "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0/enter",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:entry",
+                  "targetInterfaceId": "entry",
+                  "edge": {
+                    "kind": "sequence",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0/exit/normal",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:normal-exit",
+                  "targetInterfaceId": "normal",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0/exit/returns",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:normal-exit",
+                  "targetInterfaceId": "returns",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3",
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/3",
+          "sourceId": "examples/source_ranges/function/main/statement/3",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/139",
+                "start": 4,
+                "end": 10
+              }
+            ],
+            "style": "step",
+            "label": "_ = result;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4",
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/4",
+          "sourceId": "examples/source_ranges/function/main/statement/4",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/217",
+                "start": 4,
+                "end": 11
+              }
+            ],
+            "style": "step",
+            "label": "_ = windows;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/main/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/source_ranges/function/main",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/source_ranges/function/main/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/0:entry",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0:entry",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/0:normal-exit",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0:normal-exit",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/1:entry",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1:entry",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/1:normal-exit",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1:normal-exit",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "header-bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:entry",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:entry",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:normal-exit",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:normal-exit",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/2:entry",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2:entry",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/2:normal-exit",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2:normal-exit",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "header-bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:entry",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:entry",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:normal-exit",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:normal-exit",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/3:entry",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3:entry",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/3:normal-exit",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3:normal-exit",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/4:entry",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4:entry",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/main/statement/4:normal-exit",
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4:normal-exit",
+          "nodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/source_ranges/function/main/root:entry",
+          "nodeId": "examples/source_ranges/function/main/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/source_ranges/function/main/root:normal-exit",
+          "nodeId": "examples/source_ranges/function/main/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/0",
+          "fromPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1:normal-exit",
+          "toPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/1",
+          "fromPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:entry",
+          "toPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:normal-exit",
+          "when": {
+            "kind": "not",
+            "operand": {
+              "kind": "nonempty",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+              "interfaceId": "entry"
+            }
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/2",
+          "fromPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0:normal-exit",
+          "toPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/3",
+          "fromPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2:normal-exit",
+          "toPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/4",
+          "fromPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:entry",
+          "toPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:normal-exit",
+          "when": {
+            "kind": "not",
+            "operand": {
+              "kind": "nonempty",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+              "interfaceId": "entry"
+            }
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/5",
+          "fromPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:normal-exit",
+          "toPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "not",
+                        "operand": {
+                          "kind": "nonempty",
+                          "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+                          "interfaceId": "entry"
+                        }
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+                        "interfaceId": "normal"
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+                        "interfaceId": "returns"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/6",
+          "fromPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:normal-exit",
+          "toPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "not",
+                        "operand": {
+                          "kind": "nonempty",
+                          "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+                          "interfaceId": "entry"
+                        }
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+                        "interfaceId": "normal"
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+                        "interfaceId": "returns"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/7",
+          "fromPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3:normal-exit",
+          "toPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/main/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0",
+              "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1",
+              "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2",
+              "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3",
+              "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/main/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/source_ranges/function/main/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/source_ranges/function/main/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/source_ranges/function/main/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/source_ranges/function/main/root/binding/entry/0",
+            "toPort": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [
+            {
+              "portId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/source_ranges/function/main/root/binding/normal",
+            "toPort": "examples/source_ranges/function/main/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [
+            {
+              "portId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/3",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/4",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/5",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/6",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/7",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/3:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/4:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/3",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/4",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/5",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/1/expand/examples/source_ranges/function/main/statement/1/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/6",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/source_ranges/function/main/examples/source_ranges/function/main/statement/2/expand/examples/source_ranges/function/main/statement/2/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/7",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "examples/source_ranges/function/windowsValue": {
+      "id": "examples/source_ranges/function/windowsValue",
+      "source": {
+        "file": "windows.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 4,
+            "column": 2
+          }
+        }
+      },
+      "text": "function windowsValue() returns int {\r\n    int value = 2;\r\n    return value;\r\n}",
+      "moduleId": "examples/source_ranges",
+      "entry": {
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "windowsValue",
+        "signature": "function windowsValue() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "nodes": [
+        {
+          "id": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0",
+          "occurrenceKey": "/examples/source_ranges/function/windowsValue/statement/0",
+          "sourceId": "examples/source_ranges/function/windowsValue/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/windows.bal/47",
+                "start": 4,
+                "end": 9
+              }
+            ],
+            "style": "step",
+            "label": "int value = 2;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1",
+          "occurrenceKey": "/examples/source_ranges/function/windowsValue/statement/1",
+          "sourceId": "examples/source_ranges/function/windowsValue/statement/1",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/windows.bal/47",
+                "start": 7,
+                "end": 12
+              }
+            ],
+            "style": "return",
+            "label": "return value;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/windowsValue/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/source_ranges/function/windowsValue",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/source_ranges/function/windowsValue/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/source_ranges/function/windowsValue/statement/0:entry",
+          "id": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0:entry",
+          "nodeId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/windowsValue/statement/0:normal-exit",
+          "id": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0:normal-exit",
+          "nodeId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/windowsValue/statement/1:entry",
+          "id": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1:entry",
+          "nodeId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/windowsValue/statement/1:normal-exit",
+          "id": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1:normal-exit",
+          "nodeId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/source_ranges/function/windowsValue/statement/1:return",
+          "id": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1:return",
+          "nodeId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/source_ranges/function/windowsValue/root:entry",
+          "nodeId": "examples/source_ranges/function/windowsValue/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/source_ranges/function/windowsValue/root:normal-exit",
+          "nodeId": "examples/source_ranges/function/windowsValue/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/0",
+          "fromPort": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0:normal-exit",
+          "toPort": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "examples/source_ranges/function/windowsValue/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0",
+              "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/source_ranges/function/windowsValue/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/source_ranges/function/windowsValue/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/source_ranges/function/windowsValue/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/source_ranges/function/windowsValue/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/source_ranges/function/windowsValue/root/binding/entry/0",
+            "toPort": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/source_ranges/function/windowsValue/root/binding/normal",
+            "toPort": "examples/source_ranges/function/windowsValue/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/windowsValue/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/source_ranges/function/windowsValue/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/source_ranges/function/windowsValue/examples/source_ranges/function/windowsValue/statement/1:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -9,14 +9,23 @@
 			],
 			"outputs": ["public/ballerina.wasm", "public/ballerina-meta.json"]
 		},
+		"copy:compiler-wasm": {
+			"inputs": [
+				"../../packages/compiler/**/*.go",
+				"../../packages/compiler/go.mod",
+				"../../packages/compiler/go.sum",
+				"!../../packages/compiler/**/*_test.go"
+			],
+			"outputs": ["public/compiler/**"]
+		},
 		"build": {
 			"env": ["COMMIT_SHA"],
-			"dependsOn": ["^build", "copy:wasm"],
+			"dependsOn": ["^build", "copy:wasm", "copy:compiler-wasm"],
 			"outputs": ["dist/**"]
 		},
 		"dev": {
 			"env": ["COMMIT_SHA"],
-			"dependsOn": ["copy:wasm"],
+			"dependsOn": ["copy:wasm", "copy:compiler-wasm"],
 			"cache": false,
 			"persistent": true
 		},
@@ -27,7 +36,7 @@
 			"persistent": true
 		},
 		"test": {
-			"dependsOn": ["^build", "copy:wasm"],
+			"dependsOn": ["^build", "copy:wasm", "copy:compiler-wasm"],
 			"cache": false
 		}
 	}

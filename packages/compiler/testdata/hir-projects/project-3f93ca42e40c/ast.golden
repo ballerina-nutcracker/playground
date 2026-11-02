@@ -1,0 +1,116 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/service_discovery / Document datagrams.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples service_discovery 0.1.0)
+  (import-package (position 1:1 1:22) ballerina udp (as udp))
+  (service (position 3:1 8:2)
+    (on
+    (new (position 3:12 3:34)
+      (user-defined-type (position 3:16 3:28) udp Listener) (
+      (literal (position 3:29 3:33) 9090) <default> (position 3:12 3:34))))
+    (function (position 4:5 7:6) $remote$onBytes (
+      (variable (position 4:29 4:40) data (type
+        (array-type (position 4:29 4:35)
+          (value-type (position 4:29 4:33) byte) dimensions: 1 ([]))))
+      (variable (position 4:42 4:59) caller (type
+        (user-defined-type (position 4:42 4:52) udp Caller)))) (
+      (array-type (position 4:69 4:75)
+        (value-type (position 4:69 4:73) byte) dimensions: 1 ([])))
+      (block-function-body (position 4:76 7:6)
+        (assignment (position 5:9 5:20)
+          (wildcard-binding-pattern (position 5:9 5:10))
+          (simple-var-ref (position 5:13 5:19) caller))
+        (return (position 6:9 6:21)
+          (simple-var-ref (position 6:16 6:20) data))))))
+
+## Module examples/service_discovery / Document inventory.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples service_discovery 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (service (position 3:1 5:2)
+    (absolute-resource-path inventory)
+    (on
+    (new (position 3:23 3:46)
+      (user-defined-type (position 3:27 3:40) http Listener) (
+      (literal (position 3:41 3:45) 8081) <default> (position 3:23 3:46))))
+    (resource-function (position 4:5 4:75) get name:items
+      (value-type (position 4:43 4:49) string)
+      (block-function-body (position 4:50 4:75)
+        (return (position 4:52 4:73)
+          (invocation (position 4:59 4:72) sharedLabel ())))))
+  (function (position 7:1 7:51) unusedHelper () (
+    (value-type (position 7:33 7:36) int))
+    (block-function-body (position 7:37 7:51)
+      (return (position 7:39 7:49)
+        (literal (position 7:46 7:48) 42)))))
+
+## Module examples/service_discovery / Document orders.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples service_discovery 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (service (position 2:1 6:2)
+    (absolute-resource-path orders)
+    (on
+    (new (position 2:20 2:43)
+      (user-defined-type (position 2:24 2:37) http Listener) (
+      (literal (position 2:38 2:42) 8080) <default> (position 2:20 2:43))))
+    (function (position 5:2 5:59) formatOrder () (
+      (value-type (position 5:33 5:39) string))
+      (block-function-body (position 5:40 5:59)
+        (return (position 5:42 5:57)
+          (literal (position 5:49 5:56) order))))
+    (function (position 4:2 4:86) $remote$refresh (
+      (variable (position 4:26 4:42) note (type
+        (value-type (position 4:26 4:32) string)) (expr
+        (literal (position 4:40 4:42) )))) (
+      (value-type (position 4:52 4:59) boolean))
+      (block-function-body (position 4:60 4:86)
+        (assignment (position 4:62 4:71)
+          (wildcard-binding-pattern (position 4:62 4:63))
+          (simple-var-ref (position 4:66 4:70) note))
+        (return (position 4:72 4:84)
+          (literal (position 4:79 4:83) true))))
+    (resource-function (position 3:2 3:123) get
+      (param id
+        (value-type (position 3:25 3:28) int))
+      (variable (position 3:33 3:61) includeItems (type
+        (value-type (position 3:33 3:40) boolean)) (expr
+        (literal (position 3:56 3:61) false)))
+      (value-type (position 3:71 3:77) string)
+      (block-function-body (position 3:78 3:123)
+        (assignment (position 3:80 3:87)
+          (wildcard-binding-pattern (position 3:80 3:81))
+          (simple-var-ref (position 3:84 3:86) id))
+        (assignment (position 3:88 3:105)
+          (wildcard-binding-pattern (position 3:88 3:89))
+          (simple-var-ref (position 3:92 3:104) includeItems))
+        (return (position 3:106 3:121)
+          (literal (position 3:113 3:120) order)))))
+  (function (position 7:1 7:58) sharedLabel () (
+    (value-type (position 7:32 7:38) string))
+    (block-function-body (position 7:39 7:58)
+      (return (position 7:41 7:56)
+        (literal (position 7:48 7:55) order)))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### new datagrams.bal [34,56)
+arguments: 1
+argument[0]:
+(literal (position 3:29 3:33) 9090)
+
+### new inventory.bal [46,69)
+arguments: 1
+argument[0]:
+(literal (position 3:41 3:45) 8081)
+
+### call inventory.bal [130,143)
+arguments: 0
+
+### new orders.bal [42,65)
+arguments: 1
+argument[0]:
+(literal (position 2:38 2:42) 8080)

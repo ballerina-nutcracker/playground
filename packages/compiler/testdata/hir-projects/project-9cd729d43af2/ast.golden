@@ -1,0 +1,50 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/chat_references / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples chat_references 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (service (position 3:1 6:2)
+    (absolute-resource-path notes)
+    (on
+    (new (position 3:19 3:42)
+      (user-defined-type (position 3:23 3:36) http Listener) (
+      (literal (position 3:37 3:41) 8080) <default> (position 3:19 3:42))))
+    (resource-function (position 4:5 4:77) get name:first
+      (value-type (position 4:43 4:49) string)
+      (block-function-body (position 4:50 4:77)
+        (return (position 4:52 4:75)
+          (invocation (position 4:59 4:74) shared (
+            (literal (position 4:66 4:73) first))))))
+    (resource-function (position 5:5 5:79) get name:second
+      (value-type (position 5:44 5:50) string)
+      (block-function-body (position 5:51 5:79)
+        (return (position 5:53 5:77)
+          (invocation (position 5:60 5:76) shared (
+            (literal (position 5:67 5:75) second)))))))
+  (function (position 8:1 8:63) shared (
+    (variable (position 8:17 8:29) value (type
+      (value-type (position 8:17 8:23) string)))) (
+    (value-type (position 8:39 8:45) string))
+    (block-function-body (position 8:46 8:63)
+      (return (position 8:48 8:61)
+        (simple-var-ref (position 8:55 8:60) value)))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### new main.bal [42,65)
+arguments: 1
+argument[0]:
+(literal (position 3:37 3:41) 8080)
+
+### call main.bal [126,141)
+arguments: 1
+argument[0]:
+(literal (position 4:66 4:73) first)
+
+### call main.bal [204,220)
+arguments: 1
+argument[0]:
+(literal (position 5:67 5:75) second)

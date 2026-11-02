@@ -13,15 +13,19 @@ export type HttpRequest = {
 export class PlaygroundPage {
 	readonly runButton: Locator;
 	readonly outputPane: Locator;
+	readonly balBotButton: Locator;
+	readonly balBotView: Locator;
 
 	constructor(private readonly page: Page) {
 		this.runButton = page.getByTestId("run-button");
+		this.balBotButton = page.getByTestId("bal-bot-button");
+		this.balBotView = page.locator(".bal-bot-root");
 		this.outputPane = page.getByTestId("output-pane");
 	}
 
 	async open(path = "/") {
 		await this.page.goto(path);
-		await expect(this.page.getByTestId("wasm-loading")).toBeHidden({
+		await expect(this.page.getByTestId("run-loading")).toBeHidden({
 			timeout: 90_000,
 		});
 	}
@@ -111,6 +115,17 @@ export class PlaygroundPage {
 				.map((element) => element.getAttribute("data-example-path"))
 				.filter((path): path is string => path !== null),
 		);
+	}
+
+	async openBalBot() {
+		await expect(this.balBotButton).toBeEnabled({ timeout: 10_000 });
+		await this.balBotButton.click();
+		await expect(this.balBotView).toBeVisible({ timeout: 30_000 });
+	}
+
+	async closeBalBot() {
+		await this.page.getByTestId("bal-bot-code").click();
+		await expect(this.balBotView).toHaveCount(0);
 	}
 
 	async hasTryItPanel() {

@@ -1,0 +1,215 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 84
+          }
+        }
+      },
+      "text": "public function main() { var result = value(1) + value(2) * value(3); _ = result; }",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "browser/http_service",
+      "serviceType": null,
+      "functionId": "browser/http_service/function/main"
+    }
+  ],
+  "functions": {
+    "browser/http_service/function/main": {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 84
+          }
+        }
+      },
+      "text": "public function main() { var result = value(1) + value(2) * value(3); _ = result; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 26
+              },
+              "end": {
+                "line": 1,
+                "column": 70
+              }
+            }
+          },
+          "text": "var result = value(1) + value(2) * value(3);",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/function/main/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 39
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 47
+                  }
+                }
+              },
+              "text": "value(1)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/function/value"
+              },
+              "expansion": "supported"
+            },
+            {
+              "id": "browser/http_service/function/main/statement/0/call/1",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 50
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 58
+                  }
+                }
+              },
+              "text": "value(2)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/function/value"
+              },
+              "expansion": "supported"
+            },
+            {
+              "id": "browser/http_service/function/main/statement/0/call/2",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 61
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 69
+                  }
+                }
+              },
+              "text": "value(3)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/function/value"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/function/main/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 71
+              },
+              "end": {
+                "line": 1,
+                "column": 82
+              }
+            }
+          },
+          "text": "_ = result;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        }
+      ]
+    },
+    "browser/http_service/function/value": {
+      "id": "browser/http_service/function/value",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 85
+          },
+          "end": {
+            "line": 1,
+            "column": 132
+          }
+        }
+      },
+      "text": "function value(int n) returns int { return n; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "value",
+        "signature": "function value(int n) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int n"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/value/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 121
+              },
+              "end": {
+                "line": 1,
+                "column": 130
+              }
+            }
+          },
+          "text": "return n;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

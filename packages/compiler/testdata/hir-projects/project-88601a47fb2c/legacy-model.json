@@ -1,0 +1,426 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/service/main.bal///1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 1
+          },
+          "end": {
+            "line": 4,
+            "column": 211
+          }
+        }
+      },
+      "text": "service / on new http:Listener(8080) { resource function get hello() returns string|error { Person person = check testClient-\u003eget(\"/foo/bar\"); return string `hello ${person.first_name} ${person.last_name}`; } }",
+      "kind": "service",
+      "title": "/",
+      "moduleId": "browser/http_service",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 40
+              },
+              "end": {
+                "line": 4,
+                "column": 209
+              }
+            }
+          },
+          "text": "resource function get hello() returns string|error { Person person = check testClient-\u003eget(\"/foo/bar\"); return string `hello ${person.first_name} ${person.last_name}`; }",
+          "kind": "resource",
+          "title": "get /hello",
+          "functionId": "browser/http_service/service/main.bal///1/resource/get/hello"
+        }
+      ],
+      "definitions": [
+        {
+          "id": "browser/http_service/type/Person",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 2,
+                "column": 1
+              },
+              "end": {
+                "line": 2,
+                "column": 63
+              }
+            }
+          },
+          "text": "type Person record {| string first_name; string last_name; |};",
+          "kind": "type",
+          "label": "Person"
+        },
+        {
+          "id": "browser/http_service/connector/testClient",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 3,
+                "column": 63
+              }
+            }
+          },
+          "text": "final http:Client testClient = check new (\"https://test.com\");",
+          "kind": "connector",
+          "label": "testClient"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "browser/http_service/service/main.bal///1/resource/get/hello": {
+      "id": "browser/http_service/service/main.bal///1/resource/get/hello",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 40
+          },
+          "end": {
+            "line": 4,
+            "column": 209
+          }
+        }
+      },
+      "text": "resource function get hello() returns string|error { Person person = check testClient-\u003eget(\"/foo/bar\"); return string `hello ${person.first_name} ${person.last_name}`; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "resource",
+        "name": "get /hello",
+        "signature": "resource function get hello() returns string|error",
+        "parameters": [],
+        "returnType": "string|error"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 93
+              },
+              "end": {
+                "line": 4,
+                "column": 143
+              }
+            }
+          },
+          "text": "Person person = check testClient-\u003eget(\"/foo/bar\");",
+          "evaluation": {
+            "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 4,
+                  "column": 109
+                },
+                "end": {
+                  "line": 4,
+                  "column": 142
+                }
+              }
+            },
+            "text": "check testClient-\u003eget(\"/foo/bar\")",
+            "kind": "check",
+            "children": [
+              {
+                "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/value/part/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 4,
+                      "column": 115
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 142
+                    }
+                  }
+                },
+                "text": "testClient-\u003eget(\"/foo/bar\")",
+                "kind": "call",
+                "children": [],
+                "call": {
+                  "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 4,
+                        "column": 115
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 142
+                      }
+                    }
+                  },
+                  "text": "testClient-\u003eget(\"/foo/bar\")",
+                  "client": {
+                    "context": {
+                      "receiver": {
+                        "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/call/0/receiver",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 4,
+                              "column": 115
+                            },
+                            "end": {
+                              "line": 4,
+                              "column": 125
+                            }
+                          }
+                        },
+                        "text": "testClient"
+                      },
+                      "type": "http:Client",
+                      "origin": "constructor",
+                      "initializer": {
+                        "id": "receiver/0/initializer",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 3,
+                              "column": 32
+                            },
+                            "end": {
+                              "line": 3,
+                              "column": 62
+                            }
+                          }
+                        },
+                        "text": "check new (\"https://test.com\")"
+                      }
+                    },
+                    "method": "get",
+                    "arguments": [
+                      {
+                        "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/call/0/argument/0",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 4,
+                              "column": 131
+                            },
+                            "end": {
+                              "line": 4,
+                              "column": 141
+                            }
+                          }
+                        },
+                        "text": "\"/foo/bar\""
+                      }
+                    ]
+                  },
+                  "target": {
+                    "kind": "external",
+                    "label": "$mono$$remote$get$0"
+                  },
+                  "expansion": "unavailable",
+                  "reason": "The target is outside the workspace."
+                }
+              }
+            ]
+          },
+          "binding": "Person person",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 4,
+                    "column": 115
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 142
+                  }
+                }
+              },
+              "text": "testClient-\u003eget(\"/foo/bar\")",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/call/0/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 4,
+                          "column": 115
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 125
+                        }
+                      }
+                    },
+                    "text": "testClient"
+                  },
+                  "type": "http:Client",
+                  "origin": "constructor",
+                  "initializer": {
+                    "id": "receiver/0/initializer",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 3,
+                          "column": 32
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 62
+                        }
+                      }
+                    },
+                    "text": "check new (\"https://test.com\")"
+                  }
+                },
+                "method": "get",
+                "arguments": [
+                  {
+                    "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/0/call/0/argument/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 4,
+                          "column": 131
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 141
+                        }
+                      }
+                    },
+                    "text": "\"/foo/bar\""
+                  }
+                ]
+              },
+              "target": {
+                "kind": "external",
+                "label": "$mono$$remote$get$0"
+              },
+              "expansion": "unavailable",
+              "reason": "The target is outside the workspace."
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 144
+              },
+              "end": {
+                "line": 4,
+                "column": 207
+              }
+            }
+          },
+          "text": "return string `hello ${person.first_name} ${person.last_name}`;",
+          "evaluation": {
+            "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/1/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 4,
+                  "column": 151
+                },
+                "end": {
+                  "line": 4,
+                  "column": 206
+                }
+              }
+            },
+            "text": "string `hello ${person.first_name} ${person.last_name}`",
+            "kind": "template",
+            "children": [
+              {
+                "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/1/value/insertion/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 4,
+                      "column": 167
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 184
+                    }
+                  }
+                },
+                "text": "person.first_name",
+                "kind": "source",
+                "children": []
+              },
+              {
+                "id": "browser/http_service/service/main.bal///1/resource/get/hello/statement/1/value/insertion/1",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 4,
+                      "column": 188
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 204
+                    }
+                  }
+                },
+                "text": "person.last_name",
+                "kind": "source",
+                "children": []
+              }
+            ],
+            "strings": [
+              "hello ",
+              " ",
+              ""
+            ]
+          },
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

@@ -8,6 +8,30 @@ import type {
 } from "@/workers/ballerina-worker-api";
 import type { SnapshotFS } from "@/lib/fs/snapshot";
 
+interface Deferred {
+	promise: Promise<void>;
+	settled: boolean;
+	resolve(): void;
+	reject(reason: unknown): void;
+}
+
+function createDeferred(): Deferred {
+	const deferred = { settled: false } as Deferred;
+	deferred.promise = new Promise<void>((resolve, reject) => {
+		deferred.resolve = () => {
+			deferred.settled = true;
+			resolve();
+		};
+		deferred.reject = (reason) => {
+			deferred.settled = true;
+			reject(reason);
+		};
+	});
+	// Callers handle rejection via whenReady(); avoid unhandled-rejection noise.
+	deferred.promise.catch(() => undefined);
+	return deferred;
+}
+
 export class BallerinaWorkerClient {
 	private worker: Worker | null = null;
 	private api: Comlink.Remote<BallerinaWorkerAPI> | null = null;
@@ -15,30 +39,46 @@ export class BallerinaWorkerClient {
 	private initPromise: Promise<void> | null = null;
 	private onProgress: ((progress: number) => void) | null = null;
 
+	private ready = createDeferred();
+
+	/** Resolves once the wasm is initialized; rejects if initialization fails. */
+	whenReady(): Promise<void> {
+		return this.ready.promise;
+	}
+
 	async init(onProgress: (progress: number) => void): Promise<void> {
 		this.onProgress = onProgress;
 		if (this.initPromise) return this.initPromise;
+		if (this.ready.settled) this.ready = createDeferred();
 
-		this.worker = new Worker(
-			new URL("./ballerina-worker.ts", import.meta.url),
-			{ type: "module" },
-		);
-		this.api = Comlink.wrap<BallerinaWorkerAPI>(this.worker);
+		try {
+			this.worker = new Worker(
+				new URL("./ballerina-worker.ts", import.meta.url),
+				{ type: "module" },
+			);
+			this.api = Comlink.wrap<BallerinaWorkerAPI>(this.worker);
 
-		const wasmUrl = new URL(
-			"ballerina.wasm",
-			new URL(import.meta.env.BASE_URL, self.location.origin),
-		).toString();
+			const wasmUrl = new URL(
+				"ballerina.wasm",
+				new URL(import.meta.env.BASE_URL, self.location.origin),
+			).toString();
 
-		this.initPromise = this.api
-			.init(
-				wasmUrl,
-				Comlink.proxy((progress) => this.onProgress?.(progress)),
-			)
-			.catch((err) => {
-				this.dispose();
-				throw err;
-			});
+			this.initPromise = this.api
+				.init(
+					wasmUrl,
+					Comlink.proxy((progress) => this.onProgress?.(progress)),
+				)
+				.then(() => this.ready.resolve())
+				.catch((err) => {
+					this.ready.reject(err);
+					this.dispose();
+					throw err;
+				});
+		} catch (err) {
+			this.ready.reject(err);
+			this.dispose();
+			throw err;
+		}
 
 		return this.initPromise;
 	}
