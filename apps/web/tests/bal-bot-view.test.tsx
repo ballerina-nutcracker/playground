@@ -3,13 +3,20 @@ import { GlobalRegistrator } from "@happy-dom/global-registrator";
 
 // Registered only for this file: happy-dom replaces global fetch, which other
 // test files rely on.
+// Stub the editor only while this file runs: mock.module is process-wide, and
+// tests/bal-bot-markdown-image.test.tsx renders the real Editor.
+let stubEditor = false;
 beforeAll(() => {
+	stubEditor = true;
 	GlobalRegistrator.register();
 	(
 		globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }
 	).IS_REACT_ACT_ENVIRONMENT = true;
 });
-afterAll(() => GlobalRegistrator.unregister());
+afterAll(() => {
+	stubEditor = false;
+	GlobalRegistrator.unregister();
+});
 
 const seen = new Set<object>();
 const disposed = new Set<object>();
@@ -22,9 +29,13 @@ mock.module("@playground/compiler", () => ({
 		check: async () => ({ diagnostics: [] }),
 	}),
 }));
+const realEditorModule = await import("../src/components/bal-bot/editor");
+const RealEditor = realEditorModule.Editor;
 mock.module("../src/components/bal-bot/editor", () => ({
-	Editor: ({ workspace }: { workspace: object }) => {
-		seen.add(workspace);
+	...realEditorModule,
+	Editor: (props: Parameters<typeof RealEditor>[0]) => {
+		if (!stubEditor) return <RealEditor {...props} />;
+		seen.add(props.workspace);
 		return <div data-testid="editor" />;
 	},
 }));
