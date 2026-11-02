@@ -1,5 +1,5 @@
-import type { Compiler } from "@bal-bot/compiler";
-import type { DiagnosticsResult, StorageState } from "@bal-bot/workspace";
+import type { Compiler } from "@playground/compiler";
+import type { DiagnosticsResult, StorageState } from "@playground/workspace";
 import type {
 	Workspace,
 	Service,
@@ -16,10 +16,10 @@ import type {
 	WorkspaceScope,
 	Automation,
 	WorkspaceAgent,
-} from "@bal-bot/workspace";
+} from "@playground/workspace";
 import type { StreamFn } from "@earendil-works/pi-agent-core";
 import { createWorkspaceAgent } from "./agent.ts";
-export type { Files } from "@bal-bot/workspace";
+export type { Files } from "@playground/workspace";
 
 export interface BrowserWorkspaceOptions {
 	streamFn: StreamFn;
@@ -31,7 +31,7 @@ export interface Storage {
 	getItem(key: string): string | null;
 	setItem(key: string, value: string): void;
 }
-export { initialFiles, validatePath } from "@bal-bot/workspace/files";
+export { initialFiles, validatePath } from "@playground/workspace/files";
 import {
 	initialFiles,
 	validatePath,
@@ -39,7 +39,7 @@ import {
 	validateChange,
 	applyChange,
 	type FileChange,
-} from "@bal-bot/workspace/files";
+} from "@playground/workspace/files";
 
 export const STORAGE_KEY = "bal-bot.workspace.v1";
 

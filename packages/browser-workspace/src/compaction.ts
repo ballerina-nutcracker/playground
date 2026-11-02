@@ -11,7 +11,7 @@ import {
 	type Api,
 	type UserMessage,
 } from "@earendil-works/pi-ai";
-import type { CompactionState, WorkspaceAgent } from "@bal-bot/workspace";
+import type { CompactionState, WorkspaceAgent } from "@playground/workspace";
 
 const FAILURE =
 	"Conversation compaction failed. This conversation can no longer accept messages.";

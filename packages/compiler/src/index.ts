@@ -2,7 +2,7 @@ import type {
 	Files,
 	CompilationResult,
 	AnalysisResult,
-} from "@bal-bot/workspace";
+} from "@playground/workspace";
 import {
 	validateResponse,
 	validateAnalysisFiles,

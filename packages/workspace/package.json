@@ -2,7 +2,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"type": "module",
-	"name": "@bal-bot/workspace",
+	"name": "@playground/workspace",
 	"exports": {
 		".": "./src/index.ts",
 		"./files": "./src/files.ts"

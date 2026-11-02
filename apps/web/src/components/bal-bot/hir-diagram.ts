@@ -9,7 +9,7 @@ import type {
 	HIRAnchor,
 	HIREdgeStyle,
 	HIRRecursivePresentation,
-} from "@bal-bot/workspace";
+} from "@playground/workspace";
 export type ExpansionPath = string;
 export interface DiagramNode {
 	readonly id: Id;

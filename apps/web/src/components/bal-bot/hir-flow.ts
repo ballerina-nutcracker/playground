@@ -9,7 +9,7 @@ import type {
 	HIRInterface,
 	HIREdgeStyle,
 	HIRRecursivePresentation,
-} from "@bal-bot/workspace";
+} from "@playground/workspace";
 import type {
 	Diagram,
 	DiagramNode,

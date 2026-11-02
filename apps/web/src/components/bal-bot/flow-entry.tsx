@@ -1,5 +1,5 @@
 import React from "react";
-import type { HIREntry } from "@bal-bot/workspace";
+import type { HIREntry } from "@playground/workspace";
 import { VariableText, type VariableHover } from "./variable-text";
 
 /** HIR supplies entry context in display form; no scope search or title parsing. */

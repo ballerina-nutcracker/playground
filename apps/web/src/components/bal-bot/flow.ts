@@ -1,4 +1,4 @@
-import type { Id } from "@bal-bot/workspace";
+import type { Id } from "@playground/workspace";
 import type { Diagram, DiagramNode } from "./hir-diagram";
 export type {
 	Diagram,

@@ -2,7 +2,7 @@ import type React from "react";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Cancel01Icon } from "@hugeicons/core-free-icons";
 import { formatReference, type ChatDraft } from "./references";
-import type { Id } from "@bal-bot/workspace";
+import type { Id } from "@playground/workspace";
 export interface ReferenceChipsProps {
 	readonly draft: ChatDraft;
 	readonly onRemove: (id: Id) => void;

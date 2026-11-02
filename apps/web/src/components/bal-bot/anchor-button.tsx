@@ -1,6 +1,6 @@
 import type React from "react";
 import { useEffect, useState } from "react";
-import type { Anchor } from "@bal-bot/workspace";
+import type { Anchor } from "@playground/workspace";
 
 type Activity = "idle" | "running" | "completed";
 

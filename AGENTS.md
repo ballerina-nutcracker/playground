@@ -6,13 +6,13 @@
 
 Workspaces are declared in the root `package.json` as `apps/*` and `packages/*`.
 
-| Path                          | Package                      | Role                                                                                          |
-| ----------------------------- | ---------------------------- | --------------------------------------------------------------------------------------------- |
-| `apps/web`                    | `@playground/web`            | Frontend: Vite + React; consumes the WASM artifacts.                                          |
-| `packages/wasm`               | `@playground/wasm`           | Builds `ballerina.wasm` with Go.                                                              |
-| `packages/compiler`           | `@bal-bot/compiler`          | Agent view compiler: Go sources for `ballerina-compiler.wasm` and its TypeScript worker client. |
-| `packages/workspace`          | `@bal-bot/workspace`         | Agent view shared types: files, flow model and workspace interfaces.                          |
-| `packages/browser-workspace`  | `@bal-bot/browser-workspace` | Agent view in-browser workspace, agent tools and skills.                                      |
+| Path                         | Package                         | Role                                                                                            |
+| ---------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `apps/web`                   | `@playground/web`               | Frontend: Vite + React; consumes the WASM artifacts.                                            |
+| `packages/wasm`              | `@playground/wasm`              | Builds `ballerina.wasm` with Go.                                                                |
+| `packages/compiler`          | `@playground/compiler`          | Agent view compiler: Go sources for `ballerina-compiler.wasm` and its TypeScript worker client. |
+| `packages/workspace`         | `@playground/workspace`         | Agent view shared types: files, flow model and workspace interfaces.                            |
+| `packages/browser-workspace` | `@playground/browser-workspace` | Agent view in-browser workspace, agent tools and skills.                                        |
 
 ## Commands
 

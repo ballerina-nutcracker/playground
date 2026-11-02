@@ -17,8 +17,8 @@ import type {
 	Id,
 	Located,
 	FlowUI,
-} from "@bal-bot/workspace";
-import type { AgentScope } from "@bal-bot/browser-workspace";
+} from "@playground/workspace";
+import type { AgentScope } from "@playground/browser-workspace";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
 	ArrowLeft01Icon,

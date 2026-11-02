@@ -1,5 +1,5 @@
-import { BrowserWorkspace } from "@bal-bot/browser-workspace";
-import { createCompiler } from "@bal-bot/compiler";
+import { BrowserWorkspace } from "@playground/browser-workspace";
+import { createCompiler } from "@playground/compiler";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 
 import "./bal-bot.css";

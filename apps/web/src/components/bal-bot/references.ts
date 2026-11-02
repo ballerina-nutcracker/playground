@@ -7,8 +7,8 @@ import {
 	type Files,
 	type SourceReference,
 	type HIRProgram,
-} from "@bal-bot/workspace";
-import type { AgentScope } from "@bal-bot/browser-workspace";
+} from "@playground/workspace";
+import type { AgentScope } from "@playground/browser-workspace";
 export interface ReferenceChip extends Located {
 	readonly revision: Revision;
 	readonly stale: boolean;

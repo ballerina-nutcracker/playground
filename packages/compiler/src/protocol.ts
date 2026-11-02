@@ -5,8 +5,8 @@ import type {
 	Position,
 	AnalysisResult,
 	Located,
-} from "@bal-bot/workspace";
-import { sourceText } from "@bal-bot/workspace";
+} from "@playground/workspace";
+import { sourceText } from "@playground/workspace";
 import type {
 	HIRProgram,
 	HIRGraph,
@@ -17,7 +17,7 @@ import type {
 	HIRInterface,
 	HIRBinding,
 	HIREmissionPlan,
-} from "@bal-bot/workspace";
+} from "@playground/workspace";
 
 export type CompilerRequest = {
 	readonly operation: "check" | "analyze";

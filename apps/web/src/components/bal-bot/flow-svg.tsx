@@ -11,7 +11,7 @@ import type {
 	Located,
 	HIRVariableOccurrence,
 	HIRCallSpan,
-} from "@bal-bot/workspace";
+} from "@playground/workspace";
 import {
 	VariableText,
 	wrappedVariables,

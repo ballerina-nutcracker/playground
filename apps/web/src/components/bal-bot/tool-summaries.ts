@@ -1,4 +1,4 @@
-import type { AgentMessage } from "@bal-bot/workspace";
+import type { AgentMessage } from "@playground/workspace";
 
 export type ToolSummaryState = "running" | "completed" | "failed" | "stopped";
 export interface ToolSummary {

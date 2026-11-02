@@ -7,7 +7,7 @@ import assert from "node:assert/strict";
 import {
 	createWorkspaceAgent,
 	BrowserWorkspace,
-} from "@bal-bot/browser-workspace";
+} from "@playground/browser-workspace";
 import {
 	models,
 	providerOptions,

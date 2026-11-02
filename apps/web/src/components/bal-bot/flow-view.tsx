@@ -1,6 +1,6 @@
 import type React from "react";
 import { useEffect, useMemo, useState } from "react";
-import type { FlowUI, Id, Located } from "@bal-bot/workspace";
+import type { FlowUI, Id, Located } from "@playground/workspace";
 import { instantiateGraph } from "./hir-flow";
 import type { DiagramNode, ExpansionPath } from "./hir-diagram";
 import { layoutDiagram } from "./flow";

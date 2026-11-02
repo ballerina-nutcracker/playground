@@ -12,7 +12,7 @@ import type {
 	WorkspaceAgent,
 	Id,
 	SourceReference,
-} from "@bal-bot/workspace";
+} from "@playground/workspace";
 import type { StreamFn } from "@earendil-works/pi-agent-core";
 
 export function workspaceTools(workspace: Workspace): AgentTool<TSchema>[] {

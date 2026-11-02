@@ -16,7 +16,7 @@ const disposed = new Set<object>();
 
 // Only these two modules are mocked: bun's mock.module is process-wide, and
 // the other bal-bot suites import the real workspace and providers.
-mock.module("@bal-bot/compiler", () => ({
+mock.module("@playground/compiler", () => ({
 	createCompiler: () => ({
 		analyze: async () => ({ kind: "invalid", diagnostics: [] }),
 		check: async () => ({ diagnostics: [] }),
@@ -29,7 +29,7 @@ mock.module("../src/components/bal-bot/editor", () => ({
 	},
 }));
 
-const { BrowserWorkspace } = await import("@bal-bot/browser-workspace");
+const { BrowserWorkspace } = await import("@playground/browser-workspace");
 const realDispose = BrowserWorkspace.prototype.dispose;
 BrowserWorkspace.prototype.dispose = function (this: object) {
 	disposed.add(this);

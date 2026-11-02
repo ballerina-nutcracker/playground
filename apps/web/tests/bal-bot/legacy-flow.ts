@@ -1,5 +1,5 @@
 // Frozen numeric/builder oracle for comparisons only. Never used to construct HIR.
-import type { Id, Located, ScopeModel } from "@bal-bot/workspace";
+import type { Id, Located, ScopeModel } from "@playground/workspace";
 type CallTarget =
 	| { readonly kind: "workspace"; readonly functionId: Id }
 	| { readonly kind: "external"; readonly label: string };

@@ -1,5 +1,5 @@
 import type React from "react";
-import type { HIRVariableOccurrence } from "@bal-bot/workspace";
+import type { HIRVariableOccurrence } from "@playground/workspace";
 
 export interface VariableHover {
 	readonly activeVariable?: string;

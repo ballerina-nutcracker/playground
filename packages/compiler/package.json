@@ -1,11 +1,11 @@
 {
-	"name": "@bal-bot/compiler",
+	"name": "@playground/compiler",
 	"version": "1.0.0",
 	"private": true,
 	"type": "module",
 	"exports": "./src/index.ts",
 	"dependencies": {
-		"@bal-bot/workspace": "*"
+		"@playground/workspace": "*"
 	},
 	"scripts": {
 		"test": "GOWORK=off go test ./... && bun test tests/"
