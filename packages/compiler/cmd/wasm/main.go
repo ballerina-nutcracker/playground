@@ -3,9 +3,9 @@
 package main
 
 import (
-	"balbot/compiler"
 	"encoding/json"
 	"fmt"
+	"playground/compiler"
 	"syscall/js"
 )
 

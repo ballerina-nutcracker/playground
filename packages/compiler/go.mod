@@ -1,4 +1,4 @@
-module balbot/compiler
+module playground/compiler
 
 go 1.27
 
