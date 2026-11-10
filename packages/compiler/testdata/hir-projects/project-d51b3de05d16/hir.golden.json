@@ -1,0 +1,3565 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/service/main.bal//orders/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 1
+          },
+          "end": {
+            "line": 5,
+            "column": 2
+          }
+        }
+      },
+      "text": "service /orders on new http:Listener(8080) {\n    resource function get [int id](boolean includeItems = false) returns string { _ = id; _ = includeItems; return \"order\"; }\n    remote function refresh(string note = \"\") returns boolean { _ = note; return true; }\n}",
+      "kind": "service",
+      "title": "/orders",
+      "moduleId": "browser/http_service",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 4,
+                "column": 89
+              }
+            }
+          },
+          "text": "remote function refresh(string note = \"\") returns boolean { _ = note; return true; }",
+          "kind": "remote",
+          "title": "refresh",
+          "functionId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh"
+        },
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 5
+              },
+              "end": {
+                "line": 3,
+                "column": 126
+              }
+            }
+          },
+          "text": "resource function get [int id](boolean includeItems = false) returns string { _ = id; _ = includeItems; return \"order\"; }",
+          "kind": "resource",
+          "title": "get /orders/[int id]",
+          "functionId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]"
+        }
+      ],
+      "definitions": [
+        {
+          "id": "browser/http_service/function/calculateTax",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 9,
+                "column": 1
+              },
+              "end": {
+                "line": 9,
+                "column": 101
+              }
+            }
+          },
+          "text": "function calculateTax(decimal amount, decimal rate = 0.15) returns decimal { return amount * rate; }",
+          "kind": "function",
+          "label": "calculateTax",
+          "functionId": "browser/http_service/function/calculateTax"
+        },
+        {
+          "id": "browser/http_service/function/identity",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 10,
+                "column": 1
+              },
+              "end": {
+                "line": 10,
+                "column": 51
+              }
+            }
+          },
+          "text": "function identity(int value) returns int =\u003e value;",
+          "kind": "function",
+          "label": "identity",
+          "functionId": "browser/http_service/function/identity"
+        },
+        {
+          "id": "browser/http_service/function/main",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 11,
+                "column": 1
+              },
+              "end": {
+                "line": 11,
+                "column": 26
+              }
+            }
+          },
+          "text": "public function main() {}",
+          "kind": "function",
+          "label": "main",
+          "functionId": "browser/http_service/function/main"
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "browser/http_service/class/PricingEngine/method/quote": {
+      "id": "browser/http_service/class/PricingEngine/method/quote",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 7,
+            "column": 5
+          },
+          "end": {
+            "line": 7,
+            "column": 74
+          }
+        }
+      },
+      "text": "function quote(decimal subtotal) returns decimal { return subtotal; }"
+    },
+    "browser/http_service/class/PricingEngine/method/quote/parameter/0": {
+      "id": "browser/http_service/class/PricingEngine/method/quote/parameter/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 7,
+            "column": 20
+          },
+          "end": {
+            "line": 7,
+            "column": 36
+          }
+        }
+      },
+      "text": "decimal subtotal"
+    },
+    "browser/http_service/class/PricingEngine/method/quote/returnType": {
+      "id": "browser/http_service/class/PricingEngine/method/quote/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 7,
+            "column": 46
+          },
+          "end": {
+            "line": 7,
+            "column": 53
+          }
+        }
+      },
+      "text": "decimal"
+    },
+    "browser/http_service/class/PricingEngine/method/quote/statement/0": {
+      "id": "browser/http_service/class/PricingEngine/method/quote/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 7,
+            "column": 56
+          },
+          "end": {
+            "line": 7,
+            "column": 72
+          }
+        }
+      },
+      "text": "return subtotal;"
+    },
+    "browser/http_service/function/calculateTax": {
+      "id": "browser/http_service/function/calculateTax",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 1
+          },
+          "end": {
+            "line": 9,
+            "column": 101
+          }
+        }
+      },
+      "text": "function calculateTax(decimal amount, decimal rate = 0.15) returns decimal { return amount * rate; }"
+    },
+    "browser/http_service/function/calculateTax/parameter/0": {
+      "id": "browser/http_service/function/calculateTax/parameter/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 23
+          },
+          "end": {
+            "line": 9,
+            "column": 37
+          }
+        }
+      },
+      "text": "decimal amount"
+    },
+    "browser/http_service/function/calculateTax/parameter/1": {
+      "id": "browser/http_service/function/calculateTax/parameter/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 39
+          },
+          "end": {
+            "line": 9,
+            "column": 58
+          }
+        }
+      },
+      "text": "decimal rate = 0.15"
+    },
+    "browser/http_service/function/calculateTax/returnType": {
+      "id": "browser/http_service/function/calculateTax/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 68
+          },
+          "end": {
+            "line": 9,
+            "column": 75
+          }
+        }
+      },
+      "text": "decimal"
+    },
+    "browser/http_service/function/calculateTax/statement/0": {
+      "id": "browser/http_service/function/calculateTax/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 78
+          },
+          "end": {
+            "line": 9,
+            "column": 99
+          }
+        }
+      },
+      "text": "return amount * rate;"
+    },
+    "browser/http_service/function/identity": {
+      "id": "browser/http_service/function/identity",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 1
+          },
+          "end": {
+            "line": 10,
+            "column": 51
+          }
+        }
+      },
+      "text": "function identity(int value) returns int =\u003e value;"
+    },
+    "browser/http_service/function/identity/expression": {
+      "id": "browser/http_service/function/identity/expression",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 45
+          },
+          "end": {
+            "line": 10,
+            "column": 50
+          }
+        }
+      },
+      "text": "value"
+    },
+    "browser/http_service/function/identity/parameter/0": {
+      "id": "browser/http_service/function/identity/parameter/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 19
+          },
+          "end": {
+            "line": 10,
+            "column": 28
+          }
+        }
+      },
+      "text": "int value"
+    },
+    "browser/http_service/function/identity/returnType": {
+      "id": "browser/http_service/function/identity/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 38
+          },
+          "end": {
+            "line": 10,
+            "column": 41
+          }
+        }
+      },
+      "text": "int"
+    },
+    "browser/http_service/function/main": {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 11,
+            "column": 1
+          },
+          "end": {
+            "line": 11,
+            "column": 26
+          }
+        }
+      },
+      "text": "public function main() {}"
+    },
+    "browser/http_service/service/main.bal//orders/1": {
+      "id": "browser/http_service/service/main.bal//orders/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 1
+          },
+          "end": {
+            "line": 5,
+            "column": 2
+          }
+        }
+      },
+      "text": "service /orders on new http:Listener(8080) {\n    resource function get [int id](boolean includeItems = false) returns string { _ = id; _ = includeItems; return \"order\"; }\n    remote function refresh(string note = \"\") returns boolean { _ = note; return true; }\n}"
+    },
+    "browser/http_service/service/main.bal//orders/1/method/$remote$refresh": {
+      "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 5
+          },
+          "end": {
+            "line": 4,
+            "column": 89
+          }
+        }
+      },
+      "text": "remote function refresh(string note = \"\") returns boolean { _ = note; return true; }"
+    },
+    "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/parameter/0": {
+      "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/parameter/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 29
+          },
+          "end": {
+            "line": 4,
+            "column": 45
+          }
+        }
+      },
+      "text": "string note = \"\""
+    },
+    "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/returnType": {
+      "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 55
+          },
+          "end": {
+            "line": 4,
+            "column": 62
+          }
+        }
+      },
+      "text": "boolean"
+    },
+    "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0": {
+      "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 65
+          },
+          "end": {
+            "line": 4,
+            "column": 74
+          }
+        }
+      },
+      "text": "_ = note;"
+    },
+    "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1": {
+      "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 75
+          },
+          "end": {
+            "line": 4,
+            "column": 87
+          }
+        }
+      },
+      "text": "return true;"
+    },
+    "browser/http_service/service/main.bal//orders/1/resource/get/[int id]": {
+      "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 5
+          },
+          "end": {
+            "line": 3,
+            "column": 126
+          }
+        }
+      },
+      "text": "resource function get [int id](boolean includeItems = false) returns string { _ = id; _ = includeItems; return \"order\"; }"
+    },
+    "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/parameter/0": {
+      "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/parameter/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 36
+          },
+          "end": {
+            "line": 3,
+            "column": 64
+          }
+        }
+      },
+      "text": "boolean includeItems = false"
+    },
+    "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/path/0": {
+      "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/path/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 27
+          },
+          "end": {
+            "line": 3,
+            "column": 35
+          }
+        }
+      },
+      "text": "[int id]"
+    },
+    "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/returnType": {
+      "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 74
+          },
+          "end": {
+            "line": 3,
+            "column": 80
+          }
+        }
+      },
+      "text": "string"
+    },
+    "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0": {
+      "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 83
+          },
+          "end": {
+            "line": 3,
+            "column": 90
+          }
+        }
+      },
+      "text": "_ = id;"
+    },
+    "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1": {
+      "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 91
+          },
+          "end": {
+            "line": 3,
+            "column": 108
+          }
+        }
+      },
+      "text": "_ = includeItems;"
+    },
+    "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2": {
+      "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 109
+          },
+          "end": {
+            "line": 3,
+            "column": 124
+          }
+        }
+      },
+      "text": "return \"order\";"
+    },
+    "receiver/main.bal/103/131/type": {
+      "id": "receiver/main.bal/103/131/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 36
+          },
+          "end": {
+            "line": 3,
+            "column": 43
+          }
+        }
+      },
+      "text": "boolean"
+    },
+    "receiver/main.bal/222/238/type": {
+      "id": "receiver/main.bal/222/238/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 29
+          },
+          "end": {
+            "line": 4,
+            "column": 35
+          }
+        }
+      },
+      "text": "string"
+    },
+    "receiver/main.bal/326/342/type": {
+      "id": "receiver/main.bal/326/342/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 7,
+            "column": 20
+          },
+          "end": {
+            "line": 7,
+            "column": 27
+          }
+        }
+      },
+      "text": "decimal"
+    },
+    "receiver/main.bal/405/419/type": {
+      "id": "receiver/main.bal/405/419/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 23
+          },
+          "end": {
+            "line": 9,
+            "column": 30
+          }
+        }
+      },
+      "text": "decimal"
+    },
+    "receiver/main.bal/421/440/type": {
+      "id": "receiver/main.bal/421/440/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 39
+          },
+          "end": {
+            "line": 9,
+            "column": 46
+          }
+        }
+      },
+      "text": "decimal"
+    },
+    "receiver/main.bal/502/511/type": {
+      "id": "receiver/main.bal/502/511/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 19
+          },
+          "end": {
+            "line": 10,
+            "column": 22
+          }
+        }
+      },
+      "text": "int"
+    },
+    "resource-path/main.bal/72/0": {
+      "id": "resource-path/main.bal/72/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 27
+          },
+          "end": {
+            "line": 3,
+            "column": 35
+          }
+        }
+      },
+      "text": "[int id]"
+    }
+  },
+  "functions": {
+    "browser/http_service/class/PricingEngine/method/quote": {
+      "id": "browser/http_service/class/PricingEngine/method/quote",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 7,
+            "column": 5
+          },
+          "end": {
+            "line": 7,
+            "column": 74
+          }
+        }
+      },
+      "text": "function quote(decimal subtotal) returns decimal { return subtotal; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "signatureVariables": [
+          {
+            "variableId": "variable/main.bal/334",
+            "start": 23,
+            "end": 31
+          }
+        ],
+        "kind": "method",
+        "owner": null,
+        "operation": null,
+        "name": "PricingEngine.quote",
+        "signature": "function quote(decimal subtotal) returns decimal",
+        "parameters": [
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/334",
+                "start": 8,
+                "end": 16
+              }
+            ],
+            "label": "Input",
+            "text": "decimal subtotal"
+          }
+        ],
+        "returnType": "decimal"
+      },
+      "nodes": [
+        {
+          "id": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0",
+          "occurrenceKey": "/browser/http_service/class/PricingEngine/method/quote/statement/0",
+          "sourceId": "browser/http_service/class/PricingEngine/method/quote/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/334",
+                "start": 7,
+                "end": 15
+              }
+            ],
+            "style": "return",
+            "label": "return subtotal;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/class/PricingEngine/method/quote/root",
+          "occurrenceKey": "/root",
+          "sourceId": "browser/http_service/class/PricingEngine/method/quote",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "browser/http_service/class/PricingEngine/method/quote/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/browser/http_service/class/PricingEngine/method/quote/statement/0:entry",
+          "id": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0:entry",
+          "nodeId": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/class/PricingEngine/method/quote/statement/0:normal-exit",
+          "id": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0:normal-exit",
+          "nodeId": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/class/PricingEngine/method/quote/statement/0:return",
+          "id": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0:return",
+          "nodeId": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "browser/http_service/class/PricingEngine/method/quote/root:entry",
+          "nodeId": "browser/http_service/class/PricingEngine/method/quote/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "browser/http_service/class/PricingEngine/method/quote/root:normal-exit",
+          "nodeId": "browser/http_service/class/PricingEngine/method/quote/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [],
+      "groups": [
+        {
+          "id": "browser/http_service/class/PricingEngine/method/quote/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/class/PricingEngine/method/quote/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/class/PricingEngine/method/quote/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "browser/http_service/class/PricingEngine/method/quote/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "browser/http_service/class/PricingEngine/method/quote/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/class/PricingEngine/method/quote/root/binding/entry/0",
+            "toPort": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/class/PricingEngine/method/quote/root/binding/normal",
+            "toPort": "browser/http_service/class/PricingEngine/method/quote/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/class/PricingEngine/method/quote/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/class/PricingEngine/method/quote/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/class/PricingEngine/method/quote/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/class/PricingEngine/method/quote/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/class/PricingEngine/method/quote/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/class/PricingEngine/method/quote/browser/http_service/class/PricingEngine/method/quote/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": []
+        }
+      }
+    },
+    "browser/http_service/function/calculateTax": {
+      "id": "browser/http_service/function/calculateTax",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 1
+          },
+          "end": {
+            "line": 9,
+            "column": 101
+          }
+        }
+      },
+      "text": "function calculateTax(decimal amount, decimal rate = 0.15) returns decimal { return amount * rate; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "signatureVariables": [
+          {
+            "variableId": "variable/main.bal/413",
+            "start": 30,
+            "end": 36
+          },
+          {
+            "variableId": "variable/main.bal/429",
+            "start": 46,
+            "end": 50
+          }
+        ],
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "calculateTax",
+        "signature": "function calculateTax(decimal amount, decimal rate = 0.15) returns decimal",
+        "parameters": [
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/413",
+                "start": 8,
+                "end": 14
+              }
+            ],
+            "label": "Input",
+            "text": "decimal amount"
+          },
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/429",
+                "start": 8,
+                "end": 12
+              }
+            ],
+            "label": "Input",
+            "text": "decimal rate = 0.15"
+          }
+        ],
+        "returnType": "decimal"
+      },
+      "nodes": [
+        {
+          "id": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0",
+          "occurrenceKey": "/browser/http_service/function/calculateTax/statement/0",
+          "sourceId": "browser/http_service/function/calculateTax/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/413",
+                "start": 7,
+                "end": 13
+              },
+              {
+                "variableId": "variable/main.bal/429",
+                "start": 16,
+                "end": 20
+              }
+            ],
+            "style": "return",
+            "label": "return amount * rate;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/function/calculateTax/root",
+          "occurrenceKey": "/root",
+          "sourceId": "browser/http_service/function/calculateTax",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "browser/http_service/function/calculateTax/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/browser/http_service/function/calculateTax/statement/0:entry",
+          "id": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0:entry",
+          "nodeId": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/function/calculateTax/statement/0:normal-exit",
+          "id": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0:normal-exit",
+          "nodeId": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/function/calculateTax/statement/0:return",
+          "id": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0:return",
+          "nodeId": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "browser/http_service/function/calculateTax/root:entry",
+          "nodeId": "browser/http_service/function/calculateTax/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "browser/http_service/function/calculateTax/root:normal-exit",
+          "nodeId": "browser/http_service/function/calculateTax/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [],
+      "groups": [
+        {
+          "id": "browser/http_service/function/calculateTax/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/function/calculateTax/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/function/calculateTax/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "browser/http_service/function/calculateTax/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "browser/http_service/function/calculateTax/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/function/calculateTax/root/binding/entry/0",
+            "toPort": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/function/calculateTax/root/binding/normal",
+            "toPort": "browser/http_service/function/calculateTax/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/calculateTax/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/calculateTax/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/calculateTax/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/function/calculateTax/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/function/calculateTax/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/calculateTax/browser/http_service/function/calculateTax/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": []
+        }
+      }
+    },
+    "browser/http_service/function/identity": {
+      "id": "browser/http_service/function/identity",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 1
+          },
+          "end": {
+            "line": 10,
+            "column": 51
+          }
+        }
+      },
+      "text": "function identity(int value) returns int =\u003e value;",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "signatureVariables": [
+          {
+            "variableId": "variable/main.bal/506",
+            "start": 22,
+            "end": 27
+          }
+        ],
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "identity",
+        "signature": "function identity(int value) returns int",
+        "parameters": [
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/506",
+                "start": 4,
+                "end": 9
+              }
+            ],
+            "label": "Input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "int"
+      },
+      "nodes": [
+        {
+          "id": "browser/http_service/function/identity/browser/http_service/function/identity/expression",
+          "occurrenceKey": "/browser/http_service/function/identity/expression",
+          "sourceId": "browser/http_service/function/identity/expression",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/506",
+                "start": 0,
+                "end": 5
+              }
+            ],
+            "style": "return",
+            "label": "value",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/function/identity/root",
+          "occurrenceKey": "/root",
+          "sourceId": "browser/http_service/function/identity",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "browser/http_service/function/identity/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/browser/http_service/function/identity/expression:entry",
+          "id": "browser/http_service/function/identity/browser/http_service/function/identity/expression:entry",
+          "nodeId": "browser/http_service/function/identity/browser/http_service/function/identity/expression",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/function/identity/expression:normal-exit",
+          "id": "browser/http_service/function/identity/browser/http_service/function/identity/expression:normal-exit",
+          "nodeId": "browser/http_service/function/identity/browser/http_service/function/identity/expression",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/function/identity/expression:return",
+          "id": "browser/http_service/function/identity/browser/http_service/function/identity/expression:return",
+          "nodeId": "browser/http_service/function/identity/browser/http_service/function/identity/expression",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "browser/http_service/function/identity/root:entry",
+          "nodeId": "browser/http_service/function/identity/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "browser/http_service/function/identity/root:normal-exit",
+          "nodeId": "browser/http_service/function/identity/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [],
+      "groups": [
+        {
+          "id": "browser/http_service/function/identity/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/function/identity/browser/http_service/function/identity/expression"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/function/identity/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/function/identity/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "browser/http_service/function/identity/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "browser/http_service/function/identity/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/function/identity/root/binding/entry/0",
+            "toPort": "browser/http_service/function/identity/browser/http_service/function/identity/expression:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/function/identity/root/binding/normal",
+            "toPort": "browser/http_service/function/identity/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "browser/http_service/function/identity/browser/http_service/function/identity/expression:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "browser/http_service/function/identity/browser/http_service/function/identity/expression:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/identity/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/identity/browser/http_service/function/identity/expression",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/identity/browser/http_service/function/identity/expression:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/identity/browser/http_service/function/identity/expression:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/identity/browser/http_service/function/identity/expression:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/identity/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/identity/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/function/identity/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/function/identity/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/identity/browser/http_service/function/identity/expression",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/identity/browser/http_service/function/identity/expression:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/identity/browser/http_service/function/identity/expression:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/identity/browser/http_service/function/identity/expression:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": []
+        }
+      }
+    },
+    "browser/http_service/function/main": {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 11,
+            "column": 1
+          },
+          "end": {
+            "line": 11,
+            "column": 26
+          }
+        }
+      },
+      "text": "public function main() {}",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "nodes": [
+        {
+          "id": "browser/http_service/function/main/root",
+          "occurrenceKey": "/root",
+          "sourceId": "browser/http_service/function/main",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "browser/http_service/function/main/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "browser/http_service/function/main/root:entry",
+          "nodeId": "browser/http_service/function/main/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "browser/http_service/function/main/root:normal-exit",
+          "nodeId": "browser/http_service/function/main/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [],
+      "groups": [
+        {
+          "id": "browser/http_service/function/main/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": []
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/function/main/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/function/main/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "browser/http_service/function/main/graph",
+      "interfaces": [
+        {
+          "id": "root/entry",
+          "members": [
+            {
+              "portId": "browser/http_service/function/main/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/function/main/root/binding/entry",
+            "toPort": "browser/http_service/function/main/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/function/main/root/binding/normal",
+            "toPort": "browser/http_service/function/main/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/function/main/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/function/main/root/binding/entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/function/main/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [],
+          "ports": [],
+          "edges": []
+        }
+      }
+    },
+    "browser/http_service/service/main.bal//orders/1/method/$remote$refresh": {
+      "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 5
+          },
+          "end": {
+            "line": 4,
+            "column": 89
+          }
+        }
+      },
+      "text": "remote function refresh(string note = \"\") returns boolean { _ = note; return true; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "signatureVariables": [
+          {
+            "variableId": "variable/main.bal/229",
+            "start": 31,
+            "end": 35
+          }
+        ],
+        "kind": "remote",
+        "owner": "Service /orders · ballerina/http:Listener",
+        "operation": null,
+        "name": "refresh",
+        "signature": "remote function refresh(string note = \"\") returns boolean",
+        "parameters": [
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/229",
+                "start": 7,
+                "end": 11
+              }
+            ],
+            "label": "Input",
+            "text": "string note = \"\""
+          }
+        ],
+        "returnType": "boolean"
+      },
+      "nodes": [
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0",
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0",
+          "sourceId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/229",
+                "start": 4,
+                "end": 8
+              }
+            ],
+            "style": "step",
+            "label": "_ = note;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1",
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1",
+          "sourceId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1",
+          "presentation": {
+            "kind": "plain",
+            "style": "return",
+            "label": "return true;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root",
+          "occurrenceKey": "/root",
+          "sourceId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0:entry",
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0:entry",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0:normal-exit",
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0:normal-exit",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:entry",
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:entry",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:normal-exit",
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:normal-exit",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:return",
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:return",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root:entry",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root:normal-exit",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/0",
+          "fromPort": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0:normal-exit",
+          "toPort": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0",
+              "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root/binding/entry/0",
+            "toPort": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root/binding/normal",
+            "toPort": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/method/$remote$refresh/browser/http_service/service/main.bal//orders/1/method/$remote$refresh/statement/1:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "browser/http_service/service/main.bal//orders/1/resource/get/[int id]": {
+      "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 5
+          },
+          "end": {
+            "line": 3,
+            "column": 126
+          }
+        }
+      },
+      "text": "resource function get [int id](boolean includeItems = false) returns string { _ = id; _ = includeItems; return \"order\"; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "signatureVariables": [
+          {
+            "variableId": "variable/main.bal/99",
+            "start": 27,
+            "end": 29
+          },
+          {
+            "variableId": "variable/main.bal/111",
+            "start": 39,
+            "end": 51
+          }
+        ],
+        "kind": "resource",
+        "owner": "Service /orders · ballerina/http:Listener",
+        "operation": "get",
+        "name": "/orders/[int id]",
+        "signature": "resource function get [int id](boolean includeItems = false) returns string",
+        "parameters": [
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/99",
+                "start": 5,
+                "end": 7
+              }
+            ],
+            "label": "Path",
+            "text": "[int id]"
+          },
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/111",
+                "start": 8,
+                "end": 20
+              }
+            ],
+            "label": "Input",
+            "text": "boolean includeItems = false"
+          }
+        ],
+        "returnType": "string"
+      },
+      "nodes": [
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0",
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0",
+          "sourceId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/99",
+                "start": 4,
+                "end": 6
+              }
+            ],
+            "style": "step",
+            "label": "_ = id;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1",
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1",
+          "sourceId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/111",
+                "start": 4,
+                "end": 16
+              }
+            ],
+            "style": "step",
+            "label": "_ = includeItems;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2",
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2",
+          "sourceId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2",
+          "presentation": {
+            "kind": "plain",
+            "style": "return",
+            "label": "return \"order\";",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root",
+          "occurrenceKey": "/root",
+          "sourceId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0:entry",
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0:entry",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0:normal-exit",
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0:normal-exit",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1:entry",
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1:entry",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1:normal-exit",
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1:normal-exit",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:entry",
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:entry",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:normal-exit",
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:normal-exit",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:return",
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:return",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root:entry",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root:normal-exit",
+          "nodeId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/0",
+          "fromPort": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0:normal-exit",
+          "toPort": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/1",
+          "fromPort": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1:normal-exit",
+          "toPort": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0",
+              "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1",
+              "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root/binding/entry/0",
+            "toPort": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root/binding/normal",
+            "toPort": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "browser/http_service/service/main.bal//orders/1/resource/get/[int id]/browser/http_service/service/main.bal//orders/1/resource/get/[int id]/statement/2:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

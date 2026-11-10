@@ -6,21 +6,13 @@ Ballerina playground is a web-based tool for trying out language features, hoste
 
 ### Prerequisites
 
-- Go 1.26 or later
+- Go 1.27.1 or later
 - Bun 1.3.10 or later
 
 ### Clone repository
 
-Clone with submodules:
-
 ```bash
-git clone --recurse-submodules https://github.com/ballerina-nutcracker/playground
-```
-
-If you already cloned without submodules:
-
-```bash
-git submodule update --init --recursive
+git clone https://github.com/ballerina-nutcracker/playground
 ```
 
 ### Install dependencies
@@ -34,8 +26,7 @@ bun install
 ### Code structure
 
 - `apps/web/`: Web frontend that loads `ballerina.wasm` and provides the editor/runner UI.
-- `packages/wasm/`: Go module that builds `ballerina.wasm` for the browser runtime.
-- `packages/wasm/ballerina/`: Ballerina interpreter git submodule used by the WASM runtime.
+- `packages/wasm/`: Go module that builds `ballerina.wasm` for the browser runtime. It depends on the [Ballerina](https://github.com/ballerina-nutcracker/ballerina) Go modules pinned in `packages/wasm/go.mod`.
 - `scripts/`: Supporting scripts used for development and maintenance tasks.
 
 ### Development

@@ -1,0 +1,1020 @@
+{
+  "scopes": [
+    {
+      "id": "examples/client_calls/service/main.bal///1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 1
+          },
+          "end": {
+            "line": 15,
+            "column": 2
+          }
+        }
+      },
+      "text": "service / on new http:Listener(8080) {\n    resource function get hello() returns string|error {\n        Person person = check testClient-\u003eget(\"/foo/bar\");\n        return string `hello ${person.first_name} ${person.last_name}`;\n    }\n}",
+      "kind": "service",
+      "title": "/",
+      "moduleId": "examples/client_calls",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [
+        {
+          "id": "examples/client_calls/service/main.bal///1/resource/get/hello",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 11,
+                "column": 5
+              },
+              "end": {
+                "line": 14,
+                "column": 6
+              }
+            }
+          },
+          "text": "resource function get hello() returns string|error {\n        Person person = check testClient-\u003eget(\"/foo/bar\");\n        return string `hello ${person.first_name} ${person.last_name}`;\n    }",
+          "kind": "resource",
+          "title": "get /hello",
+          "functionId": "examples/client_calls/service/main.bal///1/resource/get/hello"
+        }
+      ],
+      "definitions": [
+        {
+          "id": "examples/client_calls/function/sendMessage",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 27,
+                "column": 1
+              },
+              "end": {
+                "line": 31,
+                "column": 2
+              }
+            }
+          },
+          "text": "function sendMessage() returns string|error {\n    Queue producer = new (\"broker\", port = 9093);\n    string result = check producer-\u003esend(\"hello\", topic = \"orders\");\n    return result;\n}",
+          "kind": "function",
+          "label": "sendMessage",
+          "functionId": "examples/client_calls/function/sendMessage"
+        },
+        {
+          "id": "examples/client_calls/function/capturePanic",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 33,
+                "column": 1
+              },
+              "end": {
+                "line": 36,
+                "column": 2
+              }
+            }
+          },
+          "text": "function capturePanic() returns string|error {\n    string|error result = trap checkpanic sendMessage();\n    return result;\n}",
+          "kind": "function",
+          "label": "capturePanic",
+          "functionId": "examples/client_calls/function/capturePanic"
+        },
+        {
+          "id": "examples/client_calls/type/Person",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 6,
+                "column": 4
+              }
+            }
+          },
+          "text": "type Person record {|\n    string first_name;\n    string last_name;\n|};",
+          "kind": "type",
+          "label": "Person"
+        },
+        {
+          "id": "examples/client_calls/connector/testClient",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 8,
+                "column": 1
+              },
+              "end": {
+                "line": 8,
+                "column": 63
+              }
+            }
+          },
+          "text": "final http:Client testClient = check new (\"https://test.com\");",
+          "kind": "connector",
+          "label": "testClient"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "examples/client_calls/class/Queue/method/$remote$send": {
+      "id": "examples/client_calls/class/Queue/method/$remote$send",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 22,
+            "column": 5
+          },
+          "end": {
+            "line": 24,
+            "column": 6
+          }
+        }
+      },
+      "text": "remote function send(string message, string topic = \"jobs\") returns string|error {\n        return topic + \": \" + message;\n    }",
+      "moduleId": "examples/client_calls",
+      "entry": {
+        "kind": "remote",
+        "name": "Queue.send",
+        "signature": "remote function send(string message, string topic = \"jobs\") returns string|error",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "string message"
+          },
+          {
+            "kind": "input",
+            "text": "string topic = \"jobs\""
+          }
+        ],
+        "returnType": "string|error"
+      },
+      "body": [
+        {
+          "id": "examples/client_calls/class/Queue/method/$remote$send/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 23,
+                "column": 9
+              },
+              "end": {
+                "line": 23,
+                "column": 39
+              }
+            }
+          },
+          "text": "return topic + \": \" + message;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/client_calls/function/capturePanic": {
+      "id": "examples/client_calls/function/capturePanic",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 33,
+            "column": 1
+          },
+          "end": {
+            "line": 36,
+            "column": 2
+          }
+        }
+      },
+      "text": "function capturePanic() returns string|error {\n    string|error result = trap checkpanic sendMessage();\n    return result;\n}",
+      "moduleId": "examples/client_calls",
+      "entry": {
+        "kind": "function",
+        "name": "capturePanic",
+        "signature": "function capturePanic() returns string|error",
+        "parameters": [],
+        "returnType": "string|error"
+      },
+      "body": [
+        {
+          "id": "examples/client_calls/function/capturePanic/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 34,
+                "column": 5
+              },
+              "end": {
+                "line": 34,
+                "column": 57
+              }
+            }
+          },
+          "text": "string|error result = trap checkpanic sendMessage();",
+          "evaluation": {
+            "id": "examples/client_calls/function/capturePanic/statement/0/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 34,
+                  "column": 27
+                },
+                "end": {
+                  "line": 34,
+                  "column": 56
+                }
+              }
+            },
+            "text": "trap checkpanic sendMessage()",
+            "kind": "trap",
+            "children": [
+              {
+                "id": "examples/client_calls/function/capturePanic/statement/0/value/part/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 34,
+                      "column": 32
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 56
+                    }
+                  }
+                },
+                "text": "checkpanic sendMessage()",
+                "kind": "checkpanic",
+                "children": [
+                  {
+                    "id": "examples/client_calls/function/capturePanic/statement/0/value/part/0/part/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 34,
+                          "column": 43
+                        },
+                        "end": {
+                          "line": 34,
+                          "column": 56
+                        }
+                      }
+                    },
+                    "text": "sendMessage()",
+                    "kind": "call",
+                    "children": [],
+                    "call": {
+                      "id": "examples/client_calls/function/capturePanic/statement/0/call/0",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 34,
+                            "column": 43
+                          },
+                          "end": {
+                            "line": 34,
+                            "column": 56
+                          }
+                        }
+                      },
+                      "text": "sendMessage()",
+                      "target": {
+                        "kind": "workspace",
+                        "functionId": "examples/client_calls/function/sendMessage"
+                      },
+                      "expansion": "supported"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "binding": "string|error result",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/client_calls/function/capturePanic/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 34,
+                    "column": 43
+                  },
+                  "end": {
+                    "line": 34,
+                    "column": 56
+                  }
+                }
+              },
+              "text": "sendMessage()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/client_calls/function/sendMessage"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "examples/client_calls/function/capturePanic/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 35,
+                "column": 5
+              },
+              "end": {
+                "line": 35,
+                "column": 19
+              }
+            }
+          },
+          "text": "return result;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/client_calls/function/sendMessage": {
+      "id": "examples/client_calls/function/sendMessage",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 27,
+            "column": 1
+          },
+          "end": {
+            "line": 31,
+            "column": 2
+          }
+        }
+      },
+      "text": "function sendMessage() returns string|error {\n    Queue producer = new (\"broker\", port = 9093);\n    string result = check producer-\u003esend(\"hello\", topic = \"orders\");\n    return result;\n}",
+      "moduleId": "examples/client_calls",
+      "entry": {
+        "kind": "function",
+        "name": "sendMessage",
+        "signature": "function sendMessage() returns string|error",
+        "parameters": [],
+        "returnType": "string|error"
+      },
+      "body": [
+        {
+          "id": "examples/client_calls/function/sendMessage/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 28,
+                "column": 5
+              },
+              "end": {
+                "line": 28,
+                "column": 50
+              }
+            }
+          },
+          "text": "Queue producer = new (\"broker\", port = 9093);",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/client_calls/function/sendMessage/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 29,
+                "column": 5
+              },
+              "end": {
+                "line": 29,
+                "column": 69
+              }
+            }
+          },
+          "text": "string result = check producer-\u003esend(\"hello\", topic = \"orders\");",
+          "evaluation": {
+            "id": "examples/client_calls/function/sendMessage/statement/1/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 29,
+                  "column": 21
+                },
+                "end": {
+                  "line": 29,
+                  "column": 68
+                }
+              }
+            },
+            "text": "check producer-\u003esend(\"hello\", topic = \"orders\")",
+            "kind": "check",
+            "children": [
+              {
+                "id": "examples/client_calls/function/sendMessage/statement/1/value/part/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 29,
+                      "column": 27
+                    },
+                    "end": {
+                      "line": 29,
+                      "column": 68
+                    }
+                  }
+                },
+                "text": "producer-\u003esend(\"hello\", topic = \"orders\")",
+                "kind": "call",
+                "children": [],
+                "call": {
+                  "id": "examples/client_calls/function/sendMessage/statement/1/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 29,
+                        "column": 27
+                      },
+                      "end": {
+                        "line": 29,
+                        "column": 68
+                      }
+                    }
+                  },
+                  "text": "producer-\u003esend(\"hello\", topic = \"orders\")",
+                  "client": {
+                    "context": {
+                      "receiver": {
+                        "id": "examples/client_calls/function/sendMessage/statement/1/call/0/receiver",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 29,
+                              "column": 27
+                            },
+                            "end": {
+                              "line": 29,
+                              "column": 35
+                            }
+                          }
+                        },
+                        "text": "producer"
+                      },
+                      "type": "Queue",
+                      "origin": "constructor",
+                      "initializer": {
+                        "id": "receiver/2/initializer",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 28,
+                              "column": 22
+                            },
+                            "end": {
+                              "line": 28,
+                              "column": 49
+                            }
+                          }
+                        },
+                        "text": "new (\"broker\", port = 9093)"
+                      }
+                    },
+                    "method": "send",
+                    "arguments": [
+                      {
+                        "id": "examples/client_calls/function/sendMessage/statement/1/call/0/argument/0",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 29,
+                              "column": 42
+                            },
+                            "end": {
+                              "line": 29,
+                              "column": 49
+                            }
+                          }
+                        },
+                        "text": "\"hello\""
+                      },
+                      {
+                        "id": "examples/client_calls/function/sendMessage/statement/1/call/0/argument/1",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 29,
+                              "column": 51
+                            },
+                            "end": {
+                              "line": 29,
+                              "column": 67
+                            }
+                          }
+                        },
+                        "text": "topic = \"orders\""
+                      }
+                    ]
+                  },
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "examples/client_calls/class/Queue/method/$remote$send"
+                  },
+                  "expansion": "supported"
+                }
+              }
+            ]
+          },
+          "binding": "string result",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/client_calls/function/sendMessage/statement/1/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 29,
+                    "column": 27
+                  },
+                  "end": {
+                    "line": 29,
+                    "column": 68
+                  }
+                }
+              },
+              "text": "producer-\u003esend(\"hello\", topic = \"orders\")",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "examples/client_calls/function/sendMessage/statement/1/call/0/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 29,
+                          "column": 27
+                        },
+                        "end": {
+                          "line": 29,
+                          "column": 35
+                        }
+                      }
+                    },
+                    "text": "producer"
+                  },
+                  "type": "Queue",
+                  "origin": "constructor",
+                  "initializer": {
+                    "id": "receiver/2/initializer",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 28,
+                          "column": 22
+                        },
+                        "end": {
+                          "line": 28,
+                          "column": 49
+                        }
+                      }
+                    },
+                    "text": "new (\"broker\", port = 9093)"
+                  }
+                },
+                "method": "send",
+                "arguments": [
+                  {
+                    "id": "examples/client_calls/function/sendMessage/statement/1/call/0/argument/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 29,
+                          "column": 42
+                        },
+                        "end": {
+                          "line": 29,
+                          "column": 49
+                        }
+                      }
+                    },
+                    "text": "\"hello\""
+                  },
+                  {
+                    "id": "examples/client_calls/function/sendMessage/statement/1/call/0/argument/1",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 29,
+                          "column": 51
+                        },
+                        "end": {
+                          "line": 29,
+                          "column": 67
+                        }
+                      }
+                    },
+                    "text": "topic = \"orders\""
+                  }
+                ]
+              },
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/client_calls/class/Queue/method/$remote$send"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "examples/client_calls/function/sendMessage/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 30,
+                "column": 5
+              },
+              "end": {
+                "line": 30,
+                "column": 19
+              }
+            }
+          },
+          "text": "return result;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/client_calls/service/main.bal///1/resource/get/hello": {
+      "id": "examples/client_calls/service/main.bal///1/resource/get/hello",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 11,
+            "column": 5
+          },
+          "end": {
+            "line": 14,
+            "column": 6
+          }
+        }
+      },
+      "text": "resource function get hello() returns string|error {\n        Person person = check testClient-\u003eget(\"/foo/bar\");\n        return string `hello ${person.first_name} ${person.last_name}`;\n    }",
+      "moduleId": "examples/client_calls",
+      "entry": {
+        "kind": "resource",
+        "name": "get /hello",
+        "signature": "resource function get hello() returns string|error",
+        "parameters": [],
+        "returnType": "string|error"
+      },
+      "body": [
+        {
+          "id": "examples/client_calls/service/main.bal///1/resource/get/hello/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 12,
+                "column": 9
+              },
+              "end": {
+                "line": 12,
+                "column": 59
+              }
+            }
+          },
+          "text": "Person person = check testClient-\u003eget(\"/foo/bar\");",
+          "evaluation": {
+            "id": "examples/client_calls/service/main.bal///1/resource/get/hello/statement/0/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 12,
+                  "column": 25
+                },
+                "end": {
+                  "line": 12,
+                  "column": 58
+                }
+              }
+            },
+            "text": "check testClient-\u003eget(\"/foo/bar\")",
+            "kind": "check",
+            "children": [
+              {
+                "id": "examples/client_calls/service/main.bal///1/resource/get/hello/statement/0/value/part/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 12,
+                      "column": 31
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 58
+                    }
+                  }
+                },
+                "text": "testClient-\u003eget(\"/foo/bar\")",
+                "kind": "call",
+                "children": [],
+                "call": {
+                  "id": "examples/client_calls/service/main.bal///1/resource/get/hello/statement/0/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 12,
+                        "column": 31
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 58
+                      }
+                    }
+                  },
+                  "text": "testClient-\u003eget(\"/foo/bar\")",
+                  "client": {
+                    "context": {
+                      "receiver": {
+                        "id": "examples/client_calls/service/main.bal///1/resource/get/hello/statement/0/call/0/receiver",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 12,
+                              "column": 31
+                            },
+                            "end": {
+                              "line": 12,
+                              "column": 41
+                            }
+                          }
+                        },
+                        "text": "testClient"
+                      },
+                      "type": "http:Client",
+                      "origin": "constructor",
+                      "initializer": {
+                        "id": "receiver/0/initializer",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 8,
+                              "column": 32
+                            },
+                            "end": {
+                              "line": 8,
+                              "column": 62
+                            }
+                          }
+                        },
+                        "text": "check new (\"https://test.com\")"
+                      }
+                    },
+                    "method": "get",
+                    "arguments": [
+                      {
+                        "id": "examples/client_calls/service/main.bal///1/resource/get/hello/statement/0/call/0/argument/0",
+                        "source": {
+                          "file": "main.bal",
+                          "range": {
+                            "start": {
+                              "line": 12,
+                              "column": 47
+                            },
+                            "end": {
+                              "line": 12,
+                              "column": 57
+                            }
+                          }
+                        },
+                        "text": "\"/foo/bar\""
+                      }
+                    ]
+                  },
+                  "target": {
+                    "kind": "external",
+                    "label": "$mono$$remote$get$0"
+                  },
+                  "expansion": "unavailable",
+                  "reason": "The target is outside the workspace."
+                }
+              }
+            ]
+          },
+          "binding": "Person person",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/client_calls/service/main.bal///1/resource/get/hello/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 12,
+                    "column": 31
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 58
+                  }
+                }
+              },
+              "text": "testClient-\u003eget(\"/foo/bar\")",
+              "client": {
+                "context": {
+                  "receiver": {
+                    "id": "examples/client_calls/service/main.bal///1/resource/get/hello/statement/0/call/0/receiver",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 12,
+                          "column": 31
+                        },
+                        "end": {
+                          "line": 12,
+                          "column": 41
+                        }
+                      }
+                    },
+                    "text": "testClient"
+                  },
+                  "type": "http:Client",
+                  "origin": "constructor",
+                  "initializer": {
+                    "id": "receiver/0/initializer",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 8,
+                          "column": 32
+                        },
+                        "end": {
+                          "line": 8,
+                          "column": 62
+                        }
+                      }
+                    },
+                    "text": "check new (\"https://test.com\")"
+                  }
+                },
+                "method": "get",
+                "arguments": [
+                  {
+                    "id": "examples/client_calls/service/main.bal///1/resource/get/hello/statement/0/call/0/argument/0",
+                    "source": {
+                      "file": "main.bal",
+                      "range": {
+                        "start": {
+                          "line": 12,
+                          "column": 47
+                        },
+                        "end": {
+                          "line": 12,
+                          "column": 57
+                        }
+                      }
+                    },
+                    "text": "\"/foo/bar\""
+                  }
+                ]
+              },
+              "target": {
+                "kind": "external",
+                "label": "$mono$$remote$get$0"
+              },
+              "expansion": "unavailable",
+              "reason": "The target is outside the workspace."
+            }
+          ]
+        },
+        {
+          "id": "examples/client_calls/service/main.bal///1/resource/get/hello/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 13,
+                "column": 9
+              },
+              "end": {
+                "line": 13,
+                "column": 72
+              }
+            }
+          },
+          "text": "return string `hello ${person.first_name} ${person.last_name}`;",
+          "evaluation": {
+            "id": "examples/client_calls/service/main.bal///1/resource/get/hello/statement/1/value",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 13,
+                  "column": 16
+                },
+                "end": {
+                  "line": 13,
+                  "column": 71
+                }
+              }
+            },
+            "text": "string `hello ${person.first_name} ${person.last_name}`",
+            "kind": "template",
+            "children": [
+              {
+                "id": "examples/client_calls/service/main.bal///1/resource/get/hello/statement/1/value/insertion/0",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 13,
+                      "column": 32
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 49
+                    }
+                  }
+                },
+                "text": "person.first_name",
+                "kind": "source",
+                "children": []
+              },
+              {
+                "id": "examples/client_calls/service/main.bal///1/resource/get/hello/statement/1/value/insertion/1",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 13,
+                      "column": 53
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 69
+                    }
+                  }
+                },
+                "text": "person.last_name",
+                "kind": "source",
+                "children": []
+              }
+            ],
+            "strings": [
+              "hello ",
+              " ",
+              ""
+            ]
+          },
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

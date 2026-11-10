@@ -17,8 +17,8 @@
 package main
 
 import (
-	"ballerina/projects"
-	"ballerina/tools/diagnostics"
+	"github.com/ballerina-nutcracker/ballerina/projects"
+	"github.com/ballerina-nutcracker/ballerina/tools/diagnostics"
 	"fmt"
 	"io"
 	"io/fs"

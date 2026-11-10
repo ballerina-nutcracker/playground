@@ -1,0 +1,77 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module browser/http_service / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id browser http_service 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (service (position 2:1 5:2)
+    (absolute-resource-path orders)
+    (on
+    (new (position 2:20 2:43)
+      (user-defined-type (position 2:24 2:37) http Listener) (
+      (literal (position 2:38 2:42) 8080) <default> (position 2:20 2:43))))
+    (function (position 4:5 4:89) $remote$refresh (
+      (variable (position 4:29 4:45) note (type
+        (value-type (position 4:29 4:35) string)) (expr
+        (literal (position 4:43 4:45) )))) (
+      (value-type (position 4:55 4:62) boolean))
+      (block-function-body (position 4:63 4:89)
+        (assignment (position 4:65 4:74)
+          (wildcard-binding-pattern (position 4:65 4:66))
+          (simple-var-ref (position 4:69 4:73) note))
+        (return (position 4:75 4:87)
+          (literal (position 4:82 4:86) true))))
+    (resource-function (position 3:5 3:126) get
+      (param id
+        (value-type (position 3:28 3:31) int))
+      (variable (position 3:36 3:64) includeItems (type
+        (value-type (position 3:36 3:43) boolean)) (expr
+        (literal (position 3:59 3:64) false)))
+      (value-type (position 3:74 3:80) string)
+      (block-function-body (position 3:81 3:126)
+        (assignment (position 3:83 3:90)
+          (wildcard-binding-pattern (position 3:83 3:84))
+          (simple-var-ref (position 3:87 3:89) id))
+        (assignment (position 3:91 3:108)
+          (wildcard-binding-pattern (position 3:91 3:92))
+          (simple-var-ref (position 3:95 3:107) includeItems))
+        (return (position 3:109 3:124)
+          (literal (position 3:116 3:123) order)))))
+  (class-definition (position 6:1 8:2) PricingEngine
+    (function (position 7:5 7:74) quote (
+      (variable (position 7:20 7:36) subtotal (type
+        (value-type (position 7:20 7:27) decimal)))) (
+      (value-type (position 7:46 7:53) decimal))
+      (block-function-body (position 7:54 7:74)
+        (return (position 7:56 7:72)
+          (simple-var-ref (position 7:63 7:71) subtotal)))))
+  (function (position 9:1 9:101) calculateTax (
+    (variable (position 9:23 9:37) amount (type
+      (value-type (position 9:23 9:30) decimal)))
+    (variable (position 9:39 9:58) rate (type
+      (value-type (position 9:39 9:46) decimal)) (expr
+      (literal (position 9:54 9:58) 0.15)))) (
+    (value-type (position 9:68 9:75) decimal))
+    (block-function-body (position 9:76 9:101)
+      (return (position 9:78 9:99)
+        (binary-expr (position 9:85 9:98) *
+          (simple-var-ref (position 9:85 9:91) amount)
+          (simple-var-ref (position 9:94 9:98) rate)))))
+  (function (position 10:1 10:51) identity (
+    (variable (position 10:19 10:28) value (type
+      (value-type (position 10:19 10:22) int)))) (
+    (value-type (position 10:38 10:41) int))
+    (expr-function-body (position 10:42 10:51)
+      (simple-var-ref (position 10:45 10:50) value)))
+  (function (position 11:1 11:26) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 11:24 11:26))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### new main.bal [42,65)
+arguments: 1
+argument[0]:
+(literal (position 2:38 2:42) 8080)

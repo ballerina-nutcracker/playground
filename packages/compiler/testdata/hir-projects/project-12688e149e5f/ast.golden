@@ -1,0 +1,49 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module browser/http_service / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id browser http_service 0.1.0)
+  (function (position 1:1 1:80) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 1:24 1:80)
+      (var-def (position 1:26 1:66)
+        (variable (position 1:26 1:66) result (expr
+          (invocation (position 1:39 1:65) value (
+            (binary-expr (position 1:45 1:64) +
+              (invocation (position 1:45 1:53) value (
+                (literal (position 1:51 1:52) 1)))
+              (invocation (position 1:56 1:64) value (
+                (literal (position 1:62 1:63) 2)))))))))
+      (assignment (position 1:67 1:78)
+        (wildcard-binding-pattern (position 1:67 1:68))
+        (simple-var-ref (position 1:71 1:77) result))))
+  (function (position 1:81 1:128) value (
+    (variable (position 1:96 1:101) n (type
+      (value-type (position 1:96 1:99) int)))) (
+    (value-type (position 1:111 1:114) int))
+    (block-function-body (position 1:115 1:128)
+      (return (position 1:117 1:126)
+        (simple-var-ref (position 1:124 1:125) n)))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### call main.bal [38,64)
+arguments: 1
+argument[0]:
+(binary-expr (position 1:45 1:64) +
+  (invocation (position 1:45 1:53) value (
+    (literal (position 1:51 1:52) 1)))
+  (invocation (position 1:56 1:64) value (
+    (literal (position 1:62 1:63) 2))))
+
+### call main.bal [44,52)
+arguments: 1
+argument[0]:
+(literal (position 1:51 1:52) 1)
+
+### call main.bal [55,63)
+arguments: 1
+argument[0]:
+(literal (position 1:62 1:63) 2)

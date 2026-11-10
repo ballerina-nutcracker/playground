@@ -1,0 +1,3106 @@
+{
+  "catalogRef": "27e9ce81cd7b84ce3e23a23505682e0016451125ac1bc40d561a8ee032d69ec3",
+  "legacyProgram": {
+    "scopes": [],
+    "functions": {
+      "main": {
+        "id": "main",
+        "text": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "moduleId": "test",
+        "body": [
+          {
+            "id": "first",
+            "text": "first",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 6
+                }
+              }
+            },
+            "kind": "simple",
+            "operation": "declare",
+            "presentation": "step",
+            "calls": [
+              {
+                "id": "first/call",
+                "text": "first/call",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 11
+                    }
+                  }
+                },
+                "target": {
+                  "kind": "workspace",
+                  "functionId": "helper"
+                },
+                "expansion": "supported"
+              }
+            ]
+          },
+          {
+            "id": "second",
+            "text": "second",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 7
+                }
+              }
+            },
+            "kind": "simple",
+            "operation": "declare",
+            "presentation": "step",
+            "calls": [
+              {
+                "id": "second/call",
+                "text": "second/call",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 12
+                    }
+                  }
+                },
+                "target": {
+                  "kind": "workspace",
+                  "functionId": "helper"
+                },
+                "expansion": "supported"
+              }
+            ]
+          },
+          {
+            "id": "after",
+            "text": "after",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 6
+                }
+              }
+            },
+            "kind": "simple",
+            "operation": "assign",
+            "presentation": "step",
+            "calls": []
+          }
+        ]
+      },
+      "helper": {
+        "id": "helper",
+        "text": "helper",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
+        },
+        "moduleId": "test",
+        "body": [
+          {
+            "id": "recursive",
+            "text": "recursive",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 10
+                }
+              }
+            },
+            "kind": "simple",
+            "operation": "declare",
+            "presentation": "step",
+            "calls": [
+              {
+                "id": "recursive/call",
+                "text": "recursive/call",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 15
+                    }
+                  }
+                },
+                "target": {
+                  "kind": "workspace",
+                  "functionId": "helper"
+                },
+                "expansion": "supported"
+              }
+            ]
+          },
+          {
+            "id": "ret",
+            "text": "ret",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 4
+                }
+              }
+            },
+            "kind": "return",
+            "calls": []
+          }
+        ]
+      }
+    }
+  },
+  "hir": {
+    "scopes": [],
+    "sources": {
+      "after": {
+        "id": "after",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 6
+            }
+          }
+        },
+        "text": "after"
+      },
+      "first": {
+        "id": "first",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 6
+            }
+          }
+        },
+        "text": "first"
+      },
+      "first/call": {
+        "id": "first/call",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 11
+            }
+          }
+        },
+        "text": "first/call"
+      },
+      "helper": {
+        "id": "helper",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
+        },
+        "text": "helper"
+      },
+      "main": {
+        "id": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "main"
+      },
+      "recursive": {
+        "id": "recursive",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 10
+            }
+          }
+        },
+        "text": "recursive"
+      },
+      "recursive/call": {
+        "id": "recursive/call",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 15
+            }
+          }
+        },
+        "text": "recursive/call"
+      },
+      "ret": {
+        "id": "ret",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 4
+            }
+          }
+        },
+        "text": "ret"
+      },
+      "second": {
+        "id": "second",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
+        },
+        "text": "second"
+      },
+      "second/call": {
+        "id": "second/call",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 12
+            }
+          }
+        },
+        "text": "second/call"
+      }
+    },
+    "functions": {
+      "helper": {
+        "id": "helper",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
+        },
+        "text": "helper",
+        "moduleId": "test",
+        "entry": {
+          "kind": "function",
+          "owner": null,
+          "operation": null,
+          "name": "",
+          "signature": "",
+          "parameters": [],
+          "returnType": ""
+        },
+        "nodes": [
+          {
+            "id": "helper/recursive",
+            "occurrenceKey": "/recursive",
+            "sourceId": "recursive",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "recursive",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "helper/recursive/group"
+            }
+          },
+          {
+            "id": "helper/recursive/expand/recursive/call",
+            "occurrenceKey": "/recursive/expand/recursive/call",
+            "sourceId": "recursive/call",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "recursive/call",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "call",
+                "occurrenceKey": "/recursive/expand/recursive/call",
+                "availability": {
+                  "kind": "available"
+                },
+                "recursive": {
+                  "label": "recursive/call",
+                  "sections": [],
+                  "limitation": "Recursive calls remain collapsed.",
+                  "title": "Recursive calls remain collapsed.",
+                  "ariaLabel": "Recursive call recursive/call",
+                  "glyph": "↻"
+                }
+              }
+            },
+            "body": {
+              "kind": "reference",
+              "reference": {
+                "graphId": "helper",
+                "occurrenceKey": "/recursive/expand/recursive/call",
+                "availability": {
+                  "kind": "available"
+                },
+                "container": {
+                  "profile": "call",
+                  "root": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  },
+                  "inline": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  }
+                },
+                "collapsed": {
+                  "interfaces": [
+                    {
+                      "id": "entry",
+                      "members": [
+                        {
+                          "portId": "helper/recursive/expand/recursive/call:entry",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "normal",
+                      "members": [
+                        {
+                          "portId": "helper/recursive/expand/recursive/call:normal-exit",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "returns",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "panics",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    }
+                  ],
+                  "edges": []
+                },
+                "inline": [
+                  {
+                    "kind": "entry",
+                    "id": "helper/recursive/expand/recursive/call/enter",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "helper/recursive/expand/recursive/call:entry",
+                    "targetInterfaceId": "entry",
+                    "edge": {
+                      "kind": "sequence",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "helper/recursive/expand/recursive/call/exit/normal",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "helper/recursive/expand/recursive/call:normal-exit",
+                    "targetInterfaceId": "normal",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "helper/recursive/expand/recursive/call/exit/returns",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "helper/recursive/expand/recursive/call:normal-exit",
+                    "targetInterfaceId": "returns",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "helper/ret",
+            "occurrenceKey": "/ret",
+            "sourceId": "ret",
+            "presentation": {
+              "kind": "plain",
+              "style": "return",
+              "label": "ret",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "helper/root",
+            "occurrenceKey": "/root",
+            "sourceId": "helper",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "helper/root/group"
+            }
+          }
+        ],
+        "ports": [
+          {
+            "occurrenceKey": "/recursive:entry",
+            "id": "helper/recursive:entry",
+            "nodeId": "helper/recursive",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/recursive:normal-exit",
+            "id": "helper/recursive:normal-exit",
+            "nodeId": "helper/recursive",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "header-bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/recursive/expand/recursive/call:entry",
+            "id": "helper/recursive/expand/recursive/call:entry",
+            "nodeId": "helper/recursive/expand/recursive/call",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/recursive/expand/recursive/call:normal-exit",
+            "id": "helper/recursive/expand/recursive/call:normal-exit",
+            "nodeId": "helper/recursive/expand/recursive/call",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/ret:entry",
+            "id": "helper/ret:entry",
+            "nodeId": "helper/ret",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/ret:normal-exit",
+            "id": "helper/ret:normal-exit",
+            "nodeId": "helper/ret",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/ret:return",
+            "id": "helper/ret:return",
+            "nodeId": "helper/ret",
+            "role": "return",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:entry",
+            "id": "helper/root:entry",
+            "nodeId": "helper/root",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:normal-exit",
+            "id": "helper/root:normal-exit",
+            "nodeId": "helper/root",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/0",
+            "fromPort": "helper/recursive:normal-exit",
+            "toPort": "helper/recursive/expand/recursive/call:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/1",
+            "fromPort": "helper/recursive/expand/recursive/call:entry",
+            "toPort": "helper/recursive/expand/recursive/call:normal-exit",
+            "when": {
+              "kind": "not",
+              "operand": {
+                "kind": "nonempty",
+                "referenceNodeId": "helper/recursive/expand/recursive/call",
+                "interfaceId": "entry"
+              }
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/2",
+            "fromPort": "helper/recursive/expand/recursive/call:normal-exit",
+            "toPort": "helper/ret:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "any",
+                      "operands": [
+                        {
+                          "kind": "not",
+                          "operand": {
+                            "kind": "nonempty",
+                            "referenceNodeId": "helper/recursive/expand/recursive/call",
+                            "interfaceId": "entry"
+                          }
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "helper/recursive/expand/recursive/call",
+                          "interfaceId": "normal"
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "helper/recursive/expand/recursive/call",
+                          "interfaceId": "returns"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "helper/recursive/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "helper/recursive/expand/recursive/call"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          },
+          {
+            "id": "helper/root/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "helper/recursive",
+                "helper/ret"
+              ]
+            },
+            "style": {
+              "profile": "root",
+              "root": {
+                "node": true,
+                "header": false,
+                "container": true
+              },
+              "inline": {
+                "node": false,
+                "header": false,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "helper/graph",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "helper/root"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          }
+        ],
+        "rootGroup": "helper/graph",
+        "interfaces": [
+          {
+            "id": "root/entry/0",
+            "members": [
+              {
+                "portId": "helper/root:entry",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "helper/root/binding/entry/0",
+              "toPort": "helper/recursive:entry",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "root/normal",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "helper/root/binding/normal",
+              "toPort": "helper/root:normal-exit",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "entry",
+            "members": [
+              {
+                "portId": "helper/recursive:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "normal",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "returns",
+            "members": [
+              {
+                "portId": "helper/ret:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "panics",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          }
+        ],
+        "emission": {
+          "root": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "helper/root",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/recursive",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/recursive/expand/recursive/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "helper/recursive/expand/recursive/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/ret",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "helper/recursive:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/recursive:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/recursive/expand/recursive/call:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/recursive/expand/recursive/call:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "helper/recursive/expand/recursive/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/ret:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/ret:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/ret:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/root:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/root:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "helper/recursive/expand/recursive/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "helper/recursive/expand/recursive/call/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "helper/recursive/expand/recursive/call/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "helper/recursive/expand/recursive/call/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "helper/recursive/expand/recursive/call",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "helper/recursive/expand/recursive/call",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "helper/recursive/expand/recursive/call",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "helper/recursive/expand/recursive/call",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "helper/root/binding/entry/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "helper/root/binding/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "inline": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "helper/recursive",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/recursive/expand/recursive/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "helper/recursive/expand/recursive/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/ret",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "helper/recursive:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/recursive:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/recursive/expand/recursive/call:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/recursive/expand/recursive/call:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "helper/recursive/expand/recursive/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/ret:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/ret:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "helper/ret:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "helper/recursive/expand/recursive/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "helper/recursive/expand/recursive/call/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "helper/recursive/expand/recursive/call/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "helper/recursive/expand/recursive/call/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "helper/recursive/expand/recursive/call",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "helper/recursive/expand/recursive/call",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "helper/recursive/expand/recursive/call",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "helper/recursive/expand/recursive/call",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "main": {
+        "id": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "main",
+        "moduleId": "test",
+        "entry": {
+          "kind": "function",
+          "owner": null,
+          "operation": null,
+          "name": "",
+          "signature": "",
+          "parameters": [],
+          "returnType": ""
+        },
+        "nodes": [
+          {
+            "id": "main/first",
+            "occurrenceKey": "/first",
+            "sourceId": "first",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "first",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/first/group"
+            }
+          },
+          {
+            "id": "main/first/expand/first/call",
+            "occurrenceKey": "/first/expand/first/call",
+            "sourceId": "first/call",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "first/call",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "call",
+                "occurrenceKey": "/first/expand/first/call",
+                "availability": {
+                  "kind": "available"
+                },
+                "recursive": {
+                  "label": "first/call",
+                  "sections": [],
+                  "limitation": "Recursive calls remain collapsed.",
+                  "title": "Recursive calls remain collapsed.",
+                  "ariaLabel": "Recursive call first/call",
+                  "glyph": "↻"
+                }
+              }
+            },
+            "body": {
+              "kind": "reference",
+              "reference": {
+                "graphId": "helper",
+                "occurrenceKey": "/first/expand/first/call",
+                "availability": {
+                  "kind": "available"
+                },
+                "container": {
+                  "profile": "call",
+                  "root": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  },
+                  "inline": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  }
+                },
+                "collapsed": {
+                  "interfaces": [
+                    {
+                      "id": "entry",
+                      "members": [
+                        {
+                          "portId": "main/first/expand/first/call:entry",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "normal",
+                      "members": [
+                        {
+                          "portId": "main/first/expand/first/call:normal-exit",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "returns",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "panics",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    }
+                  ],
+                  "edges": []
+                },
+                "inline": [
+                  {
+                    "kind": "entry",
+                    "id": "main/first/expand/first/call/enter",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "main/first/expand/first/call:entry",
+                    "targetInterfaceId": "entry",
+                    "edge": {
+                      "kind": "sequence",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "main/first/expand/first/call/exit/normal",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "main/first/expand/first/call:normal-exit",
+                    "targetInterfaceId": "normal",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "main/first/expand/first/call/exit/returns",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "main/first/expand/first/call:normal-exit",
+                    "targetInterfaceId": "returns",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "main/second",
+            "occurrenceKey": "/second",
+            "sourceId": "second",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "second",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/second/group"
+            }
+          },
+          {
+            "id": "main/second/expand/second/call",
+            "occurrenceKey": "/second/expand/second/call",
+            "sourceId": "second/call",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "second/call",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "call",
+                "occurrenceKey": "/second/expand/second/call",
+                "availability": {
+                  "kind": "available"
+                },
+                "recursive": {
+                  "label": "second/call",
+                  "sections": [],
+                  "limitation": "Recursive calls remain collapsed.",
+                  "title": "Recursive calls remain collapsed.",
+                  "ariaLabel": "Recursive call second/call",
+                  "glyph": "↻"
+                }
+              }
+            },
+            "body": {
+              "kind": "reference",
+              "reference": {
+                "graphId": "helper",
+                "occurrenceKey": "/second/expand/second/call",
+                "availability": {
+                  "kind": "available"
+                },
+                "container": {
+                  "profile": "call",
+                  "root": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  },
+                  "inline": {
+                    "node": true,
+                    "header": true,
+                    "container": true
+                  }
+                },
+                "collapsed": {
+                  "interfaces": [
+                    {
+                      "id": "entry",
+                      "members": [
+                        {
+                          "portId": "main/second/expand/second/call:entry",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "normal",
+                      "members": [
+                        {
+                          "portId": "main/second/expand/second/call:normal-exit",
+                          "when": {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        }
+                      ],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "returns",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    },
+                    {
+                      "id": "panics",
+                      "members": [],
+                      "exports": [],
+                      "root": {
+                        "kind": "terminal"
+                      }
+                    }
+                  ],
+                  "edges": []
+                },
+                "inline": [
+                  {
+                    "kind": "entry",
+                    "id": "main/second/expand/second/call/enter",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "main/second/expand/second/call:entry",
+                    "targetInterfaceId": "entry",
+                    "edge": {
+                      "kind": "sequence",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "main/second/expand/second/call/exit/normal",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "main/second/expand/second/call:normal-exit",
+                    "targetInterfaceId": "normal",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  },
+                  {
+                    "kind": "exit",
+                    "id": "main/second/expand/second/call/exit/returns",
+                    "when": {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    "callerPortId": "main/second/expand/second/call:normal-exit",
+                    "targetInterfaceId": "returns",
+                    "edge": {
+                      "kind": "return",
+                      "label": null,
+                      "routing": "direct"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "main/after",
+            "occurrenceKey": "/after",
+            "sourceId": "after",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "after",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/root",
+            "occurrenceKey": "/root",
+            "sourceId": "main",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/root/group"
+            }
+          }
+        ],
+        "ports": [
+          {
+            "occurrenceKey": "/first:entry",
+            "id": "main/first:entry",
+            "nodeId": "main/first",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/first:normal-exit",
+            "id": "main/first:normal-exit",
+            "nodeId": "main/first",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "header-bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/first/expand/first/call:entry",
+            "id": "main/first/expand/first/call:entry",
+            "nodeId": "main/first/expand/first/call",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/first/expand/first/call:normal-exit",
+            "id": "main/first/expand/first/call:normal-exit",
+            "nodeId": "main/first/expand/first/call",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/second:entry",
+            "id": "main/second:entry",
+            "nodeId": "main/second",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/second:normal-exit",
+            "id": "main/second:normal-exit",
+            "nodeId": "main/second",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "header-bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/second/expand/second/call:entry",
+            "id": "main/second/expand/second/call:entry",
+            "nodeId": "main/second/expand/second/call",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/second/expand/second/call:normal-exit",
+            "id": "main/second/expand/second/call:normal-exit",
+            "nodeId": "main/second/expand/second/call",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/after:entry",
+            "id": "main/after:entry",
+            "nodeId": "main/after",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/after:normal-exit",
+            "id": "main/after:normal-exit",
+            "nodeId": "main/after",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:entry",
+            "id": "main/root:entry",
+            "nodeId": "main/root",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:normal-exit",
+            "id": "main/root:normal-exit",
+            "nodeId": "main/root",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/0",
+            "fromPort": "main/first:normal-exit",
+            "toPort": "main/first/expand/first/call:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/1",
+            "fromPort": "main/first/expand/first/call:entry",
+            "toPort": "main/first/expand/first/call:normal-exit",
+            "when": {
+              "kind": "not",
+              "operand": {
+                "kind": "nonempty",
+                "referenceNodeId": "main/first/expand/first/call",
+                "interfaceId": "entry"
+              }
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/2",
+            "fromPort": "main/second:normal-exit",
+            "toPort": "main/second/expand/second/call:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/3",
+            "fromPort": "main/second/expand/second/call:entry",
+            "toPort": "main/second/expand/second/call:normal-exit",
+            "when": {
+              "kind": "not",
+              "operand": {
+                "kind": "nonempty",
+                "referenceNodeId": "main/second/expand/second/call",
+                "interfaceId": "entry"
+              }
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/4",
+            "fromPort": "main/first/expand/first/call:normal-exit",
+            "toPort": "main/second:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "any",
+                      "operands": [
+                        {
+                          "kind": "not",
+                          "operand": {
+                            "kind": "nonempty",
+                            "referenceNodeId": "main/first/expand/first/call",
+                            "interfaceId": "entry"
+                          }
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "main/first/expand/first/call",
+                          "interfaceId": "normal"
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "main/first/expand/first/call",
+                          "interfaceId": "returns"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/5",
+            "fromPort": "main/second/expand/second/call:normal-exit",
+            "toPort": "main/after:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "any",
+                      "operands": [
+                        {
+                          "kind": "not",
+                          "operand": {
+                            "kind": "nonempty",
+                            "referenceNodeId": "main/second/expand/second/call",
+                            "interfaceId": "entry"
+                          }
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "main/second/expand/second/call",
+                          "interfaceId": "normal"
+                        },
+                        {
+                          "kind": "nonempty",
+                          "referenceNodeId": "main/second/expand/second/call",
+                          "interfaceId": "returns"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "main/first/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/first/expand/first/call"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          },
+          {
+            "id": "main/second/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/second/expand/second/call"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          },
+          {
+            "id": "main/root/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/first",
+                "main/second",
+                "main/after"
+              ]
+            },
+            "style": {
+              "profile": "root",
+              "root": {
+                "node": true,
+                "header": false,
+                "container": true
+              },
+              "inline": {
+                "node": false,
+                "header": false,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "main/graph",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/root"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          }
+        ],
+        "rootGroup": "main/graph",
+        "interfaces": [
+          {
+            "id": "root/entry/0",
+            "members": [
+              {
+                "portId": "main/root:entry",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "main/root/binding/entry/0",
+              "toPort": "main/first:entry",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "root/normal",
+            "members": [
+              {
+                "portId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "main/root/binding/normal",
+              "toPort": "main/root:normal-exit",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "entry",
+            "members": [
+              {
+                "portId": "main/first:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "normal",
+            "members": [
+              {
+                "portId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "returns",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "panics",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          }
+        ],
+        "emission": {
+          "root": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "main/root",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/first",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/first/expand/first/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "main/first/expand/first/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/second",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/second/expand/second/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "main/second/expand/second/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "main/first:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/first:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/first/expand/first/call:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/first/expand/first/call:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "main/first/expand/first/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/second:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/second:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/second/expand/second/call:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/second/expand/second/call:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "main/second/expand/second/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/root:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/root:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "main/first/expand/first/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/first/expand/first/call/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/first/expand/first/call/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/first/expand/first/call/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "main/first/expand/first/call",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "main/second/expand/second/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/second/expand/second/call/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/second/expand/second/call/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/second/expand/second/call/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/3",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "main/second/expand/second/call",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/4",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "main/first/expand/first/call",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "main/first/expand/first/call",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "main/first/expand/first/call",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/5",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "main/second/expand/second/call",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "main/second/expand/second/call",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "main/second/expand/second/call",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/root/binding/entry/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/root/binding/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "inline": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "main/first",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/first/expand/first/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "main/first/expand/first/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/second",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/second/expand/second/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "main/second/expand/second/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "main/first:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/first:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/first/expand/first/call:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/first/expand/first/call:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "main/first/expand/first/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/second:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/second:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/second/expand/second/call:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/second/expand/second/call:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "main/second/expand/second/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "main/first/expand/first/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/first/expand/first/call/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/first/expand/first/call/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/first/expand/first/call/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "main/first/expand/first/call",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "child",
+                "referenceNodeId": "main/second/expand/second/call",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/second/expand/second/call/enter",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/second/expand/second/call/exit/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/second/expand/second/call/exit/returns",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/3",
+                "when": {
+                  "kind": "not",
+                  "operand": {
+                    "kind": "nonempty",
+                    "referenceNodeId": "main/second/expand/second/call",
+                    "interfaceId": "entry"
+                  }
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/4",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "main/first/expand/first/call",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "main/first/expand/first/call",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "main/first/expand/first/call",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/5",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "all",
+                      "operands": [
+                        {
+                          "kind": "constant",
+                          "value": true
+                        },
+                        {
+                          "kind": "any",
+                          "operands": [
+                            {
+                              "kind": "not",
+                              "operand": {
+                                "kind": "nonempty",
+                                "referenceNodeId": "main/second/expand/second/call",
+                                "interfaceId": "entry"
+                              }
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "main/second/expand/second/call",
+                              "interfaceId": "normal"
+                            },
+                            {
+                              "kind": "nonempty",
+                              "referenceNodeId": "main/second/expand/second/call",
+                              "interfaceId": "returns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "graphOnly": true,
+  "provenance": "Archived synthetic graph input; no AST exists or is fabricated. Entry metadata is omitted by graphOnly exactly when the original fixture omitted it."
+}

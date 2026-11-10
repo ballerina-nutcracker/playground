@@ -16,40 +16,34 @@
 # specific language governing permissions and limitations
 # under the License.
 
-# Generates `packages/wasm/dist/ballerina-meta.json` from the submodule state.
-# Uses an exact tag when available; otherwise records the current commit hash.
+# Generates `packages/wasm/dist/ballerina-meta.json` from the Ballerina module
+# version pinned in `go.mod`. A tagged version is recorded as a tag; a
+# pseudo-version is recorded as the commit it points to.
 
 set -e
 
-cd "$(dirname "$0")/../ballerina"
+cd "$(dirname "$0")/.."
 
-resolve_tag() {
-  git describe --tags --exact-match 2>/dev/null || true
-}
+MODULE="github.com/ballerina-nutcracker/ballerina/lib"
 
-TAG=$(resolve_tag)
+VERSION=$(go list -m -f '{{with .Replace}}{{.Version}}{{else}}{{.Version}}{{end}}' "$MODULE")
 
-if [ -z "$TAG" ] && git remote get-url origin >/dev/null 2>&1; then
-  if ! git fetch --tags --quiet origin >/dev/null 2>&1; then
-    echo "warn: failed to fetch tags from origin; falling back to commit metadata" >&2
-  fi
-  TAG=$(resolve_tag)
-fi
+case "$VERSION" in
+  *-??????????????-????????????)
+    VERSION="${VERSION##*-}"
+    TYPE="commit"
+    ;;
+  *)
+    TYPE="tag"
+    ;;
+esac
 
-if [ -n "$TAG" ]; then
-  VERSION="$TAG"
-  TYPE="tag"
-else
-  VERSION=$(git rev-parse --short HEAD)
-  TYPE="commit"
-fi
+mkdir -p dist
 
-mkdir -p ../dist
-
-cat > ../dist/ballerina-meta.json << EOF
+cat > dist/ballerina-meta.json << EOF
 {
   "version": "$VERSION",
   "type": "$TYPE",
-  "commit": "$(git rev-parse HEAD)"
+  "commit": "$VERSION"
 }
 EOF

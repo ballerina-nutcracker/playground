@@ -1,0 +1,328 @@
+{
+  "scopes": [
+    {
+      "id": "examples/source_ranges/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 11,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    // café, සිංහල, and an astral character: 🚀\n    string greeting = \"Hello 🚀 café\";\n    string result = decorate(\n        greeting,\n        \"සිංහල\"\n    );\n    int windows = windowsValue();\n    _ = result;\n    _ = windows;\n}",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "examples/source_ranges",
+      "serviceType": null,
+      "functionId": "examples/source_ranges/function/main"
+    }
+  ],
+  "functions": {
+    "examples/source_ranges/function/decorate": {
+      "id": "examples/source_ranges/function/decorate",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 13,
+            "column": 1
+          },
+          "end": {
+            "line": 15,
+            "column": 2
+          }
+        }
+      },
+      "text": "function decorate(string left, string right) returns string {\n    return left + \" / \" + right;\n}",
+      "moduleId": "examples/source_ranges",
+      "entry": {
+        "kind": "function",
+        "name": "decorate",
+        "signature": "function decorate(string left, string right) returns string",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "string left"
+          },
+          {
+            "kind": "input",
+            "text": "string right"
+          }
+        ],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "examples/source_ranges/function/decorate/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 14,
+                "column": 5
+              },
+              "end": {
+                "line": 14,
+                "column": 33
+              }
+            }
+          },
+          "text": "return left + \" / \" + right;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/source_ranges/function/main": {
+      "id": "examples/source_ranges/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 11,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    // café, සිංහල, and an astral character: 🚀\n    string greeting = \"Hello 🚀 café\";\n    string result = decorate(\n        greeting,\n        \"සිංහල\"\n    );\n    int windows = windowsValue();\n    _ = result;\n    _ = windows;\n}",
+      "moduleId": "examples/source_ranges",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "examples/source_ranges/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 5
+              },
+              "end": {
+                "line": 3,
+                "column": 38
+              }
+            }
+          },
+          "text": "string greeting = \"Hello 🚀 café\";",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/source_ranges/function/main/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 7,
+                "column": 7
+              }
+            }
+          },
+          "text": "string result = decorate(\n        greeting,\n        \"සිංහල\"\n    );",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/source_ranges/function/main/statement/1/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 4,
+                    "column": 21
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 6
+                  }
+                }
+              },
+              "text": "decorate(\n        greeting,\n        \"සිංහල\"\n    )",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/source_ranges/function/decorate"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "examples/source_ranges/function/main/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 8,
+                "column": 5
+              },
+              "end": {
+                "line": 8,
+                "column": 34
+              }
+            }
+          },
+          "text": "int windows = windowsValue();",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/source_ranges/function/main/statement/2/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 8,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 33
+                  }
+                }
+              },
+              "text": "windowsValue()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/source_ranges/function/windowsValue"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "examples/source_ranges/function/main/statement/3",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 9,
+                "column": 5
+              },
+              "end": {
+                "line": 9,
+                "column": 16
+              }
+            }
+          },
+          "text": "_ = result;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/source_ranges/function/main/statement/4",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 10,
+                "column": 5
+              },
+              "end": {
+                "line": 10,
+                "column": 17
+              }
+            }
+          },
+          "text": "_ = windows;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        }
+      ]
+    },
+    "examples/source_ranges/function/windowsValue": {
+      "id": "examples/source_ranges/function/windowsValue",
+      "source": {
+        "file": "windows.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 4,
+            "column": 2
+          }
+        }
+      },
+      "text": "function windowsValue() returns int {\r\n    int value = 2;\r\n    return value;\r\n}",
+      "moduleId": "examples/source_ranges",
+      "entry": {
+        "kind": "function",
+        "name": "windowsValue",
+        "signature": "function windowsValue() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/source_ranges/function/windowsValue/statement/0",
+          "source": {
+            "file": "windows.bal",
+            "range": {
+              "start": {
+                "line": 2,
+                "column": 5
+              },
+              "end": {
+                "line": 2,
+                "column": 19
+              }
+            }
+          },
+          "text": "int value = 2;",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/source_ranges/function/windowsValue/statement/1",
+          "source": {
+            "file": "windows.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 5
+              },
+              "end": {
+                "line": 3,
+                "column": 18
+              }
+            }
+          },
+          "text": "return value;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

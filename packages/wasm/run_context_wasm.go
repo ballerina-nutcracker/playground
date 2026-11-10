@@ -1,8 +1,8 @@
 package main
 
 import (
-	"ballerina/platform/pal"
-	"ballerina/runtime"
+	"github.com/ballerina-nutcracker/ballerina/platform/pal"
+	"github.com/ballerina-nutcracker/ballerina/runtime"
 	"fmt"
 	"net"
 	"net/http"

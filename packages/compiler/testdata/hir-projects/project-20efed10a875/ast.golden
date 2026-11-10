@@ -1,0 +1,38 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/analysis_recovery / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples analysis_recovery 0.1.0)
+  (function (position 1:1 5:2) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 1:24 5:2)
+      (var-def (position 2:5 2:20)
+        (variable (position 2:5 2:20) amount (type
+          (value-type (position 2:5 2:8) int)) (expr
+          (literal (position 2:18 2:19) 2))))
+      (var-def (position 3:5 3:33)
+        (variable (position 3:5 3:33) result (type
+          (value-type (position 3:5 3:8) int)) (expr
+          (invocation (position 3:18 3:32) double (
+            (simple-var-ref (position 3:25 3:31) amount))))))
+      (assignment (position 4:5 4:16)
+        (wildcard-binding-pattern (position 4:5 4:6))
+        (simple-var-ref (position 4:9 4:15) result))))
+  (function (position 7:1 7:63) double (
+    (variable (position 7:17 7:27) amount (type
+      (value-type (position 7:17 7:20) int)))) (
+    (value-type (position 7:37 7:40) int))
+    (block-function-body (position 7:41 7:63)
+      (return (position 7:43 7:61)
+        (binary-expr (position 7:50 7:60) *
+          (simple-var-ref (position 7:50 7:56) amount)
+          (literal (position 7:59 7:60) 2))))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### call main.bal [62,76)
+arguments: 1
+argument[0]:
+(simple-var-ref (position 3:25 3:31) amount)

@@ -1,0 +1,2910 @@
+{
+  "scopes": [
+    {
+      "id": "examples/chat_references/service/main.bal//notes/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 6,
+            "column": 2
+          }
+        }
+      },
+      "text": "service /notes on new http:Listener(8080) {\n    resource function get first() returns string { return shared(\"first\"); }\n    resource function get second() returns string { return shared(\"second\"); }\n}",
+      "kind": "service",
+      "title": "/notes",
+      "moduleId": "examples/chat_references",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 4,
+                "column": 77
+              }
+            }
+          },
+          "text": "resource function get first() returns string { return shared(\"first\"); }",
+          "kind": "resource",
+          "title": "get /notes/first",
+          "functionId": "examples/chat_references/service/main.bal//notes/1/resource/get/first"
+        },
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 5,
+                "column": 5
+              },
+              "end": {
+                "line": 5,
+                "column": 79
+              }
+            }
+          },
+          "text": "resource function get second() returns string { return shared(\"second\"); }",
+          "kind": "resource",
+          "title": "get /notes/second",
+          "functionId": "examples/chat_references/service/main.bal//notes/1/resource/get/second"
+        }
+      ],
+      "definitions": [
+        {
+          "id": "examples/chat_references/function/shared",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 8,
+                "column": 1
+              },
+              "end": {
+                "line": 8,
+                "column": 63
+              }
+            }
+          },
+          "text": "function shared(string value) returns string { return value; }",
+          "kind": "function",
+          "label": "shared",
+          "functionId": "examples/chat_references/function/shared"
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "examples/chat_references/function/shared": {
+      "id": "examples/chat_references/function/shared",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 1
+          },
+          "end": {
+            "line": 8,
+            "column": 63
+          }
+        }
+      },
+      "text": "function shared(string value) returns string { return value; }"
+    },
+    "examples/chat_references/function/shared/parameter/0": {
+      "id": "examples/chat_references/function/shared/parameter/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 17
+          },
+          "end": {
+            "line": 8,
+            "column": 29
+          }
+        }
+      },
+      "text": "string value"
+    },
+    "examples/chat_references/function/shared/returnType": {
+      "id": "examples/chat_references/function/shared/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 39
+          },
+          "end": {
+            "line": 8,
+            "column": 45
+          }
+        }
+      },
+      "text": "string"
+    },
+    "examples/chat_references/function/shared/statement/0": {
+      "id": "examples/chat_references/function/shared/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 48
+          },
+          "end": {
+            "line": 8,
+            "column": 61
+          }
+        }
+      },
+      "text": "return value;"
+    },
+    "examples/chat_references/service/main.bal//notes/1": {
+      "id": "examples/chat_references/service/main.bal//notes/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 6,
+            "column": 2
+          }
+        }
+      },
+      "text": "service /notes on new http:Listener(8080) {\n    resource function get first() returns string { return shared(\"first\"); }\n    resource function get second() returns string { return shared(\"second\"); }\n}"
+    },
+    "examples/chat_references/service/main.bal//notes/1/resource/get/first": {
+      "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 5
+          },
+          "end": {
+            "line": 4,
+            "column": 77
+          }
+        }
+      },
+      "text": "resource function get first() returns string { return shared(\"first\"); }"
+    },
+    "examples/chat_references/service/main.bal//notes/1/resource/get/first/returnType": {
+      "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 43
+          },
+          "end": {
+            "line": 4,
+            "column": 49
+          }
+        }
+      },
+      "text": "string"
+    },
+    "examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0": {
+      "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 52
+          },
+          "end": {
+            "line": 4,
+            "column": 75
+          }
+        }
+      },
+      "text": "return shared(\"first\");"
+    },
+    "examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0": {
+      "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 59
+          },
+          "end": {
+            "line": 4,
+            "column": 74
+          }
+        }
+      },
+      "text": "shared(\"first\")"
+    },
+    "examples/chat_references/service/main.bal//notes/1/resource/get/second": {
+      "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 5
+          },
+          "end": {
+            "line": 5,
+            "column": 79
+          }
+        }
+      },
+      "text": "resource function get second() returns string { return shared(\"second\"); }"
+    },
+    "examples/chat_references/service/main.bal//notes/1/resource/get/second/returnType": {
+      "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 44
+          },
+          "end": {
+            "line": 5,
+            "column": 50
+          }
+        }
+      },
+      "text": "string"
+    },
+    "examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0": {
+      "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 53
+          },
+          "end": {
+            "line": 5,
+            "column": 77
+          }
+        }
+      },
+      "text": "return shared(\"second\");"
+    },
+    "examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0": {
+      "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 60
+          },
+          "end": {
+            "line": 5,
+            "column": 76
+          }
+        }
+      },
+      "text": "shared(\"second\")"
+    },
+    "receiver/main.bal/243/255/type": {
+      "id": "receiver/main.bal/243/255/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 17
+          },
+          "end": {
+            "line": 8,
+            "column": 23
+          }
+        }
+      },
+      "text": "string"
+    },
+    "resource-path/main.bal/149/0": {
+      "id": "resource-path/main.bal/149/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 27
+          },
+          "end": {
+            "line": 5,
+            "column": 33
+          }
+        }
+      },
+      "text": "second"
+    },
+    "resource-path/main.bal/72/0": {
+      "id": "resource-path/main.bal/72/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 27
+          },
+          "end": {
+            "line": 4,
+            "column": 32
+          }
+        }
+      },
+      "text": "first"
+    }
+  },
+  "functions": {
+    "examples/chat_references/function/shared": {
+      "id": "examples/chat_references/function/shared",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 1
+          },
+          "end": {
+            "line": 8,
+            "column": 63
+          }
+        }
+      },
+      "text": "function shared(string value) returns string { return value; }",
+      "moduleId": "examples/chat_references",
+      "entry": {
+        "signatureVariables": [
+          {
+            "variableId": "variable/main.bal/250",
+            "start": 23,
+            "end": 28
+          }
+        ],
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "shared",
+        "signature": "function shared(string value) returns string",
+        "parameters": [
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/250",
+                "start": 7,
+                "end": 12
+              }
+            ],
+            "label": "Input",
+            "text": "string value"
+          }
+        ],
+        "returnType": "string"
+      },
+      "nodes": [
+        {
+          "id": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0",
+          "occurrenceKey": "/examples/chat_references/function/shared/statement/0",
+          "sourceId": "examples/chat_references/function/shared/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/250",
+                "start": 7,
+                "end": 12
+              }
+            ],
+            "style": "return",
+            "label": "return value;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/chat_references/function/shared/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/chat_references/function/shared",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/chat_references/function/shared/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/chat_references/function/shared/statement/0:entry",
+          "id": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0:entry",
+          "nodeId": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/chat_references/function/shared/statement/0:normal-exit",
+          "id": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0:normal-exit",
+          "nodeId": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/chat_references/function/shared/statement/0:return",
+          "id": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0:return",
+          "nodeId": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/chat_references/function/shared/root:entry",
+          "nodeId": "examples/chat_references/function/shared/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/chat_references/function/shared/root:normal-exit",
+          "nodeId": "examples/chat_references/function/shared/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [],
+      "groups": [
+        {
+          "id": "examples/chat_references/function/shared/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/chat_references/function/shared/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/chat_references/function/shared/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/chat_references/function/shared/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/chat_references/function/shared/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/chat_references/function/shared/root/binding/entry/0",
+            "toPort": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/chat_references/function/shared/root/binding/normal",
+            "toPort": "examples/chat_references/function/shared/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/function/shared/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/function/shared/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/function/shared/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/function/shared/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/function/shared/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/function/shared/examples/chat_references/function/shared/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": []
+        }
+      }
+    },
+    "examples/chat_references/service/main.bal//notes/1/resource/get/first": {
+      "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 5
+          },
+          "end": {
+            "line": 4,
+            "column": 77
+          }
+        }
+      },
+      "text": "resource function get first() returns string { return shared(\"first\"); }",
+      "moduleId": "examples/chat_references",
+      "entry": {
+        "kind": "resource",
+        "owner": "Service /notes · ballerina/http:Listener",
+        "operation": "get",
+        "name": "/notes/first",
+        "signature": "resource function get first() returns string",
+        "parameters": [],
+        "returnType": "string"
+      },
+      "nodes": [
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0",
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0",
+          "sourceId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "style": "return",
+            "label": "return shared(\"first\");",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/group"
+          }
+        },
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+          "sourceId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "shared(\"first\")",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "call",
+              "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "recursive": {
+                "label": "shared(\"first\")",
+                "sections": [],
+                "limitation": "Recursive calls remain collapsed.",
+                "title": "Recursive calls remain collapsed.",
+                "ariaLabel": "Recursive call shared(\"first\")",
+                "glyph": "↻"
+              }
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "examples/chat_references/function/shared",
+              "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [
+                      {
+                        "portId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:entry",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "normal",
+                    "members": [
+                      {
+                        "portId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:normal-exit",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "returns",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "panics",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": [
+                {
+                  "kind": "entry",
+                  "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0/enter",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:entry",
+                  "targetInterfaceId": "entry",
+                  "edge": {
+                    "kind": "sequence",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0/exit/normal",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:normal-exit",
+                  "targetInterfaceId": "normal",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0/exit/returns",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:normal-exit",
+                  "targetInterfaceId": "returns",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/chat_references/service/main.bal//notes/1/resource/get/first",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:entry",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:entry",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:normal-exit",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:normal-exit",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "header-bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:entry",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:entry",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:normal-exit",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:normal-exit",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:return",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:return",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root:entry",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root:normal-exit",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/0",
+          "fromPort": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:normal-exit",
+          "toPort": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/1",
+          "fromPort": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:entry",
+          "toPort": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:normal-exit",
+          "when": {
+            "kind": "not",
+            "operand": {
+              "kind": "nonempty",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+              "interfaceId": "entry"
+            }
+          }
+        },
+        {
+          "kind": "return",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/2",
+          "fromPort": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:normal-exit",
+          "toPort": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:return",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "not",
+                        "operand": {
+                          "kind": "nonempty",
+                          "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                          "interfaceId": "entry"
+                        }
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                        "interfaceId": "normal"
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                        "interfaceId": "returns"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        },
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/chat_references/service/main.bal//notes/1/resource/get/first/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/chat_references/service/main.bal//notes/1/resource/get/first/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root/binding/entry/0",
+            "toPort": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root/binding/normal",
+            "toPort": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "all",
+                        "operands": [
+                          {
+                            "kind": "constant",
+                            "value": true
+                          },
+                          {
+                            "kind": "any",
+                            "operands": [
+                              {
+                                "kind": "not",
+                                "operand": {
+                                  "kind": "nonempty",
+                                  "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                                  "interfaceId": "entry"
+                                }
+                              },
+                              {
+                                "kind": "nonempty",
+                                "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                                "interfaceId": "normal"
+                              },
+                              {
+                                "kind": "nonempty",
+                                "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                                "interfaceId": "returns"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/first/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "examples/chat_references/service/main.bal//notes/1/resource/get/second": {
+      "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 5
+          },
+          "end": {
+            "line": 5,
+            "column": 79
+          }
+        }
+      },
+      "text": "resource function get second() returns string { return shared(\"second\"); }",
+      "moduleId": "examples/chat_references",
+      "entry": {
+        "kind": "resource",
+        "owner": "Service /notes · ballerina/http:Listener",
+        "operation": "get",
+        "name": "/notes/second",
+        "signature": "resource function get second() returns string",
+        "parameters": [],
+        "returnType": "string"
+      },
+      "nodes": [
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0",
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0",
+          "sourceId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "style": "return",
+            "label": "return shared(\"second\");",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/group"
+          }
+        },
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+          "sourceId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "shared(\"second\")",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "call",
+              "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "recursive": {
+                "label": "shared(\"second\")",
+                "sections": [],
+                "limitation": "Recursive calls remain collapsed.",
+                "title": "Recursive calls remain collapsed.",
+                "ariaLabel": "Recursive call shared(\"second\")",
+                "glyph": "↻"
+              }
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "examples/chat_references/function/shared",
+              "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [
+                      {
+                        "portId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:entry",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "normal",
+                    "members": [
+                      {
+                        "portId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:normal-exit",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "returns",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "panics",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": [
+                {
+                  "kind": "entry",
+                  "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0/enter",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:entry",
+                  "targetInterfaceId": "entry",
+                  "edge": {
+                    "kind": "sequence",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0/exit/normal",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:normal-exit",
+                  "targetInterfaceId": "normal",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0/exit/returns",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:normal-exit",
+                  "targetInterfaceId": "returns",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/chat_references/service/main.bal//notes/1/resource/get/second",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:entry",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:entry",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:normal-exit",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:normal-exit",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "header-bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:entry",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:entry",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:normal-exit",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:normal-exit",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:return",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:return",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root:entry",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root:normal-exit",
+          "nodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/0",
+          "fromPort": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:normal-exit",
+          "toPort": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/1",
+          "fromPort": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:entry",
+          "toPort": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:normal-exit",
+          "when": {
+            "kind": "not",
+            "operand": {
+              "kind": "nonempty",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+              "interfaceId": "entry"
+            }
+          }
+        },
+        {
+          "kind": "return",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/2",
+          "fromPort": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:normal-exit",
+          "toPort": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:return",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "not",
+                        "operand": {
+                          "kind": "nonempty",
+                          "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                          "interfaceId": "entry"
+                        }
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                        "interfaceId": "normal"
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                        "interfaceId": "returns"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        },
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/chat_references/service/main.bal//notes/1/resource/get/second/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/chat_references/service/main.bal//notes/1/resource/get/second/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root/binding/entry/0",
+            "toPort": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root/binding/normal",
+            "toPort": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "all",
+                        "operands": [
+                          {
+                            "kind": "constant",
+                            "value": true
+                          },
+                          {
+                            "kind": "any",
+                            "operands": [
+                              {
+                                "kind": "not",
+                                "operand": {
+                                  "kind": "nonempty",
+                                  "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                                  "interfaceId": "entry"
+                                }
+                              },
+                              {
+                                "kind": "nonempty",
+                                "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                                "interfaceId": "normal"
+                              },
+                              {
+                                "kind": "nonempty",
+                                "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                                "interfaceId": "returns"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/chat_references/service/main.bal//notes/1/resource/get/second/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/expand/examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

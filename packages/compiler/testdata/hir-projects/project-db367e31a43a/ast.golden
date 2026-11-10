@@ -1,0 +1,188 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module browser/http_service / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id browser http_service 0.1.0)
+  (class-definition (position 1:1 4:3) Queue
+    (function (position 2:4 2:76) init (
+      (variable (position 2:25 2:36) host (type
+        (value-type (position 2:25 2:31) string)))
+      (variable (position 2:38 2:51) port (type
+        (value-type (position 2:38 2:41) int)) (expr
+        (literal (position 2:49 2:51) 12)))) (
+      (value-type (position <built-in>) null))
+      (block-function-body (position 2:53 2:76)
+        (assignment (position 2:55 2:64)
+          (wildcard-binding-pattern (position 2:55 2:56))
+          (simple-var-ref (position 2:59 2:63) host))
+        (assignment (position 2:65 2:74)
+          (wildcard-binding-pattern (position 2:65 2:66))
+          (simple-var-ref (position 2:69 2:73) port))))
+    (function (position 3:4 3:112) $remote$send (
+      (variable (position 3:25 3:39) message (type
+        (value-type (position 3:25 3:31) string)))
+      (variable (position 3:41 3:62) topic (type
+        (value-type (position 3:41 3:47) string)) (expr
+        (literal (position 3:56 3:62) jobs)))) (
+      (union-type (position 3:72 3:84)
+        (value-type (position 3:72 3:78) string)
+        (error-type (position 3:79 3:84))))
+      (block-function-body (position 3:85 3:112)
+        (return (position 3:87 3:110)
+          (binary-expr (position 3:94 3:109) +
+            (simple-var-ref (position 3:94 3:99) topic)
+            (simple-var-ref (position 3:102 3:109) message))))))
+  (variable (position 5:2 5:52) globalQueue (type
+    (user-defined-type (position 5:8 5:13) Queue)) (expr
+    (new (position 5:28 5:51) (
+      (literal (position 5:33 5:39) host)
+      (literal (position 5:48 5:50) 99)))))
+  (function (position 6:2 6:64) makeQueue () (
+    (user-defined-type (position 6:31 6:36) Queue))
+    (block-function-body (position 6:37 6:64)
+      (return (position 6:39 6:62)
+        (new (position 6:46 6:61) (
+          (literal (position 6:51 6:60) factory) <default> (position 6:46 6:61))))))
+  (function (position 7:2 16:3) run (
+    (variable (position 7:15 7:31) inputQueue (type
+      (user-defined-type (position 7:15 7:20) Queue)))) (
+    (union-type (position 7:41 7:47)
+      (error-type (position 7:41 7:46))
+      (value-type (position 7:46 7:47) null)))
+    (block-function-body (position 7:48 16:3)
+      (var-def (position 8:4 8:68)
+        (variable (position 8:4 8:68) first (type
+          (value-type (position 8:4 8:10) string)) (expr
+          (checked-expr (position 8:19 8:67)
+            (remote-method-call (position 8:25 8:67) send expr:
+              (simple-var-ref (position 8:25 8:36) globalQueue) (
+              (literal (position 8:43 8:48) one)
+              (literal (position 8:58 8:66) orders)))))))
+      (var-def (position 9:4 9:30)
+        (variable (position 9:4 9:30) local (type
+          (user-defined-type (position 9:4 9:9) Queue)) (expr
+          (invocation (position 9:18 9:29) makeQueue ()))))
+      (var-def (position 10:4 10:45)
+        (variable (position 10:4 10:45) second (type
+          (value-type (position 10:4 10:10) string)) (expr
+          (checked-expr (position 10:20 10:44)
+            (remote-method-call (position 10:26 10:44) send expr:
+              (simple-var-ref (position 10:26 10:31) local) (
+              (literal (position 10:38 10:43) two) <default> (position 10:26 10:44)))))))
+      (assignment (position 11:4 11:32)
+        (simple-var-ref (position 11:4 11:9) local)
+        (new (position 11:12 11:31) (
+          (literal (position 11:17 11:30) replacement) <default> (position 11:12 11:31))))
+      (var-def (position 12:4 12:46)
+        (variable (position 12:4 12:46) third (type
+          (value-type (position 12:4 12:10) string)) (expr
+          (checked-expr (position 12:19 12:45)
+            (remote-method-call (position 12:25 12:45) send expr:
+              (simple-var-ref (position 12:25 12:30) local) (
+              (literal (position 12:37 12:44) three) <default> (position 12:25 12:45)))))))
+      (var-def (position 13:4 13:51)
+        (variable (position 13:4 13:51) fourth (type
+          (value-type (position 13:4 13:10) string)) (expr
+          (checked-expr (position 13:20 13:50)
+            (remote-method-call (position 13:26 13:50) send expr:
+              (simple-var-ref (position 13:26 13:36) inputQueue) (
+              (literal (position 13:43 13:49) four) <default> (position 13:26 13:50)))))))
+      (assignment (position 14:2 14:12)
+        (wildcard-binding-pattern (position 14:2 14:3))
+        (simple-var-ref (position 14:6 14:11) first))
+      (assignment (position 14:13 14:24)
+        (wildcard-binding-pattern (position 14:13 14:14))
+        (simple-var-ref (position 14:17 14:23) second))
+      (assignment (position 14:25 14:35)
+        (wildcard-binding-pattern (position 14:25 14:26))
+        (simple-var-ref (position 14:29 14:34) third))
+      (assignment (position 14:36 14:47)
+        (wildcard-binding-pattern (position 14:36 14:37))
+        (simple-var-ref (position 14:40 14:46) fourth))
+      (block-stmt (position 15:4 15:102)
+        (var-def (position 15:6 15:41)
+          (variable (position 15:6 15:41) globalQueue (type
+            (user-defined-type (position 15:6 15:11) Queue)) (expr
+            (new (position 15:26 15:40) (
+              (literal (position 15:31 15:39) shadow) <default> (position 15:26 15:40))))))
+        (var-def (position 15:42 15:89)
+          (variable (position 15:42 15:89) fifth (type
+            (value-type (position 15:42 15:48) string)) (expr
+            (checked-expr (position 15:57 15:88)
+              (remote-method-call (position 15:63 15:88) send expr:
+                (simple-var-ref (position 15:63 15:74) globalQueue) (
+                (literal (position 15:81 15:87) five) <default> (position 15:63 15:88)))))))
+        (assignment (position 15:90 15:100)
+          (wildcard-binding-pattern (position 15:90 15:91))
+          (simple-var-ref (position 15:94 15:99) fifth)))))
+  (function (position 17:2 17:27) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 17:25 17:27))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### new main.bal [239,262)
+arguments: 2
+argument[0]:
+(literal (position 5:33 5:39) host)
+argument[1]:
+(named-arg (position 5:41 5:50) port
+  (literal (position 5:48 5:50) 99))
+
+### new main.bal [309,324)
+arguments: 1
+argument[0]:
+(literal (position 6:51 6:60) factory)
+
+### call main.bal [401,443)
+receiver:
+(simple-var-ref (position 8:25 8:36) globalQueue)
+arguments: 2
+argument[0]:
+(literal (position 8:43 8:48) one)
+argument[1]:
+(named-arg (position 8:50 8:66) topic
+  (literal (position 8:58 8:66) orders))
+
+### call main.bal [462,473)
+arguments: 0
+
+### call main.bal [500,518)
+receiver:
+(simple-var-ref (position 10:26 10:31) local)
+arguments: 1
+argument[0]:
+(literal (position 10:38 10:43) two)
+
+### new main.bal [531,550)
+arguments: 1
+argument[0]:
+(literal (position 11:17 11:30) replacement)
+
+### call main.bal [576,596)
+receiver:
+(simple-var-ref (position 12:25 12:30) local)
+arguments: 1
+argument[0]:
+(literal (position 12:37 12:44) three)
+
+### call main.bal [623,647)
+receiver:
+(simple-var-ref (position 13:26 13:36) inputQueue)
+arguments: 1
+argument[0]:
+(literal (position 13:43 13:49) four)
+
+### new main.bal [721,735)
+arguments: 1
+argument[0]:
+(literal (position 15:31 15:39) shadow)
+
+### call main.bal [758,783)
+receiver:
+(simple-var-ref (position 15:63 15:74) globalQueue)
+arguments: 1
+argument[0]:
+(literal (position 15:81 15:87) five)

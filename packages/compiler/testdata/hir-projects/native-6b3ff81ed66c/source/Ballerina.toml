@@ -1,0 +1,4 @@
+[package]
+org="browser"
+name="http_service"
+version="wrong"

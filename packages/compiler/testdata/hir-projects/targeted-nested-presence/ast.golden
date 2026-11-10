@@ -1,0 +1,97 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module corpus/nested_presence / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id corpus nested_presence 0.1.0)
+  (function (position 1:1 8:2) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 1:24 8:2)
+      (var-def (position 2:5 2:26)
+        (variable (position 2:5 2:26) first (type
+          (value-type (position 2:5 2:8) int)) (expr
+          (invocation (position 2:17 2:25) helper ()))))
+      (var-def (position 3:5 3:21)
+        (variable (position 3:5 3:21) between (type
+          (value-type (position 3:5 3:8) int)) (expr
+          (literal (position 3:19 3:20) 1))))
+      (var-def (position 4:5 4:27)
+        (variable (position 4:5 4:27) second (type
+          (value-type (position 4:5 4:8) int)) (expr
+          (invocation (position 4:18 4:26) helper ()))))
+      (assignment (position 5:5 5:17)
+        (wildcard-binding-pattern (position 5:5 5:6))
+        (simple-var-ref (position 5:9 5:16) between))
+      (assignment (position 6:5 6:15)
+        (wildcard-binding-pattern (position 6:5 6:6))
+        (simple-var-ref (position 6:9 6:14) first))
+      (assignment (position 7:5 7:16)
+        (wildcard-binding-pattern (position 7:5 7:6))
+        (simple-var-ref (position 7:9 7:15) second))))
+  (function (position 10:1 12:2) helper () (
+    (value-type (position 10:27 10:30) int))
+    (block-function-body (position 10:31 12:2)
+      (return (position 11:5 11:30)
+        (invocation (position 11:12 11:29) unsupportedBody ()))))
+  (function (position 14:1 16:2) unsupportedBody () (
+    (value-type (position 14:36 14:39) int))
+    (block-function-body (position 14:40 16:2)
+      (panic (position 15:5 15:25)
+        (error-constructor-expr (position 15:11 15:24) (
+          (literal (position 15:17 15:23) stop))))))
+  (function (position 18:1 23:2) emptyMain () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 18:22 23:2)
+      (expression-stmt (position 19:5 19:19)
+        (invocation (position 19:5 19:18) emptyHelper ()))
+      (var-def (position 20:5 20:21)
+        (variable (position 20:5 20:21) between (type
+          (value-type (position 20:5 20:8) int)) (expr
+          (literal (position 20:19 20:20) 2))))
+      (expression-stmt (position 21:5 21:19)
+        (invocation (position 21:5 21:18) emptyHelper ()))
+      (assignment (position 22:5 22:17)
+        (wildcard-binding-pattern (position 22:5 22:6))
+        (simple-var-ref (position 22:9 22:16) between))))
+  (function (position 25:1 27:2) emptyHelper () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 25:24 27:2)
+      (expression-stmt (position 26:5 26:17)
+        (invocation (position 26:5 26:16) emptyBody ()))))
+  (function (position 29:1 29:24) emptyBody () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 29:22 29:24)))
+  (function (position 31:1 33:2) nestedReturns () (
+    (value-type (position 31:34 31:37) int))
+    (block-function-body (position 31:38 33:2)
+      (return (position 32:5 32:30)
+        (invocation (position 32:12 32:29) returningHelper ()))))
+  (function (position 35:1 37:2) returningHelper () (
+    (value-type (position 35:36 35:39) int))
+    (block-function-body (position 35:40 37:2)
+      (return (position 36:5 36:14)
+        (literal (position 36:12 36:13) 7)))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### call main.bal [41,49)
+arguments: 0
+
+### call main.bal [89,97)
+arguments: 0
+
+### call main.bal [193,210)
+arguments: 0
+
+### call main.bal [311,324)
+arguments: 0
+
+### call main.bal [351,364)
+arguments: 0
+
+### call main.bal [415,426)
+arguments: 0
+
+### call main.bal [506,523)
+arguments: 0

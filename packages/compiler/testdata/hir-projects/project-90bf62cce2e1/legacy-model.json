@@ -1,0 +1,241 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 108
+          }
+        }
+      },
+      "text": "public function main() { var result = (value(1) + value(2) \u003e 0) \u0026\u0026 (value(3) + value(4) \u003e 0); _ = result; }",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "browser/http_service",
+      "serviceType": null,
+      "functionId": "browser/http_service/function/main"
+    }
+  ],
+  "functions": {
+    "browser/http_service/function/main": {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 108
+          }
+        }
+      },
+      "text": "public function main() { var result = (value(1) + value(2) \u003e 0) \u0026\u0026 (value(3) + value(4) \u003e 0); _ = result; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 26
+              },
+              "end": {
+                "line": 1,
+                "column": 94
+              }
+            }
+          },
+          "text": "var result = (value(1) + value(2) \u003e 0) \u0026\u0026 (value(3) + value(4) \u003e 0);",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/function/main/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 40
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 48
+                  }
+                }
+              },
+              "text": "value(1)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/function/value"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            },
+            {
+              "id": "browser/http_service/function/main/statement/0/call/1",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 51
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 59
+                  }
+                }
+              },
+              "text": "value(2)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/function/value"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            },
+            {
+              "id": "browser/http_service/function/main/statement/0/call/2",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 69
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 77
+                  }
+                }
+              },
+              "text": "value(3)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/function/value"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            },
+            {
+              "id": "browser/http_service/function/main/statement/0/call/3",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 80
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 88
+                  }
+                }
+              },
+              "text": "value(4)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service/function/value"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/function/main/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 95
+              },
+              "end": {
+                "line": 1,
+                "column": 106
+              }
+            }
+          },
+          "text": "_ = result;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        }
+      ]
+    },
+    "browser/http_service/function/value": {
+      "id": "browser/http_service/function/value",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 109
+          },
+          "end": {
+            "line": 1,
+            "column": 156
+          }
+        }
+      },
+      "text": "function value(int n) returns int { return n; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "value",
+        "signature": "function value(int n) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int n"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/value/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 145
+              },
+              "end": {
+                "line": 1,
+                "column": 154
+              }
+            }
+          },
+          "text": "return n;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}
