@@ -1,3 +1,4 @@
+import { TEMP_ROOT } from "@/lib/fs/fs-roots";
 import {
 	basename,
 	dirname,
@@ -29,7 +30,9 @@ type SnapshotNode = SnapshotFileNode | SnapshotDirNode;
 
 export type SnapshotFSMutation =
 	| { type: "writeFile"; path: string; content: string }
-	| { type: "mkdirAll"; path: string };
+	| { type: "mkdirAll"; path: string }
+	| { type: "remove"; path: string }
+	| { type: "move"; oldPath: string; newPath: string };
 
 export type SnapshotFSListener = (mutation: SnapshotFSMutation) => void;
 
@@ -42,6 +45,14 @@ export class SnapshotFS implements FS {
 		const nodes = new Map<string, SnapshotNode>();
 		await collectNodes(source, nodes, rootPath);
 		await collectAncestorDirs(source, nodes, rootPath);
+		await collectNodes(source, nodes, TEMP_ROOT);
+		if (!nodes.has(TEMP_ROOT)) {
+			nodes.set(TEMP_ROOT, {
+				isDir: true,
+				modTime: Date.now(),
+				entries: [],
+			});
+		}
 		return new SnapshotFS(nodes);
 	}
 
@@ -146,12 +157,40 @@ export class SnapshotFS implements FS {
 		return true;
 	}
 
-	async remove(): Promise<boolean> {
-		return false;
+	async remove(path: string): Promise<boolean> {
+		if (!path || path === "/" || !this.nodes.has(path)) return false;
+
+		for (const candidate of [...this.nodes.keys()]) {
+			if (candidate === path || candidate.startsWith(`${path}/`)) {
+				this.nodes.delete(candidate);
+			}
+		}
+		this.notifyListeners({ type: "remove", path });
+		return true;
 	}
 
-	async move(): Promise<boolean> {
-		return false;
+	async move(oldPath: string, newPath: string): Promise<boolean> {
+		if (oldPath === newPath) return this.nodes.has(oldPath);
+		if (!this.nodes.has(oldPath) || newPath.startsWith(`${oldPath}/`)) {
+			return false;
+		}
+
+		const parent = this.nodes.get(dirname(newPath));
+		if (!parent?.isDir) return false;
+		const destination = this.nodes.get(newPath);
+		if (destination?.isDir) return false;
+		if (destination) this.nodes.delete(newPath);
+
+		const moved = [...this.nodes.entries()].filter(
+			([candidate]) =>
+				candidate === oldPath || candidate.startsWith(`${oldPath}/`),
+		);
+		for (const [candidate] of moved) this.nodes.delete(candidate);
+		for (const [candidate, node] of moved) {
+			this.nodes.set(`${newPath}${candidate.slice(oldPath.length)}`, node);
+		}
+		this.notifyListeners({ type: "move", oldPath, newPath });
+		return true;
 	}
 }
 
