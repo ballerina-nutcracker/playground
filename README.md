@@ -6,7 +6,7 @@ Ballerina playground is a web-based tool for trying out language features, hoste
 
 ### Prerequisites
 
-- Go 1.26 or later
+- Go 1.27 or later
 - Bun 1.3.10 or later
 
 ### Clone repository

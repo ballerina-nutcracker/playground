@@ -69,6 +69,48 @@ export class PlaygroundPage {
 		await this.page.keyboard.insertText(content);
 	}
 
+	async createDirectory(parentPath: string, name: string) {
+		await this.page.getByTestId(`directory-actions-${parentPath}`).click();
+		await this.page.getByRole("menuitem", { name: "New Folder" }).click();
+		await this.submitFileTreeDialog(name, "Create");
+	}
+
+	async createFile(parentPath: string, name: string) {
+		await this.page.getByTestId(`directory-actions-${parentPath}`).click();
+		await this.page.getByRole("menuitem", { name: "New File" }).click();
+		await this.submitFileTreeDialog(name, "Create");
+	}
+
+	async renameFile(path: string, name: string) {
+		await this.page.getByTestId(`file-actions-${path}`).click();
+		await this.page.getByRole("menuitem", { name: "Rename" }).click();
+		await this.submitFileTreeDialog(name, "Rename");
+	}
+
+	async deleteFile(path: string) {
+		await this.page.getByTestId(`file-actions-${path}`).click();
+		await this.page.getByRole("menuitem", { name: "Delete" }).click();
+		await this.page
+			.getByTestId("file-tree-dialog")
+			.getByRole("button", { name: "Delete" })
+			.click();
+		await expect(this.page.getByTestId("file-tree-dialog")).toBeHidden();
+	}
+
+	async openFile(path: string) {
+		await this.page.locator(`[data-file-path=${JSON.stringify(path)}]`).click();
+	}
+
+	private async submitFileTreeDialog(
+		name: string,
+		action: "Create" | "Rename",
+	) {
+		const dialog = this.page.getByTestId("file-tree-dialog");
+		await dialog.getByLabel("Name").fill(name);
+		await dialog.getByRole("button", { name: action }).click();
+		await expect(dialog).toBeHidden();
+	}
+
 	async openExampleMain(manifestPath: string) {
 		const mainPath = `${dirname(manifestPath)}/main.bal`;
 		const mainFile = this.page.locator(

@@ -1,4 +1,5 @@
-import type { SnapshotFS } from "@/lib/fs/snapshot";
+import type { FS } from "@/lib/fs/core/fs.interface";
+import type { WatchableFS } from "@/workers/fs-watch-bridge";
 
 export type RunOutputStream = "stdout" | "stderr";
 
@@ -35,7 +36,7 @@ export interface HttpDispatchResponse {
 export interface BallerinaWorkerAPI {
 	init(wasmUrl: string, onProgress: (progress: number) => void): Promise<void>;
 	run(
-		snapshot: SnapshotFS,
+		snapshot: WatchableFS,
 		path: string,
 		onEvent: RunEventCallback,
 	): Promise<void>;
@@ -44,7 +45,7 @@ export interface BallerinaWorkerAPI {
 		request: HttpDispatchRequest,
 	): Promise<HttpDispatchResponse>;
 	getDiagnostics(
-		snapshot: SnapshotFS,
+		snapshot: FS,
 		path: string,
 	): Promise<Array<Record<string, unknown>>>;
 }

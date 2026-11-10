@@ -20,7 +20,7 @@ export default defineConfig({
 	],
 	webServer: {
 		command:
-			"bun --filter @playground/web build && bun --filter @playground/web preview --port 4173",
+			"bun run build && bun --filter @playground/web preview --port 4173",
 		port: 4173,
 		reuseExistingServer: !process.env.CI,
 		cwd: "..",

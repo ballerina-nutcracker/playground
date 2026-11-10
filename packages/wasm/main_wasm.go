@@ -78,13 +78,13 @@ func run(_ js.Value, args []js.Value) any {
 				done()
 				return
 			}
+			defer done()
 			defer activeRun.end(signalSource)
 
 			defer func() {
 				if r := recover(); r != nil {
 					fmt.Fprintf(stderr, "%v\n", r)
 				}
-				done()
 			}()
 
 			if len(args) < 2 {
@@ -95,6 +95,7 @@ func run(_ js.Value, args []js.Value) any {
 			proxy := args[0]
 			runPath := args[1].String()
 			fsys := NewBridgeFS(proxy)
+			defer fsys.Close()
 
 			result, err := projects.Load(fsys, runPath)
 			if err != nil {

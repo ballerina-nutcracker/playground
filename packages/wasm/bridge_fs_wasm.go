@@ -35,11 +35,17 @@ var (
 type bridgeFS struct {
 	mu    sync.Mutex
 	proxy js.Value
+
+	watchesMu     sync.Mutex
+	watches       map[*wasmWatchHandle]struct{}
+	watchDispatch sync.WaitGroup
+	closed        bool
 }
 
 func NewBridgeFS(proxy js.Value) *bridgeFS {
 	return &bridgeFS{
-		proxy: proxy,
+		proxy:   proxy,
+		watches: make(map[*wasmWatchHandle]struct{}),
 	}
 }
 
