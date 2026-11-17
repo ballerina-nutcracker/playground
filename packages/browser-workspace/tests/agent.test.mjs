@@ -1,4 +1,3 @@
-import { testAgentScope } from "./fixtures.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { workspaceTools, createWorkspaceAgent } from "../src/index.ts";
@@ -57,7 +56,6 @@ test("PI uses only workspace tools without browser credentials", () => {
 		() => {
 			throw new Error("No request expected");
 		},
-		testAgentScope,
 	);
 	assert.equal(agent.getApiKey, undefined);
 	assert.deepEqual(

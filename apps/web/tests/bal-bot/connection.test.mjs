@@ -1,7 +1,4 @@
-import {
-	analyze,
-	testAgentScope,
-} from "../../../../packages/browser-workspace/tests/fixtures.mjs";
+import { analyze } from "../../../../packages/browser-workspace/tests/fixtures.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -296,12 +293,7 @@ test("browser PI executes streamed file tools and sends results directly to the 
 		);
 	};
 	const workspace = new BrowserWorkspace({ getItem: () => null, setItem() {} });
-	const agent = createWorkspaceAgent(
-		workspace,
-		model,
-		streamBrowser,
-		testAgentScope,
-	);
+	const agent = createWorkspaceAgent(workspace, model, streamBrowser);
 	await agent.prompt("Create generated.bal");
 	assert.equal(workspace.read("generated.bal"), "// hello from PI");
 	assert.equal(requests.length, 2);
@@ -357,12 +349,7 @@ test("stopping a browser agent aborts the direct provider request and settles th
 			);
 		});
 	const workspace = new BrowserWorkspace({ getItem: () => null, setItem() {} });
-	const agent = createWorkspaceAgent(
-		workspace,
-		model,
-		streamBrowser,
-		testAgentScope,
-	);
+	const agent = createWorkspaceAgent(workspace, model, streamBrowser);
 	const pending = agent.prompt("Wait");
 	await started;
 	agent.abort();
@@ -416,8 +403,8 @@ test("agent repairs source after diagnostics and rechecks the retained workspace
 			},
 		},
 	);
-	const [service] = await workspace.getServices();
-	const agent = await service.getAgent();
+	await workspace.getServices();
+	const agent = await workspace.getAgent();
 	agent.state.model = model;
 	await agent.prompt("Repair and check main.bal");
 	assert.equal(workspace.read("main.bal"), "int x = 1;");
@@ -430,5 +417,5 @@ test("agent repairs source after diagnostics and rechecks the retained workspace
 		diagnostics: [],
 		stale: false,
 	});
-	assert.equal(await service.getAgent(), agent);
+	assert.equal(await workspace.getAgent(), agent);
 });

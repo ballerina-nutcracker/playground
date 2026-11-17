@@ -178,7 +178,7 @@ test("subscribers see changes and can unsubscribe", () => {
 	assert.equal(updates, 1);
 });
 
-test("service discovery retains the anchor and its agent over shared workspace files", async () => {
+test("service discovery retains the anchor; the workspace chat shares the workspace files", async () => {
 	const workspace = new BrowserWorkspace(storage(), {
 		compiler: { analyze },
 		streamFn() {
@@ -190,15 +190,15 @@ test("service discovery retains the anchor and its agent over shared workspace f
 	assert.equal(service.kind, "http");
 	assert.deepEqual(service.getEndpoints(), []);
 	const [agent, sameAgent] = await Promise.all([
-		service.getAgent(),
-		service.getAgent(),
+		workspace.getAgent(),
+		workspace.getAgent(),
 	]);
 	assert.equal(agent, sameAgent);
 	agent.state.messages = [
 		{ role: "user", content: "Retained conversation", timestamp: Date.now() },
 	];
 	assert.equal(
-		(await service.getAgent()).state.messages[0].content,
+		(await workspace.getAgent()).state.messages[0].content,
 		"Retained conversation",
 	);
 	await agent.state.tools
