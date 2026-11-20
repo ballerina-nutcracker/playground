@@ -18,7 +18,7 @@ function forwardFS(fs: FS): FS {
 		open: (path) => fs.open(path),
 		stat: (path) => fs.stat(path),
 		readDir: (path) => fs.readDir(path),
-		writeFile: (path, content) => fs.writeFile(path, content),
+		writeFile: (path, content, modTime) => fs.writeFile(path, content, modTime),
 		mkdirAll: (path) => fs.mkdirAll(path),
 		remove: (path) => fs.remove(path),
 		move: (from, to) => fs.move(from, to),
