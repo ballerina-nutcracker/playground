@@ -111,6 +111,16 @@ const testCases: TestCase[] = [
 		expectedStdout: "true\ntrue\n/tmp\n/tmp\n",
 	},
 	{
+		name: "file copy preserves modification time with COPY_ATTRIBUTES",
+		files: async () =>
+			new Map([
+				["/tmp/main.bal", await load("./fixtures/file-copy-attributes.bal")],
+				["/tmp/source.txt", "hello"],
+			]),
+		entryPoint: "/tmp/main.bal",
+		expectedStdout: "true\nfalse\n",
+	},
+	{
 		name: "os env",
 		files: async () =>
 			new Map([["/tmp/main.bal", await load("./fixtures/os-env.bal")]]),

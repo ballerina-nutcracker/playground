@@ -200,6 +200,11 @@ func copyWasmPath(fsys *bridgeFS, src, dst string, opts pal.CopyOptions) error {
 	if err != nil {
 		return err
 	}
+	if opts.CopyAttributes {
+		// Files carry no permission bits in the browser, so the modification
+		// time is the only attribute to preserve.
+		return fsys.WriteFileWithModTime(dst, contents, info.ModTime())
+	}
 	return fsys.WriteFile(dst, contents, 0o644)
 }
 

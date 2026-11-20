@@ -336,7 +336,11 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 				const fs = _fs();
 				switch (mutation.type) {
 					case "writeFile": {
-						const result = await fs.writeFile(mutation.path, mutation.content);
+						const result = await fs.writeFile(
+							mutation.path,
+							mutation.content,
+							mutation.modTime,
+						);
 						if (!result) {
 							throw new Error(`writeFile failed: ${mutation.path}`);
 						}
