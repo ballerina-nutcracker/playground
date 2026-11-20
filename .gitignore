@@ -12,3 +12,5 @@ playwright-report/
 .DS_Store
 
 packages/browser-workspace/src/generated/
+
+.pr-media/

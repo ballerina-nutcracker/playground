@@ -26,7 +26,6 @@ export interface WorkspaceAgent extends Agent {
 export interface Anchor {
 	readonly id: Id;
 	readonly title: string;
-	getAgent(): Promise<WorkspaceAgent>;
 	getDiff(): Promise<Diff>;
 	getFlowUI(signal?: AbortSignal): Promise<FlowUI>;
 }
@@ -53,6 +52,18 @@ export interface Workspace {
 	subscribeStorage(listener: () => void): () => void;
 	getServices(): Promise<readonly Service[]>;
 	getScopes(): Promise<readonly WorkspaceScope[]>;
+	/**
+	 * The workspace's single chat. Created on first call; every later call
+	 * returns the same agent until `newChat()`. Analysis results never replace it.
+	 * Rejects when the workspace has no model stream transport.
+	 */
+	getAgent(): Promise<WorkspaceAgent>;
+	/**
+	 * Aborts the current chat's agent (if one exists), creates a new empty agent,
+	 * makes it the one `getAgent()` returns and resolves to it.
+	 * Rejects like `getAgent()` without a model stream transport.
+	 */
+	newChat(): Promise<WorkspaceAgent>;
 	analysisSnapshot(): AnalysisState;
 	subscribeAnalysis(listener: () => void): () => void;
 	getDiagnostics(signal?: AbortSignal): Promise<DiagnosticsResult>;

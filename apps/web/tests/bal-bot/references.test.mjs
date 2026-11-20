@@ -59,7 +59,6 @@ const state = {
 		},
 	},
 };
-const scope = { id: "fn", kind: "automation", title: "Automation", source };
 test("references preserve prose, deduplicate source identity, format occupied rows and serialize exact Unicode text", () => {
 	let draft = { text: "keep prose", references: [] };
 	draft = addReference(draft, node, 1);
@@ -74,22 +73,19 @@ test("references preserve prose, deduplicate source identity, format occupied ro
 		}),
 		"main.bal:2–2",
 	);
-	assert.match(serializePrompt(draft, state, files, scope), /😀é\\r\\n/);
+	assert.match(serializePrompt(draft, state, files), /😀é\\r\\n/);
 	assert.equal(removeReference(draft, node.id).references.length, 0);
 	assert.equal(draft.references.length, 1);
 	const chipsOnly = { ...draft, text: "" };
-	assert.match(
-		serializePrompt(chipsOnly, state, files, scope),
-		/source-references/,
-	);
+	assert.match(serializePrompt(chipsOnly, state, files), /source-references/);
 });
 test("saved revisions invalidate chips; only identical identity/range/text refresh, and serialization rejects stale revisions", () => {
 	const draft = addReference({ text: "prose", references: [] }, node, 1),
 		pending = { kind: "pending", revision: 2, previous: state.program };
 	assert.ok(refreshReferences(draft, pending, files).references[0].stale);
-	assert.throws(() => serializePrompt(draft, pending, files, scope), /Wait/);
+	assert.throws(() => serializePrompt(draft, pending, files), /Wait/);
 	const next = { ...state, revision: 2 };
-	assert.throws(() => serializePrompt(draft, next, files, scope), /stale/);
+	assert.throws(() => serializePrompt(draft, next, files), /stale/);
 	const fresh = refreshReferences(draft, next, files);
 	assert.equal(fresh.references[0].revision, 2);
 	assert.equal(fresh.references[0].stale, false);
@@ -112,8 +108,18 @@ test("plain prose remains sendable for repairs while old source is stale", () =>
 			diagnostics: [{ severity: "error", message: "bad source" }],
 		},
 		files,
-		scope,
 	);
 	assert.match(prompt, /Fix the saved source/);
 	assert.match(prompt, /stale; read current saved files/);
+});
+test("the prompt carries the analysis state and references but no fixed scope", () => {
+	const draft = addReference({ text: "Explain", references: [] }, node, 1);
+	const prompt = serializePrompt(draft, state, files);
+	assert.ok(
+		prompt.startsWith(
+			'Explain\n\n<workspace-state>\n{"sourceStatus":"current","analysisRevision":1}\n</workspace-state>\n<source-references>\n',
+		),
+		prompt,
+	);
+	assert.doesNotMatch(prompt, /workspace-scope/);
 });

@@ -38,7 +38,6 @@ test("assistant Markdown image is not rendered as an auto-loading <img>", async 
 		scopeKind: "function",
 		name: "main",
 		getFlowUI: () => new Promise(() => {}),
-		getAgent: async () => agent,
 	};
 	const files = { "main.bal": "public function main() {}\n" };
 	const analysis = { revision: 0 };
@@ -52,6 +51,7 @@ test("assistant Markdown image is not rendered as an auto-loading <img>", async 
 		subscribeAnalysis: () => () => {},
 		analysisSnapshot: () => analysis,
 		getScopes: async () => [scope],
+		getAgent: async () => agent,
 		list: () => Object.keys(files),
 		write: () => {},
 		remove: () => {},
@@ -66,7 +66,7 @@ test("assistant Markdown image is not rendered as an auto-loading <img>", async 
 			<Editor workspace={workspace as any} />,
 		);
 	});
-	// Let getScopes -> getAgent resolve and re-render.
+	// Let getScopes and getAgent resolve and re-render.
 	for (let i = 0; i < 5; i++) await act(async () => {});
 
 	const body = container.querySelector("article.message.assistant");

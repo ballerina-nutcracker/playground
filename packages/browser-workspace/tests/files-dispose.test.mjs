@@ -98,8 +98,8 @@ test("dispose aborts analysis and agents, silences listeners and is idempotent",
 	const discovery = workspace.getScopes();
 	await tick();
 	requests[0].resolve(await analyze());
-	const [service] = await discovery;
-	const agent = await service.getAgent();
+	await discovery;
+	const agent = await workspace.getAgent();
 	let aborts = 0;
 	agent.abort = () => aborts++;
 	workspace.write("main.bal", `${workspace.read("main.bal")}\n`);
