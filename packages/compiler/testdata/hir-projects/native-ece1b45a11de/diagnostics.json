@@ -1,0 +1,7 @@
+[
+  {
+    "severity": "error",
+    "message": "could not locate the readme file 'missing.md'",
+    "file": "Ballerina.toml"
+  }
+]

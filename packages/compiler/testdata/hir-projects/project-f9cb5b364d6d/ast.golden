@@ -1,0 +1,62 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module browser/http_service / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id browser http_service 0.1.0)
+  (function (position 1:1 1:49) risky () (
+    (union-type (position 1:26 1:35)
+      (value-type (position 1:26 1:29) int)
+      (error-type (position 1:30 1:35))))
+    (block-function-body (position 1:36 1:49)
+      (return (position 1:38 1:47)
+        (literal (position 1:45 1:46) 1))))
+  (function (position 2:2 7:3) main () (
+    (union-type (position 2:33 2:39)
+      (error-type (position 2:33 2:38))
+      (value-type (position 2:38 2:39) null)))
+    (block-function-body (position 2:40 7:3)
+      (var-def (position 3:4 3:49)
+        (variable (position 3:4 3:49) captured (type
+          (union-type (position 3:4 3:13)
+            (value-type (position 3:4 3:7) int)
+            (error-type (position 3:8 3:13)))) (expr
+          (trap-expr (position 3:25 3:48)
+            (check-panicked-expr (position 3:30 3:48)
+              (invocation (position 3:41 3:48) risky ()))))))
+      (var-def (position 4:4 4:39)
+        (variable (position 4:4 4:39) checked (type
+          (value-type (position 4:4 4:7) int)) (expr
+          (checked-expr (position 4:18 4:38)
+            (group-expr (position 4:24 4:38)
+              (trap-expr (position 4:25 4:37)
+                (invocation (position 4:30 4:37) risky ())))))))
+      (var-def (position 5:4 5:53)
+        (variable (position 5:4 5:53) message (type
+          (value-type (position 5:4 5:10) string)) (expr
+          (string-template-literal (position 5:21 5:52)
+            (template-string "value ")
+            (checked-expr (position 5:37 5:50)
+              (invocation (position 5:43 5:50) risky ()))
+            (template-string "")))))
+      (assignment (position 6:2 6:15)
+        (wildcard-binding-pattern (position 6:2 6:3))
+        (simple-var-ref (position 6:6 6:14) captured))
+      (assignment (position 6:16 6:28)
+        (wildcard-binding-pattern (position 6:16 6:17))
+        (simple-var-ref (position 6:20 6:27) checked))
+      (assignment (position 6:29 6:41)
+        (wildcard-binding-pattern (position 6:29 6:30))
+        (simple-var-ref (position 6:33 6:40) message)))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### call main.bal [130,137)
+arguments: 0
+
+### call main.bal [168,175)
+arguments: 0
+
+### call main.bal [220,227)
+arguments: 0

@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"rootDir": "../..",
+		"emitDeclarationOnly": true,
+		"declaration": true,
+		"outDir": "./node_modules/.tmp/packages",
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.packages.tsbuildinfo",
+		"target": "ES2023",
+		"lib": ["ES2023", "DOM", "DOM.Iterable"],
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"types": ["vite/client"],
+		"jsx": "react-jsx",
+		"strict": true,
+		"skipLibCheck": true,
+		"allowImportingTsExtensions": true
+	},
+	"include": ["../../packages/*/src"]
+}

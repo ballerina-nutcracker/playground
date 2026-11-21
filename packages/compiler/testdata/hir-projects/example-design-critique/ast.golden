@@ -1,0 +1,101 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/design_critique / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples design_critique 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (variable (position 3:1 3:23) minimum (type
+    (value-type (position 3:7 3:10) int)) (expr
+    (literal (position 3:21 3:22) 1)))
+  (type-definition (position 4:1 4:37) Order
+    (record-type (position 4:12 4:36)
+      (field amount
+        (value-type (position 4:22 4:25) int))))
+  (service (position 6:1 18:2)
+    (absolute-resource-path orders)
+    (on
+    (new (position 6:20 6:43)
+      (user-defined-type (position 6:24 6:37) http Listener) (
+      (literal (position 6:38 6:42) 8080) <default> (position 6:20 6:43))))
+    (resource-function (position 7:5 16:6) post name:orders
+      (value-type (position 7:45 7:48) int)
+      (block-function-body (position 7:49 16:6)
+        (var-def (position 8:9 8:33)
+          (variable (position 8:9 8:33) items (type
+            (array-type (position 8:9 8:14)
+              (value-type (position 8:9 8:12) int) dimensions: 1 ([]))) (expr
+            (list-constructor-expr (position 8:23 8:32)
+              (literal (position 8:24 8:25) 1)
+              (literal (position 8:27 8:28) 2)
+              (literal (position 8:30 8:31) 3)))))
+        (var-def (position 9:9 9:23)
+          (variable (position 9:9 9:23) total (type
+            (value-type (position 9:9 9:12) int)) (expr
+            (literal (position 9:21 9:22) 0))))
+        (foreach (position 10:9 13:10)
+          (var-def (position 10:17 10:25)
+            (variable (position 10:17 10:25) item (type
+              (value-type (position 10:17 10:20) int))))
+          (simple-var-ref (position 10:29 10:34) items)
+          (block-stmt (position 10:35 13:10)
+            (if (position 11:13 11:44)
+              (binary-expr (position 11:16 11:30) <
+                (simple-var-ref (position 11:16 11:20) item)
+                (simple-var-ref (position 11:23 11:30) minimum))
+              (block-stmt (position 11:31 11:44)
+                (continue (position 11:33 11:42))) ())
+            (block-stmt (position 12:13 13:10)
+              (compound-assignment (position 12:13 12:38) +
+                (simple-var-ref (position 12:13 12:18) total)
+                (invocation (position 12:22 12:37) calculate (
+                  (simple-var-ref (position 12:32 12:36) item)))))))
+        (if (position 14:9 14:59)
+          (binary-expr (position 14:12 14:22) >
+            (simple-var-ref (position 14:12 14:17) total)
+            (literal (position 14:20 14:22) 10))
+          (block-stmt (position 14:23 14:38)
+            (compound-assignment (position 14:25 14:36) +
+              (simple-var-ref (position 14:25 14:30) total)
+              (literal (position 14:34 14:35) 2))) (
+          (block-stmt (position 14:44 14:59)
+            (compound-assignment (position 14:46 14:57) +
+              (simple-var-ref (position 14:46 14:51) total)
+              (literal (position 14:55 14:56) 1)))))
+        (return (position 15:9 15:22)
+          (simple-var-ref (position 15:16 15:21) total))))
+    (resource-function (position 17:5 17:70) get name:status
+      (value-type (position 17:44 17:50) string)
+      (block-function-body (position 17:51 17:70)
+        (return (position 17:53 17:68)
+          (literal (position 17:60 17:67) ready)))))
+  (function (position 20:1 23:2) calculate (
+    (variable (position 20:20 20:29) value (type
+      (value-type (position 20:20 20:23) int)))) (
+    (value-type (position 20:39 20:42) int))
+    (block-function-body (position 20:43 23:2)
+      (if (position 21:5 21:31)
+        (binary-expr (position 21:8 21:17) <
+          (simple-var-ref (position 21:8 21:13) value)
+          (literal (position 21:16 21:17) 0))
+        (block-stmt (position 21:18 21:31)
+          (return (position 21:20 21:29)
+            (literal (position 21:27 21:28) 0))) ())
+      (block-stmt (position 22:5 23:2)
+        (return (position 22:5 22:22)
+          (binary-expr (position 22:12 22:21) *
+            (simple-var-ref (position 22:12 22:17) value)
+            (literal (position 22:20 22:21) 2)))))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### new main.bal [104,127)
+arguments: 1
+argument[0]:
+(literal (position 6:38 6:42) 8080)
+
+### call main.bal [337,352)
+arguments: 1
+argument[0]:
+(simple-var-ref (position 12:32 12:36) item)

@@ -17,12 +17,12 @@
 package main
 
 import (
-	"fmt"
 	_ "github.com/ballerina-nutcracker/ballerina/lib/rt"
 	"github.com/ballerina-nutcracker/ballerina/platform/pal"
 	"github.com/ballerina-nutcracker/ballerina/projects"
 	"github.com/ballerina-nutcracker/ballerina/runtime"
 	"github.com/ballerina-nutcracker/ballerina/tools/diagnostics"
+	"fmt"
 	"io"
 	"io/fs"
 	"net/http"
@@ -74,7 +74,7 @@ func run(_ js.Value, args []js.Value) any {
 			signalSource, signals := newSignalSource()
 			if !activeRun.begin(signalSource) {
 				signalSource.cleanup()
-				fmt.Fprintf(stderr, "another Ballerina run is already active\n")
+				fmt.Fprintf(stderr, "A Ballerina program is already running.\n")
 				done()
 				return
 			}
@@ -165,7 +165,7 @@ func dispatchHttpRequest(_ js.Value, args []js.Value) any {
 			return
 		}
 
-		handler, ok := findLocalHandler(req.URL)
+		handler, ok := findLocalHandler(activeRun, req.URL)
 		if !ok {
 			reject.Invoke(js.ValueOf(fmt.Sprintf("no service listening on %s", req.Host)))
 			return

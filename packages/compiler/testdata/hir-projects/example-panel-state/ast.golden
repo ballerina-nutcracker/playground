@@ -1,0 +1,64 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/panel_state / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples panel_state 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (service (position 3:1 6:2)
+    (absolute-resource-path reports)
+    (on
+    (new (position 3:21 3:44)
+      (user-defined-type (position 3:25 3:38) http Listener) (
+      (literal (position 3:39 3:43) 8080) <default> (position 3:21 3:44))))
+    (resource-function (position 4:5 4:73) get name:daily
+      (value-type (position 4:43 4:46) int)
+      (block-function-body (position 4:47 4:73)
+        (return (position 4:49 4:71)
+          (invocation (position 4:56 4:70) buildReport (
+            (literal (position 4:68 4:69) 5))))))
+    (resource-function (position 5:5 5:75) get name:weekly
+      (value-type (position 5:44 5:47) int)
+      (block-function-body (position 5:48 5:75)
+        (return (position 5:50 5:73)
+          (invocation (position 5:57 5:72) buildReport (
+            (literal (position 5:69 5:71) 35)))))))
+  (function (position 8:1 12:2) buildReport (
+    (variable (position 8:22 8:67) extraordinarilyLongButMeaningfulInputName (type
+      (value-type (position 8:22 8:25) int)))) (
+    (value-type (position 8:77 8:80) int))
+    (block-function-body (position 8:81 12:2)
+      (var-def (position 9:5 9:79)
+        (variable (position 9:5 9:79) calculatedReportTotal (type
+          (value-type (position 9:5 9:8) int)) (expr
+          (binary-expr (position 9:33 9:78) +
+            (simple-var-ref (position 9:33 9:74) extraordinarilyLongButMeaningfulInputName)
+            (literal (position 9:77 9:78) 1)))))
+      (if (position 10:5 10:68)
+        (binary-expr (position 10:8 10:34) >
+          (simple-var-ref (position 10:8 10:29) calculatedReportTotal)
+          (literal (position 10:32 10:34) 10))
+        (block-stmt (position 10:35 10:68)
+          (return (position 10:37 10:66)
+            (simple-var-ref (position 10:44 10:65) calculatedReportTotal))) ())
+      (block-stmt (position 11:5 12:2)
+        (return (position 11:5 11:15)
+          (literal (position 11:12 11:14) 10))))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### new main.bal [44,67)
+arguments: 1
+argument[0]:
+(literal (position 3:39 3:43) 8080)
+
+### call main.bal [125,139)
+arguments: 1
+argument[0]:
+(literal (position 4:68 4:69) 5)
+
+### call main.bal [199,214)
+arguments: 1
+argument[0]:
+(literal (position 5:69 5:71) 35)

@@ -23,17 +23,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
-        with:
-          submodules: recursive
 
       - name: Set up Go
         uses: actions/setup-go@v6
         with:
-          go-version: "1.26"
+          go-version-file: packages/wasm/go.mod
           cache: true
           cache-dependency-path: |
             packages/wasm/go.mod
             packages/wasm/go.sum
+            packages/compiler/go.mod
+            packages/compiler/go.sum
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2

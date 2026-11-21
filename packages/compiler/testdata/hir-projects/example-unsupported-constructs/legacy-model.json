@@ -1,0 +1,364 @@
+{
+  "scopes": [
+    {
+      "id": "examples/unsupported_constructs/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 14,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() returns error? {\n    int mode = 1;\n    record {| int value; |} request = {value: mode};\n    match mode {\n        1 =\u003e { mode = 2; }\n        _ =\u003e { mode = 3; }\n    }\n    boolean selected = mode \u003e 0 \u0026\u0026 positive(mode);\n    future\u003cint\u003e pending = start compute(mode);\n    int result = check wait pending;\n    _ = request;\n    _ = selected;\n    _ = result;\n}",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "examples/unsupported_constructs",
+      "serviceType": null,
+      "functionId": "examples/unsupported_constructs/function/main"
+    }
+  ],
+  "functions": {
+    "examples/unsupported_constructs/function/compute": {
+      "id": "examples/unsupported_constructs/function/compute",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 17,
+            "column": 1
+          },
+          "end": {
+            "line": 17,
+            "column": 62
+          }
+        }
+      },
+      "text": "function compute(int value) returns int { return value * 2; }",
+      "moduleId": "examples/unsupported_constructs",
+      "entry": {
+        "kind": "function",
+        "name": "compute",
+        "signature": "function compute(int value) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/unsupported_constructs/function/compute/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 17,
+                "column": 43
+              },
+              "end": {
+                "line": 17,
+                "column": 60
+              }
+            }
+          },
+          "text": "return value * 2;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/unsupported_constructs/function/main": {
+      "id": "examples/unsupported_constructs/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 14,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() returns error? {\n    int mode = 1;\n    record {| int value; |} request = {value: mode};\n    match mode {\n        1 =\u003e { mode = 2; }\n        _ =\u003e { mode = 3; }\n    }\n    boolean selected = mode \u003e 0 \u0026\u0026 positive(mode);\n    future\u003cint\u003e pending = start compute(mode);\n    int result = check wait pending;\n    _ = request;\n    _ = selected;\n    _ = result;\n}",
+      "moduleId": "examples/unsupported_constructs",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main() returns error?",
+        "parameters": [],
+        "returnType": "error?"
+      },
+      "body": [
+        {
+          "id": "examples/unsupported_constructs/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 2,
+                "column": 5
+              },
+              "end": {
+                "line": 2,
+                "column": 18
+              }
+            }
+          },
+          "text": "int mode = 1;",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 5
+              },
+              "end": {
+                "line": 3,
+                "column": 53
+              }
+            }
+          },
+          "text": "record {| int value; |} request = {value: mode};",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "mapping",
+          "calls": []
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 7,
+                "column": 6
+              }
+            }
+          },
+          "text": "match mode {\n        1 =\u003e { mode = 2; }\n        _ =\u003e { mode = 3; }\n    }",
+          "kind": "unsupported",
+          "reason": "Visualization of *ast.BLangMatchStatement is not modeled; later source may still execute."
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/statement/3",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 8,
+                "column": 5
+              },
+              "end": {
+                "line": 8,
+                "column": 51
+              }
+            }
+          },
+          "text": "boolean selected = mode \u003e 0 \u0026\u0026 positive(mode);",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/unsupported_constructs/function/main/statement/3/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 8,
+                    "column": 36
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 50
+                  }
+                }
+              },
+              "text": "positive(mode)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/unsupported_constructs/function/positive"
+              },
+              "expansion": "unavailable",
+              "reason": "Expansion in this expression evaluation is not modeled."
+            }
+          ]
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/statement/4",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 9,
+                "column": 5
+              },
+              "end": {
+                "line": 9,
+                "column": 47
+              }
+            }
+          },
+          "text": "future\u003cint\u003e pending = start compute(mode);",
+          "kind": "unsupported",
+          "reason": "Control effects of *ast.BLangStartAction are not modeled; later source may still execute."
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/statement/5",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 10,
+                "column": 5
+              },
+              "end": {
+                "line": 10,
+                "column": 37
+              }
+            }
+          },
+          "text": "int result = check wait pending;",
+          "kind": "unsupported",
+          "reason": "Control effects of *ast.BLangSingleWaitAction are not modeled; later source may still execute."
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/statement/6",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 11,
+                "column": 5
+              },
+              "end": {
+                "line": 11,
+                "column": 17
+              }
+            }
+          },
+          "text": "_ = request;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/statement/7",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 12,
+                "column": 5
+              },
+              "end": {
+                "line": 12,
+                "column": 18
+              }
+            }
+          },
+          "text": "_ = selected;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/unsupported_constructs/function/main/statement/8",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 13,
+                "column": 5
+              },
+              "end": {
+                "line": 13,
+                "column": 16
+              }
+            }
+          },
+          "text": "_ = result;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        }
+      ]
+    },
+    "examples/unsupported_constructs/function/positive": {
+      "id": "examples/unsupported_constructs/function/positive",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 16,
+            "column": 1
+          },
+          "end": {
+            "line": 16,
+            "column": 67
+          }
+        }
+      },
+      "text": "function positive(int value) returns boolean { return value \u003e 0; }",
+      "moduleId": "examples/unsupported_constructs",
+      "entry": {
+        "kind": "function",
+        "name": "positive",
+        "signature": "function positive(int value) returns boolean",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "boolean"
+      },
+      "body": [
+        {
+          "id": "examples/unsupported_constructs/function/positive/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 16,
+                "column": 48
+              },
+              "end": {
+                "line": 16,
+                "column": 65
+              }
+            }
+          },
+          "text": "return value \u003e 0;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

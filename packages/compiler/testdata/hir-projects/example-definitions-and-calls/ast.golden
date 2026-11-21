@@ -1,0 +1,114 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/definitions_and_calls / Document helpers.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples definitions_and_calls 0.1.0)
+  (function (position 1:1 1:64) calculate (
+    (variable (position 1:20 1:29) value (type
+      (value-type (position 1:20 1:23) int)))) (
+    (value-type (position 1:39 1:42) int))
+    (block-function-body (position 1:43 1:64)
+      (return (position 1:45 1:62)
+        (binary-expr (position 1:52 1:61) +
+          (simple-var-ref (position 1:52 1:57) value)
+          (literal (position 1:60 1:61) 1))))))
+
+## Module examples/definitions_and_calls / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples definitions_and_calls 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (import-package (position 2:1 2:44) examples definitions_and_calls math (as math))
+  (variable (position 4:1 4:29) minimumAmount (type
+    (value-type (position 4:7 4:10) int)) (expr
+    (literal (position 4:27 4:28) 5)))
+  (variable (position 5:1 5:49) upstream (type
+    (value-type (position 5:7 5:13) string)) (expr
+    (literal (position 5:25 5:48) http://localhost:9090)))
+  (variable (position 6:1 6:37) upstreamClient (type
+    (user-defined-type (position 6:1 6:12) LocalClient)) (expr
+    (new (position 6:30 6:36) ())))
+  (class-definition (position 8:1 10:2) LocalClient
+    (function (position 9:5 9:61) $remote$send () (
+      (value-type (position 9:36 9:42) string))
+      (block-function-body (position 9:43 9:61)
+        (return (position 9:45 9:59)
+          (literal (position 9:52 9:58) sent)))))
+  (type-definition (position 11:1 11:37) Order
+    (record-type (position 11:12 11:36)
+      (field amount
+        (value-type (position 11:22 11:25) int))))
+  (type-definition (position 12:1 12:52) UnusedRecord
+    (record-type (position 12:19 12:51)
+      (field description
+        (value-type (position 12:29 12:35) string))))
+  (service (position 14:1 19:2)
+    (absolute-resource-path orders)
+    (on
+    (new (position 14:20 14:43)
+      (user-defined-type (position 14:24 14:37) http Listener) (
+      (literal (position 14:38 14:42) 8080) <default> (position 14:20 14:43))))
+    (resource-function (position 15:5 18:6) get name:total
+      (value-type (position 15:43 15:46) int)
+      (block-function-body (position 15:47 18:6)
+        (var-def (position 16:9 16:46)
+          (variable (position 16:9 16:46) local (type
+            (value-type (position 16:9 16:12) int)) (expr
+            (invocation (position 16:21 16:45) calculate (
+              (simple-var-ref (position 16:31 16:44) minimumAmount))))))
+        (return (position 17:9 17:38)
+          (invocation (position 17:16 17:37) math calculate (
+            (simple-var-ref (position 17:31 17:36) local)))))))
+  (function (position 21:1 24:2) unusedHelper () (
+    (value-type (position 21:33 21:39) string))
+    (block-function-body (position 21:40 24:2)
+      (var-def (position 22:5 22:44)
+        (variable (position 22:5 22:44) status (type
+          (value-type (position 22:5 22:11) string)) (expr
+          (remote-method-call (position 22:21 22:43) send expr:
+            (simple-var-ref (position 22:21 22:35) upstreamClient) ()))))
+      (return (position 23:5 23:37)
+        (binary-expr (position 23:12 23:36) +
+          (binary-expr (position 23:12 23:27) +
+            (simple-var-ref (position 23:12 23:20) upstream)
+            (literal (position 23:23 23:27) : ))
+          (simple-var-ref (position 23:30 23:36) status))))))
+
+## Module examples/definitions_and_calls.math / Document modules/math/calculate.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples definitions_and_calls.math 0.1.0)
+  (function (position 1:1 1:71) calculate (
+    (variable (position 1:27 1:36) value (type
+      (value-type (position 1:27 1:30) int)))) (
+    (value-type (position 1:46 1:49) int))
+    (block-function-body (position 1:50 1:71)
+      (return (position 1:52 1:69)
+        (binary-expr (position 1:59 1:68) *
+          (simple-var-ref (position 1:59 1:64) value)
+          (literal (position 1:67 1:68) 2))))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### new main.bal [175,181)
+arguments: 0
+
+### new main.bal [383,406)
+arguments: 1
+argument[0]:
+(literal (position 14:38 14:42) 8080)
+
+### call main.bal [477,501)
+arguments: 1
+argument[0]:
+(simple-var-ref (position 16:31 16:44) minimumAmount)
+
+### call main.bal [518,539)
+arguments: 1
+argument[0]:
+(simple-var-ref (position 17:31 17:36) local)
+
+### call main.bal [611,633)
+receiver:
+(simple-var-ref (position 22:21 22:35) upstreamClient)
+arguments: 0

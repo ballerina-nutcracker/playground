@@ -1,0 +1,658 @@
+{
+  "catalogRef": "0e5858488fb017a74eb46db43a99dd1af2b21995086413222546062af426ab8a",
+  "legacyProgram": {
+    "scopes": [],
+    "functions": {
+      "main": {
+        "id": "main",
+        "text": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "moduleId": "test",
+        "body": [
+          {
+            "id": "print",
+            "text": "io:println(\"Hello, World!\");",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 29
+                }
+              }
+            },
+            "kind": "simple",
+            "operation": "expression",
+            "presentation": "step",
+            "calls": [
+              {
+                "id": "print/call",
+                "text": "io:println(\"Hello, World!\")",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 28
+                    }
+                  }
+                },
+                "target": {
+                  "kind": "external",
+                  "label": "println"
+                },
+                "expansion": "unavailable",
+                "reason": "The target is outside the workspace."
+              }
+            ]
+          },
+          {
+            "id": "after",
+            "text": "after",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 6
+                }
+              }
+            },
+            "kind": "simple",
+            "operation": "assign",
+            "presentation": "step",
+            "calls": []
+          }
+        ]
+      }
+    }
+  },
+  "hir": {
+    "scopes": [],
+    "sources": {
+      "after": {
+        "id": "after",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 6
+            }
+          }
+        },
+        "text": "after"
+      },
+      "main": {
+        "id": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "main"
+      },
+      "print": {
+        "id": "print",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 29
+            }
+          }
+        },
+        "text": "io:println(\"Hello, World!\");"
+      }
+    },
+    "functions": {
+      "main": {
+        "id": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "main",
+        "moduleId": "test",
+        "entry": {
+          "kind": "function",
+          "owner": null,
+          "operation": null,
+          "name": "",
+          "signature": "",
+          "parameters": [],
+          "returnType": ""
+        },
+        "nodes": [
+          {
+            "id": "main/print",
+            "occurrenceKey": "/print",
+            "sourceId": "print",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "io:println(\"Hello, World!\");",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/after",
+            "occurrenceKey": "/after",
+            "sourceId": "after",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "after",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/root",
+            "occurrenceKey": "/root",
+            "sourceId": "main",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/root/group"
+            }
+          }
+        ],
+        "ports": [
+          {
+            "occurrenceKey": "/print:entry",
+            "id": "main/print:entry",
+            "nodeId": "main/print",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/print:normal-exit",
+            "id": "main/print:normal-exit",
+            "nodeId": "main/print",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/after:entry",
+            "id": "main/after:entry",
+            "nodeId": "main/after",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/after:normal-exit",
+            "id": "main/after:normal-exit",
+            "nodeId": "main/after",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:entry",
+            "id": "main/root:entry",
+            "nodeId": "main/root",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:normal-exit",
+            "id": "main/root:normal-exit",
+            "nodeId": "main/root",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/0",
+            "fromPort": "main/print:normal-exit",
+            "toPort": "main/after:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "main/root/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/print",
+                "main/after"
+              ]
+            },
+            "style": {
+              "profile": "root",
+              "root": {
+                "node": true,
+                "header": false,
+                "container": true
+              },
+              "inline": {
+                "node": false,
+                "header": false,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "main/graph",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/root"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          }
+        ],
+        "rootGroup": "main/graph",
+        "interfaces": [
+          {
+            "id": "root/entry/0",
+            "members": [
+              {
+                "portId": "main/root:entry",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "main/root/binding/entry/0",
+              "toPort": "main/print:entry",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "root/normal",
+            "members": [
+              {
+                "portId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "main/root/binding/normal",
+              "toPort": "main/root:normal-exit",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "entry",
+            "members": [
+              {
+                "portId": "main/print:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "normal",
+            "members": [
+              {
+                "portId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "returns",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "panics",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          }
+        ],
+        "emission": {
+          "root": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "main/root",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/print",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "main/print:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/print:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/root:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/root:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/root/binding/entry/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/root/binding/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "inline": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "main/print",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "main/print:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/print:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "graphOnly": true,
+  "provenance": "Archived synthetic graph input; no AST exists or is fabricated. Entry metadata is omitted by graphOnly exactly when the original fixture omitted it."
+}

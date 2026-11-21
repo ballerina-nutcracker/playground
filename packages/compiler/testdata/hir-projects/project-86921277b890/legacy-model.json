@@ -1,0 +1,81 @@
+{
+  "scopes": [
+    {
+      "id": "examples/automation_flow/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 66
+          }
+        }
+      },
+      "text": "public function main(string greeting = \"Hello\") { _ = greeting; }",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "examples/automation_flow",
+      "serviceType": null,
+      "functionId": "examples/automation_flow/function/main"
+    }
+  ],
+  "functions": {
+    "examples/automation_flow/function/main": {
+      "id": "examples/automation_flow/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 66
+          }
+        }
+      },
+      "text": "public function main(string greeting = \"Hello\") { _ = greeting; }",
+      "moduleId": "examples/automation_flow",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main(string greeting = \"Hello\")",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "string greeting = \"Hello\""
+          }
+        ],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "examples/automation_flow/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 51
+              },
+              "end": {
+                "line": 1,
+                "column": 64
+              }
+            }
+          },
+          "text": "_ = greeting;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

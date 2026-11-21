@@ -11,7 +11,7 @@ type ServiceExampleRequest = HttpRequest & {
 };
 
 const serviceExampleRequests: Record<string, ServiceExampleRequest[]> = {
-	"/tmp/examples/02-http-service/Ballerina.toml": [
+	"/tmp/examples/03-http-service/Ballerina.toml": [
 		{
 			method: "GET",
 			path: "/albums",
