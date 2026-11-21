@@ -2506,8 +2506,8 @@
         "main.bal": "85fc8311ca403b3a3d304685f6544b01131aa1e6048963efbafaa13d4fbba9a8",
         "second.bal": "f14ac2a91b570cb48aac3efbce617479f74f6b98edb6ef8a4d2cac7a1a6bfb52"
       },
-      "ast": null,
-      "hir": null,
+      "ast": "ast.golden",
+      "hir": "hir.golden.json",
       "diagnostics": "diagnostics.json"
     },
     {

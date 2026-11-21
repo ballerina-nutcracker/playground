@@ -46,5 +46,21 @@
         "column": 23
       }
     }
+  },
+  {
+    "severity": "error",
+    "code": "SYNTAX_ERROR",
+    "message": "missing close brace token",
+    "file": "main.bal",
+    "range": {
+      "start": {
+        "line": 2,
+        "column": 1
+      },
+      "end": {
+        "line": 2,
+        "column": 1
+      }
+    }
   }
 ]

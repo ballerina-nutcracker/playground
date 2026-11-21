@@ -134,6 +134,11 @@ func resolveProgram(files Files) (program *resolvedProgram, items []Diagnostic, 
 			}
 			cx := context.NewCompilerContext(env)
 			contexts = append(contexts, cx)
+			parts := []model.Name{}
+			for _, part := range strings.Split(id.ModuleName, ".") {
+				parts = append(parts, model.Name(part))
+			}
+			pid := cx.NewPackageID(model.Name(id.OrgName), parts, model.Name(desc.Version().String()))
 			var units []*ast.BLangCompilationUnit
 			var documentNames []string
 			ids := mod.DocumentIDs()
@@ -147,7 +152,7 @@ func resolveProgram(files Files) (program *resolvedProgram, items []Diagnostic, 
 				if parseErr != nil {
 					return nil, nil, parseErr
 				}
-				unit := nodebuilder.GetCompilationUnit(cx, tree)
+				unit := nodebuilder.GetCompilationUnit(cx, pid, tree)
 				if pkg == root && !cx.HasErrors() {
 					retainXMLTemplateSources(cx, tree, unit, program.xmlTemplates)
 				}
@@ -157,11 +162,6 @@ func resolveProgram(files Files) (program *resolvedProgram, items []Diagnostic, 
 			if cx.HasErrors() {
 				return finish(nil)
 			}
-			parts := []model.Name{}
-			for _, part := range strings.Split(id.ModuleName, ".") {
-				parts = append(parts, model.Name(part))
-			}
-			pid := cx.NewPackageID(model.Name(id.OrgName), parts, model.Name(desc.Version().String()))
 			for _, unit := range units {
 				unit.SetPackageID(pid)
 			}
