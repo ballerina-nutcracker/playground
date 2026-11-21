@@ -150,7 +150,18 @@ func (l *bridgeFS) openDir(name string, stat js.Value) (fs.File, error) {
 }
 
 func (l *bridgeFS) WriteFile(name string, data []byte, perm fs.FileMode) error {
-	res, err := l.bridgeCall("writeFile", name, name, string(data))
+	return l.writeFile(name, data)
+}
+
+// WriteFileWithModTime writes data and sets the file's modification time,
+// which pal.CopyOptions.CopyAttributes requires.
+func (l *bridgeFS) WriteFileWithModTime(name string, data []byte, modTime time.Time) error {
+	return l.writeFile(name, data, modTime.UnixMilli())
+}
+
+func (l *bridgeFS) writeFile(name string, data []byte, extra ...any) error {
+	args := append([]any{name, string(data)}, extra...)
+	res, err := l.bridgeCall("writeFile", name, args...)
 	if err != nil {
 		return err
 	}

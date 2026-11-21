@@ -1,9 +1,11 @@
 export function createFs(inputFiles: Map<string, string>) {
-	const modTime = Date.now();
+	// Seeded files are older than anything written during a run.
+	const modTime = Date.now() - 60_000;
+	const modTimes = new Map<string, number>();
 	const files = new Map(
 		[...inputFiles.entries()].map(([path, content]) => [path, content]),
 	);
-	const dirs = new Set<string>(["/"]);
+	const dirs = new Set<string>(["/", "/tmp"]);
 
 	function dirname(path: string) {
 		return path.split("/").slice(0, -1).join("/") || "/";
@@ -29,7 +31,12 @@ export function createFs(inputFiles: Map<string, string>) {
 		async open(path: string) {
 			const content = files.get(path);
 			if (content === undefined) return null;
-			return { content, size: content.length, modTime, isDir: false };
+			return {
+				content,
+				size: content.length,
+				modTime: modTimes.get(path) ?? modTime,
+				isDir: false,
+			};
 		},
 		async stat(path: string) {
 			if (dirs.has(path)) {
@@ -46,7 +53,7 @@ export function createFs(inputFiles: Map<string, string>) {
 			return {
 				name: basename(path),
 				size: content.length,
-				modTime,
+				modTime: modTimes.get(path) ?? modTime,
 				isDir: false,
 			};
 		},
@@ -70,10 +77,11 @@ export function createFs(inputFiles: Map<string, string>) {
 
 			return [...entries.values()];
 		},
-		async writeFile(path: string, content: string) {
+		async writeFile(path: string, content: string, mtime?: number) {
 			if (!dirs.has(dirname(path))) return false;
 			if (dirs.has(path)) return false;
 			files.set(path, content);
+			modTimes.set(path, mtime ?? Date.now());
 			return true;
 		},
 		async mkdirAll(path: string) {
@@ -109,6 +117,7 @@ export function createFs(inputFiles: Map<string, string>) {
 			)
 				return false;
 			files.set(newPath, content);
+			modTimes.set(newPath, modTimes.get(oldPath) ?? modTime);
 			files.delete(oldPath);
 			return true;
 		},
