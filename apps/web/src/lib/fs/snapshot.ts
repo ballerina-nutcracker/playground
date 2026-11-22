@@ -128,7 +128,7 @@ export class SnapshotFS implements FS {
 		this.notifyListeners({
 			type: "writeFile",
 			path,
-			content,
+			content: content.slice(),
 			modTime: resolvedModTime,
 		});
 		return true;
