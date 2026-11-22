@@ -45,7 +45,7 @@ export class LayeredFS implements FS {
 		return this._withTargetOrNull(path, (fs) => fs.readDir(path));
 	}
 
-	async writeFile(path: string, content: string, modTime?: number) {
+	async writeFile(path: string, content: Uint8Array, modTime?: number) {
 		return this._withTargetOrFalse(path, (fs) =>
 			fs.writeFile(path, content, modTime),
 		);

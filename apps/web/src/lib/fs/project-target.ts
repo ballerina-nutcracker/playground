@@ -1,3 +1,4 @@
+import { tryDecodeText } from "@/lib/fs/core/bytes";
 import { dirname, ext, isRootPath, join } from "@/lib/fs/core/path-utils";
 
 import type { FS } from "@/lib/fs/core/fs.interface";
@@ -87,7 +88,9 @@ export async function readBallerinaProjectFiles(
 			} else if (SNAPSHOT_EXTENSIONS.has(ext(path))) {
 				const file = await fs.open(path);
 				if (!file) throw new Error(`${path}: could not read file`);
-				files[relativeTo(root, path)] = file.content;
+				const text = tryDecodeText(file.content);
+				if (text === null) throw new Error(`${path}: not valid UTF-8`);
+				files[relativeTo(root, path)] = text;
 			}
 		}
 	}

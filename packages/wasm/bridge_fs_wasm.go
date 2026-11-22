@@ -19,6 +19,7 @@ package main
 import (
 	"github.com/ballerina-nutcracker/ballerina/common/bfs"
 	"bytes"
+	"errors"
 	"io"
 	"io/fs"
 	"path"
@@ -44,7 +45,7 @@ func NewBridgeFS(proxy js.Value) *bridgeFS {
 }
 
 func (l *bridgeFS) Create(name string) (fs.File, error) {
-	res, err := l.bridgeCall("writeFile", name, name, "")
+	res, err := l.bridgeCall("writeFile", name, name, bytesToJS(nil))
 	if err != nil {
 		return nil, err
 	}
@@ -111,15 +112,35 @@ func (l *bridgeFS) Open(name string) (fs.File, error) {
 		return l.openDir(name, result)
 	}
 
+	content, err := bytesFromJS(result.Get("content"))
+	if err != nil {
+		return nil, &fs.PathError{Op: "open", Path: name, Err: err}
+	}
+
 	return &bridgeFileHandle{
 		info: &bridgeFileInfo{
 			name:    path.Base(name),
-			size:    int64(result.Get("size").Int()),
+			size:    int64(len(content)),
 			isDir:   false,
 			modTime: time.UnixMilli(int64(result.Get("modTime").Float())),
 		},
-		reader: bytes.NewReader([]byte(result.Get("content").String())),
+		reader: bytes.NewReader(content),
 	}, nil
+}
+
+func bytesToJS(data []byte) js.Value {
+	arr := js.Global().Get("Uint8Array").New(len(data))
+	js.CopyBytesToJS(arr, data)
+	return arr
+}
+
+func bytesFromJS(v js.Value) ([]byte, error) {
+	if !v.InstanceOf(js.Global().Get("Uint8Array")) {
+		return nil, errors.New("file content is not a Uint8Array")
+	}
+	data := make([]byte, v.Get("byteLength").Int())
+	js.CopyBytesToGo(data, v)
+	return data, nil
 }
 
 func (l *bridgeFS) openDir(name string, stat js.Value) (fs.File, error) {
@@ -160,7 +181,7 @@ func (l *bridgeFS) WriteFileWithModTime(name string, data []byte, modTime time.T
 }
 
 func (l *bridgeFS) writeFile(name string, data []byte, extra ...any) error {
-	args := append([]any{name, string(data)}, extra...)
+	args := append([]any{name, bytesToJS(data)}, extra...)
 	res, err := l.bridgeCall("writeFile", name, args...)
 	if err != nil {
 		return err

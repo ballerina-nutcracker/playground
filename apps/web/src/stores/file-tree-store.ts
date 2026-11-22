@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { useShallow } from "zustand/react/shallow";
 import { immer } from "zustand/middleware/immer";
 
+import { decodeText, encodeText } from "@/lib/fs/core/bytes";
 import { LOCAL_ROOT } from "@/lib/fs/fs-roots";
 import {
 	ancestorDirPathsForFile,
@@ -140,7 +141,7 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 				set((s) => {
 					s.activeFile = {
 						path,
-						content: file.content,
+						content: decodeText(file.content),
 						dirty: false,
 					};
 					for (const d of dirs) s.expandedPaths.add(d);
@@ -152,7 +153,7 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 				if (!activeFile?.dirty) return false;
 				const result = await _fs().writeFile(
 					activeFile.path,
-					activeFile.content,
+					encodeText(activeFile.content),
 				);
 				if (!result) return false;
 				set((s) => {
@@ -163,7 +164,7 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 			},
 
 			async createFile(path) {
-				const result = await _fs().writeFile(path, "");
+				const result = await _fs().writeFile(path, new Uint8Array());
 				if (!result) return false;
 				await get()._syncTrees();
 				return true;
@@ -264,7 +265,7 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 			},
 
 			async createNewFile(path) {
-				const result = await _fs().writeFile(path, "");
+				const result = await _fs().writeFile(path, new Uint8Array());
 				if (!result) return false;
 				await get()._syncTrees();
 				await get().openFile(path);
@@ -287,9 +288,9 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 				const [tomlResult, balResult] = await Promise.all([
 					_fs().writeFile(
 						tomlPath,
-						DEFAULT_BALLERINA_TOML.replace("{name}", name),
+						encodeText(DEFAULT_BALLERINA_TOML.replace("{name}", name)),
 					),
-					_fs().writeFile(balPath, DEFAULT_MAIN_BAL),
+					_fs().writeFile(balPath, encodeText(DEFAULT_MAIN_BAL)),
 				]);
 				if (!tomlResult || !balResult) {
 					await _fs().remove(dirPath);
@@ -355,7 +356,7 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 						set((s) => {
 							for (const d of dirs) s.expandedPaths.add(d);
 							if (s.activeFile?.path === mutation.path && !s.activeFile.dirty) {
-								s.activeFile.content = mutation.content;
+								s.activeFile.content = decodeText(mutation.content);
 							}
 						});
 						break;
@@ -432,7 +433,7 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 						if (change.kind === "write") {
 							if (
 								!(await fs.mkdirAll(dirname(change.path))) ||
-								!(await fs.writeFile(change.path, change.content))
+								!(await fs.writeFile(change.path, encodeText(change.content)))
 							)
 								throw new Error(`${change.path}: could not write file`);
 						} else if (!(await fs.remove(change.path))) {

@@ -6,7 +6,7 @@ const { diffProjectFiles, readBallerinaProjectFiles } = await import(
 	"../src/lib/fs/project-target.ts?snapshot"
 );
 
-const project = (extra: Record<string, string> = {}) =>
+const project = (extra: Record<string, string | Uint8Array> = {}) =>
 	createFs(
 		new Map(
 			Object.entries({
@@ -74,7 +74,9 @@ describe("readBallerinaProjectFiles", () => {
 	});
 
 	test("rejects invalid UTF-8 naming the file", async () => {
-		const fs = project({ "/p/broken.bal": "a\uD800b" });
+		const fs = project({
+			"/p/broken.bal": new Uint8Array([0x61, 0xff, 0x62]),
+		});
 		await expect(readBallerinaProjectFiles(fs, "/p")).rejects.toThrow(
 			"broken.bal",
 		);
@@ -95,7 +97,12 @@ describe("readBallerinaProjectFiles", () => {
 		const open = fs.open;
 		fs.open = async (path: string) =>
 			path === "/p/a.bal" || path === "/p/a.bal/b.bal"
-				? { content: "x", size: 1, modTime: 0, isDir: false }
+				? {
+						content: new TextEncoder().encode("x"),
+						size: 1,
+						modTime: 0,
+						isDir: false,
+					}
 				: open(path);
 		await expect(readBallerinaProjectFiles(fs, "/p")).rejects.toThrow(
 			"a.bal/b.bal",
