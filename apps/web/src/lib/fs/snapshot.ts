@@ -29,7 +29,7 @@ type SnapshotDirNode = {
 type SnapshotNode = SnapshotFileNode | SnapshotDirNode;
 
 export type SnapshotFSMutation =
-	| { type: "writeFile"; path: string; content: string; modTime?: number }
+	| { type: "writeFile"; path: string; content: string; modTime: number }
 	| { type: "mkdirAll"; path: string }
 	| { type: "remove"; path: string }
 	| { type: "move"; oldPath: string; newPath: string };
@@ -118,13 +118,19 @@ export class SnapshotFS implements FS {
 		const existing = this.nodes.get(path);
 		if (existing?.isDir) return false;
 
+		const resolvedModTime = modTime ?? Date.now();
 		this.nodes.set(path, {
 			isDir: false,
 			content,
-			modTime: modTime ?? Date.now(),
+			modTime: resolvedModTime,
 			size: new TextEncoder().encode(content).byteLength,
 		});
-		this.notifyListeners({ type: "writeFile", path, content, modTime });
+		this.notifyListeners({
+			type: "writeFile",
+			path,
+			content,
+			modTime: resolvedModTime,
+		});
 		return true;
 	}
 
@@ -175,7 +181,11 @@ export class SnapshotFS implements FS {
 
 	async move(oldPath: string, newPath: string): Promise<boolean> {
 		if (oldPath === newPath) return this.nodes.has(oldPath);
-		if (!this.nodes.has(oldPath) || newPath.startsWith(`${oldPath}/`)) {
+		if (
+			oldPath === "/" ||
+			!this.nodes.has(oldPath) ||
+			newPath.startsWith(`${oldPath}/`)
+		) {
 			return false;
 		}
 
