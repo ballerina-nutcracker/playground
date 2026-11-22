@@ -24,8 +24,6 @@ export async function getBallerinaProjectTarget(
 }
 
 const SNAPSHOT_EXTENSIONS = new Set(["bal", "toml", "md"]);
-const LONE_SURROGATE =
-	/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/;
 
 function relativeTo(root: string, path: string): string {
 	const base = root.replace(/\/+$/, "");
@@ -38,7 +36,7 @@ function relativeTo(root: string, path: string): string {
 // Mirrors the checks bal-bot's workspace runs on its files, but names the
 // offending path. Kept local so the Run path never imports bal-bot code.
 function validateSnapshot(files: Record<string, string>): void {
-	for (const [path, content] of Object.entries(files)) {
+	for (const path of Object.keys(files)) {
 		if (
 			!path ||
 			path.startsWith("/") ||
@@ -49,9 +47,6 @@ function validateSnapshot(files: Record<string, string>): void {
 			/[\x00-\x1f]/.test(path)
 		) {
 			throw new Error(`${path}: invalid workspace file path`);
-		}
-		if (LONE_SURROGATE.test(content)) {
-			throw new Error(`${path}: file contents must be valid UTF-8 text`);
 		}
 		const parts = path.split("/").slice(0, -1);
 		for (let i = 0; i < parts.length; i++) {
@@ -89,7 +84,8 @@ export async function readBallerinaProjectFiles(
 				const file = await fs.open(path);
 				if (!file) throw new Error(`${path}: could not read file`);
 				const text = tryDecodeText(file.content);
-				if (text === null) throw new Error(`${path}: not valid UTF-8`);
+				if (text === null)
+					throw new Error(`${path}: file contents must be valid UTF-8 text`);
 				files[relativeTo(root, path)] = text;
 			}
 		}

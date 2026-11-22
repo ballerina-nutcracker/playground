@@ -78,7 +78,7 @@ describe("readBallerinaProjectFiles", () => {
 			"/p/broken.bal": new Uint8Array([0x61, 0xff, 0x62]),
 		});
 		await expect(readBallerinaProjectFiles(fs, "/p")).rejects.toThrow(
-			"broken.bal",
+			"broken.bal: file contents must be valid UTF-8 text",
 		);
 	});
 
