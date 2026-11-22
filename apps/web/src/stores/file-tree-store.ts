@@ -4,7 +4,7 @@ import { immer } from "zustand/middleware/immer";
 import { toast } from "sonner";
 
 import { LOCAL_ROOT } from "@/lib/fs/fs-roots";
-import { publishFileMutation } from "@/lib/fs/mutations";
+import { publishFileMutation, serializeFileMutation } from "@/lib/fs/mutations";
 import { ancestorDirPathsForFile, isUnder } from "@/lib/fs/core/path-utils";
 
 import type { LayeredFS } from "@/lib/fs/layered-fs";
@@ -104,6 +104,28 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 			return fs;
 		};
 
+		const writeAndPublish = (path: string, content: string) =>
+			serializeFileMutation(async () => {
+				const modTime = Date.now();
+				if (!(await _fs().writeFile(path, content, modTime))) return false;
+				publishFileMutation({ type: "writeFile", path, content, modTime });
+				return true;
+			});
+
+		const mkdirAndPublish = (path: string) =>
+			serializeFileMutation(async () => {
+				if (!(await _fs().mkdirAll(path))) return false;
+				publishFileMutation({ type: "mkdirAll", path });
+				return true;
+			});
+
+		const removeAndPublish = (path: string) =>
+			serializeFileMutation(async () => {
+				if (!(await _fs().remove(path))) return false;
+				publishFileMutation({ type: "remove", path });
+				return true;
+			});
+
 		return {
 			tempTree: [],
 			localTree: [],
@@ -144,41 +166,41 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 			},
 
 			async saveFile() {
-				const { activeFile } = get();
-				if (!activeFile?.dirty) return false;
-				if (activeFile.deleted) {
-					toast.error("This file was deleted by the running program.");
-					return false;
-				}
-				const result = await _fs().writeFile(
-					activeFile.path,
-					activeFile.content,
-				);
-				if (!result) return false;
-				set((s) => {
-					if (s.activeFile) s.activeFile.dirty = false;
+				if (!get().activeFile?.dirty) return false;
+				const saved = await serializeFileMutation(async () => {
+					const activeFile = get().activeFile;
+					if (!activeFile?.dirty) return null;
+					if (activeFile.deleted) {
+						toast.error("This file was deleted by the running program.");
+						return null;
+					}
+					const { path, content } = activeFile;
+					const modTime = Date.now();
+					if (!(await _fs().writeFile(path, content, modTime))) return null;
+					publishFileMutation({ type: "writeFile", path, content, modTime });
+					return { path, content };
 				});
-				publishFileMutation({
-					type: "writeFile",
-					path: activeFile.path,
-					content: activeFile.content,
+				if (!saved) return false;
+				set((s) => {
+					if (
+						s.activeFile?.path === saved.path &&
+						s.activeFile.content === saved.content
+					) {
+						s.activeFile.dirty = false;
+					}
 				});
 				await get()._syncTrees();
 				return true;
 			},
 
 			async createFile(path) {
-				const result = await _fs().writeFile(path, "");
-				if (!result) return false;
-				publishFileMutation({ type: "writeFile", path, content: "" });
+				if (!(await writeAndPublish(path, ""))) return false;
 				await get()._syncTrees();
 				return true;
 			},
 
 			async deleteFile(path) {
-				const result = await _fs().remove(path);
-				if (!result) return false;
-				publishFileMutation({ type: "remove", path });
+				if (!(await removeAndPublish(path))) return false;
 				set((s) => {
 					if (s.activeFile?.path === path) s.activeFile = null;
 				});
@@ -187,9 +209,12 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 			},
 
 			async renameFile(oldPath, newPath) {
-				const result = await _fs().move(oldPath, newPath);
+				const result = await serializeFileMutation(async () => {
+					if (!(await _fs().move(oldPath, newPath))) return false;
+					publishFileMutation({ type: "move", oldPath, newPath });
+					return true;
+				});
 				if (!result) return false;
-				publishFileMutation({ type: "move", oldPath, newPath });
 				set((s) => {
 					if (!s.activeFile) return;
 					const currentPath = s.activeFile.path;
@@ -213,17 +238,13 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 			},
 
 			async createDir(path) {
-				const result = await _fs().mkdirAll(path);
-				if (!result) return false;
-				publishFileMutation({ type: "mkdirAll", path });
+				if (!(await mkdirAndPublish(path))) return false;
 				await get()._syncTrees();
 				return true;
 			},
 
 			async deleteDir(path) {
-				const result = await _fs().remove(path);
-				if (!result) return false;
-				publishFileMutation({ type: "remove", path });
+				if (!(await removeAndPublish(path))) return false;
 				set((s) => {
 					const activePath = s.activeFile?.path;
 					if (activePath === path || activePath?.startsWith(`${path}/`)) {
@@ -235,13 +256,17 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 			},
 
 			clearLocalspace() {
-				const removedPaths = get().localTree.map(
-					(entry) => `${LOCAL_ROOT}/${entry.name}`,
-				);
-				_fs().clearLocalspace();
-				for (const path of removedPaths) {
-					publishFileMutation({ type: "remove", path });
-				}
+				void serializeFileMutation(async () => {
+					const removedPaths = (await _fs().localTree()).map(
+						(entry) => `${LOCAL_ROOT}/${entry.name}`,
+					);
+					_fs().clearLocalspace();
+					for (const path of removedPaths) {
+						publishFileMutation({ type: "remove", path });
+					}
+				}).catch(() => {
+					toast.error("Failed to clear the local workspace.");
+				});
 				set((s) => {
 					s.localTree = [];
 					s.expandedPaths = new Set(
@@ -280,51 +305,53 @@ export const useFileTreeStore = create<FileTreeState & FileTreeActions>()(
 			},
 
 			async createNewFile(path) {
-				const result = await _fs().writeFile(path, "");
-				if (!result) return false;
-				publishFileMutation({ type: "writeFile", path, content: "" });
+				if (!(await writeAndPublish(path, ""))) return false;
 				await get()._syncTrees();
 				await get().openFile(path);
 				return true;
 			},
 
 			async createNewDir(path) {
-				const result = await _fs().mkdirAll(path);
-				if (!result) return false;
-				publishFileMutation({ type: "mkdirAll", path });
+				if (!(await mkdirAndPublish(path))) return false;
 				await get()._syncTrees();
 				return true;
 			},
 
 			async createNewPackage(path, name) {
 				const dirPath = `${path}/${name}`;
-				const dirResult = await _fs().mkdirAll(dirPath);
-				if (!dirResult) return false;
 				const tomlPath = `${dirPath}/Ballerina.toml`;
 				const balPath = `${dirPath}/main.bal`;
-				const [tomlResult, balResult] = await Promise.all([
-					_fs().writeFile(
-						tomlPath,
-						DEFAULT_BALLERINA_TOML.replace("{name}", name),
-					),
-					_fs().writeFile(balPath, DEFAULT_MAIN_BAL),
-				]);
-				if (!tomlResult || !balResult) {
-					await _fs().remove(dirPath);
+				const tomlContent = DEFAULT_BALLERINA_TOML.replace("{name}", name);
+				const result = await serializeFileMutation(async () => {
+					if (!(await _fs().mkdirAll(dirPath))) return false;
+					const modTime = Date.now();
+					const [tomlResult, balResult] = await Promise.all([
+						_fs().writeFile(tomlPath, tomlContent, modTime),
+						_fs().writeFile(balPath, DEFAULT_MAIN_BAL, modTime),
+					]);
+					if (!tomlResult || !balResult) {
+						await _fs().remove(dirPath);
+						return false;
+					}
+					publishFileMutation({ type: "mkdirAll", path: dirPath });
+					publishFileMutation({
+						type: "writeFile",
+						path: tomlPath,
+						content: tomlContent,
+						modTime,
+					});
+					publishFileMutation({
+						type: "writeFile",
+						path: balPath,
+						content: DEFAULT_MAIN_BAL,
+						modTime,
+					});
+					return true;
+				});
+				if (!result) {
 					await get()._syncTrees();
 					return false;
 				}
-				publishFileMutation({ type: "mkdirAll", path: dirPath });
-				publishFileMutation({
-					type: "writeFile",
-					path: tomlPath,
-					content: DEFAULT_BALLERINA_TOML.replace("{name}", name),
-				});
-				publishFileMutation({
-					type: "writeFile",
-					path: balPath,
-					content: DEFAULT_MAIN_BAL,
-				});
 				await get()._syncTrees();
 				await get().openFile(balPath);
 				return true;

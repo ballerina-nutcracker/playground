@@ -1,6 +1,9 @@
 import * as React from "react";
 
-import { subscribeFileMutations } from "@/lib/fs/mutations";
+import {
+	serializeFileMutation,
+	subscribeFileMutations,
+} from "@/lib/fs/mutations";
 import { SnapshotFS } from "@/lib/fs/snapshot";
 
 import { useFS } from "@/providers/fs-provider";
@@ -44,7 +47,11 @@ async function applyExternalMutation(
 ): Promise<void> {
 	switch (mutation.type) {
 		case "writeFile":
-			await snapshot.writeFile(mutation.path, mutation.content);
+			await snapshot.writeFile(
+				mutation.path,
+				mutation.content,
+				mutation.modTime,
+			);
 			break;
 		case "mkdirAll":
 			await snapshot.mkdirAll(mutation.path);
@@ -98,28 +105,27 @@ export function BallerinaProvider({ children }: React.PropsWithChildren) {
 
 	const run = React.useCallback(
 		async (path: string, onEvent: RunEventCallback): Promise<void> => {
-			const snapshot = await SnapshotFS.from(fs, path);
-			let mutationSync = Promise.resolve();
+			const snapshotReady = serializeFileMutation(() =>
+				SnapshotFS.from(fs, path),
+			);
+			let mutationSync: Promise<void> = snapshotReady.then(
+				() => undefined,
+				() => undefined,
+			);
 			let applyingWorkspaceMutation = false;
 			const enqueueMutation = (apply: () => Promise<void>) => {
-				mutationSync = mutationSync.catch(() => undefined).then(apply);
-			};
-			const unsubscribeRuntime = snapshot.onMutation((mutation) => {
-				if (applyingWorkspaceMutation) return;
-				enqueueMutation(async () => {
-					try {
-						await useFileTreeStore.getState().applyMutation(mutation);
-					} catch (error) {
-						onEvent({
-							type: "output",
-							stream: "stderr",
-							text: `Failed to sync file system mutation: ${String(error)}\n`,
-						});
-					}
+				mutationSync = serializeFileMutation(apply).catch((error) => {
+					onEvent({
+						type: "output",
+						stream: "stderr",
+						text: `Failed to sync file system mutation: ${String(error)}\n`,
+					});
 				});
-			});
+			};
 			const unsubscribeWorkspace = subscribeFileMutations((mutation) => {
 				enqueueMutation(async () => {
+					const snapshot = await snapshotReady.catch(() => null);
+					if (!snapshot) return;
 					applyingWorkspaceMutation = true;
 					try {
 						await applyExternalMutation(snapshot, mutation);
@@ -129,11 +135,19 @@ export function BallerinaProvider({ children }: React.PropsWithChildren) {
 				});
 			});
 
+			let unsubscribeRuntime: (() => void) | undefined;
 			try {
+				const snapshot = await snapshotReady;
+				unsubscribeRuntime = snapshot.onMutation((mutation) => {
+					if (applyingWorkspaceMutation) return;
+					enqueueMutation(() =>
+						useFileTreeStore.getState().applyMutation(mutation),
+					);
+				});
 				await requireClient(clientRef.current).run(snapshot, path, onEvent);
 			} finally {
 				unsubscribeWorkspace();
-				unsubscribeRuntime();
+				unsubscribeRuntime?.();
 				await mutationSync;
 			}
 		},
