@@ -1,5 +1,9 @@
 import * as React from "react";
 
+import {
+	serializeFileMutation,
+	subscribeFileMutations,
+} from "@/lib/fs/mutations";
 import { SnapshotFS } from "@/lib/fs/snapshot";
 
 import { useFS } from "@/providers/fs-provider";
@@ -13,6 +17,7 @@ import type {
 	HttpDispatchResponse,
 	RunEventCallback,
 } from "@/workers/ballerina-worker-api";
+import type { SnapshotFSMutation } from "@/lib/fs/snapshot";
 
 interface BallerinaContextValue {
 	isReady: boolean;
@@ -34,6 +39,30 @@ function requireClient(
 ): BallerinaWorkerClient {
 	if (!client) throw new Error("Ballerina runtime is not initialized");
 	return client;
+}
+
+async function applyExternalMutation(
+	snapshot: SnapshotFS,
+	mutation: SnapshotFSMutation,
+): Promise<void> {
+	switch (mutation.type) {
+		case "writeFile":
+			await snapshot.writeFile(
+				mutation.path,
+				mutation.content,
+				mutation.modTime,
+			);
+			break;
+		case "mkdirAll":
+			await snapshot.mkdirAll(mutation.path);
+			break;
+		case "remove":
+			await snapshot.remove(mutation.path);
+			break;
+		case "move":
+			await snapshot.move(mutation.oldPath, mutation.newPath);
+			break;
+	}
 }
 
 export function BallerinaProvider({ children }: React.PropsWithChildren) {
@@ -76,29 +105,49 @@ export function BallerinaProvider({ children }: React.PropsWithChildren) {
 
 	const run = React.useCallback(
 		async (path: string, onEvent: RunEventCallback): Promise<void> => {
-			const snapshot = await SnapshotFS.from(fs, path);
-			let mutationSync = Promise.resolve();
-			const unsubscribe = snapshot.onMutation((mutation) => {
-				mutationSync = mutationSync
-					// Keep the mutation queue alive even if a prior sync failed.
-					.catch(() => undefined)
-					.then(async () => {
-						try {
-							await useFileTreeStore.getState().applyMutation(mutation);
-						} catch (error) {
-							onEvent({
-								type: "output",
-								stream: "stderr",
-								text: `Failed to sync file system mutation: ${String(error)}\n`,
-							});
-						}
+			const snapshotReady = serializeFileMutation(() =>
+				SnapshotFS.from(fs, path),
+			);
+			let mutationSync: Promise<void> = snapshotReady.then(
+				() => undefined,
+				() => undefined,
+			);
+			let applyingWorkspaceMutation = false;
+			const enqueueMutation = (apply: () => Promise<void>) => {
+				mutationSync = serializeFileMutation(apply).catch((error) => {
+					onEvent({
+						type: "output",
+						stream: "stderr",
+						text: `Failed to sync file system mutation: ${String(error)}\n`,
 					});
+				});
+			};
+			const unsubscribeWorkspace = subscribeFileMutations((mutation) => {
+				enqueueMutation(async () => {
+					const snapshot = await snapshotReady.catch(() => null);
+					if (!snapshot) return;
+					applyingWorkspaceMutation = true;
+					try {
+						await applyExternalMutation(snapshot, mutation);
+					} finally {
+						applyingWorkspaceMutation = false;
+					}
+				});
 			});
 
+			let unsubscribeRuntime: (() => void) | undefined;
 			try {
+				const snapshot = await snapshotReady;
+				unsubscribeRuntime = snapshot.onMutation((mutation) => {
+					if (applyingWorkspaceMutation) return;
+					enqueueMutation(() =>
+						useFileTreeStore.getState().applyMutation(mutation),
+					);
+				});
 				await requireClient(clientRef.current).run(snapshot, path, onEvent);
 			} finally {
-				unsubscribe();
+				unsubscribeWorkspace();
+				unsubscribeRuntime?.();
 				await mutationSync;
 			}
 		},
