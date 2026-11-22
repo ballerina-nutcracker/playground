@@ -147,7 +147,7 @@ export class LayeredFS implements FS {
 
 			const exists = await newTarget.stat(newPath);
 
-			if (!(await newTarget.writeFile(newPath, file.content))) {
+			if (!(await newTarget.writeFile(newPath, file.content, file.modTime))) {
 				await this._rollback(newTarget, createdPaths);
 				return false;
 			}
