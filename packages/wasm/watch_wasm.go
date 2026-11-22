@@ -27,14 +27,17 @@ import (
 	"github.com/ballerina-nutcracker/ballerina/platform/pal"
 )
 
-const watchQueueLimit = 256
+type watchBatch struct {
+	events []pal.WatchEvent
+	ack    js.Value
+}
 
 type wasmWatchHandle struct {
 	fsys     *bridgeFS
 	path     string
 	id       string
 	callback js.Func
-	events   chan pal.WatchEvent
+	batches  chan watchBatch
 	failure  chan error
 	done     chan struct{}
 	closed   atomic.Bool
@@ -51,7 +54,7 @@ func (l *bridgeFS) Watch(path string, recursive bool, handler pal.WatchHandler) 
 
 	w := &wasmWatchHandle{
 		fsys: l, path: path,
-		events:  make(chan pal.WatchEvent, watchQueueLimit),
+		batches: make(chan watchBatch, 1),
 		failure: make(chan error, 1),
 		done:    make(chan struct{}),
 	}
@@ -59,17 +62,22 @@ func (l *bridgeFS) Watch(path string, recursive bool, handler pal.WatchHandler) 
 		if w.closed.Load() {
 			return nil
 		}
-		event, err := watchEventFromJS(args)
+		events, err := watchEventsFromJS(args)
 		if err != nil {
 			w.fail(err)
 			return nil
 		}
+		if len(events) == 0 {
+			return nil
+		}
+		promise, resolve := newJSPromise()
 		select {
-		case w.events <- event:
+		case w.batches <- watchBatch{events: events, ack: resolve}:
 		default:
+			resolve.Invoke()
 			w.fail(errors.New("directory watch event queue overflow"))
 		}
-		return nil
+		return promise
 	})
 
 	id, err := l.bridgeCall("watch", path, path, recursive, w.callback)
@@ -91,11 +99,36 @@ func (l *bridgeFS) Watch(path string, recursive bool, handler pal.WatchHandler) 
 	return w, nil
 }
 
-func watchEventFromJS(args []js.Value) (pal.WatchEvent, error) {
-	if len(args) != 1 || args[0].Type() != js.TypeObject || args[0].IsNull() {
+func newJSPromise() (promise, resolve js.Value) {
+	executor := js.FuncOf(func(_ js.Value, args []js.Value) any {
+		resolve = args[0]
+		return nil
+	})
+	defer executor.Release()
+	promise = js.Global().Get("Promise").New(executor)
+	return promise, resolve
+}
+
+func watchEventsFromJS(args []js.Value) ([]pal.WatchEvent, error) {
+	if len(args) != 1 || !js.Global().Get("Array").Call("isArray", args[0]).Bool() {
+		return nil, errors.New("invalid directory watch event batch")
+	}
+	batch := args[0]
+	events := make([]pal.WatchEvent, batch.Length())
+	for i := range events {
+		event, err := watchEventFromJS(batch.Index(i))
+		if err != nil {
+			return nil, err
+		}
+		events[i] = event
+	}
+	return events, nil
+}
+
+func watchEventFromJS(value js.Value) (pal.WatchEvent, error) {
+	if value.Type() != js.TypeObject || value.IsNull() {
 		return pal.WatchEvent{}, errors.New("invalid directory watch event")
 	}
-	value := args[0]
 	if message := value.Get("error"); message.Type() == js.TypeString {
 		return pal.WatchEvent{}, errors.New(message.String())
 	}
@@ -135,11 +168,14 @@ func (w *wasmWatchHandle) dispatch(handler pal.WatchHandler) {
 				handler(pal.WatchEvent{Err: err})
 			}
 			return
-		case event := <-w.events:
-			if w.closed.Load() {
-				return
+		case batch := <-w.batches:
+			batch.ack.Invoke()
+			for _, event := range batch.events {
+				if w.closed.Load() {
+					return
+				}
+				handler(event)
 			}
-			handler(event)
 		}
 	}
 }
@@ -148,6 +184,12 @@ func (w *wasmWatchHandle) Close() error {
 	w.close.Do(func() {
 		w.closed.Store(true)
 		close(w.done)
+		// Unblock the registry, which is awaiting this batch's acknowledgement.
+		select {
+		case batch := <-w.batches:
+			batch.ack.Invoke()
+		default:
+		}
 		_, w.closeErr = w.fsys.bridgeCall("unwatch", w.path, w.id)
 		w.callback.Release()
 		w.fsys.watchesMu.Lock()

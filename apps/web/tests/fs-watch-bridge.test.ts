@@ -27,12 +27,14 @@ test("watch callbacks cross Comlink and can call back into the filesystem", asyn
 	const events: FSWatchEvent[] = [];
 	const ready = Promise.withResolvers<void>();
 	try {
-		const id = await connected.fs.watch("/work", true, async (event) => {
-			events.push(event);
-			if ("path" in event && event.path === "/work/first") {
-				await connected.fs.writeFile("/work/second", "from callback");
-			} else {
-				ready.resolve();
+		const id = await connected.fs.watch("/work", true, async (batch) => {
+			for (const event of batch) {
+				events.push(event);
+				if ("path" in event && event.path === "/work/first") {
+					await connected.fs.writeFile("/work/second", "from callback");
+				} else {
+					ready.resolve();
+				}
 			}
 		});
 		await connected.fs.writeFile("/work/first", "");
@@ -108,9 +110,9 @@ test("worker forwarding gate ignores late events even when unsubscribe fails", a
 	const id = await connected.fs.watch("/", true, () => {
 		count++;
 	});
-	await callback({ path: "/first", op: "create" });
+	await callback([{ path: "/first", op: "create" }]);
 	await expect(connected.fs.unwatch(id)).rejects.toThrow("transport failed");
-	await callback({ path: "/late", op: "create" });
+	await callback([{ path: "/late", op: "create" }]);
 	expect(count).toBe(1);
 	await connected.dispose();
 });
@@ -135,7 +137,7 @@ test("disposal disables callbacks during pending registration and cleans up its 
 		invoked = true;
 	});
 	await connected.dispose();
-	await callback({ path: "/late", op: "create" });
+	await callback([{ path: "/late", op: "create" }]);
 	registration.resolve("late-registration");
 	await expect(watch).rejects.toThrow("disposed");
 	expect(invoked).toBe(false);

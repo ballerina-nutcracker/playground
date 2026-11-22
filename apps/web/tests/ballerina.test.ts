@@ -126,6 +126,18 @@ const testCases: TestCase[] = [
 		expectedStdout: "true\nfalse\n",
 	},
 	{
+		name: "directory listener receives every event of a recursive remove",
+		files: async () =>
+			new Map([
+				[
+					"/tmp/main.bal",
+					await load("./fixtures/directory-listener-bulk-remove.bal"),
+				],
+			]),
+		entryPoint: "/tmp/main.bal",
+		expectedStdout: "deletes: 4\n",
+	},
+	{
 		name: "os env",
 		files: async () =>
 			new Map([["/tmp/main.bal", await load("./fixtures/os-env.bal")]]),

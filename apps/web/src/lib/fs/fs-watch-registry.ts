@@ -4,7 +4,9 @@ export type FSWatchEvent =
 	| { path: string; op: "create" | "modify" | "delete" }
 	| { error: string };
 
-export type FSWatchCallback = (event: FSWatchEvent) => void | Promise<void>;
+export type FSWatchCallback = (
+	events: readonly FSWatchEvent[],
+) => void | Promise<void>;
 
 type Subscription = {
 	path: string;
@@ -79,12 +81,12 @@ export class FSWatchRegistry {
 		subscription.delivery = Promise.resolve()
 			.then(async () => {
 				while (subscription.active && subscription.queue.length) {
-					const event = subscription.queue.shift();
-					if (!event) continue;
+					const events = subscription.queue;
+					subscription.queue = [];
 					subscription.inCallback = true;
 					let callbackResult: void | Promise<void>;
 					try {
-						callbackResult = subscription.callback(event);
+						callbackResult = subscription.callback(events);
 					} finally {
 						subscription.inCallback = false;
 					}

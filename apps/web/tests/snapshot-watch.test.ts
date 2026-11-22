@@ -21,11 +21,14 @@ async function snapshot() {
 
 function recorder() {
 	const events: FSWatchEvent[] = [];
+	const batches: number[] = [];
 	let wake: (() => void) | undefined;
 	return {
 		events,
-		callback(event: FSWatchEvent) {
-			events.push(event);
+		batches,
+		callback(batch: readonly FSWatchEvent[]) {
+			events.push(...batch);
+			batches.push(batch.length);
 			wake?.();
 		},
 		async waitFor(count: number) {
@@ -176,8 +179,10 @@ test("unwatch is idempotent, discards pending events, and isolates other subscri
 test("watch callbacks can write without blocking the mutation or other listeners", async () => {
 	const fs = await snapshot();
 	const log = recorder();
-	await fs.watch("/work", false, async (event) => {
-		if ("path" in event && event.path === "/work/first") {
+	await fs.watch("/work", false, async (events) => {
+		if (
+			events.some((event) => "path" in event && event.path === "/work/first")
+		) {
 			await fs.writeFile("/work/second", "from callback");
 		}
 	});
@@ -196,9 +201,9 @@ test("slow callbacks retain bulk mutations until they can be delivered", async (
 	const started = Promise.withResolvers<void>();
 	const release = Promise.withResolvers<void>();
 	const log = recorder();
-	registry.watch("/work", true, async (event) => {
-		log.callback(event);
-		if (log.events.length === 1) {
+	registry.watch("/work", true, async (events) => {
+		log.callback(events);
+		if (log.batches.length === 1) {
 			started.resolve();
 			await release.promise;
 		}
@@ -213,9 +218,30 @@ test("slow callbacks retain bulk mutations until they can be delivered", async (
 		release.resolve();
 		await log.waitFor(301);
 		expect(log.events).toHaveLength(301);
+		expect(log.batches).toEqual([1, 300]);
 	} finally {
 		release.resolve();
 		registry.dispose();
+	}
+});
+
+test("a recursive remove is delivered as one batch", async () => {
+	const fs = await snapshot();
+	const log = recorder();
+	await fs.watch("/work", true, log.callback);
+	try {
+		await fs.writeFile("/work/nested/second.txt", "");
+		await log.waitFor(1);
+		await fs.remove("/work/nested");
+		await log.waitFor(4);
+		expect(log.batches).toEqual([1, 3]);
+		expect(log.events.slice(1)).toEqual([
+			{ path: "/work/nested/second.txt", op: "delete" },
+			{ path: "/work/nested/existing.txt", op: "delete" },
+			{ path: "/work/nested", op: "delete" },
+		]);
+	} finally {
+		fs.dispose();
 	}
 });
 

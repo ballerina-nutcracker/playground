@@ -78,7 +78,7 @@ export function connectWatchableFS(remote: WatchableFS) {
 				const id = await remote.watch(
 					path,
 					recursive,
-					Comlink.proxy((event) => gate.callback?.(event)),
+					Comlink.proxy((events) => gate.callback?.(events)),
 				);
 				if (disposed) {
 					gate.callback = undefined;
