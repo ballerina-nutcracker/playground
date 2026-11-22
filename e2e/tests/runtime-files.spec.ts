@@ -15,8 +15,13 @@ test("shows files written by a running program in the sidebar", async ({
 	await playground.replaceEditorContent(writerCode);
 	await playground.runAndExpectOutput("file written");
 
-	await expect(page.getByText("generated", { exact: true })).toBeVisible();
+	const generatedDir = `/local/${packageName}/generated`;
 	await expect(
-		page.getByText("runtime-file.txt", { exact: true }),
+		page.locator(`[data-file-path=${JSON.stringify(generatedDir)}]`),
+	).toBeVisible();
+	await expect(
+		page.locator(
+			`[data-file-path=${JSON.stringify(`${generatedDir}/runtime-file.txt`)}]`,
+		),
 	).toBeVisible();
 });

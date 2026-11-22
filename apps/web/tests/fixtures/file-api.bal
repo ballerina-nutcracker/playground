@@ -30,6 +30,8 @@ public function main() returns error? {
     io:println(check file:test(base + "/renamed.txt", file:EXISTS));
     io:println(check file:test(base + "/source.txt", file:EXISTS));
     io:println(check file:test(base + "/renamed.txt", file:IS_SYMLINK));
+    io:println(file:normalizePath(base + "/missing", file:SYMLINK) is file:FileNotFoundError);
+    io:println(file:normalizePath(base + "/renamed.txt", file:SYMLINK) is file:NotLinkError);
 
     string temp = check file:createTemp(prefix = "test-", suffix = ".txt");
     string tempDir = check file:createTempDir(prefix = "test-dir-");

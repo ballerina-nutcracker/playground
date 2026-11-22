@@ -52,7 +52,9 @@ export class SnapshotFS implements FS {
 	static async from(source: FS, rootPath: string): Promise<SnapshotFS> {
 		rootPath = cleanFSPath(rootPath);
 		const nodes = new Map<string, SnapshotNode>();
-		await collectNodes(source, nodes, rootPath);
+		if (rootPath !== TEMP_ROOT && !isDescendant(rootPath, TEMP_ROOT)) {
+			await collectNodes(source, nodes, rootPath);
+		}
 		await collectAncestorDirs(source, nodes, rootPath);
 		await collectNodes(source, nodes, TEMP_ROOT);
 		if (!nodes.has(TEMP_ROOT)) {

@@ -451,6 +451,13 @@ func wasmPal(fsys *bridgeFS, cwd string, stderr, stdout io.Writer, signals pal.S
 			},
 			Readlink: func(p string) (string, error) {
 				resolved := resolvePath(cwd, p)
+				fsys.mu.Lock()
+				defer fsys.mu.Unlock()
+				if _, err := fs.Stat(fsys, resolved); errors.Is(err, fs.ErrNotExist) {
+					return "", &fs.PathError{Op: "readlink", Path: resolved, Err: fs.ErrNotExist}
+				} else if err != nil {
+					return "", err
+				}
 				return "", &fs.PathError{Op: "readlink", Path: resolved, Err: fs.ErrInvalid}
 			},
 		},
