@@ -77,4 +77,48 @@ describe("SnapshotFS.move", () => {
 			{ type: "move", oldPath: "/tmp/proj", newPath: "/tmp/moved" },
 		]);
 	});
+
+	test("rejects an existing destination file", async () => {
+		const { snapshot, mutations } = await createSnapshot();
+		await snapshot.writeFile("/tmp/proj/a.txt", "a");
+		await snapshot.writeFile("/tmp/proj/b.txt", "b");
+		mutations.length = 0;
+
+		expect(await snapshot.move("/tmp/proj/a.txt", "/tmp/proj/b.txt")).toBe(
+			false,
+		);
+
+		expect((await snapshot.open("/tmp/proj/a.txt"))?.content).toBe("a");
+		expect((await snapshot.open("/tmp/proj/b.txt"))?.content).toBe("b");
+		expect(mutations).toEqual([]);
+	});
+
+	test("rejects an existing destination directory", async () => {
+		const { snapshot, mutations } = await createSnapshot();
+		await snapshot.mkdirAll("/tmp/proj/dir");
+		mutations.length = 0;
+
+		expect(await snapshot.move("/tmp/proj/main.bal", "/tmp/proj/dir")).toBe(
+			false,
+		);
+
+		expect((await snapshot.open("/tmp/proj/main.bal"))?.content).toBe(
+			"// main",
+		);
+		expect((await snapshot.stat("/tmp/proj/dir"))?.isDir).toBe(true);
+		expect(mutations).toEqual([]);
+	});
+
+	test("treats moving a file onto itself as a no-op", async () => {
+		const { snapshot, mutations } = await createSnapshot();
+
+		expect(
+			await snapshot.move("/tmp/proj/main.bal", "/tmp/proj/main.bal"),
+		).toBe(true);
+
+		expect((await snapshot.open("/tmp/proj/main.bal"))?.content).toBe(
+			"// main",
+		);
+		expect(mutations).toEqual([]);
+	});
 });
