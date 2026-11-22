@@ -20,3 +20,17 @@ test("shows files written by a running program in the sidebar", async ({
 		page.getByText("runtime-file.txt", { exact: true }),
 	).toBeVisible();
 });
+
+test("round-trips binary file contents", async ({ page }) => {
+	const playground = new PlaygroundPage(page);
+	const code = await loadFixture("binary-file.bal");
+	const packageName = `e2e_binary_file_${Date.now()}`;
+
+	await playground.open();
+	await playground.createPackage(packageName);
+	await playground.replaceEditorContent(code);
+	// The output pane pretty-prints JSON, so the byte array spans lines.
+	await playground.runAndExpectOutput(
+		JSON.stringify([0xff, 0xfe, 0x00, 0x80], null, 2),
+	);
+});
