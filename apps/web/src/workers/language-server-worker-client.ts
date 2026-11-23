@@ -19,22 +19,33 @@ export class LanguageServerWorkerClient implements LanguageServerConnection {
 
 	init(onMessage: (message: string) => void): Promise<void> {
 		if (this.initPromise) return this.initPromise;
-		this.worker = new Worker(
+		const worker = new Worker(
 			new URL("./language-server-worker.ts", import.meta.url),
 			{ type: "module" },
 		);
-		this.api = Comlink.wrap<LanguageServerWorkerAPI>(this.worker);
+		this.worker = worker;
+		this.api = Comlink.wrap<LanguageServerWorkerAPI>(worker);
+		// A script that fails to load never calls Comlink.expose(), so the init
+		// call would wait forever; the worker reports that only as an error event.
+		const loadFailed = new Promise<never>((_, reject) =>
+			worker.addEventListener(
+				"error",
+				() => reject(new Error("Language server worker failed to load")),
+				{ once: true },
+			),
+		);
 		const base = new URL(import.meta.env.BASE_URL, self.location.origin);
-		this.initPromise = this.api
-			.init(
+		this.initPromise = Promise.race([
+			this.api.init(
 				new URL("ballerina-ls.wasm", base).href,
 				new URL("ls-wasm_exec.js", base).href,
 				Comlink.proxy(onMessage),
-			)
-			.catch((error) => {
-				this.dispose();
-				throw error;
-			});
+			),
+			loadFailed,
+		]).catch((error) => {
+			this.dispose();
+			throw error;
+		});
 		return this.initPromise;
 	}
 
