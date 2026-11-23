@@ -30,7 +30,12 @@ export class LanguageServerWorkerClient implements LanguageServerConnection {
 		const loadFailed = new Promise<never>((_, reject) =>
 			worker.addEventListener(
 				"error",
-				() => reject(new Error("Language server worker failed to load")),
+				(event) =>
+					reject(
+						new Error(
+							`Language server worker failed to load: ${event.message}`,
+						),
+					),
 				{ once: true },
 			),
 		);
