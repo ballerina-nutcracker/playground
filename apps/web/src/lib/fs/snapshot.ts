@@ -1,3 +1,4 @@
+import { TEMP_ROOT } from "@/lib/fs/fs-roots";
 import {
 	basename,
 	dirname,
@@ -28,8 +29,10 @@ type SnapshotDirNode = {
 type SnapshotNode = SnapshotFileNode | SnapshotDirNode;
 
 export type SnapshotFSMutation =
-	| { type: "writeFile"; path: string; content: string }
-	| { type: "mkdirAll"; path: string };
+	| { type: "writeFile"; path: string; content: string; modTime: number }
+	| { type: "mkdirAll"; path: string }
+	| { type: "remove"; path: string }
+	| { type: "move"; oldPath: string; newPath: string };
 
 export type SnapshotFSListener = (mutation: SnapshotFSMutation) => void;
 
@@ -42,6 +45,14 @@ export class SnapshotFS implements FS {
 		const nodes = new Map<string, SnapshotNode>();
 		await collectNodes(source, nodes, rootPath);
 		await collectAncestorDirs(source, nodes, rootPath);
+		await collectNodes(source, nodes, TEMP_ROOT);
+		if (!nodes.has(TEMP_ROOT)) {
+			nodes.set(TEMP_ROOT, {
+				isDir: true,
+				modTime: Date.now(),
+				entries: [],
+			});
+		}
 		return new SnapshotFS(nodes);
 	}
 
@@ -93,7 +104,11 @@ export class SnapshotFS implements FS {
 		return this.getDirectoryEntries(path);
 	}
 
-	async writeFile(path: string, content: string): Promise<boolean> {
+	async writeFile(
+		path: string,
+		content: string,
+		modTime?: number,
+	): Promise<boolean> {
 		const parentPath = dirname(path);
 		const parent = this.nodes.get(parentPath);
 		if (parentPath && parentPath !== "." && !parent?.isDir) {
@@ -103,13 +118,19 @@ export class SnapshotFS implements FS {
 		const existing = this.nodes.get(path);
 		if (existing?.isDir) return false;
 
+		const resolvedModTime = modTime ?? Date.now();
 		this.nodes.set(path, {
 			isDir: false,
 			content,
-			modTime: Date.now(),
+			modTime: resolvedModTime,
 			size: new TextEncoder().encode(content).byteLength,
 		});
-		this.notifyListeners({ type: "writeFile", path, content });
+		this.notifyListeners({
+			type: "writeFile",
+			path,
+			content,
+			modTime: resolvedModTime,
+		});
 		return true;
 	}
 
@@ -146,12 +167,42 @@ export class SnapshotFS implements FS {
 		return true;
 	}
 
-	async remove(): Promise<boolean> {
-		return false;
+	async remove(path: string): Promise<boolean> {
+		if (!path || path === "/" || !this.nodes.has(path)) return false;
+
+		for (const candidate of [...this.nodes.keys()]) {
+			if (candidate === path || candidate.startsWith(`${path}/`)) {
+				this.nodes.delete(candidate);
+			}
+		}
+		this.notifyListeners({ type: "remove", path });
+		return true;
 	}
 
-	async move(): Promise<boolean> {
-		return false;
+	async move(oldPath: string, newPath: string): Promise<boolean> {
+		if (oldPath === newPath) return this.nodes.has(oldPath);
+		if (
+			oldPath === "/" ||
+			!this.nodes.has(oldPath) ||
+			newPath.startsWith(`${oldPath}/`)
+		) {
+			return false;
+		}
+
+		const parent = this.nodes.get(dirname(newPath));
+		if (!parent?.isDir) return false;
+		if (this.nodes.has(newPath)) return false;
+
+		const moved = [...this.nodes.entries()].filter(
+			([candidate]) =>
+				candidate === oldPath || candidate.startsWith(`${oldPath}/`),
+		);
+		for (const [candidate] of moved) this.nodes.delete(candidate);
+		for (const [candidate, node] of moved) {
+			this.nodes.set(`${newPath}${candidate.slice(oldPath.length)}`, node);
+		}
+		this.notifyListeners({ type: "move", oldPath, newPath });
+		return true;
 	}
 }
 

@@ -45,8 +45,10 @@ export class LayeredFS implements FS {
 		return this._withTargetOrNull(path, (fs) => fs.readDir(path));
 	}
 
-	async writeFile(path: string, content: string) {
-		return this._withTargetOrFalse(path, (fs) => fs.writeFile(path, content));
+	async writeFile(path: string, content: string, modTime?: number) {
+		return this._withTargetOrFalse(path, (fs) =>
+			fs.writeFile(path, content, modTime),
+		);
 	}
 
 	async remove(path: string) {
@@ -145,7 +147,7 @@ export class LayeredFS implements FS {
 
 			const exists = await newTarget.stat(newPath);
 
-			if (!(await newTarget.writeFile(newPath, file.content))) {
+			if (!(await newTarget.writeFile(newPath, file.content, file.modTime))) {
 				await this._rollback(newTarget, createdPaths);
 				return false;
 			}

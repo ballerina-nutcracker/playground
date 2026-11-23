@@ -27,9 +27,6 @@ mock.module("@/stores/file-tree-store", () => ({
 		}),
 	},
 }));
-mock.module("@/lib/fs/snapshot", () => ({
-	SnapshotFS: { from: async () => ({}) },
-}));
 
 const { BallerinaLS } = await import("../src/lib/ballerina-ls");
 

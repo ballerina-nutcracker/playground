@@ -50,7 +50,11 @@ export class AbstractFS implements FS {
 		}));
 	}
 
-	async writeFile(path: string, content: string): Promise<boolean> {
+	async writeFile(
+		path: string,
+		content: string,
+		modTime?: number,
+	): Promise<boolean> {
 		try {
 			const { parent, name } = this._getParentAndName(path);
 			if (!parent) return false;
@@ -59,7 +63,7 @@ export class AbstractFS implements FS {
 			parent.children[name] = {
 				isDir: false,
 				content,
-				modTime: Date.now(),
+				modTime: modTime ?? Date.now(),
 			};
 			this._onWrite();
 			return true;
