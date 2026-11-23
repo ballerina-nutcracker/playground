@@ -20,7 +20,12 @@ import {
 	StreamLanguage,
 	syntaxHighlighting,
 } from "@codemirror/language";
-import { languageServerExtensions, LSPClient } from "@codemirror/lsp-client";
+import {
+	LSPClient,
+	serverCompletion,
+	serverDiagnostics,
+	signatureHelp,
+} from "@codemirror/lsp-client";
 import { highlightSelectionMatches } from "@codemirror/search";
 import { Compartment, EditorState, Prec } from "@codemirror/state";
 import {
@@ -35,6 +40,7 @@ import {
 import { clike } from "@codemirror/legacy-modes/mode/clike";
 import { Vim, vim } from "@replit/codemirror-vim";
 
+import DOMPurify from "dompurify";
 import { toast } from "sonner";
 
 import { ShikiEditor } from "@/components/shiki-editor";
@@ -43,6 +49,10 @@ import { useEditorStore } from "@/stores/editor-store";
 import { useFileTreeActions } from "@/stores/file-tree-store";
 
 import { BallerinaLS } from "@/lib/ballerina-ls";
+import {
+	LANGUAGE_SERVER_ROOT_URI,
+	languageServerUri,
+} from "@/lib/language-server-uri";
 import { cn } from "@/lib/utils";
 
 import type { KeyBinding } from "@codemirror/view";
@@ -98,9 +108,29 @@ const ballerinaMode = StreamLanguage.define(
 	}),
 );
 
+const ballerinaTransport = new BallerinaLS();
 const ballerinaLSPClient = new LSPClient({
-	extensions: languageServerExtensions(),
-}).connect(new BallerinaLS());
+	rootUri: LANGUAGE_SERVER_ROOT_URI,
+	// Documentation comes from editable (possibly shared) source.
+	sanitizeHTML: (html) =>
+		DOMPurify.sanitize(html, { USE_PROFILES: { html: true } }),
+	// Register only the features implemented by the Go server.
+	extensions: [serverCompletion(), serverDiagnostics(), signatureHelp()],
+});
+// Connect only when the runtime is ready: connect() sends `initialize` at once,
+// and a cold WASM download can exceed CodeMirror's 3s request timeout.
+ballerinaTransport
+	.start()
+	.then(() => ballerinaLSPClient.connect(ballerinaTransport))
+	.catch((error: unknown) =>
+		console.error("Language server failed to start", error),
+	);
+
+if (import.meta.hot)
+	import.meta.hot.dispose(() => {
+		ballerinaLSPClient.disconnect();
+		ballerinaTransport.dispose();
+	});
 
 function buildHotkeyExtension(hotkeysRef: React.RefObject<HotkeyMap>) {
 	const bindings: KeyBinding[] = Object.keys(hotkeysRef.current ?? {}).map(
@@ -124,8 +154,8 @@ function baseExtensions(hotkeysRef: React.RefObject<HotkeyMap>): Extension[] {
 		keymap.of([indentWithTab]),
 		theme,
 		autocompletion({
-			activateOnTyping: false,
-			override: [],
+			activateOnTyping: true,
+			activateOnTypingDelay: 150,
 		}),
 	];
 }
@@ -227,7 +257,9 @@ export function CodeEditor({
 			},
 			extensions: [
 				...baseExtensions(hotkeysRef),
-				ballerinaLSPClient.plugin(filePath ?? ""),
+				language === "ballerina" && filePath
+					? ballerinaLSPClient.plugin(languageServerUri(filePath), "ballerina")
+					: [],
 				languageCompartment.current.of(
 					language === "ballerina" ? ballerinaMode : [],
 				),

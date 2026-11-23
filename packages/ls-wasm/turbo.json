@@ -1,0 +1,12 @@
+{
+	"extends": ["//"],
+	"tasks": {
+		"build": {
+			"cache": false,
+			"env": ["LS_SOURCE_DIR"]
+		},
+		"test": {
+			"env": ["LS_SOURCE_DIR"]
+		}
+	}
+}
