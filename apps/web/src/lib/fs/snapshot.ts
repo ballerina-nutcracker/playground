@@ -191,9 +191,7 @@ export class SnapshotFS implements FS {
 
 		const parent = this.nodes.get(dirname(newPath));
 		if (!parent?.isDir) return false;
-		const destination = this.nodes.get(newPath);
-		if (destination?.isDir) return false;
-		if (destination) this.nodes.delete(newPath);
+		if (this.nodes.has(newPath)) return false;
 
 		const moved = [...this.nodes.entries()].filter(
 			([candidate]) =>
