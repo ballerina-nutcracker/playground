@@ -44,6 +44,7 @@ export default defineConfig(({ mode }) => {
 			react(),
 			githubPagesSpa(),
 		],
+		worker: { format: "es" },
 		resolve: {
 			alias: {
 				"@": path.resolve(__dirname, "./src"),
