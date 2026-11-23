@@ -2,7 +2,6 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createAssistantMessageEventStream } from "@earendil-works/pi-ai";
 import { createWorkspaceAgent, BrowserWorkspace } from "../src/index.ts";
-import { testAgentScope } from "./fixtures.mjs";
 
 const model = {
 	id: "test-model",
@@ -71,7 +70,6 @@ function setup(handler) {
 				)
 			);
 		},
-		testAgentScope,
 	);
 	return { agent, requests, workspace };
 }

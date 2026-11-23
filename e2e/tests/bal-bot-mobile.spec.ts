@@ -6,6 +6,48 @@ const WIDTH = 390;
 
 test.use({ viewport: { width: WIDTH, height: 844 } });
 
+test("a mobile row reference has a 24px target and toggles with click and Space", async ({
+	page,
+}) => {
+	const playground = new PlaygroundPage(page);
+	await playground.open();
+	await playground.openBalBot();
+
+	const view = playground.balBotView;
+	const reference = view.getByRole("button", { name: "Reference Automation" });
+	const chips = view.locator(".composer .reference-chip");
+	await expect(reference).toBeEnabled();
+	await expect(reference).toHaveAttribute("aria-pressed", "false");
+	const box = await reference.boundingBox();
+	expect(box?.width).toBeGreaterThanOrEqual(24);
+	expect(box?.height).toBeGreaterThanOrEqual(24);
+
+	await reference.click();
+	await expect(reference).toHaveAttribute("aria-pressed", "true");
+	await expect(chips).toHaveCount(1);
+	await reference.press("Space");
+	await expect(reference).toHaveAttribute("aria-pressed", "false");
+	await expect(chips).toHaveCount(0);
+});
+
+test("new chat clears the previous draft and pending references", async ({
+	page,
+}) => {
+	const playground = new PlaygroundPage(page);
+	await playground.open();
+	await playground.openBalBot();
+	const view = playground.balBotView;
+	const reference = view.getByRole("button", { name: "Reference Automation" });
+	const message = view.getByRole("textbox", { name: "Message" });
+	await reference.click();
+	await expect(reference).toHaveAttribute("aria-pressed", "true");
+	await message.fill("Draft from old chat");
+	await view.getByRole("button", { name: "New chat", exact: true }).click();
+	await expect(message).toHaveValue("");
+	await expect(reference).toHaveAttribute("aria-pressed", "false");
+	await expect(view.locator(".composer .reference-chip")).toHaveCount(0);
+});
+
 test("agent view fits a 390px phone screen", async ({ page }) => {
 	const playground = new PlaygroundPage(page);
 	await playground.open();

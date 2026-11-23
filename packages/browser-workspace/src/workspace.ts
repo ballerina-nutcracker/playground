@@ -45,7 +45,7 @@ export const STORAGE_KEY = "bal-bot.workspace.v1";
 
 export class BrowserWorkspace implements Workspace {
 	private readonly anchors = new Map<Id, BrowserAnchor>();
-	private readonly retainedAnchors = new Set<BrowserAnchor>();
+	private agent?: WorkspaceAgent;
 	private readonly metadata = new Map<
 		Id,
 		ScopeModel | (EndpointModel & { serviceId: Id })
@@ -87,6 +87,24 @@ export class BrowserWorkspace implements Workspace {
 			);
 		}
 		queueMicrotask(() => this.scheduleAnalysis());
+	}
+
+	async getAgent(): Promise<WorkspaceAgent> {
+		this.agent ??= this.createAgent();
+		return this.agent;
+	}
+	async newChat(): Promise<WorkspaceAgent> {
+		const agent = this.createAgent();
+		this.agent?.abort();
+		this.agent = agent;
+		return agent;
+	}
+	private createAgent(): WorkspaceAgent {
+		if (!this.options)
+			throw new Error(
+				"A model stream transport is required to use the workspace agent.",
+			);
+		return createWorkspaceAgent(this, undefined, this.options.streamFn);
 	}
 
 	async getServices(): Promise<readonly Service[]> {
@@ -184,7 +202,8 @@ export class BrowserWorkspace implements Workspace {
 			),
 		);
 		// Source order disambiguates identical service signatures. An ambiguous edit
-		// retires those sessions instead of assigning one declaration another's chat.
+		// recreates those anchors, resetting their flow state, instead of assigning
+		// one declaration another's expansion state.
 		const groups = new Map<string, ScopeModel[]>();
 		for (const scope of program.scopes)
 			if (scope.kind === "service") {
@@ -210,22 +229,20 @@ export class BrowserWorkspace implements Workspace {
 		}
 		const retain = (id: Id, make: () => BrowserAnchor) => {
 			if (!active.has(id) || !this.anchors.has(id)) {
-				const anchor = make();
-				this.anchors.set(id, anchor);
-				this.retainedAnchors.add(anchor);
+				this.anchors.set(id, make());
 			}
 		};
 		for (const scope of program.scopes) {
 			this.metadata.set(scope.id, scope);
 			retain(scope.id, () =>
 				scope.kind === "service"
-					? new BrowserService(this, scope.id, this.options)
-					: new BrowserAutomation(this, scope.id, this.options),
+					? new BrowserService(this, scope.id)
+					: new BrowserAutomation(this, scope.id),
 			);
 			if (scope.kind === "service")
 				for (const ep of scope.endpoints) {
 					this.metadata.set(ep.id, { ...ep, serviceId: scope.id });
-					retain(ep.id, () => new BrowserEndpoint(this, ep.id, this.options));
+					retain(ep.id, () => new BrowserEndpoint(this, ep.id));
 				}
 		}
 	}
@@ -339,12 +356,12 @@ export class BrowserWorkspace implements Workspace {
 		if (changed) this.scheduleAnalysis();
 		for (const listener of this.listeners) listener();
 	}
-	/** Stops analysis and every retained agent and drops all listeners. Idempotent. */
+	/** Stops analysis and the chat agent and drops all listeners. Idempotent. */
 	dispose(): void {
 		if (this.disposed) return;
 		this.disposed = true;
 		this.analysisController?.abort();
-		for (const anchor of this.retainedAnchors) anchor.abort();
+		this.agent?.abort();
 		this.listeners.clear();
 		this.storageListeners.clear();
 		this.analysisListeners.clear();
@@ -354,53 +371,21 @@ export class BrowserWorkspace implements Workspace {
 			writable: false,
 			error: `${message} ${error instanceof Error ? error.message : String(error)}`,
 		};
-		// Stop all retained agents, including conversations no longer selected.
-		for (const anchor of this.retainedAnchors) anchor.abort();
+		// Stop the chat: it can no longer save its edits.
+		this.agent?.abort();
 		for (const listener of this.storageListeners) listener();
 	}
 }
 
 class BrowserAnchor {
-	private agent?: WorkspaceAgent;
 	protected workspace: BrowserWorkspace;
 	readonly id: Id;
-	private options?: BrowserWorkspaceOptions;
-	constructor(
-		workspace: BrowserWorkspace,
-		id: Id,
-		options?: BrowserWorkspaceOptions,
-	) {
+	constructor(workspace: BrowserWorkspace, id: Id) {
 		this.workspace = workspace;
 		this.id = id;
-		this.options = options;
 	}
 	get title(): string {
 		return this.workspace.anchorMetadata(this.id).title;
-	}
-	abort(): void {
-		this.agent?.abort();
-	}
-	async getAgent(): Promise<WorkspaceAgent> {
-		if (!this.options)
-			throw new Error(
-				"A model stream transport is required to use the workspace agent.",
-			);
-		const meta = this.workspace.anchorMetadata(this.id);
-		this.agent ??= createWorkspaceAgent(
-			this.workspace,
-			undefined,
-			this.options.streamFn,
-			{
-				id: this.id,
-				title: meta.title,
-				kind:
-					meta.kind === "service" || meta.kind === "automation"
-						? meta.kind
-						: "endpoint",
-				source: meta.source,
-			},
-		);
-		return this.agent;
 	}
 	async getDiff(): Promise<Diff> {
 		throw new Error("Diff is not implemented yet.");
