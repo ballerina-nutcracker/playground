@@ -3,7 +3,6 @@ import { describe, expect, mock, test } from "bun:test";
 import { BallerinaLS } from "../src/lib/ballerina-ls";
 import { languageServerFiles } from "../src/lib/language-server-files";
 import {
-	browserPathFromLanguageServerUri,
 	languageServerPath,
 	languageServerUri,
 } from "../src/lib/language-server-uri";
@@ -106,25 +105,15 @@ describe("language server URI mapping", () => {
 		expect(languageServerUri("/")).toBe("file:///workspace");
 	});
 
-	test("round-trips Unicode and URI-reserved characters without changing PAL paths", () => {
+	test("encodes Unicode and URI-reserved characters without changing PAL paths", () => {
 		const path = "/local/日本語/a b#%?😀.bal";
 		const mapped = languageServerUri(path);
 		expect(mapped).toContain("a%20b%23%25%3F%F0%9F%98%80.bal");
-		expect(browserPathFromLanguageServerUri(mapped)).toBe(path);
 		expect(languageServerPath(path)).toBe(`/workspace${path}`);
 	});
 
-	test("rejects traversal and non-workspace URIs", () => {
+	test("rejects paths that escape the workspace", () => {
 		expect(() => languageServerPath("../../main.bal")).toThrow();
-		for (const value of [
-			"https://example.com/workspace/main.bal",
-			"file://host/workspace/main.bal",
-			"file:///workspace2/main.bal",
-			"file:///workspace/../main.bal",
-			"file:///workspace/main.bal#fragment",
-		]) {
-			expect(() => browserPathFromLanguageServerUri(value)).toThrow();
-		}
 	});
 });
 

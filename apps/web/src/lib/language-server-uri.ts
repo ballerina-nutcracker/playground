@@ -19,18 +19,3 @@ export function languageServerPath(path: string): string {
 export function languageServerUri(path: string): string {
 	return `file://${languageServerPath(path).split("/").map(encodeURIComponent).join("/")}`;
 }
-
-export function browserPathFromLanguageServerUri(uri: string): string {
-	const url = new URL(uri);
-	if (url.protocol !== "file:" || url.host || url.search || url.hash) {
-		throw new Error("Not a workspace file URI");
-	}
-	const path = decodeURIComponent(url.pathname);
-	if (
-		path !== LANGUAGE_SERVER_ROOT &&
-		!path.startsWith(`${LANGUAGE_SERVER_ROOT}/`)
-	) {
-		throw new Error("URI is outside the workspace");
-	}
-	return path.slice(LANGUAGE_SERVER_ROOT.length) || "/";
-}
