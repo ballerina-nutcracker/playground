@@ -1,5 +1,6 @@
 import { describe, expect, test } from "bun:test";
 
+import { decodeText, encodeText } from "../src/lib/fs/core/bytes";
 import { SnapshotFS, type SnapshotFSMutation } from "../src/lib/fs/snapshot";
 import { createFs } from "./test-fs";
 
@@ -15,14 +16,16 @@ describe("SnapshotFS.writeFile", () => {
 	test("emits the stored modTime when none is given", async () => {
 		const { snapshot, mutations } = await createSnapshot();
 
-		expect(await snapshot.writeFile("/tmp/proj/a.txt", "x")).toBe(true);
+		expect(await snapshot.writeFile("/tmp/proj/a.txt", encodeText("x"))).toBe(
+			true,
+		);
 
 		const stat = await snapshot.stat("/tmp/proj/a.txt");
 		expect(mutations).toEqual([
 			{
 				type: "writeFile",
 				path: "/tmp/proj/a.txt",
-				content: "x",
+				content: encodeText("x"),
 				modTime: stat?.modTime as number,
 			},
 		]);
@@ -31,14 +34,16 @@ describe("SnapshotFS.writeFile", () => {
 	test("emits the explicit modTime when one is given", async () => {
 		const { snapshot, mutations } = await createSnapshot();
 
-		expect(await snapshot.writeFile("/tmp/proj/a.txt", "x", 1234)).toBe(true);
+		expect(
+			await snapshot.writeFile("/tmp/proj/a.txt", encodeText("x"), 1234),
+		).toBe(true);
 
 		expect((await snapshot.stat("/tmp/proj/a.txt"))?.modTime).toBe(1234);
 		expect(mutations).toEqual([
 			{
 				type: "writeFile",
 				path: "/tmp/proj/a.txt",
-				content: "x",
+				content: encodeText("x"),
 				modTime: 1234,
 			},
 		]);
@@ -70,9 +75,11 @@ describe("SnapshotFS.move", () => {
 		expect(await snapshot.move("/tmp/proj", "/tmp/moved")).toBe(true);
 
 		expect(await snapshot.stat("/tmp/proj")).toBeNull();
-		expect((await snapshot.open("/tmp/moved/main.bal"))?.content).toBe(
-			"// main",
-		);
+		expect(
+			decodeText(
+				(await snapshot.open("/tmp/moved/main.bal"))?.content as Uint8Array,
+			),
+		).toBe("// main");
 		expect(mutations).toEqual([
 			{ type: "move", oldPath: "/tmp/proj", newPath: "/tmp/moved" },
 		]);
@@ -80,16 +87,24 @@ describe("SnapshotFS.move", () => {
 
 	test("rejects an existing destination file", async () => {
 		const { snapshot, mutations } = await createSnapshot();
-		await snapshot.writeFile("/tmp/proj/a.txt", "a");
-		await snapshot.writeFile("/tmp/proj/b.txt", "b");
+		await snapshot.writeFile("/tmp/proj/a.txt", encodeText("a"));
+		await snapshot.writeFile("/tmp/proj/b.txt", encodeText("b"));
 		mutations.length = 0;
 
 		expect(await snapshot.move("/tmp/proj/a.txt", "/tmp/proj/b.txt")).toBe(
 			false,
 		);
 
-		expect((await snapshot.open("/tmp/proj/a.txt"))?.content).toBe("a");
-		expect((await snapshot.open("/tmp/proj/b.txt"))?.content).toBe("b");
+		expect(
+			decodeText(
+				(await snapshot.open("/tmp/proj/a.txt"))?.content as Uint8Array,
+			),
+		).toBe("a");
+		expect(
+			decodeText(
+				(await snapshot.open("/tmp/proj/b.txt"))?.content as Uint8Array,
+			),
+		).toBe("b");
 		expect(mutations).toEqual([]);
 	});
 
@@ -102,9 +117,11 @@ describe("SnapshotFS.move", () => {
 			false,
 		);
 
-		expect((await snapshot.open("/tmp/proj/main.bal"))?.content).toBe(
-			"// main",
-		);
+		expect(
+			decodeText(
+				(await snapshot.open("/tmp/proj/main.bal"))?.content as Uint8Array,
+			),
+		).toBe("// main");
 		expect((await snapshot.stat("/tmp/proj/dir"))?.isDir).toBe(true);
 		expect(mutations).toEqual([]);
 	});
@@ -116,9 +133,11 @@ describe("SnapshotFS.move", () => {
 			await snapshot.move("/tmp/proj/main.bal", "/tmp/proj/main.bal"),
 		).toBe(true);
 
-		expect((await snapshot.open("/tmp/proj/main.bal"))?.content).toBe(
-			"// main",
-		);
+		expect(
+			decodeText(
+				(await snapshot.open("/tmp/proj/main.bal"))?.content as Uint8Array,
+			),
+		).toBe("// main");
 		expect(mutations).toEqual([]);
 	});
 });

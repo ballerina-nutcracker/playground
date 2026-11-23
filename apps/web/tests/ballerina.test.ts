@@ -121,6 +121,15 @@ const testCases: TestCase[] = [
 		expectedStdout: "true\nfalse\n",
 	},
 	{
+		name: "binary file read/write",
+		files: async () =>
+			new Map([
+				["/tmp/main.bal", await load("./fixtures/binary-read-write.bal")],
+			]),
+		entryPoint: "/tmp/main.bal",
+		expectedStdout: "[255,254,0,128]\n",
+	},
+	{
 		name: "os env",
 		files: async () =>
 			new Map([["/tmp/main.bal", await load("./fixtures/os-env.bal")]]),

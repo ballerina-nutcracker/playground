@@ -42,7 +42,10 @@ describe("getBalBotDisabledReason", () => {
 	test("adding and removing Ballerina.toml changes the result", async () => {
 		const fs = withProject();
 		expect(await getBalBotDisabledReason(fs, "/loose/main.bal")).not.toBeNull();
-		await fs.writeFile("/loose/Ballerina.toml", "[package]");
+		await fs.writeFile(
+			"/loose/Ballerina.toml",
+			new TextEncoder().encode("[package]"),
+		);
 		expect(await getBalBotDisabledReason(fs, "/loose/main.bal")).toBeNull();
 		await fs.remove("/loose/Ballerina.toml");
 		expect(await getBalBotDisabledReason(fs, "/loose/main.bal")).not.toBeNull();

@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, test } from "bun:test";
 
+import { decodeText, encodeText } from "../src/lib/fs/core/bytes";
 import { EphemeralFS } from "../src/lib/fs/ephemeral-fs";
 import { LayeredFS } from "../src/lib/fs/layered-fs";
 import { LocalStorageFS } from "../src/lib/fs/local-storage-fs";
@@ -36,12 +37,12 @@ describe("LayeredFS.move", () => {
 	test("keeps a file's modTime when moving from /local to /tmp", async () => {
 		const fs = createLayeredFs();
 		await fs.mkdirAll("/local/proj");
-		await fs.writeFile("/local/proj/a.txt", "x", 1234);
+		await fs.writeFile("/local/proj/a.txt", encodeText("x"), 1234);
 
 		expect(await fs.move("/local/proj/a.txt", "/tmp/a.txt")).toBe(true);
 
 		const moved = await fs.open("/tmp/a.txt");
-		expect(moved?.content).toBe("x");
+		expect(decodeText(moved?.content as Uint8Array)).toBe("x");
 		expect(moved?.modTime).toBe(1234);
 		expect(await fs.stat("/local/proj/a.txt")).toBeNull();
 	});
@@ -50,12 +51,12 @@ describe("LayeredFS.move", () => {
 		const fs = createLayeredFs();
 		await fs.mkdirAll("/tmp");
 		await fs.mkdirAll("/local");
-		await fs.writeFile("/tmp/a.txt", "x", 1234);
+		await fs.writeFile("/tmp/a.txt", encodeText("x"), 1234);
 
 		expect(await fs.move("/tmp/a.txt", "/local/a.txt")).toBe(true);
 
 		const moved = await fs.open("/local/a.txt");
-		expect(moved?.content).toBe("x");
+		expect(decodeText(moved?.content as Uint8Array)).toBe("x");
 		expect(moved?.modTime).toBe(1234);
 		expect(await fs.stat("/tmp/a.txt")).toBeNull();
 	});
@@ -64,7 +65,7 @@ describe("LayeredFS.move", () => {
 		const fs = createLayeredFs();
 		await fs.mkdirAll("/local/proj/sub");
 		await fs.mkdirAll("/tmp");
-		await fs.writeFile("/local/proj/sub/b.txt", "y", 5678);
+		await fs.writeFile("/local/proj/sub/b.txt", encodeText("y"), 5678);
 
 		expect(await fs.move("/local/proj", "/tmp/proj")).toBe(true);
 
@@ -76,7 +77,7 @@ describe("LayeredFS.move", () => {
 		const fs = createLayeredFs();
 		await fs.mkdirAll("/local/proj");
 		await fs.mkdirAll("/tmp");
-		await fs.writeFile("/local/proj/a.txt", "x", 1234);
+		await fs.writeFile("/local/proj/a.txt", encodeText("x"), 1234);
 		const snapshot = await SnapshotFS.from(fs, "/local/proj");
 
 		expect(await snapshot.move("/local/proj/a.txt", "/tmp/a.txt")).toBe(true);

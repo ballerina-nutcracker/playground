@@ -1,9 +1,13 @@
-export function createFs(inputFiles: Map<string, string>) {
+export function createFs(inputFiles: Map<string, string | Uint8Array>) {
 	// Seeded files are older than anything written during a run.
 	const modTime = Date.now() - 60_000;
 	const modTimes = new Map<string, number>();
-	const files = new Map(
-		[...inputFiles.entries()].map(([path, content]) => [path, content]),
+	const encoder = new TextEncoder();
+	const files = new Map<string, Uint8Array>(
+		[...inputFiles.entries()].map(([path, content]) => [
+			path,
+			typeof content === "string" ? encoder.encode(content) : content,
+		]),
 	);
 	const dirs = new Set<string>(["/", "/tmp"]);
 
@@ -33,7 +37,7 @@ export function createFs(inputFiles: Map<string, string>) {
 			if (content === undefined) return null;
 			return {
 				content,
-				size: content.length,
+				size: content.byteLength,
 				modTime: modTimes.get(path) ?? modTime,
 				isDir: false,
 			};
@@ -52,7 +56,7 @@ export function createFs(inputFiles: Map<string, string>) {
 			if (content === undefined) return null;
 			return {
 				name: basename(path),
-				size: content.length,
+				size: content.byteLength,
 				modTime: modTimes.get(path) ?? modTime,
 				isDir: false,
 			};
@@ -77,10 +81,10 @@ export function createFs(inputFiles: Map<string, string>) {
 
 			return [...entries.values()];
 		},
-		async writeFile(path: string, content: string, mtime?: number) {
+		async writeFile(path: string, content: Uint8Array, mtime?: number) {
 			if (!dirs.has(dirname(path))) return false;
 			if (dirs.has(path)) return false;
-			files.set(path, content);
+			files.set(path, content.slice());
 			modTimes.set(path, mtime ?? Date.now());
 			return true;
 		},

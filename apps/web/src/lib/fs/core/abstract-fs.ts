@@ -1,3 +1,4 @@
+import { decodeText, encodeText } from "@/lib/fs/core/bytes";
 import { basename, pathSegments } from "@/lib/fs/core/path-utils";
 
 import type {
@@ -10,7 +11,7 @@ import type { FileNode } from "@/lib/fs/core/file-node.types";
 
 export type FSNode = {
 	isDir: boolean;
-	content?: string;
+	content?: Uint8Array;
 	modTime?: number;
 	children?: Record<string, FSNode>;
 };
@@ -21,10 +22,10 @@ export class AbstractFS implements FS {
 	async open(path: string): Promise<OpenResult | null> {
 		const node = this._getNode(path, false);
 		if (!node || node.isDir) return null;
-		const content = node.content ?? "";
+		const content = node.content?.slice() ?? new Uint8Array();
 		return {
 			content,
-			size: content.length,
+			size: content.byteLength,
 			modTime: node.modTime ?? 0,
 			isDir: false,
 		};
@@ -35,7 +36,7 @@ export class AbstractFS implements FS {
 		if (!node) return null;
 		return {
 			name: basename(path),
-			size: node.isDir ? 0 : (node.content?.length ?? 0),
+			size: node.isDir ? 0 : (node.content?.byteLength ?? 0),
 			modTime: node.modTime ?? 0,
 			isDir: node.isDir,
 		};
@@ -52,7 +53,7 @@ export class AbstractFS implements FS {
 
 	async writeFile(
 		path: string,
-		content: string,
+		content: Uint8Array,
 		modTime?: number,
 	): Promise<boolean> {
 		try {
@@ -62,7 +63,7 @@ export class AbstractFS implements FS {
 			if (!parent.children) parent.children = {};
 			parent.children[name] = {
 				isDir: false,
-				content,
+				content: content.slice(),
 				modTime: modTime ?? Date.now(),
 			};
 			this._onWrite();
@@ -148,7 +149,8 @@ export class AbstractFS implements FS {
 				result.push({
 					kind: "file",
 					name: entry.name,
-					content: isFile ? (fileNode.content ?? "") : "",
+					content:
+						isFile && fileNode.content ? decodeText(fileNode.content) : "",
 				});
 			}
 		}
@@ -198,7 +200,7 @@ export class AbstractFS implements FS {
 				void this.mkdirAll(p);
 				this._seed(node.children, p);
 			} else {
-				void this.writeFile(p, node.content);
+				void this.writeFile(p, encodeText(node.content));
 			}
 		}
 	}

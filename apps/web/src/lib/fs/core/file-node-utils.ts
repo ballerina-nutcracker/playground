@@ -1,3 +1,4 @@
+import { decodeText } from "@/lib/fs/core/bytes";
 import {
 	basename,
 	getRelativePath,
@@ -30,7 +31,7 @@ export async function toFileNode(
 	if (!info.isDir) {
 		const file = await fs.open(path);
 		if (!file) return null;
-		return { kind: "file", name, content: file.content };
+		return { kind: "file", name, content: decodeText(file.content) };
 	}
 
 	const entries = (await fs.readDir(path)) ?? [];

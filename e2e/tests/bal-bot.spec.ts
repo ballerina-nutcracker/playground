@@ -31,6 +31,7 @@ const NESTED_PROJECT = {
 type LocalNode = {
 	isDir: boolean;
 	content?: string;
+	base64?: string;
 	children?: Record<string, LocalNode>;
 };
 
@@ -553,7 +554,8 @@ test.describe("bal-bot view", () => {
 						isDir: false,
 						content: '[package]\nname = "b"\n',
 					},
-					"main.bal": { isDir: false, content: "bad \ud800 surrogate" },
+					// "bad \xff byte": not valid UTF-8, so it is stored as base64.
+					"main.bal": { isDir: false, base64: btoa("bad \xff byte") },
 				},
 			},
 		});

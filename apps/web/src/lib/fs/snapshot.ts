@@ -15,7 +15,7 @@ import type {
 
 type SnapshotFileNode = {
 	readonly isDir: false;
-	readonly content: string;
+	readonly content: Uint8Array;
 	readonly modTime: number;
 	readonly size: number;
 };
@@ -29,7 +29,7 @@ type SnapshotDirNode = {
 type SnapshotNode = SnapshotFileNode | SnapshotDirNode;
 
 export type SnapshotFSMutation =
-	| { type: "writeFile"; path: string; content: string; modTime: number }
+	| { type: "writeFile"; path: string; content: Uint8Array; modTime: number }
 	| { type: "mkdirAll"; path: string }
 	| { type: "remove"; path: string }
 	| { type: "move"; oldPath: string; newPath: string };
@@ -80,7 +80,7 @@ export class SnapshotFS implements FS {
 		const node = this.nodes.get(path);
 		if (!node || node.isDir) return null;
 		return {
-			content: node.content,
+			content: node.content.slice(),
 			size: node.size,
 			modTime: node.modTime,
 			isDir: false,
@@ -106,7 +106,7 @@ export class SnapshotFS implements FS {
 
 	async writeFile(
 		path: string,
-		content: string,
+		content: Uint8Array,
 		modTime?: number,
 	): Promise<boolean> {
 		const parentPath = dirname(path);
@@ -121,14 +121,14 @@ export class SnapshotFS implements FS {
 		const resolvedModTime = modTime ?? Date.now();
 		this.nodes.set(path, {
 			isDir: false,
-			content,
+			content: content.slice(),
 			modTime: resolvedModTime,
-			size: new TextEncoder().encode(content).byteLength,
+			size: content.byteLength,
 		});
 		this.notifyListeners({
 			type: "writeFile",
 			path,
-			content,
+			content: content.slice(),
 			modTime: resolvedModTime,
 		});
 		return true;
