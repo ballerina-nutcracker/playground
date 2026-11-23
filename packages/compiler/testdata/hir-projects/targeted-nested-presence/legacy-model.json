@@ -1,0 +1,711 @@
+{
+  "scopes": [
+    {
+      "id": "corpus/nested_presence/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 8,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    int first = helper();\n    int between = 1;\n    int second = helper();\n    _ = between;\n    _ = first;\n    _ = second;\n}",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "corpus/nested_presence",
+      "serviceType": null,
+      "functionId": "corpus/nested_presence/function/main"
+    }
+  ],
+  "functions": {
+    "corpus/nested_presence/function/emptyBody": {
+      "id": "corpus/nested_presence/function/emptyBody",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 29,
+            "column": 1
+          },
+          "end": {
+            "line": 29,
+            "column": 24
+          }
+        }
+      },
+      "text": "function emptyBody() {}",
+      "moduleId": "corpus/nested_presence",
+      "entry": {
+        "kind": "function",
+        "name": "emptyBody",
+        "signature": "function emptyBody()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": []
+    },
+    "corpus/nested_presence/function/emptyHelper": {
+      "id": "corpus/nested_presence/function/emptyHelper",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 25,
+            "column": 1
+          },
+          "end": {
+            "line": 27,
+            "column": 2
+          }
+        }
+      },
+      "text": "function emptyHelper() {\n    emptyBody();\n}",
+      "moduleId": "corpus/nested_presence",
+      "entry": {
+        "kind": "function",
+        "name": "emptyHelper",
+        "signature": "function emptyHelper()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "corpus/nested_presence/function/emptyHelper/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 26,
+                "column": 5
+              },
+              "end": {
+                "line": 26,
+                "column": 17
+              }
+            }
+          },
+          "text": "emptyBody();",
+          "kind": "simple",
+          "operation": "expression",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "corpus/nested_presence/function/emptyHelper/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 26,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 16
+                  }
+                }
+              },
+              "text": "emptyBody()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/nested_presence/function/emptyBody"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    },
+    "corpus/nested_presence/function/emptyMain": {
+      "id": "corpus/nested_presence/function/emptyMain",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 18,
+            "column": 1
+          },
+          "end": {
+            "line": 23,
+            "column": 2
+          }
+        }
+      },
+      "text": "function emptyMain() {\n    emptyHelper();\n    int between = 2;\n    emptyHelper();\n    _ = between;\n}",
+      "moduleId": "corpus/nested_presence",
+      "entry": {
+        "kind": "function",
+        "name": "emptyMain",
+        "signature": "function emptyMain()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "corpus/nested_presence/function/emptyMain/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 19,
+                "column": 5
+              },
+              "end": {
+                "line": 19,
+                "column": 19
+              }
+            }
+          },
+          "text": "emptyHelper();",
+          "kind": "simple",
+          "operation": "expression",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "corpus/nested_presence/function/emptyMain/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 19,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 19,
+                    "column": 18
+                  }
+                }
+              },
+              "text": "emptyHelper()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/nested_presence/function/emptyHelper"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "corpus/nested_presence/function/emptyMain/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 20,
+                "column": 5
+              },
+              "end": {
+                "line": 20,
+                "column": 21
+              }
+            }
+          },
+          "text": "int between = 2;",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "corpus/nested_presence/function/emptyMain/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 21,
+                "column": 5
+              },
+              "end": {
+                "line": 21,
+                "column": 19
+              }
+            }
+          },
+          "text": "emptyHelper();",
+          "kind": "simple",
+          "operation": "expression",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "corpus/nested_presence/function/emptyMain/statement/2/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 21,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 21,
+                    "column": 18
+                  }
+                }
+              },
+              "text": "emptyHelper()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/nested_presence/function/emptyHelper"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "corpus/nested_presence/function/emptyMain/statement/3",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 22,
+                "column": 5
+              },
+              "end": {
+                "line": 22,
+                "column": 17
+              }
+            }
+          },
+          "text": "_ = between;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        }
+      ]
+    },
+    "corpus/nested_presence/function/helper": {
+      "id": "corpus/nested_presence/function/helper",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 1
+          },
+          "end": {
+            "line": 12,
+            "column": 2
+          }
+        }
+      },
+      "text": "function helper() returns int {\n    return unsupportedBody();\n}",
+      "moduleId": "corpus/nested_presence",
+      "entry": {
+        "kind": "function",
+        "name": "helper",
+        "signature": "function helper() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "corpus/nested_presence/function/helper/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 11,
+                "column": 5
+              },
+              "end": {
+                "line": 11,
+                "column": 30
+              }
+            }
+          },
+          "text": "return unsupportedBody();",
+          "kind": "return",
+          "calls": [
+            {
+              "id": "corpus/nested_presence/function/helper/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 11,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 11,
+                    "column": 29
+                  }
+                }
+              },
+              "text": "unsupportedBody()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/nested_presence/function/unsupportedBody"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    },
+    "corpus/nested_presence/function/main": {
+      "id": "corpus/nested_presence/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 8,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    int first = helper();\n    int between = 1;\n    int second = helper();\n    _ = between;\n    _ = first;\n    _ = second;\n}",
+      "moduleId": "corpus/nested_presence",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "corpus/nested_presence/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 2,
+                "column": 5
+              },
+              "end": {
+                "line": 2,
+                "column": 26
+              }
+            }
+          },
+          "text": "int first = helper();",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "corpus/nested_presence/function/main/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 2,
+                    "column": 17
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 25
+                  }
+                }
+              },
+              "text": "helper()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/nested_presence/function/helper"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "corpus/nested_presence/function/main/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 5
+              },
+              "end": {
+                "line": 3,
+                "column": 21
+              }
+            }
+          },
+          "text": "int between = 1;",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "corpus/nested_presence/function/main/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 4,
+                "column": 27
+              }
+            }
+          },
+          "text": "int second = helper();",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "corpus/nested_presence/function/main/statement/2/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 4,
+                    "column": 18
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 26
+                  }
+                }
+              },
+              "text": "helper()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/nested_presence/function/helper"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "corpus/nested_presence/function/main/statement/3",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 5,
+                "column": 5
+              },
+              "end": {
+                "line": 5,
+                "column": 17
+              }
+            }
+          },
+          "text": "_ = between;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "corpus/nested_presence/function/main/statement/4",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 6,
+                "column": 5
+              },
+              "end": {
+                "line": 6,
+                "column": 15
+              }
+            }
+          },
+          "text": "_ = first;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "corpus/nested_presence/function/main/statement/5",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 7,
+                "column": 5
+              },
+              "end": {
+                "line": 7,
+                "column": 16
+              }
+            }
+          },
+          "text": "_ = second;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        }
+      ]
+    },
+    "corpus/nested_presence/function/nestedReturns": {
+      "id": "corpus/nested_presence/function/nestedReturns",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 31,
+            "column": 1
+          },
+          "end": {
+            "line": 33,
+            "column": 2
+          }
+        }
+      },
+      "text": "function nestedReturns() returns int {\n    return returningHelper();\n}",
+      "moduleId": "corpus/nested_presence",
+      "entry": {
+        "kind": "function",
+        "name": "nestedReturns",
+        "signature": "function nestedReturns() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "corpus/nested_presence/function/nestedReturns/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 32,
+                "column": 5
+              },
+              "end": {
+                "line": 32,
+                "column": 30
+              }
+            }
+          },
+          "text": "return returningHelper();",
+          "kind": "return",
+          "calls": [
+            {
+              "id": "corpus/nested_presence/function/nestedReturns/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 32,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 32,
+                    "column": 29
+                  }
+                }
+              },
+              "text": "returningHelper()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "corpus/nested_presence/function/returningHelper"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    },
+    "corpus/nested_presence/function/returningHelper": {
+      "id": "corpus/nested_presence/function/returningHelper",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 35,
+            "column": 1
+          },
+          "end": {
+            "line": 37,
+            "column": 2
+          }
+        }
+      },
+      "text": "function returningHelper() returns int {\n    return 7;\n}",
+      "moduleId": "corpus/nested_presence",
+      "entry": {
+        "kind": "function",
+        "name": "returningHelper",
+        "signature": "function returningHelper() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "corpus/nested_presence/function/returningHelper/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 36,
+                "column": 5
+              },
+              "end": {
+                "line": 36,
+                "column": 14
+              }
+            }
+          },
+          "text": "return 7;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "corpus/nested_presence/function/unsupportedBody": {
+      "id": "corpus/nested_presence/function/unsupportedBody",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 14,
+            "column": 1
+          },
+          "end": {
+            "line": 16,
+            "column": 2
+          }
+        }
+      },
+      "text": "function unsupportedBody() returns int {\n    panic error(\"stop\");\n}",
+      "moduleId": "corpus/nested_presence",
+      "entry": {
+        "kind": "function",
+        "name": "unsupportedBody",
+        "signature": "function unsupportedBody() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "corpus/nested_presence/function/unsupportedBody/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 15,
+                "column": 5
+              },
+              "end": {
+                "line": 15,
+                "column": 25
+              }
+            }
+          },
+          "text": "panic error(\"stop\");",
+          "kind": "unsupported",
+          "reason": "Visualization of *ast.BLangPanic is not modeled; later source may still execute."
+        }
+      ]
+    }
+  }
+}

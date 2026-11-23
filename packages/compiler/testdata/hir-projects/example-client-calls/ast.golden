@@ -1,0 +1,154 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/client_calls / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples client_calls 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (type-definition (position 3:1 6:4) Person
+    (record-type (position 3:13 6:3)
+      (field first_name
+        (value-type (position 4:5 4:11) string))
+      (field last_name
+        (value-type (position 5:5 5:11) string))))
+  (variable (position 8:1 8:63) testClient (type
+    (user-defined-type (position 8:7 8:18) http Client)) (expr
+    (checked-expr (position 8:32 8:62)
+      (new (position 8:38 8:62) (
+        (literal (position 8:43 8:61) https://test.com) <default> (position 8:38 8:62))))))
+  (service (position 10:1 15:2)
+    (absolute-resource-path /)
+    (on
+    (new (position 10:14 10:37)
+      (user-defined-type (position 10:18 10:31) http Listener) (
+      (literal (position 10:32 10:36) 8080) <default> (position 10:14 10:37))))
+    (resource-function (position 11:5 14:6) get name:hello
+      (union-type (position 11:43 11:55)
+        (value-type (position 11:43 11:49) string)
+        (error-type (position 11:50 11:55)))
+      (block-function-body (position 11:56 14:6)
+        (var-def (position 12:9 12:59)
+          (variable (position 12:9 12:59) person (type
+            (user-defined-type (position 12:9 12:15) Person)) (expr
+            (checked-expr (position 12:25 12:58)
+              (remote-method-call (position 12:31 12:58) get expr:
+                (simple-var-ref (position 12:31 12:41) testClient) (
+                (literal (position 12:47 12:57) /foo/bar) <default> (position 12:31 12:58)
+                (typedesc-expr (position 12:31 12:58))))))))
+        (return (position 13:9 13:72)
+          (string-template-literal (position 13:16 13:71)
+            (template-string "hello ")
+            (field-based-access (position 13:32 13:49) first_name
+              (simple-var-ref (position 13:32 13:38) person))
+            (template-string " ")
+            (field-based-access (position 13:53 13:69) last_name
+              (simple-var-ref (position 13:53 13:59) person))
+            (template-string ""))))))
+  (class-definition (position 17:1 25:2) Queue
+    (function (position 18:5 21:6) init (
+      (variable (position 18:26 18:37) host (type
+        (value-type (position 18:26 18:32) string)))
+      (variable (position 18:39 18:54) port (type
+        (value-type (position 18:39 18:42) int)) (expr
+        (literal (position 18:50 18:54) 9092)))) (
+      (value-type (position <built-in>) null))
+      (block-function-body (position 18:56 21:6)
+        (assignment (position 19:9 19:18)
+          (wildcard-binding-pattern (position 19:9 19:10))
+          (simple-var-ref (position 19:13 19:17) host))
+        (assignment (position 20:9 20:18)
+          (wildcard-binding-pattern (position 20:9 20:10))
+          (simple-var-ref (position 20:13 20:17) port))))
+    (function (position 22:5 24:6) $remote$send (
+      (variable (position 22:26 22:40) message (type
+        (value-type (position 22:26 22:32) string)))
+      (variable (position 22:42 22:63) topic (type
+        (value-type (position 22:42 22:48) string)) (expr
+        (literal (position 22:57 22:63) jobs)))) (
+      (union-type (position 22:73 22:85)
+        (value-type (position 22:73 22:79) string)
+        (error-type (position 22:80 22:85))))
+      (block-function-body (position 22:86 24:6)
+        (return (position 23:9 23:39)
+          (binary-expr (position 23:16 23:38) +
+            (binary-expr (position 23:16 23:28) +
+              (simple-var-ref (position 23:16 23:21) topic)
+              (literal (position 23:24 23:28) : ))
+            (simple-var-ref (position 23:31 23:38) message))))))
+  (function (position 27:1 31:2) sendMessage () (
+    (union-type (position 27:32 27:44)
+      (value-type (position 27:32 27:38) string)
+      (error-type (position 27:39 27:44))))
+    (block-function-body (position 27:45 31:2)
+      (var-def (position 28:5 28:50)
+        (variable (position 28:5 28:50) producer (type
+          (user-defined-type (position 28:5 28:10) Queue)) (expr
+          (new (position 28:22 28:49) (
+            (literal (position 28:27 28:35) broker)
+            (literal (position 28:44 28:48) 9093))))))
+      (var-def (position 29:5 29:69)
+        (variable (position 29:5 29:69) result (type
+          (value-type (position 29:5 29:11) string)) (expr
+          (checked-expr (position 29:21 29:68)
+            (remote-method-call (position 29:27 29:68) send expr:
+              (simple-var-ref (position 29:27 29:35) producer) (
+              (literal (position 29:42 29:49) hello)
+              (literal (position 29:59 29:67) orders)))))))
+      (return (position 30:5 30:19)
+        (simple-var-ref (position 30:12 30:18) result))))
+  (function (position 33:1 36:2) capturePanic () (
+    (union-type (position 33:33 33:45)
+      (value-type (position 33:33 33:39) string)
+      (error-type (position 33:40 33:45))))
+    (block-function-body (position 33:46 36:2)
+      (var-def (position 34:5 34:57)
+        (variable (position 34:5 34:57) result (type
+          (union-type (position 34:5 34:17)
+            (value-type (position 34:5 34:11) string)
+            (error-type (position 34:12 34:17)))) (expr
+          (trap-expr (position 34:27 34:56)
+            (check-panicked-expr (position 34:32 34:56)
+              (invocation (position 34:43 34:56) sendMessage ()))))))
+      (return (position 35:5 35:19)
+        (simple-var-ref (position 35:12 35:18) result)))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### new main.bal [133,157)
+arguments: 1
+argument[0]:
+(literal (position 8:43 8:61) https://test.com)
+
+### new main.bal [173,196)
+arguments: 1
+argument[0]:
+(literal (position 10:32 10:36) 8080)
+
+### call main.bal [286,313)
+receiver:
+(simple-var-ref (position 12:31 12:41) testClient)
+arguments: 1
+argument[0]:
+(literal (position 12:47 12:57) /foo/bar)
+
+### new main.bal [718,745)
+arguments: 2
+argument[0]:
+(literal (position 28:27 28:35) broker)
+argument[1]:
+(named-arg (position 28:37 28:48) port
+  (literal (position 28:44 28:48) 9093))
+
+### call main.bal [773,814)
+receiver:
+(simple-var-ref (position 29:27 29:35) producer)
+arguments: 2
+argument[0]:
+(literal (position 29:42 29:49) hello)
+argument[1]:
+(named-arg (position 29:51 29:67) topic
+  (literal (position 29:59 29:67) orders))
+
+### call main.bal [927,940)
+arguments: 0

@@ -1,0 +1,118 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/control_flow / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples control_flow 0.1.0)
+  (function (position 1:1 1:54) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 1:24 1:54)
+      (assignment (position 1:26 1:52)
+        (wildcard-binding-pattern (position 1:26 1:27))
+        (invocation (position 1:30 1:51) process (
+          (list-constructor-expr (position 1:38 1:50)
+            (literal (position 1:39 1:40) 1)
+            (literal (position 1:42 1:43) 2)
+            (literal (position 1:45 1:46) 3)
+            (literal (position 1:48 1:49) 4)))))))
+  (function (position 3:1 25:2) process (
+    (variable (position 3:18 3:30) values (type
+      (array-type (position 3:18 3:23)
+        (value-type (position 3:18 3:21) int) dimensions: 1 ([]))))) (
+    (value-type (position 3:40 3:43) int))
+    (block-function-body (position 3:44 25:2)
+      (var-def (position 4:5 4:19)
+        (variable (position 4:5 4:19) total (type
+          (value-type (position 4:5 4:8) int)) (expr
+          (literal (position 4:17 4:18) 0))))
+      (var-def (position 5:5 5:19)
+        (variable (position 5:5 5:19) index (type
+          (value-type (position 5:5 5:8) int)) (expr
+          (literal (position 5:17 5:18) 0))))
+      (while (position 6:5 15:6)
+        (binary-expr (position 6:11 6:20) <
+          (simple-var-ref (position 6:11 6:16) index)
+          (literal (position 6:19 6:20) 3))
+        (block-stmt (position 6:21 15:6)
+          (compound-assignment (position 7:9 7:20) +
+            (simple-var-ref (position 7:9 7:14) index)
+            (literal (position 7:18 7:19) 1))
+          (if (position 8:9 8:36)
+            (binary-expr (position 8:12 8:22) ==
+              (simple-var-ref (position 8:12 8:17) index)
+              (literal (position 8:21 8:22) 2))
+            (block-stmt (position 8:23 8:36)
+              (continue (position 8:25 8:34))) ())
+          (block-stmt (position 9:9 15:6)
+            (foreach (position 9:9 13:10)
+              (var-def (position 9:17 9:26)
+                (variable (position 9:17 9:26) value (type
+                  (value-type (position 9:17 9:20) int))))
+              (simple-var-ref (position 9:30 9:36) values)
+              (block-stmt (position 9:37 13:10)
+                (if (position 10:13 10:40)
+                  (binary-expr (position 10:16 10:26) ==
+                    (simple-var-ref (position 10:16 10:21) value)
+                    (literal (position 10:25 10:26) 1))
+                  (block-stmt (position 10:27 10:40)
+                    (continue (position 10:29 10:38))) ())
+                (block-stmt (position 11:13 13:10)
+                  (if (position 11:13 11:36)
+                    (binary-expr (position 11:16 11:25) >
+                      (simple-var-ref (position 11:16 11:21) value)
+                      (literal (position 11:24 11:25) 3))
+                    (block-stmt (position 11:26 11:36)
+                      (break (position 11:28 11:34))) ())
+                  (block-stmt (position 12:13 13:10)
+                    (compound-assignment (position 12:13 12:28) +
+                      (simple-var-ref (position 12:13 12:18) total)
+                      (simple-var-ref (position 12:22 12:27) value))))))
+            (if (position 14:9 14:33)
+              (binary-expr (position 14:12 14:22) >
+                (simple-var-ref (position 14:12 14:17) total)
+                (literal (position 14:20 14:22) 20))
+              (block-stmt (position 14:23 14:33)
+                (break (position 14:25 14:31))) ())
+            (block-stmt (position 14:9 15:6)))))
+      (if (position 16:5 22:6)
+        (binary-expr (position 16:8 16:17) <
+          (simple-var-ref (position 16:8 16:13) total)
+          (literal (position 16:16 16:17) 0))
+        (block-stmt (position 16:18 18:6)
+          (return (position 17:9 17:18)
+            (literal (position 17:16 17:17) 0))) (
+        (if (position 18:12 22:6)
+          (binary-expr (position 18:15 18:25) ==
+            (simple-var-ref (position 18:15 18:20) total)
+            (literal (position 18:24 18:25) 0))
+          (block-stmt (position 18:26 20:6)
+            (assignment (position 19:9 19:19)
+              (simple-var-ref (position 19:9 19:14) total)
+              (literal (position 19:17 19:18) 1))) (
+          (block-stmt (position 20:12 22:6)
+            (compound-assignment (position 21:9 21:20) +
+              (simple-var-ref (position 21:9 21:14) total)
+              (literal (position 21:18 21:19) 2)))))))
+      (if (position 23:5 23:42)
+        (binary-expr (position 23:8 23:18) >
+          (simple-var-ref (position 23:8 23:13) total)
+          (literal (position 23:16 23:18) 10))
+        (block-stmt (position 23:19 23:21)) (
+        (block-stmt (position 23:27 23:42)
+          (compound-assignment (position 23:29 23:40) +
+            (simple-var-ref (position 23:29 23:34) total)
+            (literal (position 23:38 23:39) 1)))))
+      (return (position 24:5 24:18)
+        (simple-var-ref (position 24:12 24:17) total)))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### call main.bal [29,50)
+arguments: 1
+argument[0]:
+(list-constructor-expr (position 1:38 1:50)
+  (literal (position 1:39 1:40) 1)
+  (literal (position 1:42 1:43) 2)
+  (literal (position 1:45 1:46) 3)
+  (literal (position 1:48 1:49) 4))

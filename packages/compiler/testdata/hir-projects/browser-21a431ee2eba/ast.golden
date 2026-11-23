@@ -1,0 +1,21 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module browser/http_service / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id browser http_service 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (service (position 2:1 2:40)
+    (absolute-resource-path /)
+    (on
+    (new (position 2:14 2:37)
+      (user-defined-type (position 2:18 2:31) http Listener) (
+      (literal (position 2:32 2:36) 8080) <default> (position 2:14 2:37))))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### new main.bal [36,59)
+arguments: 1
+argument[0]:
+(literal (position 2:32 2:36) 8080)

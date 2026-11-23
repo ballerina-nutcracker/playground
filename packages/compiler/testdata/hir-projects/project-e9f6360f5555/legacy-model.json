@@ -1,0 +1,187 @@
+{
+  "scopes": [
+    {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 35
+          },
+          "end": {
+            "line": 1,
+            "column": 127
+          }
+        }
+      },
+      "text": "public function main() { int value = math:calculate(); int result = value + 1; _ = result; }",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "browser/http_service",
+      "serviceType": null,
+      "functionId": "browser/http_service/function/main"
+    }
+  ],
+  "functions": {
+    "browser/http_service.math/function/calculate": {
+      "id": "browser/http_service.math/function/calculate",
+      "source": {
+        "file": "modules/math/calculate.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 54
+          }
+        }
+      },
+      "text": "public function calculate() returns int { return 2; }",
+      "moduleId": "browser/http_service.math",
+      "entry": {
+        "kind": "function",
+        "name": "calculate",
+        "signature": "public function calculate() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "browser/http_service.math/function/calculate/statement/0",
+          "source": {
+            "file": "modules/math/calculate.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 43
+              },
+              "end": {
+                "line": 1,
+                "column": 52
+              }
+            }
+          },
+          "text": "return 2;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "browser/http_service/function/main": {
+      "id": "browser/http_service/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 35
+          },
+          "end": {
+            "line": 1,
+            "column": 127
+          }
+        }
+      },
+      "text": "public function main() { int value = math:calculate(); int result = value + 1; _ = result; }",
+      "moduleId": "browser/http_service",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "browser/http_service/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 60
+              },
+              "end": {
+                "line": 1,
+                "column": 89
+              }
+            }
+          },
+          "text": "int value = math:calculate();",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "browser/http_service/function/main/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 72
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 88
+                  }
+                }
+              },
+              "text": "math:calculate()",
+              "target": {
+                "kind": "workspace",
+                "functionId": "browser/http_service.math/function/calculate"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "browser/http_service/function/main/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 90
+              },
+              "end": {
+                "line": 1,
+                "column": 113
+              }
+            }
+          },
+          "text": "int result = value + 1;",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "browser/http_service/function/main/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 114
+              },
+              "end": {
+                "line": 1,
+                "column": 125
+              }
+            }
+          },
+          "text": "_ = result;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

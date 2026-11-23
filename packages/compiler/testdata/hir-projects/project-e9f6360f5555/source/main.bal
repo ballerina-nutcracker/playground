@@ -1,0 +1,1 @@
+import browser/http_service.math; public function main() { int value = math:calculate(); int result = value + 1; _ = result; }

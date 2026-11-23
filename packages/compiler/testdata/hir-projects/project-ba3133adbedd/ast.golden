@@ -1,0 +1,12 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/automation_flow / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples automation_flow 0.1.0)
+  (function (position 1:1 1:26) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 1:24 1:26))))
+
+## Original source argument provenance (source order; zero-based byte offsets)

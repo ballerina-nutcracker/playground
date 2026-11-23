@@ -1,0 +1,3691 @@
+{
+  "scopes": [
+    {
+      "id": "examples/panel_state/service/main.bal//reports/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 6,
+            "column": 2
+          }
+        }
+      },
+      "text": "service /reports on new http:Listener(8080) {\n    resource function get daily() returns int { return buildReport(5); }\n    resource function get weekly() returns int { return buildReport(35); }\n}",
+      "kind": "service",
+      "title": "/reports",
+      "moduleId": "examples/panel_state",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 4,
+                "column": 73
+              }
+            }
+          },
+          "text": "resource function get daily() returns int { return buildReport(5); }",
+          "kind": "resource",
+          "title": "get /reports/daily",
+          "functionId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily"
+        },
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 5,
+                "column": 5
+              },
+              "end": {
+                "line": 5,
+                "column": 75
+              }
+            }
+          },
+          "text": "resource function get weekly() returns int { return buildReport(35); }",
+          "kind": "resource",
+          "title": "get /reports/weekly",
+          "functionId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly"
+        }
+      ],
+      "definitions": [
+        {
+          "id": "examples/panel_state/function/buildReport",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 8,
+                "column": 1
+              },
+              "end": {
+                "line": 12,
+                "column": 2
+              }
+            }
+          },
+          "text": "function buildReport(int extraordinarilyLongButMeaningfulInputName) returns int {\n    int calculatedReportTotal = extraordinarilyLongButMeaningfulInputName + 1;\n    if calculatedReportTotal \u003e 10 { return calculatedReportTotal; }\n    return 10;\n}",
+          "kind": "function",
+          "label": "buildReport",
+          "functionId": "examples/panel_state/function/buildReport"
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "examples/panel_state/function/buildReport": {
+      "id": "examples/panel_state/function/buildReport",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 1
+          },
+          "end": {
+            "line": 12,
+            "column": 2
+          }
+        }
+      },
+      "text": "function buildReport(int extraordinarilyLongButMeaningfulInputName) returns int {\n    int calculatedReportTotal = extraordinarilyLongButMeaningfulInputName + 1;\n    if calculatedReportTotal \u003e 10 { return calculatedReportTotal; }\n    return 10;\n}"
+    },
+    "examples/panel_state/function/buildReport/parameter/0": {
+      "id": "examples/panel_state/function/buildReport/parameter/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 22
+          },
+          "end": {
+            "line": 8,
+            "column": 67
+          }
+        }
+      },
+      "text": "int extraordinarilyLongButMeaningfulInputName"
+    },
+    "examples/panel_state/function/buildReport/returnType": {
+      "id": "examples/panel_state/function/buildReport/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 77
+          },
+          "end": {
+            "line": 8,
+            "column": 80
+          }
+        }
+      },
+      "text": "int"
+    },
+    "examples/panel_state/function/buildReport/statement/0": {
+      "id": "examples/panel_state/function/buildReport/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 5
+          },
+          "end": {
+            "line": 9,
+            "column": 79
+          }
+        }
+      },
+      "text": "int calculatedReportTotal = extraordinarilyLongButMeaningfulInputName + 1;"
+    },
+    "examples/panel_state/function/buildReport/statement/1": {
+      "id": "examples/panel_state/function/buildReport/statement/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 5
+          },
+          "end": {
+            "line": 10,
+            "column": 68
+          }
+        }
+      },
+      "text": "if calculatedReportTotal \u003e 10 { return calculatedReportTotal; }"
+    },
+    "examples/panel_state/function/buildReport/statement/1/condition": {
+      "id": "examples/panel_state/function/buildReport/statement/1/condition",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 8
+          },
+          "end": {
+            "line": 10,
+            "column": 34
+          }
+        }
+      },
+      "text": "calculatedReportTotal \u003e 10"
+    },
+    "examples/panel_state/function/buildReport/statement/1/then/statement/0": {
+      "id": "examples/panel_state/function/buildReport/statement/1/then/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 10,
+            "column": 37
+          },
+          "end": {
+            "line": 10,
+            "column": 66
+          }
+        }
+      },
+      "text": "return calculatedReportTotal;"
+    },
+    "examples/panel_state/function/buildReport/statement/2/block/statement/0": {
+      "id": "examples/panel_state/function/buildReport/statement/2/block/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 11,
+            "column": 5
+          },
+          "end": {
+            "line": 11,
+            "column": 15
+          }
+        }
+      },
+      "text": "return 10;"
+    },
+    "examples/panel_state/service/main.bal//reports/1": {
+      "id": "examples/panel_state/service/main.bal//reports/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 6,
+            "column": 2
+          }
+        }
+      },
+      "text": "service /reports on new http:Listener(8080) {\n    resource function get daily() returns int { return buildReport(5); }\n    resource function get weekly() returns int { return buildReport(35); }\n}"
+    },
+    "examples/panel_state/service/main.bal//reports/1/resource/get/daily": {
+      "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 5
+          },
+          "end": {
+            "line": 4,
+            "column": 73
+          }
+        }
+      },
+      "text": "resource function get daily() returns int { return buildReport(5); }"
+    },
+    "examples/panel_state/service/main.bal//reports/1/resource/get/daily/returnType": {
+      "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 43
+          },
+          "end": {
+            "line": 4,
+            "column": 46
+          }
+        }
+      },
+      "text": "int"
+    },
+    "examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0": {
+      "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 49
+          },
+          "end": {
+            "line": 4,
+            "column": 71
+          }
+        }
+      },
+      "text": "return buildReport(5);"
+    },
+    "examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0": {
+      "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 56
+          },
+          "end": {
+            "line": 4,
+            "column": 70
+          }
+        }
+      },
+      "text": "buildReport(5)"
+    },
+    "examples/panel_state/service/main.bal//reports/1/resource/get/weekly": {
+      "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 5
+          },
+          "end": {
+            "line": 5,
+            "column": 75
+          }
+        }
+      },
+      "text": "resource function get weekly() returns int { return buildReport(35); }"
+    },
+    "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/returnType": {
+      "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/returnType",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 44
+          },
+          "end": {
+            "line": 5,
+            "column": 47
+          }
+        }
+      },
+      "text": "int"
+    },
+    "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0": {
+      "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 50
+          },
+          "end": {
+            "line": 5,
+            "column": 73
+          }
+        }
+      },
+      "text": "return buildReport(35);"
+    },
+    "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0": {
+      "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 57
+          },
+          "end": {
+            "line": 5,
+            "column": 72
+          }
+        }
+      },
+      "text": "buildReport(35)"
+    },
+    "receiver/1/initializer": {
+      "id": "receiver/1/initializer",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 33
+          },
+          "end": {
+            "line": 9,
+            "column": 78
+          }
+        }
+      },
+      "text": "extraordinarilyLongButMeaningfulInputName + 1"
+    },
+    "receiver/main.bal/242/287/type": {
+      "id": "receiver/main.bal/242/287/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 22
+          },
+          "end": {
+            "line": 8,
+            "column": 25
+          }
+        }
+      },
+      "text": "int"
+    },
+    "receiver/main.bal/307/381/type": {
+      "id": "receiver/main.bal/307/381/type",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 9,
+            "column": 5
+          },
+          "end": {
+            "line": 9,
+            "column": 8
+          }
+        }
+      },
+      "text": "int"
+    },
+    "resource-path/main.bal/147/0": {
+      "id": "resource-path/main.bal/147/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 27
+          },
+          "end": {
+            "line": 5,
+            "column": 33
+          }
+        }
+      },
+      "text": "weekly"
+    },
+    "resource-path/main.bal/74/0": {
+      "id": "resource-path/main.bal/74/0",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 27
+          },
+          "end": {
+            "line": 4,
+            "column": 32
+          }
+        }
+      },
+      "text": "daily"
+    }
+  },
+  "functions": {
+    "examples/panel_state/function/buildReport": {
+      "id": "examples/panel_state/function/buildReport",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 1
+          },
+          "end": {
+            "line": 12,
+            "column": 2
+          }
+        }
+      },
+      "text": "function buildReport(int extraordinarilyLongButMeaningfulInputName) returns int {\n    int calculatedReportTotal = extraordinarilyLongButMeaningfulInputName + 1;\n    if calculatedReportTotal \u003e 10 { return calculatedReportTotal; }\n    return 10;\n}",
+      "moduleId": "examples/panel_state",
+      "entry": {
+        "signatureVariables": [
+          {
+            "variableId": "variable/main.bal/246",
+            "start": 25,
+            "end": 66
+          }
+        ],
+        "kind": "function",
+        "owner": null,
+        "operation": null,
+        "name": "buildReport",
+        "signature": "function buildReport(int extraordinarilyLongButMeaningfulInputName) returns int",
+        "parameters": [
+          {
+            "variables": [
+              {
+                "variableId": "variable/main.bal/246",
+                "start": 4,
+                "end": 45
+              }
+            ],
+            "label": "Input",
+            "text": "int extraordinarilyLongButMeaningfulInputName"
+          }
+        ],
+        "returnType": "int"
+      },
+      "nodes": [
+        {
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0",
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/0",
+          "sourceId": "examples/panel_state/function/buildReport/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/311",
+                "start": 4,
+                "end": 25
+              },
+              {
+                "variableId": "variable/main.bal/246",
+                "start": 28,
+                "end": 69
+              }
+            ],
+            "style": "step",
+            "label": "int calculatedReportTotal = extraordinarilyLongButMeaningfulInputName + 1;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1",
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/1",
+          "sourceId": "examples/panel_state/function/buildReport/statement/1/condition",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/311",
+                "start": 0,
+                "end": 21
+              }
+            ],
+            "style": "condition",
+            "label": "calculatedReportTotal \u003e 10",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/group"
+          }
+        },
+        {
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0",
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0",
+          "sourceId": "examples/panel_state/function/buildReport/statement/1/then/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "variables": [
+              {
+                "variableId": "variable/main.bal/311",
+                "start": 7,
+                "end": 28
+              }
+            ],
+            "style": "return",
+            "label": "return calculatedReportTotal;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0",
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/2/block/statement/0",
+          "sourceId": "examples/panel_state/function/buildReport/statement/2/block/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "style": "return",
+            "label": "return 10;",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "leaf"
+          }
+        },
+        {
+          "id": "examples/panel_state/function/buildReport/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/panel_state/function/buildReport",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/panel_state/function/buildReport/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/0:entry",
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0:entry",
+          "nodeId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/0:normal-exit",
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0:normal-exit",
+          "nodeId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/1:entry",
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:entry",
+          "nodeId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:entry",
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:entry",
+          "nodeId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:normal-exit",
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:normal-exit",
+          "nodeId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:return",
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:return",
+          "nodeId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/1:normal-exit",
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:normal-exit",
+          "nodeId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "group-bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/1:true",
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:true",
+          "nodeId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1",
+          "role": "true",
+          "anchor": {
+            "kind": "header-left"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/1:false",
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:false",
+          "nodeId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1",
+          "role": "false",
+          "anchor": {
+            "kind": "header-right"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/2/block/statement/0:entry",
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0:entry",
+          "nodeId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/2/block/statement/0:normal-exit",
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0:normal-exit",
+          "nodeId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/function/buildReport/statement/2/block/statement/0:return",
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0:return",
+          "nodeId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/panel_state/function/buildReport/root:entry",
+          "nodeId": "examples/panel_state/function/buildReport/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/panel_state/function/buildReport/root:normal-exit",
+          "nodeId": "examples/panel_state/function/buildReport/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "kind": "true",
+          "label": null,
+          "routing": "branch-left",
+          "id": "edge/0",
+          "fromPort": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:true",
+          "toPort": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "false",
+          "label": null,
+          "routing": "branch-right",
+          "id": "edge/1",
+          "fromPort": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:false",
+          "toPort": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:normal-exit",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/2",
+          "fromPort": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0:normal-exit",
+          "toPort": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/3",
+          "fromPort": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:normal-exit",
+          "toPort": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "any",
+                        "operands": []
+                      },
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/group",
+          "arrangement": {
+            "kind": "columns",
+            "left": [
+              "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0"
+            ],
+            "right": []
+          },
+          "style": {
+            "profile": "if",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": false
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/panel_state/function/buildReport/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0",
+              "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1",
+              "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/panel_state/function/buildReport/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/panel_state/function/buildReport/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/panel_state/function/buildReport/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/panel_state/function/buildReport/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/panel_state/function/buildReport/root/binding/entry/0",
+            "toPort": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/panel_state/function/buildReport/root/binding/normal",
+            "toPort": "examples/panel_state/function/buildReport/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "portId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:true",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:false",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/3",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "any",
+                            "operands": []
+                          },
+                          {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/function/buildReport/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/function/buildReport/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1/then/examples/panel_state/function/buildReport/statement/1/then/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:true",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/1:false",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/function/buildReport/examples/panel_state/function/buildReport/statement/2/block/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/3",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "any",
+                            "operands": []
+                          },
+                          {
+                            "kind": "constant",
+                            "value": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "examples/panel_state/service/main.bal//reports/1/resource/get/daily": {
+      "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 5
+          },
+          "end": {
+            "line": 4,
+            "column": 73
+          }
+        }
+      },
+      "text": "resource function get daily() returns int { return buildReport(5); }",
+      "moduleId": "examples/panel_state",
+      "entry": {
+        "kind": "resource",
+        "owner": "Service /reports · ballerina/http:Listener",
+        "operation": "get",
+        "name": "/reports/daily",
+        "signature": "resource function get daily() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "nodes": [
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0",
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0",
+          "sourceId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "style": "return",
+            "label": "return buildReport(5);",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/group"
+          }
+        },
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+          "sourceId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "buildReport(5)",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "call",
+              "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "recursive": {
+                "label": "buildReport(5)",
+                "sections": [],
+                "limitation": "Recursive calls remain collapsed.",
+                "title": "Recursive calls remain collapsed.",
+                "ariaLabel": "Recursive call buildReport(5)",
+                "glyph": "↻"
+              }
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "examples/panel_state/function/buildReport",
+              "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [
+                      {
+                        "portId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:entry",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "normal",
+                    "members": [
+                      {
+                        "portId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:normal-exit",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "returns",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "panics",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": [
+                {
+                  "kind": "entry",
+                  "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0/enter",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:entry",
+                  "targetInterfaceId": "entry",
+                  "edge": {
+                    "kind": "sequence",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0/exit/normal",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:normal-exit",
+                  "targetInterfaceId": "normal",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0/exit/returns",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:normal-exit",
+                  "targetInterfaceId": "returns",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:entry",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:entry",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:normal-exit",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:normal-exit",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "header-bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:entry",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:entry",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:normal-exit",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:normal-exit",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:return",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:return",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root:entry",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root:normal-exit",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/0",
+          "fromPort": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:normal-exit",
+          "toPort": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/1",
+          "fromPort": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:entry",
+          "toPort": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:normal-exit",
+          "when": {
+            "kind": "not",
+            "operand": {
+              "kind": "nonempty",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+              "interfaceId": "entry"
+            }
+          }
+        },
+        {
+          "kind": "return",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/2",
+          "fromPort": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:normal-exit",
+          "toPort": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:return",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "not",
+                        "operand": {
+                          "kind": "nonempty",
+                          "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                          "interfaceId": "entry"
+                        }
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                        "interfaceId": "normal"
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                        "interfaceId": "returns"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        },
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root/binding/entry/0",
+            "toPort": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root/binding/normal",
+            "toPort": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "all",
+                        "operands": [
+                          {
+                            "kind": "constant",
+                            "value": true
+                          },
+                          {
+                            "kind": "any",
+                            "operands": [
+                              {
+                                "kind": "not",
+                                "operand": {
+                                  "kind": "nonempty",
+                                  "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                                  "interfaceId": "entry"
+                                }
+                              },
+                              {
+                                "kind": "nonempty",
+                                "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                                "interfaceId": "normal"
+                              },
+                              {
+                                "kind": "nonempty",
+                                "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                                "interfaceId": "returns"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/daily/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/daily/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "examples/panel_state/service/main.bal//reports/1/resource/get/weekly": {
+      "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 5
+          },
+          "end": {
+            "line": 5,
+            "column": 75
+          }
+        }
+      },
+      "text": "resource function get weekly() returns int { return buildReport(35); }",
+      "moduleId": "examples/panel_state",
+      "entry": {
+        "kind": "resource",
+        "owner": "Service /reports · ballerina/http:Listener",
+        "operation": "get",
+        "name": "/reports/weekly",
+        "signature": "resource function get weekly() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "nodes": [
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0",
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0",
+          "sourceId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0",
+          "presentation": {
+            "kind": "plain",
+            "style": "return",
+            "label": "return buildReport(35);",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/group"
+          }
+        },
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+          "sourceId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "buildReport(35)",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "call",
+              "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "recursive": {
+                "label": "buildReport(35)",
+                "sections": [],
+                "limitation": "Recursive calls remain collapsed.",
+                "title": "Recursive calls remain collapsed.",
+                "ariaLabel": "Recursive call buildReport(35)",
+                "glyph": "↻"
+              }
+            }
+          },
+          "body": {
+            "kind": "reference",
+            "reference": {
+              "graphId": "examples/panel_state/function/buildReport",
+              "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+              "availability": {
+                "kind": "available"
+              },
+              "container": {
+                "profile": "call",
+                "root": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                },
+                "inline": {
+                  "node": true,
+                  "header": true,
+                  "container": true
+                }
+              },
+              "collapsed": {
+                "interfaces": [
+                  {
+                    "id": "entry",
+                    "members": [
+                      {
+                        "portId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:entry",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "normal",
+                    "members": [
+                      {
+                        "portId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:normal-exit",
+                        "when": {
+                          "kind": "constant",
+                          "value": true
+                        }
+                      }
+                    ],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "returns",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  },
+                  {
+                    "id": "panics",
+                    "members": [],
+                    "exports": [],
+                    "root": {
+                      "kind": "terminal"
+                    }
+                  }
+                ],
+                "edges": []
+              },
+              "inline": [
+                {
+                  "kind": "entry",
+                  "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0/enter",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:entry",
+                  "targetInterfaceId": "entry",
+                  "edge": {
+                    "kind": "sequence",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0/exit/normal",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:normal-exit",
+                  "targetInterfaceId": "normal",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                },
+                {
+                  "kind": "exit",
+                  "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0/exit/returns",
+                  "when": {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  "callerPortId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:normal-exit",
+                  "targetInterfaceId": "returns",
+                  "edge": {
+                    "kind": "return",
+                    "label": null,
+                    "routing": "direct"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root",
+          "occurrenceKey": "/root",
+          "sourceId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly",
+          "presentation": {
+            "kind": "plain",
+            "style": "function",
+            "label": "",
+            "sections": [],
+            "limitation": null,
+            "disclosure": {
+              "kind": "none"
+            }
+          },
+          "body": {
+            "kind": "group",
+            "groupId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root/group"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:entry",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:entry",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:normal-exit",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:normal-exit",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "header-bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:entry",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:entry",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:normal-exit",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:normal-exit",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:return",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:return",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0",
+          "role": "return",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:entry",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root:entry",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root",
+          "role": "entry",
+          "anchor": {
+            "kind": "top-center"
+          }
+        },
+        {
+          "occurrenceKey": "/root:normal-exit",
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root:normal-exit",
+          "nodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root",
+          "role": "normal-exit",
+          "anchor": {
+            "kind": "bottom-center"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/0",
+          "fromPort": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:normal-exit",
+          "toPort": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:entry",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "constant",
+                "value": true
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "sequence",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/1",
+          "fromPort": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:entry",
+          "toPort": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:normal-exit",
+          "when": {
+            "kind": "not",
+            "operand": {
+              "kind": "nonempty",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+              "interfaceId": "entry"
+            }
+          }
+        },
+        {
+          "kind": "return",
+          "label": null,
+          "routing": "direct",
+          "id": "edge/2",
+          "fromPort": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:normal-exit",
+          "toPort": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:return",
+          "when": {
+            "kind": "all",
+            "operands": [
+              {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "not",
+                        "operand": {
+                          "kind": "nonempty",
+                          "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                          "interfaceId": "entry"
+                        }
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                        "interfaceId": "normal"
+                      },
+                      {
+                        "kind": "nonempty",
+                        "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                        "interfaceId": "returns"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "constant",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        },
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root/group",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0"
+            ]
+          },
+          "style": {
+            "profile": "root",
+            "root": {
+              "node": true,
+              "header": false,
+              "container": true
+            },
+            "inline": {
+              "node": false,
+              "header": false,
+              "container": false
+            }
+          }
+        },
+        {
+          "id": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/graph",
+          "arrangement": {
+            "kind": "sequence",
+            "members": [
+              "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root"
+            ]
+          },
+          "style": {
+            "profile": "sequence",
+            "root": {
+              "node": true,
+              "header": true,
+              "container": true
+            },
+            "inline": {
+              "node": true,
+              "header": true,
+              "container": true
+            }
+          }
+        }
+      ],
+      "rootGroup": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/graph",
+      "interfaces": [
+        {
+          "id": "root/entry/0",
+          "members": [
+            {
+              "portId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root:entry",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root/binding/entry/0",
+            "toPort": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:entry",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "root/normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "connect",
+            "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root/binding/normal",
+            "toPort": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root:normal-exit",
+            "edge": {
+              "kind": "sequence",
+              "label": null,
+              "routing": "direct"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "members": [
+            {
+              "portId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "normal",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "returns",
+          "members": [
+            {
+              "portId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:return",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "any",
+                    "operands": [
+                      {
+                        "kind": "all",
+                        "operands": [
+                          {
+                            "kind": "constant",
+                            "value": true
+                          },
+                          {
+                            "kind": "any",
+                            "operands": [
+                              {
+                                "kind": "not",
+                                "operand": {
+                                  "kind": "nonempty",
+                                  "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                                  "interfaceId": "entry"
+                                }
+                              },
+                              {
+                                "kind": "nonempty",
+                                "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                                "interfaceId": "normal"
+                              },
+                              {
+                                "kind": "nonempty",
+                                "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                                "interfaceId": "returns"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        },
+        {
+          "id": "panics",
+          "members": [],
+          "exports": [],
+          "root": {
+            "kind": "terminal"
+          }
+        }
+      ],
+      "emission": {
+        "root": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root/binding/entry/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/root/binding/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ]
+        },
+        "inline": {
+          "nodes": [
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            }
+          ],
+          "ports": [
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:entry",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0:normal-exit",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0:return",
+              "when": {
+                "kind": "any",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "edges": [
+            {
+              "kind": "local",
+              "itemId": "edge/0",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "constant",
+                    "value": true
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "child",
+              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0/enter",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0/exit/normal",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "binding",
+              "bindingId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0/exit/returns",
+              "when": {
+                "kind": "constant",
+                "value": true
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/1",
+              "when": {
+                "kind": "not",
+                "operand": {
+                  "kind": "nonempty",
+                  "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                  "interfaceId": "entry"
+                }
+              }
+            },
+            {
+              "kind": "local",
+              "itemId": "edge/2",
+              "when": {
+                "kind": "all",
+                "operands": [
+                  {
+                    "kind": "all",
+                    "operands": [
+                      {
+                        "kind": "constant",
+                        "value": true
+                      },
+                      {
+                        "kind": "any",
+                        "operands": [
+                          {
+                            "kind": "not",
+                            "operand": {
+                              "kind": "nonempty",
+                              "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                              "interfaceId": "entry"
+                            }
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                            "interfaceId": "normal"
+                          },
+                          {
+                            "kind": "nonempty",
+                            "referenceNodeId": "examples/panel_state/service/main.bal//reports/1/resource/get/weekly/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/expand/examples/panel_state/service/main.bal//reports/1/resource/get/weekly/statement/0/call/0",
+                            "interfaceId": "returns"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "constant",
+                    "value": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

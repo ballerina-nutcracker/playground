@@ -1,0 +1,3 @@
+#!/bin/sh
+# Run the workspace tests before every push.
+exec bun run test

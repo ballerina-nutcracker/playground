@@ -1,0 +1,1 @@
+function step(int i) returns int { return i; } public function main() { int i = 0; while i < 3 { i = step(i + 1); } foreach int n in [1, 2] { i += n; } }

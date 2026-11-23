@@ -1,0 +1,68 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/source_ranges / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples source_ranges 0.1.0)
+  (function (position 1:1 11:2) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 1:24 11:2)
+      (var-def (position 3:5 3:42)
+        (variable (position 3:5 3:42) greeting (type
+          (value-type (position 3:5 3:11) string)) (expr
+          (literal (position 3:23 3:41) Hello 🚀 café))))
+      (var-def (position 4:5 7:7)
+        (variable (position 4:5 7:7) result (type
+          (value-type (position 4:5 4:11) string)) (expr
+          (invocation (position 4:21 7:6) decorate (
+            (simple-var-ref (position 5:9 5:17) greeting)
+            (literal (position 6:9 6:26) සිංහල))))))
+      (var-def (position 8:5 8:34)
+        (variable (position 8:5 8:34) windows (type
+          (value-type (position 8:5 8:8) int)) (expr
+          (invocation (position 8:19 8:33) windowsValue ()))))
+      (assignment (position 9:5 9:16)
+        (wildcard-binding-pattern (position 9:5 9:6))
+        (simple-var-ref (position 9:9 9:15) result))
+      (assignment (position 10:5 10:17)
+        (wildcard-binding-pattern (position 10:5 10:6))
+        (simple-var-ref (position 10:9 10:16) windows))))
+  (function (position 13:1 15:2) decorate (
+    (variable (position 13:19 13:30) left (type
+      (value-type (position 13:19 13:25) string)))
+    (variable (position 13:32 13:44) right (type
+      (value-type (position 13:32 13:38) string)))) (
+    (value-type (position 13:54 13:60) string))
+    (block-function-body (position 13:61 15:2)
+      (return (position 14:5 14:33)
+        (binary-expr (position 14:12 14:32) +
+          (binary-expr (position 14:12 14:24) +
+            (simple-var-ref (position 14:12 14:16) left)
+            (literal (position 14:19 14:24)  / ))
+          (simple-var-ref (position 14:27 14:32) right))))))
+
+## Module examples/source_ranges / Document windows.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples source_ranges 0.1.0)
+  (function (position 1:1 4:2) windowsValue () (
+    (value-type (position 1:33 1:36) int))
+    (block-function-body (position 1:37 4:2)
+      (var-def (position 2:5 2:19)
+        (variable (position 2:5 2:19) value (type
+          (value-type (position 2:5 2:8) int)) (expr
+          (literal (position 2:17 2:18) 2))))
+      (return (position 3:5 3:18)
+        (simple-var-ref (position 3:12 3:17) value)))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### call main.bal [148,207)
+arguments: 2
+argument[0]:
+(simple-var-ref (position 5:9 5:17) greeting)
+argument[1]:
+(literal (position 6:9 6:26) සිංහල)
+
+### call main.bal [227,241)
+arguments: 0

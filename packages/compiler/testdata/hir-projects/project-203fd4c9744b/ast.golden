@@ -1,0 +1,56 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module browser/http_service / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id browser http_service 0.1.0)
+  (function (position 1:1 1:97) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 1:24 1:97)
+      (var-def (position 1:26 1:83)
+        (variable (position 1:26 1:83) result (expr
+          (binary-expr (position 1:39 1:82) %
+            (binary-expr (position 1:39 1:71) /
+              (group-expr (position 1:39 1:60)
+                (binary-expr (position 1:40 1:59) -
+                  (invocation (position 1:40 1:48) value (
+                    (literal (position 1:46 1:47) 1)))
+                  (invocation (position 1:51 1:59) value (
+                    (literal (position 1:57 1:58) 2)))))
+              (invocation (position 1:63 1:71) value (
+                (literal (position 1:69 1:70) 3))))
+            (invocation (position 1:74 1:82) value (
+              (literal (position 1:80 1:81) 4)))))))
+      (assignment (position 1:84 1:95)
+        (wildcard-binding-pattern (position 1:84 1:85))
+        (simple-var-ref (position 1:88 1:94) result))))
+  (function (position 1:98 1:145) value (
+    (variable (position 1:113 1:118) n (type
+      (value-type (position 1:113 1:116) int)))) (
+    (value-type (position 1:128 1:131) int))
+    (block-function-body (position 1:132 1:145)
+      (return (position 1:134 1:143)
+        (simple-var-ref (position 1:141 1:142) n)))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### call main.bal [39,47)
+arguments: 1
+argument[0]:
+(literal (position 1:46 1:47) 1)
+
+### call main.bal [50,58)
+arguments: 1
+argument[0]:
+(literal (position 1:57 1:58) 2)
+
+### call main.bal [62,70)
+arguments: 1
+argument[0]:
+(literal (position 1:69 1:70) 3)
+
+### call main.bal [73,81)
+arguments: 1
+argument[0]:
+(literal (position 1:80 1:81) 4)

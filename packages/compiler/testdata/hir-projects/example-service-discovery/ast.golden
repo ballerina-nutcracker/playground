@@ -1,0 +1,105 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module examples/service_discovery / Document datagrams.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples service_discovery 0.1.0)
+  (import-package (position 1:1 1:22) ballerina udp (as udp))
+  (service (position 3:1 8:2)
+    (on
+    (new (position 3:12 3:34)
+      (user-defined-type (position 3:16 3:28) udp Listener) (
+      (literal (position 3:29 3:33) 9090) <default> (position 3:12 3:34))))
+    (function (position 4:5 7:6) $remote$onBytes (
+      (variable (position 4:29 4:40) data (type
+        (array-type (position 4:29 4:35)
+          (value-type (position 4:29 4:33) byte) dimensions: 1 ([]))))
+      (variable (position 4:42 4:59) caller (type
+        (user-defined-type (position 4:42 4:52) udp Caller)))) (
+      (array-type (position 4:69 4:75)
+        (value-type (position 4:69 4:73) byte) dimensions: 1 ([])))
+      (block-function-body (position 4:76 7:6)
+        (assignment (position 5:9 5:20)
+          (wildcard-binding-pattern (position 5:9 5:10))
+          (simple-var-ref (position 5:13 5:19) caller))
+        (return (position 6:9 6:21)
+          (simple-var-ref (position 6:16 6:20) data))))))
+
+## Module examples/service_discovery / Document inventory.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples service_discovery 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (service (position 3:1 5:2)
+    (absolute-resource-path inventory)
+    (on
+    (new (position 3:23 3:46)
+      (user-defined-type (position 3:27 3:40) http Listener) (
+      (literal (position 3:41 3:45) 8081) <default> (position 3:23 3:46))))
+    (resource-function (position 4:5 4:75) get name:items
+      (value-type (position 4:43 4:49) string)
+      (block-function-body (position 4:50 4:75)
+        (return (position 4:52 4:73)
+          (invocation (position 4:59 4:72) sharedLabel ())))))
+  (function (position 7:1 7:51) unusedHelper () (
+    (value-type (position 7:33 7:36) int))
+    (block-function-body (position 7:37 7:51)
+      (return (position 7:39 7:49)
+        (literal (position 7:46 7:48) 42)))))
+
+## Module examples/service_discovery / Document orders.bal
+(compilation-unit (position 1:1 1:1)
+(package-id examples service_discovery 0.1.0)
+  (import-package (position 1:1 1:23) ballerina http (as http))
+  (service (position 3:1 7:2)
+    (absolute-resource-path orders)
+    (on
+    (new (position 3:20 3:43)
+      (user-defined-type (position 3:24 3:37) http Listener) (
+      (literal (position 3:38 3:42) 8080) <default> (position 3:20 3:43))))
+    (function (position 6:5 6:68) formatOrder () (
+      (value-type (position 6:36 6:42) string))
+      (block-function-body (position 6:43 6:68)
+        (return (position 6:45 6:66)
+          (invocation (position 6:52 6:65) sharedLabel ()))))
+    (function (position 5:5 5:69) $remote$refresh () (
+      (value-type (position 5:39 5:45) string))
+      (block-function-body (position 5:46 5:69)
+        (return (position 5:48 5:67)
+          (literal (position 5:55 5:66) refreshed))))
+    (resource-function (position 4:5 4:76) get name:orders
+      (value-type (position 4:44 4:50) string)
+      (block-function-body (position 4:51 4:76)
+        (return (position 4:53 4:74)
+          (invocation (position 4:60 4:73) formatOrder ())))))
+  (function (position 9:1 9:58) sharedLabel () (
+    (value-type (position 9:32 9:38) string))
+    (block-function-body (position 9:39 9:58)
+      (return (position 9:41 9:56)
+        (literal (position 9:48 9:55) order)))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### new datagrams.bal [34,56)
+arguments: 1
+argument[0]:
+(literal (position 3:29 3:33) 9090)
+
+### new inventory.bal [46,69)
+arguments: 1
+argument[0]:
+(literal (position 3:41 3:45) 8081)
+
+### call inventory.bal [130,143)
+arguments: 0
+
+### new orders.bal [43,66)
+arguments: 1
+argument[0]:
+(literal (position 3:38 3:42) 8080)
+
+### call orders.bal [128,141)
+arguments: 0
+
+### call orders.bal [265,278)
+arguments: 0

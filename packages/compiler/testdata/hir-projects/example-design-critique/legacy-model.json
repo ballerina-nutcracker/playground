@@ -1,0 +1,574 @@
+{
+  "scopes": [
+    {
+      "id": "examples/design_critique/service/main.bal//orders/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 6,
+            "column": 1
+          },
+          "end": {
+            "line": 18,
+            "column": 2
+          }
+        }
+      },
+      "text": "service /orders on new http:Listener(8080) {\n    resource function post orders() returns int {\n        int[] items = [1, 2, 3];\n        int total = 0;\n        foreach int item in items {\n            if item \u003c minimum { continue; }\n            total += calculate(item);\n        }\n        if total \u003e 10 { total += 2; } else { total += 1; }\n        return total;\n    }\n    resource function get status() returns string { return \"ready\"; }\n}",
+      "kind": "service",
+      "title": "/orders",
+      "moduleId": "examples/design_critique",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [
+        {
+          "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 7,
+                "column": 5
+              },
+              "end": {
+                "line": 16,
+                "column": 6
+              }
+            }
+          },
+          "text": "resource function post orders() returns int {\n        int[] items = [1, 2, 3];\n        int total = 0;\n        foreach int item in items {\n            if item \u003c minimum { continue; }\n            total += calculate(item);\n        }\n        if total \u003e 10 { total += 2; } else { total += 1; }\n        return total;\n    }",
+          "kind": "resource",
+          "title": "post /orders/orders",
+          "functionId": "examples/design_critique/service/main.bal//orders/1/resource/post/orders"
+        },
+        {
+          "id": "examples/design_critique/service/main.bal//orders/1/resource/get/status",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 17,
+                "column": 5
+              },
+              "end": {
+                "line": 17,
+                "column": 70
+              }
+            }
+          },
+          "text": "resource function get status() returns string { return \"ready\"; }",
+          "kind": "resource",
+          "title": "get /orders/status",
+          "functionId": "examples/design_critique/service/main.bal//orders/1/resource/get/status"
+        }
+      ],
+      "definitions": [
+        {
+          "id": "examples/design_critique/function/calculate",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 20,
+                "column": 1
+              },
+              "end": {
+                "line": 23,
+                "column": 2
+              }
+            }
+          },
+          "text": "function calculate(int value) returns int {\n    if value \u003c 0 { return 0; }\n    return value * 2;\n}",
+          "kind": "function",
+          "label": "calculate",
+          "functionId": "examples/design_critique/function/calculate"
+        },
+        {
+          "id": "examples/design_critique/type/Order",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 1
+              },
+              "end": {
+                "line": 4,
+                "column": 37
+              }
+            }
+          },
+          "text": "type Order record {| int amount; |};",
+          "kind": "type",
+          "label": "Order"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "examples/design_critique/function/calculate": {
+      "id": "examples/design_critique/function/calculate",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 20,
+            "column": 1
+          },
+          "end": {
+            "line": 23,
+            "column": 2
+          }
+        }
+      },
+      "text": "function calculate(int value) returns int {\n    if value \u003c 0 { return 0; }\n    return value * 2;\n}",
+      "moduleId": "examples/design_critique",
+      "entry": {
+        "kind": "function",
+        "name": "calculate",
+        "signature": "function calculate(int value) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/design_critique/function/calculate/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 21,
+                "column": 5
+              },
+              "end": {
+                "line": 21,
+                "column": 31
+              }
+            }
+          },
+          "text": "if value \u003c 0 { return 0; }",
+          "kind": "if",
+          "condition": {
+            "id": "examples/design_critique/function/calculate/statement/0/condition",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 21,
+                  "column": 8
+                },
+                "end": {
+                  "line": 21,
+                  "column": 17
+                }
+              }
+            },
+            "text": "value \u003c 0",
+            "calls": []
+          },
+          "thenBody": [
+            {
+              "id": "examples/design_critique/function/calculate/statement/0/then/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 21,
+                    "column": 20
+                  },
+                  "end": {
+                    "line": 21,
+                    "column": 29
+                  }
+                }
+              },
+              "text": "return 0;",
+              "kind": "return",
+              "calls": []
+            }
+          ],
+          "elseBody": []
+        },
+        {
+          "id": "examples/design_critique/function/calculate/statement/1/block/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 22,
+                "column": 5
+              },
+              "end": {
+                "line": 22,
+                "column": 22
+              }
+            }
+          },
+          "text": "return value * 2;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/design_critique/service/main.bal//orders/1/resource/get/status": {
+      "id": "examples/design_critique/service/main.bal//orders/1/resource/get/status",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 17,
+            "column": 5
+          },
+          "end": {
+            "line": 17,
+            "column": 70
+          }
+        }
+      },
+      "text": "resource function get status() returns string { return \"ready\"; }",
+      "moduleId": "examples/design_critique",
+      "entry": {
+        "kind": "resource",
+        "name": "get /status",
+        "signature": "resource function get status() returns string",
+        "parameters": [],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "examples/design_critique/service/main.bal//orders/1/resource/get/status/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 17,
+                "column": 53
+              },
+              "end": {
+                "line": 17,
+                "column": 68
+              }
+            }
+          },
+          "text": "return \"ready\";",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/design_critique/service/main.bal//orders/1/resource/post/orders": {
+      "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 7,
+            "column": 5
+          },
+          "end": {
+            "line": 16,
+            "column": 6
+          }
+        }
+      },
+      "text": "resource function post orders() returns int {\n        int[] items = [1, 2, 3];\n        int total = 0;\n        foreach int item in items {\n            if item \u003c minimum { continue; }\n            total += calculate(item);\n        }\n        if total \u003e 10 { total += 2; } else { total += 1; }\n        return total;\n    }",
+      "moduleId": "examples/design_critique",
+      "entry": {
+        "kind": "resource",
+        "name": "post /orders",
+        "signature": "resource function post orders() returns int",
+        "parameters": [],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 8,
+                "column": 9
+              },
+              "end": {
+                "line": 8,
+                "column": 33
+              }
+            }
+          },
+          "text": "int[] items = [1, 2, 3];",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 9,
+                "column": 9
+              },
+              "end": {
+                "line": 9,
+                "column": 23
+              }
+            }
+          },
+          "text": "int total = 0;",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 10,
+                "column": 9
+              },
+              "end": {
+                "line": 13,
+                "column": 10
+              }
+            }
+          },
+          "text": "foreach int item in items {\n            if item \u003c minimum { continue; }\n            total += calculate(item);\n        }",
+          "kind": "foreach",
+          "header": {
+            "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/2/header",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 10,
+                  "column": 17
+                },
+                "end": {
+                  "line": 10,
+                  "column": 34
+                }
+              }
+            },
+            "text": "int item in items",
+            "calls": []
+          },
+          "body": [
+            {
+              "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/2/loop/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 11,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 11,
+                    "column": 44
+                  }
+                }
+              },
+              "text": "if item \u003c minimum { continue; }",
+              "kind": "if",
+              "condition": {
+                "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/2/loop/statement/0/condition",
+                "source": {
+                  "file": "main.bal",
+                  "range": {
+                    "start": {
+                      "line": 11,
+                      "column": 16
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 30
+                    }
+                  }
+                },
+                "text": "item \u003c minimum",
+                "calls": []
+              },
+              "thenBody": [
+                {
+                  "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/2/loop/statement/0/then/statement/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 11,
+                        "column": 33
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 42
+                      }
+                    }
+                  },
+                  "text": "continue;",
+                  "kind": "continue"
+                }
+              ],
+              "elseBody": []
+            },
+            {
+              "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/2/loop/statement/1/block/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 12,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 38
+                  }
+                }
+              },
+              "text": "total += calculate(item);",
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": [
+                {
+                  "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/2/loop/statement/1/block/statement/0/call/0",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 12,
+                        "column": 22
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 37
+                      }
+                    }
+                  },
+                  "text": "calculate(item)",
+                  "target": {
+                    "kind": "workspace",
+                    "functionId": "examples/design_critique/function/calculate"
+                  },
+                  "expansion": "supported"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/3",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 14,
+                "column": 9
+              },
+              "end": {
+                "line": 14,
+                "column": 59
+              }
+            }
+          },
+          "text": "if total \u003e 10 { total += 2; } else { total += 1; }",
+          "kind": "if",
+          "condition": {
+            "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/3/condition",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 14,
+                  "column": 12
+                },
+                "end": {
+                  "line": 14,
+                  "column": 22
+                }
+              }
+            },
+            "text": "total \u003e 10",
+            "calls": []
+          },
+          "thenBody": [
+            {
+              "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/3/then/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 14,
+                    "column": 25
+                  },
+                  "end": {
+                    "line": 14,
+                    "column": 36
+                  }
+                }
+              },
+              "text": "total += 2;",
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ],
+          "elseBody": [
+            {
+              "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/3/else/statement/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 14,
+                    "column": 46
+                  },
+                  "end": {
+                    "line": 14,
+                    "column": 57
+                  }
+                }
+              },
+              "text": "total += 1;",
+              "kind": "simple",
+              "operation": "assign",
+              "presentation": "step",
+              "calls": []
+            }
+          ]
+        },
+        {
+          "id": "examples/design_critique/service/main.bal//orders/1/resource/post/orders/statement/4",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 15,
+                "column": 9
+              },
+              "end": {
+                "line": 15,
+                "column": 22
+              }
+            }
+          },
+          "text": "return total;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    }
+  }
+}

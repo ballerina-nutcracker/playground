@@ -1,0 +1,50 @@
+# Frontend: ResolveSymbols + ResolvePublicNodeTypes + ResolvePrivateNodesTypes
+# Before semantic analysis, CFG, desugaring, and lowering
+# ast.PrettyPrinter ShowNodeLocations=true DiagnosticEnv=resolved environment
+
+## Module browser/http_service / Document main.bal
+(compilation-unit (position 1:1 1:1)
+(package-id browser http_service 0.1.0)
+  (class-definition (position 1:1 3:3) Queue
+    (function (position 2:2 2:65) $remote$read () (
+      (union-type (position 2:33 2:45)
+        (value-type (position 2:33 2:39) string)
+        (error-type (position 2:40 2:45))))
+      (block-function-body (position 2:46 2:65)
+        (return (position 2:48 2:63)
+          (literal (position 2:55 2:62) value)))))
+  (function (position 4:2 4:44) index () (
+    (value-type (position 4:27 4:30) int))
+    (block-function-body (position 4:31 4:44)
+      (return (position 4:33 4:42)
+        (literal (position 4:40 4:41) 0))))
+  (function (position 5:2 7:3) fill (
+    (variable (position 5:16 5:27) queue (type
+      (user-defined-type (position 5:16 5:21) Queue)))
+    (variable (position 5:29 5:44) values (type
+      (array-type (position 5:29 5:37)
+        (value-type (position 5:29 5:35) string) dimensions: 1 ([]))))) (
+    (union-type (position 5:54 5:60)
+      (error-type (position 5:54 5:59))
+      (value-type (position 5:59 5:60) null)))
+    (block-function-body (position 5:61 7:3)
+      (assignment (position 6:2 6:40)
+        (index-based-access (position 6:2 6:17)
+          (simple-var-ref (position 6:2 6:8) values)
+          (invocation (position 6:9 6:16) index ()))
+        (checked-expr (position 6:20 6:39)
+          (remote-method-call (position 6:26 6:39) read expr:
+            (simple-var-ref (position 6:26 6:31) queue) ())))))
+  (function (position 8:2 8:27) main () (
+    (value-type (position <built-in>) null))
+    (block-function-body (position 8:25 8:27))))
+
+## Original source argument provenance (source order; zero-based byte offsets)
+
+### call main.bal [203,210)
+arguments: 0
+
+### call main.bal [220,233)
+receiver:
+(simple-var-ref (position 6:26 6:31) queue)
+arguments: 0

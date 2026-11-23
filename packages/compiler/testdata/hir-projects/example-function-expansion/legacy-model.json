@@ -1,0 +1,794 @@
+{
+  "scopes": [
+    {
+      "id": "examples/function_expansion/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 8,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    int first = shared(2);\n    int second = shared(3);\n    int recursive = countdown(first);\n    int mutual = evenStep(second);\n    _ = recursive;\n    _ = mutual;\n}",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "examples/function_expansion",
+      "serviceType": null,
+      "functionId": "examples/function_expansion/function/main"
+    }
+  ],
+  "functions": {
+    "examples/function_expansion/function/adjust": {
+      "id": "examples/function_expansion/function/adjust",
+      "source": {
+        "file": "helpers.bal",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 1
+          },
+          "end": {
+            "line": 2,
+            "column": 61
+          }
+        }
+      },
+      "text": "function adjust(int value) returns int { return value + 1; }",
+      "moduleId": "examples/function_expansion",
+      "entry": {
+        "kind": "function",
+        "name": "adjust",
+        "signature": "function adjust(int value) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/function_expansion/function/adjust/statement/0",
+          "source": {
+            "file": "helpers.bal",
+            "range": {
+              "start": {
+                "line": 2,
+                "column": 42
+              },
+              "end": {
+                "line": 2,
+                "column": 59
+              }
+            }
+          },
+          "text": "return value + 1;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/function_expansion/function/countdown": {
+      "id": "examples/function_expansion/function/countdown",
+      "source": {
+        "file": "helpers.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 6,
+            "column": 2
+          }
+        }
+      },
+      "text": "function countdown(int value) returns int {\n    if value \u003c= 0 { return 0; }\n    return countdown(value - 1);\n}",
+      "moduleId": "examples/function_expansion",
+      "entry": {
+        "kind": "function",
+        "name": "countdown",
+        "signature": "function countdown(int value) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/function_expansion/function/countdown/statement/0",
+          "source": {
+            "file": "helpers.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 4,
+                "column": 32
+              }
+            }
+          },
+          "text": "if value \u003c= 0 { return 0; }",
+          "kind": "if",
+          "condition": {
+            "id": "examples/function_expansion/function/countdown/statement/0/condition",
+            "source": {
+              "file": "helpers.bal",
+              "range": {
+                "start": {
+                  "line": 4,
+                  "column": 8
+                },
+                "end": {
+                  "line": 4,
+                  "column": 18
+                }
+              }
+            },
+            "text": "value \u003c= 0",
+            "calls": []
+          },
+          "thenBody": [
+            {
+              "id": "examples/function_expansion/function/countdown/statement/0/then/statement/0",
+              "source": {
+                "file": "helpers.bal",
+                "range": {
+                  "start": {
+                    "line": 4,
+                    "column": 21
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 30
+                  }
+                }
+              },
+              "text": "return 0;",
+              "kind": "return",
+              "calls": []
+            }
+          ],
+          "elseBody": []
+        },
+        {
+          "id": "examples/function_expansion/function/countdown/statement/1/block/statement/0",
+          "source": {
+            "file": "helpers.bal",
+            "range": {
+              "start": {
+                "line": 5,
+                "column": 5
+              },
+              "end": {
+                "line": 5,
+                "column": 33
+              }
+            }
+          },
+          "text": "return countdown(value - 1);",
+          "kind": "return",
+          "calls": [
+            {
+              "id": "examples/function_expansion/function/countdown/statement/1/block/statement/0/call/0",
+              "source": {
+                "file": "helpers.bal",
+                "range": {
+                  "start": {
+                    "line": 5,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 32
+                  }
+                }
+              },
+              "text": "countdown(value - 1)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/function_expansion/function/countdown"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    },
+    "examples/function_expansion/function/evenStep": {
+      "id": "examples/function_expansion/function/evenStep",
+      "source": {
+        "file": "helpers.bal",
+        "range": {
+          "start": {
+            "line": 7,
+            "column": 1
+          },
+          "end": {
+            "line": 10,
+            "column": 2
+          }
+        }
+      },
+      "text": "function evenStep(int value) returns int {\n    if value \u003c= 0 { return 0; }\n    return oddStep(value - 1);\n}",
+      "moduleId": "examples/function_expansion",
+      "entry": {
+        "kind": "function",
+        "name": "evenStep",
+        "signature": "function evenStep(int value) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/function_expansion/function/evenStep/statement/0",
+          "source": {
+            "file": "helpers.bal",
+            "range": {
+              "start": {
+                "line": 8,
+                "column": 5
+              },
+              "end": {
+                "line": 8,
+                "column": 32
+              }
+            }
+          },
+          "text": "if value \u003c= 0 { return 0; }",
+          "kind": "if",
+          "condition": {
+            "id": "examples/function_expansion/function/evenStep/statement/0/condition",
+            "source": {
+              "file": "helpers.bal",
+              "range": {
+                "start": {
+                  "line": 8,
+                  "column": 8
+                },
+                "end": {
+                  "line": 8,
+                  "column": 18
+                }
+              }
+            },
+            "text": "value \u003c= 0",
+            "calls": []
+          },
+          "thenBody": [
+            {
+              "id": "examples/function_expansion/function/evenStep/statement/0/then/statement/0",
+              "source": {
+                "file": "helpers.bal",
+                "range": {
+                  "start": {
+                    "line": 8,
+                    "column": 21
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 30
+                  }
+                }
+              },
+              "text": "return 0;",
+              "kind": "return",
+              "calls": []
+            }
+          ],
+          "elseBody": []
+        },
+        {
+          "id": "examples/function_expansion/function/evenStep/statement/1/block/statement/0",
+          "source": {
+            "file": "helpers.bal",
+            "range": {
+              "start": {
+                "line": 9,
+                "column": 5
+              },
+              "end": {
+                "line": 9,
+                "column": 31
+              }
+            }
+          },
+          "text": "return oddStep(value - 1);",
+          "kind": "return",
+          "calls": [
+            {
+              "id": "examples/function_expansion/function/evenStep/statement/1/block/statement/0/call/0",
+              "source": {
+                "file": "helpers.bal",
+                "range": {
+                  "start": {
+                    "line": 9,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 9,
+                    "column": 30
+                  }
+                }
+              },
+              "text": "oddStep(value - 1)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/function_expansion/function/oddStep"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    },
+    "examples/function_expansion/function/main": {
+      "id": "examples/function_expansion/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 8,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    int first = shared(2);\n    int second = shared(3);\n    int recursive = countdown(first);\n    int mutual = evenStep(second);\n    _ = recursive;\n    _ = mutual;\n}",
+      "moduleId": "examples/function_expansion",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "examples/function_expansion/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 2,
+                "column": 5
+              },
+              "end": {
+                "line": 2,
+                "column": 27
+              }
+            }
+          },
+          "text": "int first = shared(2);",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/function_expansion/function/main/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 2,
+                    "column": 17
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 26
+                  }
+                }
+              },
+              "text": "shared(2)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/function_expansion/function/shared"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "examples/function_expansion/function/main/statement/1",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 3,
+                "column": 5
+              },
+              "end": {
+                "line": 3,
+                "column": 28
+              }
+            }
+          },
+          "text": "int second = shared(3);",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/function_expansion/function/main/statement/1/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 3,
+                    "column": 18
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 27
+                  }
+                }
+              },
+              "text": "shared(3)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/function_expansion/function/shared"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "examples/function_expansion/function/main/statement/2",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 4,
+                "column": 38
+              }
+            }
+          },
+          "text": "int recursive = countdown(first);",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/function_expansion/function/main/statement/2/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 4,
+                    "column": 21
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 37
+                  }
+                }
+              },
+              "text": "countdown(first)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/function_expansion/function/countdown"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "examples/function_expansion/function/main/statement/3",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 5,
+                "column": 5
+              },
+              "end": {
+                "line": 5,
+                "column": 35
+              }
+            }
+          },
+          "text": "int mutual = evenStep(second);",
+          "kind": "simple",
+          "operation": "declare",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/function_expansion/function/main/statement/3/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 5,
+                    "column": 18
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 34
+                  }
+                }
+              },
+              "text": "evenStep(second)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/function_expansion/function/evenStep"
+              },
+              "expansion": "supported"
+            }
+          ]
+        },
+        {
+          "id": "examples/function_expansion/function/main/statement/4",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 6,
+                "column": 5
+              },
+              "end": {
+                "line": 6,
+                "column": 19
+              }
+            }
+          },
+          "text": "_ = recursive;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        },
+        {
+          "id": "examples/function_expansion/function/main/statement/5",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 7,
+                "column": 5
+              },
+              "end": {
+                "line": 7,
+                "column": 16
+              }
+            }
+          },
+          "text": "_ = mutual;",
+          "kind": "simple",
+          "operation": "assign",
+          "presentation": "step",
+          "calls": []
+        }
+      ]
+    },
+    "examples/function_expansion/function/oddStep": {
+      "id": "examples/function_expansion/function/oddStep",
+      "source": {
+        "file": "helpers.bal",
+        "range": {
+          "start": {
+            "line": 11,
+            "column": 1
+          },
+          "end": {
+            "line": 14,
+            "column": 2
+          }
+        }
+      },
+      "text": "function oddStep(int value) returns int {\n    if value \u003c= 0 { return 1; }\n    return evenStep(value - 1);\n}",
+      "moduleId": "examples/function_expansion",
+      "entry": {
+        "kind": "function",
+        "name": "oddStep",
+        "signature": "function oddStep(int value) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/function_expansion/function/oddStep/statement/0",
+          "source": {
+            "file": "helpers.bal",
+            "range": {
+              "start": {
+                "line": 12,
+                "column": 5
+              },
+              "end": {
+                "line": 12,
+                "column": 32
+              }
+            }
+          },
+          "text": "if value \u003c= 0 { return 1; }",
+          "kind": "if",
+          "condition": {
+            "id": "examples/function_expansion/function/oddStep/statement/0/condition",
+            "source": {
+              "file": "helpers.bal",
+              "range": {
+                "start": {
+                  "line": 12,
+                  "column": 8
+                },
+                "end": {
+                  "line": 12,
+                  "column": 18
+                }
+              }
+            },
+            "text": "value \u003c= 0",
+            "calls": []
+          },
+          "thenBody": [
+            {
+              "id": "examples/function_expansion/function/oddStep/statement/0/then/statement/0",
+              "source": {
+                "file": "helpers.bal",
+                "range": {
+                  "start": {
+                    "line": 12,
+                    "column": 21
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 30
+                  }
+                }
+              },
+              "text": "return 1;",
+              "kind": "return",
+              "calls": []
+            }
+          ],
+          "elseBody": []
+        },
+        {
+          "id": "examples/function_expansion/function/oddStep/statement/1/block/statement/0",
+          "source": {
+            "file": "helpers.bal",
+            "range": {
+              "start": {
+                "line": 13,
+                "column": 5
+              },
+              "end": {
+                "line": 13,
+                "column": 32
+              }
+            }
+          },
+          "text": "return evenStep(value - 1);",
+          "kind": "return",
+          "calls": [
+            {
+              "id": "examples/function_expansion/function/oddStep/statement/1/block/statement/0/call/0",
+              "source": {
+                "file": "helpers.bal",
+                "range": {
+                  "start": {
+                    "line": 13,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 31
+                  }
+                }
+              },
+              "text": "evenStep(value - 1)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/function_expansion/function/evenStep"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    },
+    "examples/function_expansion/function/shared": {
+      "id": "examples/function_expansion/function/shared",
+      "source": {
+        "file": "helpers.bal",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 65
+          }
+        }
+      },
+      "text": "function shared(int value) returns int { return adjust(value); }",
+      "moduleId": "examples/function_expansion",
+      "entry": {
+        "kind": "function",
+        "name": "shared",
+        "signature": "function shared(int value) returns int",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "int value"
+          }
+        ],
+        "returnType": "int"
+      },
+      "body": [
+        {
+          "id": "examples/function_expansion/function/shared/statement/0",
+          "source": {
+            "file": "helpers.bal",
+            "range": {
+              "start": {
+                "line": 1,
+                "column": 42
+              },
+              "end": {
+                "line": 1,
+                "column": 63
+              }
+            }
+          },
+          "text": "return adjust(value);",
+          "kind": "return",
+          "calls": [
+            {
+              "id": "examples/function_expansion/function/shared/statement/0/call/0",
+              "source": {
+                "file": "helpers.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 49
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 62
+                  }
+                }
+              },
+              "text": "adjust(value)",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/function_expansion/function/adjust"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

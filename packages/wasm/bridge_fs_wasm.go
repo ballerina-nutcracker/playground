@@ -17,8 +17,8 @@
 package main
 
 import (
-	"bytes"
 	"github.com/ballerina-nutcracker/ballerina/common/bfs"
+	"bytes"
 	"io"
 	"io/fs"
 	"path"

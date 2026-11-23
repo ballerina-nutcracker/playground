@@ -1,0 +1,280 @@
+{
+  "scopes": [
+    {
+      "id": "examples/chat_references/service/main.bal//notes/1",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 6,
+            "column": 2
+          }
+        }
+      },
+      "text": "service /notes on new http:Listener(8080) {\n    resource function get first() returns string { return shared(\"first\"); }\n    resource function get second() returns string { return shared(\"second\"); }\n}",
+      "kind": "service",
+      "title": "/notes",
+      "moduleId": "examples/chat_references",
+      "serviceType": "ballerina/http:Listener",
+      "endpoints": [
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 4,
+                "column": 77
+              }
+            }
+          },
+          "text": "resource function get first() returns string { return shared(\"first\"); }",
+          "kind": "resource",
+          "title": "get /notes/first",
+          "functionId": "examples/chat_references/service/main.bal//notes/1/resource/get/first"
+        },
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 5,
+                "column": 5
+              },
+              "end": {
+                "line": 5,
+                "column": 79
+              }
+            }
+          },
+          "text": "resource function get second() returns string { return shared(\"second\"); }",
+          "kind": "resource",
+          "title": "get /notes/second",
+          "functionId": "examples/chat_references/service/main.bal//notes/1/resource/get/second"
+        }
+      ],
+      "definitions": [
+        {
+          "id": "examples/chat_references/function/shared",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 8,
+                "column": 1
+              },
+              "end": {
+                "line": 8,
+                "column": 63
+              }
+            }
+          },
+          "text": "function shared(string value) returns string { return value; }",
+          "kind": "function",
+          "label": "shared",
+          "functionId": "examples/chat_references/function/shared"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "examples/chat_references/function/shared": {
+      "id": "examples/chat_references/function/shared",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 8,
+            "column": 1
+          },
+          "end": {
+            "line": 8,
+            "column": 63
+          }
+        }
+      },
+      "text": "function shared(string value) returns string { return value; }",
+      "moduleId": "examples/chat_references",
+      "entry": {
+        "kind": "function",
+        "name": "shared",
+        "signature": "function shared(string value) returns string",
+        "parameters": [
+          {
+            "kind": "input",
+            "text": "string value"
+          }
+        ],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "examples/chat_references/function/shared/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 8,
+                "column": 48
+              },
+              "end": {
+                "line": 8,
+                "column": 61
+              }
+            }
+          },
+          "text": "return value;",
+          "kind": "return",
+          "calls": []
+        }
+      ]
+    },
+    "examples/chat_references/service/main.bal//notes/1/resource/get/first": {
+      "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 5
+          },
+          "end": {
+            "line": 4,
+            "column": 77
+          }
+        }
+      },
+      "text": "resource function get first() returns string { return shared(\"first\"); }",
+      "moduleId": "examples/chat_references",
+      "entry": {
+        "kind": "resource",
+        "name": "get /first",
+        "signature": "resource function get first() returns string",
+        "parameters": [],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 52
+              },
+              "end": {
+                "line": 4,
+                "column": 75
+              }
+            }
+          },
+          "text": "return shared(\"first\");",
+          "kind": "return",
+          "calls": [
+            {
+              "id": "examples/chat_references/service/main.bal//notes/1/resource/get/first/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 4,
+                    "column": 59
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 74
+                  }
+                }
+              },
+              "text": "shared(\"first\")",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/chat_references/function/shared"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    },
+    "examples/chat_references/service/main.bal//notes/1/resource/get/second": {
+      "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 5
+          },
+          "end": {
+            "line": 5,
+            "column": 79
+          }
+        }
+      },
+      "text": "resource function get second() returns string { return shared(\"second\"); }",
+      "moduleId": "examples/chat_references",
+      "entry": {
+        "kind": "resource",
+        "name": "get /second",
+        "signature": "resource function get second() returns string",
+        "parameters": [],
+        "returnType": "string"
+      },
+      "body": [
+        {
+          "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 5,
+                "column": 53
+              },
+              "end": {
+                "line": 5,
+                "column": 77
+              }
+            }
+          },
+          "text": "return shared(\"second\");",
+          "kind": "return",
+          "calls": [
+            {
+              "id": "examples/chat_references/service/main.bal//notes/1/resource/get/second/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 5,
+                    "column": 60
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 76
+                  }
+                }
+              },
+              "text": "shared(\"second\")",
+              "target": {
+                "kind": "workspace",
+                "functionId": "examples/chat_references/function/shared"
+              },
+              "expansion": "supported"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1 @@
+public function main() { var result = value(value(1) + value(2)); _ = result; } function value(int n) returns int { return n; }

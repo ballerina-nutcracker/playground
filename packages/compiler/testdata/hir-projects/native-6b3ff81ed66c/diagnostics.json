@@ -1,0 +1,7 @@
+[
+  {
+    "severity": "error",
+    "message": "invalid version 'wrong': invalid major version: wrong",
+    "file": "Ballerina.toml"
+  }
+]

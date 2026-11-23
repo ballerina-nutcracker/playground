@@ -1,0 +1,100 @@
+{
+  "scopes": [
+    {
+      "id": "examples/automation_flow/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 5,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    io:println(\"Hello, World!\");\n}",
+      "kind": "automation",
+      "title": "Automation",
+      "moduleId": "examples/automation_flow",
+      "serviceType": null,
+      "functionId": "examples/automation_flow/function/main"
+    }
+  ],
+  "functions": {
+    "examples/automation_flow/function/main": {
+      "id": "examples/automation_flow/function/main",
+      "source": {
+        "file": "main.bal",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 5,
+            "column": 2
+          }
+        }
+      },
+      "text": "public function main() {\n    io:println(\"Hello, World!\");\n}",
+      "moduleId": "examples/automation_flow",
+      "entry": {
+        "kind": "function",
+        "name": "main",
+        "signature": "public function main()",
+        "parameters": [],
+        "returnType": "()"
+      },
+      "body": [
+        {
+          "id": "examples/automation_flow/function/main/statement/0",
+          "source": {
+            "file": "main.bal",
+            "range": {
+              "start": {
+                "line": 4,
+                "column": 5
+              },
+              "end": {
+                "line": 4,
+                "column": 33
+              }
+            }
+          },
+          "text": "io:println(\"Hello, World!\");",
+          "kind": "simple",
+          "operation": "expression",
+          "presentation": "step",
+          "calls": [
+            {
+              "id": "examples/automation_flow/function/main/statement/0/call/0",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 4,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 32
+                  }
+                }
+              },
+              "text": "io:println(\"Hello, World!\")",
+              "target": {
+                "kind": "external",
+                "label": "println"
+              },
+              "expansion": "unavailable",
+              "reason": "The target is outside the workspace."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,2508 @@
+{
+  "catalogRef": "68d03633009360152ca4654446cc9d04ee5cc7440fc99088991776dc1a216622",
+  "legacyProgram": {
+    "scopes": [],
+    "functions": {
+      "main": {
+        "id": "main",
+        "text": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "moduleId": "test",
+        "body": [
+          {
+            "id": "result",
+            "text": "result",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 7
+                }
+              }
+            },
+            "kind": "simple",
+            "operation": "assign",
+            "presentation": "step",
+            "calls": [],
+            "evaluation": {
+              "id": "trap",
+              "text": "trap",
+              "source": {
+                "file": "main.bal",
+                "range": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "trap",
+              "children": [
+                {
+                  "id": "combined",
+                  "text": "combined",
+                  "source": {
+                    "file": "main.bal",
+                    "range": {
+                      "start": {
+                        "line": 1,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 9
+                      }
+                    }
+                  },
+                  "kind": "source",
+                  "children": [
+                    {
+                      "id": "panic",
+                      "text": "panic",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 1,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 6
+                          }
+                        }
+                      },
+                      "kind": "checkpanic",
+                      "children": [
+                        {
+                          "id": "source",
+                          "text": "source",
+                          "source": {
+                            "file": "main.bal",
+                            "range": {
+                              "start": {
+                                "line": 1,
+                                "column": 1
+                              },
+                              "end": {
+                                "line": 1,
+                                "column": 7
+                              }
+                            }
+                          },
+                          "kind": "source",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "checked",
+                      "text": "checked",
+                      "source": {
+                        "file": "main.bal",
+                        "range": {
+                          "start": {
+                            "line": 1,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 8
+                          }
+                        }
+                      },
+                      "kind": "check",
+                      "children": [
+                        {
+                          "id": "source2",
+                          "text": "source2",
+                          "source": {
+                            "file": "main.bal",
+                            "range": {
+                              "start": {
+                                "line": 1,
+                                "column": 1
+                              },
+                              "end": {
+                                "line": 1,
+                                "column": 8
+                              }
+                            }
+                          },
+                          "kind": "source",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "binding": "Person person"
+          },
+          {
+            "id": "after",
+            "text": "after",
+            "source": {
+              "file": "main.bal",
+              "range": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 6
+                }
+              }
+            },
+            "kind": "simple",
+            "operation": "assign",
+            "presentation": "step",
+            "calls": []
+          }
+        ]
+      }
+    }
+  },
+  "hir": {
+    "scopes": [],
+    "sources": {
+      "after": {
+        "id": "after",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 6
+            }
+          }
+        },
+        "text": "after"
+      },
+      "checked": {
+        "id": "checked",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 8
+            }
+          }
+        },
+        "text": "checked"
+      },
+      "combined": {
+        "id": "combined",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 9
+            }
+          }
+        },
+        "text": "combined"
+      },
+      "main": {
+        "id": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "main"
+      },
+      "panic": {
+        "id": "panic",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 6
+            }
+          }
+        },
+        "text": "panic"
+      },
+      "result": {
+        "id": "result",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
+        },
+        "text": "result"
+      },
+      "source": {
+        "id": "source",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
+        },
+        "text": "source"
+      },
+      "source2": {
+        "id": "source2",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 8
+            }
+          }
+        },
+        "text": "source2"
+      },
+      "trap": {
+        "id": "trap",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "trap"
+      }
+    },
+    "functions": {
+      "main": {
+        "id": "main",
+        "source": {
+          "file": "main.bal",
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 5
+            }
+          }
+        },
+        "text": "main",
+        "moduleId": "test",
+        "entry": {
+          "kind": "function",
+          "owner": null,
+          "operation": null,
+          "name": "",
+          "signature": "",
+          "parameters": [],
+          "returnType": ""
+        },
+        "nodes": [
+          {
+            "id": "main/result",
+            "occurrenceKey": "/result",
+            "sourceId": "result",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "Result → Person person",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/result/evaluation/part/0/part/0/part/0",
+            "occurrenceKey": "/result/evaluation/part/0/part/0/part/0",
+            "sourceId": "source",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "source",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/result/evaluation/part/0/part/0/error",
+            "occurrenceKey": "/result/evaluation/part/0/part/0/error",
+            "sourceId": "panic",
+            "presentation": {
+              "kind": "plain",
+              "style": "panic",
+              "label": "Panic with error",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/result/evaluation/part/0/part/0",
+            "occurrenceKey": "/result/evaluation/part/0/part/0",
+            "sourceId": "panic",
+            "presentation": {
+              "kind": "plain",
+              "style": "condition",
+              "label": "checkpanic",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/result/evaluation/part/0/part/0/group"
+            }
+          },
+          {
+            "id": "main/result/evaluation/part/0/part/1/part/0",
+            "occurrenceKey": "/result/evaluation/part/0/part/1/part/0",
+            "sourceId": "source2",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "source2",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/result/evaluation/part/0/part/1/error",
+            "occurrenceKey": "/result/evaluation/part/0/part/1/error",
+            "sourceId": "checked",
+            "presentation": {
+              "kind": "plain",
+              "style": "return",
+              "label": "Return error",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/result/evaluation/part/0/part/1",
+            "occurrenceKey": "/result/evaluation/part/0/part/1",
+            "sourceId": "checked",
+            "presentation": {
+              "kind": "plain",
+              "style": "condition",
+              "label": "check",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/result/evaluation/part/0/part/1/group"
+            }
+          },
+          {
+            "id": "main/result/evaluation/part/0",
+            "occurrenceKey": "/result/evaluation/part/0",
+            "sourceId": "combined",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "combined",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/result/evaluation/capture",
+            "occurrenceKey": "/result/evaluation/capture",
+            "sourceId": "trap",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "Capture panic as error value",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/result/evaluation",
+            "occurrenceKey": "/result/evaluation",
+            "sourceId": "trap",
+            "presentation": {
+              "kind": "plain",
+              "style": "trap",
+              "label": "trap",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/result/evaluation/group"
+            }
+          },
+          {
+            "id": "main/after",
+            "occurrenceKey": "/after",
+            "sourceId": "after",
+            "presentation": {
+              "kind": "plain",
+              "style": "step",
+              "label": "after",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "leaf"
+            }
+          },
+          {
+            "id": "main/root",
+            "occurrenceKey": "/root",
+            "sourceId": "main",
+            "presentation": {
+              "kind": "plain",
+              "style": "function",
+              "label": "",
+              "sections": [],
+              "limitation": null,
+              "disclosure": {
+                "kind": "none"
+              }
+            },
+            "body": {
+              "kind": "group",
+              "groupId": "main/root/group"
+            }
+          }
+        ],
+        "ports": [
+          {
+            "occurrenceKey": "/result:entry",
+            "id": "main/result:entry",
+            "nodeId": "main/result",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/0/part/0:entry",
+            "id": "main/result/evaluation/part/0/part/0/part/0:entry",
+            "nodeId": "main/result/evaluation/part/0/part/0/part/0",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/0/part/0:normal-exit",
+            "id": "main/result/evaluation/part/0/part/0/part/0:normal-exit",
+            "nodeId": "main/result/evaluation/part/0/part/0/part/0",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/0/part/0:panic",
+            "id": "main/result/evaluation/part/0/part/0/part/0:panic",
+            "nodeId": "main/result/evaluation/part/0/part/0/part/0",
+            "role": "panic",
+            "anchor": {
+              "kind": "header-right"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/0:normal-exit",
+            "id": "main/result/evaluation/part/0/part/0:normal-exit",
+            "nodeId": "main/result/evaluation/part/0/part/0",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "group-bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/0:true",
+            "id": "main/result/evaluation/part/0/part/0:true",
+            "nodeId": "main/result/evaluation/part/0/part/0",
+            "role": "true",
+            "anchor": {
+              "kind": "header-left"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/0:false",
+            "id": "main/result/evaluation/part/0/part/0:false",
+            "nodeId": "main/result/evaluation/part/0/part/0",
+            "role": "false",
+            "anchor": {
+              "kind": "header-right"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/0/error:entry",
+            "id": "main/result/evaluation/part/0/part/0/error:entry",
+            "nodeId": "main/result/evaluation/part/0/part/0/error",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/0:entry",
+            "id": "main/result/evaluation/part/0/part/0:entry",
+            "nodeId": "main/result/evaluation/part/0/part/0",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/0/error:panic",
+            "id": "main/result/evaluation/part/0/part/0/error:panic",
+            "nodeId": "main/result/evaluation/part/0/part/0/error",
+            "role": "panic",
+            "anchor": {
+              "kind": "header-right"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/1/part/0:entry",
+            "id": "main/result/evaluation/part/0/part/1/part/0:entry",
+            "nodeId": "main/result/evaluation/part/0/part/1/part/0",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/1/part/0:normal-exit",
+            "id": "main/result/evaluation/part/0/part/1/part/0:normal-exit",
+            "nodeId": "main/result/evaluation/part/0/part/1/part/0",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/1/part/0:panic",
+            "id": "main/result/evaluation/part/0/part/1/part/0:panic",
+            "nodeId": "main/result/evaluation/part/0/part/1/part/0",
+            "role": "panic",
+            "anchor": {
+              "kind": "header-right"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/1:normal-exit",
+            "id": "main/result/evaluation/part/0/part/1:normal-exit",
+            "nodeId": "main/result/evaluation/part/0/part/1",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "group-bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/1:true",
+            "id": "main/result/evaluation/part/0/part/1:true",
+            "nodeId": "main/result/evaluation/part/0/part/1",
+            "role": "true",
+            "anchor": {
+              "kind": "header-left"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/1:false",
+            "id": "main/result/evaluation/part/0/part/1:false",
+            "nodeId": "main/result/evaluation/part/0/part/1",
+            "role": "false",
+            "anchor": {
+              "kind": "header-right"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/1/error:entry",
+            "id": "main/result/evaluation/part/0/part/1/error:entry",
+            "nodeId": "main/result/evaluation/part/0/part/1/error",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/1:entry",
+            "id": "main/result/evaluation/part/0/part/1:entry",
+            "nodeId": "main/result/evaluation/part/0/part/1",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0/part/1/error:return",
+            "id": "main/result/evaluation/part/0/part/1/error:return",
+            "nodeId": "main/result/evaluation/part/0/part/1/error",
+            "role": "return",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0:entry",
+            "id": "main/result/evaluation/part/0:entry",
+            "nodeId": "main/result/evaluation/part/0",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0:normal-exit",
+            "id": "main/result/evaluation/part/0:normal-exit",
+            "nodeId": "main/result/evaluation/part/0",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/part/0:panic",
+            "id": "main/result/evaluation/part/0:panic",
+            "nodeId": "main/result/evaluation/part/0",
+            "role": "panic",
+            "anchor": {
+              "kind": "header-right"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation:normal-exit",
+            "id": "main/result/evaluation:normal-exit",
+            "nodeId": "main/result/evaluation",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation:entry",
+            "id": "main/result/evaluation:entry",
+            "nodeId": "main/result/evaluation",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/capture:entry",
+            "id": "main/result/evaluation/capture:entry",
+            "nodeId": "main/result/evaluation/capture",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result/evaluation/capture:normal-exit",
+            "id": "main/result/evaluation/capture:normal-exit",
+            "nodeId": "main/result/evaluation/capture",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/result:normal-exit",
+            "id": "main/result:normal-exit",
+            "nodeId": "main/result",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/after:entry",
+            "id": "main/after:entry",
+            "nodeId": "main/after",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/after:normal-exit",
+            "id": "main/after:normal-exit",
+            "nodeId": "main/after",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:entry",
+            "id": "main/root:entry",
+            "nodeId": "main/root",
+            "role": "entry",
+            "anchor": {
+              "kind": "top-center"
+            }
+          },
+          {
+            "occurrenceKey": "/root:normal-exit",
+            "id": "main/root:normal-exit",
+            "nodeId": "main/root",
+            "role": "normal-exit",
+            "anchor": {
+              "kind": "bottom-center"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "kind": "true",
+            "label": "value",
+            "routing": "branch-left",
+            "id": "edge/0",
+            "fromPort": "main/result/evaluation/part/0/part/0:true",
+            "toPort": "main/result/evaluation/part/0/part/0:normal-exit",
+            "when": {
+              "kind": "constant",
+              "value": true
+            }
+          },
+          {
+            "kind": "error",
+            "label": "error",
+            "routing": "branch-right",
+            "id": "edge/1",
+            "fromPort": "main/result/evaluation/part/0/part/0:false",
+            "toPort": "main/result/evaluation/part/0/part/0/error:entry",
+            "when": {
+              "kind": "constant",
+              "value": true
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/2",
+            "fromPort": "main/result/evaluation/part/0/part/0/part/0:normal-exit",
+            "toPort": "main/result/evaluation/part/0/part/0:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "true",
+            "label": "value",
+            "routing": "branch-left",
+            "id": "edge/3",
+            "fromPort": "main/result/evaluation/part/0/part/1:true",
+            "toPort": "main/result/evaluation/part/0/part/1:normal-exit",
+            "when": {
+              "kind": "constant",
+              "value": true
+            }
+          },
+          {
+            "kind": "error",
+            "label": "error",
+            "routing": "branch-right",
+            "id": "edge/4",
+            "fromPort": "main/result/evaluation/part/0/part/1:false",
+            "toPort": "main/result/evaluation/part/0/part/1/error:entry",
+            "when": {
+              "kind": "constant",
+              "value": true
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/5",
+            "fromPort": "main/result/evaluation/part/0/part/1/part/0:normal-exit",
+            "toPort": "main/result/evaluation/part/0/part/1:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/6",
+            "fromPort": "main/result/evaluation/part/0/part/0:normal-exit",
+            "toPort": "main/result/evaluation/part/0/part/1/part/0:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/7",
+            "fromPort": "main/result/evaluation/part/0/part/1:normal-exit",
+            "toPort": "main/result/evaluation/part/0:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/8",
+            "fromPort": "main/result/evaluation:entry",
+            "toPort": "main/result/evaluation/part/0/part/0/part/0:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/9",
+            "fromPort": "main/result/evaluation/part/0:normal-exit",
+            "toPort": "main/result/evaluation:normal-exit",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "panic",
+            "label": "panic",
+            "routing": "direct",
+            "id": "edge/10",
+            "fromPort": "main/result/evaluation/part/0/part/0/part/0:panic",
+            "toPort": "main/result/evaluation/capture:entry",
+            "when": {
+              "kind": "constant",
+              "value": true
+            }
+          },
+          {
+            "kind": "panic",
+            "label": "panic",
+            "routing": "direct",
+            "id": "edge/11",
+            "fromPort": "main/result/evaluation/part/0/part/0/error:panic",
+            "toPort": "main/result/evaluation/capture:entry",
+            "when": {
+              "kind": "constant",
+              "value": true
+            }
+          },
+          {
+            "kind": "panic",
+            "label": "panic",
+            "routing": "direct",
+            "id": "edge/12",
+            "fromPort": "main/result/evaluation/part/0/part/1/part/0:panic",
+            "toPort": "main/result/evaluation/capture:entry",
+            "when": {
+              "kind": "constant",
+              "value": true
+            }
+          },
+          {
+            "kind": "panic",
+            "label": "panic",
+            "routing": "direct",
+            "id": "edge/13",
+            "fromPort": "main/result/evaluation/part/0:panic",
+            "toPort": "main/result/evaluation/capture:entry",
+            "when": {
+              "kind": "constant",
+              "value": true
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": "error value",
+            "routing": "direct",
+            "id": "edge/14",
+            "fromPort": "main/result/evaluation/capture:normal-exit",
+            "toPort": "main/result/evaluation:normal-exit",
+            "when": {
+              "kind": "constant",
+              "value": true
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/15",
+            "fromPort": "main/result/evaluation:normal-exit",
+            "toPort": "main/result:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "kind": "sequence",
+            "label": null,
+            "routing": "direct",
+            "id": "edge/16",
+            "fromPort": "main/result:normal-exit",
+            "toPort": "main/after:entry",
+            "when": {
+              "kind": "all",
+              "operands": [
+                {
+                  "kind": "constant",
+                  "value": true
+                },
+                {
+                  "kind": "constant",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "main/result/evaluation/part/0/part/0/group",
+            "arrangement": {
+              "kind": "columns",
+              "left": [],
+              "right": [
+                "main/result/evaluation/part/0/part/0/error"
+              ]
+            },
+            "style": {
+              "profile": "if",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": false
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "main/result/evaluation/part/0/part/1/group",
+            "arrangement": {
+              "kind": "columns",
+              "left": [],
+              "right": [
+                "main/result/evaluation/part/0/part/1/error"
+              ]
+            },
+            "style": {
+              "profile": "if",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": false
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "main/result/evaluation/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/result/evaluation/part/0/part/0/part/0",
+                "main/result/evaluation/part/0/part/0",
+                "main/result/evaluation/part/0/part/1/part/0",
+                "main/result/evaluation/part/0/part/1",
+                "main/result/evaluation/part/0",
+                "main/result/evaluation/capture"
+              ]
+            },
+            "style": {
+              "profile": "trap",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          },
+          {
+            "id": "main/root/group",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/result/evaluation",
+                "main/result",
+                "main/after"
+              ]
+            },
+            "style": {
+              "profile": "root",
+              "root": {
+                "node": true,
+                "header": false,
+                "container": true
+              },
+              "inline": {
+                "node": false,
+                "header": false,
+                "container": false
+              }
+            }
+          },
+          {
+            "id": "main/graph",
+            "arrangement": {
+              "kind": "sequence",
+              "members": [
+                "main/root"
+              ]
+            },
+            "style": {
+              "profile": "sequence",
+              "root": {
+                "node": true,
+                "header": true,
+                "container": true
+              },
+              "inline": {
+                "node": true,
+                "header": true,
+                "container": true
+              }
+            }
+          }
+        ],
+        "rootGroup": "main/graph",
+        "interfaces": [
+          {
+            "id": "root/entry/0",
+            "members": [
+              {
+                "portId": "main/root:entry",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "main/root/binding/entry/0",
+              "toPort": "main/result/evaluation:entry",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "root/normal",
+            "members": [
+              {
+                "portId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "connect",
+              "bindingId": "main/root/binding/normal",
+              "toPort": "main/root:normal-exit",
+              "edge": {
+                "kind": "sequence",
+                "label": null,
+                "routing": "direct"
+              }
+            }
+          },
+          {
+            "id": "entry",
+            "members": [
+              {
+                "portId": "main/result/evaluation:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "normal",
+            "members": [
+              {
+                "portId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "returns",
+            "members": [
+              {
+                "portId": "main/result/evaluation/part/0/part/1/error:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          },
+          {
+            "id": "panics",
+            "members": [],
+            "exports": [],
+            "root": {
+              "kind": "terminal"
+            }
+          }
+        ],
+        "emission": {
+          "root": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "main/root",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/part/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/error",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/part/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/error",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/capture",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "main/result:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/part/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/part/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/part/0:panic",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0:false",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/error:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/error:panic",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/part/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/part/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/part/0:panic",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1:false",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/error:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/error:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0:panic",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/capture:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/capture:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/root:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/root:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/3",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/4",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/5",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/6",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/7",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/8",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/9",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/10",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/11",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/12",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/13",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/14",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/15",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/16",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/root/binding/entry/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "binding",
+                "bindingId": "main/root/binding/normal",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ]
+          },
+          "inline": {
+            "nodes": [
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/part/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/error",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/part/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/error",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/capture",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "ports": [
+              {
+                "kind": "local",
+                "itemId": "main/result:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/part/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/part/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/part/0:panic",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0:false",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/error:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/0/error:panic",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/part/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/part/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/part/0:panic",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1:true",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1:false",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/error:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0/part/1/error:return",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/part/0:panic",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/capture:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result/evaluation/capture:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/result:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:entry",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "main/after:normal-exit",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              }
+            ],
+            "edges": [
+              {
+                "kind": "local",
+                "itemId": "edge/0",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/1",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/2",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/3",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/4",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/5",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/6",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/7",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/8",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/9",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/10",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/11",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/12",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/13",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/14",
+                "when": {
+                  "kind": "constant",
+                  "value": true
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/15",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "local",
+                "itemId": "edge/16",
+                "when": {
+                  "kind": "all",
+                  "operands": [
+                    {
+                      "kind": "constant",
+                      "value": true
+                    },
+                    {
+                      "kind": "constant",
+                      "value": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "graphOnly": true,
+  "provenance": "Archived synthetic graph input; no AST exists or is fabricated. Entry metadata is omitted by graphOnly exactly when the original fixture omitted it."
+}

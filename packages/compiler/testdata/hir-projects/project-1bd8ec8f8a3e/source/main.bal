@@ -1,0 +1,1 @@
+public function main() { var result = (value(1) > 0) || (value(2) > 0); _ = result; } function value(int n) returns int { return n; }
