@@ -18,14 +18,27 @@
 			],
 			"outputs": ["public/compiler/**"]
 		},
+		"copy:ls-wasm": {
+			"dependsOn": ["@playground/ls-wasm#build"],
+			"inputs": [
+				"../../packages/ls-wasm/dist/ballerina-ls.wasm",
+				"../../packages/ls-wasm/dist/wasm_exec.js"
+			],
+			"outputs": ["public/ballerina-ls.wasm", "public/ls-wasm_exec.js"]
+		},
 		"build": {
 			"env": ["COMMIT_SHA"],
-			"dependsOn": ["^build", "copy:wasm", "copy:compiler-wasm"],
+			"dependsOn": [
+				"^build",
+				"copy:wasm",
+				"copy:compiler-wasm",
+				"copy:ls-wasm"
+			],
 			"outputs": ["dist/**"]
 		},
 		"dev": {
 			"env": ["COMMIT_SHA"],
-			"dependsOn": ["copy:wasm", "copy:compiler-wasm"],
+			"dependsOn": ["copy:wasm", "copy:compiler-wasm", "copy:ls-wasm"],
 			"cache": false,
 			"persistent": true
 		},

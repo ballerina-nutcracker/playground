@@ -89,6 +89,9 @@
         "@playground/workspace": "*",
       },
     },
+    "packages/ls-wasm": {
+      "name": "@playground/ls-wasm",
+    },
     "packages/wasm": {
       "name": "@playground/wasm",
     },
@@ -386,6 +389,8 @@
     "@playground/browser-workspace": ["@playground/browser-workspace@workspace:packages/browser-workspace"],
 
     "@playground/compiler": ["@playground/compiler@workspace:packages/compiler"],
+
+    "@playground/ls-wasm": ["@playground/ls-wasm@workspace:packages/ls-wasm"],
 
     "@playground/wasm": ["@playground/wasm@workspace:packages/wasm"],
 

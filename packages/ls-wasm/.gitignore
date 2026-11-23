@@ -1,0 +1,4 @@
+.upstream/
+.source-dir
+.local.go.mod
+.local.go.sum

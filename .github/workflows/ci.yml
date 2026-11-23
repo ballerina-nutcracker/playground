@@ -23,6 +23,8 @@ jobs:
             packages/wasm/go.sum
             packages/compiler/go.mod
             packages/compiler/go.sum
+            packages/ls-wasm/go.mod
+            packages/ls-wasm/go.sum
 
       - name: Set up Node
         uses: actions/setup-node@v7

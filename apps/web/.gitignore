@@ -25,6 +25,8 @@ dist-ssr
 
 public/ballerina.wasm
 public/ballerina-meta.json
+public/ballerina-ls.wasm
+public/ls-wasm_exec.js
 
 src/assets/examples.json
 
