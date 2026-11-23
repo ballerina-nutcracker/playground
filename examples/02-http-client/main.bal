@@ -17,7 +17,7 @@ public function main() returns error? {
     http:Client registry = check new ("https://api.central.ballerina.io/2.0/registry");
 
     io:println(string `Fetching popular packages for query '${query}' from Ballerina Central...`);
-    SearchResult result = check registry->get(string `/packages?q=${query}&limit=50`);
+    SearchResult result = check registry->/packages(q = query, 'limit = 50);
 
     string[] popular = from Package pkg in result.packages
         where pkg.pullCount > 100
